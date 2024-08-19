@@ -25,8 +25,11 @@ import {
 	TabPanels,
 	Tabs,
 	Text,
+	useColorModeValue,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+
+import Navbar from './components/Navbar'
 
 export default function App() {
 	const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
@@ -72,6 +75,8 @@ export default function App() {
 	}
 
 	return (
+		<>
+		<Navbar/>
 		<Box
 			maxW='650px'
 			mx='auto'
@@ -265,7 +270,7 @@ export default function App() {
 							<AccordionButton
 								py={4}
 								_hover={{
-									background: 'gray.100',
+									background: useColorModeValue('gray.100', 'gray.700'),
 								}}>
 								<Box flex='1' textAlign='left'>
 									<Heading size='sm'>Interpretacja</Heading>
@@ -285,5 +290,6 @@ export default function App() {
 				</Card>
 			</Stack>
 		</Box>
+		</>
 	)
 }
