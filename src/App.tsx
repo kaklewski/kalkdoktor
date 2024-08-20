@@ -25,6 +25,7 @@ import { useEffect, useState } from 'react'
 
 import Navbar from './components/Navbar'
 import DetailsCard from './components/DetailsCard'
+import ResultCard from './components/ResultCard'
 
 export default function App() {
 	const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
@@ -194,15 +195,10 @@ export default function App() {
 						</CardBody>
 					</Card>
 
-					<Card overflow='hidden' variant='filled'>
-						<CardHeader>
-							<Heading size='md'>Wynik: {result}</Heading>
-						</CardHeader>
-						<Divider color='white' />
-						<CardBody>
-							<Text>{interpretation}</Text>
-						</CardBody>
-					</Card>
+					<ResultCard
+						result={result}
+						interpretation={interpretation}
+					/>
 
 					<DetailsCard
 						description='Skala służąca do oceny ryzyka
@@ -213,7 +209,7 @@ export default function App() {
 										przedsionków, u których konieczne jest
 										wdrożenie terapii przeciwpłytkowej lub
 										przeciwzakrzepowej.'
-						source='Lorem ipsum dolor sit amet consectetur
+						source='Lorem ipsum dolor sit amet consecteturs
 										adipisicing elit. Nihil, voluptate.'
 						interpretation='	Lorem ipsum dolor sit amet consectetur
 										adipisicing elit. Temporibus reiciendis
