@@ -24,6 +24,7 @@ import {
 import { useEffect, useState } from 'react'
 
 import Navbar from './components/Navbar'
+import DetailsCard from './components/DetailsCard'
 
 export default function App() {
 	const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
@@ -203,46 +204,24 @@ export default function App() {
 						</CardBody>
 					</Card>
 
-					<Card overflow='hidden' variant='outline'>
-						<Tabs variant='enclosed' isFitted colorScheme='teal'>
-							<TabList px={4} pt={4}>
-								<Tab>Opis</Tab>
-								<Tab>Źródła</Tab>
-								<Tab>Interpretacja</Tab>
-							</TabList>
-
-							<TabPanels>
-								<TabPanel>
-									<p>
-										Skala służąca do oceny ryzyka
+					<DetailsCard
+						description='Skala służąca do oceny ryzyka
 										wystąpienia powikłań
 										zakrzepowo–zatorowych u pacjentów z
 										migotaniem przedsionków. Skala umożliwia
 										wskazanie pacjentów z migotaniem
 										przedsionków, u których konieczne jest
 										wdrożenie terapii przeciwpłytkowej lub
-										przeciwzakrzepowej.
-									</p>
-								</TabPanel>
-								<TabPanel>
-									<p>
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit. Nihil, voluptate.
-									</p>
-								</TabPanel>
-								<TabPanel>
-									<p>
-										Lorem ipsum dolor sit amet consectetur
+										przeciwzakrzepowej.'
+						source='Lorem ipsum dolor sit amet consectetur
+										adipisicing elit. Nihil, voluptate.'
+						interpretation='	Lorem ipsum dolor sit amet consectetur
 										adipisicing elit. Temporibus reiciendis
 										aperiam placeat nobis, dolorum laborum,
 										nemo, eos quidem esse ducimus expedita
 										amet repellendus nesciunt enim. Quae
-										pariatur numquam aliquam doloremque.
-									</p>
-								</TabPanel>
-							</TabPanels>
-						</Tabs>
-					</Card>
+										pariatur numquam aliquam doloremque.'
+					/>
 				</Stack>
 			</Box>
 		</>
