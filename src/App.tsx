@@ -37,7 +37,7 @@ export default function App() {
 		'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
 
 	const [result, setResult] = useState(0)
-	const [interpretation, setInterpretation] = useState(lowRisk)
+	const [resultDescription, setResultDescription] = useState(lowRisk)
 
 	useEffect(() => {
 		provideInterpretation()
@@ -57,19 +57,19 @@ export default function App() {
 	function provideInterpretation() {
 		const isMan = (document.getElementById('man') as HTMLInputElement)
 			.checked
-		let interpretationText: string = lowRisk
+		let resultDescriptionText: string = lowRisk
 
 		if (isMan) {
-			if (result <= 0) interpretationText = lowRisk
-			if (result == 1) interpretationText = mediumRisk
-			if (result >= 2) interpretationText = highRisk
+			if (result <= 0) resultDescriptionText = lowRisk
+			if (result == 1) resultDescriptionText = mediumRisk
+			if (result >= 2) resultDescriptionText = highRisk
 		} else {
-			if (result <= 1) interpretationText = lowRisk
-			if (result == 2) interpretationText = mediumRisk
-			if (result >= 3) interpretationText = highRisk
+			if (result <= 1) resultDescriptionText = lowRisk
+			if (result == 2) resultDescriptionText = mediumRisk
+			if (result >= 3) resultDescriptionText = highRisk
 		}
 
-		setInterpretation(interpretationText)
+		setResultDescription(resultDescriptionText)
 	}
 
 	return (
@@ -146,7 +146,7 @@ export default function App() {
 
 					<ResultCard
 						result={result}
-						interpretation={interpretation}
+						resultDescription={resultDescription}
 					/>
 
 					<DetailsCard

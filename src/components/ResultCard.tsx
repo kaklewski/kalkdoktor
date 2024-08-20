@@ -1,11 +1,18 @@
-import { Card, CardBody, CardHeader, Divider, Heading, Text } from '@chakra-ui/react'
+import {
+	Card,
+	CardBody,
+	CardHeader,
+	Divider,
+	Heading,
+	Text,
+} from '@chakra-ui/react'
 
 interface Props {
 	result: number
-	interpretation: string
+	resultDescription: string
 }
 
-export default function ResultCard({ result, interpretation }: Props) {
+export default function ResultCard({ result, resultDescription }: Props) {
 	return (
 		<Card overflow='hidden' variant='filled'>
 			<CardHeader>
@@ -13,7 +20,7 @@ export default function ResultCard({ result, interpretation }: Props) {
 			</CardHeader>
 			<Divider color='white' />
 			<CardBody>
-				<Text>{interpretation}</Text>
+				<Text>{resultDescription}</Text>
 			</CardBody>
 		</Card>
 	)
