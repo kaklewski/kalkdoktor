@@ -27,6 +27,7 @@ import Navbar from './components/Navbar'
 import DetailsCard from './components/DetailsCard'
 import ResultCard from './components/ResultCard'
 import FavButton from './components/FavButton'
+import FormCard from './components/FormCard'
 
 export default function App() {
 	const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
@@ -90,88 +91,58 @@ export default function App() {
 						<FavButton />
 					</Flex>
 
-					<Card overflow='hidden' variant='outline'>
-						<CardBody>
-							<Stack divider={<StackDivider />} spacing={4}>
-								<Box>
-									<Checkbox
-										value='1'
-										colorScheme='teal'
-										w='100%'>
-										Zastoinowa niewydolność serca /
-										dysfunkcja lewej komory
-									</Checkbox>
-								</Box>
-								<Box>
-									<Checkbox
-										value='1'
-										colorScheme='teal'
-										w='100%'>
-										Nadciśnienie tętnicze
-									</Checkbox>
-								</Box>
-								<Box>
-									<Checkbox
-										value='1'
-										colorScheme='teal'
-										w='100%'>
-										Cukrzyca
-									</Checkbox>
-								</Box>
-								<Box>
-									<Checkbox
-										value='1'
-										colorScheme='teal'
-										w='100%'>
-										Choroba naczyniowa (przebyty zawał
-										serca, miażdżycowa choroba tętnic
-										obwodowych, blaszki miażdżycowe w
-										aorcie)
-									</Checkbox>
-								</Box>
-								<Box>
-									<Checkbox
-										value='2'
-										colorScheme='teal'
-										w='100%'>
-										Przebyty udar mózgu / TIA / incydent
-										zakrzepowo-zatorowy
-									</Checkbox>
-								</Box>
-								<Box>
-									<RadioGroup
-										defaultValue='0'
-										colorScheme='teal'>
-										<Stack>
-											<Text>Płeć:</Text>
-											<Radio value='0' id='man'>
-												Mężczyzna
-											</Radio>
-											<Radio value='1'>Kobieta</Radio>
-										</Stack>
-									</RadioGroup>
-								</Box>
-								<Box>
-									<RadioGroup
-										defaultValue='0'
-										colorScheme='teal'>
-										<Stack>
-											<Text>Wiek:</Text>
-											<Radio value='0'>
-												Mniej niż 65 lat
-											</Radio>
-											<Radio value='1'>
-												65 – 74 lata
-											</Radio>
-											<Radio value='2'>
-												75 lat lub więcej
-											</Radio>
-										</Stack>
-									</RadioGroup>
-								</Box>
-							</Stack>
-						</CardBody>
-					</Card>
+					<FormCard>
+						<Box>
+							<Checkbox value='1' colorScheme='teal' w='100%'>
+								Zastoinowa niewydolność serca / dysfunkcja lewej
+								komory
+							</Checkbox>
+						</Box>
+						<Box>
+							<Checkbox value='1' colorScheme='teal' w='100%'>
+								Nadciśnienie tętnicze
+							</Checkbox>
+						</Box>
+						<Box>
+							<Checkbox value='1' colorScheme='teal' w='100%'>
+								Cukrzyca
+							</Checkbox>
+						</Box>
+						<Box>
+							<Checkbox value='1' colorScheme='teal' w='100%'>
+								Choroba naczyniowa (przebyty zawał serca,
+								miażdżycowa choroba tętnic obwodowych, blaszki
+								miażdżycowe w aorcie)
+							</Checkbox>
+						</Box>
+						<Box>
+							<Checkbox value='2' colorScheme='teal' w='100%'>
+								Przebyty udar mózgu / TIA / incydent
+								zakrzepowo-zatorowy
+							</Checkbox>
+						</Box>
+						<Box>
+							<RadioGroup defaultValue='0' colorScheme='teal'>
+								<Stack>
+									<Text>Płeć:</Text>
+									<Radio value='0' id='man'>
+										Mężczyzna
+									</Radio>
+									<Radio value='1'>Kobieta</Radio>
+								</Stack>
+							</RadioGroup>
+						</Box>
+						<Box>
+							<RadioGroup defaultValue='0' colorScheme='teal'>
+								<Stack>
+									<Text>Wiek:</Text>
+									<Radio value='0'>Mniej niż 65 lat</Radio>
+									<Radio value='1'>65 – 74 lata</Radio>
+									<Radio value='2'>75 lat lub więcej</Radio>
+								</Stack>
+							</RadioGroup>
+						</Box>
+					</FormCard>
 
 					<ResultCard
 						result={result}
