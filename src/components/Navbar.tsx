@@ -1,4 +1,3 @@
-
 import {
 	Box,
 	Flex,
@@ -7,6 +6,7 @@ import {
 	Stack,
 	useColorMode,
 	Link,
+	Divider,
 } from '@chakra-ui/react'
 
 const moonIcon = (
@@ -46,7 +46,7 @@ export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode()
 	return (
 		<>
-			<Box bg={useColorModeValue('gray.100', 'gray.700')} p={4}>
+			<Box p={4}>
 				<Flex alignItems={'center'} justifyContent={'space-between'}>
 					<Box>
 						<Link href='/'>Kalkdoktor</Link>
@@ -61,6 +61,10 @@ export default function Navbar() {
 					</Flex>
 				</Flex>
 			</Box>
+			<Divider />
 		</>
 	)
 }
+
+// bg={useColorModeValue('gray.100', 'gray.700')}
+// borderColor={useColorModeValue('gray.100', 'gray.700')}
