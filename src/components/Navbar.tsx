@@ -1,12 +1,10 @@
 import {
 	Box,
 	Flex,
-	Button,
-	useColorModeValue,
-	Stack,
 	useColorMode,
 	Link,
 	Divider,
+	IconButton,
 } from '@chakra-ui/react'
 
 const moonIcon = (
@@ -17,7 +15,7 @@ const moonIcon = (
 		viewBox='0 0 24 24'
 		fill='none'
 		stroke='currentColor'
-		strokeWidth='2'
+		strokeWidth='1.5'
 		strokeLinecap='round'
 		strokeLinejoin='round'>
 		<path stroke='none' d='M0 0h24v24H0z' fill='none' />
@@ -33,7 +31,7 @@ const sunIcon = (
 		viewBox='0 0 24 24'
 		fill='none'
 		stroke='currentColor'
-		strokeWidth='2'
+		strokeWidth='1.5'
 		strokeLinecap='round'
 		strokeLinejoin='round'>
 		<path stroke='none' d='M0 0h24v24H0z' fill='none' />
@@ -53,11 +51,13 @@ export default function Navbar() {
 					</Box>
 
 					<Flex alignItems={'center'}>
-						<Stack direction={'row'} spacing={7}>
-							<Button onClick={toggleColorMode}>
-								{colorMode === 'light' ? moonIcon : sunIcon}
-							</Button>
-						</Stack>
+						<IconButton
+							onClick={toggleColorMode}
+							aria-label={`Zmień motyw na ${
+								colorMode === 'light' ? 'ciemny' : 'jasny'
+							}`}>
+							{colorMode === 'light' ? moonIcon : sunIcon}
+						</IconButton>
 					</Flex>
 				</Flex>
 			</Box>
@@ -65,6 +65,3 @@ export default function Navbar() {
 		</>
 	)
 }
-
-// bg={useColorModeValue('gray.100', 'gray.700')}
-// borderColor={useColorModeValue('gray.100', 'gray.700')}
