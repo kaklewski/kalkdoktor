@@ -1,17 +1,13 @@
-import { Card, CardBody, Stack, StackDivider } from '@chakra-ui/react'
+import { Card, CardBody } from '@chakra-ui/react'
 
 interface Props {
-	children: any
+	formContent: any
 }
 
-export default function FormCard({ children }: Props) {
+export default function FormCard({ formContent }: Props) {
 	return (
 		<Card overflow='hidden' variant='outline'>
-			<CardBody>
-				<Stack divider={<StackDivider />} spacing={4}>
-					{children}
-				</Stack>
-			</CardBody>
+			<CardBody>{formContent}</CardBody>
 		</Card>
 	)
 }
