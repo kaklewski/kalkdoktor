@@ -4,6 +4,7 @@ export default function FavButton() {
 	return (
 		<IconButton
 			aria-label='Dodaj do ulubionych'
+			colorScheme='teal'
 			icon={
 				<Icon>
 					<svg
