@@ -1,4 +1,4 @@
-import { Icon, IconButton } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 
 export default function FavButton() {
 	return (
