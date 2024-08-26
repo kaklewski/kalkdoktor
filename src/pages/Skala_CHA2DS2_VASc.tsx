@@ -1,6 +1,7 @@
 import {
 	Box,
 	Checkbox,
+	Link,
 	Radio,
 	RadioGroup,
 	Stack,
@@ -11,47 +12,19 @@ import { useEffect, useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 
 export default function Skala_CHA2DS2_VASc() {
-	const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
-	const mediumRisk: string =
+	const lowRiskText: string =
+		'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+	const mediumRiskText: string =
 		'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
-	const highRisk: string =
+	const highRiskText: string =
 		'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
 
 	const [result, setResult] = useState(0)
-	const [resultDescription, setResultDescription] = useState(lowRisk)
+	const [resultDescription, setResultDescription] = useState(lowRiskText)
 
 	useEffect(() => {
 		provideInterpretation()
 	}, [result])
-
-	function calculateResult(setResult: any) {
-		const inputs = document.querySelectorAll('input')
-		let sum: number = 0
-
-		inputs.forEach(input => {
-			if (input.checked) sum += parseInt(input.value)
-		})
-
-		setResult(sum)
-	}
-
-	function provideInterpretation() {
-		const isMan = (document.getElementById('man') as HTMLInputElement)
-			.checked
-		let resultDescriptionText: string = lowRisk
-
-		if (isMan) {
-			if (result <= 0) resultDescriptionText = lowRisk
-			if (result == 1) resultDescriptionText = mediumRisk
-			if (result >= 2) resultDescriptionText = highRisk
-		} else {
-			if (result <= 1) resultDescriptionText = lowRisk
-			if (result == 2) resultDescriptionText = mediumRisk
-			if (result >= 3) resultDescriptionText = highRisk
-		}
-
-		setResultDescription(resultDescriptionText)
-	}
 
 	const title = (
 		<span>
@@ -111,14 +84,43 @@ export default function Skala_CHA2DS2_VASc() {
 		</Stack>
 	)
 
-	const description =
+	const description: string =
 		'Skala służąca do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Skala umożliwia wskazanie pacjentów z migotaniem przedsionków, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.'
 
 	const source =
-		'Lorem ipsum dolor sit amet consecteturs adipisicing elit. Nihil, voluptate.'
+		'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk'
 
 	const interpretation =
 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.'
+
+	function calculateResult(setResult: (value: number) => void) {
+		const inputs = document.querySelectorAll('input')
+		let sum: number = 0
+
+		inputs.forEach(input => {
+			if (input.checked) sum += parseInt(input.value)
+		})
+
+		setResult(sum)
+	}
+
+	function provideInterpretation() {
+		const isMan = (document.getElementById('man') as HTMLInputElement)
+			.checked
+		let resultDescriptionText: string = lowRiskText
+
+		if (isMan) {
+			if (result <= 0) resultDescriptionText = lowRiskText
+			if (result == 1) resultDescriptionText = mediumRiskText
+			if (result >= 2) resultDescriptionText = highRiskText
+		} else {
+			if (result <= 1) resultDescriptionText = lowRiskText
+			if (result == 2) resultDescriptionText = mediumRiskText
+			if (result >= 3) resultDescriptionText = highRiskText
+		}
+
+		setResultDescription(resultDescriptionText)
+	}
 
 	return (
 		<PageLayout
