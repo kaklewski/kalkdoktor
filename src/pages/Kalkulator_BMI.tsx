@@ -63,7 +63,9 @@ export default function Kalkulator_BMI() {
 			parseInt(
 				(document.getElementById('height') as HTMLInputElement).value
 			) / 100
-		const sum: number = parseInt((bodyMass / (height * height)).toFixed(2))
+		let sum: number = parseInt((bodyMass / (height * height)).toFixed(2))
+
+		if (Number.isNaN(sum)) sum = 0
 
 		setResult(sum)
 	}
@@ -71,7 +73,8 @@ export default function Kalkulator_BMI() {
 	function provideInterpretation() {
 		let resultDescriptionText: string = 'Niedowaga'
 
-		if (result < 18.5) resultDescriptionText = 'Niedowaga'
+		if (result === 0) resultDescriptionText = 'Podaj wszystkie informacje'
+		if (result < 18.5 && result < 0) resultDescriptionText = 'Niedowaga'
 		if (result >= 18.5 && result < 25)
 			resultDescriptionText = 'Wartość prawidłowa'
 		if (result >= 25 && result < 30) resultDescriptionText = 'Nadwaga'
