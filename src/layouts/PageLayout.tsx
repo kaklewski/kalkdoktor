@@ -28,12 +28,7 @@ export default function PageLayout({
 	interpretation,
 }: Props) {
 	return (
-		<Box
-			maxW='650px'
-			mx='auto'
-			px={4}
-			py={8}
-			onChange={() => calculateResult(setResult)}>
+		<Box maxW='650px' mx='auto' px={4} py={8}>
 			<Stack spacing={8}>
 				<Flex>
 					<Heading as='h1'>{title} </Heading>
@@ -43,7 +38,11 @@ export default function PageLayout({
 					<FavButton />
 				</Flex>
 
-				<FormCard formContent={formContent} />
+				<FormCard
+					formContent={formContent}
+					calculateResult={calculateResult}
+					setResult={setResult}
+				/>
 
 				<ResultCard
 					result={result}
