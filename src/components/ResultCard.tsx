@@ -9,10 +9,10 @@ import {
 
 interface Props {
 	result: number
-	resultDescription: string
+	resultInterpretation: string
 }
 
-export default function ResultCard({ result, resultDescription }: Props) {
+export default function ResultCard({ result, resultInterpretation }: Props) {
 	return (
 		<Card overflow='hidden' variant='filled'>
 			<CardHeader>
@@ -20,7 +20,7 @@ export default function ResultCard({ result, resultDescription }: Props) {
 			</CardHeader>
 			<Divider color='white' />
 			<CardBody>
-				<Text>{resultDescription}</Text>
+				<Text>{resultInterpretation}</Text>
 			</CardBody>
 		</Card>
 	)

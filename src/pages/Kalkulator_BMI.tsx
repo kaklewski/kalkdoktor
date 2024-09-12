@@ -13,10 +13,10 @@ import PageLayout from '../layouts/PageLayout'
 
 export default function Kalkulator_BMI() {
 	const [result, setResult] = useState(0)
-	const [resultDescription, setResultDescription] = useState('')
+	const [resultInterpretation, setResultInterpretation] = useState('')
 
 	useEffect(() => {
-		provideInterpretation()
+		interpretResult()
 	}, [result])
 
 	const title = <span>Kalkulator BMI</span>
@@ -70,7 +70,7 @@ export default function Kalkulator_BMI() {
 		setResult(sum)
 	}
 
-	function provideInterpretation() {
+	function interpretResult() {
 		let resultDescriptionText: string = 'Niedowaga'
 
 		if (result === 0) resultDescriptionText = 'Podaj wszystkie informacje'
@@ -84,7 +84,7 @@ export default function Kalkulator_BMI() {
 			resultDescriptionText = 'Otyłość II stopnia'
 		if (result >= 40) resultDescriptionText = 'Otyłość III stopnia'
 
-		setResultDescription(resultDescriptionText)
+		setResultInterpretation(resultDescriptionText)
 	}
 
 	return (
@@ -94,7 +94,7 @@ export default function Kalkulator_BMI() {
 			title={title}
 			formContent={formContent}
 			result={result}
-			resultDescription={resultDescription}
+			resultInterpretation={resultInterpretation}
 			description={description}
 			source={source}
 			methodology={methodology}

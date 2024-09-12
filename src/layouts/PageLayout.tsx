@@ -10,7 +10,7 @@ interface Props {
 	title: JSX.Element
 	formContent: JSX.Element
 	result: number
-	resultDescription: string
+	resultInterpretation: string
 	description: string
 	source: string
 	methodology: string
@@ -22,7 +22,7 @@ export default function PageLayout({
 	title,
 	formContent,
 	result,
-	resultDescription,
+	resultInterpretation,
 	description,
 	source,
 	methodology,
@@ -46,7 +46,7 @@ export default function PageLayout({
 
 				<ResultCard
 					result={result}
-					resultDescription={resultDescription}
+					resultInterpretation={resultInterpretation}
 				/>
 
 				<DetailsCard

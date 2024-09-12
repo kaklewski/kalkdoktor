@@ -6,10 +6,10 @@ import CustomRadioGroup from '../components/CustomRadioGroup'
 
 export default function Skala_CHA2DS2_VASc() {
 	const [result, setResult] = useState(0)
-	const [resultDescription, setResultDescription] = useState('')
+	const [resultInterpretation, setResultInterpretation] = useState('')
 
 	useEffect(() => {
-		provideInterpretation()
+		interpretResult()
 	}, [result])
 
 	const title = (
@@ -76,7 +76,7 @@ export default function Skala_CHA2DS2_VASc() {
 		setResult(sum)
 	}
 
-	function provideInterpretation() {
+	function interpretResult() {
 		const isMan = (document.getElementById('man') as HTMLInputElement)
 			.checked
 		let resultDescriptionText: string = lowRiskText
@@ -91,7 +91,7 @@ export default function Skala_CHA2DS2_VASc() {
 			if (result >= 3) resultDescriptionText = highRiskText
 		}
 
-		setResultDescription(resultDescriptionText)
+		setResultInterpretation(resultDescriptionText)
 	}
 
 	return (
@@ -101,7 +101,7 @@ export default function Skala_CHA2DS2_VASc() {
 			title={title}
 			formContent={formContent}
 			result={result}
-			resultDescription={resultDescription}
+			resultInterpretation={resultInterpretation}
 			description={description}
 			source={source}
 			methodology={methodology}
