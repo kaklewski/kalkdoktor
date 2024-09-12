@@ -1,14 +1,8 @@
-import {
-	Box,
-	Radio,
-	RadioGroup,
-	Stack,
-	StackDivider,
-	Text,
-} from '@chakra-ui/react'
+import { Radio, Stack, StackDivider } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 import CustomCheckbox from '../components/CustomCheckbox'
+import CustomRadioGroup from '../components/CustomRadioGroup'
 
 export default function Skala_CHA2DS2_VASc() {
 	const lowRiskText: string =
@@ -53,28 +47,18 @@ export default function Skala_CHA2DS2_VASc() {
 				text='Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy'
 			/>
 
-			<Box>
-				<RadioGroup defaultValue='0' colorScheme='teal'>
-					<Stack>
-						<Text>Płeć:</Text>
-						<Radio value='0' id='man'>
-							Mężczyzna
-						</Radio>
-						<Radio value='1'>Kobieta</Radio>
-					</Stack>
-				</RadioGroup>
-			</Box>
+			<CustomRadioGroup text='Płeć:'>
+				<Radio value='0' id='man'>
+					Mężczyzna
+				</Radio>
+				<Radio value='1'>Kobieta</Radio>
+			</CustomRadioGroup>
 
-			<Box>
-				<RadioGroup defaultValue='0' colorScheme='teal'>
-					<Stack>
-						<Text>Wiek:</Text>
-						<Radio value='0'>Mniej niż 65 lat</Radio>
-						<Radio value='1'>65 – 74 lata</Radio>
-						<Radio value='2'>75 lat lub więcej</Radio>
-					</Stack>
-				</RadioGroup>
-			</Box>
+			<CustomRadioGroup text='Wiek:'>
+				<Radio value='0'>Mniej niż 65 lat</Radio>
+				<Radio value='1'>65 – 74 lata</Radio>
+				<Radio value='2'>75 lat lub więcej</Radio>
+			</CustomRadioGroup>
 		</Stack>
 	)
 
