@@ -1,7 +1,6 @@
 import {
 	Box,
 	Checkbox,
-	Link,
 	Radio,
 	RadioGroup,
 	Stack,
@@ -10,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
+import CustomCheckbox from '../components/CustomCheckbox'
 
 export default function Skala_CHA2DS2_VASc() {
 	const lowRiskText: string =
@@ -34,32 +34,26 @@ export default function Skala_CHA2DS2_VASc() {
 
 	const formContent = (
 		<Stack divider={<StackDivider />} spacing={4}>
-			<Box>
-				<Checkbox value='1' colorScheme='teal' w='100%'>
-					Zastoinowa niewydolność serca / dysfunkcja lewej komory
-				</Checkbox>
-			</Box>
-			<Box>
-				<Checkbox value='1' colorScheme='teal' w='100%'>
-					Nadciśnienie tętnicze
-				</Checkbox>
-			</Box>
-			<Box>
-				<Checkbox value='1' colorScheme='teal' w='100%'>
-					Cukrzyca
-				</Checkbox>
-			</Box>
-			<Box>
-				<Checkbox value='1' colorScheme='teal' w='100%'>
-					Choroba naczyniowa (przebyty zawał serca, miażdżycowa
-					choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)
-				</Checkbox>
-			</Box>
-			<Box>
-				<Checkbox value='2' colorScheme='teal' w='100%'>
-					Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy
-				</Checkbox>
-			</Box>
+			<CustomCheckbox
+				value={1}
+				text='Zastoinowa niewydolność serca / dysfunkcja lewej komory'
+			/>
+
+			<CustomCheckbox value={1} text='Nadciśnienie tętnicze' />
+
+			<CustomCheckbox value={1} text='Cukrzyca' />
+
+			<CustomCheckbox
+				value={1}
+				text='Choroba naczyniowa (przebyty zawał serca, miażdżycowa
+					choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)'
+			/>
+
+			<CustomCheckbox
+				value={2}
+				text='Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy'
+			/>
+
 			<Box>
 				<RadioGroup defaultValue='0' colorScheme='teal'>
 					<Stack>
@@ -71,6 +65,7 @@ export default function Skala_CHA2DS2_VASc() {
 					</Stack>
 				</RadioGroup>
 			</Box>
+
 			<Box>
 				<RadioGroup defaultValue='0' colorScheme='teal'>
 					<Stack>
