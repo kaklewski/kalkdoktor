@@ -13,7 +13,7 @@ import PageLayout from '../layouts/PageLayout'
 
 export default function Kalkulator_BMI() {
 	const [result, setResult] = useState(0)
-	const [resultDescription, setResultDescription] = useState('Uzupełnij pola')
+	const [resultDescription, setResultDescription] = useState('')
 
 	useEffect(() => {
 		provideInterpretation()

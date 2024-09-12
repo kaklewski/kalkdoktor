@@ -5,15 +5,8 @@ import CustomCheckbox from '../components/CustomCheckbox'
 import CustomRadioGroup from '../components/CustomRadioGroup'
 
 export default function Skala_CHA2DS2_VASc() {
-	const lowRiskText: string =
-		'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
-	const mediumRiskText: string =
-		'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
-	const highRiskText: string =
-		'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
-
 	const [result, setResult] = useState(0)
-	const [resultDescription, setResultDescription] = useState(lowRiskText)
+	const [resultDescription, setResultDescription] = useState('')
 
 	useEffect(() => {
 		provideInterpretation()
@@ -31,29 +24,23 @@ export default function Skala_CHA2DS2_VASc() {
 				value={1}
 				text='Zastoinowa niewydolność serca / dysfunkcja lewej komory'
 			/>
-
 			<CustomCheckbox value={1} text='Nadciśnienie tętnicze' />
-
 			<CustomCheckbox value={1} text='Cukrzyca' />
-
 			<CustomCheckbox
 				value={1}
 				text='Choroba naczyniowa (przebyty zawał serca, miażdżycowa
 					choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)'
 			/>
-
 			<CustomCheckbox
 				value={2}
 				text='Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy'
 			/>
-
 			<CustomRadioGroup text='Płeć:'>
 				<Radio value='0' id='man'>
 					Mężczyzna
 				</Radio>
 				<Radio value='1'>Kobieta</Radio>
 			</CustomRadioGroup>
-
 			<CustomRadioGroup text='Wiek:'>
 				<Radio value='0'>Mniej niż 65 lat</Radio>
 				<Radio value='1'>65 – 74 lata</Radio>
@@ -61,6 +48,13 @@ export default function Skala_CHA2DS2_VASc() {
 			</CustomRadioGroup>
 		</Stack>
 	)
+
+	const lowRiskText: string =
+		'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+	const mediumRiskText: string =
+		'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
+	const highRiskText: string =
+		'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
 
 	const description: string =
 		'Skala służąca do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Skala umożliwia wskazanie pacjentów z migotaniem przedsionków, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.'
