@@ -1,16 +1,11 @@
 import { Radio, Stack, StackDivider } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 import CustomCheckbox from '../components/CustomCheckbox'
 import CustomRadioGroup from '../components/CustomRadioGroup'
 
 export default function Skala_CHA2DS2_VASc() {
 	const [result, setResult] = useState(0)
-	const [resultInterpretation, setResultInterpretation] = useState('')
-
-	useEffect(() => {
-		interpretResult()
-	}, [result])
 
 	const title = (
 		<span>
@@ -49,12 +44,28 @@ export default function Skala_CHA2DS2_VASc() {
 		</Stack>
 	)
 
-	const lowRiskText: string =
-		'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
-	const mediumRiskText: string =
-		'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
-	const highRiskText: string =
-		'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
+	const resultInterpretation = (() => {
+		const sexCheckbox = document.getElementById('man') as HTMLInputElement
+		const isMan = sexCheckbox ? sexCheckbox.checked : true
+
+		const lowRisk: string =
+			'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+		const mediumRisk: string =
+			'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
+		const highRisk: string =
+			'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
+
+		if (isMan) {
+			if (result <= 0) return lowRisk
+			if (result == 1) return mediumRisk
+			if (result >= 2) return highRisk
+		} else {
+			if (result <= 1) return lowRisk
+			if (result == 2) return mediumRisk
+			if (result >= 3) return highRisk
+		}
+		return lowRisk
+	})()
 
 	const description: string =
 		'Skala służąca do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Skala umożliwia wskazanie pacjentów z migotaniem przedsionków, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.'
@@ -74,24 +85,6 @@ export default function Skala_CHA2DS2_VASc() {
 		})
 
 		setResult(sum)
-	}
-
-	function interpretResult() {
-		const isMan = (document.getElementById('man') as HTMLInputElement)
-			.checked
-		let resultDescriptionText: string = lowRiskText
-
-		if (isMan) {
-			if (result <= 0) resultDescriptionText = lowRiskText
-			if (result == 1) resultDescriptionText = mediumRiskText
-			if (result >= 2) resultDescriptionText = highRiskText
-		} else {
-			if (result <= 1) resultDescriptionText = lowRiskText
-			if (result == 2) resultDescriptionText = mediumRiskText
-			if (result >= 3) resultDescriptionText = highRiskText
-		}
-
-		setResultInterpretation(resultDescriptionText)
 	}
 
 	return (
