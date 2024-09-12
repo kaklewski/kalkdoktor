@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 
 export default function Kalkulator_BMI() {
-	const [result, setResult] = useState(1)
+	const [result, setResult] = useState(0)
 	const [resultDescription, setResultDescription] = useState('Uzupełnij pola')
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ export default function Kalkulator_BMI() {
 		<Stack spacing={4}>
 			<Box>
 				<Text>Masa ciała (kg):</Text>
-				<NumberInput defaultValue={1} min={1} max={200} id='bodyMass'>
+				<NumberInput min={1} max={200} id='bodyMass'>
 					<NumberInputField />
 					<NumberInputStepper>
 						<NumberIncrementStepper />
@@ -35,7 +35,7 @@ export default function Kalkulator_BMI() {
 			</Box>
 			<Box>
 				<Text>Wzrost (cm):</Text>
-				<NumberInput defaultValue={1} min={1} max={230} id='height'>
+				<NumberInput min={1} max={230} id='height'>
 					<NumberInputField />
 					<NumberInputStepper>
 						<NumberIncrementStepper />
