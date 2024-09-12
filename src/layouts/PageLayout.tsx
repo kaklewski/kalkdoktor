@@ -13,7 +13,7 @@ interface Props {
 	resultDescription: string
 	description: string
 	source: string
-	interpretation: string
+	methodology: string
 }
 
 export default function PageLayout({
@@ -25,7 +25,7 @@ export default function PageLayout({
 	resultDescription,
 	description,
 	source,
-	interpretation,
+	methodology,
 }: Props) {
 	return (
 		<Box maxW='650px' mx='auto' px={4} py={8}>
@@ -52,7 +52,7 @@ export default function PageLayout({
 				<DetailsCard
 					description={description}
 					source={source}
-					interpretation={interpretation}
+					methodology={methodology}
 				/>
 			</Stack>
 		</Box>

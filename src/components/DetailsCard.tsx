@@ -3,13 +3,13 @@ import { Card, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 interface Props {
 	description: string
 	source: string
-	interpretation: string
+	methodology: string
 }
 
 export default function DetailsCard({
 	description,
 	source,
-	interpretation,
+	methodology,
 }: Props) {
 	return (
 		<Card overflow='hidden' variant='outline'>
@@ -17,7 +17,7 @@ export default function DetailsCard({
 				<TabList px={4} pt={4}>
 					<Tab>Opis</Tab>
 					<Tab>Źródła</Tab>
-					<Tab>Interpretacja</Tab>
+					<Tab>Metodologia</Tab>
 				</TabList>
 
 				<TabPanels>
@@ -28,7 +28,7 @@ export default function DetailsCard({
 						<p>{source}</p>
 					</TabPanel>
 					<TabPanel>
-						<p>{interpretation}</p>
+						<p>{methodology}</p>
 					</TabPanel>
 				</TabPanels>
 			</Tabs>

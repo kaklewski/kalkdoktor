@@ -62,7 +62,7 @@ export default function Skala_CHA2DS2_VASc() {
 	const source =
 		'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk'
 
-	const interpretation =
+	const methodology =
 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.'
 
 	function calculateResult(setResult: (value: number) => void) {
@@ -104,7 +104,7 @@ export default function Skala_CHA2DS2_VASc() {
 			resultDescription={resultDescription}
 			description={description}
 			source={source}
-			interpretation={interpretation}
+			methodology={methodology}
 		/>
 	)
 }
