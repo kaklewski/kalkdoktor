@@ -12,7 +12,7 @@ interface Props {
 	result: number
 	resultInterpretation: string
 	description: string
-	source: string
+	source: any
 	methodology: string
 }
 
