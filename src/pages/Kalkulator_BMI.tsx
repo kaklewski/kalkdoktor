@@ -1,7 +1,7 @@
-import { Stack } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 import CustomNumberInput from '../components/CustomNumberInput'
+import CustomStack from '../components/CustomStack'
 
 export default function Kalkulator_BMI() {
 	const [result, setResult] = useState(0)
@@ -9,7 +9,7 @@ export default function Kalkulator_BMI() {
 	const title = <span>Kalkulator BMI</span>
 
 	const formContent = (
-		<Stack spacing={6}>
+		<CustomStack>
 			<CustomNumberInput
 				text='Masa ciała (kg)'
 				min={1}
@@ -23,7 +23,7 @@ export default function Kalkulator_BMI() {
 				max={230}
 				id='height'
 			/>
-		</Stack>
+		</CustomStack>
 	)
 
 	const resultInterpretation = (() => {

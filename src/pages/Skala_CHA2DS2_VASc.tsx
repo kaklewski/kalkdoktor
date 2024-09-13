@@ -1,8 +1,9 @@
-import { Radio, Stack, StackDivider } from '@chakra-ui/react'
+import { Radio } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
 import CustomCheckbox from '../components/CustomCheckbox'
 import CustomRadioGroup from '../components/CustomRadioGroup'
+import CustomStack from '../components/CustomStack'
 
 export default function Skala_CHA2DS2_VASc() {
 	const [result, setResult] = useState(0)
@@ -14,7 +15,7 @@ export default function Skala_CHA2DS2_VASc() {
 	)
 
 	const formContent = (
-		<Stack divider={<StackDivider />} spacing={4}>
+		<CustomStack divider={true}>
 			<CustomCheckbox
 				value={1}
 				text='Zastoinowa niewydolność serca / dysfunkcja lewej komory'
@@ -41,7 +42,7 @@ export default function Skala_CHA2DS2_VASc() {
 				<Radio value='1'>65 – 74 lata</Radio>
 				<Radio value='2'>75 lat lub więcej</Radio>
 			</CustomRadioGroup>
-		</Stack>
+		</CustomStack>
 	)
 
 	const resultInterpretation = (() => {
