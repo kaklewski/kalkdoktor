@@ -38,10 +38,15 @@ export default function Kalkulator_BMI() {
 	})()
 
 	const description: string =
-		'Skala służąca do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Skala umożliwia wskazanie pacjentów z migotaniem przedsionków, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.'
+		'Kalkulator BMI (Body Mass Index) to proste narzędzie służące do obliczania wskaźnika masy ciała. BMI pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.'
 
-	const source =
-		'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk'
+	const source = [
+		{
+			id: 1,
+			name: 'Badanie BMI – Narodowy Instytut Kardiologii',
+			link: 'https://www.ikard.pl/badanie-bmi.html',
+		},
+	]
 
 	const methodology =
 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.'
