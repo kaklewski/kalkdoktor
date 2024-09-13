@@ -10,7 +10,7 @@ export default function CustomRadioGroup({ text, children }: Props) {
 		<Box>
 			<RadioGroup colorScheme='teal'>
 				<Stack>
-					<Text>{text}</Text>
+					<Text>{text}:</Text>
 					{children}
 				</Stack>
 			</RadioGroup>

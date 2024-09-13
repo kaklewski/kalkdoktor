@@ -30,13 +30,13 @@ export default function Skala_CHA2DS2_VASc() {
 				value={2}
 				text='Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy'
 			/>
-			<CustomRadioGroup text='Płeć:'>
+			<CustomRadioGroup text='Płeć'>
 				<Radio value='0' id='man'>
 					Mężczyzna
 				</Radio>
 				<Radio value='1'>Kobieta</Radio>
 			</CustomRadioGroup>
-			<CustomRadioGroup text='Wiek:'>
+			<CustomRadioGroup text='Wiek'>
 				<Radio value='0'>Mniej niż 65 lat</Radio>
 				<Radio value='1'>65 – 74 lata</Radio>
 				<Radio value='2'>75 lat lub więcej</Radio>
