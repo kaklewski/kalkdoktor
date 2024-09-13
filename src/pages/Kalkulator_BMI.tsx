@@ -1,15 +1,7 @@
-import {
-	Box,
-	NumberDecrementStepper,
-	NumberIncrementStepper,
-	NumberInput,
-	NumberInputField,
-	NumberInputStepper,
-	Stack,
-	Text,
-} from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useState } from 'react'
 import PageLayout from '../layouts/PageLayout'
+import CustomNumberInput from '../components/CustomNumberInput'
 
 export default function Kalkulator_BMI() {
 	const [result, setResult] = useState(0)
@@ -18,26 +10,19 @@ export default function Kalkulator_BMI() {
 
 	const formContent = (
 		<Stack spacing={6}>
-			<Box>
-				<Text>Masa ciała (kg):</Text>
-				<NumberInput min={1} max={200} id='bodyMass'>
-					<NumberInputField />
-					<NumberInputStepper>
-						<NumberIncrementStepper />
-						<NumberDecrementStepper />
-					</NumberInputStepper>
-				</NumberInput>
-			</Box>
-			<Box>
-				<Text>Wzrost (cm):</Text>
-				<NumberInput min={1} max={230} id='height'>
-					<NumberInputField />
-					<NumberInputStepper>
-						<NumberIncrementStepper />
-						<NumberDecrementStepper />
-					</NumberInputStepper>
-				</NumberInput>
-			</Box>
+			<CustomNumberInput
+				text='Masa ciała (kg)'
+				min={1}
+				max={200}
+				id='bodyMass'
+			/>
+
+			<CustomNumberInput
+				text='Wzrost (cm)'
+				min={1}
+				max={230}
+				id='height'
+			/>
 		</Stack>
 	)
 
