@@ -7,7 +7,7 @@ import DetailsCard from '../components/DetailsCard'
 interface Props {
 	calculateResult: any
 	setResult: any
-	title: JSX.Element
+	title: string
 	formContent: JSX.Element
 	result: number
 	resultInterpretation: string
@@ -27,6 +27,9 @@ export default function PageLayout({
 	source,
 	methodology,
 }: Props) {
+	// Set page title
+	document.title = title + ' – Kalkdoktor'
+
 	return (
 		<Box maxW='650px' mx='auto' px={4} py={8}>
 			<Stack spacing={8}>

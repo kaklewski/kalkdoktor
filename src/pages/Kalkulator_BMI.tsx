@@ -6,7 +6,7 @@ import CustomStack from '../components/CustomStack'
 export default function Kalkulator_BMI() {
 	const [result, setResult] = useState(0)
 
-	const title = <span>Kalkulator BMI</span>
+	const title = 'Kalkulator BMI'
 
 	const formContent = (
 		<CustomStack>

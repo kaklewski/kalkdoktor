@@ -8,11 +8,7 @@ import CustomStack from '../components/CustomStack'
 export default function Skala_CHA2DS2_VASc() {
 	const [result, setResult] = useState(0)
 
-	const title = (
-		<span>
-			Skala CHA<sub>2</sub>DS<sub>2</sub>-VASc
-		</span>
-	)
+	const title = 'Skala CHA₂DS₂-VASc'
 
 	const formContent = (
 		<CustomStack divider={true}>
