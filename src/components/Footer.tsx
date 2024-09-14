@@ -5,7 +5,7 @@ const link = 'https://github.com/kaklewski/kalkdoktor'
 
 export default function Footer() {
 	return (
-		<Box as='footer' maxW='650px' mx='auto' px={4}>
+		<Box as='footer' id='footer' maxW='650px' mx='auto'>
 			<Divider />
 			<Flex
 				p={4}

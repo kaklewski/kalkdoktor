@@ -1,0 +1,8 @@
+#footer {
+	padding-inline: 16px;
+
+	// Make footer divider full width on smaller screens
+	@media screen and (width <= 650px) {
+		padding-inline: 0;
+	}
+}
