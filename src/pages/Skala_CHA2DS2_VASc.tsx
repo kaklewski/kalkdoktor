@@ -4,6 +4,7 @@ import PageLayout from '../layouts/PageLayout'
 import CustomCheckbox from '../components/CustomCheckbox'
 import CustomRadioGroup from '../components/CustomRadioGroup'
 import CustomStack from '../components/CustomStack'
+import { sumInputValues } from '../functions/sumInputValues'
 
 export default function Skala_CHA2DS2_VASc() {
 	const [result, setResult] = useState(0)
@@ -78,20 +79,9 @@ export default function Skala_CHA2DS2_VASc() {
 	const methodology =
 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.'
 
-	function calculateResult(setResult: (value: number) => void) {
-		const inputs = document.querySelectorAll('input')
-		let sum: number = 0
-
-		inputs.forEach(input => {
-			if (input.checked) sum += parseInt(input.value)
-		})
-
-		setResult(sum)
-	}
-
 	return (
 		<PageLayout
-			calculateResult={calculateResult}
+			calculateResult={sumInputValues}
 			setResult={setResult}
 			title={title}
 			formContent={formContent}
