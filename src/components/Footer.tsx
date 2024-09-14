@@ -1,9 +1,9 @@
 import { Box, Divider, Flex, Link } from '@chakra-ui/react'
 
-export default function Footer() {
-	const currentYear = new Date().getFullYear()
-	const link = 'https://github.com/kaklewski/kalkdoktor'
+const currentYear = new Date().getFullYear()
+const link = 'https://github.com/kaklewski/kalkdoktor'
 
+export default function Footer() {
 	return (
 		<Box as='footer' maxW='650px' mx='auto' px={4}>
 			<Divider />
