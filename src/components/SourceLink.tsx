@@ -1,4 +1,4 @@
-import { Link, Stack } from '@chakra-ui/react'
+import { Flex, Link } from '@chakra-ui/react'
 
 interface Props {
 	name: string
@@ -8,12 +8,12 @@ interface Props {
 const externalLinkIcon = (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
-		width='20'
-		height='20'
+		width='24'
+		height='24'
 		viewBox='0 0 24 24'
 		fill='none'
 		stroke='currentColor'
-		strokeWidth='1.52'
+		strokeWidth='1.5'
 		strokeLinecap='round'
 		strokeLinejoin='round'>
 		<path stroke='none' d='M0 0h24v24H0z' fill='none' />
@@ -26,10 +26,10 @@ const externalLinkIcon = (
 export default function SourceLink({ name, link }: Props) {
 	return (
 		<Link href={link} isExternal>
-			<Stack direction='row'>
+			<Flex direction='row' align='center' gap={2}>
 				<span>{name}</span>
 				{externalLinkIcon}
-			</Stack>
+			</Flex>
 		</Link>
 	)
 }
