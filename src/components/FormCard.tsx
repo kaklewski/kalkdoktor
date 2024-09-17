@@ -1,15 +1,9 @@
-import {
-	Button,
-	Card,
-	CardBody,
-	Radio,
-	Stack,
-	StackDivider,
-} from '@chakra-ui/react'
+import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react'
 import { Form } from 'react-router-dom'
 import CustomNumberInput from './CustomNumberInput'
 import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
+import CustomRadio from './CustomRadio'
 
 interface Props {
 	calculator: any // do zmiany
@@ -65,12 +59,11 @@ export default function FormCard({ calculator, setResult }: Props) {
 										text={radioGroup.text}>
 										{/* typ do zmiany */}
 										{radioGroup.radios.map((radio: any) => (
-											<Radio
+											<CustomRadio
 												key={radio.id}
 												value={radio.value.toString()}
-												isRequired>
-												{radio.text}
-											</Radio>
+												text={radio.text}
+											/>
 										))}
 									</CustomRadioGroup>
 							  ))}
