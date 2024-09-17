@@ -1,9 +1,6 @@
 import { IconButton, useToast } from '@chakra-ui/react'
 import { useState } from 'react'
 
-const pageId = window.location.pathname.slice(1)
-const localStorageKey = 'favorites'
-
 const addToFavIcon = (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
@@ -32,18 +29,26 @@ const removeFromFavIcon = (
 	</svg>
 )
 
-const isAlreadyFaved = (() => {
-	const favString = localStorage.getItem(localStorageKey)
-	if (favString === null) return false
+interface Props {
+	pageId: number | undefined
+}
 
-	let favorites = JSON.parse(favString)
-	if (!favorites.includes(pageId)) return false
+export default function FavButton({ pageId }: Props) {
+	const LOCAL_STORAGE_KEY = 'favorites'
+	const [isFav, setIsFav] = useState(() => {
+		// Determine if the button should initially be displayed as added to fav or not
 
-	return true
-})()
+		// If there is no string with favorites, return false
+		const favString = localStorage.getItem(LOCAL_STORAGE_KEY)
+		if (favString === null) return false
 
-export default function FavButton() {
-	const [isFav, setIsFav] = useState(isAlreadyFaved)
+		// If the item is not in the string of fav in local storage, return false
+		let favorites = JSON.parse(favString)
+		if (!favorites.includes(pageId)) return false
+
+		// Else return true
+		return true
+	})
 	const toast = useToast()
 
 	function showToast(type: string) {
@@ -60,28 +65,28 @@ export default function FavButton() {
 	}
 
 	function addToFav() {
-		const favString = localStorage.getItem(localStorageKey)
-
+		// If there are no favorites, add the page
+		const favString = localStorage.getItem(LOCAL_STORAGE_KEY)
 		if (favString === null) {
-			localStorage.setItem(localStorageKey, JSON.stringify([pageId]))
+			localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([pageId]))
 			return
 		}
 
-		let favorites = JSON.parse(favString)
-
+		const favorites = JSON.parse(favString)
 		if (favorites.includes(pageId)) {
+			// If the page is in the favorites, remove it
 			const index = favorites.indexOf(pageId)
 			const removedItem = favorites.splice(index, 1)
 			showToast('removed')
 			setIsFav(false)
 		} else {
+			// If the page is not in the favorites, add it
 			favorites.push(pageId)
 			favorites.sort()
 			showToast('added')
 			setIsFav(true)
 		}
-
-		localStorage.setItem(localStorageKey, JSON.stringify(favorites))
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favorites))
 	}
 
 	return (

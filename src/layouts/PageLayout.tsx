@@ -1,8 +1,7 @@
+import { useState } from 'react'
 import { Box, Flex, Heading, Spacer, Stack } from '@chakra-ui/react'
 import { calculators } from '../calculators'
 import FavButton from '../components/FavButton'
-import { useState } from 'react'
-
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
@@ -36,7 +35,7 @@ export default function PageLayout({ calcId }: Props) {
 				<Flex>
 					<Heading as='h1'>{calculator?.name}</Heading>
 					<Spacer />
-					<FavButton />
+					<FavButton pageId={calculator?.id} />
 				</Flex>
 
 				<FormCard calculator={calculator} setResult={setResult} />
