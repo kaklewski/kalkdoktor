@@ -5,7 +5,7 @@ export default function Index() {
 	return (
 		<>
 			{calculators.map(calculator => (
-				<div>
+				<div key={calculator.id}>
 					<Link href={'/' + calculator.link}>{calculator.name}</Link>
 				</div>
 			))}
