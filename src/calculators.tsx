@@ -3,8 +3,8 @@ import { sumInputValues } from './functions/sumInputValues'
 export const calculators = [
 	{
 		id: 1,
-		name: 'Kalkulator BMI TEST',
-		link: 'kalkulator-bmi-test',
+		name: 'Kalkulator BMI',
+		link: 'kalkulator-bmi',
 		category: 'test',
 		description:
 			'Kalkulator BMI (Body Mass Index) to proste narzędzie służące do obliczania wskaźnika masy ciała. BMI pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.',
@@ -68,8 +68,8 @@ export const calculators = [
 
 	{
 		id: 2,
-		name: 'Skala CHA₂DS₂-VASc TEST',
-		link: 'skala-cha2ds2-vasc-test',
+		name: 'Skala CHA₂DS₂-VASc',
+		link: 'skala-cha2ds2-vasc',
 		category: 'kardiologia',
 		description:
 			'Skala CHA₂DS₂-VASc służy do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Pozwala wskazać pacjentów, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.',
@@ -182,8 +182,8 @@ export const calculators = [
 
 	{
 		id: 3,
-		name: 'Skala Centora w modyfikacji McIsaaca TEST',
-		link: 'skala-centora-mcisaaca-test',
+		name: 'Skala Centora w modyfikacji McIsaaca',
+		link: 'skala-centora-mcisaaca',
 		category: 'test',
 		description:
 			'Skala Centora w modyfikacji McIsaaca pozwala ustalić, czy patogenami wywołującymi ostre zapalenie gardła są paciorkowce oraz dobrać odpowiedni sposób leczenia.',
@@ -248,63 +248,15 @@ export const calculators = [
 		calculateResult: sumInputValues,
 
 		interpretResult: function (result: number) {
-			if (result >= 4)
+			if (result >= 4) {
 				return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
-			if (result >= 2 && result <= 3)
+			}
+			if (result >= 2 && result <= 3) {
 				return 'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
+			}
 			return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest niepotrzebna.'
 		},
 	},
-
-	{
-		id: 4,
-		name: '',
-		link: '',
-		category: '',
-		description: '',
-		methodology: '',
-		sources: [
-			{
-				id: 1,
-				name: '',
-				link: '',
-			},
-		],
-		fields: {
-			numberInputs: null,
-			checkboxes: null,
-			radioGroups: null,
-		},
-
-		calculateResult: function () {},
-
-		interpretResult: function () {},
-	},
-
-	// {
-	// 	id: ,
-	// 	name: '',
-	// 	link: 'skala-centora-mcisaaca-test',
-	// 	category: '',
-	// 	description: '',
-	// 	methodology: '',
-	// 	sources: [
-	// 		{
-	// 			id: 1,
-	// 			name: '',
-	// 			link: '',
-	// 		},
-	// 	],
-	// 	fields: {
-	// 		numberInputs: null,
-	// 		checkboxes: null,
-	// 		radioGroups: null,
-	// 	},
-
-	// 	calculateResult: function () {},
-
-	// 	interpretResult: function () {},
-	// },
 
 	// {
 	// 	id: 4,
