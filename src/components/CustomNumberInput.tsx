@@ -19,7 +19,7 @@ export default function CustomNumberInput({ text, min, max, id }: Props) {
 	return (
 		<Box>
 			<Text>{text}:</Text>
-			<NumberInput min={min} max={max} id={id}>
+			<NumberInput min={min} max={max} id={id} isRequired>
 				<NumberInputField />
 				<NumberInputStepper>
 					<NumberIncrementStepper />
