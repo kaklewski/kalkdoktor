@@ -1,12 +1,14 @@
+import { calculators } from '../calculators'
+import { Link } from '@chakra-ui/react'
+
 export default function Index() {
 	return (
 		<>
-			<a href='/skala-cha2ds2-vasc'>skala-cha2ds2-vasc </a>
-			<br />
-			<a href='/kalkulator-bmi'>kalkulator-bmi </a>
-			<br />
-			<a href='/skala-centora-mcisaaca'>skala centora w mod mcisaaca</a>
-			<br />
+			{calculators.map(calculator => (
+				<div>
+					<Link href={'/' + calculator.link}>{calculator.name}</Link>
+				</div>
+			))}
 		</>
 	)
 }
