@@ -10,6 +10,10 @@ import Skala_CHA2DS2_VASc from './pages/Skala_CHA2DS2_VASc'
 import Kalkulator_BMI from './pages/Kalkulator_BMI'
 import Skala_Centora_McIsaaca from './pages/Skala_Centora_McIsaaca'
 
+// ----- nowe podejscie ----
+import NewPageLayout from './layouts/NewPageLayout'
+import { calculators } from './calculators'
+
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<RootLayout />}>
@@ -20,6 +24,16 @@ const router = createBrowserRouter(
 				element={<Skala_Centora_McIsaaca />}
 			/>
 			<Route path='kalkulator-bmi' element={<Kalkulator_BMI />} />
+			// ----- nowe podejscie ----
+			{calculators.map(c => {
+				return (
+					<Route
+						key={c.id}
+						path={c.link}
+						element={<NewPageLayout calcId={c.id} />}
+					/>
+				)
+			})}
 		</Route>
 	)
 )

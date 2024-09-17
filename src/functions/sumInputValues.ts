@@ -1,10 +1,14 @@
-export function sumInputValues(setResult: (value: number) => void) {
-  const inputs = document.querySelectorAll('input')
-  let sum: number = 0
+// typ do zmiany
+export function sumInputValues(setResult: (value: number) => void, event: any) {
+	//Block the page from reloading
+	event.preventDefault()
 
-  inputs.forEach(input => {
-    if (input.checked) sum += parseInt(input.value)
-  })
+	const inputs = document.querySelectorAll('input')
+	let sum: number = 0
 
-  setResult(sum)
+	inputs.forEach(input => {
+		if (input.checked) sum += parseInt(input.value)
+	})
+
+	setResult(sum)
 }
