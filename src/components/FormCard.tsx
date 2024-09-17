@@ -75,7 +75,14 @@ export default function FormCard({ calculator, setResult }: Props) {
 									</CustomRadioGroup>
 							  ))}
 
-						<Button type='submit'>Oblicz</Button>
+						<Button
+							type='submit'
+							colorScheme='teal'
+							variant='solid'
+							w='fit-content'
+							mx='auto'>
+							Oblicz
+						</Button>
 					</Stack>
 				</CardBody>
 			</Form>
