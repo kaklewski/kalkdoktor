@@ -22,8 +22,12 @@ export default function NewFormCard({ calculator, setResult }: Props) {
 	const radioGroups = calculator?.fields.radioGroups
 
 	// typ do zmiany
-	const calculateResult = (event: any) =>
+	const calculateResult = (event: any) => {
+		//Block the page from reloading
+		event.preventDefault()
+
 		calculator?.calculateResult(setResult, event)
+	}
 
 	return (
 		<Card overflow='hidden' variant='outline'>

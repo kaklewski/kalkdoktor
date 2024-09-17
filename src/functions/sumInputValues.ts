@@ -1,8 +1,5 @@
 // typ do zmiany
-export function sumInputValues(setResult: (value: number) => void, event: any) {
-	//Block the page from reloading
-	event.preventDefault()
-
+export function sumInputValues(setResult: (value: number) => void) {
 	const inputs = document.querySelectorAll('input')
 	let sum: number = 0
 
