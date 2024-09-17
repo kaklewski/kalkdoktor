@@ -13,16 +13,14 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<RootLayout />}>
 			<Route index element={<Index />} />
-
-			{calculators.map(calculator => {
-				return (
-					<Route
-						key={calculator.id}
-						path={calculator.link}
-						element={<PageLayout calcId={calculator.id} />}
-					/>
-				)
-			})}
+			// Generate a route for every calculator
+			{calculators.map(calculator => (
+				<Route
+					key={calculator.id}
+					path={calculator.link}
+					element={<PageLayout calcId={calculator.id} />}
+				/>
+			))}
 		</Route>
 	)
 )
