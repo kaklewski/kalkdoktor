@@ -1,10 +1,5 @@
 import { Flex, Link } from '@chakra-ui/react'
 
-interface Props {
-	name: string
-	link: string
-}
-
 const externalLinkIcon = (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
@@ -23,7 +18,12 @@ const externalLinkIcon = (
 	</svg>
 )
 
-export default function SourceLink({ name, link }: Props) {
+interface ComponentProps {
+	name: string
+	link: string
+}
+
+export default function SourceLink({ name, link }: ComponentProps) {
 	return (
 		<Link href={link} isExternal>
 			<Flex direction='row' align='center' gap={2}>

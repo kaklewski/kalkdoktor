@@ -1,11 +1,12 @@
 import { Box, RadioGroup, Stack, Text } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
-interface Props {
+interface ComponentProps {
 	text: string
-	children: React.ReactNode
+	children: ReactNode
 }
 
-export default function CustomRadioGroup({ text, children }: Props) {
+export default function CustomRadioGroup({ text, children }: ComponentProps) {
 	return (
 		<Box>
 			<RadioGroup colorScheme='teal' name={text}>

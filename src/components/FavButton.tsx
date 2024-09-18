@@ -29,14 +29,14 @@ const removeFromFavIcon = (
 	</svg>
 )
 
-interface Props {
-	pageId: number | undefined
+interface ComponentProps {
+	pageId: number
 }
 
-export default function FavButton({ pageId }: Props) {
+export default function FavButton({ pageId }: ComponentProps) {
 	const LOCAL_STORAGE_KEY = 'favorites'
 	const [isFav, setIsFav] = useState(() => {
-		// Determine if the button should initially be displayed as added to fav or not
+		// Determine if the button should initially be displayed as added to favorites or not
 
 		// If there is no string with favorites, return false
 		const favString = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -77,6 +77,7 @@ export default function FavButton({ pageId }: Props) {
 			// If the page is in the favorites, remove it
 			const index = favorites.indexOf(pageId)
 			const removedItem = favorites.splice(index, 1)
+			console.log(removedItem) // This is only to make TypeScript warning shut up
 			showToast('removed')
 			setIsFav(false)
 		} else {
