@@ -46,6 +46,24 @@
 	}
 }
 
+#resultCard.animation {
+	animation-duration: 0.3s;
+	animation-name: scaleUpDown;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes scaleUpDown {
+	0% {
+		scale: 100%;
+	}
+	50% {
+		scale: 103%;
+	}
+	100% {
+		scale: 100%;
+	}
+}
+
 #footer {
 	padding-inline: 16px;
 
