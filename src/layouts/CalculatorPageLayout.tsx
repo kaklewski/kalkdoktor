@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, Flex, Heading, Spacer, Stack } from '@chakra-ui/react'
+import { Flex, Heading, Spacer } from '@chakra-ui/react'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
@@ -19,33 +19,31 @@ export default function CalculatorPageLayout({ calculator }: ComponentProps) {
 	}, [])
 
 	return (
-		<Box maxW='650px' mx='auto' px={4} py={8}>
-			<Stack spacing={8}>
-				<Flex>
-					<Heading as='h1'>{calculator.name}</Heading>
-					<Spacer />
-					<FavButton pageId={calculator.id} />
-				</Flex>
+		<>
+			<Flex>
+				<Heading as='h1'>{calculator.name}</Heading>
+				<Spacer />
+				<FavButton pageId={calculator.id} />
+			</Flex>
 
-				<FormCard
-					numberInputs={calculator.fields.numberInputs}
-					checkboxes={calculator.fields.checkboxes}
-					radioGroups={calculator.fields.radioGroups}
-					calculateResult={calculator.calculateResult}
-					setResult={setResult}
-				/>
+			<FormCard
+				numberInputs={calculator.fields.numberInputs}
+				checkboxes={calculator.fields.checkboxes}
+				radioGroups={calculator.fields.radioGroups}
+				calculateResult={calculator.calculateResult}
+				setResult={setResult}
+			/>
 
-				<ResultCard
-					result={result}
-					interpretResult={calculator.interpretResult}
-				/>
+			<ResultCard
+				result={result}
+				interpretResult={calculator.interpretResult}
+			/>
 
-				<DetailsCard
-					description={calculator.description}
-					sources={calculator.sources}
-					methodology={calculator.methodology}
-				/>
-			</Stack>
-		</Box>
+			<DetailsCard
+				description={calculator.description}
+				sources={calculator.sources}
+				methodology={calculator.methodology}
+			/>
+		</>
 	)
 }
