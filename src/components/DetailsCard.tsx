@@ -17,7 +17,7 @@ export default function DetailsCard({
 	sources,
 }: ComponentProps) {
 	return (
-		<Card overflow='hidden' variant='outline'>
+		<Card variant='outline'>
 			<Tabs variant='enclosed' isFitted colorScheme='teal'>
 				<TabList px={4} pt={4}>
 					<Tab>Opis</Tab>
