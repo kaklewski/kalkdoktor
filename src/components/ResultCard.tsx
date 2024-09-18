@@ -7,18 +7,25 @@ import {
 	Text,
 } from '@chakra-ui/react'
 
-interface Props {
+interface ComponentProps {
 	result: number
-	resultInterpretation: string
+	interpretResult: (result: number) => string
 }
 
-export default function ResultCard({ result, resultInterpretation }: Props) {
+export default function ResultCard({
+	result,
+	interpretResult,
+}: ComponentProps) {
+	const resultInterpretation = interpretResult(result)
+
 	return (
 		<Card overflow='hidden' variant='filled'>
 			<CardHeader>
 				<Heading size='md'>Wynik: {result}</Heading>
 			</CardHeader>
+
 			<Divider color='white' />
+
 			<CardBody>
 				<Text>{resultInterpretation}</Text>
 			</CardBody>

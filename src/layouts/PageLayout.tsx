@@ -22,10 +22,9 @@ interface ComponentProps {
 
 export default function PageLayout({ calcId }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
-
 	const calculator = findCalculator(calcId)
-	const resultInterpretation = calculator.interpretResult(result)
 
+	// Add calculator name to the page title
 	changeDocumentTitle(calculator.name)
 
 	return (
@@ -47,7 +46,7 @@ export default function PageLayout({ calcId }: ComponentProps) {
 
 				<ResultCard
 					result={result}
-					resultInterpretation={resultInterpretation.toString()}
+					interpretResult={calculator.interpretResult}
 				/>
 
 				<DetailsCard
