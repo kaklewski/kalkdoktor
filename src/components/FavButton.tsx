@@ -34,8 +34,8 @@ interface ComponentProps {
 }
 
 export default function FavButton({ pageId }: ComponentProps) {
-	const LOCAL_STORAGE_KEY = 'favorites'
-	const [isFav, setIsFav] = useState(() => {
+	const LOCAL_STORAGE_KEY: string = 'favorites'
+	const [isFav, setIsFav] = useState<boolean>(() => {
 		// Determine if the button should initially be displayed as added to favorites or not
 
 		// If there is no string with favorites, return false
