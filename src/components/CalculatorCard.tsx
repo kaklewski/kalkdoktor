@@ -28,7 +28,9 @@ export default function CalculatorCard({
 			<CardHeader>
 				<Flex gap={1}>
 					<Link href={link}>
-						<Heading as='h3' size='md'>{name}</Heading>
+						<Heading as='h3' size='md'>
+							{name}
+						</Heading>
 					</Link>
 					<Spacer />
 					<FavButton pageId={id} />
