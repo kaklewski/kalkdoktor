@@ -77,9 +77,9 @@ export default function FavButton({ pageId }: ComponentProps) {
 			// If the page is in the favorites, remove it
 			const index = favorites.indexOf(pageId)
 			const removedItem = favorites.splice(index, 1)
-			console.log(removedItem) // This is only to make TypeScript warning shut up
 			showToast('removed')
 			setIsFav(false)
+			if (removedItem) console.info() // This is only to make TypeScript warning shut up
 		} else {
 			// If the page is not in the favorites, add it
 			favorites.push(pageId)
