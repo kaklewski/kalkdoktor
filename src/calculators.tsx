@@ -1,6 +1,6 @@
 import { sumInputValues } from './functions/sumInputValues'
 
-interface Calculator {
+export interface Calculator {
 	id: number
 	name: string
 	link: string
@@ -42,33 +42,6 @@ interface Calculator {
 	}
 	calculateResult: (setResult: (value: number) => void) => void
 	interpretResult: (result: number) => string
-}
-
-// This exists only so that the function looking for a calculator can return it instead of undefined in case is doesn't find the proper calculator.
-// tl;dr: it exists to make TS shut up
-export const dummyCalculator: Calculator = {
-	id: 0,
-	name: '',
-	link: '',
-	category: '',
-	description: '',
-	methodology: '',
-	sources: [
-		{
-			id: 0,
-			name: '',
-			link: '',
-		},
-	],
-	fields: {
-		numberInputs: null,
-		checkboxes: null,
-		radioGroups: null,
-	},
-	calculateResult: sumInputValues,
-	interpretResult: function (result: number = 0) {
-		return result.toString()
-	},
 }
 
 export const calculators: Calculator[] = [
@@ -330,7 +303,7 @@ export const calculators: Calculator[] = [
 	},
 
 	// {
-	// 	id: 4,
+	// 	id: ,
 	// 	name: '',
 	// 	link: '',
 	// 	category: '',

@@ -18,7 +18,7 @@ const router = createBrowserRouter(
 				<Route
 					key={calculator.id}
 					path={calculator.link}
-					element={<CalculatorPageLayout calcId={calculator.id} />}
+					element={<CalculatorPageLayout calculator={calculator} />}
 				/>
 			))}
 		</Route>
