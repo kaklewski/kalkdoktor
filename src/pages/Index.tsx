@@ -1,19 +1,17 @@
 import { Calculator, calculators, categories } from '../calculators'
 import {
 	Accordion,
-	AccordionButton,
-	AccordionIcon,
-	AccordionItem,
-	AccordionPanel,
 	Box,
 	Card,
-	Link,
+	Stack,
 	Tab,
 	TabList,
 	TabPanel,
 	TabPanels,
 	Tabs,
 } from '@chakra-ui/react'
+import CalculatorCard from '../components/CalculatorCard'
+import CustomAccordionItem from '../components/CustomAccordionItem'
 
 const sortedCalculators = calculators.sort((a: Calculator, b: Calculator) => {
 	const keyA = a.name.toLowerCase()
@@ -36,59 +34,45 @@ export default function Index() {
 					<TabPanels>
 						<TabPanel>
 							<Accordion defaultIndex={[0]} allowMultiple>
-								<AccordionItem>
-									<h2>
-										<AccordionButton>
-											<Box
-												as='span'
-												flex='1'
-												textAlign='left'>
-												Section 1 title
-											</Box>
-											<AccordionIcon />
-										</AccordionButton>
-									</h2>
-									<AccordionPanel pb={4}>
-										Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod tempor
-										incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam, quis
-										nostrud exercitation ullamco laboris
-										nisi ut aliquip ex ea commodo consequat.
-									</AccordionPanel>
-								</AccordionItem>
-
-								<AccordionItem>
-									<h2>
-										<AccordionButton>
-											<Box
-												as='span'
-												flex='1'
-												textAlign='left'>
-												Section 2 title
-											</Box>
-											<AccordionIcon />
-										</AccordionButton>
-									</h2>
-									<AccordionPanel pb={4}>
-										Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod tempor
-										incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam, quis
-										nostrud exercitation ullamco laboris
-										nisi ut aliquip ex ea commodo consequat.
-									</AccordionPanel>
-								</AccordionItem>
+								{categories.map(category => (
+									<CustomAccordionItem
+										key={category}
+										title={category}>
+										<Stack spacing={4}>
+											{sortedCalculators
+												.filter(
+													calc =>
+														calc.category ===
+														category
+												)
+												.map(calculator => (
+													<CalculatorCard
+														key={calculator.id}
+														id={calculator.id}
+														name={calculator.name}
+														link={calculator.link}
+														description={
+															calculator.description
+														}
+													/>
+												))}
+										</Stack>
+									</CustomAccordionItem>
+								))}
 							</Accordion>
 						</TabPanel>
 						<TabPanel>
-							{sortedCalculators.map(calculator => (
-								<div key={calculator.id}>
-									<Link href={'/' + calculator.link}>
-										{calculator.name}
-									</Link>
-								</div>
-							))}
+							<Stack spacing={4}>
+								{sortedCalculators.map(calculator => (
+									<CalculatorCard
+										key={calculator.id}
+										id={calculator.id}
+										name={calculator.name}
+										link={calculator.link}
+										description={calculator.description}
+									/>
+								))}
+							</Stack>
 						</TabPanel>
 					</TabPanels>
 				</Tabs>
