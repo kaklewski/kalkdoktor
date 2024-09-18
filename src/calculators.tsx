@@ -1,11 +1,82 @@
 import { sumInputValues } from './functions/sumInputValues'
 
-export const calculators = [
+interface Calculator {
+	id: number
+	name: string
+	link: string
+	category: string
+	description: string
+	methodology: string
+	sources: {
+		id: number
+		name: string
+		link: string
+	}[]
+	fields: {
+		numberInputs:
+			| {
+					id: string | number
+					text: string
+					min: number
+					max: number
+			  }[]
+			| null
+		checkboxes:
+			| {
+					id: string | number
+					value: number
+					text: string
+			  }[]
+			| null
+		radioGroups:
+			| {
+					id: string | number
+					text: string
+					radios: {
+						id: string | number
+						value: number
+						text: string
+					}[]
+			  }[]
+			| null
+	}
+	calculateResult: (setResult: (value: number) => void) => void
+	interpretResult: (result: number) => string
+}
+
+// This exists only so that the function looking for a calculator can return it instead of undefined in case is doesn't find the proper calculator.
+// tl;dr: it exists to make TS shut up
+export const dummyCalculator: Calculator = {
+	id: 0,
+	name: '',
+	link: '',
+	category: '',
+	description: '',
+	methodology: '',
+	sources: [
+		{
+			id: 0,
+			name: '',
+			link: '',
+		},
+	],
+	fields: {
+		numberInputs: null,
+		checkboxes: null,
+		radioGroups: null,
+	},
+	calculateResult: sumInputValues,
+	interpretResult: function (result: number = 0) {
+		return result.toString()
+	},
+}
+
+export const calculators: Calculator[] = [
 	{
 		id: 1,
 		name: 'Kalkulator BMI',
 		link: 'kalkulator-bmi',
-		category: 'test',
+		category: 'antropometria',
 		description:
 			'Kalkulator BMI (Body Mass Index) to proste narzędzie służące do obliczania wskaźnika masy ciała. BMI pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.',
 		methodology:
@@ -55,7 +126,7 @@ export const calculators = [
 		},
 
 		interpretResult: function (result: number) {
-			if (result === 0) return 'Podaj wszystkie informacje'
+			if (result === 0) return 'Uzupełnij wszystkie informacje'
 			if (result > 0 && result < 18.5) return 'Niedowaga'
 			if (result >= 18.5 && result < 25) return 'Wartość prawidłowa'
 			if (result >= 25 && result < 30) return 'Nadwaga'
@@ -184,7 +255,7 @@ export const calculators = [
 		id: 3,
 		name: 'Skala Centora w modyfikacji McIsaaca',
 		link: 'skala-centora-mcisaaca',
-		category: 'test',
+		category: 'pediatria',
 		description:
 			'Skala Centora w modyfikacji McIsaaca pozwala ustalić, czy patogenami wywołującymi ostre zapalenie gardła są paciorkowce oraz dobrać odpowiedni sposób leczenia.',
 		methodology:
