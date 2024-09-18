@@ -327,3 +327,14 @@ export const calculators: Calculator[] = [
 	// 	interpretResult: function () {},
 	// },
 ]
+
+export const categories: string[] = (() => {
+	let categoryArray: string[] = []
+
+	calculators.forEach(calculator => {
+		if (!categoryArray.includes(calculator.category))
+			categoryArray.push(calculator.category)
+	})
+
+	return categoryArray.sort()
+})()
