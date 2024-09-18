@@ -1,17 +1,11 @@
 import { Badge } from '@chakra-ui/react'
 
-interface Props {
+interface ComponentProps {
 	value: number
 }
 
-export default function CustomBadge({ value }: Props) {
-	const badgeText = (() => {
-		if (value > 0) {
-			return '+' + value.toString()
-		} else {
-			return value
-		}
-	})()
-
-	return <Badge>{badgeText}</Badge>
+export default function CustomBadge({ value }: ComponentProps) {
+	return (
+		<Badge>{value > 0 ? '+' + value.toString() : value.toString()}</Badge>
+	)
 }

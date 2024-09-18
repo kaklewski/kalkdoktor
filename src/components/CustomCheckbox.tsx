@@ -1,12 +1,12 @@
 import { Box, Checkbox, Flex } from '@chakra-ui/react'
 import CustomBadge from './CustomBadge'
 
-interface Props {
+interface ComponentProps {
 	value: number
 	text: string
 }
 
-export default function CustomCheckbox({ value, text }: Props) {
+export default function CustomCheckbox({ value, text }: ComponentProps) {
 	return (
 		<Box>
 			<Checkbox value={value} colorScheme='teal' w='100%'>

@@ -1,17 +1,17 @@
 import { Flex, Radio } from '@chakra-ui/react'
 import CustomBadge from './CustomBadge'
 
-interface Props {
-	value: string
+interface ComponentProps {
+	value: number
 	text: string
 }
 
-export default function CustomRadio({ value, text }: Props) {
+export default function CustomRadio({ value, text }: ComponentProps) {
 	return (
-		<Radio value={value} isRequired>
+		<Radio value={value.toString()} isRequired>
 			<Flex align='center' gap={2}>
 				{text}
-				<CustomBadge value={parseInt(value)} />
+				<CustomBadge value={value} />
 			</Flex>
 		</Radio>
 	)
