@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
 import Index from './pages/Index'
-import PageLayout from './layouts/PageLayout'
+import CalculatorPageLayout from './layouts/CalculatorPageLayout'
 import { calculators } from './calculators'
 
 const router = createBrowserRouter(
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
 				<Route
 					key={calculator.id}
 					path={calculator.link}
-					element={<PageLayout calcId={calculator.id} />}
+					element={<CalculatorPageLayout calcId={calculator.id} />}
 				/>
 			))}
 		</Route>

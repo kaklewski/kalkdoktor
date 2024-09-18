@@ -20,7 +20,7 @@ interface ComponentProps {
 	calcId: number
 }
 
-export default function PageLayout({ calcId }: ComponentProps) {
+export default function CalculatorPageLayout({ calcId }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
 	const calculator = findCalculator(calcId)
 
