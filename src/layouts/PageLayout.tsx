@@ -1,44 +1,49 @@
 import { useState } from 'react'
 import { Box, Flex, Heading, Spacer, Stack } from '@chakra-ui/react'
-import { calculators } from '../calculators'
+import { dummyCalculator, calculators } from '../calculators'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
 
 function findCalculator(searchedId: number) {
-	for (const calculator of calculators) {
-		if (calculator.id === searchedId) return calculator
-	}
+	let foundCalc = calculators.find(calculator => calculator.id === searchedId)
+	if (typeof foundCalc === 'undefined') foundCalc = dummyCalculator
+	return foundCalc
 }
 
-function changeDocumentTitle(title: string | undefined) {
-	if (typeof title === 'string') document.title = title + ' – Kalkdoktor'
+function changeDocumentTitle(title: string) {
+	if (title !== '') document.title = title + ' – Kalkdoktor'
 }
 
-interface Props {
+interface ComponentProps {
 	calcId: number
 }
 
-export default function PageLayout({ calcId }: Props) {
-	const [result, setResult] = useState(0)
+export default function PageLayout({ calcId }: ComponentProps) {
+	const [result, setResult] = useState<number>(0)
 
 	const calculator = findCalculator(calcId)
-	let resultInterpretation = calculator?.interpretResult(result)
-	if (typeof resultInterpretation === 'undefined') resultInterpretation = ''
+	const resultInterpretation = calculator.interpretResult(result)
 
-	changeDocumentTitle(calculator?.name)
+	changeDocumentTitle(calculator.name)
 
 	return (
 		<Box maxW='650px' mx='auto' px={4} py={8}>
 			<Stack spacing={8}>
 				<Flex>
-					<Heading as='h1'>{calculator?.name}</Heading>
+					<Heading as='h1'>{calculator.name}</Heading>
 					<Spacer />
-					<FavButton pageId={calculator?.id} />
+					<FavButton pageId={calculator.id} />
 				</Flex>
 
-				<FormCard calculator={calculator} setResult={setResult} />
+				<FormCard
+					numberInputs={calculator.fields.numberInputs}
+					checkboxes={calculator.fields.checkboxes}
+					radioGroups={calculator.fields.radioGroups}
+					calculateResult={calculator.calculateResult}
+					setResult={setResult}
+				/>
 
 				<ResultCard
 					result={result}
@@ -46,9 +51,9 @@ export default function PageLayout({ calcId }: Props) {
 				/>
 
 				<DetailsCard
-					description={calculator?.description}
-					sources={calculator?.sources}
-					methodology={calculator?.methodology}
+					description={calculator.description}
+					sources={calculator.sources}
+					methodology={calculator.methodology}
 				/>
 			</Stack>
 		</Box>

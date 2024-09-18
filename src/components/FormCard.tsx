@@ -4,34 +4,60 @@ import CustomNumberInput from './CustomNumberInput'
 import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
 import CustomRadio from './CustomRadio'
+import { Dispatch, FormEvent, SetStateAction } from 'react'
 
-interface Props {
-	calculator: any // do zmiany
-	setResult: any // do zmiany
+interface ComponentProps {
+	numberInputs:
+		| {
+				id: string | number
+				text: string
+				min: number
+				max: number
+		  }[]
+		| null
+	checkboxes:
+		| {
+				id: string | number
+				value: number
+				text: string
+		  }[]
+		| null
+	radioGroups:
+		| {
+				id: string | number
+				text: string
+				radios: {
+					id: string | number
+					value: number
+					text: string
+				}[]
+		  }[]
+		| null
+	calculateResult: (setResult: (value: number) => void) => void
+	setResult: Dispatch<SetStateAction<number>>
 }
 
-export default function FormCard({ calculator, setResult }: Props) {
-	const numberInputs = calculator?.fields.numberInputs
-	const checkboxes = calculator?.fields.checkboxes
-	const radioGroups = calculator?.fields.radioGroups
-
-	// typ do zmiany
-	const calculateResult = (event: any) => {
-		//Block the page from reloading
+export default function FormCard({
+	numberInputs,
+	checkboxes,
+	radioGroups,
+	calculateResult,
+	setResult,
+}: ComponentProps) {
+	function getResult(event: FormEvent<HTMLFormElement>) {
+		// Prevent the page from reloading when the form is submitted
 		event.preventDefault()
-
-		calculator?.calculateResult(setResult, event)
+		calculateResult(setResult)
 	}
 
 	return (
 		<Card overflow='hidden' variant='outline'>
-			<Form onSubmit={calculateResult}>
+			<Form onSubmit={getResult}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
-						{/* typ do zmiany */}
 						{numberInputs === null
 							? ''
-							: numberInputs.map((input: any) => (
+							: numberInputs.map(input => (
 									<CustomNumberInput
 										key={input.id}
 										id={input.id}
@@ -40,25 +66,24 @@ export default function FormCard({ calculator, setResult }: Props) {
 										max={input.max}
 									/>
 							  ))}
-						{/* typ do zmiany */}
+
 						{checkboxes === null
 							? ''
-							: checkboxes.map((checkbox: any) => (
+							: checkboxes.map(checkbox => (
 									<CustomCheckbox
 										key={checkbox.id}
 										text={checkbox.text}
 										value={checkbox.value}
 									/>
 							  ))}
-						{/* typ do zmiany */}
+
 						{radioGroups === null
 							? ''
-							: radioGroups.map((radioGroup: any) => (
+							: radioGroups.map(radioGroup => (
 									<CustomRadioGroup
 										key={radioGroup.id}
 										text={radioGroup.text}>
-										{/* typ do zmiany */}
-										{radioGroup.radios.map((radio: any) => (
+										{radioGroup.radios.map(radio => (
 											<CustomRadio
 												key={radio.id}
 												value={radio.value.toString()}

@@ -8,18 +8,23 @@ import {
 	Text,
 } from '@chakra-ui/react'
 
-interface Props {
+interface ComponentProps {
+	id: string | number
 	text: string
 	min: number
 	max: number
-	id: string
 }
 
-export default function CustomNumberInput({ text, min, max, id }: Props) {
+export default function CustomNumberInput({
+	id,
+	text,
+	min,
+	max,
+}: ComponentProps) {
 	return (
 		<Box>
 			<Text>{text}:</Text>
-			<NumberInput min={min} max={max} id={id} isRequired>
+			<NumberInput min={min} max={max} id={id.toString()} isRequired>
 				<NumberInputField />
 				<NumberInputStepper>
 					<NumberIncrementStepper />
