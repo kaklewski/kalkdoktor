@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Flex, Heading, Spacer, Stack } from '@chakra-ui/react'
 import { dummyCalculator, calculators } from '../calculators'
 import FavButton from '../components/FavButton'
@@ -24,8 +24,10 @@ export default function PageLayout({ calcId }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
 	const calculator = findCalculator(calcId)
 
-	// Add calculator name to the page title
-	changeDocumentTitle(calculator.name)
+	useEffect(() => {
+		// Add calculator name to the page title
+		changeDocumentTitle(calculator.name)
+	}, [])
 
 	return (
 		<Box maxW='650px' mx='auto' px={4} py={8}>
