@@ -1,4 +1,5 @@
 import {
+	Box,
 	Heading,
 	Stack,
 	Tab,
@@ -43,8 +44,8 @@ export default function ListTabsLayout({ calculators }: ComponentProps) {
 				</TabPanel>
 				<TabPanel px={0} key={keyB} onClick={() => setKeyA(k => k + 1)}>
 					<Stack spacing={6}>
-						{categories.map(category => (
-							<>
+						{categories.map((category, categoryId) => (
+							<Box key={categoryId}>
 								<Heading as='h2' fontSize='2xl' mt={2}>
 									{category[0].toUpperCase() +
 										category.slice(1)}
@@ -60,7 +61,7 @@ export default function ListTabsLayout({ calculators }: ComponentProps) {
 											description={calculator.description}
 										/>
 									))}
-							</>
+							</Box>
 						))}
 					</Stack>
 				</TabPanel>
