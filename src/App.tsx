@@ -8,11 +8,13 @@ import RootLayout from './layouts/RootLayout'
 import IndexPage from './pages/IndexPage'
 import CalculatorPageLayout from './layouts/CalculatorPageLayout'
 import { calculators } from './data/calculators-and-categories'
+import FavoritesPage from './pages/FavoritesPage'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<RootLayout />}>
 			<Route index element={<IndexPage />} />
+			<Route path='favorites' element={<FavoritesPage />} />
 			// Generate a route for every calculator
 			{calculators.map(calculator => (
 				<Route
