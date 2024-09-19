@@ -6,7 +6,7 @@ export interface Calculator {
 	link: string
 	category: string
 	description: string
-	methodology: string
+	methodology: string | null
 	sources: {
 		id: number
 		name: string
@@ -51,7 +51,7 @@ export const calculators: Calculator[] = [
 		link: 'kalkulator-bmi',
 		category: 'antropometria',
 		description:
-			'Kalkulator BMI (Body Mass Index) to proste narzędzie służące do obliczania wskaźnika masy ciała. BMI pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.',
+			'Oblicza wskaźnik masy ciała (BMI) i pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.',
 		methodology:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.',
 		sources: [
@@ -116,9 +116,8 @@ export const calculators: Calculator[] = [
 		link: 'skala-cha2ds2-vasc',
 		category: 'kardiologia',
 		description:
-			'Skala CHA₂DS₂-VASc służy do oceny ryzyka wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków. Pozwala wskazać pacjentów, u których konieczne jest wdrożenie terapii przeciwpłytkowej lub przeciwzakrzepowej.',
-		methodology:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.',
+			'Ocenia ryzyko wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków.',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -230,9 +229,8 @@ export const calculators: Calculator[] = [
 		link: 'skala-centora-mcisaaca',
 		category: 'pediatria',
 		description:
-			'Skala Centora w modyfikacji McIsaaca pozwala ustalić, czy patogenami wywołującymi ostre zapalenie gardła są paciorkowce oraz dobrać odpowiedni sposób leczenia.',
-		methodology:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.',
+			'Pozwala oszacować, czy patogenami wywołującymi ostre zapalenie gardła są paciorkowce oraz dobrać odpowiedni sposób leczenia.',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -302,6 +300,91 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 4,
+		name: 'Ocena ryzyka ZŻG w skali Wellsa',
+		link: 'ocena-zakrzepicy-wellsa',
+		category: 'kardiologia',
+		description:
+			'Oblicza ryzyko wystąpienia zakrzepicy żył głębokich na podstawie kryteriów klinicznych.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa – Medycyna Praktyczna',
+				link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: [
+				{
+					id: 1,
+					value: 1,
+					text: 'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy',
+				},
+				{
+					id: 2,
+					value: 1,
+					text: 'Porażenie, niedowład lub niedawne unieruchomienie kończyny dolnej w opatrunku gipsowym',
+				},
+				{
+					id: 3,
+					value: 1,
+					text: 'Niedawne unieruchomienie w łóżku przez ponad 3 dni lub duża operacja w ciągu ostatnich 4 tygodni',
+				},
+				{
+					id: 4,
+					value: 1,
+					text: 'Bolesność miejscowa w przebiegu żył głębokich kończyny dolnej',
+				},
+				{
+					id: 5,
+					value: 1,
+					text: 'Obrzęk całej kończyny dolnej',
+				},
+				{
+					id: 6,
+					value: 1,
+					text: 'Obrzęk łydki ponad 3 cm w porównaniu do drugiej nogi (mierzony 10 cm poniżej guzowatości kości piszczelowej)',
+				},
+				{
+					id: 7,
+					value: 1,
+					text: 'Obrzęk ciastowaty, większy na objawowej kończynie',
+				},
+				{
+					id: 8,
+					value: 1,
+					text: 'Widoczne żyły powierzchowne krążenia obocznego (nieżylakowe)',
+				},
+				{
+					id: 9,
+					value: -2,
+					text: 'Inne rozpoznanie niż ZŻG, równie lub bardziej prawdopodobne',
+				},
+				{
+					id: 10,
+					value: 1,
+					text: 'Wcześniej przebyta ZŻG',
+				},
+			],
+			radioGroups: null,
+		},
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 3) {
+				return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.'
+			}
+			if (result === 1 || result === 2) {
+				return 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.'
+			}
+			return 'Małe prawdopodobieństwo zakrzepicy żył głębokich.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
@@ -324,7 +407,7 @@ export const calculators: Calculator[] = [
 
 	// 	calculateResult: function () {},
 
-	// 	interpretResult: function () {},
+	// 	interpretResult: function (result: number) {},
 	// },
 ]
 
