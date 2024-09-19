@@ -14,7 +14,7 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<RootLayout />}>
 			<Route index element={<IndexPage />} />
-			<Route path='favorites' element={<FavoritesPage />} />
+			<Route path='ulubione' element={<FavoritesPage />} />
 			// Generate a route for every calculator
 			{calculators.map(calculator => (
 				<Route

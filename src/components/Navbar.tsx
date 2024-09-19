@@ -23,7 +23,7 @@ export default function Navbar() {
 				<Flex
 					align='center'
 					justify='space-between'
-					gap={3}
+					gap={8}
 					wrap='wrap'>
 					<Box>
 						<a href='/' id='navLogo'>
@@ -34,13 +34,21 @@ export default function Navbar() {
 						</a>
 					</Box>
 
-					<Flex align='center' gap={3} wrap='wrap'>
-						<Button leftIcon={<IconSearch stroke={1.5} />}>
-							Search
+					<Flex align='center' gap={4} wrap='wrap'>
+						<Button
+							leftIcon={<IconSearch stroke={1.5} />}
+							colorScheme='teal'
+							variant='solid'
+							aria-label='Wyszukaj kalkulator'>
+							Wyszukaj
 						</Button>
-						<Link href='/favorites'>
-							<Button leftIcon={<IconHearts stroke={1.5} />}>
-								Favorites
+						<Link href='/ulubione'>
+							<Button
+								leftIcon={<IconHearts stroke={1.5} />}
+								colorScheme='teal'
+								variant='outline'
+								aria-label='Ulubione'>
+								Ulubione
 							</Button>
 						</Link>
 						<IconButton
