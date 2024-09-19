@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import CalculatorCard from '../components/CalculatorCard'
 import { useState } from 'react'
-import { Calculator, categories } from '../calculators'
+import { Calculator, categories } from '../data/calculators-and-categories'
 
 interface ComponentProps {
 	calculators: Calculator[]

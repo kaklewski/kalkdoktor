@@ -4,7 +4,7 @@ import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
-import { Calculator } from '../calculators'
+import { Calculator } from '../data/calculators-and-categories'
 
 interface ComponentProps {
 	calculator: Calculator

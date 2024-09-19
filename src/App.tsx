@@ -7,7 +7,7 @@ import {
 import RootLayout from './layouts/RootLayout'
 import IndexPage from './pages/IndexPage'
 import CalculatorPageLayout from './layouts/CalculatorPageLayout'
-import { calculators } from './calculators'
+import { calculators } from './data/calculators-and-categories'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
