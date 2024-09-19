@@ -4,7 +4,8 @@ import {
 	CardHeader,
 	Flex,
 	Heading,
-	Link,
+	LinkBox,
+	LinkOverlay,
 	Spacer,
 	Text,
 } from '@chakra-ui/react'
@@ -24,22 +25,24 @@ export default function CalculatorCard({
 	description,
 }: ComponentProps) {
 	return (
-		<Card size='sm' variant='outline' p={1}>
-			<CardHeader>
-				<Flex gap={1}>
-					<Link href={link}>
-						<Heading as='h3' size='md'>
-							{name}
-						</Heading>
-					</Link>
-					<Spacer />
-					<FavButton pageId={id} />
-				</Flex>
-			</CardHeader>
+		<LinkBox>
+			<Card size='sm' variant='outline' p={1}>
+				<CardHeader>
+					<Flex gap={1}>
+						<LinkOverlay href={link}>
+							<Heading as='h3' size='md'>
+								{name}
+							</Heading>
+						</LinkOverlay>
+						<Spacer />
+						<FavButton pageId={id} />
+					</Flex>
+				</CardHeader>
 
-			<CardBody>
-				<Text fontSize='sm'>{description}</Text>
-			</CardBody>
-		</Card>
+				<CardBody>
+					<Text fontSize='sm'>{description}</Text>
+				</CardBody>
+			</Card>
+		</LinkBox>
 	)
 }
