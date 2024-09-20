@@ -26,7 +26,14 @@ export default function CalculatorCard({
 }: ComponentProps) {
 	return (
 		<LinkBox>
-			<Card size='sm' variant='outline' p={1}>
+			<Card
+				size='sm'
+				variant='outline'
+				p={1}
+				_hover={{
+					borderColor: 'teal.400',
+					transition: 'border-color 0.2s ease-in-out',
+				}}>
 				<CardHeader>
 					<Flex gap={1}>
 						<LinkOverlay href={link}>
