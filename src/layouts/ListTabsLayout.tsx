@@ -22,14 +22,14 @@ export default function ListTabsLayout({ calculators }: ComponentProps) {
 
 	return (
 		<Tabs colorScheme='teal' isFitted>
-			<TabList mb={3}>
+			<TabList>
 				<Tab>Alfabetycznie</Tab>
 				<Tab>Kategorie</Tab>
 			</TabList>
 
 			<TabPanels>
 				<TabPanel px={0} key={keyA} onClick={() => setKeyB(k => k + 1)}>
-					<Stack spacing={6}>
+					<Stack spacing={4}>
 						{calculators.map(calculator => (
 							<CalculatorCard
 								key={calculator.id}
@@ -42,10 +42,10 @@ export default function ListTabsLayout({ calculators }: ComponentProps) {
 					</Stack>
 				</TabPanel>
 				<TabPanel px={0} key={keyB} onClick={() => setKeyA(k => k + 1)}>
-					<Stack spacing={4}>
+					<Stack spacing={8}>
 						{categories.map((category, categoryId) => (
 							<Stack key={categoryId} spacing={4}>
-								<Heading as='h2' fontSize='2xl' mt={2}>
+								<Heading as='h2' fontSize='2xl' ml={2}>
 									{category[0].toUpperCase() +
 										category.slice(1)}
 								</Heading>
