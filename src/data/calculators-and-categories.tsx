@@ -99,7 +99,7 @@ export const calculators: Calculator[] = [
 		},
 
 		interpretResult: function (result: number) {
-			if (result === 0) return 'Uzupełnij wszystkie informacje'
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result > 0 && result < 18.5) return 'Niedowaga'
 			if (result >= 18.5 && result < 25) return 'Wartość prawidłowa'
 			if (result >= 25 && result < 30) return 'Nadwaga'
@@ -382,6 +382,141 @@ export const calculators: Calculator[] = [
 				return 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.'
 			}
 			return 'Małe prawdopodobieństwo zakrzepicy żył głębokich.'
+		},
+	},
+
+	{
+		id: 5,
+		name: 'Kalkulator liczby opakowań leków na dany okres',
+		link: '/kalkulator-liczby-opakowan-na-okres',
+		category: 'dawkowanie leków',
+		description:
+			'Oblicza liczbę opakowań leków, które należy przepisać na podstawie dawkowania.',
+		methodology:
+			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae reiciendis in perferendis dignissimos eaque consequatur quod asperiores iure vel at!',
+		sources: [
+			{
+				id: 1,
+				name: 'Opracowanie własne.',
+				link: '',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'amountPerIntake',
+					text: 'Liczba tabletek w jednej dawce',
+					min: 1,
+					max: 100,
+				},
+				{
+					id: 'numberOfIntakes',
+					text: 'Liczba dawek dziennie',
+					min: 1,
+					max: 100,
+				},
+				{
+					id: 'daysOfUse',
+					text: 'Okres (liczba dni) brania leku',
+					min: 1,
+					max: 365,
+				},
+				{
+					id: 'packageSize',
+					text: 'Liczba tabletek w opakowaniu',
+					min: 1,
+					max: 100,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const amountPerIntake = parseFloat(
+				(document.getElementById('amountPerIntake') as HTMLInputElement)
+					.value
+			)
+			const numberOfIntakes = parseFloat(
+				(document.getElementById('numberOfIntakes') as HTMLInputElement)
+					.value
+			)
+			const daysOfUse = parseFloat(
+				(document.getElementById('daysOfUse') as HTMLInputElement).value
+			)
+			const packageSize = parseFloat(
+				(document.getElementById('packageSize') as HTMLInputElement)
+					.value
+			)
+			const numberOfPackages = Math.round(
+				(amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
+			)
+			setResult(numberOfPackages)
+		},
+
+		interpretResult: function () {
+			return 'Liczba opakowań, które należy przepisać.'
+		},
+	},
+
+	{
+		id: 6,
+		name: 'Obliczanie dawki paracetamolu',
+		link: 'obliczanie-dawki-paracetamolu',
+		category: 'dawkowanie leków',
+		description:
+			'Oblicz maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
+		methodology: 'Lorem ipsum',
+		sources: [
+			{
+				id: 1,
+				name: 'Paracetamol - Medycyna Praktyczna',
+				link: 'https://www.mp.pl/pacjent/leki/subst.html?id=643',
+			},
+			{
+				id: 2,
+				name: 'Paracetamol Dosage Calculator - Omni Calculator',
+				link: 'https://www.omnicalculator.com/health/paracetamol-dosage',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 1,
+					max: 100,
+				},
+				{
+					id: 'weight',
+					text: 'Masa ciała (kg)',
+					min: 1,
+					max: 200,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age = parseInt(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const weight = parseInt(
+				(document.getElementById('weight') as HTMLInputElement).value
+			)
+
+			let calculatedDosage: number = (60 * weight) / 1000
+
+			if (age <= 12 && calculatedDosage > 2) calculatedDosage = 2
+			if (calculatedDosage > 4) calculatedDosage = 4
+
+			setResult(calculatedDosage)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			return 'Maksymalna dobowa dawka paracetamolu, w gramach. Nie należy stosować częściej niż co 4 godziny, maksymalnie 4 razy na dobę.'
 		},
 	},
 
