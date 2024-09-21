@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Link } from '@chakra-ui/react'
+import { Box, Divider, Flex, Link, Text } from '@chakra-ui/react'
 
 const currentYear = new Date().getFullYear()
 const link = 'https://github.com/kaklewski/kalkdoktor'
@@ -13,11 +13,11 @@ export default function Footer() {
 				direction='column'
 				justify='center'
 				align='center'>
-				<p>
+				<Text>
 					&copy; {currentYear}{' '}
 					<Link href={link}>Oskar Kąklewski</Link> – Opublikowano na
 					licencji GNU
-				</p>
+				</Text>
 			</Flex>
 		</Box>
 	)
