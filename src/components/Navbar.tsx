@@ -13,9 +13,9 @@ import {
 	IconHearts,
 	IconMedicalCross,
 	IconMoon,
-	IconSearch,
 	IconSun,
 } from '@tabler/icons-react'
+import SearchBox from './SearchBox'
 
 export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode()
@@ -37,22 +37,7 @@ export default function Navbar() {
 					</Box>
 
 					<Flex align='center' gap={3} wrap='wrap'>
-						<Button
-							id='search-icon-big'
-							leftIcon={<IconSearch stroke={1.5} />}
-							colorScheme='teal'
-							variant='solid'
-							aria-label='Wyszukaj kalkulator'>
-							Wyszukaj
-						</Button>
-
-						<IconButton
-							id='search-icon-small'
-							colorScheme='teal'
-							variant='solid'
-							aria-label='Wyszukaj kalkulator'>
-							<IconSearch stroke={1.5} />
-						</IconButton>
+						<SearchBox />
 
 						<Link href='/ulubione'>
 							<Button
