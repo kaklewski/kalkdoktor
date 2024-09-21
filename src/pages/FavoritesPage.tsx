@@ -9,6 +9,7 @@ export default function FavoritesPage() {
 		if (fav === null) return []
 		return JSON.parse(fav)
 	})()
+
 	const favoriteCalculators = sortedCalculators.filter(c =>
 		favIds.includes(c.id)
 	)
@@ -19,7 +20,8 @@ export default function FavoritesPage() {
 				<IconHeartOff stroke={1.5} size={100} />
 				<Heading size='md'>Brak ulubionych</Heading>
 				<Text align='center'>
-					Możesz dodać kalkulatory do ulubionych klikając ikonę serca.
+					Dodaj kalkulator do ulubionych, klikając ikonę serca w
+					prawym górnym rogu.
 				</Text>
 			</VStack>
 		)
@@ -30,7 +32,6 @@ export default function FavoritesPage() {
 			<Heading>Ulubione</Heading>
 			<Stack spacing={4}>
 				{favoriteCalculators.length === 0 ? (
-					// <Text>Brak ulubionych</Text>
 					<NoFavoritesPlaceholder />
 				) : (
 					favoriteCalculators.map(calculator => (
