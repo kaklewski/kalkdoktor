@@ -46,6 +46,20 @@
 	}
 }
 
+#search-icon-small,
+#favorites-icon-small {
+	@media screen and (width >= 650px) {
+		display: none;
+	}
+}
+
+#search-icon-big,
+#favorites-icon-big {
+	@media screen and (width <= 650px) {
+		display: none;
+	}
+}
+
 #resultCard.animation {
 	animation-duration: 0.3s;
 	animation-name: scaleUpDown;

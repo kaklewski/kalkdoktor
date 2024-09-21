@@ -6,6 +6,7 @@ import {
 	IconButton,
 	Link,
 	Button,
+	Text,
 } from '@chakra-ui/react'
 import {
 	IconHearts,
@@ -26,31 +27,49 @@ export default function Navbar() {
 					gap={8}
 					wrap='wrap'>
 					<Box>
-						<a href='/' id='navLogo'>
+						<Link href='/' id='navLogo'>
 							<Flex align='center' gap={0}>
 								<IconMedicalCross />
-								<span>kalkdoktor</span>
+								<Text>kalkdoktor</Text>
 							</Flex>
-						</a>
+						</Link>
 					</Box>
 
-					<Flex align='center' gap={4} wrap='wrap'>
+					<Flex align='center' gap={3} wrap='wrap'>
 						<Button
+							id='search-icon-big'
 							leftIcon={<IconSearch stroke={1.5} />}
 							colorScheme='teal'
 							variant='solid'
 							aria-label='Wyszukaj kalkulator'>
 							Wyszukaj
 						</Button>
+
+						<IconButton
+							id='search-icon-small'
+							colorScheme='teal'
+							variant='solid'
+							aria-label='Wyszukaj kalkulator'>
+							<IconSearch stroke={1.5} />
+						</IconButton>
+
 						<Link href='/ulubione'>
 							<Button
+								id='favorites-icon-big'
 								leftIcon={<IconHearts stroke={1.5} />}
-								colorScheme='teal'
-								variant='outline'
+								
 								aria-label='Ulubione'>
 								Ulubione
 							</Button>
+
+							<IconButton
+								id='favorites-icon-small'
+								
+								aria-label='Ulubione'>
+								<IconHearts stroke={1.5} />
+							</IconButton>
 						</Link>
+
 						<IconButton
 							onClick={toggleColorMode}
 							aria-label={`Zmień motyw na ${
