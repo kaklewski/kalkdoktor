@@ -7,6 +7,7 @@ import {
 	Link,
 	Button,
 	Text,
+	Tooltip,
 } from '@chakra-ui/react'
 import {
 	IconHearts,
@@ -24,11 +25,11 @@ export default function Navbar() {
 				<Flex
 					align='center'
 					justify='space-between'
-					gap={8}
+					gap={6}
 					wrap='wrap'>
 					<Box>
 						<Link href='/' id='navLogo'>
-							<Flex align='center' gap={0}>
+							<Flex align='center'>
 								<IconMedicalCross />
 								<Text>kalkdoktor</Text>
 							</Flex>
@@ -57,30 +58,33 @@ export default function Navbar() {
 							<Button
 								id='favorites-icon-big'
 								leftIcon={<IconHearts stroke={1.5} />}
-								
 								aria-label='Ulubione'>
 								Ulubione
 							</Button>
 
 							<IconButton
 								id='favorites-icon-small'
-								
 								aria-label='Ulubione'>
 								<IconHearts stroke={1.5} />
 							</IconButton>
 						</Link>
 
-						<IconButton
-							onClick={toggleColorMode}
-							aria-label={`Zmień motyw na ${
+						<Tooltip
+							label={`Zmień motyw na ${
 								colorMode === 'light' ? 'ciemny' : 'jasny'
 							}`}>
-							{colorMode === 'light' ? (
-								<IconMoon stroke={1.5} />
-							) : (
-								<IconSun stroke={1.5} />
-							)}
-						</IconButton>
+							<IconButton
+								onClick={toggleColorMode}
+								aria-label={`Zmień motyw na ${
+									colorMode === 'light' ? 'ciemny' : 'jasny'
+								}`}>
+								{colorMode === 'light' ? (
+									<IconMoon stroke={1.5} />
+								) : (
+									<IconSun stroke={1.5} />
+								)}
+							</IconButton>
+						</Tooltip>
 					</Flex>
 				</Flex>
 			</Box>
