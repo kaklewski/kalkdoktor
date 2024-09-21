@@ -1,4 +1,12 @@
-import { Card, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
+import {
+	Card,
+	Tab,
+	TabList,
+	TabPanel,
+	TabPanels,
+	Tabs,
+	Text,
+} from '@chakra-ui/react'
 import SourceLink from './SourceLink'
 
 interface ComponentProps {
@@ -22,27 +30,39 @@ export default function DetailsCard({
 				<TabList px={4} pt={4}>
 					<Tab>Opis</Tab>
 					<Tab>Źródła</Tab>
-					{/* <Tab>Metodologia</Tab> */}
+					{methodology === null ? '' : <Tab>Metodologia</Tab>}
 				</TabList>
 
 				<TabPanels>
 					<TabPanel>
-						<p>{description}</p>
+						<Text>{description}</Text>
 					</TabPanel>
 					<TabPanel>
-						{sources.map((sourceItem: any) => {
-							return (
-								<SourceLink
-									key={sourceItem.id}
-									name={sourceItem.name}
-									link={sourceItem.link}
-								/>
-							)
+						{sources.map(sourceItem => {
+							if (sourceItem.link === '') {
+								return (
+									<Text key={sourceItem.id}>
+										{sourceItem.name}
+									</Text>
+								)
+							} else {
+								return (
+									<SourceLink
+										key={sourceItem.id}
+										name={sourceItem.name}
+										link={sourceItem.link}
+									/>
+								)
+							}
 						})}
 					</TabPanel>
-					{/* <TabPanel>
-						<p>{methodology}</p>
-					</TabPanel> */}
+					{methodology === null ? (
+						''
+					) : (
+						<TabPanel>
+							<Text>{methodology}</Text>
+						</TabPanel>
+					)}
 				</TabPanels>
 			</Tabs>
 		</Card>
