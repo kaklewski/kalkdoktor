@@ -3,8 +3,14 @@ import { sortedCalculators } from '../data/calculators-and-categories'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
+import { useEffect } from 'react'
 
 export default function FavoritesPage() {
+	useEffect(() => {
+		// Add the page title
+		document.title = 'Ulubione – Kalkdoktor'
+	}, [])
+
 	const favIds = (() => {
 		const fav = localStorage.getItem('favorites')
 		if (fav === null) return []
@@ -17,12 +23,14 @@ export default function FavoritesPage() {
 
 	function NoFavoritesPlaceholder() {
 		return (
-			<VStack my={10} mx='auto' maxW='80%'>
+			<VStack my={10} mx='auto'>
 				<IconHeartOff stroke={1.5} size={100} />
-				<Heading size='md'>Brak ulubionych</Heading>
+				<Heading size='md' mx='auto'>
+					Brak ulubionych
+				</Heading>
 				<Text align='center'>
-					Dodaj kalkulator do ulubionych, klikając ikonę serca w
-					prawym górnym rogu.
+					Możesz dodać kalkulator do ulubionych, klikając przycisk z
+					ikoną serca.
 				</Text>
 			</VStack>
 		)
