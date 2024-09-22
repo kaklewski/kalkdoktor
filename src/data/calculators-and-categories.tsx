@@ -51,7 +51,7 @@ export const calculators: Calculator[] = [
 		link: 'kalkulator-bmi',
 		category: 'antropometria',
 		description:
-			'Oblicza wskaźnik masy ciała (BMI) i pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska, czy zbyt wysoka w stosunku do wzrostu.',
+			'Oblicza wskaźnik masy ciała (BMI) i pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska czy zbyt wysoka w stosunku do wzrostu.',
 		methodology:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.',
 		sources: [
@@ -206,7 +206,7 @@ export const calculators: Calculator[] = [
 			const lowRisk: string =
 				'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
 			const mediumRisk: string =
-				'Umiarkowane ryzyko powikłań. Można rozważyć doustny antykoagulant.'
+				'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.'
 			const highRisk: string =
 				'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
 
@@ -229,7 +229,7 @@ export const calculators: Calculator[] = [
 		link: 'skala-centora-mcisaaca',
 		category: 'pediatria',
 		description:
-			'Pozwala oszacować, czy patogenami wywołującymi ostre zapalenie gardła są paciorkowce oraz dobrać odpowiedni sposób leczenia.',
+			'Pozwala oszacować ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
 		methodology: null,
 		sources: [
 			{
@@ -296,7 +296,7 @@ export const calculators: Calculator[] = [
 			if (result >= 2 && result <= 3) {
 				return 'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
 			}
-			return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest niepotrzebna.'
+			return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.'
 		},
 	},
 
@@ -321,7 +321,7 @@ export const calculators: Calculator[] = [
 				{
 					id: 1,
 					value: 1,
-					text: 'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy',
+					text: 'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy)',
 				},
 				{
 					id: 2,
@@ -361,7 +361,7 @@ export const calculators: Calculator[] = [
 				{
 					id: 9,
 					value: -2,
-					text: 'Inne rozpoznanie niż ZŻG, równie lub bardziej prawdopodobne',
+					text: 'Inne rozpoznanie niż ZŻG równie lub bardziej prawdopodobne',
 				},
 				{
 					id: 10,
@@ -391,7 +391,7 @@ export const calculators: Calculator[] = [
 		link: '/kalkulator-liczby-opakowan-na-okres',
 		category: 'dawkowanie leków',
 		description:
-			'Oblicza liczbę opakowań leków, które należy przepisać na podstawie dawkowania.',
+			'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
 		methodology:
 			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae reiciendis in perferendis dignissimos eaque consequatur quod asperiores iure vel at!',
 		sources: [
@@ -465,7 +465,7 @@ export const calculators: Calculator[] = [
 		link: 'obliczanie-dawki-paracetamolu',
 		category: 'dawkowanie leków',
 		description:
-			'Oblicz maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
+			'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
 		methodology: 'Lorem ipsum',
 		sources: [
 			{
@@ -516,7 +516,7 @@ export const calculators: Calculator[] = [
 
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
-			return 'Maksymalna dobowa dawka paracetamolu, w gramach. Nie należy stosować częściej niż co 4 godziny, maksymalnie 4 razy na dobę.'
+			return 'Maksymalna dobowa dawka paracetamolu, w gramach.'
 		},
 	},
 
