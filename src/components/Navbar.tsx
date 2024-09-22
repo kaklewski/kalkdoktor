@@ -1,24 +1,17 @@
 import {
 	Box,
 	Flex,
-	useColorMode,
 	Divider,
 	IconButton,
 	Link,
 	Button,
 	Text,
-	Tooltip,
 } from '@chakra-ui/react'
-import {
-	IconHearts,
-	IconMedicalCross,
-	IconMoon,
-	IconSun,
-} from '@tabler/icons-react'
+import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
 import SearchModal from './SearchModal'
+import ThemeButton from './ThemeButton'
 
 export default function Navbar() {
-	const { colorMode, toggleColorMode } = useColorMode()
 	return (
 		<>
 			<Box p={4}>
@@ -54,22 +47,7 @@ export default function Navbar() {
 							</IconButton>
 						</Link>
 
-						<Tooltip
-							label={`Zmień motyw na ${
-								colorMode === 'light' ? 'ciemny' : 'jasny'
-							}`}>
-							<IconButton
-								onClick={toggleColorMode}
-								aria-label={`Zmień motyw na ${
-									colorMode === 'light' ? 'ciemny' : 'jasny'
-								}`}>
-								{colorMode === 'light' ? (
-									<IconMoon stroke={1.5} />
-								) : (
-									<IconSun stroke={1.5} />
-								)}
-							</IconButton>
-						</Tooltip>
+						<ThemeButton />
 					</Flex>
 				</Flex>
 			</Box>
