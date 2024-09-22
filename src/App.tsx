@@ -9,24 +9,28 @@ import IndexPage from './pages/IndexPage'
 import CalculatorPageLayout from './layouts/CalculatorPageLayout'
 import { calculators } from './data/calculators-and-categories'
 import FavoritesPage from './pages/FavoritesPage'
-
-const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route path='/' element={<RootLayout />}>
-			<Route index element={<IndexPage />} />
-			<Route path='ulubione' element={<FavoritesPage />} />
-			// Generate a route for every calculator
-			{calculators.map(calculator => (
-				<Route
-					key={calculator.id}
-					path={calculator.link}
-					element={<CalculatorPageLayout calculator={calculator} />}
-				/>
-			))}
-		</Route>
-	)
-)
+import AddFavPage from './pages/AddFavPage'
 
 export default function App() {
+	const router = createBrowserRouter(
+		createRoutesFromElements(
+			<Route path='/' element={<RootLayout />}>
+				<Route index element={<IndexPage />} />
+				<Route path='ulubione' element={<FavoritesPage />} />
+				<Route path='dodaj-ulubione' element={<AddFavPage />} />
+				// Generate a route for every calculator
+				{calculators.map(calculator => (
+					<Route
+						key={calculator.id}
+						path={calculator.link}
+						element={
+							<CalculatorPageLayout calculator={calculator} />
+						}
+					/>
+				))}
+			</Route>
+		)
+	)
+
 	return <RouterProvider router={router} />
 }
