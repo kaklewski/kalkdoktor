@@ -15,7 +15,7 @@ import {
 	IconMoon,
 	IconSun,
 } from '@tabler/icons-react'
-import SearchBox from './SearchBox'
+import SearchModal from './SearchModal'
 
 export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode()
@@ -37,7 +37,7 @@ export default function Navbar() {
 					</Box>
 
 					<Flex align='center' gap={3} wrap='wrap'>
-						<SearchBox />
+						<SearchModal />
 
 						<Link href='/ulubione'>
 							<Button

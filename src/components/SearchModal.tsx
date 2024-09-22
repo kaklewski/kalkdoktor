@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { sortedCalculators } from '../data/calculators-and-categories'
 
-export default function SearchBox() {
+export default function SearchModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const initialRef = useRef(null)
 	const [searchValue, setSearchValue] = useState<string>('')

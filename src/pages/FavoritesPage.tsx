@@ -2,7 +2,7 @@ import { Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/calculators-and-categories'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
-import ShareFavBox from '../components/ShareFavBox'
+import ShareFavModal from '../components/ShareFavModal'
 
 export default function FavoritesPage() {
 	const favIds = (() => {
@@ -32,7 +32,7 @@ export default function FavoritesPage() {
 		<>
 			<Flex justify='space-between' align='center'>
 				<Heading>Ulubione</Heading>
-				{favoriteCalculators.length === 0 ? '' : <ShareFavBox />}
+				{favoriteCalculators.length === 0 ? '' : <ShareFavModal />}
 			</Flex>
 			<Stack spacing={4}>
 				{favoriteCalculators.length === 0 ? (

@@ -25,7 +25,7 @@ import {
 import { IconShare } from '@tabler/icons-react'
 import { useEffect } from 'react'
 
-export default function ShareFavBox() {
+export default function ShareFavModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const { onCopy, value, setValue, hasCopied } = useClipboard('')
 	useEffect(() => {
