@@ -11,7 +11,7 @@ import SourceLink from './SourceLink'
 
 interface ComponentProps {
 	description: string
-	methodology: string
+	methodology: string | null
 	sources: {
 		id: number
 		name: string
