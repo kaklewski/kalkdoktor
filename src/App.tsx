@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
 import IndexPage from './pages/IndexPage'
-import CalculatorPageLayout from './layouts/CalculatorPageLayout'
+import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators-and-categories'
 import FavoritesPage from './pages/FavoritesPage'
 import AddFavPage from './pages/AddFavPage'
@@ -23,9 +23,7 @@ export default function App() {
 					<Route
 						key={calculator.id}
 						path={calculator.link}
-						element={
-							<CalculatorPageLayout calculator={calculator} />
-						}
+						element={<CalculatorPage calculator={calculator} />}
 					/>
 				))}
 			</Route>

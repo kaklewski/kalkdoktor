@@ -10,7 +10,7 @@ interface ComponentProps {
 	calculator: Calculator
 }
 
-export default function CalculatorPageLayout({ calculator }: ComponentProps) {
+export default function CalculatorPage({ calculator }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
 
 	useEffect(() => {
