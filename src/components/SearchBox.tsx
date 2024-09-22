@@ -56,7 +56,7 @@ export default function SearchBox() {
 				size='xl'
 				scrollBehavior='inside'>
 				<ModalOverlay />
-				<ModalContent py={4} m={4}>
+				<ModalContent py={4} m={2}>
 					<ModalHeader>
 						<Flex align='center' gap={2}>
 							<InputGroup>
@@ -102,7 +102,7 @@ export default function SearchBox() {
 											_hover={{
 												backgroundColor: 'teal.400',
 												color: 'black',
-												borderRadius: '5px',
+												borderRadius: 'base',
 												transition:
 													'background-color 0.25s, color 0.25s',
 											}}>
