@@ -5,7 +5,7 @@ import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
 import { useEffect } from 'react'
 
-export default function FavoritesPage() {
+export default function FavPage() {
 	useEffect(() => {
 		// Add the page title
 		document.title = 'Ulubione – Kalkdoktor'
