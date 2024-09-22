@@ -1,5 +1,5 @@
-import { Flex, Link, Text } from '@chakra-ui/react'
-import { IconExternalLink } from '@tabler/icons-react'
+import { Box, Link } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 interface ComponentProps {
 	name: string
@@ -8,11 +8,10 @@ interface ComponentProps {
 
 export default function SourceLink({ name, link }: ComponentProps) {
 	return (
-		<Link href={link} isExternal>
-			<Flex direction='row' align='center' gap={2}>
-				<Text>{name}</Text>
-				<IconExternalLink stroke={1.5} size={20} />
-			</Flex>
-		</Link>
+		<Box mb={2}>
+			<Link href={link} isExternal>
+				{name} <ExternalLinkIcon mx='2px' />
+			</Link>
+		</Box>
 	)
 }
