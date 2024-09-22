@@ -229,7 +229,7 @@ export const calculators: Calculator[] = [
 		link: 'skala-centora-mcisaaca',
 		category: 'pediatria',
 		description:
-			'Pozwala oszacować ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
+			'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
 		methodology: null,
 		sources: [
 			{
@@ -470,7 +470,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Paracetamol - Medycyna Praktyczna',
+				name: 'Paracetamol – Medycyna Praktyczna',
 				link: 'https://www.mp.pl/pacjent/leki/subst.html?id=643',
 			},
 			{
@@ -517,6 +517,220 @@ export const calculators: Calculator[] = [
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Maksymalna dobowa dawka paracetamolu, w gramach.'
+		},
+	},
+
+	{
+		id: 7,
+		name: 'Skala HAS-BLED',
+		link: 'skala-has-bled',
+		category: 'kardiologia',
+		description:
+			'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków – Medycyna Praktyczna',
+				link: 'https://www.mp.pl/interna/table/016_4938',
+			},
+			{
+				id: 2,
+				name: 'HAS-BLED Score for Major Bleeding Risk – MDCalc',
+				link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: [
+				{
+					id: 1,
+					value: 1,
+					text: 'Nadciśnienie tętnicze z SBP powyżej 160 mmHg',
+				},
+				{
+					id: 2,
+					value: 1,
+					text: 'Nieprawidłowa funkcja nerek: przewlekła dializoterapia, stan po przeszczepieniu nerki lub stężenie kreatyniny w surowicy powyżej 200 µmol/l (2.26 mg/dL)',
+				},
+				{
+					id: 3,
+					value: 1,
+					text: 'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub cechy biochemiczne istotnego uszkodzenia wątroby',
+				},
+				{
+					id: 4,
+					value: 1,
+					text: 'Przebyty udar mózgu',
+				},
+				{
+					id: 5,
+					value: 1,
+					text: 'Predyspozycja do krwawienia i/lub poważne krwawienie w wywiadzie',
+				},
+				{
+					id: 6,
+					value: 1,
+					text: 'Niestabilne wartości INR - wahające się duże wartości lub często poza przedziałem terapeutycznym',
+				},
+				{
+					id: 7,
+					value: 1,
+					text: 'Wiek powyżej 65 lat',
+				},
+				{
+					id: 8,
+					value: 1,
+					text: 'Przyjmowanie leków z grupy NLPZ',
+				},
+				{
+					id: 9,
+					value: 1,
+					text: 'Nadmierne spożycie alkoholu',
+				},
+			],
+			radioGroups: null,
+		},
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 4) {
+				return 'Duże ryzyko krwawienia.'
+			}
+			return 'Nieduże ryzyko krwawienia.'
+		},
+	},
+
+	{
+		id: 8,
+		name: 'Skala Glasgow',
+		link: 'skala-glasgow',
+		category: 'neurologia',
+		description: 'Ocenia poziom przytomności u dorosłych.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Tabela 1.34-2. Skala Glasgow – Medycyna Praktyczna',
+				link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
+			},
+			{
+				id: 2,
+				name: 'Skala Glasgow - ocena stopnia przytomności u dorosłych – remedium.md',
+				link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Otwieranie oczu',
+					radios: [
+						{
+							id: 1,
+							value: 4,
+							text: 'Spontaniczne',
+						},
+						{
+							id: 2,
+							value: 3,
+							text: 'Na polecenie',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'W odpowiedzi na bodziec bólowy',
+						},
+						{
+							id: 4,
+							value: 1,
+							text: 'Nie otwiera oczu',
+						},
+					],
+				},
+				{
+					id: 2,
+					text: 'Odpowiedź słowna',
+					radios: [
+						{
+							id: 1,
+							value: 5,
+							text: 'Prawidłowa, pacjent jest w pełni zorientowany',
+						},
+						{
+							id: 2,
+							value: 4,
+							text: 'Odpowiada, ale jest zdezorientowany',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Używa niewłaściwych słów',
+						},
+						{
+							id: 4,
+							value: 2,
+							text: 'Wydaje nieartykułowane dźwięki',
+						},
+						{
+							id: 5,
+							value: 1,
+							text: 'Brak reakcji',
+						},
+					],
+				},
+				{
+					id: 3,
+					text: 'Reakcja ruchowa',
+					radios: [
+						{
+							id: 1,
+							value: 6,
+							text: 'Na polecenie',
+						},
+						{
+							id: 2,
+							value: 5,
+							text: 'Potrafi umiejscowić bodziec bólowy',
+						},
+						{
+							id: 3,
+							value: 4,
+							text: 'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
+						},
+						{
+							id: 5,
+							value: 2,
+							text: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
+						},
+						{
+							id: 6,
+							value: 1,
+							text: 'Brak reakcji',
+						},
+					],
+				},
+			],
+		},
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 13) return 'Łagodne zaburzenia świadomości.'
+			if (result >= 9) return 'Umiarkowane zaburzenia świadomości.'
+			if (result >= 6) return 'Brak przytomności.'
+			if (result === 5) return 'Odkorowanie.'
+			if (result === 4) return 'Odmóżdżenie.'
+			if (result === 3) return 'Śmierć mózgu.'
+			return 'Uzupełnij wszystkie informacje.'
 		},
 	},
 
