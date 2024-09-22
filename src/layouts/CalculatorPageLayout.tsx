@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Flex, Heading, Spacer } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
@@ -20,9 +20,8 @@ export default function CalculatorPageLayout({ calculator }: ComponentProps) {
 
 	return (
 		<>
-			<Flex>
+			<Flex justify='space-between'>
 				<Heading as='h1'>{calculator.name}</Heading>
-				<Spacer />
 				<FavButton pageId={calculator.id} />
 			</Flex>
 
