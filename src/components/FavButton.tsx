@@ -1,4 +1,4 @@
-import { IconButton, useToast } from '@chakra-ui/react'
+import { IconButton, Tooltip, useToast } from '@chakra-ui/react'
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import { useState } from 'react'
 
@@ -64,18 +64,20 @@ export default function FavButton({ pageId }: ComponentProps) {
 	}
 
 	return (
-		<IconButton
-			aria-label={isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
-			variant='outline'
-			colorScheme={isFav ? 'red' : 'teal'}
-			icon={
-				isFav ? (
-					<IconHeartFilled stroke={1.5} />
-				) : (
-					<IconHeart stroke={1.5} />
-				)
-			}
-			onClick={addToFav}
-		/>
+		<Tooltip label={`${isFav === true ? 'Usuń z' : 'Dodaj do'} ulubionych`}>
+			<IconButton
+				aria-label={isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
+				variant='outline'
+				colorScheme={isFav ? 'red' : 'teal'}
+				icon={
+					isFav ? (
+						<IconHeartFilled stroke={1.5} />
+					) : (
+						<IconHeart stroke={1.5} />
+					)
+				}
+				onClick={addToFav}
+			/>
+		</Tooltip>
 	)
 }
