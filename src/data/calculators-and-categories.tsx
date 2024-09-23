@@ -40,6 +40,7 @@ export interface Calculator {
 			  }[]
 			| null
 	}
+	resultUnit: string | null
 	calculateResult: (setResult: (value: number) => void) => void
 	interpretResult: (result: number) => string
 }
@@ -79,6 +80,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: null,
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const bodyMass = parseFloat(
@@ -189,6 +191,7 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -281,6 +284,7 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -366,6 +370,7 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: null,
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -426,6 +431,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: null,
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const amountPerIntake = parseFloat(
@@ -492,6 +498,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: 'g',
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const age = parseFloat(
@@ -508,7 +515,7 @@ export const calculators: Calculator[] = [
 
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
-			return 'Maksymalna dobowa dawka paracetamolu, w gramach.'
+			return 'Maksymalna dobowa dawka paracetamolu.'
 		},
 	},
 
@@ -583,6 +590,7 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: null,
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -712,6 +720,7 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -985,6 +994,7 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
+		resultUnit: null,
 
 		calculateResult: sumInputValues,
 
@@ -1029,6 +1039,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: 'ms',
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const qtInterval: number = parseFloat(
@@ -1045,7 +1056,7 @@ export const calculators: Calculator[] = [
 
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
-			return 'Skorygowany odstęp QTc, w ms.'
+			return 'Skorygowany odstęp QTc.'
 		},
 	},
 
@@ -1088,6 +1099,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: null,
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const prothrombinTime: number = parseFloat(
@@ -1148,6 +1160,7 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
+		resultUnit: 'g',
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const age = parseFloat(
@@ -1158,16 +1171,16 @@ export const calculators: Calculator[] = [
 			)
 			let result: number
 			if (age <= 12) {
-				result = 30 * weight
+				result = (30 * weight) / 1000
 			} else {
-				result = 1200
+				result = 1.2
 			}
 			setResult(result)
 		},
 
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
-			return 'Maksymalna dobowa dawka ibuprofenu, w gramach.'
+			return 'Maksymalna dobowa dawka ibuprofenu.'
 		},
 	},
 

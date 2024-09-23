@@ -35,6 +35,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 
 			<ResultCard
 				result={result}
+				resultUnit={calculator.resultUnit}
 				interpretResult={calculator.interpretResult}
 			/>
 

@@ -10,11 +10,13 @@ import { useEffect, useState } from 'react'
 
 interface ComponentProps {
 	result: number
+	resultUnit: string | null
 	interpretResult: (result: number) => string
 }
 
 export default function ResultCard({
 	result,
+	resultUnit,
 	interpretResult,
 }: ComponentProps) {
 	const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
@@ -40,6 +42,7 @@ export default function ResultCard({
 			<CardHeader>
 				<Heading size='md'>
 					Wynik: {result.toFixed(1).replace(/\.0$/, '')}
+					{resultUnit && resultUnit}
 				</Heading>
 			</CardHeader>
 
