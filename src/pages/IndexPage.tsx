@@ -1,4 +1,6 @@
 import {
+	Box,
+	Divider,
 	Heading,
 	Stack,
 	Tab,
@@ -19,14 +21,14 @@ export default function IndexPage() {
 
 	return (
 		<Tabs colorScheme='teal' isFitted>
-			<TabList>
+			<TabList mb={4}>
 				<Tab>Alfabetycznie</Tab>
 				<Tab>Kategorie</Tab>
 			</TabList>
 
 			<TabPanels>
 				<TabPanel px={0} key={keyA} onClick={() => setKeyB(k => k + 1)}>
-					<Stack spacing={4}>
+					<Stack spacing={6}>
 						{sortedCalculators.map(calculator => (
 							<CalculatorCard
 								key={calculator.id}
@@ -39,25 +41,35 @@ export default function IndexPage() {
 					</Stack>
 				</TabPanel>
 				<TabPanel px={0} key={keyB} onClick={() => setKeyA(k => k + 1)}>
-					<Stack spacing={8}>
+					<Stack spacing={12}>
 						{categories.map((category, categoryId) => (
-							<Stack key={categoryId} spacing={4}>
-								<Heading as='h2' fontSize='2xl' ml={2}>
-									{category[0].toUpperCase() +
-										category.slice(1)}
-								</Heading>
-								{sortedCalculators
-									.filter(calc => calc.category === category)
-									.map(calculator => (
-										<CalculatorCard
-											key={calculator.id}
-											id={calculator.id}
-											name={calculator.name}
-											link={calculator.link}
-											description={calculator.description}
-										/>
-									))}
-							</Stack>
+							<Box key={categoryId}>
+								<Box mb={6}>
+									<Heading as='h2' fontSize='2xl'>
+										{category.toUpperCase()}
+										{/* {category[0].toUpperCase() +
+											category.slice(1)} */}
+									</Heading>
+									<Divider mt={2} />
+								</Box>
+								<Stack spacing={6}>
+									{sortedCalculators
+										.filter(
+											calc => calc.category === category
+										)
+										.map(calculator => (
+											<CalculatorCard
+												key={calculator.id}
+												id={calculator.id}
+												name={calculator.name}
+												link={calculator.link}
+												description={
+													calculator.description
+												}
+											/>
+										))}
+								</Stack>
+							</Box>
 						))}
 					</Stack>
 				</TabPanel>
