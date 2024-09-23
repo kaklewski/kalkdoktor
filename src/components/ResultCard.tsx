@@ -42,7 +42,7 @@ export default function ResultCard({
 			<CardHeader>
 				<Heading size='md'>
 					Wynik: {result.toFixed(1).replace(/\.0$/, '')}
-					{resultUnit && resultUnit}
+					{resultUnit && ' ' + resultUnit}
 				</Heading>
 			</CardHeader>
 
