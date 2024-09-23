@@ -42,7 +42,7 @@ export default function FavPage() {
 				<Heading>Ulubione</Heading>
 				{favoriteCalculators.length === 0 ? '' : <ShareFavModal />}
 			</Flex>
-			<Stack spacing={4}>
+			<Stack spacing={6}>
 				{favoriteCalculators.length === 0 ? (
 					<NoFavoritesPlaceholder />
 				) : (
