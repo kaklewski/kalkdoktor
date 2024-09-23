@@ -57,7 +57,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Badanie BMI – Narodowy Instytut Kardiologii',
+				name: 'Badanie BMI - Narodowy Instytut Kardiologii',
 				link: 'https://www.ikard.pl/badanie-bmi.html',
 			},
 		],
@@ -81,18 +81,16 @@ export const calculators: Calculator[] = [
 		},
 
 		calculateResult: function (setResult: (value: number) => void) {
-			const bodyMass = parseInt(
+			const bodyMass = parseFloat(
 				(document.getElementById('bodyMass') as HTMLInputElement).value
 			)
 			const height =
-				parseInt(
-					(document.getElementById('height') as HTMLInputElement).value
+				parseFloat(
+					(document.getElementById('height') as HTMLInputElement)
+						.value
 				) / 100
-			let sum: number = parseInt((bodyMass / (height * height)).toFixed(2))
-
-			if (Number.isNaN(sum)) sum = 0
-
-			setResult(sum)
+			const result: number = Math.round(bodyMass / (height * height))
+			setResult(result)
 		},
 
 		interpretResult: function (result: number) {
@@ -113,12 +111,12 @@ export const calculators: Calculator[] = [
 		link: 'skala-cha2ds2-vasc',
 		category: 'kardiologia',
 		description:
-			'Ocenia ryzyko wystąpienia powikłań zakrzepowo–zatorowych u pacjentów z migotaniem przedsionków.',
+			'Ocenia ryzyko wystąpienia powikłań zakrzepowo-zatorowych u pacjentów z migotaniem przedsionków.',
 		methodology: null,
 		sources: [
 			{
 				id: 1,
-				name: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk – MDCalc',
+				name: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk - MDCalc',
 				link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
 			},
 		],
@@ -180,7 +178,7 @@ export const calculators: Calculator[] = [
 						{
 							id: 2,
 							value: 1,
-							text: '65 – 74 lata',
+							text: '65 - 74 lata',
 						},
 						{
 							id: 3,
@@ -195,10 +193,13 @@ export const calculators: Calculator[] = [
 		calculateResult: sumInputValues,
 
 		interpretResult: function (result: number) {
-			const sexCheckbox = document.getElementById('man') as HTMLInputElement
+			const sexCheckbox = document.getElementById(
+				'man'
+			) as HTMLInputElement
 			const isMan = sexCheckbox ? sexCheckbox.checked : true
 
-			const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+			const lowRisk: string =
+				'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
 			const mediumRisk: string =
 				'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.'
 			const highRisk: string =
@@ -228,7 +229,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca – Medycyna Praktyczna',
+				name: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca - Medycyna Praktyczna',
 				link: 'https://www.mp.pl/interna/table/B16.3.3-1.',
 			},
 		],
@@ -264,12 +265,12 @@ export const calculators: Calculator[] = [
 						{
 							id: 1,
 							value: 1,
-							text: '3 – 14 lat',
+							text: '3 - 14 lat',
 						},
 						{
 							id: 2,
 							value: 0,
-							text: '15 – 44 lata',
+							text: '15 - 44 lata',
 						},
 						{
 							id: 3,
@@ -305,7 +306,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa – Medycyna Praktyczna',
+				name: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa - Medycyna Praktyczna',
 				link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
 			},
 		],
@@ -428,21 +429,24 @@ export const calculators: Calculator[] = [
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const amountPerIntake = parseFloat(
-				(document.getElementById('amountPerIntake') as HTMLInputElement).value
+				(document.getElementById('amountPerIntake') as HTMLInputElement)
+					.value
 			)
 			const numberOfIntakes = parseFloat(
-				(document.getElementById('numberOfIntakes') as HTMLInputElement).value
+				(document.getElementById('numberOfIntakes') as HTMLInputElement)
+					.value
 			)
 			const daysOfUse = parseFloat(
 				(document.getElementById('daysOfUse') as HTMLInputElement).value
 			)
 			const packageSize = parseFloat(
-				(document.getElementById('packageSize') as HTMLInputElement).value
+				(document.getElementById('packageSize') as HTMLInputElement)
+					.value
 			)
-			const numberOfPackages = Math.round(
+			const result = Math.round(
 				(amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
 			)
-			setResult(numberOfPackages)
+			setResult(result)
 		},
 
 		interpretResult: function () {
@@ -461,7 +465,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Paracetamol – Medycyna Praktyczna',
+				name: 'Paracetamol - Medycyna Praktyczna',
 				link: 'https://www.mp.pl/pacjent/leki/subst.html?id=643',
 			},
 			{
@@ -490,19 +494,16 @@ export const calculators: Calculator[] = [
 		},
 
 		calculateResult: function (setResult: (value: number) => void) {
-			const age = parseInt(
+			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const weight = parseInt(
+			const weight = parseFloat(
 				(document.getElementById('weight') as HTMLInputElement).value
 			)
-
-			let calculatedDosage: number = (60 * weight) / 1000
-
-			if (age <= 12 && calculatedDosage > 2) calculatedDosage = 2
-			if (calculatedDosage > 4) calculatedDosage = 4
-
-			setResult(calculatedDosage)
+			let result: number = (60 * weight) / 1000
+			if (age <= 12 && result > 2) result = 2
+			if (result > 4) result = 4
+			setResult(result)
 		},
 
 		interpretResult: function (result: number) {
@@ -522,12 +523,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków – Medycyna Praktyczna',
+				name: 'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków - Medycyna Praktyczna',
 				link: 'https://www.mp.pl/interna/table/016_4938',
 			},
 			{
 				id: 2,
-				name: 'HAS-BLED Score for Major Bleeding Risk – MDCalc',
+				name: 'HAS-BLED Score for Major Bleeding Risk - MDCalc',
 				link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
 			},
 		],
@@ -603,12 +604,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 1.34-2. Skala Glasgow – Medycyna Praktyczna',
+				name: 'Tabela 1.34-2. Skala Glasgow - Medycyna Praktyczna',
 				link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
 			},
 			{
 				id: 2,
-				name: 'Skala Glasgow - ocena stopnia przytomności u dorosłych – remedium.md',
+				name: 'Skala Glasgow - ocena stopnia przytomności u dorosłych - remedium.md',
 				link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
 			},
 		],
@@ -740,7 +741,7 @@ export const calculators: Calculator[] = [
 			},
 			{
 				id: 2,
-				name: 'Microsoft Word - PHQ9_Polish for Poland.doc – ECFS.eu',
+				name: 'Microsoft Word - PHQ9_Polish for Poland.doc - ECFS.eu',
 				link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
 			},
 		],
@@ -1030,24 +1031,143 @@ export const calculators: Calculator[] = [
 		},
 
 		calculateResult: function (setResult: (value: number) => void) {
-			const qtInterval: number = parseInt(
-				(document.getElementById('qtInterval') as HTMLInputElement).value
+			const qtInterval: number = parseFloat(
+				(document.getElementById('qtInterval') as HTMLInputElement)
+					.value
 			)
-			const heartRate: number = parseInt(
+			const heartRate: number = parseFloat(
 				(document.getElementById('heartRate') as HTMLInputElement).value
 			)
 			const rr: number = 60 / heartRate
-
-			let sum: number = parseInt((qtInterval / Math.sqrt(rr)).toFixed(2))
-
-			if (Number.isNaN(sum)) sum = 0
-
-			setResult(sum)
+			const result: number = qtInterval / Math.sqrt(rr)
+			setResult(result)
 		},
 
 		interpretResult: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Skorygowany odstęp QTc, w ms.'
+		},
+	},
+
+	{
+		id: 11,
+		name: 'Wskaźnik Maddreya',
+		link: 'wskaznik-maddreya',
+		category: 'hepatologia',
+		description:
+			'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
+		methodology: 'Lorem ipsum',
+		sources: [
+			{
+				id: 1,
+				name: 'Wskaźnik Maddreya - Wikipedia',
+				link: 'https://pl.wikipedia.org/wiki/Wska%C5%BAnik_Maddreya',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'prothrombinTime',
+					text: 'Czas protrombinowy pacjenta (s)',
+					min: 1,
+					max: 1000,
+				},
+				{
+					id: 'controlTime',
+					text: 'Czas protrombinowy prawidłowy (s)',
+					min: 1,
+					max: 1000,
+				},
+				{
+					id: 'bilirubin',
+					text: 'Stężenie bilirubiny całkowitej (mg/dl)',
+					min: 1,
+					max: 1000,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const prothrombinTime: number = parseFloat(
+				(document.getElementById('prothrombinTime') as HTMLInputElement)
+					.value
+			)
+			const controlTime: number = parseFloat(
+				(document.getElementById('controlTime') as HTMLInputElement)
+					.value
+			)
+			const bilirubin: number = parseFloat(
+				(document.getElementById('bilirubin') as HTMLInputElement).value
+			)
+			const result: number =
+				(prothrombinTime - controlTime) * 4.6 + bilirubin
+			setResult(result)
+		},
+
+		interpretResult: function (result: number) {
+			if (result > 32)
+				return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.'
+			if (result <= 32 && result > 0)
+				return 'Alkoholowe zapalenie wątroby o umiarkowanym lub niewielkim nasileniu.'
+			return 'Uzupełnij wszystkie informacje.'
+		},
+	},
+
+	{
+		id: 12,
+		name: 'Obliczanie dawki ibuprofenu',
+		link: 'obliczanie-dawki-ibuprofenu',
+		category: 'dawkowanie leków',
+		description:
+			'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
+		methodology: 'Lorem ipsum',
+		sources: [
+			{
+				id: 1,
+				name: '?',
+				link: '',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 1,
+					max: 100,
+				},
+				{
+					id: 'weight',
+					text: 'Masa ciała (kg)',
+					min: 1,
+					max: 200,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age = parseFloat(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const weight = parseFloat(
+				(document.getElementById('weight') as HTMLInputElement).value
+			)
+			let result: number
+			if (age <= 12) {
+				result = 30 * weight
+			} else {
+				result = 1200
+			}
+			setResult(result)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			return 'Maksymalna dobowa dawka ibuprofenu, w gramach.'
 		},
 	},
 
@@ -1080,7 +1200,7 @@ export const calculators: Calculator[] = [
 export const categories: string[] = (() => {
 	let categoryArray: string[] = []
 
-	calculators.forEach((calculator) => {
+	calculators.forEach(calculator => {
 		if (!categoryArray.includes(calculator.category))
 			categoryArray.push(calculator.category)
 	})
