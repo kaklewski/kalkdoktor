@@ -555,7 +555,7 @@ export const calculators: Calculator[] = [
 				{
 					id: 3,
 					value: 1,
-					text: 'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub cechy biochemiczne istotnego uszkodzenia wątroby',
+					text: 'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub biochemiczne cechy istotnego uszkodzenia wątroby',
 				},
 				{
 					id: 4,
@@ -737,7 +737,7 @@ export const calculators: Calculator[] = [
 
 	{
 		id: 9,
-		name: 'Kwestionariusz zdrowia pacjenta PHQ-9',
+		name: 'Kwestionariusz PHQ-9',
 		link: 'phq9',
 		category: 'psychiatria',
 		description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
@@ -968,7 +968,7 @@ export const calculators: Calculator[] = [
 				},
 				{
 					id: 9,
-					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć, albo chęć zrobienia sobie jakiejś krzywdy',
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy',
 					radios: [
 						{
 							id: 1,
