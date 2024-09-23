@@ -738,7 +738,7 @@ export const calculators: Calculator[] = [
 	{
 		id: 9,
 		name: 'Kwestionariusz PHQ-9',
-		link: 'phq9',
+		link: 'kwestionariusz-phq9',
 		category: 'psychiatria',
 		description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
 		methodology: null,
