@@ -86,12 +86,9 @@ export const calculators: Calculator[] = [
 			)
 			const height =
 				parseInt(
-					(document.getElementById('height') as HTMLInputElement)
-						.value
+					(document.getElementById('height') as HTMLInputElement).value
 				) / 100
-			let sum: number = parseInt(
-				(bodyMass / (height * height)).toFixed(2)
-			)
+			let sum: number = parseInt((bodyMass / (height * height)).toFixed(2))
 
 			if (Number.isNaN(sum)) sum = 0
 
@@ -198,13 +195,10 @@ export const calculators: Calculator[] = [
 		calculateResult: sumInputValues,
 
 		interpretResult: function (result: number) {
-			const sexCheckbox = document.getElementById(
-				'man'
-			) as HTMLInputElement
+			const sexCheckbox = document.getElementById('man') as HTMLInputElement
 			const isMan = sexCheckbox ? sexCheckbox.checked : true
 
-			const lowRisk: string =
-				'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+			const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
 			const mediumRisk: string =
 				'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.'
 			const highRisk: string =
@@ -434,19 +428,16 @@ export const calculators: Calculator[] = [
 
 		calculateResult: function (setResult: (value: number) => void) {
 			const amountPerIntake = parseFloat(
-				(document.getElementById('amountPerIntake') as HTMLInputElement)
-					.value
+				(document.getElementById('amountPerIntake') as HTMLInputElement).value
 			)
 			const numberOfIntakes = parseFloat(
-				(document.getElementById('numberOfIntakes') as HTMLInputElement)
-					.value
+				(document.getElementById('numberOfIntakes') as HTMLInputElement).value
 			)
 			const daysOfUse = parseFloat(
 				(document.getElementById('daysOfUse') as HTMLInputElement).value
 			)
 			const packageSize = parseFloat(
-				(document.getElementById('packageSize') as HTMLInputElement)
-					.value
+				(document.getElementById('packageSize') as HTMLInputElement).value
 			)
 			const numberOfPackages = Math.round(
 				(amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
@@ -734,6 +725,332 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 9,
+		name: 'Kwestionariusz zdrowia pacjenta PHQ-9',
+		link: 'phq9',
+		category: 'psychiatria',
+		description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'PHQ-9',
+				link: 'https://www.phq9.pl/',
+			},
+			{
+				id: 2,
+				name: 'Microsoft Word - PHQ9_Polish for Poland.doc – ECFS.eu',
+				link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczało',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 2,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczało',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 3,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczały',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 4,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczało',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 5,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczały',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 6,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczało',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 7,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczały',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 8,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczało',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+				{
+					id: 9,
+					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć, albo chęć zrobienia sobie jakiejś krzywdy',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Wcale nie dokuczały',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Kilka dni',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Więcej niż połowę dni',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: 'Niemal codziennie',
+						},
+					],
+				},
+			],
+		},
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 20) return 'Ciężki epizod depresyjny.'
+			if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.'
+			if (result >= 10) return 'Umiarkowany epizod depresyjny.'
+			if (result >= 5) return 'Łagodny epizod depresyjny.'
+			return 'Brak depresji.'
+		},
+	},
+
+	{
+		id: 10,
+		name: 'Kalkulator odstępu QTc (wzór Bazetta)',
+		link: 'kalkulator-qtc-bazetta',
+		category: 'kardiologia',
+		description: 'Oblicza skorygowany odstęp QT.',
+		methodology: 'Lorem ipsum',
+		sources: [
+			{
+				id: 1,
+				name: 'Skorygowany odstęp QT (QTc) - Medycyna i Statystyka',
+				link: 'https://www.medycynaistatystyka.pl/skorygowany-qt-bazett',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'qtInterval',
+					text: 'Odstęp QT (ms)',
+					min: 1,
+					max: 1000,
+				},
+				{
+					id: 'heartRate',
+					text: 'Czynność serca (na minutę)',
+					min: 1,
+					max: 1000,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const qtInterval: number = parseInt(
+				(document.getElementById('qtInterval') as HTMLInputElement).value
+			)
+			const heartRate: number = parseInt(
+				(document.getElementById('heartRate') as HTMLInputElement).value
+			)
+			const rr: number = 60 / heartRate
+
+			let sum: number = parseInt((qtInterval / Math.sqrt(rr)).toFixed(2))
+
+			if (Number.isNaN(sum)) sum = 0
+
+			setResult(sum)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			return 'Skorygowany odstęp QTc, w ms.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
@@ -763,7 +1080,7 @@ export const calculators: Calculator[] = [
 export const categories: string[] = (() => {
 	let categoryArray: string[] = []
 
-	calculators.forEach(calculator => {
+	calculators.forEach((calculator) => {
 		if (!categoryArray.includes(calculator.category))
 			categoryArray.push(calculator.category)
 	})
