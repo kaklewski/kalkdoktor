@@ -23,9 +23,9 @@ export default function CustomNumberInput({
 }: ComponentProps) {
 	return (
 		<Box>
-			<Text>{text}:</Text>
+			<Text mb={2}>{text}:</Text>
 			<NumberInput min={min} max={max} id={id.toString()} isRequired>
-				<NumberInputField />
+				<NumberInputField placeholder='Podaj wartość' />
 				<NumberInputStepper>
 					<NumberIncrementStepper />
 					<NumberDecrementStepper />
