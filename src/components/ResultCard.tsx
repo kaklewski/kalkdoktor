@@ -18,8 +18,6 @@ export default function ResultCard({
 	interpretResult,
 }: ComponentProps) {
 	const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
-	const resultInterpretation = interpretResult(result)
-
 	useEffect(() => {
 		if (isFirstRender) {
 			setIsFirstRender(false)
@@ -33,10 +31,16 @@ export default function ResultCard({
 		}, 300)
 	}, [result])
 
+	const resultInterpretation = interpretResult(result)
+
+	if (Number.isNaN(result)) result = 0
+
 	return (
 		<Card overflow='hidden' variant='filled' id='resultCard'>
 			<CardHeader>
-				<Heading size='md'>Wynik: {result}</Heading>
+				<Heading size='md'>
+					Wynik: {result.toFixed(1).replace(/\.0$/, '')}
+				</Heading>
 			</CardHeader>
 
 			<Divider color='white' />
