@@ -27,7 +27,7 @@ import { useEffect } from 'react'
 
 export default function ShareFavModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const { onCopy, value, setValue, hasCopied } = useClipboard('')
+	const { onCopy, value, setValue } = useClipboard('')
 	useEffect(() => {
 		const urlPath = '/dodaj-ulubione'
 		const urlHostname = window.location
