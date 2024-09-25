@@ -1,9 +1,10 @@
 import { Box, Divider, Flex, Link, Text } from '@chakra-ui/react'
-
-const currentYear = new Date().getFullYear()
-const link = 'https://github.com/kaklewski/kalkdoktor'
+import { IconBrandGithubFilled } from '@tabler/icons-react'
 
 export default function Footer() {
+	const CURRENT_YEAR = new Date().getFullYear()
+	const GITHUB_LINK = 'https://github.com/kaklewski/kalkdoktor'
+
 	return (
 		<Box as='footer' id='footer' maxW='650px' mx='auto'>
 			<Divider />
@@ -12,12 +13,15 @@ export default function Footer() {
 				fontSize='xs'
 				direction='column'
 				justify='center'
-				align='center'>
+				align='center'
+				gap={1}>
 				<Text>
-					&copy; {currentYear}{' '}
-					<Link href={link}>Oskar Kąklewski</Link> – Opublikowano na
-					licencji GNU
+					&copy; {CURRENT_YEAR} Oskar Kąklewski - Opublikowano na
+					licencji GPL 3.0
 				</Text>
+				<Link href={GITHUB_LINK}>
+					<IconBrandGithubFilled size={16} stroke={1.5} />
+				</Link>
 			</Flex>
 		</Box>
 	)
