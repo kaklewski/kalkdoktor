@@ -58,7 +58,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Badanie BMI - Narodowy Instytut Kardiologii',
+				name: 'Narodowy Instytut Kardiologii, Badanie BMI, dostęp: 20.09.2024',
 				link: 'https://www.ikard.pl/badanie-bmi.html',
 			},
 		],
@@ -118,7 +118,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk - MDCalc',
+				name: 'MDCalc, CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk, dostęp: 20.09.2024',
 				link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
 			},
 		],
@@ -232,7 +232,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca - Medycyna Praktyczna',
+				name: 'Medycyna Praktyczna, Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca, dostęp: 20.09.2024',
 				link: 'https://www.mp.pl/interna/table/B16.3.3-1.',
 			},
 		],
@@ -310,7 +310,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa - Medycyna Praktyczna',
+				name: 'Medycyna Praktyczna, Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa, dostęp: 20.09.2024',
 				link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
 			},
 		],
@@ -471,12 +471,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Paracetamol - Medycyna Praktyczna',
-				link: 'https://www.mp.pl/pacjent/leki/subst.html?id=643',
+				name: 'Medycyna Praktyczna, Paracetamol (Portal lekarzy), dostęp: 20.09.2024',
+				link: 'https://indeks.mp.pl/leki/desc.php?id=631',
 			},
 			{
 				id: 2,
-				name: 'Paracetamol Dosage Calculator - Omni Calculator',
+				name: 'Omni Calculator, Paracetamol Dosage Calculator, dostęp: 20.09.2024',
 				link: 'https://www.omnicalculator.com/health/paracetamol-dosage',
 			},
 		],
@@ -530,12 +530,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków - Medycyna Praktyczna',
+				name: 'Medycyna Praktyczna, Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków, dostęp: 20.09.2024',
 				link: 'https://www.mp.pl/interna/table/016_4938',
 			},
 			{
 				id: 2,
-				name: 'HAS-BLED Score for Major Bleeding Risk - MDCalc',
+				name: 'MDCalc, HAS-BLED Score for Major Bleeding Risk, dostęp: 20.09.2024',
 				link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
 			},
 		],
@@ -612,12 +612,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Tabela 1.34-2. Skala Glasgow - Medycyna Praktyczna',
+				name: 'Medycyna Praktyczna, Tabela 1.34-2. Skala Glasgow, dostęp: 20.09.2024',
 				link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
 			},
 			{
 				id: 2,
-				name: 'Skala Glasgow - ocena stopnia przytomności u dorosłych - remedium.md',
+				name: 'remedium.md, Skala Glasgow - ocena stopnia przytomności u dorosłych, dostęp: 20.09.2024',
 				link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
 			},
 		],
@@ -745,12 +745,12 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'PHQ-9',
+				name: 'PHQ-9, dostęp: 20.09.2024',
 				link: 'https://www.phq9.pl/',
 			},
 			{
 				id: 2,
-				name: 'Microsoft Word - PHQ9_Polish for Poland.doc - ECFS.eu',
+				name: 'ECFS.eu, Microsoft Word - PHQ9_Polish for Poland.doc, dostęp: 20.09.2024',
 				link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
 			},
 		],
@@ -1017,7 +1017,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Skorygowany odstęp QT (QTc) - Medycyna i Statystyka',
+				name: 'Medycyna i Statystyka, Skorygowany odstęp QT (QTc), dostęp: 20.09.2024',
 				link: 'https://www.medycynaistatystyka.pl/skorygowany-qt-bazett',
 			},
 		],
@@ -1071,7 +1071,7 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: 'Wskaźnik Maddreya - Wikipedia',
+				name: 'Wikipedia, Wskaźnik Maddreya, dostęp: 20.09.2024',
 				link: 'https://pl.wikipedia.org/wiki/Wska%C5%BAnik_Maddreya',
 			},
 		],
@@ -1138,8 +1138,8 @@ export const calculators: Calculator[] = [
 		sources: [
 			{
 				id: 1,
-				name: '?',
-				link: '',
+				name: 'Medycyna Praktyczna, Deksibuprofen (Portal lekarzy), dostęp: 20.09.2024',
+				link: 'https://indeks.mp.pl/leki/desc.php?id=370',
 			},
 		],
 		fields: {
