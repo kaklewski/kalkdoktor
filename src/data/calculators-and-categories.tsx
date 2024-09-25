@@ -467,17 +467,12 @@ export const calculators: Calculator[] = [
 		category: 'dawkowanie leków',
 		description:
 			'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
-		methodology: 'Lorem ipsum',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
 				name: 'Medycyna Praktyczna, Paracetamol (Portal lekarzy), dostęp: 20.09.2024',
 				link: 'https://indeks.mp.pl/leki/desc.php?id=631',
-			},
-			{
-				id: 2,
-				name: 'Omni Calculator, Paracetamol Dosage Calculator, dostęp: 20.09.2024',
-				link: 'https://www.omnicalculator.com/health/paracetamol-dosage',
 			},
 		],
 		fields: {
@@ -1013,7 +1008,7 @@ export const calculators: Calculator[] = [
 		link: 'kalkulator-qtc-bazetta',
 		category: 'kardiologia',
 		description: 'Oblicza skorygowany odstęp QT.',
-		methodology: 'Lorem ipsum',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -1067,7 +1062,7 @@ export const calculators: Calculator[] = [
 		category: 'hepatologia',
 		description:
 			'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
-		methodology: 'Lorem ipsum',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -1134,7 +1129,7 @@ export const calculators: Calculator[] = [
 		category: 'dawkowanie leków',
 		description:
 			'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
-		methodology: 'Lorem ipsum',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -1173,7 +1168,7 @@ export const calculators: Calculator[] = [
 			if (age <= 12) {
 				result = (30 * weight) / 1000
 			} else {
-				result = 1.2
+				result = 3.2
 			}
 			setResult(result)
 		},
@@ -1190,7 +1185,7 @@ export const calculators: Calculator[] = [
 	// 	link: '',
 	// 	category: '',
 	// 	description: '',
-	// 	methodology: '',
+	// 	methodology: null,
 	// 	sources: [
 	// 		{
 	// 			id: 1,
