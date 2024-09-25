@@ -53,8 +53,7 @@ export const calculators: Calculator[] = [
 		category: 'antropometria',
 		description:
 			'Oblicza wskaźnik masy ciała (BMI) i pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska czy zbyt wysoka w stosunku do wzrostu.',
-		methodology:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reiciendis aperiam placeat nobis, dolorum laborum, nemo, eos quidem esse ducimus expedita amet repellendus nesciunt enim. Quae pariatur numquam aliquam doloremque.',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
@@ -392,8 +391,7 @@ export const calculators: Calculator[] = [
 		category: 'dawkowanie leków',
 		description:
 			'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
-		methodology:
-			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae reiciendis in perferendis dignissimos eaque consequatur quod asperiores iure vel at!',
+		methodology: null,
 		sources: [
 			{
 				id: 1,
