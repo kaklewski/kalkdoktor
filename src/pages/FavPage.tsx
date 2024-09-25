@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 export default function FavPage() {
 	useEffect(() => {
 		// Add the page title
-		document.title = 'Ulubione – Kalkdoktor'
+		document.title = 'Ulubione - Kalkdoktor'
 	}, [])
 
 	const favIds = (() => {

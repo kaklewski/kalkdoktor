@@ -18,7 +18,6 @@ import {
 } from '@chakra-ui/react'
 import { IconSearch } from '@tabler/icons-react'
 import { useEffect, useRef, useState } from 'react'
-
 import { sortedCalculators } from '../data/calculators-and-categories'
 
 export default function SearchModal() {

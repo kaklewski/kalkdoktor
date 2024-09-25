@@ -21,7 +21,7 @@ export default function AddFavPage() {
 
 	useEffect(() => {
 		// Add the page title
-		document.title = 'Dodaj ulubione – Kalkdoktor'
+		document.title = 'Dodaj ulubione - Kalkdoktor'
 
 		if (
 			favIds === null ||

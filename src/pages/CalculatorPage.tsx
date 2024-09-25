@@ -15,7 +15,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 
 	useEffect(() => {
 		// Add calculator name to the page title
-		document.title = calculator.name + ' – Kalkdoktor'
+		document.title = calculator.name + ' - Kalkdoktor'
 	}, [])
 
 	return (
