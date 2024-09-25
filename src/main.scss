@@ -7,15 +7,6 @@
 	src: url('./src/fonts/dosis-v32-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* dosis-500 - latin-ext */
-@font-face {
-	font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: 'Dosis';
-	font-style: normal;
-	font-weight: 500;
-	src: url('./src/fonts/dosis-v32-latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 /* dosis-600 - latin-ext */
 @font-face {
 	font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -23,15 +14,6 @@
 	font-style: normal;
 	font-weight: 600;
 	src: url('./src/fonts/dosis-v32-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-/* dosis-700 - latin-ext */
-@font-face {
-	font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: 'Dosis';
-	font-style: normal;
-	font-weight: 700;
-	src: url('./src/fonts/dosis-v32-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 #navLogo {
