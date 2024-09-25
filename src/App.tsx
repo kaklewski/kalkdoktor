@@ -10,6 +10,7 @@ import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators-and-categories'
 import FavPage from './pages/FavPage'
 import AddFavPage from './pages/AddFavPage'
+import Error404 from './components/Error404'
 
 export default function App() {
 	const router = createBrowserRouter(
@@ -26,6 +27,7 @@ export default function App() {
 						element={<CalculatorPage calculator={calculator} />}
 					/>
 				))}
+				<Route path='*' element={<Error404 />} />
 			</Route>
 		)
 	)
