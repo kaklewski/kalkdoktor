@@ -56,7 +56,7 @@ export default function FavButton({ pageId }: ComponentProps) {
 		} else {
 			// If the page is not in the favorites, add it
 			favorites.push(pageId)
-			favorites.sort()
+			favorites.sort((a: number, b: number) => a - b)
 			showToast('added')
 			setIsFav(true)
 		}
