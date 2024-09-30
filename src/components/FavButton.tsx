@@ -39,10 +39,10 @@ export default function FavButton({ pageId }: ComponentProps) {
 
 	function addToFav() {
 		// If there are no favorites, add the page
-		const favString = localStorage.getItem(LOCAL_STORAGE_KEY)
+		let favString = localStorage.getItem(LOCAL_STORAGE_KEY)
 		if (favString === null) {
 			localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([pageId]))
-			return
+			favString = '[]'
 		}
 
 		const favorites = JSON.parse(favString)
