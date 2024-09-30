@@ -1177,6 +1177,389 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 13,
+		name: 'Skala PESI',
+		link: 'skala-pesi',
+		category: 'kardiologia',
+		description:
+			'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 2.33-7. Ocena rokowania w zatorowości płucnej, dostęp: 26.09.2024',
+				link: 'https://www.mp.pl/interna/table/B16.2.33-15.',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 1,
+					max: 125,
+				},
+			],
+			checkboxes: [
+				{
+					id: 1,
+					value: 10,
+					text: 'Płeć męska',
+				},
+				{
+					id: 2,
+					value: 30,
+					text: 'Nowotwór złośliwy',
+				},
+				{
+					id: 3,
+					value: 10,
+					text: 'Przewlekła niewydolność serca',
+				},
+				{
+					id: 4,
+					value: 10,
+					text: 'Przewlekła choroba płuc',
+				},
+				{
+					id: 5,
+					value: 20,
+					text: 'Tętno powyżej 110/min',
+				},
+				{
+					id: 6,
+					value: 30,
+					text: 'Skurczowe ciśnienie tętnicze poniżej 100 mm Hg',
+				},
+				{
+					id: 7,
+					value: 20,
+					text: 'Częstość oddechów powyżej 30/min',
+				},
+				{
+					id: 8,
+					value: 20,
+					text: 'Temperatura poniżej 36°C',
+				},
+				{
+					id: 9,
+					value: 60,
+					text: 'Zmiana stanu psychicznego',
+				},
+				{
+					id: 10,
+					value: 20,
+					text: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
+				},
+			],
+			radioGroups: null,
+		},
+		resultUnit: '',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age = parseFloat(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const inputs = document.querySelectorAll('input')
+			let sum: number = age
+
+			inputs.forEach(input => {
+				if (input.checked) sum += parseInt(input.value)
+			})
+
+			setResult(sum)
+		},
+
+		interpretResult: function (result: number) {
+			if (result > 125) return 'Klasa V: ryzyko bardzo duże.'
+			if (result > 105) return 'Klasa IV: ryzyko duże.'
+			if (result > 85) return 'Klasa III: ryzyko umiarkowane.'
+			if (result > 65) return 'Klasa II: ryzyko małe.'
+			return 'Klasa I: ryzyko bardzo małe.'
+		},
+	},
+
+	{
+		id: 14,
+		name: 'Zmodyfikowana skala genewska (oryginalna)',
+		link: 'skala-genewska-oryginalna',
+		category: 'kardiologia',
+		description: 'Ocenia prawdopodobieństwo zatorowości płucnej.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 2.33-9. Ocena prawdopodobieństwa klinicznego ZP wg zmodyfikowanej skali genewskiej, dostęp: 30.09.2024',
+				link: 'https://www.mp.pl/interna/table/B16.2.33-8.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: [
+				{
+					id: 1,
+					value: 1,
+					text: 'Wiek powyżej 65 lat',
+				},
+				{
+					id: 2,
+					value: 3,
+					text: 'Przebyta zakrzepica żył głębokich lub zatorowość płucna',
+				},
+				{
+					id: 3,
+					value: 2,
+					text: 'Zabieg chirurgiczny lub złamanie w ciągu ostatniego miesiąca',
+				},
+				{
+					id: 4,
+					value: 2,
+					text: 'Niewyleczony nowotwór złośliwy',
+				},
+				{
+					id: 5,
+					value: 3,
+					text: 'Jednostronny ból kończyny dolnej',
+				},
+				{
+					id: 6,
+					value: 2,
+					text: 'Krwioplucie',
+				},
+				{
+					id: 7,
+					value: 4,
+					text: 'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
+				},
+			],
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Tętno',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: 'Poniżej 75',
+						},
+						{
+							id: 2,
+							value: 3,
+							text: '75 - 94',
+						},
+						{
+							id: 3,
+							value: 5,
+							text: '95 lub więcej',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 11) return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
+			if (result >= 4) return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.'
+			return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.'
+		},
+	},
+
+	{
+		id: 15,
+		name: 'Skala CURB-65',
+		link: 'skala-curb65',
+		category: 'pulmonologia',
+		description:
+			'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Rycina 3.13-2. Ocena ciężkości pozaszpitalnego zapalenia płuc u chorych w szpitalu – skala CURB-65, dostęp: 30.09.2024',
+				link: 'https://www.mp.pl/interna/image/B16.016_8678.',
+			},
+			{
+				id: 2,
+				name: 'Wikipedia, Skala CURB-65, dostęp: 30.09.2024',
+				link: 'https://pl.wikipedia.org/wiki/Skala_CURB-65',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: [
+				{
+					id: 1,
+					value: 1,
+					text: 'Zaburzenia świadomości',
+				},
+				{
+					id: 2,
+					value: 1,
+					text: 'Poziom mocznika większy niż 7 mmol/l',
+				},
+				{
+					id: 3,
+					value: 1,
+					text: 'Częstość oddechów równa lub większa 30 na minutę',
+				},
+				{
+					id: 4,
+					value: 1,
+					text: 'Ciśnienie tętnicze krwi równe lub niższe od 90/60 mmHg',
+				},
+				{
+					id: 5,
+					value: 1,
+					text: 'Wiek większy lub równy 65 lat',
+				},
+			],
+			radioGroups: null,
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 3)
+				return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.'
+			if (result === 2)
+				return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.'
+			return 'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.'
+		},
+	},
+
+	{
+		id: 16,
+		name: 'Kalkulator WHR (Waist-Hip Ratio)',
+		link: 'kalkulator-whr',
+		category: 'antropometria',
+		description: 'Oblicza stosunek obwodu talii do bioder.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Wikipedia, Waist–hip ratio: dostęp: 30.09.2024',
+				link: 'https://en.wikipedia.org/wiki/Waist%E2%80%93hip_ratio',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'waist',
+					text: 'Obwód talii (cm)',
+					min: 1,
+					max: 250,
+				},
+				{
+					id: 'hips',
+					text: 'Obwód bioder (cm)',
+					min: 1,
+					max: 250,
+				},
+			],
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 'sex',
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'woman',
+							value: 0,
+							text: 'Kobieta',
+						},
+						{
+							id: 'man',
+							value: 0.15,
+							text: 'Mężczyzna',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const waist = parseFloat(
+				(document.getElementById('waist') as HTMLInputElement).value
+			)
+			const hips = parseFloat(
+				(document.getElementById('hips') as HTMLInputElement).value
+			)
+			const result = waist / hips
+			setResult(result)
+		},
+
+		interpretResult: function (result: number) {
+			const sexCheckbox = document.getElementById(
+				'man'
+			) as HTMLInputElement
+			const isMan = sexCheckbox ? sexCheckbox.checked : true
+
+			if (isMan) {
+				if (result >= 1) return 'Otyłość androidalna (brzuszna).'
+				return 'Waga w normie.'
+			}
+			if (result >= 0.85) return 'Otyłość androidalna (brzuszna).'
+			return 'Waga w normie.'
+		},
+	},
+
+	{
+		id: 17,
+		name: 'Uproszczona skala SOFA (qSOFA)',
+		link: 'skala-qsofa',
+		category: 'anestezjologia',
+		description:
+			'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'MDCalc, qSOFA (Quick SOFA) Score for Sepsis, dostęp: 30.09.2024',
+				link: 'https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis',
+			},
+			{
+				id: 2,
+				name: 'Medycyna i Statystyka, Uproszczona skala SOFA (qSOFA), dostęp: 30.09.2024',
+				link: 'https://www.medycynaistatystyka.pl/skala-qsofa',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: [
+				{
+					id: 1,
+					value: 1,
+					text: 'Zaburzenia przytomności (mniej niż 15 punktów w skali Glasgow)',
+				},
+				{
+					id: 2,
+					value: 1,
+					text: 'Częstotliwość oddechów większa lub równa 22/min',
+				},
+				{
+					id: 3,
+					value: 1,
+					text: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
+				},
+			],
+			radioGroups: null,
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 2) return 'Wysokie ryzyko zgonu.'
+			return 'Niewysokie ryzyko zgonu.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
@@ -1196,8 +1579,9 @@ export const calculators: Calculator[] = [
 	// 		checkboxes: null,
 	// 		radioGroups: null,
 	// 	},
+	// resultUnit: '',
 
-	// 	calculateResult: function () {},
+	// 	calculateResult: function (setResult: (value: number) => void) {},
 
 	// 	interpretResult: function (result: number) {},
 	// },
