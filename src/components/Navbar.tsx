@@ -21,20 +21,17 @@ export default function Navbar() {
 					justify='space-between'
 					gap={6}
 					wrap='wrap'>
-					<Box>
+					<Flex align='start'>
 						<Link href='/' id='navLogo'>
 							<Flex align='center'>
 								<IconMedicalCross />
 								<Text>kalkdoktor</Text>
-								<Badge
-									ml='2'
-									colorScheme='teal'
-									variant='outline'>
-									beta
-								</Badge>
 							</Flex>
 						</Link>
-					</Box>
+						<Badge colorScheme='teal' variant='outline' fontSize='0.6em' ml={1} mt={2}>
+							beta
+						</Badge>
+					</Flex>
 
 					<Flex align='center' gap={3} wrap='wrap'>
 						<SearchModal />
