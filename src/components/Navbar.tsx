@@ -6,6 +6,7 @@ import {
 	Link,
 	Button,
 	Text,
+	Badge,
 } from '@chakra-ui/react'
 import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
 import SearchModal from './SearchModal'
@@ -25,6 +26,12 @@ export default function Navbar() {
 							<Flex align='center'>
 								<IconMedicalCross />
 								<Text>kalkdoktor</Text>
+								<Badge
+									ml='2'
+									colorScheme='teal'
+									variant='outline'>
+									beta
+								</Badge>
 							</Flex>
 						</Link>
 					</Box>
