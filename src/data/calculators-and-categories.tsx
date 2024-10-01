@@ -1362,8 +1362,10 @@ export const calculators: Calculator[] = [
 		calculateResult: sumInputValues,
 
 		interpretResult: function (result: number) {
-			if (result >= 11) return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
-			if (result >= 4) return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.'
+			if (result >= 11)
+				return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
+			if (result >= 4)
+				return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.'
 			return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.'
 		},
 	},
@@ -1373,8 +1375,7 @@ export const calculators: Calculator[] = [
 		name: 'Skala CURB-65',
 		link: 'skala-curb65',
 		category: 'pulmonologia',
-		description:
-			'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
+		description: 'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
 		methodology: null,
 		sources: [
 			{
@@ -1557,6 +1558,270 @@ export const calculators: Calculator[] = [
 		interpretResult: function (result: number) {
 			if (result >= 2) return 'Wysokie ryzyko zgonu.'
 			return 'Niewysokie ryzyko zgonu.'
+		},
+	},
+
+	{
+		id: 18,
+		name: 'Kwestionariusz Fagerströma',
+		link: 'kwestionariusz-fagerstroma',
+		category: 'używki',
+		description: 'Ocenia stopień uzależnienia od nikotyny.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma, dostęp: 01.10.2024',
+				link: 'https://www.mp.pl/interna/table/B16.3.23-2.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Kiedy po przebudzeniu zapalasz pierwszego papierosa',
+					radios: [
+						{
+							id: 1,
+							value: 3,
+							text: 'Do 5 minut',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: 'Od 6 do 30 minut',
+						},
+						{
+							id: 3,
+							value: 1,
+							text: 'Od 31 do 60 minut',
+						},
+						{
+							id: 4,
+							value: 0,
+							text: 'Po 60 minutach',
+						},
+					],
+				},
+				{
+					id: 2,
+					text: 'Czy masz trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 2,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 3,
+					text: 'Z którego papierosa jest Ci najtrudniej zrezygnować',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Z pierwszego rano',
+						},
+						{
+							id: 2,
+							value: 0,
+							text: 'Z każdego innego',
+						},
+					],
+				},
+				{
+					id: 4,
+					text: 'Ile papierosów wypalasz dziennie',
+					radios: [
+						{
+							id: 1,
+							value: 0,
+							text: '10 lub mniej',
+						},
+						{
+							id: 2,
+							value: 1,
+							text: 'Od 11 do 20',
+						},
+						{
+							id: 3,
+							value: 2,
+							text: 'Od 21 do 30',
+						},
+						{
+							id: 4,
+							value: 3,
+							text: '31 lub więcej',
+						},
+					],
+				},
+				{
+					id: 5,
+					text: 'Czy rano palisz więcej papierosów niż w ciągu dnia',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 2,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 6,
+					text: 'Czy palisz papierosy nawet podczas choroby, gdy musisz leżeć w łóżku',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 2,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result >= 7) return 'Silne uzależnienie od nikotyny.'
+			if (result >= 4) return 'Średnie uzależnienie od nikotyny.'
+			return 'Słabe uzależnienie od nikotyny.'
+		},
+	},
+
+	{
+		id: 19,
+		name: 'Skala NYHA',
+		link: 'skala-nyha',
+		category: 'kardiologia',
+		description:
+			'Ocenia stopień niewydolności serca na podstawie objawów.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association, dostęp: 01.10.2024',
+				link: 'https://www.mp.pl/interna/table/B16.2.19-1.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Wydolność wysiłkowa',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Bez ograniczeń w aktywności fizycznej. Zwykły wysiłek fizyczny nie powoduje nadmiernego zmęczenia, duszności ani kołatania serca',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: 'Niewielkie ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale zwykła aktywność powoduje zmęczenie, kołatanie serca lub duszność',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Znaczne ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale aktywność mniejsza niż zwykła powoduje wystąpienie objawów',
+						},
+						{
+							id: 4,
+							value: 4,
+							text: 'Każda aktywność fizyczna wywołuje dolegliwości. Objawy podmiotowe niewydolności serca występują nawet w spoczynku, a jakakolwiek aktywność nasila dolegliwości',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result === 4) return 'NYHA IV'
+			if (result === 3) return 'NYHA III'
+			if (result === 2) return 'NYHA II'
+			return 'NYHA I'
+		},
+	},
+
+	{
+		id: 20,
+		name: 'Skala CCS',
+		link: 'skala-ccs',
+		category: 'kardiologia',
+		description: 'Ocenia zaawansowanie choroby niedokrwiennej serca.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 2.5-1. Klasyfikacja dławicy piersiowej na podstawie jej nasilenia wg Canadian Cardiovascular Society (CCS), dostęp: 01.10.2024',
+				link: 'https://www.mp.pl/interna/table/B16.2.5-1.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Aktywność fizyczna',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Zwyczajna aktywność fizyczna, taka jak chodzenie po płaskim terenie lub wchodzenie po schodach, nie wywołuje dławicy. Dławica występuje przy większym, gwałtowniejszym lub dłużej trwającym wysiłku fizycznym, związanym z pracą lub rekreacją',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: 'Niewielkie ograniczenie zwyczajnej aktywności fizycznej. Dławica występuje przy szybkim chodzeniu po płaskim terenie lub szybkim wchodzeniu po schodach, przy wchodzeniu pod górę, przy chodzeniu po płaskim terenie lub wchodzeniu po schodach, po posiłkach, gdy jest zimno, wieje wiatr, pod wpływem stresu emocjonalnego lub tylko w ciągu kilku godzin po przebudzeniu lub po przejściu ponad 200 m po terenie płaskim i przy wchodzeniu po schodach na więcej niż jedno piętro w normalnym tempie i w zwykłych warunkach',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Znaczne ograniczenie zwykłej aktywności fizycznej. Dławica występuje po przejściu od 100 do 200 metrów po terenie płaskim lub przy wchodzeniu po schodach na jedno piętro w normalnym tempie i w zwykłych warunkach',
+						},
+						{
+							id: 4,
+							value: 4,
+							text: 'Jakakolwiek aktywność fizyczna wywołuje dławicę. Może ona występować w spoczynku',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result === 4) return 'Klasa CCS IV'
+			if (result === 3) return 'Klasa CCS III'
+			if (result === 2) return 'Klasa CCS II'
+			return 'Klasa CCS I'
 		},
 	},
 
