@@ -97,6 +97,10 @@ export default function SearchModal() {
 								size='lg'
 								colorScheme='teal'
 								onClick={onClose}
+								_focusVisible={{
+									outline: '2px solid teal',
+									outlineOffset: '-2px',
+								}}
 							/>
 						</Flex>
 						{searchValue === '' ? '' : <Divider mt={4} />}
