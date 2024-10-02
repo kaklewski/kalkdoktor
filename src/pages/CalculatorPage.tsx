@@ -20,7 +20,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 
 	return (
 		<>
-			<Flex justify='space-between'>
+			<Flex justify='space-between' gap={2}>
 				<Heading as='h1'>{calculator.name}</Heading>
 				<FavButton pageId={calculator.id} />
 			</Flex>
