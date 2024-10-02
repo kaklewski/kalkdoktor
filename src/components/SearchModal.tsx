@@ -14,6 +14,7 @@ import {
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
+	Tooltip,
 	useDisclosure,
 } from '@chakra-ui/react'
 import { IconSearch } from '@tabler/icons-react'
@@ -27,17 +28,35 @@ export default function SearchModal() {
 
 	useEffect(() => setSearchValue(''), [isOpen])
 
+	useEffect(() => {
+		function toggleModal(event: any) {
+			if (event.ctrlKey && event.key === 'k') {
+				event.preventDefault()
+				if (isOpen) {
+					onClose()
+				} else {
+					onOpen()
+				}
+			}
+		}
+
+		document.addEventListener('keydown', toggleModal)
+		return () => document.removeEventListener('keydown', toggleModal)
+	}, [isOpen])
+
 	return (
 		<>
-			<Button
-				onClick={onOpen}
-				id='search-icon-big'
-				leftIcon={<IconSearch stroke={1.5} />}
-				colorScheme='teal'
-				variant='solid'
-				aria-label='Wyszukaj kalkulator'>
-				Wyszukaj
-			</Button>
+			<Tooltip label='ctrl + k'>
+				<Button
+					onClick={onOpen}
+					id='search-icon-big'
+					leftIcon={<IconSearch stroke={1.5} />}
+					colorScheme='teal'
+					variant='solid'
+					aria-label='Wyszukaj kalkulator'>
+					Wyszukaj
+				</Button>
+			</Tooltip>
 
 			<IconButton
 				onClick={onOpen}
