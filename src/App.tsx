@@ -7,7 +7,7 @@ import {
 import RootLayout from './layouts/RootLayout'
 import IndexPage from './pages/IndexPage'
 import CalculatorPage from './pages/CalculatorPage'
-import { calculators } from './data/calculators-and-categories'
+import { calculators } from './data/calculators'
 import FavPage from './pages/FavPage'
 import AddFavPage from './pages/AddFavPage'
 import Error404 from './components/Error404'

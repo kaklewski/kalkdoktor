@@ -9,10 +9,10 @@ import {
 	TabPanels,
 	Tabs,
 } from '@chakra-ui/react'
-import { sortedCalculators } from '../data/calculators-and-categories'
+import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { useState } from 'react'
-import { categories } from '../data/calculators-and-categories'
+import { categories } from '../data/categories'
 
 export default function IndexPage() {
 	// These two keys exist to make sure that when you add a calculator to favorites on one tab, it is also displayed as faved on the other one
@@ -47,8 +47,6 @@ export default function IndexPage() {
 								<Box mb={6}>
 									<Heading as='h2' fontSize='2xl'>
 										{category.toUpperCase()}
-										{/* {category[0].toUpperCase() +
-											category.slice(1)} */}
 									</Heading>
 									<Divider mt={2} />
 								</Box>

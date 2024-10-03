@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { IconHeartPlus } from '@tabler/icons-react'
 import { useEffect } from 'react'
-import { sortedCalculators } from '../data/calculators-and-categories'
+import { sortedCalculators } from '../data/sortedCalculators'
 
 export default function AddFavPage() {
 	const urlParams = new URLSearchParams(window.location.search)

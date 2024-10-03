@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { IconSearch } from '@tabler/icons-react'
 import { useEffect, useRef, useState } from 'react'
-import { sortedCalculators } from '../data/calculators-and-categories'
+import { sortedCalculators } from '../data/sortedCalculators'
 
 export default function SearchModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()

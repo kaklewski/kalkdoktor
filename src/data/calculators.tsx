@@ -423,7 +423,7 @@ export const calculators: Calculator[] = [
 					id: 'packageSize',
 					text: 'Liczba tabletek w opakowaniu',
 					min: 1,
-					max: 100,
+					max: 200,
 				},
 			],
 			checkboxes: null,
@@ -479,7 +479,7 @@ export const calculators: Calculator[] = [
 					id: 'age',
 					text: 'Wiek (lata)',
 					min: 1,
-					max: 100,
+					max: 120,
 				},
 				{
 					id: 'weight',
@@ -1026,7 +1026,7 @@ export const calculators: Calculator[] = [
 					id: 'heartRate',
 					text: 'Czynność serca (na minutę)',
 					min: 1,
-					max: 1000,
+					max: 700,
 				},
 			],
 			checkboxes: null,
@@ -1073,19 +1073,19 @@ export const calculators: Calculator[] = [
 				{
 					id: 'prothrombinTime',
 					text: 'Czas protrombinowy pacjenta (s)',
-					min: 1,
+					min: 0.1,
 					max: 1000,
 				},
 				{
 					id: 'controlTime',
 					text: 'Czas protrombinowy prawidłowy (s)',
-					min: 1,
+					min: 0.1,
 					max: 1000,
 				},
 				{
 					id: 'bilirubin',
 					text: 'Stężenie bilirubiny całkowitej (mg/dl)',
-					min: 1,
+					min: 0.1,
 					max: 1000,
 				},
 			],
@@ -1141,7 +1141,7 @@ export const calculators: Calculator[] = [
 					id: 'age',
 					text: 'Wiek (lata)',
 					min: 1,
-					max: 100,
+					max: 120,
 				},
 				{
 					id: 'weight',
@@ -1470,12 +1470,12 @@ export const calculators: Calculator[] = [
 					radios: [
 						{
 							id: 'woman',
-							value: 0,
+							value: 0.85,
 							text: 'Kobieta',
 						},
 						{
 							id: 'man',
-							value: 0.15,
+							value: 0,
 							text: 'Mężczyzna',
 						},
 					],
@@ -1713,8 +1713,7 @@ export const calculators: Calculator[] = [
 		name: 'Skala NYHA',
 		link: 'skala-nyha',
 		category: 'kardiologia',
-		description:
-			'Ocenia stopień niewydolności serca na podstawie objawów.',
+		description: 'Ocenia stopień niewydolności serca na podstawie objawów.',
 		methodology: null,
 		sources: [
 			{
@@ -1825,6 +1824,315 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 21,
+		name: 'Wskaźnik eGFR (wzór Cockcrofta i Gaulta)',
+		link: 'wskaznik-gfr',
+		category: 'nefrologia',
+		description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'National Kidney Foundation, Cockcroft-Gault Formula, dostęp: 02.10.2024',
+				link: 'https://www.kidney.org/professionals/kdoqi/gfr_calculatorCoc',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 1,
+					max: 120,
+				},
+				{
+					id: 'weight',
+					text: 'Masa ciała (kg)',
+					min: 1,
+					max: 250,
+				},
+				{
+					id: 'creatinine',
+					text: 'Stężenie kreatyniny (mg/dl)',
+					min: 0.01,
+					max: 100,
+				},
+			],
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 'sex',
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'woman',
+							value: 0.85,
+							text: 'Kobieta',
+						},
+						{
+							id: 'man',
+							value: 1,
+							text: 'Mężczyzna',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: 'ml/min',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age = parseFloat(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const weight = parseFloat(
+				(document.getElementById('weight') as HTMLInputElement).value
+			)
+			const creatinine = parseFloat(
+				(document.getElementById('creatinine') as HTMLInputElement)
+					.value
+			)
+			const sexCheckbox = document.getElementById(
+				'woman'
+			) as HTMLInputElement
+			const isWoman = sexCheckbox ? sexCheckbox.checked : true
+
+			let result = ((140 - age) * weight) / (creatinine * 72)
+			if (isWoman) result = result * 0.85
+
+			setResult(result)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			return 'Klirens kreatyniny.'
+		},
+	},
+
+	{
+		id: 22,
+		name: 'Wskaźnik FIB-4',
+		link: 'wskaznik-fib-4',
+		category: 'hepatologia',
+		description: 'Ocenia stopień włóknienia wątroby.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Kalkulator FIB-4, dostęp: 03.10.2024',
+				link: 'https://www.mp.pl/gastrologia/skale/300695,fib-4',
+			},
+			{
+				id: 2,
+				name: 'remedium.md, Wskaźnik FIB-4, dostęp: 03.10.2024',
+				link: 'https://remedium.md/kalkulatory/hepatologia/wska%C5%BAnik-fib-4-ocena-prawdopodobie%C5%84stwa-zw%C5%82%C3%B3knienia-w%C4%85troby',
+			},
+			{
+				id: 3,
+				name: 'Hepatitis C Online, Fibrosis-4 (FIB-4) Calculator, dostęp: 03.10.2024',
+				link: 'https://www.hepatitisc.uw.edu/page/clinical-calculators/fib-4',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 1,
+					max: 120,
+				},
+				{
+					id: 'alt',
+					text: 'ALT',
+					min: 1,
+					max: 2500,
+				},
+				{
+					id: 'ast',
+					text: 'AST',
+					min: 1,
+					max: 2500,
+				},
+				{
+					id: 'platelet',
+					text: 'Liczba płytek krwi (x10⁹/l)',
+					min: 1,
+					max: 1000,
+				},
+			],
+			checkboxes: null,
+			radioGroups: null,
+		},
+		resultUnit: '',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age = parseFloat(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const alt = parseFloat(
+				(document.getElementById('alt') as HTMLInputElement).value
+			)
+			const ast = parseFloat(
+				(document.getElementById('ast') as HTMLInputElement).value
+			)
+			const platelet = parseFloat(
+				(document.getElementById('platelet') as HTMLInputElement).value
+			)
+
+			const result = (age * ast) / (platelet * Math.sqrt(alt))
+			setResult(result)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			if (result > 3.25)
+				return 'Duże prawdopodobieństwo zaawansowanego włóknienia.'
+			if (result > 1.45)
+				return 'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.'
+			return 'Małe prawdopodobieństwo zaawansowanego włóknienia.'
+		},
+	},
+
+	{
+		id: 23,
+		name: 'Skala Childa-Pugha',
+		link: 'skala-childa-pugha',
+		category: 'hepatologia',
+		description:
+			'Określa stopień niewydolności wątroby i klasyfikację pacjenta do przeszczepu wątroby.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Tabela 7.12-1. Klasyfikacja Childa (zmodyfikowana przez Pugha) niewydolności wątroby, dostęp: 03.10.2024',
+				link: 'https://www.mp.pl/interna/table/B16.7.12-1.',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Encefalopatia',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Nie ma',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: 'Stopień 1–2',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Stopień 3–4',
+						},
+					],
+				},
+				{
+					id: 2,
+					text: 'Wodobrzusze',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Nie ma',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: 'Umiarkowane',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Napięte',
+						},
+					],
+				},
+				{
+					id: 3,
+					text: 'Stężenie bilirubiny',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Poniżej 2mg/dl (34.2 µmol/l)',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: '2-3mg/dl (34.2-51.3 µmol/l)',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Ponad 3mg/dl (51.3 µmol/l)',
+						},
+					],
+				},
+				{
+					id: 4,
+					text: 'Stężenie albuminy',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Powyżej 3.5 g/dl (35 g/l)',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: '2.8-3.5 g/dl (28-35 g/l)',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Poniżej 2.8 g/dl (28 g/l)',
+						},
+					],
+				},
+				{
+					id: 5,
+					text: 'Czas protrombinowy / INR',
+					radios: [
+						{
+							id: 1,
+							value: 1,
+							text: 'Poniżej 5 / 1,70',
+						},
+						{
+							id: 2,
+							value: 2,
+							text: '5–10 / 1,70–2,20',
+						},
+						{
+							id: 3,
+							value: 3,
+							text: 'Ponad 10 / 2,20',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			if (result >= 10)
+				return 'Klasa C. Są wskazania do przeszczepu wątroby.'
+			if (result >= 7)
+				return 'Klasa B. Są wskazania do przeszczepu wątroby.'
+			return 'Klasa A. Nie ma wskazań do przeszczepu wątroby.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
@@ -1851,24 +2159,3 @@ export const calculators: Calculator[] = [
 	// 	interpretResult: function (result: number) {},
 	// },
 ]
-
-export const categories: string[] = (() => {
-	let categoryArray: string[] = []
-
-	calculators.forEach(calculator => {
-		if (!categoryArray.includes(calculator.category))
-			categoryArray.push(calculator.category)
-	})
-
-	return categoryArray.sort()
-})()
-
-export const sortedCalculators = calculators.sort(
-	(a: Calculator, b: Calculator) => {
-		const keyA = a.name.toLowerCase()
-		const keyB = b.name.toLowerCase()
-		if (keyA < keyB) return -1
-		if (keyA > keyB) return 1
-		return 0
-	}
-)

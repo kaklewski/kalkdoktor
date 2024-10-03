@@ -1,5 +1,5 @@
 import { Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
-import { sortedCalculators } from '../data/calculators-and-categories'
+import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
