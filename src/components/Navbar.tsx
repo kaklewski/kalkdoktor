@@ -28,7 +28,12 @@ export default function Navbar() {
 								<Text>kalkdoktor</Text>
 							</Flex>
 						</Link>
-						<Badge colorScheme='teal' variant='outline' fontSize='0.6em' ml={1} mt={2}>
+						<Badge
+							colorScheme='teal'
+							variant='outline'
+							fontSize='0.6em'
+							ml={1}
+							mt={2}>
 							beta
 						</Badge>
 					</Flex>
@@ -36,17 +41,17 @@ export default function Navbar() {
 					<Flex align='center' gap={3} wrap='wrap'>
 						<SearchModal />
 
-						<Link href='/ulubione'>
-							<Button
-								id='favorites-icon-big'
-								leftIcon={<IconHearts stroke={1.5} />}
-								aria-label='Ulubione'>
-								Ulubione
-							</Button>
+						<Button
+							as='a'
+							href='/ulubione'
+							id='favorites-icon-big'
+							leftIcon={<IconHearts stroke={1.5} />}
+							aria-label='Ulubione'>
+							Ulubione
+						</Button>
 
-							<IconButton
-								id='favorites-icon-small'
-								aria-label='Ulubione'>
+						<Link href='/ulubione' id='favorites-icon-small'>
+							<IconButton aria-label='Ulubione'>
 								<IconHearts stroke={1.5} />
 							</IconButton>
 						</Link>
