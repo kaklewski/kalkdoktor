@@ -7,8 +7,6 @@ import {
 	Input,
 	InputGroup,
 	InputLeftElement,
-	LinkBox,
-	LinkOverlay,
 	Modal,
 	ModalBody,
 	ModalContent,
@@ -21,6 +19,7 @@ import {
 import { IconSearch } from '@tabler/icons-react'
 import { useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
+import SearchResultButton from './SearchResultButton'
 
 export default function SearchModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
@@ -98,19 +97,13 @@ export default function SearchModal() {
 								size='lg'
 								colorScheme='teal'
 								onClick={onClose}
-								_focusVisible={{
-									outline: '2px solid teal',
-									outlineOffset: '-2px',
-								}}
 							/>
 						</Flex>
-						{searchValue === '' ? '' : <Divider mt={4} />}
 					</ModalHeader>
 
-					{searchValue === '' ? (
-						''
-					) : (
-						<ModalBody pt={0}>
+					{searchValue && (
+						<ModalBody pt={1}>
+							<Divider mb={4} />
 							<Stack>
 								{sortedCalculators
 									.filter(value =>
@@ -120,20 +113,11 @@ export default function SearchModal() {
 									)
 									.map(calc => {
 										return (
-											<LinkBox
+											<SearchResultButton
 												key={calc.id}
-												p={3}
-												_hover={{
-													backgroundColor: 'teal.400',
-													color: 'black',
-													borderRadius: 'base',
-													transition:
-														'background-color 0.25s, color 0.25s',
-												}}>
-												<LinkOverlay href={calc.link}>
-													{calc.name}
-												</LinkOverlay>
-											</LinkBox>
+												link={calc.link}
+												name={calc.name}
+											/>
 										)
 									})}
 							</Stack>
