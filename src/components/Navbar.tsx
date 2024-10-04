@@ -22,7 +22,7 @@ export default function Navbar() {
 					gap={6}
 					wrap='wrap'>
 					<Flex align='start'>
-						<Link href='/' id='navLogo'>
+						<Link href='/' id='navLogo' borderRadius='md'>
 							<Flex align='center'>
 								<IconMedicalCross />
 								<Text>kalkdoktor</Text>
