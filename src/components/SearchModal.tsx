@@ -14,6 +14,7 @@ import {
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
+	Stack,
 	Tooltip,
 	useDisclosure,
 } from '@chakra-ui/react'
@@ -110,30 +111,32 @@ export default function SearchModal() {
 						''
 					) : (
 						<ModalBody pt={0}>
-							{sortedCalculators
-								.filter(value =>
-									value.name
-										.toLowerCase()
-										.includes(searchValue.toLowerCase())
-								)
-								.map(calc => {
-									return (
-										<LinkBox
-											key={calc.id}
-											p={3}
-											_hover={{
-												backgroundColor: 'teal.400',
-												color: 'black',
-												borderRadius: 'base',
-												transition:
-													'background-color 0.25s, color 0.25s',
-											}}>
-											<LinkOverlay href={calc.link}>
-												{calc.name}
-											</LinkOverlay>
-										</LinkBox>
+							<Stack>
+								{sortedCalculators
+									.filter(value =>
+										value.name
+											.toLowerCase()
+											.includes(searchValue.toLowerCase())
 									)
-								})}
+									.map(calc => {
+										return (
+											<LinkBox
+												key={calc.id}
+												p={3}
+												_hover={{
+													backgroundColor: 'teal.400',
+													color: 'black',
+													borderRadius: 'base',
+													transition:
+														'background-color 0.25s, color 0.25s',
+												}}>
+												<LinkOverlay href={calc.link}>
+													{calc.name}
+												</LinkOverlay>
+											</LinkBox>
+										)
+									})}
+							</Stack>
 						</ModalBody>
 					)}
 				</ModalContent>
