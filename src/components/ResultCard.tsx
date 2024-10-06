@@ -20,16 +20,17 @@ export default function ResultCard({
 	interpretResult,
 }: ComponentProps) {
 	const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
+	const [resultCardAnimation, setResultCardAnimation] = useState('')
+
 	useEffect(() => {
 		if (isFirstRender) {
 			setIsFirstRender(false)
 			return
 		}
 
-		const resultCard = document.getElementById('resultCard')
-		resultCard?.classList.add('animation')
+		setResultCardAnimation('animation')
 		setTimeout(() => {
-			resultCard?.classList.remove('animation')
+			setResultCardAnimation('')
 		}, 300)
 	}, [result])
 
@@ -38,11 +39,15 @@ export default function ResultCard({
 	if (Number.isNaN(result)) result = 0
 
 	return (
-		<Card overflow='hidden' variant='filled' id='resultCard'>
+		<Card
+			overflow='hidden'
+			variant='filled'
+			id='resultCard'
+			className={resultCardAnimation}>
 			<CardHeader>
 				<Heading size='md'>
 					Wynik: {result.toFixed(1).replace(/\.0$/, '')}
-					{resultUnit && ' ' + resultUnit}
+					{resultUnit && ` ${resultUnit}`}
 				</Heading>
 			</CardHeader>
 
