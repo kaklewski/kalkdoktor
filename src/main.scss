@@ -44,9 +44,7 @@
 }
 
 #resultCard.animation {
-	animation-duration: 0.3s;
-	animation-name: scaleUpDown;
-	animation-timing-function: ease-in-out;
+	animation: 0.3s scaleUpDown ease-in-out;
 }
 
 @keyframes scaleUpDown {
