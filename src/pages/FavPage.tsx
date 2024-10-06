@@ -51,7 +51,7 @@ export default function FavPage() {
 							key={calculator.id}
 							id={calculator.id}
 							name={calculator.name}
-							link={calculator.link}
+							link={calculator.urlPath}
 							description={calculator.description}
 						/>
 					))

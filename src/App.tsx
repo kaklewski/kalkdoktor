@@ -23,7 +23,7 @@ export default function App() {
 				{calculators.map(calculator => (
 					<Route
 						key={calculator.id}
-						path={calculator.link}
+						path={calculator.urlPath}
 						element={<CalculatorPage calculator={calculator} />}
 					/>
 				))}

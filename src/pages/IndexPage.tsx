@@ -34,7 +34,7 @@ export default function IndexPage() {
 								key={calculator.id}
 								id={calculator.id}
 								name={calculator.name}
-								link={calculator.link}
+								link={calculator.urlPath}
 								description={calculator.description}
 							/>
 						))}
@@ -60,7 +60,7 @@ export default function IndexPage() {
 												key={calculator.id}
 												id={calculator.id}
 												name={calculator.name}
-												link={calculator.link}
+												link={calculator.urlPath}
 												description={
 													calculator.description
 												}

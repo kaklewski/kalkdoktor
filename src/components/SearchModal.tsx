@@ -115,7 +115,7 @@ export default function SearchModal() {
 										return (
 											<SearchResultButton
 												key={calc.id}
-												link={calc.link}
+												link={calc.urlPath}
 												name={calc.name}
 											/>
 										)
