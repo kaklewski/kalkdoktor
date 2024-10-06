@@ -55,9 +55,7 @@ export default function FormCard({
 			<Form onSubmit={getResult}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
-						{numberInputs === null
-							? ''
-							: numberInputs.map(input => (
+						{numberInputs && numberInputs.map(input => (
 									<CustomNumberInput
 										key={input.id}
 										id={input.id}
@@ -67,9 +65,7 @@ export default function FormCard({
 									/>
 							  ))}
 
-						{checkboxes === null
-							? ''
-							: checkboxes.map(checkbox => (
+						{checkboxes && checkboxes.map(checkbox => (
 									<CustomCheckbox
 										key={checkbox.id}
 										text={checkbox.text}
@@ -77,9 +73,7 @@ export default function FormCard({
 									/>
 							  ))}
 
-						{radioGroups === null
-							? ''
-							: radioGroups.map(radioGroup => (
+						{radioGroups && radioGroups.map(radioGroup => (
 									<CustomRadioGroup
 										key={radioGroup.id}
 										text={radioGroup.text}>

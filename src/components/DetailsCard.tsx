@@ -30,7 +30,7 @@ export default function DetailsCard({
 				<TabList px={4} pt={4}>
 					<Tab>Opis</Tab>
 					<Tab>Źródła</Tab>
-					{methodology === null ? '' : <Tab>Metodologia</Tab>}
+					{methodology && <Tab>Metodologia</Tab>}
 				</TabList>
 
 				<TabPanels>
@@ -56,9 +56,7 @@ export default function DetailsCard({
 							}
 						})}
 					</TabPanel>
-					{methodology === null ? (
-						''
-					) : (
+					{methodology && (
 						<TabPanel>
 							<Text>{methodology}</Text>
 						</TabPanel>

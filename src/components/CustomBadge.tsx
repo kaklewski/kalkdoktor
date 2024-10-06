@@ -6,6 +6,6 @@ interface ComponentProps {
 
 export default function CustomBadge({ value }: ComponentProps) {
 	return (
-		<Badge>{value > 0 ? '+' + value.toString() : value.toString()}</Badge>
+		<Badge>{value > 0 ? `+${value.toString()}` : value.toString()}</Badge>
 	)
 }
