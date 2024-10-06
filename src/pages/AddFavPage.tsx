@@ -46,49 +46,51 @@ export default function AddFavPage() {
 	return (
 		<>
 			{favIds === null ||
-			favIds === undefined ||
-			favIds === '' ||
-			JSON.parse(favIds).length === 0 ? (
-				''
-			) : (
-				<Card variant='outline'>
-					<CardBody>
-						<VStack mx='auto' maxW='80%'>
-							<IconHeartPlus stroke={1.5} size={100} />
-							<Heading mx='auto' size='md'>
-								Importuj ulubione
-							</Heading>
-							<Text align='center'>
-								Poniższe kalkulatory zostaną dodane do
-								ulubionych. Twoje obecne ulubione zostaną
-								nadpisane.
-							</Text>
-							<UnorderedList>
-								{favsToBeAdded.map(fav => {
-									return (
-										<ListItem key={fav.id}>
-											{fav.name}
-										</ListItem>
-									)
-								}, [])}
-							</UnorderedList>
-						</VStack>
-					</CardBody>
+				favIds === undefined ||
+				favIds === '' ||
+				(JSON.parse(favIds).length !== 0 && (
+					<Card variant='outline'>
+						<CardBody>
+							<VStack mx='auto' maxW='80%'>
+								<IconHeartPlus stroke={1.5} size={100} />
+								<Heading mx='auto' size='md'>
+									Importuj ulubione
+								</Heading>
+								<Text align='center'>
+									Poniższe kalkulatory zostaną dodane do
+									ulubionych. Twoje obecne ulubione zostaną
+									nadpisane.
+								</Text>
+								<UnorderedList>
+									{favsToBeAdded.map(fav => {
+										return (
+											<ListItem key={fav.id}>
+												{fav.name}
+											</ListItem>
+										)
+									}, [])}
+								</UnorderedList>
+							</VStack>
+						</CardBody>
 
-					<CardFooter>
-						<Flex justify='center' align='center' gap={3} w='100%'>
-							<Link href='/'>
-								<Button>Anuluj</Button>
-							</Link>
-							<Button
-								colorScheme='teal'
-								onClick={() => saveNewFav(favIds)}>
-								Dodaj
-							</Button>
-						</Flex>
-					</CardFooter>
-				</Card>
-			)}
+						<CardFooter>
+							<Flex
+								justify='center'
+								align='center'
+								gap={3}
+								w='100%'>
+								<Link href='/'>
+									<Button>Anuluj</Button>
+								</Link>
+								<Button
+									colorScheme='teal'
+									onClick={() => saveNewFav(favIds)}>
+									Dodaj
+								</Button>
+							</Flex>
+						</CardFooter>
+					</Card>
+				))}
 		</>
 	)
 }

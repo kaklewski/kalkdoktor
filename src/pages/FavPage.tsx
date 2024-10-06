@@ -40,7 +40,7 @@ export default function FavPage() {
 		<>
 			<Flex justify='space-between' align='center'>
 				<Heading>Ulubione</Heading>
-				{favoriteCalculators.length === 0 ? '' : <ShareFavModal />}
+				{favoriteCalculators.length !== 0 && <ShareFavModal />}
 			</Flex>
 			<Stack spacing={6}>
 				{favoriteCalculators.length === 0 ? (
