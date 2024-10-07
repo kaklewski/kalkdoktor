@@ -3,13 +3,10 @@ import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
-import { useEffect } from 'react'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function FavPage() {
-	useEffect(() => {
-		// Add the page title
-		document.title = 'Ulubione - Kalkdoktor'
-	}, [])
+	useDocumentTitle('Ulubione')
 
 	const favIds = (() => {
 		const fav = localStorage.getItem('favorites')

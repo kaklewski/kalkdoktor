@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Flex, Heading } from '@chakra-ui/react'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
 import { Calculator } from '../data/calculators'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 interface ComponentProps {
 	calculator: Calculator
@@ -13,10 +14,7 @@ interface ComponentProps {
 export default function CalculatorPage({ calculator }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
 
-	useEffect(() => {
-		// Add calculator name to the page title
-		document.title = calculator.name + ' - Kalkdoktor'
-	}, [])
+	useDocumentTitle(calculator.name)
 
 	return (
 		<>

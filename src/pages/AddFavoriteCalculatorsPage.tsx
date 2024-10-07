@@ -14,15 +14,15 @@ import {
 import { IconHeartPlus } from '@tabler/icons-react'
 import { useEffect } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function AddFavPage() {
+	useDocumentTitle('Importuj ulubione kalkulatory')
+
 	const urlParams = new URLSearchParams(window.location.search)
 	const favIds = urlParams.get('id')
 
 	useEffect(() => {
-		// Add the page title
-		document.title = 'Dodaj ulubione - Kalkdoktor'
-
 		if (
 			favIds === null ||
 			favIds === undefined ||
