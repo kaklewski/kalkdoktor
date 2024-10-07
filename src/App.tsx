@@ -8,8 +8,8 @@ import RootLayout from './layouts/RootLayout'
 import IndexPage from './pages/IndexPage'
 import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators'
-import FavPage from './pages/FavPage'
-import AddFavPage from './pages/AddFavPage'
+import FavPage from './pages/FavoritesPage'
+import AddFavPage from './pages/AddFavoriteCalculatorsPage'
 import Error404 from './components/Error404'
 
 export default function App() {
