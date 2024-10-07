@@ -1,4 +1,4 @@
-import { sumInputValues } from '../functions/sumInputValues'
+import { sumInputValues } from '../utils/sumInputValues'
 
 export interface Calculator {
 	id: number
