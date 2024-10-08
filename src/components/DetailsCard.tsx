@@ -12,11 +12,13 @@ import SourceLink from './SourceLink'
 interface ComponentProps {
 	description: string
 	methodology: string | null
-	sources: {
-		id: number
-		name: string
-		link: string
-	}[]
+	sources:
+		| {
+				id: number
+				name: string
+				link: string
+		  }[]
+		| string
 }
 
 export default function DetailsCard({
@@ -38,23 +40,17 @@ export default function DetailsCard({
 						<Text>{description}</Text>
 					</TabPanel>
 					<TabPanel>
-						{sources.map(sourceItem => {
-							if (sourceItem.link === '') {
-								return (
-									<Text key={sourceItem.id}>
-										{sourceItem.name}
-									</Text>
-								)
-							} else {
-								return (
-									<SourceLink
-										key={sourceItem.id}
-										name={sourceItem.name}
-										link={sourceItem.link}
-									/>
-								)
-							}
-						})}
+						{typeof sources === 'string'
+							? sources
+							: sources.map(sourceItem => {
+									return (
+										<SourceLink
+											key={sourceItem.id}
+											name={sourceItem.name}
+											link={sourceItem.link}
+										/>
+									)
+							  })}
 					</TabPanel>
 					{methodology && (
 						<TabPanel>

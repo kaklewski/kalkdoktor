@@ -7,13 +7,15 @@ export interface Calculator {
 	category: string
 	description: string
 	methodology: string | null
-	sources: {
-		id: number
-		name: string
-		link: string
-	}[]
+	sources:
+		| {
+				id: number
+				name: string
+				link: string
+		  }[]
+		| string
 	fields: {
-		numberInputs:
+		numberInputs?:
 			| {
 					id: string | number
 					text: string
@@ -21,14 +23,14 @@ export interface Calculator {
 					max: number
 			  }[]
 			| null
-		checkboxes:
+		checkboxes?:
 			| {
 					id: string | number
 					value: number
 					text: string
 			  }[]
 			| null
-		radioGroups:
+		radioGroups?:
 			| {
 					id: string | number
 					text: string
@@ -392,13 +394,7 @@ export const calculators: Calculator[] = [
 		description:
 			'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
 		methodology: null,
-		sources: [
-			{
-				id: 1,
-				name: 'Opracowanie własne.',
-				link: '',
-			},
-		],
+		sources: 'Opracowanie własne.',
 		fields: {
 			numberInputs: [
 				{
