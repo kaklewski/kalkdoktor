@@ -37,6 +37,7 @@ export interface Calculator {
 					radios: {
 						id: string | number
 						value: number
+						hideBadge?: boolean
 						text: string
 					}[]
 			  }[]
@@ -1467,11 +1468,13 @@ export const calculators: Calculator[] = [
 						{
 							id: 'woman',
 							value: 0.85,
+							hideBadge: true,
 							text: 'Kobieta',
 						},
 						{
 							id: 'man',
 							value: 0,
+							hideBadge: true,
 							text: 'Mężczyzna',
 						},
 					],
@@ -1864,11 +1867,13 @@ export const calculators: Calculator[] = [
 						{
 							id: 'woman',
 							value: 0.85,
+							hideBadge: true,
 							text: 'Kobieta',
 						},
 						{
 							id: 'man',
 							value: 1,
+							hideBadge: true,
 							text: 'Mężczyzna',
 						},
 					],

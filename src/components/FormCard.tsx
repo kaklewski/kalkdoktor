@@ -29,6 +29,7 @@ interface ComponentProps {
 				radios: {
 					id: string | number
 					value: number
+					hideBadge?: boolean
 					text: string
 				}[]
 		  }[]
@@ -55,38 +56,42 @@ export default function FormCard({
 			<Form onSubmit={getResult}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
-						{numberInputs && numberInputs.map(input => (
-									<CustomNumberInput
-										key={input.id}
-										id={input.id}
-										text={input.text}
-										min={input.min}
-										max={input.max}
-									/>
-							  ))}
+						{numberInputs &&
+							numberInputs.map(input => (
+								<CustomNumberInput
+									key={input.id}
+									id={input.id}
+									text={input.text}
+									min={input.min}
+									max={input.max}
+								/>
+							))}
 
-						{checkboxes && checkboxes.map(checkbox => (
-									<CustomCheckbox
-										key={checkbox.id}
-										text={checkbox.text}
-										value={checkbox.value}
-									/>
-							  ))}
+						{checkboxes &&
+							checkboxes.map(checkbox => (
+								<CustomCheckbox
+									key={checkbox.id}
+									text={checkbox.text}
+									value={checkbox.value}
+								/>
+							))}
 
-						{radioGroups && radioGroups.map(radioGroup => (
-									<CustomRadioGroup
-										key={radioGroup.id}
-										text={radioGroup.text}>
-										{radioGroup.radios.map(radio => (
-											<CustomRadio
-												key={radio.id}
-												id={radio.id}
-												value={radio.value}
-												text={radio.text}
-											/>
-										))}
-									</CustomRadioGroup>
-							  ))}
+						{radioGroups &&
+							radioGroups.map(radioGroup => (
+								<CustomRadioGroup
+									key={radioGroup.id}
+									text={radioGroup.text}>
+									{radioGroup.radios.map(radio => (
+										<CustomRadio
+											key={radio.id}
+											id={radio.id}
+											value={radio.value}
+											hideBadge={radio.hideBadge}
+											text={radio.text}
+										/>
+									))}
+								</CustomRadioGroup>
+							))}
 
 						<Button
 							type='submit'
