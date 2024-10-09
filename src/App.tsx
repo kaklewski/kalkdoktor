@@ -11,11 +11,15 @@ import { calculators } from './data/calculators'
 import FavPage from './pages/FavoritesPage'
 import AddFavPage from './pages/AddFavoriteCalculatorsPage'
 import Error404 from './components/Error404'
+import RouterErrorBoundary from './RouterErrorBoundary'
 
 export default function App() {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-			<Route path='/' element={<RootLayout />}>
+			<Route
+				path='/'
+				element={<RootLayout />}
+				errorElement={<RouterErrorBoundary />}>
 				<Route index element={<IndexPage />} />
 				<Route path='ulubione' element={<FavPage />} />
 				<Route path='dodaj-ulubione' element={<AddFavPage />} />
