@@ -6,7 +6,7 @@ const variantOutlined = () => ({
 	field: {
 		_focus: {
 			borderColor: 'var(--chakra-ui-focus-ring-color)',
-			boxShadow: '0 0 0 2px var(--chakra-ui-focus-ring-color)',
+			boxShadow: '0 0 0 1px var(--chakra-ui-focus-ring-color)',
 		},
 	},
 })
