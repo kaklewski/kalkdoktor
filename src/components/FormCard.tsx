@@ -96,9 +96,12 @@ export default function FormCard({
 						<Button
 							type='submit'
 							colorScheme='teal'
-							variant='solid'
 							w='fit-content'
-							mx='auto'>
+							mx='auto'
+							_focus={{
+								borderColor: 'teal',
+								boxShadow: '0 0 0 3px teal',
+							}}>
 							Oblicz
 						</Button>
 					</Stack>

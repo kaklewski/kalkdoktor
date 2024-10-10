@@ -52,8 +52,11 @@ export default function SearchModal() {
 					id='search-icon-big'
 					leftIcon={<IconSearch stroke={1.5} />}
 					colorScheme='teal'
-					variant='solid'
-					aria-label='Wyszukaj kalkulator'>
+					aria-label='Wyszukaj kalkulator'
+					_focus={{
+						borderColor: 'teal',
+						boxShadow: '0 0 0 3px teal',
+					}}>
 					Wyszukaj
 				</Button>
 			</Tooltip>
