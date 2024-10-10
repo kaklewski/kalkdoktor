@@ -7,7 +7,7 @@ import CustomRadio from './CustomRadio'
 import { Dispatch, FormEvent, SetStateAction } from 'react'
 
 interface ComponentProps {
-	numberInputs:
+	numberInputs?:
 		| {
 				id: string | number
 				text: string
@@ -15,14 +15,14 @@ interface ComponentProps {
 				max: number
 		  }[]
 		| null
-	checkboxes:
+	checkboxes?:
 		| {
 				id: string | number
 				value: number
 				text: string
 		  }[]
 		| null
-	radioGroups:
+	radioGroups?:
 		| {
 				id: string | number
 				text: string
