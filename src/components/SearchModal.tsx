@@ -83,7 +83,6 @@ export default function SearchModal() {
 								</InputLeftElement>
 								<Input
 									variant='filled'
-									focusBorderColor='teal.500'
 									placeholder='Wyszukaj kalkulator'
 									ref={initialRef}
 									value={searchValue}
@@ -93,11 +92,7 @@ export default function SearchModal() {
 								/>
 							</InputGroup>
 
-							<CloseButton
-								size='lg'
-								colorScheme='teal'
-								onClick={onClose}
-							/>
+							<CloseButton size='lg' onClick={onClose} />
 						</Flex>
 					</ModalHeader>
 
