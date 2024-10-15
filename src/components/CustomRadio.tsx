@@ -3,7 +3,7 @@ import CustomBadge from './CustomBadge'
 
 interface ComponentProps {
 	id: number | string
-	value: number
+	value: number | string
 	hideBadge?: boolean
 	text: string
 }
@@ -18,7 +18,9 @@ export default function CustomRadio({
 		<Radio value={value.toString()} id={id.toString()} isRequired>
 			<Flex align='center' gap={2}>
 				{text}
-				{hideBadge !== true && <CustomBadge value={value} />}
+				{hideBadge !== true && typeof value === 'number' && (
+					<CustomBadge value={value} />
+				)}
 			</Flex>
 		</Radio>
 	)
