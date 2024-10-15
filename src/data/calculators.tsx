@@ -2134,10 +2134,324 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 24,
+		name: 'Wskaźnik SCORE2 i SCORE2-OP',
+		urlPath: 'score2-i-score2op',
+		category: 'kardiologia',
+		description: 'Ocenia ryzyko sercowo-naczyniowe.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski, dostęp: 14.10.2024',
+				link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'age',
+					text: 'Wiek (lata)',
+					min: 40,
+					max: 89,
+				},
+				{
+					id: 'bloodPressure',
+					text: 'Ciśnienie tętnicze skurczowe (mm Hg)',
+					min: 100,
+					max: 179,
+				},
+				{
+					id: 'cholesterol',
+					text: 'Cholesterol nie-HDL (mg/dl)',
+					min: 116,
+					max: 265,
+				},
+			],
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'man',
+							value: 'man',
+							hideBadge: true,
+							text: 'Mężczyzna',
+						},
+						{
+							id: 'woman',
+							value: 'woman',
+							hideBadge: true,
+							text: 'Kobieta',
+						},
+					],
+				},
+				{
+					id: 2,
+					text: 'Palenie papierosów',
+					radios: [
+						{
+							id: 'smoker',
+							value: 'true',
+							text: 'Tak',
+						},
+						{
+							id: 2,
+							value: 'false',
+							text: 'Nie',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '%',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const age: number = parseInt(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			const bloodPressure: number = parseFloat(
+				(document.getElementById('bloodPressure') as HTMLInputElement)
+					.value
+			)
+			const cholesterol: number = parseFloat(
+				(document.getElementById('cholesterol') as HTMLInputElement)
+					.value
+			)
+			const manCheckbox = document.getElementById(
+				'man'
+			) as HTMLInputElement
+			const gender: string = manCheckbox.checked ? 'male' : 'female'
+			const smokerCheckout = document.getElementById(
+				'smoker'
+			) as HTMLInputElement
+			const smoker: string = smokerCheckout.checked ? 'yes' : 'no'
+
+			// console.log(bloodPressure);
+
+			// Funkcja pomocnicza do mapowania wartości cholesterolu
+			function getCholesterolRange(cholesterol: number) {
+				if (cholesterol < 150) return 0
+				if (cholesterol < 200) return 1
+				if (cholesterol < 250) return 2
+				return 3
+			}
+
+			// Funkcja pomocnicza do mapowania wartości ciśnienia tętniczego
+			function getBloodPressureRange(bloodPressure: number) {
+				if (bloodPressure < 120) return 0
+				if (bloodPressure < 140) return 1
+				if (bloodPressure < 160) return 2
+				return 3
+			}
+
+			// Macierz ryzyka dla kobiet (palących i niepalących) oraz mężczyzn
+
+			// typ do zmiany
+			const scoreTable: any = {
+				female: {
+					no: {
+						// zrobione
+						40: [
+							[1, 1, 1, 1],
+							[1, 1, 1, 2],
+							[1, 2, 2, 2],
+							[2, 3, 3, 4],
+						],
+						45: [
+							[1, 1, 2, 3],
+							[2, 2, 2, 2],
+							[2, 3, 3, 4],
+							[3, 4, 4, 5],
+						],
+						50: [
+							[2, 2, 2, 3],
+							[3, 3, 3, 4],
+							[3, 4, 4, 5],
+							[5, 5, 6, 7],
+						],
+						55: [
+							[3, 3, 4, 4],
+							[4, 4, 5, 5],
+							[5, 6, 7, 7],
+							[7, 8, 9, 10],
+						],
+						60: [
+							[5, 5, 6, 6],
+							[6, 7, 7, 8],
+							[8, 9, 9, 10],
+							[11, 11, 12, 13],
+						],
+						65: [
+							[8, 8, 8, 9],
+							[10, 10, 11, 11],
+							[12, 13, 14, 14],
+							[15, 16, 17, 18],
+						],
+					},
+					yes: {
+						40: [
+							[2, 3, 4, 5],
+							[3, 4, 5, 7],
+							[4, 5, 7, 9],
+							[6, 7, 9, 12],
+						],
+						45: [
+							[3, 4, 5, 7],
+							[4, 5, 7, 9],
+							[5, 7, 9, 12],
+							[7, 9, 12, 15],
+						],
+						50: [
+							[4, 5, 7, 9],
+							[5, 7, 9, 11],
+							[7, 9, 12, 15],
+							[9, 12, 14, 18],
+						],
+						55: [
+							[5, 7, 8, 10],
+							[7, 8, 10, 13],
+							[9, 11, 13, 16],
+							[11, 14, 17, 21],
+						],
+						60: [
+							[6, 8, 9, 12],
+							[8, 10, 12, 15],
+							[11, 13, 16, 20],
+							[14, 17, 20, 25],
+						],
+						65: [
+							[8, 8, 8, 9],
+							[10, 10, 11, 11],
+							[12, 13, 14, 14],
+							[15, 16, 17, 18],
+						],
+					},
+				},
+				male: {
+					no: {
+						40: [
+							[2, 3, 3, 5],
+							[3, 4, 6, 8],
+							[4, 6, 9, 13],
+							[5, 7, 9, 12],
+						],
+						45: [
+							[3, 4, 5, 7],
+							[4, 5, 7, 9],
+							[6, 7, 10, 14],
+							[7, 9, 11, 15],
+						],
+						50: [
+							[5, 6, 8, 10],
+							[7, 8, 10, 13],
+							[9, 11, 14, 18],
+							[11, 14, 16, 21],
+						],
+						55: [
+							[6, 8, 10, 13],
+							[8, 10, 12, 15],
+							[11, 13, 16, 21],
+							[14, 17, 19, 25],
+						],
+						60: [
+							[8, 10, 12, 16],
+							[10, 12, 15, 19],
+							[13, 16, 20, 25],
+							[17, 21, 24, 30],
+						],
+						65: [
+							[10, 13, 16, 20],
+							[12, 16, 19, 24],
+							[16, 20, 25, 30],
+							[20, 25, 30, 35],
+						],
+					},
+					yes: {
+						40: [
+							[4, 5, 7, 9],
+							[5, 7, 9, 11],
+							[7, 9, 12, 15],
+							[9, 11, 14, 18],
+						],
+						45: [
+							[5, 7, 9, 11],
+							[7, 9, 11, 14],
+							[9, 11, 15, 18],
+							[12, 14, 18, 22],
+						],
+						50: [
+							[7, 9, 11, 14],
+							[9, 11, 14, 17],
+							[11, 14, 17, 21],
+							[14, 18, 22, 26],
+						],
+						55: [
+							[9, 11, 14, 17],
+							[11, 14, 17, 21],
+							[14, 17, 21, 25],
+							[18, 21, 26, 30],
+						],
+						60: [
+							[11, 14, 17, 21],
+							[14, 17, 21, 25],
+							[17, 21, 25, 30],
+							[21, 26, 30, 35],
+						],
+						65: [
+							[14, 18, 21, 26],
+							[18, 21, 25, 30],
+							[21, 26, 30, 35],
+							[26, 31, 35, 40],
+						],
+					},
+				},
+			}
+
+			// Ustalenie ryzyka na podstawie wieku, ciśnienia krwi, cholesterolu, płci i palenia
+			// const ageGroup = Math.floor((age - 40) / 5) // Grupy wiekowe 40-44, 45-49, itd.
+			const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40
+			const cholesterolRange: number = getCholesterolRange(cholesterol)
+			const bloodPressureRange: number =
+				getBloodPressureRange(bloodPressure)
+			const smokingStatus: string = smoker === 'yes' ? 'yes' : 'no'
+
+			console.log('gender:', gender)
+			console.log('smoking: ', smokingStatus)
+			console.log('age: ', ageGroup)
+			console.log('blood pressure:', bloodPressureRange)
+			console.log('cholesterol: ', cholesterolRange)
+
+			// const risk =
+			// scoreTable[gender][smokingStatus][ageGroup][bloodPressureRange][
+			// 	cholesterolRange
+			// ]
+			const risk: number =
+				scoreTable[gender][smokingStatus][ageGroup][bloodPressureRange][
+					cholesterolRange
+				]
+
+			// const risk = scoreTable['female']['no'][65][3][3]
+			// const risk = scoreTable['female']['no'][65][1][0]
+
+			console.log('risk:', risk)
+
+			setResult(risk)
+		},
+
+		interpretResult: function (result: number) {
+			if (result > 0) 'elo2'
+			return 'elo'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
-	// 	link: '',
+	// 	urlPath: '',
 	// 	category: '',
 	// 	description: '',
 	// 	methodology: null,
