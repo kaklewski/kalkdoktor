@@ -36,7 +36,7 @@ export interface Calculator {
 					text: string
 					radios: {
 						id: string | number
-						value: number
+						value: number | string
 						hideBadge?: boolean
 						text: string
 					}[]
