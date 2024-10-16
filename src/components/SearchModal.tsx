@@ -7,6 +7,7 @@ import {
 	Input,
 	InputGroup,
 	InputLeftElement,
+	InputRightElement,
 	Modal,
 	ModalBody,
 	ModalContent,
@@ -16,14 +17,14 @@ import {
 	Tooltip,
 	useDisclosure,
 } from '@chakra-ui/react'
-import { IconSearch } from '@tabler/icons-react'
+import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react'
 import { useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import SearchResultButton from './SearchResultButton'
 
 export default function SearchModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = useRef(null)
+	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchValue, setSearchValue] = useState<string>('')
 
 	useEffect(() => setSearchValue(''), [isOpen])
@@ -73,7 +74,7 @@ export default function SearchModal() {
 			<Modal
 				isOpen={isOpen}
 				onClose={onClose}
-				initialFocusRef={initialRef}
+				initialFocusRef={inputRef}
 				size='xl'
 				scrollBehavior='inside'>
 				<ModalOverlay />
@@ -84,15 +85,33 @@ export default function SearchModal() {
 								<InputLeftElement pointerEvents='none'>
 									<IconSearch stroke={1.5} />
 								</InputLeftElement>
+
 								<Input
 									variant='filled'
 									placeholder='Wyszukaj kalkulator'
-									ref={initialRef}
+									ref={inputRef}
 									value={searchValue}
 									onChange={event =>
 										setSearchValue(event.target.value)
 									}
 								/>
+
+								{searchValue && (
+									<InputRightElement>
+										<Button
+											variant='ghost'
+											size='sm'
+											p={0}
+											onClick={() => {
+												setSearchValue('')
+												if (inputRef.current !== null)
+													inputRef.current.focus()
+											}}
+											aria-label='Wyczyść tekst'>
+											<IconBackspaceFilled stroke={1.5} />
+										</Button>
+									</InputRightElement>
+								)}
 							</InputGroup>
 
 							<CloseButton size='lg' onClick={onClose} />
