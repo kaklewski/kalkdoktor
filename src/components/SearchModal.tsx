@@ -14,10 +14,15 @@ import {
 	ModalHeader,
 	ModalOverlay,
 	Stack,
+	Text,
 	Tooltip,
 	useDisclosure,
 } from '@chakra-ui/react'
-import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react'
+import {
+	IconBackspaceFilled,
+	IconSearch,
+	IconZoomQuestion,
+} from '@tabler/icons-react'
 import { useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import SearchResultButton from './SearchResultButton'
@@ -44,6 +49,10 @@ export default function SearchModal() {
 		document.addEventListener('keydown', toggleModal)
 		return () => document.removeEventListener('keydown', toggleModal)
 	}, [isOpen])
+
+	const filteredCalculators = sortedCalculators.filter(value =>
+		value.name.toLowerCase().includes(searchValue.toLowerCase())
+	)
 
 	return (
 		<>
@@ -122,21 +131,31 @@ export default function SearchModal() {
 						<ModalBody pt={1}>
 							<Divider mb={4} />
 							<Stack>
-								{sortedCalculators
-									.filter(value =>
-										value.name
-											.toLowerCase()
-											.includes(searchValue.toLowerCase())
+								{filteredCalculators.map(calc => {
+									return (
+										<SearchResultButton
+											key={calc.id}
+											link={calc.urlPath}
+											name={calc.name}
+										/>
 									)
-									.map(calc => {
-										return (
-											<SearchResultButton
-												key={calc.id}
-												link={calc.urlPath}
-												name={calc.name}
-											/>
-										)
-									})}
+								})}
+								{filteredCalculators.length === 0 && (
+									<Flex
+										flexDirection='column'
+										alignItems='center'
+										justifyContent='center'
+										textAlign='center'
+										py={4}>
+										<IconZoomQuestion
+											size={100}
+											stroke={1.5}
+										/>
+										<Text fontSize='lg'>
+											Nie znaleziono kalkulatora
+										</Text>
+									</Flex>
+								)}
 							</Stack>
 						</ModalBody>
 					)}
