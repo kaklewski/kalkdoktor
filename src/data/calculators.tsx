@@ -2136,16 +2136,21 @@ export const calculators: Calculator[] = [
 
 	{
 		id: 24,
-		name: 'Wskaźnik SCORE2 i SCORE2-OP',
-		urlPath: 'score2-i-score2op',
+		name: 'Kalkulator SCORE2 / SCORE2-OP',
+		urlPath: 'kalkulator-score2',
 		category: 'kardiologia',
-		description: 'Ocenia ryzyko sercowo-naczyniowe.',
+		description: 'Ocenia ryzyko sercowo-naczyniowe dla populacji Polski.',
 		methodology: null,
 		sources: [
 			{
 				id: 1,
 				name: 'Medycyna Praktyczna, Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski, dostęp: 14.10.2024',
 				link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
+			},
+			{
+				id: 2,
+				name: 'remedium.md, Wskaźnik SCORE2 i SCORE2-OP, dostęp: 16.10.2024',
+				link: 'https://remedium.md/kalkulatory/kardiologia/wska%C5%BAnik-score2-i-score2-op-ocena-ryzyka-sercowo-naczyniowego',
 			},
 		],
 		fields: {
