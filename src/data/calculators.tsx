@@ -2194,7 +2194,7 @@ export const calculators: Calculator[] = [
 					text: 'Palenie papierosów',
 					radios: [
 						{
-							id: 'smoker',
+							id: 'smoking',
 							value: 'true',
 							text: 'Tak',
 						},
@@ -2213,6 +2213,7 @@ export const calculators: Calculator[] = [
 			const age: number = parseInt(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
+			const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40
 			const bloodPressure: number = parseFloat(
 				(document.getElementById('bloodPressure') as HTMLInputElement)
 					.value
@@ -2225,36 +2226,35 @@ export const calculators: Calculator[] = [
 				'man'
 			) as HTMLInputElement
 			const gender: string = manCheckbox.checked ? 'male' : 'female'
-			const smokerCheckout = document.getElementById(
-				'smoker'
+			const smokingCheckbox = document.getElementById(
+				'smoking'
 			) as HTMLInputElement
-			const smoker: string = smokerCheckout.checked ? 'yes' : 'no'
+			const smokingStatus: string = smokingCheckbox.checked
+				? 'smoking'
+				: 'nonSmoking'
 
-			// console.log(bloodPressure);
-
-			// Funkcja pomocnicza do mapowania wartości cholesterolu
-			function getCholesterolRange(cholesterol: number) {
+			function getCholesterolGroup(cholesterol: number) {
 				if (cholesterol < 150) return 0
 				if (cholesterol < 200) return 1
 				if (cholesterol < 250) return 2
 				return 3
 			}
 
-			// Funkcja pomocnicza do mapowania wartości ciśnienia tętniczego
-			function getBloodPressureRange(bloodPressure: number) {
+			function getBloodPressureGroup(bloodPressure: number) {
 				if (bloodPressure < 120) return 0
 				if (bloodPressure < 140) return 1
 				if (bloodPressure < 160) return 2
 				return 3
 			}
 
-			// Macierz ryzyka dla kobiet (palących i niepalących) oraz mężczyzn
+			const cholesterolGroup: number = getCholesterolGroup(cholesterol)
+			const bloodPressureGroup: number =
+				getBloodPressureGroup(bloodPressure)
 
 			// typ do zmiany
-			const scoreTable: any = {
+			const score2ValuesTable: any = {
 				female: {
-					no: {
-						// zrobione
+					nonSmoking: {
 						40: [
 							[1, 1, 1, 1],
 							[1, 1, 1, 2],
@@ -2291,9 +2291,32 @@ export const calculators: Calculator[] = [
 							[12, 13, 14, 14],
 							[15, 16, 17, 18],
 						],
+						70: [
+							[11, 12, 13, 14],
+							[14, 15, 16, 17],
+							[17, 18, 19, 20],
+							[21, 22, 24, 25],
+						],
+						75: [
+							[18, 19, 20, 22],
+							[22, 23, 24, 25],
+							[25, 27, 28, 29],
+							[29, 31, 32, 34],
+						],
+						80: [
+							[29, 31, 32, 34],
+							[32, 34, 36, 37],
+							[36, 38, 39, 41],
+							[40, 42, 44, 45],
+						],
+						85: [
+							[44, 46, 48, 50],
+							[47, 49, 51, 52],
+							[50, 52, 54, 55],
+							[53, 55, 57, 58],
+						],
 					},
-					yes: {
-						// zrobione
+					smoking: {
 						40: [
 							[2, 2, 3, 3],
 							[3, 4, 4, 5],
@@ -2330,122 +2353,176 @@ export const calculators: Calculator[] = [
 							[21, 22, 23, 24],
 							[26, 27, 29, 30],
 						],
+						70: [
+							[19, 20, 21, 22],
+							[23, 24, 26, 27],
+							[28, 29, 31, 33],
+							[33, 35, 37, 39],
+						],
+						75: [
+							[26, 28, 29, 31],
+							[31, 32, 34, 36],
+							[35, 37, 39, 41],
+							[41, 43, 45, 47],
+						],
+						80: [
+							[36, 38, 40, 41],
+							[40, 42, 44, 46],
+							[44, 46, 48, 50],
+							[49, 51, 53, 55],
+						],
+						85: [
+							[49, 51, 52, 54],
+							[52, 53, 55, 57],
+							[55, 56, 58, 60],
+							[58, 59, 61, 63],
+						],
 					},
 				},
 				male: {
-					no: {
+					nonSmoking: {
 						40: [
-							[2, 3, 3, 5],
-							[3, 4, 6, 8],
-							[4, 6, 9, 13],
-							[5, 7, 9, 12],
+							[1, 2, 2, 3],
+							[2, 2, 3, 4],
+							[3, 3, 4, 5],
+							[4, 5, 6, 7],
 						],
 						45: [
-							[3, 4, 5, 7],
-							[4, 5, 7, 9],
-							[6, 7, 10, 14],
-							[7, 9, 11, 15],
+							[2, 2, 3, 4],
+							[3, 3, 4, 5],
+							[4, 5, 6, 7],
+							[5, 6, 8, 9],
 						],
 						50: [
-							[5, 6, 8, 10],
-							[7, 8, 10, 13],
-							[9, 11, 14, 18],
-							[11, 14, 16, 21],
+							[3, 3, 4, 5],
+							[4, 5, 5, 6],
+							[5, 6, 7, 9],
+							[7, 8, 10, 11],
 						],
 						55: [
-							[6, 8, 10, 13],
-							[8, 10, 12, 15],
-							[11, 13, 16, 21],
-							[14, 17, 19, 25],
+							[4, 5, 6, 7],
+							[6, 6, 7, 9],
+							[7, 8, 10, 11],
+							[9, 11, 12, 14],
 						],
 						60: [
-							[8, 10, 12, 16],
-							[10, 12, 15, 19],
-							[13, 16, 20, 25],
-							[17, 21, 24, 30],
+							[6, 7, 8, 9],
+							[8, 9, 10, 11],
+							[10, 11, 13, 14],
+							[13, 14, 16, 18],
 						],
 						65: [
-							[10, 13, 16, 20],
-							[12, 16, 19, 24],
-							[16, 20, 25, 30],
-							[20, 25, 30, 35],
+							[9, 10, 11, 12],
+							[11, 12, 13, 15],
+							[14, 15, 16, 18],
+							[17, 18, 20, 22],
+						],
+						70: [
+							[12, 14, 15, 16],
+							[15, 17, 18, 20],
+							[19, 20, 22, 24],
+							[23, 25, 27, 29],
+						],
+						75: [
+							[18, 20, 23, 26],
+							[21, 24, 27, 30],
+							[24, 27, 31, 34],
+							[28, 32, 35, 39],
+						],
+						80: [
+							[26, 30, 35, 40],
+							[29, 33, 38, 44],
+							[31, 36, 42, 47],
+							[34, 40, 45, 51],
+						],
+						85: [
+							[36, 43, 51, 58],
+							[38, 45, 53, 61],
+							[40, 47, 55, 63],
+							[42, 49, 57, 65],
 						],
 					},
-					yes: {
+					smoking: {
 						40: [
-							[4, 5, 7, 9],
-							[5, 7, 9, 11],
-							[7, 9, 12, 15],
-							[9, 11, 14, 18],
+							[3, 4, 5, 6],
+							[4, 5, 7, 8],
+							[6, 7, 9, 11],
+							[8, 10, 13, 16],
 						],
 						45: [
-							[5, 7, 9, 11],
-							[7, 9, 11, 14],
-							[9, 11, 15, 18],
-							[12, 14, 18, 22],
+							[4, 5, 6, 7],
+							[6, 7, 8, 10],
+							[8, 9, 11, 14],
+							[10, 13, 15, 18],
 						],
 						50: [
-							[7, 9, 11, 14],
-							[9, 11, 14, 17],
-							[11, 14, 17, 21],
-							[14, 18, 22, 26],
+							[6, 7, 8, 9],
+							[7, 9, 10, 12],
+							[10, 12, 14, 16],
+							[13, 15, 18, 21],
 						],
 						55: [
-							[9, 11, 14, 17],
-							[11, 14, 17, 21],
-							[14, 17, 21, 25],
-							[18, 21, 26, 30],
+							[8, 9, 10, 12],
+							[10, 11, 13, 15],
+							[13, 15, 17, 19],
+							[16, 19, 21, 24],
 						],
 						60: [
-							[11, 14, 17, 21],
-							[14, 17, 21, 25],
-							[17, 21, 25, 30],
-							[21, 26, 30, 35],
+							[10, 12, 13, 15],
+							[13, 15, 16, 18],
+							[16, 18, 20, 23],
+							[20, 23, 25, 28],
 						],
 						65: [
-							[14, 18, 21, 26],
-							[18, 21, 25, 30],
-							[21, 26, 30, 35],
-							[26, 31, 35, 40],
+							[14, 15, 17, 18],
+							[17, 19, 20, 22],
+							[21, 23, 25, 27],
+							[25, 28, 30, 32],
+						],
+						70: [
+							[18, 20, 22, 23],
+							[22, 24, 26, 28],
+							[27, 29, 32, 34],
+							[33, 35, 38, 41],
+						],
+						75: [
+							[23, 26, 29, 33],
+							[27, 30, 34, 37],
+							[31, 34, 38, 43],
+							[35, 39, 44, 48],
+						],
+						80: [
+							[29, 34, 39, 44],
+							[32, 37, 42, 48],
+							[35, 40, 46, 52],
+							[38, 44, 50, 56],
+						],
+						85: [
+							[36, 43, 50, 58],
+							[38, 45, 52, 60],
+							[40, 47, 54, 62],
+							[41, 49, 56, 65],
 						],
 					},
 				},
 			}
 
-			// Ustalenie ryzyka na podstawie wieku, ciśnienia krwi, cholesterolu, płci i palenia
-			// const ageGroup = Math.floor((age - 40) / 5) // Grupy wiekowe 40-44, 45-49, itd.
-			const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40
-			const cholesterolRange: number = getCholesterolRange(cholesterol)
-			const bloodPressureRange: number =
-				getBloodPressureRange(bloodPressure)
-			const smokingStatus: string = smoker === 'yes' ? 'yes' : 'no'
-
-			console.log('gender:', gender)
-			console.log('smoking: ', smokingStatus)
-			console.log('age: ', ageGroup)
-			console.log('blood pressure:', bloodPressureRange)
-			console.log('cholesterol: ', cholesterolRange)
-
-			// const risk =
-			// scoreTable[gender][smokingStatus][ageGroup][bloodPressureRange][
-			// 	cholesterolRange
-			// ]
 			const risk: number =
-				scoreTable[gender][smokingStatus][ageGroup][bloodPressureRange][
-					cholesterolRange
-				]
-
-			// const risk = scoreTable['female']['no'][65][3][3]
-			// const risk = scoreTable['female']['no'][65][1][0]
-
-			console.log('risk:', risk)
+				score2ValuesTable[gender][smokingStatus][ageGroup][
+					bloodPressureGroup
+				][cholesterolGroup]
 
 			setResult(risk)
 		},
 
 		interpretResult: function (result: number) {
-			if (result > 0) 'elo2'
-			return 'elo'
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+
+			const age: number = parseInt(
+				(document.getElementById('age') as HTMLInputElement).value
+			)
+			if (age >= 70) return 'Ryzyko w skali SCORE2-OP.'
+			return 'Ryzyko w skali SCORE2.'
 		},
 	},
 
