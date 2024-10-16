@@ -2521,8 +2521,22 @@ export const calculators: Calculator[] = [
 			const age: number = parseInt(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			if (age >= 70) return 'Ryzyko w skali SCORE2-OP.'
-			return 'Ryzyko w skali SCORE2.'
+			if (age >= 70) {
+				if (result < 7.5)
+					return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.'
+				if (result < 15) return 'Duże ryzyko w skali SCORE2-OP.'
+				return 'Bardzo duże ryzyko w skali SCORE2-OP.'
+			}
+			if (age >= 50) {
+				if (result < 5)
+					return 'Małe do umiarkowanego ryzyko w skali SCORE2.'
+				if (result < 10) return 'Duże ryzyko w skali SCORE2.'
+				return 'Bardzo duże ryzyko w skali SCORE2.'
+			}
+			if (result < 2.5)
+				return 'Małe do umiarkowanego ryzyko w skali SCORE2.'
+			if (result < 7.5) return 'Duże ryzyko w skali SCORE2.'
+			return 'Bardzo duże ryzyko w skali SCORE2.'
 		},
 	},
 
