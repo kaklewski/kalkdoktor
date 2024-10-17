@@ -28,11 +28,12 @@ interface ComponentProps {
 				text: string
 				radios: {
 					id: string | number
-					value: number
+					value: number | string
 					hideBadge?: boolean
 					text: string
 				}[]
 		  }[]
+		| null
 		| null
 	calculateResult: (setResult: (value: number) => void) => void
 	setResult: Dispatch<SetStateAction<number>>
