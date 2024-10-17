@@ -114,12 +114,12 @@ export default function ShareFavModal() {
 										<Divider mb={3} />
 										<Text fontSize='sm'>
 											Kalkdoktor zapisuje listę ulubionych
-											kalkulatorów w lokalnej pamięci
+											kalkulatorów w pamięci lokalnej
 											przeglądarki na danym urządzeniu.
-											Oznacza to, że aby aby móc korzystać
-											z tych samych ulubionych na
-											smartfonie lub innym komputerze,
-											trzeba je uprzednio udostępnić.
+											Oznacza to, że aby móc korzystać z
+											tych samych ulubionych na innym
+											urządzeniu, trzeba je najpierw
+											udostępnić.
 										</Text>
 									</AccordionPanel>
 								</AccordionItem>
