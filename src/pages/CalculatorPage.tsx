@@ -14,33 +14,45 @@ interface ComponentProps {
 export default function CalculatorPage({ calculator }: ComponentProps) {
 	const [result, setResult] = useState<number>(0)
 
-	useDocumentTitle(calculator.name)
+	const {
+		id,
+		name,
+		fields,
+		calculateResult,
+		resultUnit,
+		interpretResult,
+		sources,
+		description,
+		methodology,
+	} = calculator
+
+	useDocumentTitle(name)
 
 	return (
 		<>
 			<Flex justify='space-between' gap={2}>
-				<Heading as='h1'>{calculator.name}</Heading>
-				<FavButton pageId={calculator.id} />
+				<Heading as='h1'>{name}</Heading>
+				<FavButton pageId={id} />
 			</Flex>
 
 			<FormCard
-				numberInputs={calculator.fields.numberInputs}
-				checkboxes={calculator.fields.checkboxes}
-				radioGroups={calculator.fields.radioGroups}
-				calculateResult={calculator.calculateResult}
+				numberInputs={fields.numberInputs}
+				checkboxes={fields.checkboxes}
+				radioGroups={fields.radioGroups}
+				calculateResult={calculateResult}
 				setResult={setResult}
 			/>
 
 			<ResultCard
 				result={result}
-				resultUnit={calculator.resultUnit}
-				interpretResult={calculator.interpretResult}
+				resultUnit={resultUnit}
+				interpretResult={interpretResult}
 			/>
 
 			<DetailsCard
-				description={calculator.description}
-				sources={calculator.sources}
-				methodology={calculator.methodology}
+				description={description}
+				sources={sources}
+				methodology={methodology}
 			/>
 		</>
 	)
