@@ -1,9 +1,10 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { IconCornerDownLeft } from '@tabler/icons-react'
+import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
-	link: string
-	name: string
+	link: Calculator['urlPath']
+	name: Calculator['name']
 }
 
 export default function SearchResultButton({ link, name }: ComponentProps) {

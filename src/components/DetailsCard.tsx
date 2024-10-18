@@ -8,17 +8,12 @@ import {
 	Text,
 } from '@chakra-ui/react'
 import SourceLink from './SourceLink'
+import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
-	description: string
-	methodology: string | null
-	sources:
-		| {
-				id: number
-				name: string
-				link: string
-		  }[]
-		| string
+	description: Calculator['description']
+	methodology: Calculator['methodology']
+	sources: Calculator['sources']
 }
 
 export default function DetailsCard({

@@ -5,37 +5,13 @@ import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
 import CustomRadio from './CustomRadio'
 import { Dispatch, FormEvent, SetStateAction } from 'react'
+import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
-	numberInputs?:
-		| {
-				id: string | number
-				text: string
-				min: number
-				max: number
-		  }[]
-		| null
-	checkboxes?:
-		| {
-				id: string | number
-				value: number
-				text: string
-		  }[]
-		| null
-	radioGroups?:
-		| {
-				id: string | number
-				text: string
-				radios: {
-					id: string | number
-					value: number | string
-					hideBadge?: boolean
-					text: string
-				}[]
-		  }[]
-		| null
-		| null
-	calculateResult: (setResult: (value: number) => void) => void
+	numberInputs?: Calculator['fields']['numberInputs']
+	checkboxes?: Calculator['fields']['checkboxes']
+	radioGroups?: Calculator['fields']['radioGroups']
+	calculateResult: Calculator['calculateResult']
 	setResult: Dispatch<SetStateAction<number>>
 }
 
@@ -46,15 +22,13 @@ export default function FormCard({
 	calculateResult,
 	setResult,
 }: ComponentProps) {
-	function getResult(event: FormEvent<HTMLFormElement>) {
-		// Prevent the page from reloading when the form is submitted
-		event.preventDefault()
-		calculateResult(setResult)
-	}
-
 	return (
 		<Card overflow='hidden' variant='outline'>
-			<Form onSubmit={getResult}>
+			<Form
+				onSubmit={(event: FormEvent<HTMLFormElement>) => {
+					event.preventDefault()
+					calculateResult(setResult)
+				}}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
 						{radioGroups &&

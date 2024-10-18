@@ -7,11 +7,12 @@ import {
 	Text,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
 	result: number
-	resultUnit: string | null
-	interpretResult: (result: number) => string
+	resultUnit: Calculator['resultUnit']
+	interpretResult: Calculator['interpretResult']
 }
 
 export default function ResultCard({

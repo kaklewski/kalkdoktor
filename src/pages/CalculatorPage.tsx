@@ -4,7 +4,7 @@ import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
-import { Calculator } from '../data/calculators'
+import Calculator from '../types/calculatorInterface'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
 interface ComponentProps {

@@ -10,12 +10,13 @@ import {
 	Text,
 } from '@chakra-ui/react'
 import FavButton from './FavButton'
+import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
-	id: number
-	name: string
-	link: string
-	description: string
+	id: Calculator['id']
+	name: Calculator['name']
+	link: Calculator['urlPath']
+	description: Calculator['description']
 }
 
 export default function CalculatorCard({
