@@ -2,8 +2,8 @@ import { Box, Divider, Flex, Link, Text } from '@chakra-ui/react'
 import { IconBrandGithubFilled } from '@tabler/icons-react'
 
 export default function Footer() {
-	const CURRENT_YEAR = new Date().getFullYear()
 	const GITHUB_LINK = 'https://github.com/kaklewski/kalkdoktor'
+	const currentYear = new Date().getFullYear()
 
 	return (
 		<Box as='footer' id='footer' maxW='650px' mx='auto'>
@@ -16,7 +16,7 @@ export default function Footer() {
 				align='center'
 				gap={1}>
 				<Text>
-					&copy; {CURRENT_YEAR} Oskar Kąklewski - Opublikowano na
+					&copy; {currentYear} Oskar Kąklewski - Opublikowano na
 					licencji GPL 3.0
 				</Text>
 				<Link href={GITHUB_LINK}>
