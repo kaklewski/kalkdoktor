@@ -2545,6 +2545,89 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 25,
+		name: 'Prognozowany wzrost dziecka',
+		urlPath: 'prognozowany-wzrost-dziecka',
+		category: 'antropometria',
+		description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Jak prognozuje się wzrost chłopców i dziewcząt?, dostęp: 17.10.2024',
+				link: 'https://www.mp.pl/pacjent/pediatria/lista/122911,jak-prognozuje-sie-wzrost-chlopcow-i-dziewczat',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'mothersHeight',
+					text: 'Wzrost matki (w cm)',
+					min: 140,
+					max: 220,
+				},
+				{
+					id: 'fathersHeight',
+					text: 'Wzrost ojca (w cm)',
+					min: 140,
+					max: 220,
+				},
+			],
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 1,
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'male',
+							value: 'male',
+							hideBadge: true,
+							text: 'Chłopiec',
+						},
+						{
+							id: 'female',
+							value: 'female',
+							hideBadge: true,
+							text: 'Dziewczynka',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: 'cm',
+
+		calculateResult: function (setResult: (value: number) => void) {
+			const mothersHeight: number = parseInt(
+				(document.getElementById('mothersHeight') as HTMLInputElement)
+					.value
+			)
+			const fathersHeight: number = parseInt(
+				(document.getElementById('fathersHeight') as HTMLInputElement)
+					.value
+			)
+			const maleCheckbox = document.getElementById(
+				'male'
+			) as HTMLInputElement
+			const gender: string = maleCheckbox.checked ? 'male' : 'female'
+
+			let childsHeight: number
+			if (gender === 'male') {
+				childsHeight = (mothersHeight + fathersHeight + 13) / 2
+			} else {
+				childsHeight = (mothersHeight + fathersHeight - 13) / 2
+			}
+
+			setResult(childsHeight)
+		},
+
+		interpretResult: function (result: number) {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			return 'Przewidywany wzrost dziecka.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
