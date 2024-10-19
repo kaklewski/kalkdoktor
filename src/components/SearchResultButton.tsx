@@ -5,16 +5,31 @@ import Calculator from '../types/calculatorInterface'
 interface ComponentProps {
 	link: Calculator['urlPath']
 	name: Calculator['name']
+	isSelected: boolean
+	selectedItemRef: any
+	setSelectedItem: any
+	index: number
 }
 
-export default function SearchResultButton({ link, name }: ComponentProps) {
+export default function SearchResultButton({
+	link,
+	name,
+	isSelected,
+	selectedItemRef,
+	setSelectedItem,
+	index,
+}: ComponentProps) {
 	return (
 		<Button
+			onMouseMove={() => {
+				setSelectedItem(index)
+			}}
 			as='a'
 			href={link}
 			height='auto'
 			p={4}
 			fontSize='md'
+			colorScheme={isSelected === true ? 'teal' : 'gray'}
 			style={{
 				whiteSpace: 'normal',
 				wordWrap: 'break-word',
@@ -22,7 +37,9 @@ export default function SearchResultButton({ link, name }: ComponentProps) {
 				display: 'flex',
 				justifyContent: 'start',
 				fontWeight: 'normal',
-			}}>
+			}}
+			ref={selectedItemRef !== false ? selectedItemRef : null}
+			onFocus={() => setSelectedItem(index)}>
 			<Flex
 				justifyContent='space-between'
 				alignItems='stretch'

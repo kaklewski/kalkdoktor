@@ -23,7 +23,7 @@ import {
 	IconSearch,
 	IconZoomQuestion,
 } from '@tabler/icons-react'
-import { useEffect, useRef, useState } from 'react'
+import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import SearchResultButton from './SearchResultButton'
 
@@ -31,6 +31,8 @@ export default function SearchModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchValue, setSearchValue] = useState<string>('')
+	const [selectedItem, setSelectedItem] = useState<number>(-1)
+	const selectedItemRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => setSearchValue(''), [isOpen])
 
@@ -50,9 +52,40 @@ export default function SearchModal() {
 		return () => document.removeEventListener('keydown', toggleModal)
 	}, [isOpen])
 
+	useEffect(() => {
+		if (selectedItemRef.current !== null)
+			selectedItemRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'nearest',
+			})
+	}, [selectedItem])
+
 	const filteredCalculators = sortedCalculators.filter(value =>
 		value.name.toLowerCase().includes(searchValue.toLowerCase())
 	)
+
+	function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+		if (event.key === 'ArrowUp' && selectedItem > 0) {
+			event.preventDefault()
+			setSelectedItem(prev => prev - 1)
+			if (inputRef.current !== null) inputRef.current.focus()
+		} else if (
+			event.key === 'ArrowDown' &&
+			selectedItem < filteredCalculators.length - 1
+		) {
+			event.preventDefault()
+			setSelectedItem(prev => prev + 1)
+			if (inputRef.current !== null) inputRef.current.focus()
+		} else if (event.key === 'Enter') {
+			window.location.href = filteredCalculators[selectedItem].urlPath
+		} else if (
+			event.key !== 'ArrowUp' &&
+			event.key !== 'ArrowDown' &&
+			event.key !== 'Enter'
+		) {
+			setSelectedItem(-1)
+		}
+	}
 
 	return (
 		<>
@@ -87,7 +120,7 @@ export default function SearchModal() {
 				size='xl'
 				scrollBehavior='inside'>
 				<ModalOverlay />
-				<ModalContent py={4} m={2}>
+				<ModalContent py={4} m={2} onKeyDown={handleKeyDown}>
 					<ModalHeader>
 						<Flex align='center' gap={2}>
 							<InputGroup>
@@ -131,12 +164,21 @@ export default function SearchModal() {
 						<ModalBody pt={1}>
 							<Divider mb={4} />
 							<Stack>
-								{filteredCalculators.map(calc => {
+								{filteredCalculators.map((calc, index) => {
 									return (
 										<SearchResultButton
 											key={calc.id}
+											index={index}
 											link={calc.urlPath}
 											name={calc.name}
+											isSelected={
+												index === selectedItem && true
+											}
+											selectedItemRef={
+												index === selectedItem &&
+												selectedItemRef
+											}
+											setSelectedItem={setSelectedItem}
 										/>
 									)
 								})}
