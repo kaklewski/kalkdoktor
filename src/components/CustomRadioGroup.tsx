@@ -3,13 +3,18 @@ import { ReactNode } from 'react'
 
 interface ComponentProps {
 	text: string
+	id: number | string
 	children: ReactNode
 }
 
-export default function CustomRadioGroup({ text, children }: ComponentProps) {
+export default function CustomRadioGroup({
+	text,
+	id,
+	children,
+}: ComponentProps) {
 	return (
 		<Box>
-			<RadioGroup colorScheme='teal' name={text}>
+			<RadioGroup colorScheme='teal' name={id.toString()}>
 				<Stack>
 					<Text>{text}:</Text>
 					{children}

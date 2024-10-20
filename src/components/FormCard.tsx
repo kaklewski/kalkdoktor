@@ -35,6 +35,7 @@ export default function FormCard({
 							radioGroups.map(radioGroup => (
 								<CustomRadioGroup
 									key={radioGroup.id}
+									id={radioGroup.id}
 									text={radioGroup.text}>
 									{radioGroup.radios.map(radio => (
 										<CustomRadio
