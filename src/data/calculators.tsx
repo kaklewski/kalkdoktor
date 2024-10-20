@@ -2581,6 +2581,303 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 26,
+		name: 'Kwestionariusz MDQ',
+		urlPath: 'kwestionariusz-mdq',
+		category: 'psychiatria',
+		description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'PsychiatriaPlus.pl, Dr hab. n. med. Jarosław Jóźwiak, Kwestionariusz Zaburzeń Nastroju (MDQ), dostęp: 20.10.2024',
+				link: 'https://psychiatraplus.pl/wp-content/uploads/2022/10/Kwestionariusz-Zaburzen-Nastroju-MDQ.pdf',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 10,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty',
+					radios: [
+						{
+							id: 11,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 12,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie',
+					radios: [
+						{
+							id: 21,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 22,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle',
+					radios: [
+						{
+							id: 31,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 32,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 40,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem',
+					radios: [
+						{
+							id: 41,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 42,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 50,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle',
+					radios: [
+						{
+							id: 51,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 52,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 60,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lyb nie mógł zwolnić toku myśli',
+					radios: [
+						{
+							id: 61,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 62,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 70,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokoło, że miał problem z koncentracją i kontynuowaniem zadania',
+					radios: [
+						{
+							id: 71,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 72,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 80,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj',
+					radios: [
+						{
+							id: 81,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 82,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 90,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj',
+					radios: [
+						{
+							id: 91,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 92,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 100,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy',
+					radios: [
+						{
+							id: 101,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 102,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 110,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj',
+					radios: [
+						{
+							id: 111,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 112,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 120,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne',
+					radios: [
+						{
+							id: 121,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 122,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 130,
+					text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów',
+					radios: [
+						{
+							id: 131,
+							value: 1,
+							text: 'Tak',
+						},
+						{
+							id: 132,
+							value: 0,
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 14,
+					text: 'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie',
+					radios: [
+						{
+							id: 'happenedAtTheSameTime',
+							value: 'happenedAtTheSameTime',
+							text: 'Tak',
+						},
+						{
+							id: 'notApplicable',
+							value: 'notApplicable',
+							text: 'Nie',
+						},
+					],
+				},
+				{
+					id: 'problem',
+					text: 'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki',
+					radios: [
+						{
+							id: 'no',
+							value: 'no',
+							text: 'Bez problemu',
+						},
+						{
+							id: 'small',
+							value: 'small',
+							text: 'Mały problem',
+						},
+						{
+							id: 'medium',
+							value: 'medium',
+							text: 'Średni problem',
+						},
+						{
+							id: 'big',
+							value: 'big',
+							text: 'Duży problem',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '',
+
+		calculateResult: sumInputValues,
+
+		interpretResult: function (result: number) {
+			const happenedCheckbox = document.getElementById(
+				'happenedAtTheSameTime'
+			) as HTMLInputElement
+			const happenedAtTheSameTime: boolean =
+				happenedCheckbox && happenedCheckbox.checked ? true : false
+
+			const problem = document.querySelector(
+				'input[name="problem"]:checked'
+			) as HTMLInputElement
+			const isProblem =
+				problem &&
+				(problem.value === 'medium' || problem.value === 'big')
+					? true
+					: false
+
+			if (result >= 7 && happenedAtTheSameTime && isProblem) {
+				return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.'
+			}
+			return 'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
