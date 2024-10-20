@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, Button } from '@chakra-ui/react'
 import { IconError404 } from '@tabler/icons-react'
 
-export default function Error404() {
+export default function Error404Page() {
 	return (
 		<Alert
 			status='error'

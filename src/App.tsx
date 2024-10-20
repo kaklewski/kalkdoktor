@@ -10,7 +10,7 @@ import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators'
 import FavPage from './pages/FavoritesPage'
 import AddFavPage from './pages/AddFavoriteCalculatorsPage'
-import Error404 from './components/Error404'
+import Error404Page from './pages/Error404Page'
 import RouterErrorBoundary from './RouterErrorBoundary'
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
 						element={<CalculatorPage calculator={calculator} />}
 					/>
 				))}
-				<Route path='*' element={<Error404 />} />
+				<Route path='*' element={<Error404Page />} />
 			</Route>
 		)
 	)
