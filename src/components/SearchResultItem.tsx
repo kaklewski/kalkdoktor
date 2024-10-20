@@ -3,27 +3,24 @@ import { IconCornerDownLeft } from '@tabler/icons-react'
 import Calculator from '../types/calculatorInterface'
 
 interface ComponentProps {
-	link: Calculator['urlPath']
 	name: Calculator['name']
+	link: Calculator['urlPath']
+	index: number
 	isSelected: boolean
 	selectedItemRef: any
-	setSelectedItem: any
-	index: number
+	setSelectedItemIndex: (value: number) => void
 }
 
-export default function SearchResultButton({
-	link,
+export default function SearchResultItem({
 	name,
+	link,
+	index,
 	isSelected,
 	selectedItemRef,
-	setSelectedItem,
-	index,
+	setSelectedItemIndex,
 }: ComponentProps) {
 	return (
 		<Button
-			onMouseMove={() => {
-				setSelectedItem(index)
-			}}
 			as='a'
 			href={link}
 			height='auto'
@@ -38,8 +35,13 @@ export default function SearchResultButton({
 				justifyContent: 'start',
 				fontWeight: 'normal',
 			}}
+			// Remove the default shadow-outline of a focused element
+			_focus={{ shadow: 'none' }}
 			ref={selectedItemRef !== false ? selectedItemRef : null}
-			onFocus={() => setSelectedItem(index)}>
+			onFocus={() => setSelectedItemIndex(index)}
+			onMouseMove={() => {
+				setSelectedItemIndex(index)
+			}}>
 			<Flex
 				justifyContent='space-between'
 				alignItems='stretch'
@@ -51,7 +53,7 @@ export default function SearchResultButton({
 						stroke={1.5}
 						size={20}
 						style={{
-							opacity: '50%',
+							opacity: '55%',
 						}}
 					/>
 				</Flex>
