@@ -1,12 +1,15 @@
 import { calculators } from './calculators'
 
-export const categories: string[] = (() => {
-	let categoryArray: string[] = []
+function getCategories() {
+	const categoriesArray: string[] = []
 
 	calculators.forEach(calculator => {
-		if (!categoryArray.includes(calculator.category))
-			categoryArray.push(calculator.category)
+		if (!categoriesArray.includes(calculator.category)) {
+			categoriesArray.push(calculator.category)
+		}
 	})
 
-	return categoryArray.sort()
-})()
+	return categoriesArray.sort()
+}
+
+export const categories: string[] = getCategories()
