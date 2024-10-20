@@ -24,7 +24,7 @@ import {
 	IconZoomQuestion,
 } from '@tabler/icons-react'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
-import { sortedCalculators } from '../data/sortedCalculators'
+import { sortedCalculators } from '../../data/sortedCalculators'
 import SearchResultItem from './SearchResultItem'
 
 export default function SearchBox() {

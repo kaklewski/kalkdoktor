@@ -9,7 +9,7 @@ import {
 	Badge,
 } from '@chakra-ui/react'
 import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
-import SearchBox from './SearchBox'
+import SearchBox from './SearchBox/SearchBox'
 import ThemeButton from './ThemeButton'
 
 export default function Navbar() {

@@ -1,6 +1,6 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { IconCornerDownLeft } from '@tabler/icons-react'
-import Calculator from '../types/calculatorInterface'
+import Calculator from '../../types/calculatorInterface'
 
 interface ComponentProps {
 	name: Calculator['name']
