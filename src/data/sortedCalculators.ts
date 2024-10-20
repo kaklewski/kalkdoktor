@@ -2,11 +2,11 @@ import { calculators } from './calculators'
 import Calculator from '../types/calculatorInterface'
 
 export const sortedCalculators = calculators.sort(
-	(a: Calculator, b: Calculator) => {
-		const keyA = a.name.toLowerCase()
-		const keyB = b.name.toLowerCase()
-		if (keyA < keyB) return -1
-		if (keyA > keyB) return 1
+	(calculator1: Calculator, calculator2: Calculator) => {
+		const calculator1Name = calculator1.name.toLowerCase()
+		const calculator2Name = calculator2.name.toLowerCase()
+		if (calculator1Name < calculator2Name) return -1
+		if (calculator1Name > calculator2Name) return 1
 		return 0
 	}
 )
