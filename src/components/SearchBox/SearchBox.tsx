@@ -4,28 +4,21 @@ import {
 	Divider,
 	Flex,
 	IconButton,
-	Input,
-	InputGroup,
-	InputLeftElement,
-	InputRightElement,
 	Modal,
 	ModalBody,
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
 	Stack,
-	Text,
 	Tooltip,
 	useDisclosure,
 } from '@chakra-ui/react'
-import {
-	IconBackspaceFilled,
-	IconSearch,
-	IconZoomQuestion,
-} from '@tabler/icons-react'
+import { IconSearch } from '@tabler/icons-react'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../../data/sortedCalculators'
 import SearchResultItem from './SearchResultItem'
+import SearchBar from './SearchBar'
+import NoResultsMessage from './NoResultsMessage'
 
 export default function SearchBox() {
 	const {
@@ -136,38 +129,12 @@ export default function SearchBox() {
 				<ModalContent py={4} m={2} onKeyDown={handleKeyDown}>
 					<ModalHeader>
 						<Flex align='center' gap={2}>
-							<InputGroup>
-								<InputLeftElement pointerEvents='none'>
-									<IconSearch stroke={1.5} />
-								</InputLeftElement>
-
-								<Input
-									variant='filled'
-									placeholder='Wyszukaj kalkulator'
-									ref={searchBarRef}
-									value={searchQuery}
-									onChange={event =>
-										setSearchQuery(event.target.value)
-									}
-								/>
-
-								{searchQuery && (
-									<InputRightElement>
-										<Button
-											variant='ghost'
-											size='sm'
-											p={0}
-											onClick={() => {
-												setSearchQuery('')
-												focusOnSearchBar()
-											}}
-											aria-label='Wyczyść tekst'>
-											<IconBackspaceFilled stroke={1.5} />
-										</Button>
-									</InputRightElement>
-								)}
-							</InputGroup>
-
+							<SearchBar
+								searchBarRef={searchBarRef}
+								searchQuery={searchQuery}
+								setSearchQuery={setSearchQuery}
+								focusOnSearchBar={focusOnSearchBar}
+							/>
 							<CloseButton size='lg' onClick={closeSearchBox} />
 						</Flex>
 					</ModalHeader>
@@ -198,20 +165,7 @@ export default function SearchBox() {
 									)
 								})}
 								{filteredCalculators.length === 0 && (
-									<Flex
-										flexDirection='column'
-										alignItems='center'
-										justifyContent='center'
-										textAlign='center'
-										py={4}>
-										<IconZoomQuestion
-											size={100}
-											stroke={1.5}
-										/>
-										<Text fontSize='lg'>
-											Nie znaleziono kalkulatora
-										</Text>
-									</Flex>
+									<NoResultsMessage />
 								)}
 							</Stack>
 						</ModalBody>
