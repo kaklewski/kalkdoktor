@@ -29,7 +29,7 @@ export default function ShareFavModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const { onCopy, value, setValue } = useClipboard('')
 	useEffect(() => {
-		const urlPath = '/dodaj-ulubione'
+		const urlPath = '/importuj-ulubione'
 		const urlHostname = window.location
 			.toString()
 			.replace(window.location.pathname, urlPath)
@@ -70,7 +70,7 @@ export default function ShareFavModal() {
 						<Stack spacing={3}>
 							<Text>
 								Skopiuj poniższy link i otwórz go na innym
-								urządzeniu, aby udostępnić swoje ulubione
+								urządzeniu, aby zaimportować ulubione
 								kalkulatory.
 							</Text>
 

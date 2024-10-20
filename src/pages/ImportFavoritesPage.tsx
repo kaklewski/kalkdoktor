@@ -16,7 +16,7 @@ import { useEffect } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
-export default function AddFavPage() {
+export default function ImportFavoritesPage() {
 	useDocumentTitle('Importuj ulubione kalkulatory')
 
 	useEffect(() => {

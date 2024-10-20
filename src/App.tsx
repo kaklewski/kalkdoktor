@@ -9,7 +9,7 @@ import IndexPage from './pages/IndexPage'
 import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators'
 import FavPage from './pages/FavoritesPage'
-import AddFavPage from './pages/AddFavoriteCalculatorsPage'
+import ImportFavoritesPage from './pages/ImportFavoritesPage'
 import Error404Page from './pages/Error404Page'
 import RouterErrorBoundary from './RouterErrorBoundary'
 
@@ -22,7 +22,10 @@ export default function App() {
 				errorElement={<RouterErrorBoundary />}>
 				<Route index element={<IndexPage />} />
 				<Route path='ulubione' element={<FavPage />} />
-				<Route path='dodaj-ulubione' element={<AddFavPage />} />
+				<Route
+					path='importuj-ulubione'
+					element={<ImportFavoritesPage />}
+				/>
 				// Generate a route for every calculator
 				{calculators.map(calculator => (
 					<Route
