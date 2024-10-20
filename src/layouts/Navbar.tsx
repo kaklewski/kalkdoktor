@@ -9,8 +9,8 @@ import {
 	Badge,
 } from '@chakra-ui/react'
 import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
-import SearchBox from './SearchBox/SearchBox'
-import ThemeButton from './ThemeButton'
+import SearchBox from '../components/SearchBox/SearchBox'
+import ThemeButton from '../components/ThemeButton'
 
 export default function Navbar() {
 	return (
