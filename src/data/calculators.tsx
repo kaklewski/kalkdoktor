@@ -50,7 +50,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result > 0 && result < 18.5) return 'Niedowaga'
 			if (result >= 18.5 && result < 25) return 'Wartość prawidłowa'
@@ -150,7 +150,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			const sexCheckbox = document.getElementById(
 				'man'
 			) as HTMLInputElement
@@ -243,7 +243,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 4) {
 				return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
 			}
@@ -329,7 +329,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 3) {
 				return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.'
 			}
@@ -403,7 +403,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function () {
+		getResultInterpretation: function () {
 			return 'Liczba opakowań, które należy przepisać.'
 		},
 	},
@@ -456,7 +456,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Maksymalna dobowa dawka paracetamolu.'
 		},
@@ -537,7 +537,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 4) {
 				return 'Duże ryzyko krwawienia.'
 			}
@@ -667,7 +667,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 13) return 'Łagodne zaburzenia świadomości.'
 			if (result >= 9) return 'Umiarkowane zaburzenia świadomości.'
 			if (result >= 6) return 'Brak przytomności.'
@@ -941,7 +941,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 20) return 'Ciężki epizod depresyjny.'
 			if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.'
 			if (result >= 10) return 'Umiarkowany epizod depresyjny.'
@@ -997,7 +997,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Skorygowany odstęp QTc.'
 		},
@@ -1061,7 +1061,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result > 32)
 				return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.'
 			if (result <= 32 && result > 0)
@@ -1121,7 +1121,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Maksymalna dobowa dawka ibuprofenu.'
 		},
@@ -1221,7 +1221,7 @@ export const calculators: Calculator[] = [
 			setResult(sum)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result > 125) return 'Klasa V: ryzyko bardzo duże.'
 			if (result > 105) return 'Klasa IV: ryzyko duże.'
 			if (result > 85) return 'Klasa III: ryzyko umiarkowane.'
@@ -1311,7 +1311,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 11)
 				return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
 			if (result >= 4)
@@ -1374,7 +1374,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 3)
 				return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.'
 			if (result === 2)
@@ -1447,7 +1447,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			const sexCheckbox = document.getElementById(
 				'man'
 			) as HTMLInputElement
@@ -1507,7 +1507,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 2) return 'Wysokie ryzyko zgonu.'
 			return 'Niewysokie ryzyko zgonu.'
 		},
@@ -1653,7 +1653,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result >= 7) return 'Silne uzależnienie od nikotyny.'
 			if (result >= 4) return 'Średnie uzależnienie od nikotyny.'
 			return 'Słabe uzależnienie od nikotyny.'
@@ -1710,7 +1710,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 4) return 'NYHA IV'
 			if (result === 3) return 'NYHA III'
 			if (result === 2) return 'NYHA II'
@@ -1768,7 +1768,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 4) return 'Klasa CCS IV'
 			if (result === 3) return 'Klasa CCS III'
 			if (result === 2) return 'Klasa CCS II'
@@ -1857,7 +1857,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Klirens kreatyniny.'
 		},
@@ -1937,7 +1937,7 @@ export const calculators: Calculator[] = [
 			setResult(result)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result > 3.25)
 				return 'Duże prawdopodobieństwo zaawansowanego włóknienia.'
@@ -2077,7 +2077,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result >= 10)
 				return 'Klasa C. Są wskazania do przeszczepu wątroby.'
@@ -2473,7 +2473,7 @@ export const calculators: Calculator[] = [
 			setResult(risk)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 
 			const age: number = parseInt(
@@ -2575,7 +2575,7 @@ export const calculators: Calculator[] = [
 			setResult(childsHeight)
 		},
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Przewidywany wzrost dziecka.'
 		},
@@ -2855,7 +2855,7 @@ export const calculators: Calculator[] = [
 
 		calculateResult: sumInputValues,
 
-		interpretResult: function (result: number) {
+		getResultInterpretation: function (result: number) {
 			const happenedCheckbox = document.getElementById(
 				'happenedAtTheSameTime'
 			) as HTMLInputElement
@@ -2901,6 +2901,6 @@ export const calculators: Calculator[] = [
 
 	// 	calculateResult: function (setResult: (value: number) => void) {},
 
-	// 	interpretResult: function (result: number) {},
+	// 	getResultInterpretation: function (result: number) {},
 	// },
 ]

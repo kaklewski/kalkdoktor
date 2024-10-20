@@ -18,18 +18,18 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 		fields,
 		calculateResult,
 		resultUnit,
-		interpretResult,
+		getResultInterpretation,
 		sources,
 		description,
 		methodology,
 	} = calculator
 	const [result, setResult] = useState<number>(0)
 	const [resultInterpretation, setResultInterpretation] = useState<string>(
-		interpretResult(result)
+		getResultInterpretation(result)
 	)
 
 	useEffect(() => {
-		setResultInterpretation(interpretResult(result))
+		setResultInterpretation(getResultInterpretation(result))
 	}, [result])
 
 	useDocumentTitle(name)
@@ -48,7 +48,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 				calculateResult={calculateResult}
 				setResult={setResult}
 				result={result}
-				interpretResult={interpretResult}
+				getResultInterpretation={getResultInterpretation}
 				setResultInterpretation={setResultInterpretation}
 			/>
 

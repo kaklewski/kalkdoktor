@@ -14,7 +14,7 @@ interface ComponentProps {
 	calculateResult: Calculator['calculateResult']
 	setResult: Dispatch<SetStateAction<number>>
 	result: number
-	interpretResult: any
+	getResultInterpretation: any
 	setResultInterpretation: Dispatch<SetStateAction<string>>
 }
 
@@ -25,7 +25,7 @@ export default function FormCard({
 	calculateResult,
 	setResult,
 	result,
-	interpretResult,
+	getResultInterpretation,
 	setResultInterpretation,
 }: ComponentProps) {
 	return (
@@ -34,7 +34,7 @@ export default function FormCard({
 				onSubmit={(event: FormEvent<HTMLFormElement>) => {
 					event.preventDefault()
 					calculateResult(setResult)
-					setResultInterpretation(interpretResult(result))
+					setResultInterpretation(getResultInterpretation(result))
 				}}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
