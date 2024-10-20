@@ -13,6 +13,9 @@ interface ComponentProps {
 	radioGroups?: Calculator['fields']['radioGroups']
 	calculateResult: Calculator['calculateResult']
 	setResult: Dispatch<SetStateAction<number>>
+	result: number
+	interpretResult: any
+	setResultInterpretation: Dispatch<SetStateAction<string>>
 }
 
 export default function FormCard({
@@ -21,6 +24,9 @@ export default function FormCard({
 	radioGroups,
 	calculateResult,
 	setResult,
+	result,
+	interpretResult,
+	setResultInterpretation,
 }: ComponentProps) {
 	return (
 		<Card overflow='hidden' variant='outline'>
@@ -28,6 +34,7 @@ export default function FormCard({
 				onSubmit={(event: FormEvent<HTMLFormElement>) => {
 					event.preventDefault()
 					calculateResult(setResult)
+					setResultInterpretation(interpretResult(result))
 				}}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>

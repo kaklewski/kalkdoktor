@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Flex, Heading } from '@chakra-ui/react'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
@@ -12,8 +12,6 @@ interface ComponentProps {
 }
 
 export default function CalculatorPage({ calculator }: ComponentProps) {
-	const [result, setResult] = useState<number>(0)
-
 	const {
 		id,
 		name,
@@ -25,6 +23,14 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 		description,
 		methodology,
 	} = calculator
+	const [result, setResult] = useState<number>(0)
+	const [resultInterpretation, setResultInterpretation] = useState<string>(
+		interpretResult(result)
+	)
+
+	useEffect(() => {
+		setResultInterpretation(interpretResult(result))
+	}, [result])
 
 	useDocumentTitle(name)
 
@@ -41,12 +47,15 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 				radioGroups={fields.radioGroups}
 				calculateResult={calculateResult}
 				setResult={setResult}
+				result={result}
+				interpretResult={interpretResult}
+				setResultInterpretation={setResultInterpretation}
 			/>
 
 			<ResultCard
 				result={result}
 				resultUnit={resultUnit}
-				interpretResult={interpretResult}
+				resultInterpretation={resultInterpretation}
 			/>
 
 			<DetailsCard

@@ -12,13 +12,13 @@ import Calculator from '../types/calculatorInterface'
 interface ComponentProps {
 	result: number
 	resultUnit: Calculator['resultUnit']
-	interpretResult: Calculator['interpretResult']
+	resultInterpretation: string
 }
 
 export default function ResultCard({
 	result,
 	resultUnit,
-	interpretResult,
+	resultInterpretation,
 }: ComponentProps) {
 	const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
 	const [resultCardAnimation, setResultCardAnimation] = useState('')
@@ -33,9 +33,7 @@ export default function ResultCard({
 		setTimeout(() => {
 			setResultCardAnimation('')
 		}, 300)
-	}, [result])
-
-	const resultInterpretation = interpretResult(result)
+	}, [result, resultInterpretation])
 
 	if (Number.isNaN(result)) result = 0
 
