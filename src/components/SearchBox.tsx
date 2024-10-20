@@ -25,65 +25,78 @@ import {
 } from '@tabler/icons-react'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
-import SearchResultButton from './SearchResultButton'
+import SearchResultItem from './SearchResultItem'
 
-export default function SearchModal() {
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const inputRef = useRef<HTMLInputElement>(null)
-	const [searchValue, setSearchValue] = useState<string>('')
-	const [selectedItem, setSelectedItem] = useState<number>(-1)
+export default function SearchBox() {
+	const {
+		isOpen: isSearchBoxOpen,
+		onOpen: openSearchBox,
+		onClose: closeSearchBox,
+	} = useDisclosure()
+	const searchBarRef = useRef<HTMLInputElement>(null)
+	const [searchQuery, setSearchQuery] = useState<string>('')
+	const INITIAL_SELECTED_ITEM_INDEX = 0
+	const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
+		INITIAL_SELECTED_ITEM_INDEX
+	)
 	const selectedItemRef = useRef<HTMLButtonElement>(null)
 
-	useEffect(() => setSearchValue(''), [isOpen])
+	useEffect(() => {
+		if (!isSearchBoxOpen) setSearchQuery('')
+	}, [isSearchBoxOpen])
 
 	useEffect(() => {
 		function toggleModal(event: any) {
 			if (event.ctrlKey && event.key === 'k') {
 				event.preventDefault()
-				if (isOpen) {
-					onClose()
+				if (isSearchBoxOpen) {
+					closeSearchBox()
 				} else {
-					onOpen()
+					openSearchBox()
 				}
 			}
 		}
-
 		document.addEventListener('keydown', toggleModal)
 		return () => document.removeEventListener('keydown', toggleModal)
-	}, [isOpen])
+	}, [isSearchBoxOpen])
+
+	useEffect(() => {
+		setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX)
+	}, [searchQuery])
 
 	useEffect(() => {
 		if (selectedItemRef.current !== null)
 			selectedItemRef.current.scrollIntoView({
-				behavior: 'smooth',
 				block: 'nearest',
+				behavior: 'smooth',
 			})
-	}, [selectedItem])
+	}, [selectedItemIndex])
 
 	const filteredCalculators = sortedCalculators.filter(value =>
-		value.name.toLowerCase().includes(searchValue.toLowerCase())
+		value.name.toLowerCase().includes(searchQuery.toLowerCase())
 	)
 
+	function focusOnSearchBar() {
+		if (searchBarRef.current !== null) searchBarRef.current.focus()
+	}
+
 	function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-		if (event.key === 'ArrowUp' && selectedItem > 0) {
+		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+			// Block cursor from moving to start/end of the search bar input.
 			event.preventDefault()
-			setSelectedItem(prev => prev - 1)
-			if (inputRef.current !== null) inputRef.current.focus()
+			focusOnSearchBar()
+		}
+
+		if (event.key === 'ArrowUp' && selectedItemIndex > 0) {
+			setSelectedItemIndex(previousItem => previousItem - 1)
 		} else if (
 			event.key === 'ArrowDown' &&
-			selectedItem < filteredCalculators.length - 1
+			selectedItemIndex < filteredCalculators.length - 1
 		) {
-			event.preventDefault()
-			setSelectedItem(prev => prev + 1)
-			if (inputRef.current !== null) inputRef.current.focus()
+			setSelectedItemIndex(previousItem => previousItem + 1)
 		} else if (event.key === 'Enter') {
-			window.location.href = filteredCalculators[selectedItem].urlPath
-		} else if (
-			event.key !== 'ArrowUp' &&
-			event.key !== 'ArrowDown' &&
-			event.key !== 'Enter'
-		) {
-			setSelectedItem(-1)
+			window.location.href =
+				filteredCalculators[selectedItemIndex].urlPath
 		}
 	}
 
@@ -91,7 +104,7 @@ export default function SearchModal() {
 		<>
 			<Tooltip label='ctrl + k'>
 				<Button
-					onClick={onOpen}
+					onClick={openSearchBox}
 					id='search-icon-big'
 					leftIcon={<IconSearch stroke={1.5} />}
 					colorScheme='teal'
@@ -105,7 +118,7 @@ export default function SearchModal() {
 			</Tooltip>
 
 			<IconButton
-				onClick={onOpen}
+				onClick={openSearchBox}
 				id='search-icon-small'
 				colorScheme='teal'
 				variant='solid'
@@ -114,9 +127,9 @@ export default function SearchModal() {
 			</IconButton>
 
 			<Modal
-				isOpen={isOpen}
-				onClose={onClose}
-				initialFocusRef={inputRef}
+				isOpen={isSearchBoxOpen}
+				onClose={closeSearchBox}
+				initialFocusRef={searchBarRef}
 				size='xl'
 				scrollBehavior='inside'>
 				<ModalOverlay />
@@ -131,23 +144,22 @@ export default function SearchModal() {
 								<Input
 									variant='filled'
 									placeholder='Wyszukaj kalkulator'
-									ref={inputRef}
-									value={searchValue}
+									ref={searchBarRef}
+									value={searchQuery}
 									onChange={event =>
-										setSearchValue(event.target.value)
+										setSearchQuery(event.target.value)
 									}
 								/>
 
-								{searchValue && (
+								{searchQuery && (
 									<InputRightElement>
 										<Button
 											variant='ghost'
 											size='sm'
 											p={0}
 											onClick={() => {
-												setSearchValue('')
-												if (inputRef.current !== null)
-													inputRef.current.focus()
+												setSearchQuery('')
+												focusOnSearchBar()
 											}}
 											aria-label='Wyczyść tekst'>
 											<IconBackspaceFilled stroke={1.5} />
@@ -156,29 +168,32 @@ export default function SearchModal() {
 								)}
 							</InputGroup>
 
-							<CloseButton size='lg' onClick={onClose} />
+							<CloseButton size='lg' onClick={closeSearchBox} />
 						</Flex>
 					</ModalHeader>
 
-					{searchValue && (
+					{searchQuery && (
 						<ModalBody pt={1}>
 							<Divider mb={4} />
 							<Stack>
 								{filteredCalculators.map((calc, index) => {
 									return (
-										<SearchResultButton
+										<SearchResultItem
 											key={calc.id}
 											index={index}
 											link={calc.urlPath}
 											name={calc.name}
 											isSelected={
-												index === selectedItem && true
+												index === selectedItemIndex &&
+												true
 											}
 											selectedItemRef={
-												index === selectedItem &&
+												index === selectedItemIndex &&
 												selectedItemRef
 											}
-											setSelectedItem={setSelectedItem}
+											setSelectedItemIndex={
+												setSelectedItemIndex
+											}
 										/>
 									)
 								})}

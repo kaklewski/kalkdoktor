@@ -9,7 +9,7 @@ import {
 	Badge,
 } from '@chakra-ui/react'
 import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
-import SearchModal from './SearchModal'
+import SearchBox from './SearchBox'
 import ThemeButton from './ThemeButton'
 
 export default function Navbar() {
@@ -39,7 +39,7 @@ export default function Navbar() {
 					</Flex>
 
 					<Flex align='center' gap={3} wrap='wrap'>
-						<SearchModal />
+						<SearchBox />
 
 						<Button
 							as='a'
