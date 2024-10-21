@@ -4,7 +4,7 @@ export default interface Calculator {
 	urlPath: string
 	category: string
 	description: string
-	methodology: string | null
+	methodology?: string | null
 	sources:
 		| {
 				id: number
@@ -41,7 +41,7 @@ export default interface Calculator {
 			  }[]
 			| null
 	}
-	resultUnit: string | null
+	resultUnit?: string | null
 	getResult: () => number
 	getResultInterpretation: (result: number) => string
 }
