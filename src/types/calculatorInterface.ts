@@ -42,6 +42,6 @@ export default interface Calculator {
 			| null
 	}
 	resultUnit: string | null
-	calculateResult: (setResult: (value: number) => void) => void
+	getResult: () => number
 	getResultInterpretation: (result: number) => string
 }

@@ -1,4 +1,4 @@
-export default function sumInputValues(setResult: (value: number) => void) {
+export default function sumInputValues() {
 	const inputs: NodeListOf<HTMLInputElement> =
 		document.querySelectorAll('input')
 	let sum: number = 0
@@ -9,5 +9,5 @@ export default function sumInputValues(setResult: (value: number) => void) {
 		}
 	})
 
-	setResult(sum)
+	return sum
 }

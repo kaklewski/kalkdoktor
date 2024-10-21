@@ -37,7 +37,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const bodyMass = parseFloat(
 				(document.getElementById('bodyMass') as HTMLInputElement).value
 			)
@@ -47,7 +47,7 @@ export const calculators: Calculator[] = [
 						.value
 				) / 100
 			const result: number = Math.round(bodyMass / (height * height))
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -148,7 +148,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			const sexCheckbox = document.getElementById(
@@ -241,7 +241,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 4) {
@@ -327,7 +327,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 3) {
@@ -381,7 +381,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const amountPerIntake = parseFloat(
 				(document.getElementById('amountPerIntake') as HTMLInputElement)
 					.value
@@ -400,7 +400,7 @@ export const calculators: Calculator[] = [
 			const result = Math.round(
 				(amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
 			)
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function () {
@@ -443,7 +443,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'g',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -453,7 +453,7 @@ export const calculators: Calculator[] = [
 			let result: number = (60 * weight) / 1000
 			if (age <= 12 && result > 2) result = 2
 			if (result > 4) result = 4
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -535,7 +535,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 4) {
@@ -665,7 +665,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 13) return 'Łagodne zaburzenia świadomości.'
@@ -939,7 +939,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 20) return 'Ciężki epizod depresyjny.'
@@ -984,7 +984,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'ms',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const qtInterval: number = parseFloat(
 				(document.getElementById('qtInterval') as HTMLInputElement)
 					.value
@@ -994,7 +994,7 @@ export const calculators: Calculator[] = [
 			)
 			const rr: number = 60 / heartRate
 			const result: number = qtInterval / Math.sqrt(rr)
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1044,7 +1044,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const prothrombinTime: number = parseFloat(
 				(document.getElementById('prothrombinTime') as HTMLInputElement)
 					.value
@@ -1058,7 +1058,7 @@ export const calculators: Calculator[] = [
 			)
 			const result: number =
 				(prothrombinTime - controlTime) * 4.6 + bilirubin
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1105,7 +1105,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'g',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -1118,7 +1118,7 @@ export const calculators: Calculator[] = [
 			} else {
 				result = 3.2
 			}
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1207,7 +1207,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -1218,7 +1218,7 @@ export const calculators: Calculator[] = [
 				if (input.checked) sum += parseInt(input.value)
 			})
 
-			setResult(sum)
+			return sum
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1309,7 +1309,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 11)
@@ -1372,7 +1372,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 3)
@@ -1436,7 +1436,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const waist = parseFloat(
 				(document.getElementById('waist') as HTMLInputElement).value
 			)
@@ -1444,7 +1444,7 @@ export const calculators: Calculator[] = [
 				(document.getElementById('hips') as HTMLInputElement).value
 			)
 			const result = waist / hips
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1505,7 +1505,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 2) return 'Wysokie ryzyko zgonu.'
@@ -1651,7 +1651,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result >= 7) return 'Silne uzależnienie od nikotyny.'
@@ -1708,7 +1708,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result === 4) return 'NYHA IV'
@@ -1766,7 +1766,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result === 4) return 'Klasa CCS IV'
@@ -1835,7 +1835,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'ml/min',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -1854,7 +1854,7 @@ export const calculators: Calculator[] = [
 			let result = ((140 - age) * weight) / (creatinine * 72)
 			if (isWoman) result = result * 0.85
 
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -1919,7 +1919,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -1934,7 +1934,7 @@ export const calculators: Calculator[] = [
 			)
 
 			const result = (age * ast) / (platelet * Math.sqrt(alt))
-			setResult(result)
+			return result
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -2075,7 +2075,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
@@ -2167,7 +2167,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '%',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const age: number = parseInt(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -2470,7 +2470,7 @@ export const calculators: Calculator[] = [
 					bloodPressureGroup
 				][cholesterolGroup]
 
-			setResult(risk)
+			return risk
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -2551,7 +2551,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'cm',
 
-		calculateResult: function (setResult: (value: number) => void) {
+		getResult: function () {
 			const mothersHeight: number = parseInt(
 				(document.getElementById('mothersHeight') as HTMLInputElement)
 					.value
@@ -2572,7 +2572,7 @@ export const calculators: Calculator[] = [
 				childsHeight = (mothersHeight + fathersHeight - 13) / 2
 			}
 
-			setResult(childsHeight)
+			return childsHeight
 		},
 
 		getResultInterpretation: function (result: number) {
@@ -2853,7 +2853,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '',
 
-		calculateResult: sumInputValues,
+		getResult: sumInputValues,
 
 		getResultInterpretation: function (result: number) {
 			const happenedCheckbox = document.getElementById(
@@ -2899,7 +2899,7 @@ export const calculators: Calculator[] = [
 	// 	},
 	// resultUnit: '',
 
-	// 	calculateResult: function (setResult: (value: number) => void) {},
+	// 	getResult: function () {},
 
 	// 	getResultInterpretation: function (result: number) {},
 	// },

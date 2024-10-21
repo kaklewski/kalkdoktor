@@ -11,7 +11,7 @@ interface ComponentProps {
 	numberInputs?: Calculator['fields']['numberInputs']
 	checkboxes?: Calculator['fields']['checkboxes']
 	radioGroups?: Calculator['fields']['radioGroups']
-	calculateResult: Calculator['calculateResult']
+	getResult: Calculator['getResult']
 	setResult: Dispatch<SetStateAction<number>>
 	result: number
 	getResultInterpretation: any
@@ -22,7 +22,7 @@ export default function FormCard({
 	numberInputs,
 	checkboxes,
 	radioGroups,
-	calculateResult,
+	getResult,
 	setResult,
 	result,
 	getResultInterpretation,
@@ -33,7 +33,7 @@ export default function FormCard({
 			<Form
 				onSubmit={(event: FormEvent<HTMLFormElement>) => {
 					event.preventDefault()
-					calculateResult(setResult)
+					setResult(getResult())
 					setResultInterpretation(getResultInterpretation(result))
 				}}>
 				<CardBody>

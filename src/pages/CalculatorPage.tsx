@@ -16,7 +16,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 		id,
 		name,
 		fields,
-		calculateResult,
+		getResult,
 		resultUnit,
 		getResultInterpretation,
 		sources,
@@ -45,7 +45,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 				numberInputs={fields.numberInputs}
 				checkboxes={fields.checkboxes}
 				radioGroups={fields.radioGroups}
-				calculateResult={calculateResult}
+				getResult={getResult}
 				setResult={setResult}
 				result={result}
 				getResultInterpretation={getResultInterpretation}
