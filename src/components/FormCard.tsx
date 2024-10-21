@@ -28,14 +28,15 @@ export default function FormCard({
 	getResultInterpretation,
 	setResultInterpretation,
 }: ComponentProps) {
+	function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault()
+		setResult(getResult())
+		setResultInterpretation(getResultInterpretation(result))
+	}
+
 	return (
 		<Card overflow='hidden' variant='outline'>
-			<Form
-				onSubmit={(event: FormEvent<HTMLFormElement>) => {
-					event.preventDefault()
-					setResult(getResult())
-					setResultInterpretation(getResultInterpretation(result))
-				}}>
+			<Form onSubmit={handleFormSubmit}>
 				<CardBody>
 					<Stack spacing={4} divider={<StackDivider />}>
 						{radioGroups &&
