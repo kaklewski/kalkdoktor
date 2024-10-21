@@ -48,9 +48,6 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 				radioGroups={fields.radioGroups}
 				getResult={getResult}
 				setResult={setResult}
-				result={result}
-				getResultInterpretation={getResultInterpretation}
-				setResultInterpretation={setResultInterpretation}
 			/>
 
 			<ResultCard
