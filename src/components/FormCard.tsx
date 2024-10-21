@@ -61,6 +61,7 @@ export default function FormCard({
 							checkboxes.map(checkbox => (
 								<CustomCheckbox
 									key={checkbox.id}
+									id={checkbox.id}
 									text={checkbox.text}
 									value={checkbox.value}
 								/>
