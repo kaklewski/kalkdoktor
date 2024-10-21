@@ -13,6 +13,9 @@ interface ComponentProps {
 	radioGroups?: Calculator['fields']['radioGroups']
 	getResult: Calculator['getResult']
 	setResult: Dispatch<SetStateAction<number>>
+	result: number
+	getResultInterpretation: Calculator['getResultInterpretation']
+	setResultInterpretation: Dispatch<SetStateAction<string>>
 }
 
 export default function FormCard({
@@ -21,10 +24,15 @@ export default function FormCard({
 	radioGroups,
 	getResult,
 	setResult,
+	result,
+	getResultInterpretation,
+	setResultInterpretation,
 }: ComponentProps) {
 	function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
 		setResult(getResult())
+		// Make sure that the interpretation changes even when the result doesn't.
+		setResultInterpretation(getResultInterpretation(result))
 	}
 
 	return (

@@ -31,6 +31,7 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 		getResultInterpretation(result)
 	)
 
+	// Make sure that the interpretation is always provided when the result changes.
 	useEffect(() => {
 		setResultInterpretation(getResultInterpretation(result))
 	}, [result])
@@ -48,6 +49,9 @@ export default function CalculatorPage({ calculator }: ComponentProps) {
 				radioGroups={fields.radioGroups}
 				getResult={getResult}
 				setResult={setResult}
+				result={result}
+				getResultInterpretation={getResultInterpretation}
+				setResultInterpretation={setResultInterpretation}
 			/>
 
 			<ResultCard
