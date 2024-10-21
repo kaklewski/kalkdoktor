@@ -37,7 +37,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		getResult: function () {
+		getResult: () => {
 			const bodyMass = parseFloat(
 				(document.getElementById('bodyMass') as HTMLInputElement).value
 			)
@@ -50,7 +50,7 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result > 0 && result < 18.5) return 'Niedowaga'
 			if (result >= 18.5 && result < 25) return 'Wartość prawidłowa'
@@ -112,12 +112,12 @@ export const calculators: Calculator[] = [
 					text: 'Płeć',
 					radios: [
 						{
-							id: 'man',
+							id: 'male',
 							value: 0,
 							text: 'Mężczyzna',
 						},
 						{
-							id: 'woman',
+							id: 'female',
 							value: 1,
 							text: 'Kobieta',
 						},
@@ -150,11 +150,12 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
-			const sexCheckbox = document.getElementById(
-				'man'
+		getResultInterpretation: (result: number) => {
+			const maleCheckbox = document.getElementById(
+				'male'
 			) as HTMLInputElement
-			const isMan = sexCheckbox ? sexCheckbox.checked : true
+			const isMale: boolean =
+				maleCheckbox && maleCheckbox.checked ? true : false
 
 			const lowRisk: string =
 				'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
@@ -163,7 +164,7 @@ export const calculators: Calculator[] = [
 			const highRisk: string =
 				'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
 
-			if (isMan) {
+			if (isMale) {
 				if (result <= 0) return lowRisk
 				if (result == 1) return mediumRisk
 				if (result >= 2) return highRisk
@@ -217,21 +218,21 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Wiek',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 1,
 							text: '3 - 14 lat',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 0,
 							text: '15 - 44 lata',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: -1,
 							text: '45 lat lub więcej',
 						},
@@ -243,7 +244,7 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 4) {
 				return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
 			}
@@ -329,7 +330,7 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 3) {
 				return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.'
 			}
@@ -381,29 +382,29 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		getResult: function () {
-			const amountPerIntake = parseFloat(
+		getResult: () => {
+			const amountPerIntake: number = parseFloat(
 				(document.getElementById('amountPerIntake') as HTMLInputElement)
 					.value
 			)
-			const numberOfIntakes = parseFloat(
+			const numberOfIntakes: number = parseFloat(
 				(document.getElementById('numberOfIntakes') as HTMLInputElement)
 					.value
 			)
-			const daysOfUse = parseFloat(
+			const daysOfUse: number = parseFloat(
 				(document.getElementById('daysOfUse') as HTMLInputElement).value
 			)
-			const packageSize = parseFloat(
+			const packageSize: number = parseFloat(
 				(document.getElementById('packageSize') as HTMLInputElement)
 					.value
 			)
-			const result = Math.round(
+			const result: number = Math.round(
 				(amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
 			)
 			return result
 		},
 
-		getResultInterpretation: function () {
+		getResultInterpretation: () => {
 			return 'Liczba opakowań, które należy przepisać.'
 		},
 	},
@@ -443,11 +444,11 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'g',
 
-		getResult: function () {
-			const age = parseFloat(
+		getResult: () => {
+			const age: number = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const weight = parseFloat(
+			const weight: number = parseFloat(
 				(document.getElementById('weight') as HTMLInputElement).value
 			)
 			let result: number = (60 * weight) / 1000
@@ -456,7 +457,7 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Maksymalna dobowa dawka paracetamolu.'
 		},
@@ -537,7 +538,7 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 4) {
 				return 'Duże ryzyko krwawienia.'
 			}
@@ -569,93 +570,93 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Otwieranie oczu',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 4,
 							text: 'Spontaniczne',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 3,
 							text: 'Na polecenie',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: 2,
 							text: 'W odpowiedzi na bodziec bólowy',
 						},
 						{
-							id: 4,
+							id: 14,
 							value: 1,
 							text: 'Nie otwiera oczu',
 						},
 					],
 				},
 				{
-					id: 2,
+					id: 20,
 					text: 'Odpowiedź słowna',
 					radios: [
 						{
-							id: 1,
+							id: 21,
 							value: 5,
 							text: 'Prawidłowa, pacjent jest w pełni zorientowany',
 						},
 						{
-							id: 2,
+							id: 22,
 							value: 4,
 							text: 'Odpowiada, ale jest zdezorientowany',
 						},
 						{
-							id: 3,
+							id: 23,
 							value: 3,
 							text: 'Używa niewłaściwych słów',
 						},
 						{
-							id: 4,
+							id: 24,
 							value: 2,
 							text: 'Wydaje nieartykułowane dźwięki',
 						},
 						{
-							id: 5,
+							id: 25,
 							value: 1,
 							text: 'Brak reakcji',
 						},
 					],
 				},
 				{
-					id: 3,
+					id: 30,
 					text: 'Reakcja ruchowa',
 					radios: [
 						{
-							id: 1,
+							id: 31,
 							value: 6,
 							text: 'Na polecenie',
 						},
 						{
-							id: 2,
+							id: 32,
 							value: 5,
 							text: 'Potrafi umiejscowić bodziec bólowy',
 						},
 						{
-							id: 3,
+							id: 33,
 							value: 4,
 							text: 'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
 						},
 						{
-							id: 4,
+							id: 34,
 							value: 3,
 							text: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
 						},
 						{
-							id: 5,
+							id: 35,
 							value: 2,
 							text: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
 						},
 						{
-							id: 6,
+							id: 36,
 							value: 1,
 							text: 'Brak reakcji',
 						},
@@ -667,7 +668,7 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 13) return 'Łagodne zaburzenia świadomości.'
 			if (result >= 9) return 'Umiarkowane zaburzenia świadomości.'
 			if (result >= 6) return 'Brak przytomności.'
@@ -702,234 +703,234 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 0,
 							text: 'Wcale nie dokuczało',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 14,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 2,
+					id: 20,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności',
 					radios: [
 						{
-							id: 1,
+							id: 21,
 							value: 0,
 							text: 'Wcale nie dokuczało',
 						},
 						{
-							id: 2,
+							id: 22,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 23,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 24,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 3,
+					id: 30,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen',
 					radios: [
 						{
-							id: 1,
+							id: 31,
 							value: 0,
 							text: 'Wcale nie dokuczały',
 						},
 						{
-							id: 2,
+							id: 32,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 33,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 34,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 4,
+					id: 40,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii',
 					radios: [
 						{
-							id: 1,
+							id: 41,
 							value: 0,
 							text: 'Wcale nie dokuczało',
 						},
 						{
-							id: 2,
+							id: 42,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 43,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 44,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 5,
+					id: 50,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się',
 					radios: [
 						{
-							id: 1,
+							id: 51,
 							value: 0,
 							text: 'Wcale nie dokuczały',
 						},
 						{
-							id: 2,
+							id: 52,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 53,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 54,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 6,
+					id: 60,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę',
 					radios: [
 						{
-							id: 1,
+							id: 61,
 							value: 0,
 							text: 'Wcale nie dokuczało',
 						},
 						{
-							id: 2,
+							id: 62,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 63,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 64,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 7,
+					id: 70,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji',
 					radios: [
 						{
-							id: 1,
+							id: 71,
 							value: 0,
 							text: 'Wcale nie dokuczały',
 						},
 						{
-							id: 2,
+							id: 72,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 73,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 74,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 8,
+					id: 80,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle',
 					radios: [
 						{
-							id: 1,
+							id: 81,
 							value: 0,
 							text: 'Wcale nie dokuczało',
 						},
 						{
-							id: 2,
+							id: 82,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 83,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 84,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
 					],
 				},
 				{
-					id: 9,
+					id: 90,
 					text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy',
 					radios: [
 						{
-							id: 1,
+							id: 91,
 							value: 0,
 							text: 'Wcale nie dokuczały',
 						},
 						{
-							id: 2,
+							id: 92,
 							value: 1,
 							text: 'Kilka dni',
 						},
 						{
-							id: 3,
+							id: 93,
 							value: 2,
 							text: 'Więcej niż połowę dni',
 						},
 						{
-							id: 4,
+							id: 94,
 							value: 3,
 							text: 'Niemal codziennie',
 						},
@@ -941,7 +942,7 @@ export const calculators: Calculator[] = [
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 20) return 'Ciężki epizod depresyjny.'
 			if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.'
 			if (result >= 10) return 'Umiarkowany epizod depresyjny.'
@@ -984,7 +985,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'ms',
 
-		getResult: function () {
+		getResult: () => {
 			const qtInterval: number = parseFloat(
 				(document.getElementById('qtInterval') as HTMLInputElement)
 					.value
@@ -997,7 +998,7 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Skorygowany odstęp QTc.'
 		},
@@ -1044,7 +1045,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: null,
 
-		getResult: function () {
+		getResult: () => {
 			const prothrombinTime: number = parseFloat(
 				(document.getElementById('prothrombinTime') as HTMLInputElement)
 					.value
@@ -1061,7 +1062,7 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result > 32)
 				return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.'
 			if (result <= 32 && result > 0)
@@ -1105,11 +1106,11 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'g',
 
-		getResult: function () {
-			const age = parseFloat(
+		getResult: () => {
+			const age: number = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const weight = parseFloat(
+			const weight: number = parseFloat(
 				(document.getElementById('weight') as HTMLInputElement).value
 			)
 			let result: number
@@ -1121,7 +1122,7 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Maksymalna dobowa dawka ibuprofenu.'
 		},
@@ -1205,13 +1206,14 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: null,
 		},
-		resultUnit: '',
+		resultUnit: null,
 
-		getResult: function () {
-			const age = parseFloat(
+		getResult: () => {
+			const age: number = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const inputs = document.querySelectorAll('input')
+			const inputs: NodeListOf<HTMLInputElement> =
+				document.querySelectorAll('input')
 			let sum: number = age
 
 			inputs.forEach(input => {
@@ -1221,7 +1223,7 @@ export const calculators: Calculator[] = [
 			return sum
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result > 125) return 'Klasa V: ryzyko bardzo duże.'
 			if (result > 105) return 'Klasa IV: ryzyko duże.'
 			if (result > 85) return 'Klasa III: ryzyko umiarkowane.'
@@ -1285,21 +1287,21 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Tętno',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 0,
 							text: 'Poniżej 75',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 3,
 							text: '75 - 94',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: 5,
 							text: '95 lub więcej',
 						},
@@ -1307,11 +1309,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 11)
 				return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
 			if (result >= 4)
@@ -1370,11 +1372,11 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: null,
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 3)
 				return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.'
 			if (result === 2)
@@ -1419,13 +1421,13 @@ export const calculators: Calculator[] = [
 					text: 'Płeć',
 					radios: [
 						{
-							id: 'woman',
+							id: 'female',
 							value: 0.85,
 							hideBadge: true,
 							text: 'Kobieta',
 						},
 						{
-							id: 'man',
+							id: 'male',
 							value: 0,
 							hideBadge: true,
 							text: 'Mężczyzna',
@@ -1434,9 +1436,9 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
-		getResult: function () {
+		getResult: () => {
 			const waist = parseFloat(
 				(document.getElementById('waist') as HTMLInputElement).value
 			)
@@ -1447,13 +1449,13 @@ export const calculators: Calculator[] = [
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
-			const sexCheckbox = document.getElementById(
-				'man'
+		getResultInterpretation: (result: number) => {
+			const maleCheckbox = document.getElementById(
+				'male'
 			) as HTMLInputElement
-			const isMan = sexCheckbox ? sexCheckbox.checked : true
+			const isMale = maleCheckbox && maleCheckbox.checked ? true : false
 
-			if (isMan) {
+			if (isMale) {
 				if (result >= 1) return 'Otyłość androidalna (brzuszna).'
 				return 'Waga w normie.'
 			}
@@ -1503,11 +1505,11 @@ export const calculators: Calculator[] = [
 			],
 			radioGroups: null,
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 2) return 'Wysokie ryzyko zgonu.'
 			return 'Niewysokie ryzyko zgonu.'
 		},
@@ -1532,116 +1534,116 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Kiedy po przebudzeniu zapalasz pierwszego papierosa',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 3,
 							text: 'Do 5 minut',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 2,
 							text: 'Od 6 do 30 minut',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: 1,
 							text: 'Od 31 do 60 minut',
 						},
 						{
-							id: 4,
+							id: 14,
 							value: 0,
 							text: 'Po 60 minutach',
 						},
 					],
 				},
 				{
-					id: 2,
+					id: 20,
 					text: 'Czy masz trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione',
 					radios: [
 						{
-							id: 1,
+							id: 21,
 							value: 1,
 							text: 'Tak',
 						},
 						{
-							id: 2,
+							id: 22,
 							value: 0,
 							text: 'Nie',
 						},
 					],
 				},
 				{
-					id: 3,
+					id: 30,
 					text: 'Z którego papierosa jest Ci najtrudniej zrezygnować',
 					radios: [
 						{
-							id: 1,
+							id: 31,
 							value: 1,
 							text: 'Z pierwszego rano',
 						},
 						{
-							id: 2,
+							id: 32,
 							value: 0,
 							text: 'Z każdego innego',
 						},
 					],
 				},
 				{
-					id: 4,
+					id: 40,
 					text: 'Ile papierosów wypalasz dziennie',
 					radios: [
 						{
-							id: 1,
+							id: 41,
 							value: 0,
 							text: '10 lub mniej',
 						},
 						{
-							id: 2,
+							id: 42,
 							value: 1,
 							text: 'Od 11 do 20',
 						},
 						{
-							id: 3,
+							id: 43,
 							value: 2,
 							text: 'Od 21 do 30',
 						},
 						{
-							id: 4,
+							id: 44,
 							value: 3,
 							text: '31 lub więcej',
 						},
 					],
 				},
 				{
-					id: 5,
+					id: 50,
 					text: 'Czy rano palisz więcej papierosów niż w ciągu dnia',
 					radios: [
 						{
-							id: 1,
+							id: 51,
 							value: 1,
 							text: 'Tak',
 						},
 						{
-							id: 2,
+							id: 52,
 							value: 0,
 							text: 'Nie',
 						},
 					],
 				},
 				{
-					id: 6,
+					id: 60,
 					text: 'Czy palisz papierosy nawet podczas choroby, gdy musisz leżeć w łóżku',
 					radios: [
 						{
-							id: 1,
+							id: 61,
 							value: 1,
 							text: 'Tak',
 						},
 						{
-							id: 2,
+							id: 62,
 							value: 0,
 							text: 'Nie',
 						},
@@ -1649,11 +1651,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result >= 7) return 'Silne uzależnienie od nikotyny.'
 			if (result >= 4) return 'Średnie uzależnienie od nikotyny.'
 			return 'Słabe uzależnienie od nikotyny.'
@@ -1706,11 +1708,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 4) return 'NYHA IV'
 			if (result === 3) return 'NYHA III'
 			if (result === 2) return 'NYHA II'
@@ -1764,11 +1766,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 4) return 'Klasa CCS IV'
 			if (result === 3) return 'Klasa CCS III'
 			if (result === 2) return 'Klasa CCS II'
@@ -1818,7 +1820,7 @@ export const calculators: Calculator[] = [
 					text: 'Płeć',
 					radios: [
 						{
-							id: 'woman',
+							id: 'female',
 							value: 0.85,
 							hideBadge: true,
 							text: 'Kobieta',
@@ -1835,29 +1837,30 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'ml/min',
 
-		getResult: function () {
-			const age = parseFloat(
+		getResult: () => {
+			const age: number = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const weight = parseFloat(
+			const weight: number = parseFloat(
 				(document.getElementById('weight') as HTMLInputElement).value
 			)
-			const creatinine = parseFloat(
+			const creatinine: number = parseFloat(
 				(document.getElementById('creatinine') as HTMLInputElement)
 					.value
 			)
-			const sexCheckbox = document.getElementById(
-				'woman'
+			const femaleCheckbox = document.getElementById(
+				'female'
 			) as HTMLInputElement
-			const isWoman = sexCheckbox ? sexCheckbox.checked : true
+			const isWoman: boolean =
+				femaleCheckbox && femaleCheckbox.checked ? true : false
 
-			let result = ((140 - age) * weight) / (creatinine * 72)
+			let result: number = ((140 - age) * weight) / (creatinine * 72)
 			if (isWoman) result = result * 0.85
 
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Klirens kreatyniny.'
 		},
@@ -1917,27 +1920,27 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: null,
 		},
-		resultUnit: '',
+		resultUnit: null,
 
-		getResult: function () {
-			const age = parseFloat(
+		getResult: () => {
+			const age: number = parseFloat(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
-			const alt = parseFloat(
+			const alt: number = parseFloat(
 				(document.getElementById('alt') as HTMLInputElement).value
 			)
-			const ast = parseFloat(
+			const ast: number = parseFloat(
 				(document.getElementById('ast') as HTMLInputElement).value
 			)
-			const platelet = parseFloat(
+			const platelet: number = parseFloat(
 				(document.getElementById('platelet') as HTMLInputElement).value
 			)
 
-			const result = (age * ast) / (platelet * Math.sqrt(alt))
+			const result: number = (age * ast) / (platelet * Math.sqrt(alt))
 			return result
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result > 3.25)
 				return 'Duże prawdopodobieństwo zaawansowanego włóknienia.'
@@ -1967,105 +1970,105 @@ export const calculators: Calculator[] = [
 			checkboxes: null,
 			radioGroups: [
 				{
-					id: 1,
+					id: 10,
 					text: 'Encefalopatia',
 					radios: [
 						{
-							id: 1,
+							id: 11,
 							value: 1,
 							text: 'Nie ma',
 						},
 						{
-							id: 2,
+							id: 12,
 							value: 2,
 							text: 'Stopień 1–2',
 						},
 						{
-							id: 3,
+							id: 13,
 							value: 3,
 							text: 'Stopień 3–4',
 						},
 					],
 				},
 				{
-					id: 2,
+					id: 20,
 					text: 'Wodobrzusze',
 					radios: [
 						{
-							id: 1,
+							id: 21,
 							value: 1,
 							text: 'Nie ma',
 						},
 						{
-							id: 2,
+							id: 22,
 							value: 2,
 							text: 'Umiarkowane',
 						},
 						{
-							id: 3,
+							id: 23,
 							value: 3,
 							text: 'Napięte',
 						},
 					],
 				},
 				{
-					id: 3,
+					id: 30,
 					text: 'Stężenie bilirubiny',
 					radios: [
 						{
-							id: 1,
+							id: 31,
 							value: 1,
 							text: 'Poniżej 2mg/dl (34.2 µmol/l)',
 						},
 						{
-							id: 2,
+							id: 32,
 							value: 2,
 							text: '2-3mg/dl (34.2-51.3 µmol/l)',
 						},
 						{
-							id: 3,
+							id: 33,
 							value: 3,
 							text: 'Ponad 3mg/dl (51.3 µmol/l)',
 						},
 					],
 				},
 				{
-					id: 4,
+					id: 40,
 					text: 'Stężenie albuminy',
 					radios: [
 						{
-							id: 1,
+							id: 41,
 							value: 1,
 							text: 'Powyżej 3.5 g/dl (35 g/l)',
 						},
 						{
-							id: 2,
+							id: 42,
 							value: 2,
 							text: '2.8-3.5 g/dl (28-35 g/l)',
 						},
 						{
-							id: 3,
+							id: 43,
 							value: 3,
 							text: 'Poniżej 2.8 g/dl (28 g/l)',
 						},
 					],
 				},
 				{
-					id: 5,
+					id: 50,
 					text: 'Czas protrombinowy / INR',
 					radios: [
 						{
-							id: 1,
+							id: 51,
 							value: 1,
 							text: 'Poniżej 5 / 1,70',
 						},
 						{
-							id: 2,
+							id: 52,
 							value: 2,
 							text: '5–10 / 1,70–2,20',
 						},
 						{
-							id: 3,
+							id: 53,
 							value: 3,
 							text: 'Ponad 10 / 2,20',
 						},
@@ -2073,11 +2076,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			if (result >= 10)
 				return 'Klasa C. Są wskazania do przeszczepu wątroby.'
@@ -2167,7 +2170,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: '%',
 
-		getResult: function () {
+		getResult: () => {
 			const age: number = parseInt(
 				(document.getElementById('age') as HTMLInputElement).value
 			)
@@ -2209,7 +2212,6 @@ export const calculators: Calculator[] = [
 			const bloodPressureGroup: number =
 				getBloodPressureGroup(bloodPressure)
 
-			// typ do zmiany
 			const score2ValuesTable: any = {
 				female: {
 					nonSmoking: {
@@ -2473,7 +2475,7 @@ export const calculators: Calculator[] = [
 			return risk
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 
 			const age: number = parseInt(
@@ -2551,7 +2553,7 @@ export const calculators: Calculator[] = [
 		},
 		resultUnit: 'cm',
 
-		getResult: function () {
+		getResult: () => {
 			const mothersHeight: number = parseInt(
 				(document.getElementById('mothersHeight') as HTMLInputElement)
 					.value
@@ -2575,7 +2577,7 @@ export const calculators: Calculator[] = [
 			return childsHeight
 		},
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			if (result === 0) return 'Uzupełnij wszystkie informacje.'
 			return 'Przewidywany wzrost dziecka.'
 		},
@@ -2851,11 +2853,11 @@ export const calculators: Calculator[] = [
 				},
 			],
 		},
-		resultUnit: '',
+		resultUnit: null,
 
 		getResult: sumInputValues,
 
-		getResultInterpretation: function (result: number) {
+		getResultInterpretation: (result: number) => {
 			const happenedCheckbox = document.getElementById(
 				'happenedAtTheSameTime'
 			) as HTMLInputElement
@@ -2897,10 +2899,10 @@ export const calculators: Calculator[] = [
 	// 		checkboxes: null,
 	// 		radioGroups: null,
 	// 	},
-	// resultUnit: '',
+	// resultUnit: null,
 
-	// 	getResult: function () {},
+	// 	getResult: () => {},
 
-	// 	getResultInterpretation: function (result: number) {},
+	// 	getResultInterpretation: (result: number) => {},
 	// },
 ]
