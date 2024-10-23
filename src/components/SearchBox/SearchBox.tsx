@@ -58,11 +58,10 @@ export default function SearchBox() {
 	}, [searchQuery])
 
 	useEffect(() => {
-		if (selectedItemRef.current !== null)
-			selectedItemRef.current.scrollIntoView({
-				block: 'nearest',
-				behavior: 'smooth',
-			})
+		selectedItemRef.current?.scrollIntoView({
+			block: 'nearest',
+			behavior: 'smooth',
+		})
 	}, [selectedItemIndex])
 
 	const filteredCalculators = sortedCalculators.filter(value =>
@@ -70,7 +69,7 @@ export default function SearchBox() {
 	)
 
 	function focusOnSearchBar() {
-		if (searchBarRef.current !== null) searchBarRef.current.focus()
+		searchBarRef.current?.focus()
 	}
 
 	function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
