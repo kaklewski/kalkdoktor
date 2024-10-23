@@ -181,7 +181,7 @@ export const calculators: Calculator[] = [
 		id: 3,
 		name: 'Skala Centora w modyfikacji McIsaaca',
 		urlPath: 'skala-centora-mcisaaca',
-		category: 'pediatria',
+		category: 'choroby zakaźne',
 		description:
 			'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
 		methodology: null,
@@ -2588,7 +2588,7 @@ export const calculators: Calculator[] = [
 		name: 'Kwestionariusz MDQ',
 		urlPath: 'kwestionariusz-mdq',
 		category: 'psychiatria',
-		description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej',
+		description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
 		methodology: null,
 		sources: [
 			{
@@ -2867,7 +2867,7 @@ export const calculators: Calculator[] = [
 			const problem = document.querySelector(
 				'input[name="problem"]:checked'
 			) as HTMLInputElement
-			const isProblem =
+			const isProblem: boolean =
 				problem &&
 				(problem.value === 'medium' || problem.value === 'big')
 					? true
@@ -2877,6 +2877,627 @@ export const calculators: Calculator[] = [
 				return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.'
 			}
 			return 'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.'
+		},
+	},
+
+	{
+		id: 27,
+		name: 'Test AUDIT',
+		urlPath: 'test-audit',
+		category: 'używki',
+		description: 'Ocenia stopień uzależnienia od alkoholu.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Centrum Dobrej Terapii, mgr Maria Kaleńczuk i mgr Teresa Janus, Czy jesteś uzależniony od alkoholu – test AUDIT, dostęp: 22.10.2024',
+				link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
+			},
+			{
+				id: 2,
+				name: 'Państwowa Agencja Rozwiązywania Problemów Alkoholowych, Autodiagnoza - Jak ocenić swoje picie?, dostęp: 22.10.2024',
+				link: 'https://www.parpa.pl/images/autodiagnoza_20_10_2020_1.pdf',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 'sex',
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'male',
+							value: 'male',
+							text: 'Mężczyzna',
+						},
+						{
+							id: 'female',
+							value: 'female',
+							text: 'Kobieta',
+						},
+					],
+				},
+				{
+					id: 10,
+					text: 'Jak często pacjent pije napoje alkoholowe',
+					radios: [
+						{
+							id: 11,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 12,
+							value: 1,
+							text: 'Raz w miesiącu',
+						},
+						{
+							id: 13,
+							value: 2,
+							text: 'Od 2 do 4 razy w miesiącu',
+						},
+						{
+							id: 14,
+							value: 3,
+							text: 'Od 2 do 3 razy w tygodniu',
+						},
+						{
+							id: 15,
+							value: 4,
+							text: '4 razy w tygodniu lub częściej',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
+					radios: [
+						{
+							id: 11,
+							value: 0,
+							text: '1 lub 2 porcje',
+						},
+						{
+							id: 12,
+							value: 1,
+							text: '3 lub 4 porcje',
+						},
+						{
+							id: 13,
+							value: 2,
+							text: '5 lub 6 porcji',
+						},
+						{
+							id: 14,
+							value: 3,
+							text: 'Od 7 do 9 porcji',
+						},
+						{
+							id: 15,
+							value: 4,
+							text: '10 porcji lub więcej',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia',
+					radios: [
+						{
+							id: 31,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 32,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 33,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 34,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 35,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 40,
+					text: 'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu',
+					radios: [
+						{
+							id: 41,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 42,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 43,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 44,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 45,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 50,
+					text: 'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania',
+					radios: [
+						{
+							id: 51,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 52,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 53,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 54,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 55,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 60,
+					text: 'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia',
+					radios: [
+						{
+							id: 61,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 62,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 63,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 64,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 65,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 70,
+					text: 'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu',
+					radios: [
+						{
+							id: 71,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 72,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 73,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 74,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 75,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 80,
+					text: 'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia',
+					radios: [
+						{
+							id: 81,
+							value: 0,
+							text: 'Nigdy',
+						},
+						{
+							id: 82,
+							value: 1,
+							text: 'Rzadziej niż raz w miesiącu',
+						},
+						{
+							id: 83,
+							value: 2,
+							text: 'Około raz w miesiącu',
+						},
+						{
+							id: 84,
+							value: 3,
+							text: 'Około raz w tygodniu',
+						},
+						{
+							id: 85,
+							value: 4,
+							text: 'Codziennie lub prawie codziennie',
+						},
+					],
+				},
+				{
+					id: 90,
+					text: 'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia',
+					radios: [
+						{
+							id: 91,
+							value: 0,
+							text: 'Nie',
+						},
+						{
+							id: 92,
+							value: 2,
+							text: 'Tak, ale nie w ostatnim roku',
+						},
+						{
+							id: 93,
+							value: 4,
+							text: 'Tak, w ostatnim roku',
+						},
+					],
+				},
+				{
+					id: 100,
+					text: 'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie',
+					radios: [
+						{
+							id: 101,
+							value: 0,
+							text: 'Nie',
+						},
+						{
+							id: 102,
+							value: 2,
+							text: 'Tak, ale nie w ostatnim roku',
+						},
+						{
+							id: 103,
+							value: 4,
+							text: 'Tak, w ostatnim roku',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: null,
+
+		getResult: sumInputValues,
+
+		getResultInterpretation: (result: number) => {
+			const sex: string = (
+				document.querySelector(
+					'input[name="sex"]:checked'
+				) as HTMLInputElement
+			)?.value
+
+			const lowRisk: string = 'Picie o niskim poziomie ryzyka.'
+			const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.'
+			const highRisk: string = 'Szkodliwe picie alkoholu.'
+			const criticalRisk: string = 'Podejrzenie uzależnienia od alkoholu.'
+
+			if (result > 19) return criticalRisk
+			if (result > 15) return highRisk
+			if (sex === 'male' && result > 7) return mediumRisk
+			if (sex === 'female' && result > 6) return mediumRisk
+			return lowRisk
+		},
+	},
+
+	{
+		id: 28,
+		name: 'Pediatryczna skala Glasgow',
+		urlPath: 'pediatryczna-skala-glasgow',
+		category: 'pediatria',
+		description: 'Ocenia poziom przytomności u dzieci do 2 roku życia.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna i Statystyka, Pediatryczna skala Glasgow (Pediatric Glasgow Coma Scale), dostęp: 23.10.2024',
+				link: 'https://medycynaistatystyka.pl/pediatryczna-skala-glasgow',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 10,
+					text: 'Otwieranie oczu',
+					radios: [
+						{
+							id: 11,
+							value: 4,
+							text: 'Spontaniczne',
+						},
+						{
+							id: 12,
+							value: 3,
+							text: 'W odpowiedzi na bodziec głosowy',
+						},
+						{
+							id: 13,
+							value: 2,
+							text: 'W odpowiedzi na bodziec bólowy',
+						},
+						{
+							id: 14,
+							value: 1,
+							text: 'Nie otwiera oczu',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Odpowiedź słowna',
+					radios: [
+						{
+							id: 21,
+							value: 5,
+							text: 'Uśmiech lub adekwatny płacz',
+						},
+						{
+							id: 22,
+							value: 4,
+							text: 'Gwałtowny, nieustępujący płacz',
+						},
+						{
+							id: 23,
+							value: 3,
+							text: 'Nieadekwatny płacz lub krzyk',
+						},
+						{
+							id: 24,
+							value: 2,
+							text: 'Jęki lub pochrząkiwanie',
+						},
+						{
+							id: 25,
+							value: 1,
+							text: 'Brak reakcji',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Reakcja ruchowa',
+					radios: [
+						{
+							id: 31,
+							value: 6,
+							text: 'Ruchy spontaniczne',
+						},
+						{
+							id: 32,
+							value: 5,
+							text: 'Zlokalizowanie, próba usunięcia bodźca bólowego',
+						},
+						{
+							id: 33,
+							value: 4,
+							text: 'Wycofanie przed bodźcem bólowym',
+						},
+						{
+							id: 34,
+							value: 3,
+							text: 'Patologiczna reakcja zgięciowa w reakcji na bodziec bólowy',
+						},
+						{
+							id: 35,
+							value: 2,
+							text: 'Patologiczna reakcja wyprostna w reakcji na bodziec bólowy',
+						},
+						{
+							id: 36,
+							value: 1,
+							text: 'Brak reakcji',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: null,
+
+		getResult: sumInputValues,
+
+		getResultInterpretation: (result: number) => {
+			if (result === 0) return 'Uzupełnij wszystkie informacje.'
+			if (result >= 13) return 'Łagodne zaburzenia przytomności.'
+			if (result >= 9) return 'Umiarkowane zaburzenia przytomności.'
+			return 'Ciężkie zaburzenia przytomności.'
+		},
+	},
+
+	{
+		id: 29,
+		name: 'Skala Apgar',
+		urlPath: 'skala-apgar',
+		category: 'pediatria',
+		description: 'Ocenia noworodka w pierwszej i w piątej minucie życia.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Szpital Położniczo-Ginekologiczny Ujastek, Skala Apgar – za co przyznawane są noworodkowi punkty?, dostęp: 23.10.2024',
+				link: 'https://szpital.ujastek.pl/blogosfera/skala-apgar-za-co-przyznawane-sa-noworodkowi-punkty',
+			},
+			{
+				id: 2,
+				name: 'Serwis Zdrowie (pap.pl), Skala Apgar, czyli za co noworodek dostaje punkty, dostęp: 23.10.2024',
+				link: 'https://zdrowie.pap.pl/rodzice/skala-apgar-czyli-za-co-noworodek-dostaje-punkty',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 10,
+					text: 'Akcja serca',
+					radios: [
+						{
+							id: 11,
+							value: 0,
+							text: 'Brak czynności',
+						},
+						{
+							id: 12,
+							value: 1,
+							text: 'Poniżej 100 uderzeń na minutę',
+						},
+						{
+							id: 13,
+							value: 2,
+							text: 'Co najmniej 100 uderzeń na minutę',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Oddychanie',
+					radios: [
+						{
+							id: 21,
+							value: 0,
+							text: 'Brak oddechu',
+						},
+						{
+							id: 22,
+							value: 1,
+							text: 'Zwolnione lub nieregularne',
+						},
+						{
+							id: 23,
+							value: 2,
+							text: 'Aktywne ruchy',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Napięcie mięśni',
+					radios: [
+						{
+							id: 31,
+							value: 0,
+							text: 'Wiotkie',
+						},
+						{
+							id: 32,
+							value: 1,
+							text: 'Obecne',
+						},
+						{
+							id: 33,
+							value: 2,
+							text: 'Aktywne ruchy',
+						},
+					],
+				},
+				{
+					id: 40,
+					text: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
+					radios: [
+						{
+							id: 41,
+							value: 0,
+							text: 'Brak reakcji',
+						},
+						{
+							id: 42,
+							value: 1,
+							text: 'Słaba reakcja (grymas)',
+						},
+						{
+							id: 43,
+							value: 2,
+							text: 'Adekwatna reakcja (kichanie)',
+						},
+					],
+				},
+				{
+					id: 50,
+					text: 'Zabarwienie skóry',
+					radios: [
+						{
+							id: 51,
+							value: 0,
+							text: 'Blada',
+						},
+						{
+							id: 52,
+							value: 1,
+							text: 'Sinica obwodowa',
+						},
+						{
+							id: 53,
+							value: 2,
+							text: 'Różowa',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: null,
+
+		getResult: sumInputValues,
+
+		getResultInterpretation: (result: number) => {
+			if (result >= 8) return 'Stan dobry.'
+			if (result >= 4) return 'Stan średni.'
+			return 'Stan zły (ciężki).'
 		},
 	},
 
@@ -2899,7 +3520,7 @@ export const calculators: Calculator[] = [
 	// 		checkboxes: null,
 	// 		radioGroups: null,
 	// 	},
-	// resultUnit: null,
+	//  resultUnit: null,
 
 	// 	getResult: () => {},
 
