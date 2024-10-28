@@ -3501,6 +3501,342 @@ export const calculators: Calculator[] = [
 		},
 	},
 
+	{
+		id: 30,
+		name: 'Skala Barthel',
+		urlPath: 'skala-barthel',
+		category: 'geriatria',
+		description:
+			'Ocenia poziom samodzielności i zdolność zaspokajania podstawowych potrzeb życiowych pacjentów.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Swissmed, Ocena pacjenta wg skali Barthel, dostęp: 27.10.2024',
+				link: 'https://swissmed.com.pl/pliki/seniorzy/ocena_pacjenta_barthel.pdf',
+			},
+			{
+				id: 2,
+				name: 'Gov.pl, Karta oceny stanu pacjenta wg zmodyfikowanej skali Barthel, dostęp: 27.10.2024',
+				link: 'https://www.gov.pl/attachment/203e5ac4-0bac-42ec-9b86-3da58772bda4',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 10,
+					text: 'Spożywanie posiłków',
+					radios: [
+						{
+							id: 11,
+							value: 0,
+							text: 'Nie jest w stanie samodzielnie jeść lub przełykać',
+						},
+						{
+							id: 12,
+							value: 5,
+							text: 'Potrzebuje pomocy w krojeniu, smarowaniu, karmieniu doustnym',
+						},
+						{
+							id: 13,
+							value: 10,
+							text: 'Samodzielny, niezależny',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
+					radios: [
+						{
+							id: 21,
+							value: 0,
+							text: 'Nie jest w stanie się przemieszczać, nie zachowuje równowagi przy siadaniu oraz siedzeniu',
+						},
+						{
+							id: 22,
+							value: 5,
+							text: 'Przemieszcza się z pomocą fizyczną jednej lub dwóch osób, może siedzieć',
+						},
+						{
+							id: 23,
+							value: 10,
+							text: 'Mniejsza pomoc (słowna lub fizyczna)',
+						},
+						{
+							id: 24,
+							value: 15,
+							text: 'Samodzielny',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Utrzymanie higieny osobistej',
+					radios: [
+						{
+							id: 31,
+							value: 0,
+							text: 'Nie jest w stanie wykonać żadnych czynności higienicznych',
+						},
+						{
+							id: 32,
+							value: 5,
+							text: 'Potrzebuje pomocy przy wykonywaniu czynności higienicznych',
+						},
+						{
+							id: 33,
+							value: 10,
+							text: 'Samodzielny przy myciu twarzy, czesaniu się, myciu zębów, także z zapewnionymi pomocami',
+						},
+					],
+				},
+				{
+					id: 40,
+					text: 'Korzystanie z toalety',
+					radios: [
+						{
+							id: 41,
+							value: 0,
+							text: 'Nie korzysta w ogóle z toalety',
+						},
+						{
+							id: 42,
+							value: 5,
+							text: 'Potrzebuje lub częściowo potrzebuje pomocy przy korzystaniu z toalety',
+						},
+						{
+							id: 43,
+							value: 10,
+							text: 'Samodzielny w dotarciu do toalety oraz w zdejmowaniu i zakładaniu części garderoby',
+						},
+					],
+				},
+				{
+					id: 50,
+					text: 'Mycie i kąpiel całego ciała',
+					radios: [
+						{
+							id: 51,
+							value: 0,
+							text: 'Kąpany w wannie przy pomocy podnośnika',
+						},
+						{
+							id: 52,
+							value: 5,
+							text: 'Wymaga pomocy',
+						},
+						{
+							id: 53,
+							value: 10,
+							text: 'Samodzielny',
+						},
+					],
+				},
+				{
+					id: 60,
+					text: 'Poruszanie się po powierzchniach płaskich',
+					radios: [
+						{
+							id: 61,
+							value: 0,
+							text: 'W ogóle nie porusza się',
+						},
+						{
+							id: 62,
+							value: 5,
+							text: 'Porusza się na odległość do 50 m za pomocą sprzętu wspomagającego i z pomocą co najmniej jednej osoby',
+						},
+						{
+							id: 63,
+							value: 10,
+							text: 'Samodzielny, niezależny w poruszaniu się na odległość powyżej 50m, także w użyciem sprzętu wspomagającego',
+						},
+					],
+				},
+				{
+					id: 70,
+					text: 'Chodzenie po schodach',
+					radios: [
+						{
+							id: 71,
+							value: 0,
+							text: 'Nie jest w stanie wchodzić i schodzić po schodach nawet z pomocą innej osoby',
+						},
+						{
+							id: 72,
+							value: 5,
+							text: 'Potrzebuje pomocy fizycznej, asekuracji, przenoszenia',
+						},
+						{
+							id: 73,
+							value: 10,
+							text: 'Samodzielny',
+						},
+					],
+				},
+				{
+					id: 90,
+					text: 'Ubieranie i rozbieranie się',
+					radios: [
+						{
+							id: 91,
+							value: 0,
+							text: 'Potrzebuje kompleksowej pomocy innej osoby',
+						},
+						{
+							id: 92,
+							value: 5,
+							text: 'Potrzebuje częściowej pomocy innej osoby',
+						},
+						{
+							id: 93,
+							value: 10,
+							text: 'Samodzielny, niezależny (także w zapinaniu guzików, zamka, zawiązywaniu sznurowadeł)',
+						},
+					],
+				},
+				{
+					id: 100,
+					text: 'Kontrola zwieracza odbytu',
+					radios: [
+						{
+							id: 101,
+							value: 0,
+							text: 'Nie panuje nad oddawaniem stolca',
+						},
+						{
+							id: 102,
+							value: 5,
+							text: 'Sporadycznie bezwiednie oddaje stolec',
+						},
+						{
+							id: 103,
+							value: 10,
+							text: 'Kontroluje oddawanie stolca',
+						},
+					],
+				},
+				{
+					id: 110,
+					text: 'Kontrola zwieraczy pęcherza moczowego',
+					radios: [
+						{
+							id: 111,
+							value: 0,
+							text: 'Nie panuje nad oddawaniem moczu',
+						},
+						{
+							id: 112,
+							value: 5,
+							text: 'Sporadycznie bezwiednie oddaje mocz',
+						},
+						{
+							id: 113,
+							value: 10,
+							text: 'Kontroluje oddawanie moczu',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: null,
+
+		getResult: sumInputValues,
+
+		getResultInterpretation: (result: number) => {
+			if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.'
+			if (result > 20) return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.'
+			return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.'
+		},
+	},
+
+	{
+		id: 31,
+		name: 'Obliczanie zawartości alkoholu we krwi (wzór Erika Widmarka)',
+		urlPath: 'obliczanie-alkoholu-widmarka',
+		category: 'używki',
+		description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Kalibrujemy.pl, Przeliczanie zawartości alkoholu we krwi na promile - wzór, dostęp: 28.10.2024',
+				link: 'https://www.kalibrujemy.pl/blog/48-przeliczanie-zawartosci-alkoholu-we-krwi-na-promile-wzor-przyklady',
+			},
+			{
+				id: 2,
+				name: 'Polityka, Ile mam promili?, dostęp: 28.10.2024',
+				link: 'https://www.polityka.pl/tygodnikpolityka/kraj/1560509,1,ile-mam-promili.read',
+			},
+		],
+		fields: {
+			numberInputs: [
+				{
+					id: 'consumedAlcohol',
+					text: 'Ilość wypitego czystego alkoholu w gramach (1 ml czystego alkoholu to 0,8 g)',
+					min: 1,
+					max: 1000,
+				},
+				{
+					id: 'bodyWeight',
+					text: 'Masa ciała (w kg)',
+					min: 1,
+					max: 250,
+				},
+			],
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 'sex',
+					text: 'Płeć',
+					radios: [
+						{
+							id: 'female',
+							value: 0.6,
+							hideBadge: true,
+							text: 'Kobieta',
+						},
+						{
+							id: 'male',
+							value: 0.7,
+							hideBadge: true,
+							text: 'Mężczyzna',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: '‰',
+
+		getResult: () => {
+			const consumedAlcohol: number = parseFloat(
+				(document.getElementById('consumedAlcohol') as HTMLInputElement)
+					.value
+			)
+			const bodyWeight: number = parseFloat(
+				(document.getElementById('bodyWeight') as HTMLInputElement)
+					.value
+			)
+			const sexIndex: number = parseFloat(
+				(
+					document.querySelector(
+						'input[name="sex"]:checked'
+					) as HTMLInputElement
+				)?.value
+			)
+
+			const result = consumedAlcohol / (sexIndex * bodyWeight)
+			return result
+		},
+
+		getResultInterpretation: () => {
+			return 'Przybliżona zawartość alkoholu we krwi.'
+		},
+	},
+
 	// {
 	// 	id: ,
 	// 	name: '',
