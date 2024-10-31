@@ -3748,7 +3748,8 @@ export const calculators: Calculator[] = [
 
 		getResultInterpretation: (result: number) => {
 			if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.'
-			if (result > 20) return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.'
+			if (result > 20)
+				return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.'
 			return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.'
 		},
 	},
@@ -3834,6 +3835,200 @@ export const calculators: Calculator[] = [
 
 		getResultInterpretation: () => {
 			return 'Przybliżona zawartość alkoholu we krwi.'
+		},
+	},
+
+	{
+		id: 32,
+		name: 'Skala Oakland',
+		urlPath: 'skala-oakland',
+		category: 'gastrologia',
+		description:
+			'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
+		methodology: null,
+		sources: [
+			{
+				id: 1,
+				name: 'Medycyna Praktyczna, Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego, dostęp: 29.10.2024',
+				link: 'https://www.mp.pl/chirurgia/wytyczne-przegladowe/242727,rozpoznanie-i-leczenie-ostrego-krwawienia-do-dolnego-odcinka-przewodu-pokarmowego',
+			},
+		],
+		fields: {
+			numberInputs: null,
+			checkboxes: null,
+			radioGroups: [
+				{
+					id: 10,
+					text: 'Wiek',
+					radios: [
+						{
+							id: 11,
+							value: 0,
+							text: 'Mniej niż 40 lat',
+						},
+						{
+							id: 12,
+							value: 1,
+							text: 'Od 40 do 59 lat',
+						},
+						{
+							id: 13,
+							value: 2,
+							text: '70 lat lub więcej',
+						},
+					],
+				},
+				{
+					id: 20,
+					text: 'Płeć',
+					radios: [
+						{
+							id: 21,
+							value: 0,
+							text: 'Kobieta',
+						},
+						{
+							id: 22,
+							value: 1,
+							text: 'Mężczyzna',
+						},
+					],
+				},
+				{
+					id: 30,
+					text: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
+					radios: [
+						{
+							id: 31,
+							value: 0,
+							text: 'Nie',
+						},
+						{
+							id: 32,
+							value: 1,
+							text: 'Tak',
+						},
+					],
+				},
+				{
+					id: 40,
+					text: 'Wynik badania per rectum',
+					radios: [
+						{
+							id: 41,
+							value: 0,
+							text: 'Bez krwi',
+						},
+						{
+							id: 42,
+							value: 1,
+							text: 'Obecna krew',
+						},
+					],
+				},
+				{
+					id: 50,
+					text: 'Częstotliwość rytmu serca',
+					radios: [
+						{
+							id: 51,
+							value: 0,
+							text: 'Mniej niż 70 na minutę',
+						},
+						{
+							id: 52,
+							value: 1,
+							text: 'Między 70 a 89 na minutę',
+						},
+						{
+							id: 53,
+							value: 2,
+							text: 'Między 90 a 109 na minutę',
+						},
+						{
+							id: 54,
+							value: 3,
+							text: '110 na minutę lub więcej',
+						},
+					],
+				},
+				{
+					id: 60,
+					text: 'Ciśnienie tętnicze skurczowe',
+					radios: [
+						{
+							id: 61,
+							value: 5,
+							text: 'Mniej niż 90 mm Hg',
+						},
+						{
+							id: 62,
+							value: 4,
+							text: 'Od 90 do 119 mm Hg',
+						},
+						{
+							id: 63,
+							value: 3,
+							text: 'Od 120 do 129 mm Hg',
+						},
+						{
+							id: 64,
+							value: 2,
+							text: 'Od 130 do 159 mm Hg',
+						},
+						{
+							id: 65,
+							value: 0,
+							text: '160 mm Hg lub więcej',
+						},
+					],
+				},
+				{
+					id: 70,
+					text: 'Stężenie hemoglobiny',
+					radios: [
+						{
+							id: 71,
+							value: 22,
+							text: 'Mniej niż 7 g/dl',
+						},
+						{
+							id: 72,
+							value: 17,
+							text: 'Od 7 do 8,9 g/dl',
+						},
+						{
+							id: 73,
+							value: 13,
+							text: 'Od 9 do 10,9 g/dl',
+						},
+						{
+							id: 74,
+							value: 8,
+							text: 'Od 11 do 12,9 g/dl',
+						},
+						{
+							id: 75,
+							value: 4,
+							text: 'Od 13 do 15,9 g/dl',
+						},
+						{
+							id: 76,
+							value: 0,
+							text: '16 g/dl lub więcej',
+						},
+					],
+				},
+			],
+		},
+		resultUnit: null,
+
+		getResult: sumInputValues,
+
+		getResultInterpretation: (result: number) => {
+			if (result > 8)
+				return 'Poważne krwawienie. Wskazana jest hospitalizacja.'
+			return 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.'
 		},
 	},
 
