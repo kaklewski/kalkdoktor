@@ -4,7 +4,7 @@ import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
 import DetailsCard from '../components/DetailsCard'
 import FormCard from '../components/FormCard'
-import { CalculatorType } from '../types/calculatorType'
+import { CalculatorType } from '../types/calculatorTypes'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
 type CalculatorPageProps = {

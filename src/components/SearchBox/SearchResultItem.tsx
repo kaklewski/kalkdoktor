@@ -1,6 +1,6 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { IconCornerDownLeft } from '@tabler/icons-react'
-import { CalculatorType } from '../../types/calculatorType'
+import { CalculatorType } from '../../types/calculatorTypes'
 
 type SearchResultItemProps = {
   name: CalculatorType['name']

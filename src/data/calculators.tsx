@@ -1,5 +1,5 @@
 import sumInputValues from '../utils/sumInputValues'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 export const calculators: Calculator[] = [
   {

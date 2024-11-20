@@ -8,7 +8,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import SourceLink from './SourceLink'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 interface ComponentProps {
   description: Calculator['description']

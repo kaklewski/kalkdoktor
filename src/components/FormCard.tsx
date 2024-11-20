@@ -5,7 +5,7 @@ import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
 import CustomRadio from './CustomRadio'
 import { Dispatch, FormEvent, SetStateAction } from 'react'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 interface ComponentProps {
   numberInputs?: Calculator['fields']['numberInputs']

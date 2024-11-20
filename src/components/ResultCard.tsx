@@ -7,7 +7,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 interface ComponentProps {
   result: number

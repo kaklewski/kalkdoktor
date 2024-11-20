@@ -1,7 +1,7 @@
 import { IconButton, Tooltip, useToast } from '@chakra-ui/react'
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import { useState } from 'react'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 interface ComponentProps {
   pageId: Calculator['id']

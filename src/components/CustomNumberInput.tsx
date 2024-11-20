@@ -7,13 +7,9 @@ import {
   NumberInputStepper,
   Text,
 } from '@chakra-ui/react'
+import { NumberInputType } from '../types/calculatorTypes'
 
-type CustomNumberInputProps = {
-  id: string | number
-  text: string
-  min: number
-  max: number
-}
+type CustomNumberInputProps = NumberInputType
 
 export default function CustomNumberInput({
   id,

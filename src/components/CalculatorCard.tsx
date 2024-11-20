@@ -10,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import FavButton from './FavButton'
-import Calculator from '../types/calculatorType'
+import Calculator from '../types/calculatorTypes'
 
 type CalculatorCardProps = {
   id: Calculator['id']
