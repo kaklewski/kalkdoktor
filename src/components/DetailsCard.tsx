@@ -8,19 +8,19 @@ import {
   Text,
 } from '@chakra-ui/react'
 import SourceLink from './SourceLink'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
-interface ComponentProps {
-  description: Calculator['description']
-  methodology: Calculator['methodology']
-  sources: Calculator['sources']
+type DetailsCardProps = {
+  description: CalculatorType['description']
+  methodology: CalculatorType['methodology']
+  sources: CalculatorType['sources']
 }
 
 export default function DetailsCard({
   description,
   methodology,
   sources,
-}: ComponentProps) {
+}: DetailsCardProps) {
   return (
     <Card variant='outline'>
       <Tabs variant='enclosed' isFitted colorScheme='teal'>

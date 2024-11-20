@@ -7,11 +7,11 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
-interface ComponentProps {
+type ResultCardProps = {
   result: number
-  resultUnit: Calculator['resultUnit']
+  resultUnit: CalculatorType['resultUnit']
   resultInterpretation: string
 }
 
@@ -19,7 +19,7 @@ export default function ResultCard({
   result,
   resultUnit,
   resultInterpretation,
-}: ComponentProps) {
+}: ResultCardProps) {
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
   const [resultCardAnimation, setResultCardAnimation] = useState('')
 

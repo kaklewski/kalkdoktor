@@ -1,13 +1,13 @@
 import { IconButton, Tooltip, useToast } from '@chakra-ui/react'
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import { useState } from 'react'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
-interface ComponentProps {
-  pageId: Calculator['id']
+type FavButtonProps = {
+  pageId: CalculatorType['id']
 }
 
-export default function FavButton({ pageId }: ComponentProps) {
+export default function FavButton({ pageId }: FavButtonProps) {
   const LOCAL_STORAGE_KEY: string = 'favorites'
   const [isFav, setIsFav] = useState<boolean>(() => {
     // Determine if the button should initially be displayed as added to favorites or not

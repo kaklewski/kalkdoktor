@@ -5,16 +5,16 @@ import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
 import CustomRadio from './CustomRadio'
 import { Dispatch, FormEvent, SetStateAction } from 'react'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
-interface ComponentProps {
-  numberInputs?: Calculator['fields']['numberInputs']
-  checkboxes?: Calculator['fields']['checkboxes']
-  radioGroups?: Calculator['fields']['radioGroups']
-  getResult: Calculator['getResult']
+type FormCardProps = {
+  numberInputs?: CalculatorType['fields']['numberInputs']
+  checkboxes?: CalculatorType['fields']['checkboxes']
+  radioGroups?: CalculatorType['fields']['radioGroups']
+  getResult: CalculatorType['getResult']
   setResult: Dispatch<SetStateAction<number>>
   result: number
-  getResultInterpretation: Calculator['getResultInterpretation']
+  getResultInterpretation: CalculatorType['getResultInterpretation']
   setResultInterpretation: Dispatch<SetStateAction<string>>
 }
 
@@ -27,7 +27,7 @@ export default function FormCard({
   result,
   getResultInterpretation,
   setResultInterpretation,
-}: ComponentProps) {
+}: FormCardProps) {
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setResult(getResult())
