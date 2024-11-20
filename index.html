@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html lang="pl">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kalkdoktor - Skale i kalkulatory medyczne</title>
-		<meta
-			name="description"
-			content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi." />
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkdoktor - Skale i kalkulatory medyczne</title>
+    <meta
+      name="description"
+      content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi." />
 
-		<style>
-			/* Fix Chakra UI flashing white screen when switching pages */
-			body {
-				--spinner-color: #319795;
-				@media (prefers-color-scheme: dark) {
-					background-color: #1a202c;
-					--spinner-color: #81e6d9;
-				}
-			}
+    <style>
+      /* Fix Chakra UI flashing white screen when switching pages */
+      body {
+        --spinner-color: #319795;
+        @media (prefers-color-scheme: dark) {
+          background-color: #1a202c;
+          --spinner-color: #81e6d9;
+        }
+      }
 
-			body[data-theme='light'] {
-				background-color: #fff;
+      body[data-theme='light'] {
+        background-color: #fff;
 
-				--spinner-color: #319795;
-			}
+        --spinner-color: #319795;
+      }
 
-			body[data-theme='dark'] {
-				background-color: #1a202c;
+      body[data-theme='dark'] {
+        background-color: #1a202c;
 
-				--spinner-color: #81e6d9;
-			}
+        --spinner-color: #81e6d9;
+      }
 
-			/* Loader styling */
-			.loader-container {
-				position: absolute;
-				top: 0;
-				left: 0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				height: 100vh;
-			}
+      /* Loader styling */
+      .loader-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+      }
 
-			.loader-container svg {
-				width: 3.75em;
-				transform-origin: center;
-				animation: rotate 2s linear infinite;
-			}
+      .loader-container svg {
+        width: 3.75em;
+        transform-origin: center;
+        animation: rotate 2s linear infinite;
+      }
 
-			.loader-container circle {
-				fill: none;
-				stroke: var(--spinner-color);
-				stroke-width: 2;
-				stroke-dasharray: 1, 200;
-				stroke-dashoffset: 0;
-				stroke-linecap: round;
-				animation: dash 1.5s ease-in-out infinite;
-			}
+      .loader-container circle {
+        fill: none;
+        stroke: var(--spinner-color);
+        stroke-width: 2;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+        animation: dash 1.5s ease-in-out infinite;
+      }
 
-			@keyframes rotate {
-				100% {
-					transform: rotate(360deg);
-				}
-			}
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-			@keyframes dash {
-				0% {
-					stroke-dasharray: 1, 200;
-					stroke-dashoffset: 0;
-				}
-				50% {
-					stroke-dasharray: 90, 200;
-					stroke-dashoffset: -35px;
-				}
-				100% {
-					stroke-dashoffset: -125px;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div id="root">
-			<!-- Display a loading spinner before React loads the V-DOM -->
-			<div class="loader-container">
-				<svg viewBox="25 25 50 50">
-					<circle cx="50" cy="50" r="20"></circle>
-				</svg>
-			</div>
-		</div>
-		<script>
-			// Handle setting up the initial theme
-			function setInitialTheme() {
-				const theme = localStorage.getItem('chakra-ui-color-mode')
-				const body = document.querySelector('body')
-				if (body === null) return
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 90, 200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dashoffset: -125px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Display a loading spinner before React loads the V-DOM -->
+      <div class="loader-container">
+        <svg viewBox="25 25 50 50">
+          <circle cx="50" cy="50" r="20"></circle>
+        </svg>
+      </div>
+    </div>
+    <script>
+      // Handle setting up the initial theme
+      function setInitialTheme() {
+        const theme = localStorage.getItem('chakra-ui-color-mode')
+        const body = document.querySelector('body')
+        if (body === null) return
 
-				if (theme === 'light') body.setAttribute('data-theme', 'light')
-				if (theme === 'dark') body.setAttribute('data-theme', 'dark')
-			}
-			setInitialTheme()
-		</script>
-		<script type="module" src="/src/main.tsx"></script>
-	</body>
+        if (theme === 'light') body.setAttribute('data-theme', 'light')
+        if (theme === 'dark') body.setAttribute('data-theme', 'dark')
+      }
+      setInitialTheme()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

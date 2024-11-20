@@ -14,12 +14,12 @@ Deployed with [Netlify](https://www.netlify.com/).
 
 ## Features
 
--   **Medical scales and calculators**: Contains a set of medical tools enabling the diagnosis of the patient.
--   **Favorites**: Add selected calculators to your favorites and share them between devices.
--   **Search**: Search for your favorite calculators.
--   **Dark Mode**: Switch between light and dark modes.
--   **Modern UI**: Clean, professional design with consistent color schemes, fonts and style.
--   **Responsive Design**: Use it on any device you want.
+- **Medical scales and calculators**: Contains a set of medical tools enabling the diagnosis of the patient.
+- **Favorites**: Add selected calculators to your favorites and share them between devices.
+- **Search**: Search for your favorite calculators.
+- **Dark Mode**: Switch between light and dark modes.
+- **Modern UI**: Clean, professional design with consistent color schemes, fonts and style.
+- **Responsive Design**: Use it on any device you want.
 
 ## Screenshots
 

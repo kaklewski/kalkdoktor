@@ -1,68 +1,68 @@
 /* dosis-regular - latin-ext */
 @font-face {
-	font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: 'Dosis';
-	font-style: normal;
-	font-weight: 400;
-	src: url('/src/assets/dosis-v32-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/dosis-v32-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* dosis-600 - latin-ext */
 @font-face {
-	font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: 'Dosis';
-	font-style: normal;
-	font-weight: 600;
-	src: url('/src/assets/dosis-v32-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/src/assets/dosis-v32-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 #navLogo {
-	font-family: 'Dosis', sans-serif;
-	font-size: 1.7rem;
-	font-weight: 600;
-	letter-spacing: -0.5px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 
-	svg {
-		min-width: 1.7rem;
-		min-height: 1.7rem;
-	}
+  svg {
+    min-width: 1.7rem;
+    min-height: 1.7rem;
+  }
 }
 
 #search-icon-small,
 #favorites-icon-small {
-	@media screen and (width >= 650px) {
-		display: none;
-	}
+  @media screen and (width >= 650px) {
+    display: none;
+  }
 }
 
 #search-icon-big,
 #favorites-icon-big {
-	@media screen and (width <= 650px) {
-		display: none;
-	}
+  @media screen and (width <= 650px) {
+    display: none;
+  }
 }
 
 #resultCard.animation {
-	animation: 0.3s scaleUpDown ease-in-out;
+  animation: 0.3s scaleUpDown ease-in-out;
 }
 
 @keyframes scaleUpDown {
-	0% {
-		scale: 100%;
-	}
-	50% {
-		scale: 103%;
-	}
-	100% {
-		scale: 100%;
-	}
+  0% {
+    scale: 100%;
+  }
+  50% {
+    scale: 103%;
+  }
+  100% {
+    scale: 100%;
+  }
 }
 
 #footer {
-	padding-inline: 16px;
+  padding-inline: 16px;
 
-	// Make footer divider full width on smaller screens
-	@media screen and (width <= 650px) {
-		padding-inline: 0;
-	}
+  // Make footer divider full width on smaller screens
+  @media screen and (width <= 650px) {
+    padding-inline: 0;
+  }
 }

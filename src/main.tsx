@@ -6,9 +6,9 @@ import './assets/main.scss'
 import { theme } from './theme'
 
 createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<ChakraProvider theme={theme}>
-			<App />
-		</ChakraProvider>
-	</StrictMode>
+  <StrictMode>
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
+  </StrictMode>
 )
