@@ -10,13 +10,13 @@ import {
   Text,
 } from '@chakra-ui/react'
 import FavButton from './FavButton'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
 type CalculatorCardProps = {
-  id: Calculator['id']
-  name: Calculator['name']
-  link: Calculator['urlPath']
-  description: Calculator['description']
+  id: CalculatorType['id']
+  name: CalculatorType['name']
+  link: CalculatorType['urlPath']
+  description: CalculatorType['description']
 }
 
 export default function CalculatorCard({

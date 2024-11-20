@@ -1,7 +1,7 @@
 import sumInputValues from '../utils/sumInputValues'
-import Calculator from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes'
 
-export const calculators: Calculator[] = [
+export const calculators: CalculatorType[] = [
   {
     id: 1,
     name: 'Kalkulator BMI',
