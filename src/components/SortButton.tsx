@@ -44,8 +44,8 @@ export default function SortButton({
             Alfabetycznie
           </MenuItemOption>
           <MenuItemOption
-            value='bySpecialization'
-            onClick={() => setSortingType('bySpecialization')}>
+            value='by-specialization'
+            onClick={() => setSortingType('by-specialization')}>
             Po specjalizacji
           </MenuItemOption>
         </MenuOptionGroup>

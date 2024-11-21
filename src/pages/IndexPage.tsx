@@ -6,14 +6,16 @@ import { categories } from '../data/categories'
 import SortButton from '../components/SortButton'
 
 export default function IndexPage() {
+  const sortingStorageKey = 'sort-homepage'
+
   const [sortingType, setSortingType] = useState<string>(() => {
-    let initial = localStorage.getItem('sorting')
+    let initial = localStorage.getItem(sortingStorageKey)
     if (initial == null) initial = 'alphabetically'
     return initial
   })
 
   useEffect(() => {
-    localStorage.setItem('sorting', sortingType)
+    localStorage.setItem(sortingStorageKey, sortingType)
   }, [sortingType])
 
   return (
@@ -39,7 +41,7 @@ export default function IndexPage() {
         </Stack>
       )}
 
-      {sortingType === 'bySpecialization' && (
+      {sortingType === 'by-specialization' && (
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>
