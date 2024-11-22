@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Link, Text } from '@chakra-ui/react'
+import { Box, Divider, Flex, Link, Text, Tooltip } from '@chakra-ui/react'
 import { IconBrandGithubFilled } from '@tabler/icons-react'
 
 export default function Footer() {
@@ -19,9 +19,11 @@ export default function Footer() {
           &copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL
           3.0
         </Text>
-        <Link href={GITHUB_LINK}>
-          <IconBrandGithubFilled size={16} stroke={1.5} />
-        </Link>
+        <Tooltip label='Repozytorium na GitHubie'>
+          <Link href={GITHUB_LINK}>
+            <IconBrandGithubFilled size={16} stroke={1.5} />
+          </Link>
+        </Tooltip>
       </Flex>
     </Box>
   )
