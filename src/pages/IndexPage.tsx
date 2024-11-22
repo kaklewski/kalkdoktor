@@ -21,7 +21,7 @@ export default function IndexPage() {
   return (
     <>
       <Flex justify='space-between' gap={2}>
-        <Heading>
+        <Heading as='h1'>
           <Text>Kalkulatory</Text>
         </Heading>
         <SortButton sortingType={sortingType} setSortingType={setSortingType} />

@@ -54,7 +54,7 @@ export default function ImportFavoritesPage() {
           <CardBody>
             <VStack mx='auto' maxW='80%'>
               <IconHeartPlus stroke={1.5} size={100} />
-              <Heading mx='auto' size='md'>
+              <Heading as='h1' mx='auto' size='md'>
                 Importuj ulubione
               </Heading>
               <Text align='center'>

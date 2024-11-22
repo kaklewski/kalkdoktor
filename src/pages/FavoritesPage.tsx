@@ -22,7 +22,7 @@ export default function FavPage() {
     return (
       <VStack my={10} mx='auto'>
         <IconHeartOff stroke={1.5} size={100} />
-        <Heading size='md' mx='auto'>
+        <Heading as='h1' size='md' mx='auto'>
           Brak ulubionych
         </Heading>
         <Text align='center'>
@@ -36,7 +36,7 @@ export default function FavPage() {
   return (
     <>
       <Flex justify='space-between' align='center'>
-        <Heading>Ulubione</Heading>
+        <Heading as='h1'>Ulubione</Heading>
         {favoriteCalculators.length !== 0 && <ShareFavModal />}
       </Flex>
       <Stack spacing={6}>
