@@ -8,7 +8,7 @@ import {
   Text,
   Badge,
 } from '@chakra-ui/react'
-import { IconHearts, IconMedicalCross } from '@tabler/icons-react'
+import { IconHeart, IconMedicalCross } from '@tabler/icons-react'
 import SearchBox from '../components/SearchBox/SearchBox'
 import ThemeButton from '../components/ThemeButton'
 
@@ -41,14 +41,14 @@ export default function Navbar() {
               as='a'
               href='/ulubione'
               id='favorites-icon-big'
-              leftIcon={<IconHearts stroke={1.5} />}
+              leftIcon={<IconHeart stroke={1.5} />}
               aria-label='Ulubione'>
               Ulubione
             </Button>
 
             <Link href='/ulubione' id='favorites-icon-small'>
               <IconButton aria-label='Ulubione'>
-                <IconHearts stroke={1.5} />
+                <IconHeart stroke={1.5} />
               </IconButton>
             </Link>
 
