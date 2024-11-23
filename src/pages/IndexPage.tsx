@@ -2,8 +2,9 @@ import { Box, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { useEffect, useState } from 'react'
-import { categories } from '../data/categories'
+import { getCategories } from '../utils/getCategories'
 import SortButton from '../components/SortButton'
+import { calculators } from '../data/calculators'
 
 export default function IndexPage() {
   const sortingStorageKey = 'sort-homepage'
@@ -17,6 +18,8 @@ export default function IndexPage() {
   useEffect(() => {
     localStorage.setItem(sortingStorageKey, sortingType)
   }, [sortingType])
+
+  const categories: string[] = getCategories(calculators)
 
   return (
     <>

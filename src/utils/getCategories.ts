@@ -1,6 +1,6 @@
-import { calculators } from './calculators'
+import { CalculatorType } from '../types/calculatorTypes'
 
-function getCategories() {
+export function getCategories(calculators: CalculatorType[]) {
   const categoriesArray: string[] = []
 
   calculators.forEach(calculator => {
@@ -11,5 +11,3 @@ function getCategories() {
 
   return categoriesArray.sort()
 }
-
-export const categories: string[] = getCategories()
