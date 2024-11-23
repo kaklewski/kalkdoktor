@@ -1,12 +1,35 @@
-import { Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
 import useDocumentTitle from '../hooks/useDocumentTitle'
+import { useEffect, useState } from 'react'
+import { getCategories } from '../utils/getCategories'
+import SortButton from '../components/SortButton'
 
 export default function FavoritesPage() {
   useDocumentTitle('Ulubione')
+
+  const sortingStorageKey = 'sort-favorites'
+
+  const [sortingType, setSortingType] = useState<string>(() => {
+    let initial = localStorage.getItem(sortingStorageKey)
+    if (initial == null) initial = 'alphabetically'
+    return initial
+  })
+
+  useEffect(() => {
+    localStorage.setItem(sortingStorageKey, sortingType)
+  }, [sortingType])
 
   const favIds = (() => {
     const fav = localStorage.getItem('favorites')
@@ -18,43 +41,82 @@ export default function FavoritesPage() {
     favIds.includes(c.id)
   )
 
-  function NoFavoritesPlaceholder() {
-    return (
-      <VStack my={10} mx='auto'>
-        <IconHeartOff stroke={1.5} size={100} />
-        <Heading as='h1' size='md' mx='auto'>
-          Brak ulubionych
-        </Heading>
-        <Text align='center'>
-          Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną
-          serca.
-        </Text>
-      </VStack>
-    )
-  }
+  const categories: string[] = getCategories(favoriteCalculators)
 
   return (
     <>
       <Flex justify='space-between' align='center'>
         <Heading as='h1'>Ulubione</Heading>
-        {favoriteCalculators.length !== 0 && <ShareFavModal />}
+        {favoriteCalculators.length !== 0 && (
+          <Stack direction='row' gap={3}>
+            <ShareFavModal />
+            <SortButton
+              sortingType={sortingType}
+              setSortingType={setSortingType}
+            />
+          </Stack>
+        )}
       </Flex>
 
-      <Stack spacing={6}>
-        {favoriteCalculators.length === 0 ? (
-          <NoFavoritesPlaceholder />
-        ) : (
-          favoriteCalculators.map(calculator => (
-            <CalculatorCard
-              key={calculator.id}
-              id={calculator.id}
-              name={calculator.name}
-              link={calculator.urlPath}
-              description={calculator.description}
-            />
-          ))
-        )}
-      </Stack>
+      {sortingType === 'alphabetically' && (
+        <Stack spacing={6}>
+          {favoriteCalculators.length === 0 ? (
+            <NoFavoritesPlaceholder />
+          ) : (
+            favoriteCalculators.map(calculator => (
+              <CalculatorCard
+                key={calculator.id}
+                id={calculator.id}
+                name={calculator.name}
+                link={calculator.urlPath}
+                description={calculator.description}
+              />
+            ))
+          )}
+        </Stack>
+      )}
+
+      {sortingType === 'by-specialization' && (
+        <Stack spacing={12}>
+          {categories.map((category, categoryId) => (
+            <Box key={categoryId}>
+              <Box mb={6}>
+                <Heading as='h2' fontSize='2xl'>
+                  {category.toUpperCase()}
+                </Heading>
+                <Divider mt={2} />
+              </Box>
+              <Stack spacing={6}>
+                {favoriteCalculators
+                  .filter(calc => calc.category === category)
+                  .map(calculator => (
+                    <CalculatorCard
+                      key={calculator.id}
+                      id={calculator.id}
+                      name={calculator.name}
+                      link={calculator.urlPath}
+                      description={calculator.description}
+                    />
+                  ))}
+              </Stack>
+            </Box>
+          ))}
+        </Stack>
+      )}
     </>
+  )
+}
+
+function NoFavoritesPlaceholder() {
+  return (
+    <VStack my={10} mx='auto'>
+      <IconHeartOff stroke={1.5} size={100} />
+      <Heading as='h1' size='md' mx='auto'>
+        Brak ulubionych
+      </Heading>
+      <Text align='center'>
+        Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.
+      </Text>
+    </VStack>
   )
 }
