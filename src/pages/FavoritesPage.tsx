@@ -45,7 +45,7 @@ export default function FavoritesPage() {
 
   return (
     <>
-      <Flex justify='space-between' align='center'>
+      <Flex justify='space-between' gap={2}>
         <Heading as='h1'>Ulubione</Heading>
         {favoriteCalculators.length !== 0 && (
           <Stack direction='row' gap={3}>
