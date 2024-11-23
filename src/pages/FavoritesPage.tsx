@@ -5,7 +5,7 @@ import { IconHeartOff } from '@tabler/icons-react'
 import ShareFavModal from '../components/ShareFavModal'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
-export default function FavPage() {
+export default function FavoritesPage() {
   useDocumentTitle('Ulubione')
 
   const favIds = (() => {
@@ -39,6 +39,7 @@ export default function FavPage() {
         <Heading as='h1'>Ulubione</Heading>
         {favoriteCalculators.length !== 0 && <ShareFavModal />}
       </Flex>
+
       <Stack spacing={6}>
         {favoriteCalculators.length === 0 ? (
           <NoFavoritesPlaceholder />
