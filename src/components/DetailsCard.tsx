@@ -35,8 +35,8 @@ export default function DetailsCard({
             <Text>{description}</Text>
           </TabPanel>
           <TabPanel>
-            {typeof sources === 'string'
-              ? sources
+            {sources === null
+              ? 'Opracowanie własne.'
               : sources.map(sourceItem => {
                   return (
                     <SourceLink

@@ -345,7 +345,7 @@ export const calculators: CalculatorType[] = [
     description:
       'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
     methodology: null,
-    sources: 'Opracowanie własne.',
+    sources: null,
     fields: {
       numberInputs: [
         {

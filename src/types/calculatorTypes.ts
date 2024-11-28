@@ -37,7 +37,7 @@ export type CalculatorType = {
   category: string
   description: string
   methodology?: string | null
-  sources: SourceType[] | string
+  sources: SourceType[] | null
   fields: {
     numberInputs?: NumberInputType[] | null
     checkboxes?: CheckboxType[] | null
