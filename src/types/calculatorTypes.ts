@@ -1,6 +1,8 @@
 export type SourceType = {
   id: number
-  name: string
+  author: string
+  title: string
+  dateOfAccess: string
   link: string
 }
 
@@ -37,7 +39,7 @@ export type CalculatorType = {
   category: string
   description: string
   methodology?: string | null
-  sources: SourceType[] | null
+  sources?: SourceType[] | null
   fields: {
     numberInputs?: NumberInputType[] | null
     checkboxes?: CheckboxType[] | null

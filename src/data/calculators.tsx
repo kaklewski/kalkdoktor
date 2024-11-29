@@ -13,7 +13,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Narodowy Instytut Kardiologii, Badanie BMI, dostęp: 20.09.2024',
+        author: 'Narodowy Instytut Kardiologii',
+        title: 'Badanie BMI',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.ikard.pl/badanie-bmi.html',
       },
     ],
@@ -72,7 +74,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'MDCalc, CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk, dostęp: 20.09.2024',
+        author: 'MDCalc',
+        title: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
       },
     ],
@@ -184,7 +188,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca, dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mp.pl/interna/table/B16.3.3-1.',
       },
     ],
@@ -262,7 +268,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa, dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
       },
     ],
@@ -413,7 +421,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Paracetamol (Portal lekarzy), dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Paracetamol (Portal lekarzy)',
+        dateOfAccess: '20.09.2024',
         link: 'https://indeks.mp.pl/leki/desc.php?id=631',
       },
     ],
@@ -467,12 +477,17 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków, dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mp.pl/interna/table/016_4938',
       },
       {
         id: 2,
-        name: 'MDCalc, HAS-BLED Score for Major Bleeding Risk, dostęp: 20.09.2024',
+        author: 'MDCalc',
+        title: 'HAS-BLED Score for Major Bleeding Risk',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
       },
     ],
@@ -549,12 +564,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 1.34-2. Skala Glasgow, dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 1.34-2. Skala Glasgow',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
       },
       {
         id: 2,
-        name: 'remedium.md, Skala Glasgow - ocena stopnia przytomności u dorosłych, dostęp: 20.09.2024',
+        author: 'remedium.md',
+        title: 'Skala Glasgow - ocena stopnia przytomności u dorosłych',
+        dateOfAccess: '20.09.2024',
         link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
       },
     ],
@@ -682,12 +701,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'PHQ-9, dostęp: 20.09.2024',
+        author: 'phq9.pl',
+        title: 'PHQ-9',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.phq9.pl/',
       },
       {
         id: 2,
-        name: 'ECFS.eu, Microsoft Word - PHQ9_Polish for Poland.doc, dostęp: 20.09.2024',
+        author: 'ECFS.eu',
+        title: 'Microsoft Word - PHQ9_Polish for Poland.doc',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
       },
     ],
@@ -954,7 +977,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna i Statystyka, Skorygowany odstęp QT (QTc), dostęp: 20.09.2024',
+        author: 'Medycyna i Statystyka',
+        title: 'Skorygowany odstęp QT (QTc)',
+        dateOfAccess: '20.09.2024',
         link: 'https://www.medycynaistatystyka.pl/skorygowany-qt-bazett',
       },
     ],
@@ -1007,7 +1032,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Wikipedia, Wskaźnik Maddreya, dostęp: 20.09.2024',
+        author: 'Wikipedia',
+        title: 'Wskaźnik Maddreya',
+        dateOfAccess: '20.09.2024',
         link: 'https://pl.wikipedia.org/wiki/Wska%C5%BAnik_Maddreya',
       },
     ],
@@ -1071,7 +1098,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Deksibuprofen (Portal lekarzy), dostęp: 20.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Deksibuprofen (Portal lekarzy)',
+        dateOfAccess: '20.09.2024',
         link: 'https://indeks.mp.pl/leki/desc.php?id=370',
       },
     ],
@@ -1127,7 +1156,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 2.33-7. Ocena rokowania w zatorowości płucnej, dostęp: 26.09.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 2.33-7. Ocena rokowania w zatorowości płucnej',
+        dateOfAccess: '26.09.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.33-15.',
       },
     ],
@@ -1230,7 +1261,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 2.33-9. Ocena prawdopodobieństwa klinicznego ZP wg zmodyfikowanej skali genewskiej, dostęp: 30.09.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.33-9. Ocena prawdopodobieństwa klinicznego ZP wg zmodyfikowanej skali genewskiej',
+        dateOfAccess: '30.09.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.33-8.',
       },
     ],
@@ -1320,12 +1354,17 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Rycina 3.13-2. Ocena ciężkości pozaszpitalnego zapalenia płuc u chorych w szpitalu – skala CURB-65, dostęp: 30.09.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Rycina 3.13-2. Ocena ciężkości pozaszpitalnego zapalenia płuc u chorych w szpitalu – skala CURB-65',
+        dateOfAccess: '30.09.2024',
         link: 'https://www.mp.pl/interna/image/B16.016_8678.',
       },
       {
         id: 2,
-        name: 'Wikipedia, Skala CURB-65, dostęp: 30.09.2024',
+        author: 'Wikipedia',
+        title: 'Skala CURB-65',
+        dateOfAccess: '30.09.2024',
         link: 'https://pl.wikipedia.org/wiki/Skala_CURB-65',
       },
     ],
@@ -1383,7 +1422,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Wikipedia, Waist–hip ratio: dostęp: 30.09.2024',
+        author: 'Wikipedia',
+        title: 'Waist–hip ratio',
+        dateOfAccess: '30.09.2024',
         link: 'https://en.wikipedia.org/wiki/Waist%E2%80%93hip_ratio',
       },
     ],
@@ -1461,12 +1502,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'MDCalc, qSOFA (Quick SOFA) Score for Sepsis, dostęp: 30.09.2024',
+        author: 'MDCalc',
+        title: 'qSOFA (Quick SOFA) Score for Sepsis',
+        dateOfAccess: '30.09.2024',
         link: 'https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis',
       },
       {
         id: 2,
-        name: 'Medycyna i Statystyka, Uproszczona skala SOFA (qSOFA), dostęp: 30.09.2024',
+        author: 'Medycyna i Statystyka',
+        title: 'Uproszczona skala SOFA (qSOFA)',
+        dateOfAccess: '30.09.2024',
         link: 'https://www.medycynaistatystyka.pl/skala-qsofa',
       },
     ],
@@ -1511,7 +1556,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma, dostęp: 01.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma',
+        dateOfAccess: '01.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.3.23-2.',
       },
     ],
@@ -1658,7 +1706,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association, dostęp: 01.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association',
+        dateOfAccess: '01.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.19-1.',
       },
     ],
@@ -1716,7 +1767,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 2.5-1. Klasyfikacja dławicy piersiowej na podstawie jej nasilenia wg Canadian Cardiovascular Society (CCS), dostęp: 01.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.5-1. Klasyfikacja dławicy piersiowej na podstawie jej nasilenia wg Canadian Cardiovascular Society (CCS)',
+        dateOfAccess: '01.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.5-1.',
       },
     ],
@@ -1774,7 +1828,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'National Kidney Foundation, Cockcroft-Gault Formula, dostęp: 02.10.2024',
+        author: 'National Kidney Foundation',
+        title: 'Cockcroft-Gault Formula',
+        dateOfAccess: '02.10.2024',
         link: 'https://www.kidney.org/professionals/kdoqi/gfr_calculatorCoc',
       },
     ],
@@ -1861,17 +1917,23 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Kalkulator FIB-4, dostęp: 03.10.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Kalkulator FIB-4',
+        dateOfAccess: '03.10.2024',
         link: 'https://www.mp.pl/gastrologia/skale/300695,fib-4',
       },
       {
         id: 2,
-        name: 'remedium.md, Wskaźnik FIB-4, dostęp: 03.10.2024',
+        author: 'remedium.md',
+        title: 'Wskaźnik FIB-4',
+        dateOfAccess: '03.10.2024',
         link: 'https://remedium.md/kalkulatory/hepatologia/wska%C5%BAnik-fib-4-ocena-prawdopodobie%C5%84stwa-zw%C5%82%C3%B3knienia-w%C4%85troby',
       },
       {
         id: 3,
-        name: 'Hepatitis C Online, Fibrosis-4 (FIB-4) Calculator, dostęp: 03.10.2024',
+        author: 'Hepatitis C Online',
+        title: 'Fibrosis-4 (FIB-4) Calculator',
+        dateOfAccess: '03.10.2024',
         link: 'https://www.hepatitisc.uw.edu/page/clinical-calculators/fib-4',
       },
     ],
@@ -1946,7 +2008,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Tabela 7.12-1. Klasyfikacja Childa (zmodyfikowana przez Pugha) niewydolności wątroby, dostęp: 03.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 7.12-1. Klasyfikacja Childa (zmodyfikowana przez Pugha) niewydolności wątroby',
+        dateOfAccess: '03.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.7.12-1.',
       },
     ],
@@ -2083,12 +2148,17 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski, dostęp: 14.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski',
+        dateOfAccess: '14.10.2024',
         link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
       },
       {
         id: 2,
-        name: 'remedium.md, Wskaźnik SCORE2 i SCORE2-OP, dostęp: 16.10.2024',
+        author: 'remedium.md',
+        title: 'Wskaźnik SCORE2 i SCORE2-OP',
+        dateOfAccess: '16.10.2024',
         link: 'https://remedium.md/kalkulatory/kardiologia/wska%C5%BAnik-score2-i-score2-op-ocena-ryzyka-sercowo-naczyniowego',
       },
     ],
@@ -2486,7 +2556,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Jak prognozuje się wzrost chłopców i dziewcząt?, dostęp: 17.10.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'Jak prognozuje się wzrost chłopców i dziewcząt?',
+        dateOfAccess: '17.10.2024',
         link: 'https://www.mp.pl/pacjent/pediatria/lista/122911,jak-prognozuje-sie-wzrost-chlopcow-i-dziewczat',
       },
     ],
@@ -2565,7 +2637,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'PsychiatriaPlus.pl, Dr hab. n. med. Jarosław Jóźwiak, Kwestionariusz Zaburzeń Nastroju (MDQ), dostęp: 20.10.2024',
+        author: 'PsychiatriaPlus.pl',
+        title:
+          'Dr hab. n. med. Jarosław Jóźwiak, Kwestionariusz Zaburzeń Nastroju (MDQ)',
+        dateOfAccess: '20.10.2024',
         link: 'https://psychiatraplus.pl/wp-content/uploads/2022/10/Kwestionariusz-Zaburzen-Nastroju-MDQ.pdf',
       },
     ],
@@ -2861,12 +2936,17 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Centrum Dobrej Terapii, mgr Maria Kaleńczuk i mgr Teresa Janus, Czy jesteś uzależniony od alkoholu – test AUDIT, dostęp: 22.10.2024',
+        author:
+          'Centrum Dobrej Terapii, mgr Maria Kaleńczuk i mgr Teresa Janus',
+        title: 'Czy jesteś uzależniony od alkoholu – test AUDIT',
+        dateOfAccess: '22.10.2024',
         link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
       },
       {
         id: 2,
-        name: 'Państwowa Agencja Rozwiązywania Problemów Alkoholowych, Autodiagnoza - Jak ocenić swoje picie?, dostęp: 22.10.2024',
+        author: 'Państwowa Agencja Rozwiązywania Problemów Alkoholowych',
+        title: 'Autodiagnoza - Jak ocenić swoje picie?',
+        dateOfAccess: '22.10.2024',
         link: 'https://www.parpa.pl/images/autodiagnoza_20_10_2020_1.pdf',
       },
     ],
@@ -3214,7 +3294,9 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna i Statystyka, Pediatryczna skala Glasgow (Pediatric Glasgow Coma Scale), dostęp: 23.10.2024',
+        author: 'Medycyna i Statystyka',
+        title: 'Pediatryczna skala Glasgow (Pediatric Glasgow Coma Scale)',
+        dateOfAccess: '23.10.2024',
         link: 'https://medycynaistatystyka.pl/pediatryczna-skala-glasgow',
       },
     ],
@@ -3339,12 +3421,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Szpital Położniczo-Ginekologiczny Ujastek, Skala Apgar – za co przyznawane są noworodkowi punkty?, dostęp: 23.10.2024',
+        author: 'Szpital Położniczo-Ginekologiczny Ujastek',
+        title: 'Skala Apgar – za co przyznawane są noworodkowi punkty?',
+        dateOfAccess: '23.10.2024',
         link: 'https://szpital.ujastek.pl/blogosfera/skala-apgar-za-co-przyznawane-sa-noworodkowi-punkty',
       },
       {
         id: 2,
-        name: 'Serwis Zdrowie (pap.pl), Skala Apgar, czyli za co noworodek dostaje punkty, dostęp: 23.10.2024',
+        author: 'Serwis Zdrowie (Państwowa Agencja Prasowa)',
+        title: 'Skala Apgar, czyli za co noworodek dostaje punkty',
+        dateOfAccess: '23.10.2024',
         link: 'https://zdrowie.pap.pl/rodzice/skala-apgar-czyli-za-co-noworodek-dostaje-punkty',
       },
     ],
@@ -3481,12 +3567,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Swissmed, Ocena pacjenta wg skali Barthel, dostęp: 27.10.2024',
+        author: 'Swissmed',
+        title: 'Ocena pacjenta wg skali Barthel',
+        dateOfAccess: '27.10.2024',
         link: 'https://swissmed.com.pl/pliki/seniorzy/ocena_pacjenta_barthel.pdf',
       },
       {
         id: 2,
-        name: 'Gov.pl, Karta oceny stanu pacjenta wg zmodyfikowanej skali Barthel, dostęp: 27.10.2024',
+        author: 'gov.pl',
+        title: 'Karta oceny stanu pacjenta wg zmodyfikowanej skali Barthel',
+        dateOfAccess: '27.10.2024',
         link: 'https://www.gov.pl/attachment/203e5ac4-0bac-42ec-9b86-3da58772bda4',
       },
     ],
@@ -3733,12 +3823,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Kalibrujemy.pl, Przeliczanie zawartości alkoholu we krwi na promile - wzór, dostęp: 28.10.2024',
+        author: 'Kalibrujemy.pl',
+        title: 'Przeliczanie zawartości alkoholu we krwi na promile - wzór',
+        dateOfAccess: '28.10.2024',
         link: 'https://www.kalibrujemy.pl/blog/48-przeliczanie-zawartosci-alkoholu-we-krwi-na-promile-wzor-przyklady',
       },
       {
         id: 2,
-        name: 'Polityka, Ile mam promili?, dostęp: 28.10.2024',
+        author: 'Polityka',
+        title: 'Ile mam promili?',
+        dateOfAccess: '28.10.2024',
         link: 'https://www.polityka.pl/tygodnikpolityka/kraj/1560509,1,ile-mam-promili.read',
       },
     ],
@@ -3816,7 +3910,10 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego, dostęp: 29.10.2024',
+        author: 'Medycyna Praktyczna',
+        title:
+          'Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego',
+        dateOfAccess: '29.10.2024',
         link: 'https://www.mp.pl/chirurgia/wytyczne-przegladowe/242727,rozpoznanie-i-leczenie-ostrego-krwawienia-do-dolnego-odcinka-przewodu-pokarmowego',
       },
     ],
@@ -4008,12 +4105,16 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        name: 'Medycyna Praktyczna, OBS – ocena obturacyjnego bezdechu sennego u dorosłych, dostęp: 15.11.2024',
+        author: 'Medycyna Praktyczna',
+        title: 'OBS – ocena obturacyjnego bezdechu sennego u dorosłych',
+        dateOfAccess: '15.11.2024',
         link: 'https://www.mp.pl/kalkulatory/313248,obs-ocena-obturacyjnego-bezdechu-sennego-u-doroslych',
       },
       {
         id: 2,
-        name: 'MDCalc, STOP-BANG Score for Obstructive Sleep Apnea, dostęp: 15.11.2024',
+        author: 'MDCalc',
+        title: 'STOP-BANG Score for Obstructive Sleep Apnea',
+        dateOfAccess: '15.11.2024',
         link: 'https://www.mdcalc.com/calc/3992/stop-bang-score-obstructive-sleep-apnea',
       },
     ],

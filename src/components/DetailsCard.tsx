@@ -21,6 +21,7 @@ export default function DetailsCard({
   methodology,
   sources,
 }: DetailsCardProps) {
+  sources = typeof sources !== 'object' ? null : sources
   return (
     <Card variant='outline'>
       <Tabs variant='enclosed' isFitted colorScheme='teal'>
@@ -41,7 +42,9 @@ export default function DetailsCard({
                   return (
                     <SourceLink
                       key={sourceItem.id}
-                      name={sourceItem.name}
+                      author={sourceItem.author}
+                      title={sourceItem.title}
+                      dateOfAccess={sourceItem.dateOfAccess}
                       link={sourceItem.link}
                     />
                   )
