@@ -21,13 +21,11 @@
 
       body[data-theme='light'] {
         background-color: #fff;
-
         --spinner-color: #319795;
       }
 
       body[data-theme='dark'] {
         background-color: #1a202c;
-
         --spinner-color: #81e6d9;
       }
 
@@ -82,7 +80,7 @@
   </head>
   <body>
     <div id="root">
-      <!-- Display a loading spinner before React loads the V-DOM -->
+      <!-- Display a loading spinner before React loads the Virtual-DOM -->
       <div class="loader-container">
         <svg viewBox="25 25 50 50">
           <circle cx="50" cy="50" r="20"></circle>
@@ -90,12 +88,12 @@
       </div>
     </div>
     <script>
-      // Handle setting up the initial theme
+      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
       function setInitialTheme() {
         const theme = localStorage.getItem('chakra-ui-color-mode')
         const body = document.querySelector('body')
-        if (body === null) return
 
+        if (body === null || theme === null) return
         if (theme === 'light') body.setAttribute('data-theme', 'light')
         if (theme === 'dark') body.setAttribute('data-theme', 'dark')
       }
