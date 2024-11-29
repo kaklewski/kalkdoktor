@@ -16,7 +16,7 @@ export default function SourceLink({
         <span>{author}, </span>
         <i>{title}</i>
         <span>, dostęp: {dateOfAccess}</span>
-        <ExternalLinkIcon mx='2px' ml={1} />
+        <ExternalLinkIcon mx='2px' ml={1} mt={-1} />
       </Link>
     </Box>
   )
