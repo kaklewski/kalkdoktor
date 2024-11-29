@@ -26,9 +26,9 @@ export default function ThemeButton() {
           colorMode === 'light' ? 'ciemny' : 'jasny'
         }`}>
         {colorMode === 'light' ? (
-          <IconMoon stroke={1.5} />
-        ) : (
           <IconSun stroke={1.5} />
+        ) : (
+          <IconMoon stroke={1.5} />
         )}
       </IconButton>
     </Tooltip>
