@@ -74,7 +74,7 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        author: 'MDCalc',
+        author: 'MDCalc (dr Gregory Lip)',
         title: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk',
         dateOfAccess: '20.09.2024',
         link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
@@ -485,7 +485,7 @@ export const calculators: CalculatorType[] = [
       },
       {
         id: 2,
-        author: 'MDCalc',
+        author: 'MDCalc (dr Ron Pisters)',
         title: 'HAS-BLED Score for Major Bleeding Risk',
         dateOfAccess: '20.09.2024',
         link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
@@ -709,7 +709,7 @@ export const calculators: CalculatorType[] = [
       {
         id: 2,
         author: 'ECFS.eu',
-        title: 'Microsoft Word - PHQ9_Polish for Poland.doc',
+        title: 'Kwestionariusz zdrowia pacjenta-9 (PHQ-9)',
         dateOfAccess: '20.09.2024',
         link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
       },
@@ -1502,7 +1502,7 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        author: 'MDCalc',
+        author: 'MDCalc (dr Christopher Seymour)',
         title: 'qSOFA (Quick SOFA) Score for Sepsis',
         dateOfAccess: '30.09.2024',
         link: 'https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis',
@@ -2637,9 +2637,8 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        author: 'PsychiatriaPlus.pl',
-        title:
-          'Dr hab. n. med. Jarosław Jóźwiak, Kwestionariusz Zaburzeń Nastroju (MDQ)',
+        author: 'PsychiatriaPlus.pl (dr hab. n. med. Jarosław Jóźwiak)',
+        title: 'Kwestionariusz Zaburzeń Nastroju (MDQ)',
         dateOfAccess: '20.10.2024',
         link: 'https://psychiatraplus.pl/wp-content/uploads/2022/10/Kwestionariusz-Zaburzen-Nastroju-MDQ.pdf',
       },
@@ -2937,7 +2936,7 @@ export const calculators: CalculatorType[] = [
       {
         id: 1,
         author:
-          'Centrum Dobrej Terapii, mgr Maria Kaleńczuk i mgr Teresa Janus',
+          'Centrum Dobrej Terapii (mgr Maria Kaleńczuk, mgr Teresa Janus)',
         title: 'Czy jesteś uzależniony od alkoholu – test AUDIT',
         dateOfAccess: '22.10.2024',
         link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
@@ -4112,7 +4111,7 @@ export const calculators: CalculatorType[] = [
       },
       {
         id: 2,
-        author: 'MDCalc',
+        author: 'MDCalc (dr Frances Chung)',
         title: 'STOP-BANG Score for Obstructive Sleep Apnea',
         dateOfAccess: '15.11.2024',
         link: 'https://www.mdcalc.com/calc/3992/stop-bang-score-obstructive-sleep-apnea',
