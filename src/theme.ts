@@ -32,7 +32,6 @@ const variantFlushed = () => ({
 export const theme = extendTheme({
   config: {
     initialColorMode: 'system',
-    useSystemColorMode: true,
   },
   styles: {
     global: {
