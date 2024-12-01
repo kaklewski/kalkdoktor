@@ -1,21 +1,18 @@
 import { IconButton, Tooltip, useColorMode } from '@chakra-ui/react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
+import setThemeAttribute from '../utils/setThemeAttribute'
 
 export default function ThemeButton() {
   const [isAutoTheme, setIsAutoTheme] = useState<boolean>(() => {
     if (localStorage.getItem('auto-color-mode') === 'false') return false
     return true
   })
-  const { colorMode, toggleColorMode, setColorMode } = useColorMode()
+  const { colorMode, setColorMode } = useColorMode()
 
-  // The useEffect below adds a data-theme attribute to the page body. This lets the CSS auto-adjust the theme and prevent incorrect theme flashing when switching pages. Identical function is hardcoded in the HTML directly, which handles setting a proper theme during the initial load.
+  // Set up the theme before React loads the Virtual-DOM to remove the flashing effect.
   useEffect(() => {
-    const body = document.querySelector('body')
-    const theme = localStorage.getItem('chakra-ui-color-mode')
-    if (body === null) return
-    if (theme === 'light') body.setAttribute('data-theme', 'light')
-    if (theme === 'dark') body.setAttribute('data-theme', 'dark')
+    setThemeAttribute()
   }, [colorMode])
 
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')

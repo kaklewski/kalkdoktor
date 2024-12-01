@@ -35,10 +35,10 @@ export const theme = extendTheme({
   },
   styles: {
     global: {
-      'body[data-theme="light"]': {
+      'html[data-theme="light"]': {
         '--chakra-ui-focus-ring-color': '#319795', // Chakra Teal 500
       },
-      'body[data-theme="dark"]': {
+      'html[data-theme="dark"]': {
         '--chakra-ui-focus-ring-color': '#81E6D9', // Chakra Teal 200
       },
     },

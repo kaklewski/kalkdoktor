@@ -10,26 +10,20 @@
       content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi." />
 
     <style>
-      /* Fix Chakra UI flashing white screen when switching pages */
-      body {
-        --spinner-color: #319795;
-        @media (prefers-color-scheme: dark) {
-          background-color: #1a202c;
-          --spinner-color: #81e6d9;
-        }
+      html {
+        color-scheme: light dark;
+        --spinner-color: light-dark(#319795, #81e6d9);
+        background-color: light-dark(#fff, #1a202c);
       }
 
-      body[data-theme='light'] {
-        background-color: #fff;
-        --spinner-color: #319795;
+      html[data-theme='light'] {
+        color-scheme: light;
       }
 
-      body[data-theme='dark'] {
-        background-color: #1a202c;
-        --spinner-color: #81e6d9;
+      html[data-theme='dark'] {
+        color-scheme: dark;
       }
 
-      /* Loader styling */
       .loader-container {
         position: absolute;
         top: 0;
@@ -87,32 +81,24 @@
         </svg>
       </div>
     </div>
-    <script>
-      function setInitialTheme() {
-        const isAutoColorMode = localStorage.getItem('auto-color-mode')
 
-        // When the page is being opened for the very first time, set automatic theme
-        if (isAutoColorMode == null)
-          localStorage.setItem('auto-color-mode', 'true')
+    <script type="module">
+      import setThemeAttribute from './src/utils/setThemeAttribute.ts'
 
-        // When automatic theme is on, set proper initial theme
-        if (isAutoColorMode == 'true')
-          localStorage.removeItem('chakra-ui-color-mode')
-      }
+      const isAutoColorMode = localStorage.getItem('auto-color-mode')
 
-      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
-      function setSpinnerTheme() {
-        const theme = localStorage.getItem('chakra-ui-color-mode')
-        const body = document.querySelector('body')
+      // When the page is being opened for the very first time, set automatic theme.
+      if (isAutoColorMode === null)
+        localStorage.setItem('auto-color-mode', 'true')
 
-        if (body === null || theme === null) return
-        if (theme === 'light') body.setAttribute('data-theme', 'light')
-        if (theme === 'dark') body.setAttribute('data-theme', 'dark')
-      }
+      // When automatic theme is on, set proper initial theme.
+      if (isAutoColorMode === 'true')
+        localStorage.removeItem('chakra-ui-color-mode')
 
-      setInitialTheme()
-      setSpinnerTheme()
+      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect.
+      setThemeAttribute()
     </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
