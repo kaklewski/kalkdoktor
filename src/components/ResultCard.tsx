@@ -46,7 +46,7 @@ export default function ResultCard({
       <CardHeader>
         <Heading as='p' size='md'>
           Wynik: {result.toFixed(1).replace(/\.0$/, '')}
-          {resultUnit && ` ${resultUnit}`}
+          {resultUnit && `${resultUnit === '%' ? '' : ' '}${resultUnit}`}
         </Heading>
       </CardHeader>
 
