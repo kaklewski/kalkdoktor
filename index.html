@@ -80,7 +80,7 @@
   </head>
   <body>
     <div id="root">
-      <!-- Display a loading spinner before React loads the Virtual-DOM -->
+      <!-- Loading spinner - displayed before React loads the Virtual-DOM -->
       <div class="loader-container">
         <svg viewBox="25 25 50 50">
           <circle cx="50" cy="50" r="20"></circle>
@@ -90,10 +90,15 @@
     <script>
       function setInitialTheme() {
         const isAutoColorMode = localStorage.getItem('auto-color-mode')
+
+        // When the page is being opened for the very first time, set automatic theme
         if (isAutoColorMode == null)
           localStorage.setItem('auto-color-mode', 'true')
+
+        // When automatic theme is on, set proper initial theme
+        if (isAutoColorMode == 'true')
+          localStorage.removeItem('chakra-ui-color-mode')
       }
-      setInitialTheme()
 
       // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
       function setSpinnerTheme() {
@@ -104,6 +109,8 @@
         if (theme === 'light') body.setAttribute('data-theme', 'light')
         if (theme === 'dark') body.setAttribute('data-theme', 'dark')
       }
+
+      setInitialTheme()
       setSpinnerTheme()
     </script>
     <script type="module" src="/src/main.tsx"></script>
