@@ -45,7 +45,7 @@ export default function ThemeButton() {
               setIsAutoTheme(false)
               setColorMode('light')
             }}>
-            <IconSunMoon />
+            <IconSunMoon stroke={1.5} />
           </IconButton>
         </Tooltip>
       )}
@@ -59,7 +59,7 @@ export default function ThemeButton() {
               setIsAutoTheme(false)
               setColorMode('dark')
             }}>
-            <IconSun />
+            <IconSun stroke={1.5} />
           </IconButton>
         </Tooltip>
       )}
@@ -73,7 +73,7 @@ export default function ThemeButton() {
               setIsAutoTheme(true)
               setColorMode('system')
             }}>
-            <IconMoon />
+            <IconMoon stroke={1.5} />
           </IconButton>
         </Tooltip>
       )}
