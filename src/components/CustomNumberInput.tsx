@@ -19,7 +19,7 @@ export default function CustomNumberInput({
 }: CustomNumberInputProps) {
   return (
     <Box>
-      <Text mb={2}>{text}:</Text>
+      <Text mb={2}>{text}</Text>
       <NumberInput min={min} max={max} id={id.toString()} isRequired>
         <NumberInputField placeholder='Podaj wartość' />
         <NumberInputStepper>

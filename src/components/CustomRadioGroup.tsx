@@ -15,7 +15,7 @@ export default function CustomRadioGroup({
     <Box>
       <RadioGroup colorScheme='teal' name={id.toString()}>
         <Stack>
-          <Text>{text}:</Text>
+          <Text>{text}</Text>
           {children}
         </Stack>
       </RadioGroup>
