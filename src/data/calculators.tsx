@@ -720,7 +720,7 @@ export const calculators: CalculatorType[] = [
       radioGroups: [
         {
           id: 10,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
           radios: [
             {
               id: 11,
@@ -746,7 +746,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 20,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
           radios: [
             {
               id: 21,
@@ -772,7 +772,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 30,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
           radios: [
             {
               id: 31,
@@ -798,7 +798,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 40,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
           radios: [
             {
               id: 41,
@@ -824,7 +824,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 50,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
           radios: [
             {
               id: 51,
@@ -850,7 +850,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 60,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
           radios: [
             {
               id: 61,
@@ -876,7 +876,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 70,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
           radios: [
             {
               id: 71,
@@ -902,7 +902,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 80,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
           radios: [
             {
               id: 81,
@@ -928,7 +928,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 90,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy',
+          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
           radios: [
             {
               id: 91,
@@ -1569,7 +1569,7 @@ export const calculators: CalculatorType[] = [
       radioGroups: [
         {
           id: 10,
-          text: 'Kiedy po przebudzeniu zapalasz pierwszego papierosa',
+          text: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
           radios: [
             {
               id: 11,
@@ -1595,7 +1595,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 20,
-          text: 'Czy masz trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione',
+          text: 'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
           radios: [
             {
               id: 21,
@@ -1611,7 +1611,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 30,
-          text: 'Z którego papierosa jest Ci najtrudniej zrezygnować',
+          text: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
           radios: [
             {
               id: 31,
@@ -1627,7 +1627,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 40,
-          text: 'Ile papierosów wypalasz dziennie',
+          text: 'Ile papierosów pacjent wypala dziennie?',
           radios: [
             {
               id: 41,
@@ -1653,7 +1653,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 50,
-          text: 'Czy rano palisz więcej papierosów niż w ciągu dnia',
+          text: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
           radios: [
             {
               id: 51,
@@ -1669,7 +1669,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 60,
-          text: 'Czy palisz papierosy nawet podczas choroby, gdy musisz leżeć w łóżku',
+          text: 'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
           radios: [
             {
               id: 61,
@@ -2649,7 +2649,7 @@ export const calculators: CalculatorType[] = [
       radioGroups: [
         {
           id: 10,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
           radios: [
             {
               id: 11,
@@ -2665,7 +2665,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 20,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
           radios: [
             {
               id: 21,
@@ -2681,7 +2681,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 30,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
           radios: [
             {
               id: 31,
@@ -2697,7 +2697,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 40,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
           radios: [
             {
               id: 41,
@@ -2713,7 +2713,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 50,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
           radios: [
             {
               id: 51,
@@ -2729,7 +2729,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 60,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lyb nie mógł zwolnić toku myśli',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
           radios: [
             {
               id: 61,
@@ -2745,7 +2745,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 70,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokoło, że miał problem z koncentracją i kontynuowaniem zadania',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
           radios: [
             {
               id: 71,
@@ -2761,7 +2761,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 80,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
           radios: [
             {
               id: 81,
@@ -2777,7 +2777,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 90,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
           radios: [
             {
               id: 91,
@@ -2793,7 +2793,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 100,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
           radios: [
             {
               id: 101,
@@ -2809,7 +2809,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 110,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
           radios: [
             {
               id: 111,
@@ -2825,7 +2825,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 120,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
           radios: [
             {
               id: 121,
@@ -2841,7 +2841,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 130,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów',
+          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
           radios: [
             {
               id: 131,
@@ -2857,7 +2857,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 14,
-          text: 'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie',
+          text: 'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
           radios: [
             {
               id: 'happenedAtTheSameTime',
@@ -2873,7 +2873,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 'problem',
-          text: 'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki',
+          text: 'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
           radios: [
             {
               id: 'no',
@@ -2971,7 +2971,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 10,
-          text: 'Jak często pacjent pije napoje alkoholowe',
+          text: 'Jak często pacjent pije napoje alkoholowe?',
           radios: [
             {
               id: 11,
@@ -3033,7 +3033,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 30,
-          text: 'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia',
+          text: 'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
           radios: [
             {
               id: 31,
@@ -3064,7 +3064,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 40,
-          text: 'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu',
+          text: 'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
           radios: [
             {
               id: 41,
@@ -3095,7 +3095,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 50,
-          text: 'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania',
+          text: 'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
           radios: [
             {
               id: 51,
@@ -3126,7 +3126,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 60,
-          text: 'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia',
+          text: 'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
           radios: [
             {
               id: 61,
@@ -3157,7 +3157,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 70,
-          text: 'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu',
+          text: 'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
           radios: [
             {
               id: 71,
@@ -3188,7 +3188,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 80,
-          text: 'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia',
+          text: 'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
           radios: [
             {
               id: 81,
@@ -3219,7 +3219,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 90,
-          text: 'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia',
+          text: 'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
           radios: [
             {
               id: 91,
@@ -3240,7 +3240,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 100,
-          text: 'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie',
+          text: 'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
           radios: [
             {
               id: 101,
@@ -4123,7 +4123,7 @@ export const calculators: CalculatorType[] = [
       radioGroups: [
         {
           id: 10,
-          text: 'Pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy',
+          text: 'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
           radios: [
             {
               id: 's',
@@ -4139,7 +4139,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 20,
-          text: 'Pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia',
+          text: 'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
           radios: [
             {
               id: 't',
@@ -4171,7 +4171,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 40,
-          text: 'Pacjent choruje na nadciśnienie tętnicze',
+          text: 'Czy pacjent choruje na nadciśnienie tętnicze?',
           radios: [
             {
               id: 'p',
@@ -4187,7 +4187,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 50,
-          text: 'BMI',
+          text: 'BMI pacjenta',
           radios: [
             {
               id: 51,
@@ -4203,7 +4203,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 60,
-          text: 'Wiek',
+          text: 'Wiek pacjenta',
           radios: [
             {
               id: 61,
@@ -4219,7 +4219,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 70,
-          text: 'Obwód szyi',
+          text: 'Obwód szyi pacjenta',
           radios: [
             {
               id: 71,
@@ -4235,7 +4235,7 @@ export const calculators: CalculatorType[] = [
         },
         {
           id: 80,
-          text: 'Płeć',
+          text: 'Płeć pacjenta',
           radios: [
             {
               id: 81,
