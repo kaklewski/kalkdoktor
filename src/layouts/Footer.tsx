@@ -19,7 +19,7 @@ export default function Footer() {
           &copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL
           3.0
         </Text>
-        <Tooltip label='Repozytorium na GitHubie'>
+        <Tooltip label='Zobacz repozytorium na GitHubie'>
           <Link href={GITHUB_LINK}>
             <IconBrandGithubFilled size={16} stroke={1.5} />
           </Link>

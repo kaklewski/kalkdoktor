@@ -7,6 +7,7 @@ import {
   Button,
   Text,
   Badge,
+  Tooltip,
 } from '@chakra-ui/react'
 import { IconHeart, IconMedicalCross } from '@tabler/icons-react'
 import SearchBox from '../components/SearchBox/SearchBox'
@@ -46,11 +47,13 @@ export default function Navbar() {
               Ulubione
             </Button>
 
-            <Link href='/ulubione' id='favorites-icon-small'>
-              <IconButton aria-label='Ulubione'>
-                <IconHeart stroke={1.5} />
-              </IconButton>
-            </Link>
+            <Tooltip label='Zobacz ulubione kalkulatory'>
+              <Link href='/ulubione' id='favorites-icon-small'>
+                <IconButton aria-label='Ulubione'>
+                  <IconHeart stroke={1.5} />
+                </IconButton>
+              </Link>
+            </Tooltip>
 
             <ThemeButton />
           </Flex>

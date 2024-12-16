@@ -93,7 +93,7 @@ export default function SearchBox() {
 
   return (
     <>
-      <Tooltip label='ctrl + k'>
+      <Tooltip label='Ctrl + K'>
         <Button
           onClick={openSearchBox}
           id='search-icon-big'
@@ -104,18 +104,20 @@ export default function SearchBox() {
             borderColor: 'teal',
             boxShadow: '0 0 0 3px teal',
           }}>
-          Wyszukaj
+          Szukaj
         </Button>
       </Tooltip>
 
-      <IconButton
-        onClick={openSearchBox}
-        id='search-icon-small'
-        colorScheme='teal'
-        variant='solid'
-        aria-label='Wyszukaj kalkulator'>
-        <IconSearch stroke={1.5} />
-      </IconButton>
+      <Tooltip label='Wyszukaj kalkulator'>
+        <IconButton
+          onClick={openSearchBox}
+          id='search-icon-small'
+          colorScheme='teal'
+          variant='solid'
+          aria-label='Wyszukaj kalkulator'>
+          <IconSearch stroke={1.5} />
+        </IconButton>
+      </Tooltip>
 
       <Modal
         isOpen={isSearchBoxOpen}

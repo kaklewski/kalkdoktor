@@ -52,10 +52,10 @@ export default function ShareFavModal() {
 
   return (
     <>
-      <Tooltip label='Udostępnij ulubione'>
+      <Tooltip label='Udostępnij ulubione kalkulatory'>
         <IconButton
           icon={<IconShare stroke={1.5} />}
-          aria-label='Udostępnij ulubione'
+          aria-label='Udostępnij ulubione kalkulatory'
           onClick={onOpen}
         />
       </Tooltip>
@@ -63,7 +63,7 @@ export default function ShareFavModal() {
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalOverlay />
         <ModalContent m={2}>
-          <ModalHeader>Udostępnij ulubione</ModalHeader>
+          <ModalHeader>Udostępnij ulubione kalkulatory</ModalHeader>
           <ModalCloseButton />
 
           <ModalBody>

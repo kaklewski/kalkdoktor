@@ -23,7 +23,7 @@ export default function SortButton({
 }: SortMenuProps) {
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label='Sortuj'>
+      <Tooltip label='Zmień sposób sortowania'>
         <MenuButton
           as={IconButton}
           aria-label='Sortuj'
