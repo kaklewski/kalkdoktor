@@ -27,7 +27,7 @@ export default function DetailsCard({
       <Tabs variant='enclosed' isFitted colorScheme='teal'>
         <TabList px={4} pt={4}>
           <Tab>Opis</Tab>
-          <Tab>Źródła</Tab>
+          <Tab>{sources && sources.length > 1 ? 'Źródła' : 'Źródło'}</Tab>
           {methodology && <Tab>Metodologia</Tab>}
         </TabList>
 
