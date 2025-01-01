@@ -1,0 +1,23 @@
+{
+  "name": "Kalkdoktor",
+  "short_name": "Kalkdoktor",
+  "lang": "pl",
+  "description": "Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#81e6d9",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "../src/assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../src/assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
