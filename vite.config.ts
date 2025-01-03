@@ -16,17 +16,20 @@ export default defineConfig({
           'Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi.',
         start_url: '/',
         display: 'standalone',
+        background_color: '#319795',
         orientation: 'portrait',
         icons: [
           {
             src: 'icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'maskable',
           },
           {
             src: 'icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },
