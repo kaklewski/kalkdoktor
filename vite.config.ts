@@ -32,6 +32,11 @@ export default defineConfig({
             type: 'image/png',
             purpose: 'maskable',
           },
+          {
+            src: 'icon.svg',
+            type: 'image/svg+xml',
+            purpose: 'any',
+          },
         ],
       },
     }),
