@@ -4706,7 +4706,7 @@ export const calculators: CalculatorType[] = [
       if (result > 15) return 'Udar umiarkowany do ciężkiego.'
       if (result > 4) return 'Umiarkowany udar.'
       if (result > 0) return 'Niewielki udar.'
-      return 'Obrak objawów udaru.'
+      return 'Brak objawów udaru.'
     },
   },
 
