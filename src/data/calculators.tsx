@@ -4290,6 +4290,426 @@ export const calculators: CalculatorType[] = [
     },
   },
 
+  {
+    id: 34,
+    name: 'Skala NIHSS',
+    urlPath: 'skala-nihss',
+    category: 'neurologia',
+    description: 'Określa ciężkość udaru mózgu.',
+    methodology: null,
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Ocena kliniczna i leczenie w warunkach stanu naglącego (Portal lekarzy)',
+        dateOfAccess: '15.01.2025',
+        link: 'https://www.mp.pl/neurologia/udar-mozgu/195346,2-ocena-kliniczna-i-leczenie-w-warunkach-stanu-naglacego',
+      },
+      {
+        id: 2,
+        author:
+          'Shenzhen Traditional Chinese Medicine Hospital (Yuanyuan Zhuo, Yimin Qu, Jiaman Wu, Xingxian Huang, Weiqu Yuan, Jack Lee, Zhuoxin Yang, Benny Zee)',
+        title:
+          'Estimation of stroke severity with National Institutes of Health Stroke Scale grading and retinal features: A cross-sectional study',
+        dateOfAccess: '15.01.2025',
+        link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8341321/pdf/medi-100-e26846.pdf',
+      },
+    ],
+    fields: {
+      numberInputs: null,
+      checkboxes: null,
+      radioGroups: [
+        {
+          id: 10,
+          text: 'Stan przytomności',
+          radios: [
+            {
+              id: 11,
+              value: 0,
+              text: 'Przytomny',
+            },
+            {
+              id: 12,
+              value: 1,
+              text: 'Przebudza się przy niewielkiej stymulacji',
+            },
+            {
+              id: 13,
+              value: 2,
+              text: 'Wymaga powtarzającej się stymulacji w celu pobudzenia',
+            },
+            {
+              id: 14,
+              value: 3,
+              text: 'Brak reakcji na bodźce',
+            },
+          ],
+        },
+        {
+          id: 20,
+          text: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
+          radios: [
+            {
+              id: 21,
+              value: 0,
+              text: 'Obie odpowiedzi prawidłowe',
+            },
+            {
+              id: 22,
+              value: 1,
+              text: 'Jedna odpowiedź prawidłowa',
+            },
+            {
+              id: 23,
+              value: 2,
+              text: 'Obie odpowiedzi nieprawidłowe',
+            },
+          ],
+        },
+        {
+          id: 30,
+          text: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
+          radios: [
+            {
+              id: 31,
+              value: 0,
+              text: 'Spełnia prawidłowo oba polecenia',
+            },
+            {
+              id: 32,
+              value: 1,
+              text: 'Spełnia prawidłowo jedno polecenie',
+            },
+            {
+              id: 33,
+              value: 2,
+              text: 'Nie spełnia żadnego polecenia',
+            },
+          ],
+        },
+        {
+          id: 40,
+          text: 'Ruchy gałek ocznych w poziomie',
+          radios: [
+            {
+              id: 41,
+              value: 0,
+              text: 'Prawidłowe',
+            },
+            {
+              id: 42,
+              value: 1,
+              text: 'Częściowe porażenie',
+            },
+            {
+              id: 43,
+              value: 2,
+              text: 'Całkowite porażenie',
+            },
+          ],
+        },
+        {
+          id: 50,
+          text: 'Pole widzenia',
+          radios: [
+            {
+              id: 51,
+              value: 0,
+              text: 'Prawidłowe pole widzenia',
+            },
+            {
+              id: 52,
+              value: 1,
+              text: 'Częściowe niedowidzenie połowicze',
+            },
+            {
+              id: 53,
+              value: 2,
+              text: 'Całkowite niedowidzenie połowicze',
+            },
+            {
+              id: 54,
+              value: 3,
+              text: 'Obustronne niedowidzenie połowicze',
+            },
+          ],
+        },
+        {
+          id: 60,
+          text: 'Niedowład mięśni twarzy',
+          radios: [
+            {
+              id: 61,
+              value: 0,
+              text: 'Bez niedowładu',
+            },
+            {
+              id: 62,
+              value: 1,
+              text: 'Niewielki niedowład',
+            },
+            {
+              id: 63,
+              value: 2,
+              text: 'Umiarkowany niedowład',
+            },
+            {
+              id: 64,
+              value: 3,
+              text: 'Jednostronne porażenie',
+            },
+          ],
+        },
+        {
+          id: 70,
+          text: 'Niedowład kończyny górnej lewej',
+          radios: [
+            {
+              id: 71,
+              value: 0,
+              text: 'Utrzymuje uniesioną kończynę',
+            },
+            {
+              id: 72,
+              value: 1,
+              text: 'Kończyna opada częściowo przed upływem 10 sekund',
+            },
+            {
+              id: 73,
+              value: 2,
+              text: 'Kończyna opada całkowicie przed upływem 10 sekund',
+            },
+            {
+              id: 74,
+              value: 3,
+              text: 'Brak ruchu przeciw sile ciężkości',
+            },
+            {
+              id: 75,
+              value: 4,
+              text: 'Brak ruchu',
+            },
+          ],
+        },
+        {
+          id: 80,
+          text: 'Niedowład kończyny górnej prawej',
+          radios: [
+            {
+              id: 81,
+              value: 0,
+              text: 'Utrzymuje uniesioną kończynę',
+            },
+            {
+              id: 82,
+              value: 1,
+              text: 'Kończyna opada częściowo przed upływem 10 sekund',
+            },
+            {
+              id: 83,
+              value: 2,
+              text: 'Kończyna opada całkowicie przed upływem 10 sekund',
+            },
+            {
+              id: 84,
+              value: 3,
+              text: 'Brak ruchu przeciw sile ciężkości',
+            },
+            {
+              id: 85,
+              value: 4,
+              text: 'Brak ruchu',
+            },
+          ],
+        },
+        {
+          id: 90,
+          text: 'Niedowład kończyny dolnej lewej',
+          radios: [
+            {
+              id: 91,
+              value: 0,
+              text: 'Utrzymuje uniesioną kończynę',
+            },
+            {
+              id: 92,
+              value: 1,
+              text: 'Kończyna opada częściowo przed upływem 5 sekund',
+            },
+            {
+              id: 93,
+              value: 2,
+              text: 'Kończyna opada całkowicie przed upływem 5 sekund',
+            },
+            {
+              id: 94,
+              value: 3,
+              text: 'Brak ruchu przeciw sile ciężkości',
+            },
+            {
+              id: 95,
+              value: 4,
+              text: 'Brak ruchu',
+            },
+          ],
+        },
+        {
+          id: 100,
+          text: 'Niedowład kończyny dolnej prawej',
+          radios: [
+            {
+              id: 101,
+              value: 0,
+              text: 'Utrzymuje uniesioną kończynę',
+            },
+            {
+              id: 102,
+              value: 1,
+              text: 'Kończyna opada częściowo przed upływem 5 sekund',
+            },
+            {
+              id: 103,
+              value: 2,
+              text: 'Kończyna opada całkowicie przed upływem 5 sekund',
+            },
+            {
+              id: 104,
+              value: 3,
+              text: 'Brak ruchu przeciw sile ciężkości',
+            },
+            {
+              id: 105,
+              value: 4,
+              text: 'Brak ruchu',
+            },
+          ],
+        },
+        {
+          id: 110,
+          text: 'Ataksja kończyn',
+          radios: [
+            {
+              id: 111,
+              value: 0,
+              text: 'Bez ataksji',
+            },
+            {
+              id: 112,
+              value: 1,
+              text: 'W jednej kończynie',
+            },
+            {
+              id: 113,
+              value: 2,
+              text: 'W dwóch kończynach',
+            },
+          ],
+        },
+        {
+          id: 120,
+          text: 'Czucie',
+          radios: [
+            {
+              id: 121,
+              value: 0,
+              text: 'Prawidłowe',
+            },
+            {
+              id: 122,
+              value: 1,
+              text: 'Niewielka niedoczulica',
+            },
+            {
+              id: 123,
+              value: 2,
+              text: 'Ciężka niedoczulica',
+            },
+          ],
+        },
+        {
+          id: 130,
+          text: 'Mowa',
+          radios: [
+            {
+              id: 131,
+              value: 0,
+              text: 'Prawidłowa, bez afazji',
+            },
+            {
+              id: 132,
+              value: 1,
+              text: 'Niewielka afazja',
+            },
+            {
+              id: 133,
+              value: 2,
+              text: 'Ciężka afazja',
+            },
+            {
+              id: 134,
+              value: 3,
+              text: 'Brak mowy, całkowita afazja',
+            },
+          ],
+        },
+        {
+          id: 140,
+          text: 'Dyzartria',
+          radios: [
+            {
+              id: 141,
+              value: 0,
+              text: 'Bez dyzartii',
+            },
+            {
+              id: 142,
+              value: 1,
+              text: 'Niewielka dyzartia',
+            },
+            {
+              id: 143,
+              value: 2,
+              text: 'Ciężka dyzartia',
+            },
+          ],
+        },
+        {
+          id: 150,
+          text: 'Nieuwaga',
+          radios: [
+            {
+              id: 151,
+              value: 0,
+              text: 'Nieobecna',
+            },
+            {
+              id: 152,
+              value: 1,
+              text: 'Niewielka (w zakresie jednego zmysłu)',
+            },
+            {
+              id: 153,
+              value: 2,
+              text: 'Ciężka (w zakresie dwóch zmysłów)',
+            },
+          ],
+        },
+      ],
+    },
+    resultUnit: null,
+
+    getResult: sumInputValues,
+
+    getResultInterpretation: (result: number) => {
+      if (result > 20) return 'Ciężki udar.'
+      if (result > 15) return 'Udar umiarkowany do ciężkiego.'
+      if (result > 4) return 'Umiarkowany udar.'
+      if (result > 0) return 'Niewielki udar.'
+      return 'Obrak objawów udaru.'
+    },
+  },
+
   // {
   // 	id: ,
   // 	name: '',
@@ -4298,11 +4718,13 @@ export const calculators: CalculatorType[] = [
   // 	description: '',
   // 	methodology: null,
   // 	sources: [
-  // 		{
-  // 			id: 1,
-  // 			name: '',
-  // 			link: '',
-  // 		},
+  // {
+  //   id: 1,
+  //   author: '',
+  //   title: '',
+  //   dateOfAccess: '',
+  //   link: '',
+  // },
   // 	],
   // 	fields: {
   // 		numberInputs: null,
