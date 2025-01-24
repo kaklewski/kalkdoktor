@@ -39,6 +39,12 @@ export default defineConfig({
             purpose: 'any',
           },
         ],
+        shortcuts: [
+          {
+            name: 'Ulubione',
+            url: '/ulubione',
+          },
+        ],
       },
     }),
   ],
