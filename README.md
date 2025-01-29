@@ -2,7 +2,7 @@
 
 ## About
 
-Kalkdoktor is a web app written in React + TypeScript with use of [Chakra UI](https://github.com/chakra-ui/chakra-ui). It contains medical calculators and scales that help doctors diagnose a patient and choose the right treatment.
+Kalkdoktor is a web app written in React and TypeScript with use of [Chakra UI](https://github.com/chakra-ui/chakra-ui). It contains medical calculators and scales that help doctors diagnose a patient and choose the right treatment.
 
 Available only in Polish 🇵🇱 language. Please just treat is as lorem ipsum. 😉
 
@@ -17,9 +17,10 @@ Deployed with [Netlify](https://www.netlify.com/).
 - **Medical scales and calculators**: Contains a set of medical tools enabling the diagnosis of the patient.
 - **Favorites**: Add selected calculators to your favorites and share them between devices.
 - **Search**: Search for your favorite calculators.
-- **Dark Mode**: Switch between light and dark modes.
+- **Dark Mode**: Switch between light, dark and automatic modes.
 - **Modern UI**: Clean, professional design with consistent color schemes, fonts and style.
 - **Responsive Design**: Use it on any device you want.
+- **Progressive Web App**: Install the PWA and use it offline.
 
 ## Screenshots
 
