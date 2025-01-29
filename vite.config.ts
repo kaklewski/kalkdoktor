@@ -43,6 +43,13 @@ export default defineConfig({
           {
             name: 'Ulubione',
             url: '/ulubione',
+            description: 'Zobacz ulubione kalkulatory',
+            icons: [
+              {
+                src: 'icon-ulubione.png',
+                sizes: '192x192',
+              },
+            ],
           },
         ],
       },
