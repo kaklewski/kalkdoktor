@@ -4,35 +4,25 @@ import CustomNumberInput from './CustomNumberInput'
 import CustomCheckbox from './CustomCheckbox'
 import CustomRadioGroup from './CustomRadioGroup'
 import CustomRadio from './CustomRadio'
-import { Dispatch, FormEvent, SetStateAction } from 'react'
+import { FormEvent } from 'react'
 import { CalculatorType } from '../types/calculatorTypes'
 
 type FormCardProps = {
   numberInputs?: CalculatorType['fields']['numberInputs']
   checkboxes?: CalculatorType['fields']['checkboxes']
   radioGroups?: CalculatorType['fields']['radioGroups']
-  getResult: CalculatorType['getResult']
-  setResult: Dispatch<SetStateAction<number>>
-  result: number
-  getResultInterpretation: CalculatorType['getResultInterpretation']
-  setResultInterpretation: Dispatch<SetStateAction<string>>
+  displayResultAndInterpretation: () => void
 }
 
 export default function FormCard({
   numberInputs,
   checkboxes,
   radioGroups,
-  getResult,
-  setResult,
-  result,
-  getResultInterpretation,
-  setResultInterpretation,
+  displayResultAndInterpretation,
 }: FormCardProps) {
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setResult(getResult())
-    // Make sure that the interpretation changes even when the result doesn't.
-    setResultInterpretation(getResultInterpretation(result))
+    displayResultAndInterpretation()
   }
 
   return (
@@ -42,10 +32,7 @@ export default function FormCard({
           <Stack spacing={4} divider={<StackDivider />}>
             {radioGroups &&
               radioGroups.map(radioGroup => (
-                <CustomRadioGroup
-                  key={radioGroup.id}
-                  id={radioGroup.id}
-                  text={radioGroup.text}>
+                <CustomRadioGroup key={radioGroup.id} id={radioGroup.id} text={radioGroup.text}>
                   {radioGroup.radios.map(radio => (
                     <CustomRadio
                       key={radio.id}

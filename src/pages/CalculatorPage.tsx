@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Flex, Heading } from '@chakra-ui/react'
 import FavButton from '../components/FavButton'
 import ResultCard from '../components/ResultCard'
@@ -31,10 +31,10 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
     getResultInterpretation(result)
   )
 
-  // Make sure that the interpretation is always provided when the result changes.
-  useEffect(() => {
-    setResultInterpretation(getResultInterpretation(result))
-  }, [result])
+  function displayResultAndInterpretation() {
+    setResult(getResult())
+    setResultInterpretation(getResultInterpretation(getResult()))
+  }
 
   return (
     <>
@@ -47,11 +47,7 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
         numberInputs={fields.numberInputs}
         checkboxes={fields.checkboxes}
         radioGroups={fields.radioGroups}
-        getResult={getResult}
-        setResult={setResult}
-        result={result}
-        getResultInterpretation={getResultInterpretation}
-        setResultInterpretation={setResultInterpretation}
+        displayResultAndInterpretation={displayResultAndInterpretation}
       />
 
       <ResultCard
@@ -60,11 +56,7 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
         resultInterpretation={resultInterpretation}
       />
 
-      <DetailsCard
-        description={description}
-        sources={sources}
-        methodology={methodology}
-      />
+      <DetailsCard description={description} sources={sources} methodology={methodology} />
     </>
   )
 }
