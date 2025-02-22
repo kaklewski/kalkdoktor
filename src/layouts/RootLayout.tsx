@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <Box maxW='650px' mx='auto' px={4} py={8}>
+      <Box maxW='768px' mx='auto' px={4} py={8}>
         <Stack spacing={8}>
           <Outlet />
         </Stack>

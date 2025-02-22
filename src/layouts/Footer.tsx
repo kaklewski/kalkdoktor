@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <Box as='footer' id='footer' maxW='650px' mx='auto'>
+    <Box as='footer' id='footer' maxW='768px' mx='auto'>
       <Divider />
       <Flex
         p={4}
