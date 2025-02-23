@@ -6,8 +6,8 @@ export default function Footer() {
 
   return (
     <Flex p={4} direction='column' justify='center' align='center' borderTopWidth='1px'>
-      <Text fontSize='xs'>
-        &copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL 3.0
+      <Text fontSize='xs' textAlign='center'>
+        &copy; {currentYear} Oskar Kąklewski. Opublikowano na licencji GPL 3.0
       </Text>
       <Flex>
         <Tooltip label='GitHub'>
