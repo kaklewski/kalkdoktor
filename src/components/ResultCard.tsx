@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Divider,
-  Heading,
-  Text,
-} from '@chakra-ui/react'
+import { Card, CardBody, CardHeader, Divider, Heading, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { CalculatorType } from '../types/calculatorTypes'
 
@@ -15,13 +8,9 @@ type ResultCardProps = {
   resultInterpretation: string
 }
 
-export default function ResultCard({
-  result,
-  resultUnit,
-  resultInterpretation,
-}: ResultCardProps) {
+export default function ResultCard({ result, resultUnit, resultInterpretation }: ResultCardProps) {
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
-  const [resultCardAnimation, setResultCardAnimation] = useState('')
+  const [resultCardAnimation, setResultCardAnimation] = useState<boolean>(false)
 
   useEffect(() => {
     if (isFirstRender) {
@@ -29,9 +18,10 @@ export default function ResultCard({
       return
     }
 
-    setResultCardAnimation('animation')
+    setResultCardAnimation(true)
+
     setTimeout(() => {
-      setResultCardAnimation('')
+      setResultCardAnimation(false)
     }, 300)
   }, [result, resultInterpretation])
 
@@ -42,14 +32,11 @@ export default function ResultCard({
       overflow='hidden'
       variant='filled'
       id='resultCard'
-      className={resultCardAnimation}>
+      className={resultCardAnimation ? 'animation' : ''}>
       <CardHeader>
         <Heading as='p' size='md'>
           Wynik: {result.toFixed(1).replace(/\.0$/, '')}
-          {resultUnit &&
-            `${
-              resultUnit === '%' || resultUnit === '‰' ? '' : ' '
-            }${resultUnit}`}
+          {resultUnit && `${resultUnit === '%' || resultUnit === '‰' ? '' : ' '}${resultUnit}`}
         </Heading>
       </CardHeader>
 
