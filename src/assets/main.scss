@@ -29,7 +29,7 @@
 }
 
 #resultCard {
-  .animation {
+  &.animation {
     animation: 0.3s scaleUpDown ease-in-out;
   }
 }
@@ -43,14 +43,5 @@
   }
   100% {
     scale: 100%;
-  }
-}
-
-#footer {
-  padding-inline: 16px;
-
-  // Make footer divider full width on smaller screens
-  @media screen and (width <= 768px) {
-    padding-inline: 0;
   }
 }

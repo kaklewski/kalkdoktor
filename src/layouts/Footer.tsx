@@ -6,19 +6,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <Box as='footer' id='footer' maxW='768px' mx='auto'>
+    <Box as='footer' maxW='768px' mx='auto' paddingInline={{ base: 0, md: 4 }}>
       <Divider />
-      <Flex
-        p={4}
-        fontSize='xs'
-        direction='column'
-        justify='center'
-        align='center'
-        gap={1}>
-        <Text>
-          &copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL
-          3.0
-        </Text>
+      <Flex p={4} fontSize='xs' direction='column' justify='center' align='center' gap={1}>
+        <Text>&copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL 3.0</Text>
         <Tooltip label='Zobacz repozytorium na GitHubie'>
           <Link href={GITHUB_LINK}>
             <IconBrandGithubFilled size={16} stroke={1.5} />
