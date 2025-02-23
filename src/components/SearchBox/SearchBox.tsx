@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   CloseButton,
   Divider,
@@ -29,9 +30,7 @@ export default function SearchBox() {
   const searchBarRef = useRef<HTMLInputElement>(null)
   const [searchQuery, setSearchQuery] = useState<string>('')
   const INITIAL_SELECTED_ITEM_INDEX = 0
-  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
-    INITIAL_SELECTED_ITEM_INDEX
-  )
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(INITIAL_SELECTED_ITEM_INDEX)
   const selectedItemRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -81,10 +80,7 @@ export default function SearchBox() {
 
     if (event.key === 'ArrowUp' && selectedItemIndex > 0) {
       setSelectedItemIndex(previousItem => previousItem - 1)
-    } else if (
-      event.key === 'ArrowDown' &&
-      selectedItemIndex < filteredCalculators.length - 1
-    ) {
+    } else if (event.key === 'ArrowDown' && selectedItemIndex < filteredCalculators.length - 1) {
       setSelectedItemIndex(previousItem => previousItem + 1)
     } else if (event.key === 'Enter') {
       window.location.href = filteredCalculators[selectedItemIndex].urlPath
@@ -93,31 +89,32 @@ export default function SearchBox() {
 
   return (
     <>
-      <Tooltip label='Ctrl + K'>
-        <Button
-          onClick={openSearchBox}
-          id='search-icon-big'
-          leftIcon={<IconSearch stroke={1.5} />}
-          colorScheme='teal'
-          aria-label='Wyszukaj kalkulator'
-          _focus={{
-            borderColor: 'teal',
-            boxShadow: '0 0 0 3px teal',
-          }}>
-          Szukaj
-        </Button>
-      </Tooltip>
-
-      <Tooltip label='Wyszukaj kalkulator'>
-        <IconButton
-          onClick={openSearchBox}
-          id='search-icon-small'
-          colorScheme='teal'
-          variant='solid'
-          aria-label='Wyszukaj kalkulator'>
-          <IconSearch stroke={1.5} />
-        </IconButton>
-      </Tooltip>
+      <Box display={{ base: 'none', md: 'initial' }}>
+        <Tooltip label='Ctrl + K'>
+          <Button
+            onClick={openSearchBox}
+            leftIcon={<IconSearch stroke={1.5} />}
+            colorScheme='teal'
+            aria-label='Wyszukaj kalkulator'
+            _focus={{
+              borderColor: 'teal',
+              boxShadow: '0 0 0 3px teal',
+            }}>
+            Szukaj
+          </Button>
+        </Tooltip>
+      </Box>
+      <Box display={{ base: 'initial', md: 'none' }}>
+        <Tooltip label='Wyszukaj kalkulator'>
+          <IconButton
+            onClick={openSearchBox}
+            colorScheme='teal'
+            variant='solid'
+            aria-label='Wyszukaj kalkulator'>
+            <IconSearch stroke={1.5} />
+          </IconButton>
+        </Tooltip>
+      </Box>
 
       <Modal
         isOpen={isSearchBoxOpen}
@@ -151,9 +148,7 @@ export default function SearchBox() {
                       link={calc.urlPath}
                       name={calc.name}
                       isSelected={index === selectedItemIndex && true}
-                      selectedItemRef={
-                        index === selectedItemIndex && selectedItemRef
-                      }
+                      selectedItemRef={index === selectedItemIndex && selectedItemRef}
                       setSelectedItemIndex={setSelectedItemIndex}
                     />
                   )

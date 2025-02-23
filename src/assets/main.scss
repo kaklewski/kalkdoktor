@@ -28,22 +28,10 @@
   }
 }
 
-#search-icon-small,
-#favorites-icon-small {
-  @media screen and (width > 768px) {
-    display: none;
+#resultCard {
+  .animation {
+    animation: 0.3s scaleUpDown ease-in-out;
   }
-}
-
-#search-icon-big,
-#favorites-icon-big {
-  @media screen and (width <= 768px) {
-    display: none;
-  }
-}
-
-#resultCard.animation {
-  animation: 0.3s scaleUpDown ease-in-out;
 }
 
 @keyframes scaleUpDown {
