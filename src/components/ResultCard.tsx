@@ -53,7 +53,7 @@ export default function ResultCard({
         </Heading>
       </CardHeader>
 
-      <Divider color='white' />
+      <Divider />
 
       <CardBody>
         <Text>{resultInterpretation}</Text>

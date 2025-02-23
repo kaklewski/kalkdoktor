@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, IconButton, Link, Text, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, IconButton, Link, Text, Tooltip } from '@chakra-ui/react'
 import { IconBrandGithub, IconBrandLinkedin, IconWorld } from '@tabler/icons-react'
 
 export default function Footer() {
@@ -6,8 +6,7 @@ export default function Footer() {
 
   return (
     <Box as='footer' maxW='768px' mx='auto' paddingInline={{ base: 0, md: 4 }}>
-      <Divider />
-      <Flex p={4} direction='column' justify='center' align='center'>
+      <Flex p={4} direction='column' justify='center' align='center' borderTopWidth='1px'>
         <Text fontSize='xs'>
           &copy; {currentYear} Oskar Kąklewski - Opublikowano na licencji GPL 3.0
         </Text>
