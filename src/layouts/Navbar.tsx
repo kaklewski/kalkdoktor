@@ -6,7 +6,7 @@ import ThemeButton from '../components/ThemeButton'
 export default function Navbar() {
   return (
     <Box p={4} borderBottomWidth='1px'>
-      <Flex align='center' justify='space-between' gap={6} wrap='wrap'>
+      <Flex align='center' justify='space-between' gap={4} wrap='wrap'>
         <Flex align='start'>
           <Link href='/' id='navLogo' borderRadius='md' _hover={{ textDecoration: 'none' }}>
             <Flex align='center'>
@@ -19,7 +19,7 @@ export default function Navbar() {
           </Badge>
         </Flex>
 
-        <Flex align='center' gap={3} wrap='wrap'>
+        <Flex align='center' gap={2} wrap='wrap'>
           <SearchBox />
 
           <Box display={{ base: 'none', md: 'initial' }}>

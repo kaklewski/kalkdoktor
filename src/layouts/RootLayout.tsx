@@ -1,18 +1,18 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { Box, Stack } from '@chakra-ui/react'
+import { Container, Stack } from '@chakra-ui/react'
 
 export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <Box maxW='768px' mx='auto' px={4} py={8}>
+      <Container my={8}>
         <Stack spacing={8}>
           <Outlet />
+          <Footer />
         </Stack>
-      </Box>
-      <Footer />
+      </Container>
     </>
   )
 }

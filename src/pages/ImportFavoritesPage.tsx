@@ -20,14 +20,14 @@ export default function ImportFavoritesPage() {
   useDocumentTitle('Importuj ulubione kalkulatory')
 
   useEffect(() => {
-    if (!idsAreValid) {
+    if (!areIdsValid) {
       window.location.href = '/'
     }
   }, [])
 
   const urlParams = new URLSearchParams(window.location.search)
   const favoriteCalculatorIds = urlParams.get('id')
-  const idsAreValid: boolean =
+  const areIdsValid: boolean =
     favoriteCalculatorIds === null ||
     favoriteCalculatorIds === undefined ||
     favoriteCalculatorIds === '' ||
@@ -49,7 +49,7 @@ export default function ImportFavoritesPage() {
 
   return (
     <>
-      {idsAreValid && (
+      {areIdsValid && (
         <Card variant='outline'>
           <CardBody>
             <VStack mx='auto' maxW='80%'>
@@ -58,9 +58,8 @@ export default function ImportFavoritesPage() {
                 Importuj ulubione
               </Heading>
               <Text align='center'>
-                Poniższe kalkulatory zostaną dodane do ulubionych na tym
-                urządzeniu. Jeśli masz już jakieś ulubione kalkulatory, zostaną
-                one nadpisane.
+                Poniższe kalkulatory zostaną dodane do ulubionych na tym urządzeniu. Jeśli masz już
+                jakieś ulubione kalkulatory, zostaną one nadpisane.
               </Text>
               <UnorderedList>
                 {favoritesToImport.map(fav => {
@@ -71,15 +70,14 @@ export default function ImportFavoritesPage() {
           </CardBody>
 
           <CardFooter mb={2}>
-            <Flex justify='center' align='center' gap={3} w='100%'>
+            <Flex justify='center' align='center' gap={2} w='100%'>
               <Link href='/'>
                 <Button>Anuluj</Button>
               </Link>
               <Button
                 colorScheme='red'
                 onClick={() => {
-                  if (favoriteCalculatorIds !== null)
-                    importFavorites(favoriteCalculatorIds)
+                  if (favoriteCalculatorIds !== null) importFavorites(favoriteCalculatorIds)
                 }}>
                 Importuj
               </Button>

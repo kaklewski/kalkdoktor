@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { useEffect, useState } from 'react'
@@ -31,7 +31,7 @@ export default function IndexPage() {
       </Flex>
 
       {sortingType === 'alphabetically' && (
-        <Stack spacing={6}>
+        <Stack spacing={4}>
           {sortedCalculators.map(calculator => (
             <CalculatorCard
               key={calculator.id}
@@ -48,13 +48,12 @@ export default function IndexPage() {
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>
-              <Box mb={6}>
-                <Heading as='h2' fontSize='2xl'>
+              <Box mb={4}>
+                <Heading as='h2' fontSize='2xl' borderBottomWidth='1px'>
                   {category.toUpperCase()}
                 </Heading>
-                <Divider mt={2} />
               </Box>
-              <Stack spacing={6}>
+              <Stack spacing={4}>
                 {sortedCalculators
                   .filter(calc => calc.category === category)
                   .map(calculator => (

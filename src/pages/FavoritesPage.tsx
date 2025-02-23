@@ -1,12 +1,4 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
@@ -37,9 +29,7 @@ export default function FavoritesPage() {
     return JSON.parse(fav)
   })()
 
-  const favoriteCalculators = sortedCalculators.filter(c =>
-    favIds.includes(c.id)
-  )
+  const favoriteCalculators = sortedCalculators.filter(c => favIds.includes(c.id))
 
   const categories: string[] = getCategories(favoriteCalculators)
 
@@ -48,18 +38,15 @@ export default function FavoritesPage() {
       <Flex justify='space-between' gap={2}>
         <Heading as='h1'>Ulubione</Heading>
         {favoriteCalculators.length !== 0 && (
-          <Stack direction='row' gap={3}>
+          <Stack direction='row' gap={2}>
             <ShareFavModal />
-            <SortButton
-              sortingType={sortingType}
-              setSortingType={setSortingType}
-            />
+            <SortButton sortingType={sortingType} setSortingType={setSortingType} />
           </Stack>
         )}
       </Flex>
 
       {sortingType === 'alphabetically' && (
-        <Stack spacing={6}>
+        <Stack spacing={4}>
           {favoriteCalculators.length === 0 ? (
             <NoFavoritesPlaceholder />
           ) : (
@@ -80,13 +67,12 @@ export default function FavoritesPage() {
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>
-              <Box mb={6}>
-                <Heading as='h2' fontSize='2xl'>
+              <Box mb={4}>
+                <Heading as='h2' fontSize='2xl' borderBottomWidth='1px'>
                   {category.toUpperCase()}
                 </Heading>
-                <Divider mt={2} />
               </Box>
-              <Stack spacing={6}>
+              <Stack spacing={4}>
                 {favoriteCalculators
                   .filter(calc => calc.category === category)
                   .map(calculator => (
