@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <Container my={8}>
+      <Container my={8} maxW='container.sm'>
         <Stack spacing={8}>
           <Outlet />
           <Footer />
