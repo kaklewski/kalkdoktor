@@ -38,7 +38,7 @@ export default function ThemeButton() {
     <>
       {/* Auto theme is active */}
       {isAutoTheme === true && (
-        <Tooltip label='Zmień motyw na jasny'>
+        <Tooltip label='Zmień motyw na jasny' placement='bottom-start'>
           <IconButton
             aria-label='Zmień motyw na jasny'
             onClick={() => {
@@ -52,7 +52,7 @@ export default function ThemeButton() {
 
       {/* Light theme is active */}
       {isAutoTheme === false && colorMode === 'light' && (
-        <Tooltip label='Zmień motyw na ciemny'>
+        <Tooltip label='Zmień motyw na ciemny' placement='bottom-start'>
           <IconButton
             aria-label='Zmień motyw na ciemny'
             onClick={() => {
@@ -66,7 +66,7 @@ export default function ThemeButton() {
 
       {/* Dark theme is active */}
       {isAutoTheme === false && colorMode === 'dark' && (
-        <Tooltip label='Zmień motyw na automatyczny'>
+        <Tooltip label='Zmień motyw na automatyczny' placement='bottom-start'>
           <IconButton
             aria-label='Zmień motyw na automatyczny'
             onClick={() => {
