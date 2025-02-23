@@ -19,7 +19,7 @@ export default function Navbar() {
       <Box p={4}>
         <Flex align='center' justify='space-between' gap={6} wrap='wrap'>
           <Flex align='start'>
-            <Link href='/' id='navLogo' borderRadius='md'>
+            <Link href='/' id='navLogo' borderRadius='md' _hover={{ textDecoration: 'none' }}>
               <Flex align='center'>
                 <IconMedicalCross />
                 <Text>kalkdoktor</Text>
