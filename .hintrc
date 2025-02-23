@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "development"
-  ],
+  "extends": ["development"],
   "browserslist": [
     "defaults",
     "not ie 11",
@@ -9,5 +7,13 @@
     "not firefox <= 115",
     "not ios_saf <= 16.7",
     "not samsung <= 26"
-  ]
+  ],
+  "hints": {
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": ["meta[name=theme-color]"]
+      }
+    ]
+  }
 }
