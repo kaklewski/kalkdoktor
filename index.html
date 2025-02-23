@@ -11,20 +11,18 @@
       content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi." />
 
     <!-- PWA theme colors -->
-    <meta
-      name="theme-color"
-      content="#FFFFFF"
-      media="(prefers-color-scheme: light)" />
-    <meta
-      name="theme-color"
-      content="#1A202C"
-      media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A202C" media="(prefers-color-scheme: dark)" />
 
     <style>
+      :root {
+        --spinner-primary-color: light-dark(#319795, #81e6d9);
+        --spinner-secondary-color: light-dark(#edf2f7, #2c313d);
+        --body-color: light-dark(#fff, #1a202c);
+      }
+
       html {
         color-scheme: light dark;
-        --spinner-color: light-dark(#319795, #81e6d9);
-        background-color: light-dark(#fff, #1a202c);
       }
 
       html[data-theme='light'] {
@@ -33,6 +31,10 @@
 
       html[data-theme='dark'] {
         color-scheme: dark;
+      }
+
+      body {
+        background-color: var(--body-color);
       }
 
       .loader-container {
@@ -46,50 +48,31 @@
         height: 100vh;
       }
 
-      .loader-container svg {
-        width: 3.75em;
-        transform-origin: center;
-        animation: rotate 2s linear infinite;
+      .loader {
+        width: 48px;
+        height: 48px;
+        border: 3px solid var(--spinner-secondary-color);
+        border-top-color: var(--spinner-primary-color);
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s ease-in-out infinite;
       }
 
-      .loader-container circle {
-        fill: none;
-        stroke: var(--spinner-color);
-        stroke-width: 2;
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-        stroke-linecap: round;
-        animation: dash 1.5s ease-in-out infinite;
-      }
-
-      @keyframes rotate {
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
         100% {
           transform: rotate(360deg);
-        }
-      }
-
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 1, 200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray: 90, 200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dashoffset: -125px;
         }
       }
     </style>
   </head>
   <body>
     <div id="root">
-      <!-- Loading spinner - displayed before React loads the Virtual-DOM -->
       <div class="loader-container">
-        <svg viewBox="25 25 50 50">
-          <circle cx="50" cy="50" r="20"></circle>
-        </svg>
+        <span class="loader"></span>
       </div>
     </div>
 
@@ -98,15 +81,13 @@
 
       const isAutoColorMode = localStorage.getItem('auto-color-mode')
 
-      // When the page is being opened for the very first time, set automatic theme.
-      if (isAutoColorMode === null)
-        localStorage.setItem('auto-color-mode', 'true')
+      // When the page is open for the first time, set automatic theme
+      if (isAutoColorMode === null) localStorage.setItem('auto-color-mode', 'true')
 
-      // When automatic theme is on, set proper initial theme.
-      if (isAutoColorMode === 'true')
-        localStorage.removeItem('chakra-ui-color-mode')
+      // When automatic theme is on, set proper initial theme
+      if (isAutoColorMode === 'true') localStorage.removeItem('chakra-ui-color-mode')
 
-      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect.
+      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
       setThemeAttribute()
     </script>
 
