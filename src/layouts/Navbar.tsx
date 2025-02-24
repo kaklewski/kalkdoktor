@@ -19,7 +19,7 @@ export default function Navbar() {
           </Badge>
         </Flex>
 
-        <Flex align='center' gap={2} wrap='wrap'>
+        <Flex align='center' gap={{ base: 3, md: 2 }} wrap='wrap'>
           <SearchBox />
 
           <Box display={{ base: 'none', md: 'initial' }}>
