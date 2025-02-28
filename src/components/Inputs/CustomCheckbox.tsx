@@ -1,14 +1,10 @@
 import { Box, Checkbox, Flex } from '@chakra-ui/react'
 import CustomBadge from './CustomBadge'
-import { CheckboxType } from '../types/calculatorTypes'
+import { CheckboxType } from '../../types/calculatorTypes'
 
 type CustomCheckboxProps = CheckboxType
 
-export default function CustomCheckbox({
-  id,
-  value,
-  text,
-}: CustomCheckboxProps) {
+export default function CustomCheckbox({ id, value, text }: CustomCheckboxProps) {
   return (
     <Box>
       <Checkbox value={value} name={id.toString()} colorScheme='teal' w='100%'>

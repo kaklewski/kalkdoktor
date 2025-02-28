@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Flex, Heading } from '@chakra-ui/react'
-import FavButton from '../components/FavButton'
-import ResultCard from '../components/ResultCard'
-import DetailsCard from '../components/DetailsCard'
-import FormCard from '../components/FormCard'
+import FavButton from '../components/Buttons/FavButton'
 import { CalculatorType } from '../types/calculatorTypes'
 import useDocumentTitle from '../hooks/useDocumentTitle'
+import FormCard from '../components/Cards/FormCard'
+import ResultCard from '../components/Cards/ResultCard'
+import DetailsCard from '../components/Cards/DetailsCard'
 
 type CalculatorPageProps = {
   calculator: CalculatorType

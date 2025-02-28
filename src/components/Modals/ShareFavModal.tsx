@@ -30,9 +30,7 @@ export default function ShareFavModal() {
   const { onCopy, value, setValue } = useClipboard('')
   useEffect(() => {
     const urlPath = '/importuj-ulubione'
-    const urlHostname = window.location
-      .toString()
-      .replace(window.location.pathname, urlPath)
+    const urlHostname = window.location.toString().replace(window.location.pathname, urlPath)
     const favString = localStorage.getItem('favorites')
 
     setValue(urlHostname + '?id=' + favString)
@@ -69,8 +67,8 @@ export default function ShareFavModal() {
           <ModalBody>
             <Stack spacing={3}>
               <Text>
-                Skopiuj poniższy link i otwórz go na innym urządzeniu, aby
-                zaimportować ulubione kalkulatory.
+                Skopiuj poniższy link i otwórz go na innym urządzeniu, aby zaimportować ulubione
+                kalkulatory.
               </Text>
 
               <Flex mb={2} gap={2}>
@@ -108,10 +106,9 @@ export default function ShareFavModal() {
                   <AccordionPanel px={0}>
                     <Divider mb={3} />
                     <Text fontSize='sm'>
-                      Kalkdoktor zapisuje listę ulubionych kalkulatorów w
-                      pamięci lokalnej przeglądarki na danym urządzeniu. Oznacza
-                      to, że aby móc korzystać z tych samych ulubionych na innym
-                      urządzeniu, trzeba je najpierw udostępnić.
+                      Kalkdoktor zapisuje listę ulubionych kalkulatorów w pamięci lokalnej
+                      przeglądarki na danym urządzeniu. Oznacza to, że aby móc korzystać z tych
+                      samych ulubionych na innym urządzeniu, trzeba je najpierw udostępnić.
                     </Text>
                   </AccordionPanel>
                 </AccordionItem>

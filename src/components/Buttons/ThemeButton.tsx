@@ -1,7 +1,7 @@
 import { IconButton, Tooltip, useColorMode } from '@chakra-ui/react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
-import setThemeAttribute from '../utils/setThemeAttribute'
+import setThemeAttribute from '../../utils/setThemeAttribute'
 
 export default function ThemeButton() {
   const [isAutoTheme, setIsAutoTheme] = useState<boolean>(() => {

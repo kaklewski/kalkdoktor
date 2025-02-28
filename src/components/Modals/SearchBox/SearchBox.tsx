@@ -16,10 +16,10 @@ import {
 } from '@chakra-ui/react'
 import { IconSearch } from '@tabler/icons-react'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
-import { sortedCalculators } from '../../data/sortedCalculators'
 import SearchResultItem from './SearchResultItem'
 import SearchBar from './SearchBar'
 import NoResultsMessage from './NoResultsMessage'
+import { sortedCalculators } from '../../../data/sortedCalculators'
 
 export default function SearchBox() {
   const {

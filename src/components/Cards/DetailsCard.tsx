@@ -1,7 +1,6 @@
 import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
-import { CalculatorType } from '../types/calculatorTypes'
-import { SourceType } from '../types/calculatorTypes'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { CalculatorType, SourceType } from '../../types/calculatorTypes'
 
 type DetailsCardProps = {
   description: CalculatorType['description']

@@ -1,10 +1,10 @@
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
-import CalculatorCard from '../components/CalculatorCard'
 import { useEffect, useState } from 'react'
 import { getCategories } from '../utils/getCategories'
-import SortButton from '../components/SortButton'
+import SortButton from '../components/Buttons/SortButton'
 import { calculators } from '../data/calculators'
+import CalculatorCard from '../components/Cards/CalculatorCard'
 
 export default function IndexPage() {
   const sortingStorageKey = 'sort-homepage'

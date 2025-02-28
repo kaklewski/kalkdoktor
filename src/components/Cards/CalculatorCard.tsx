@@ -9,8 +9,8 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react'
-import FavButton from './FavButton'
-import { CalculatorType } from '../types/calculatorTypes'
+import { CalculatorType } from '../../types/calculatorTypes'
+import FavButton from '../Buttons/FavButton'
 
 type CalculatorCardProps = {
   id: CalculatorType['id']

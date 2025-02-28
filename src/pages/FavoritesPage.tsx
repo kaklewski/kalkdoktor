@@ -1,12 +1,12 @@
 import { Box, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
 import { sortedCalculators } from '../data/sortedCalculators'
-import CalculatorCard from '../components/CalculatorCard'
 import { IconHeartOff } from '@tabler/icons-react'
-import ShareFavModal from '../components/ShareFavModal'
+import ShareFavModal from '../components/Modals/ShareFavModal'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 import { useEffect, useState } from 'react'
 import { getCategories } from '../utils/getCategories'
-import SortButton from '../components/SortButton'
+import SortButton from '../components/Buttons/SortButton'
+import CalculatorCard from '../components/Cards/CalculatorCard'
 
 export default function FavoritesPage() {
   useDocumentTitle('Ulubione')

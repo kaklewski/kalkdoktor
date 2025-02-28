@@ -1,6 +1,6 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { IconCornerDownLeft } from '@tabler/icons-react'
-import { CalculatorType } from '../../types/calculatorTypes'
+import { CalculatorType } from '../../../types/calculatorTypes'
 
 type SearchResultItemProps = {
   name: CalculatorType['name']
@@ -42,11 +42,7 @@ export default function SearchResultItem({
       onMouseMove={() => {
         setSelectedItemIndex(index)
       }}>
-      <Flex
-        justifyContent='space-between'
-        alignItems='stretch'
-        gap={2}
-        w='100%'>
+      <Flex justifyContent='space-between' alignItems='stretch' gap={2} w='100%'>
         {name}
         <Flex justifyContent='center' alignItems='center'>
           <IconCornerDownLeft

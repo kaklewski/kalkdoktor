@@ -7,20 +7,14 @@ import {
   MenuOptionGroup,
   Tooltip,
 } from '@chakra-ui/react'
-import {
-  IconSortAscendingLetters,
-  IconSortAscendingShapes,
-} from '@tabler/icons-react'
+import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react'
 
 type SortMenuProps = {
   sortingType: string
   setSortingType: (value: string) => void
 }
 
-export default function SortButton({
-  sortingType,
-  setSortingType,
-}: SortMenuProps) {
+export default function SortButton({ sortingType, setSortingType }: SortMenuProps) {
   return (
     <Menu closeOnSelect={true}>
       <Tooltip label='Zmień sposób sortowania'>
@@ -38,9 +32,7 @@ export default function SortButton({
       </Tooltip>
       <MenuList minWidth='240px'>
         <MenuOptionGroup defaultValue={sortingType} title='Sortuj' type='radio'>
-          <MenuItemOption
-            value='alphabetically'
-            onClick={() => setSortingType('alphabetically')}>
+          <MenuItemOption value='alphabetically' onClick={() => setSortingType('alphabetically')}>
             Alfabetycznie
           </MenuItemOption>
           <MenuItemOption

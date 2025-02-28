@@ -1,11 +1,11 @@
 import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react'
 import { Form } from 'react-router-dom'
-import CustomNumberInput from './CustomNumberInput'
-import CustomCheckbox from './CustomCheckbox'
-import CustomRadioGroup from './CustomRadioGroup'
-import CustomRadio from './CustomRadio'
 import { FormEvent } from 'react'
-import { CalculatorType } from '../types/calculatorTypes'
+import CustomRadioGroup from '../Inputs/CustomRadioGroup'
+import CustomRadio from '../Inputs/CustomRadio'
+import CustomCheckbox from '../Inputs/CustomCheckbox'
+import CustomNumberInput from '../Inputs/CustomNumberInput'
+import { CalculatorType } from '../../types/calculatorTypes'
 
 type FormCardProps = {
   numberInputs?: CalculatorType['fields']['numberInputs']
