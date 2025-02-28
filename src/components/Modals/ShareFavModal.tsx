@@ -91,14 +91,9 @@ export default function ShareFavModal() {
                     pt={0}
                     _hover={{ backgroundColor: 'none' }}>
                     <Flex align='center'>
-                      <Text
-                        fontSize='sm'
-                        mr={1}
-                        _hover={{
-                          textDecor: 'underline',
-                        }}>
+                      <Button size='sm' variant='link' fontWeight='normal'>
                         Jak to działa?
-                      </Text>
+                      </Button>
                       <AccordionIcon />
                     </Flex>
                   </AccordionButton>
