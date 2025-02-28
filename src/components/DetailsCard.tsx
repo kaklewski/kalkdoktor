@@ -1,14 +1,7 @@
-import {
-  Card,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from '@chakra-ui/react'
-import SourceLink from './SourceLink'
+import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 import { CalculatorType } from '../types/calculatorTypes'
+import { SourceType } from '../types/calculatorTypes'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 type DetailsCardProps = {
   description: CalculatorType['description']
@@ -16,11 +9,7 @@ type DetailsCardProps = {
   sources: CalculatorType['sources']
 }
 
-export default function DetailsCard({
-  description,
-  methodology,
-  sources,
-}: DetailsCardProps) {
+export default function DetailsCard({ description, methodology, sources }: DetailsCardProps) {
   sources = typeof sources !== 'object' ? null : sources
   return (
     <Card variant='outline'>
@@ -58,5 +47,20 @@ export default function DetailsCard({
         </TabPanels>
       </Tabs>
     </Card>
+  )
+}
+
+type SourceLinkProps = Omit<SourceType, 'id'>
+
+function SourceLink({ author, title, dateOfAccess, link }: SourceLinkProps) {
+  return (
+    <Box mb={2}>
+      <Link href={link} isExternal>
+        <Text as='span'>
+          {author}, <Text as='i'>{title}</Text>, dostęp: {dateOfAccess}
+        </Text>
+        <ExternalLinkIcon mx='2px' ml={1} mt={-1} />
+      </Link>
+    </Box>
   )
 }
