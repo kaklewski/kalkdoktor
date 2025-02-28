@@ -19,12 +19,7 @@ type CalculatorCardProps = {
   description: CalculatorType['description']
 }
 
-export default function CalculatorCard({
-  id,
-  name,
-  link,
-  description,
-}: CalculatorCardProps) {
+export default function CalculatorCard({ id, name, link, description }: CalculatorCardProps) {
   return (
     <LinkBox>
       <Card
@@ -32,8 +27,13 @@ export default function CalculatorCard({
         variant='outline'
         p={1}
         _hover={{
-          borderColor: 'teal.400',
+          borderColor: 'teal.500',
           transition: 'border-color 0.2s ease-in-out',
+        }}
+        _dark={{
+          _hover: {
+            borderColor: 'teal.200',
+          },
         }}>
         <CardHeader>
           <Flex gap={1}>
