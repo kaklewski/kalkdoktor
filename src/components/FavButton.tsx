@@ -27,8 +27,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   function showToast(type: string) {
     toast({
-      title:
-        type === 'added' ? 'Dodano do ulubionych.' : 'Usunięto z ulubionych.',
+      title: type === 'added' ? 'Dodano do ulubionych.' : 'Usunięto z ulubionych.',
       status: type === 'added' ? 'success' : 'warning',
       position: 'top',
       duration: 1500,
@@ -37,7 +36,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
   }
 
   function addToFav() {
-    // If there are no favorites, add the page
+    // If there are no favorites, add the item
     let favString = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (favString === null) {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([pageId]))
@@ -48,14 +47,13 @@ export default function FavButton({ pageId }: FavButtonProps) {
     if (favorites.includes(pageId)) {
       // If the page is in the favorites, remove it
       const index = favorites.indexOf(pageId)
-      const removedItem = favorites.splice(index, 1)
+      favorites.splice(index, 1)
       showToast('removed')
       setIsFav(false)
-      if (removedItem) console.info() // This is only to make TypeScript warning shut up
     } else {
       // If the page is not in the favorites, add it
       favorites.push(pageId)
-      favorites.sort((a: number, b: number) => a - b)
+      favorites.sort()
       showToast('added')
       setIsFav(true)
     }
@@ -68,9 +66,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
         aria-label={isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
         variant='outline'
         colorScheme={isFav ? 'red' : 'teal'}
-        icon={
-          isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />
-        }
+        icon={isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />}
         onClick={addToFav}
       />
     </Tooltip>
