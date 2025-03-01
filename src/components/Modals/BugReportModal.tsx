@@ -60,7 +60,7 @@ export default function BugReportModal() {
 
                 <FormControl>
                   <FormLabel>Kalkulator, którego dotyczy błąd</FormLabel>
-                  <Input variant='filled' readOnly value={location.href} />
+                  <Input readOnly name='calculator-link' variant='filled' value={location.href} />
                 </FormControl>
               </Stack>
             </ModalBody>
