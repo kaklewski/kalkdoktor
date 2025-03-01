@@ -74,6 +74,17 @@
       <div class="loader-container">
         <span class="loader"></span>
       </div>
+      <form
+        hidden
+        name="bug-report"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field">
+        <input name="bot-filed" title="bot-field" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+      </form>
     </div>
 
     <script type="module">
