@@ -16,6 +16,10 @@
   src: url('/src/assets/dosis-v32-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #navLogo {
   font-family: 'Dosis', sans-serif;
   font-size: 1.7rem;
