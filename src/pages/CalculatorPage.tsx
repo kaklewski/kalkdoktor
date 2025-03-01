@@ -6,6 +6,7 @@ import useDocumentTitle from '../hooks/useDocumentTitle'
 import FormCard from '../components/Cards/FormCard'
 import ResultCard from '../components/Cards/ResultCard'
 import DetailsCard from '../components/Cards/DetailsCard'
+import BugReportModal from '../components/Modals/BugReportModal'
 
 type CalculatorPageProps = {
   calculator: CalculatorType
@@ -57,6 +58,10 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
       />
 
       <DetailsCard description={description} sources={sources} methodology={methodology} />
+
+      <Flex justify='right'>
+        <BugReportModal />
+      </Flex>
     </>
   )
 }
