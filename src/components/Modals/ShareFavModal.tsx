@@ -60,7 +60,7 @@ export default function ShareFavModal() {
 
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalOverlay />
-        <ModalContent m={2}>
+        <ModalContent mx={2}>
           <ModalHeader>Udostępnij ulubione kalkulatory</ModalHeader>
           <ModalCloseButton />
 

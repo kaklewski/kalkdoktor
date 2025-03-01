@@ -34,7 +34,7 @@ export default function BugReportModal() {
           <input type='hidden' name='form-name' value='bug-report' />
 
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent mx={2}>
             <ModalHeader>Zgłoś błąd w kalkulatorze</ModalHeader>
             <ModalCloseButton />
 
@@ -55,6 +55,8 @@ export default function BugReportModal() {
                   <Textarea
                     name='message'
                     placeholder='Postaraj się jak najbardziej szczegółowo opisać błąd'
+                    rows={5}
+                    minH='5rem'
                   />
                 </FormControl>
 

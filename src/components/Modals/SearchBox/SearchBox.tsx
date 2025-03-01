@@ -123,7 +123,7 @@ export default function SearchBox() {
         size='xl'
         scrollBehavior='inside'>
         <ModalOverlay />
-        <ModalContent py={4} m={2} onKeyDown={handleKeyDown}>
+        <ModalContent py={4} mx={2} onKeyDown={handleKeyDown}>
           <ModalHeader>
             <Flex align='center' gap={2}>
               <SearchBar
