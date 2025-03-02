@@ -3,7 +3,7 @@ import { IconMailCheck } from '@tabler/icons-react'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function SubmissionSuccessPage() {
-  useDocumentTitle('Wysłano wiadomość!')
+  useDocumentTitle('Wiadomość została wysłana!')
 
   return (
     <Alert
@@ -16,7 +16,7 @@ export default function SubmissionSuccessPage() {
       borderRadius='base'>
       <IconMailCheck size={100} stroke={1.5} />
 
-      <AlertTitle fontSize='lg'>Wysłano wiadomość!</AlertTitle>
+      <AlertTitle fontSize='lg'>Wiadomość została wysłana!</AlertTitle>
 
       <Button colorScheme='green' as='a' href='/' my={3}>
         Strona główna
