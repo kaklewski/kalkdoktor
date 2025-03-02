@@ -29,7 +29,12 @@ export default function BugReportModal() {
       </Button>
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} size='xl'>
-        <form name='bug-report' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
+        <form
+          name='bug-report'
+          action='/sukces'
+          method='POST'
+          data-netlify='true'
+          data-netlify-honeypot='bot-field'>
           {/* Netlify requirement for JS rendered forms  */}
           <input type='hidden' name='form-name' value='bug-report' />
 
