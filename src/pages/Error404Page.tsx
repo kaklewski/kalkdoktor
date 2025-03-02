@@ -1,7 +1,10 @@
 import { Alert, AlertTitle, Button } from '@chakra-ui/react'
 import { IconError404 } from '@tabler/icons-react'
+import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function Error404Page() {
+  useDocumentTitle('Błąd 404! Nie znaleziono strony')
+
   return (
     <Alert
       status='error'
@@ -15,7 +18,7 @@ export default function Error404Page() {
 
       <AlertTitle fontSize='lg'>Nie znaleziono strony!</AlertTitle>
 
-      <Button as='a' href='/' mt={3} mb={4}>
+      <Button colorScheme='red' as='a' href='/' my={3}>
         Strona główna
       </Button>
     </Alert>
