@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react'
 import { IconFlag } from '@tabler/icons-react'
 import { useRef } from 'react'
+import { handleFormSubmit } from '../../utils/handleFormSubmit'
 
 export default function BugReportModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -31,10 +32,10 @@ export default function BugReportModal() {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} size='xl'>
         <form
           name='bug-report'
-          action='/sukces'
           method='POST'
           data-netlify='true'
-          data-netlify-honeypot='bot-field'>
+          data-netlify-honeypot='bot-field'
+          onSubmit={handleFormSubmit}>
           {/* Netlify requirement for JS rendered forms  */}
           <input type='hidden' name='form-name' value='bug-report' />
 
