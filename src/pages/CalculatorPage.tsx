@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Flex, Heading } from '@chakra-ui/react'
+import { Flex, Heading, Stack } from '@chakra-ui/react'
 import FavButton from '../components/Buttons/FavButton'
 import { CalculatorType } from '../types/calculatorTypes'
 import useDocumentTitle from '../hooks/useDocumentTitle'
@@ -44,20 +44,22 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
         <FavButton pageId={id} />
       </Flex>
 
-      <FormCard
-        numberInputs={fields.numberInputs}
-        checkboxes={fields.checkboxes}
-        radioGroups={fields.radioGroups}
-        displayResultAndInterpretation={displayResultAndInterpretation}
-      />
+      <Stack spacing={4}>
+        <FormCard
+          numberInputs={fields.numberInputs}
+          checkboxes={fields.checkboxes}
+          radioGroups={fields.radioGroups}
+          displayResultAndInterpretation={displayResultAndInterpretation}
+        />
 
-      <ResultCard
-        result={result}
-        resultUnit={resultUnit}
-        resultInterpretation={resultInterpretation}
-      />
+        <ResultCard
+          result={result}
+          resultUnit={resultUnit}
+          resultInterpretation={resultInterpretation}
+        />
 
-      <DetailsCard description={description} sources={sources} methodology={methodology} />
+        <DetailsCard description={description} sources={sources} methodology={methodology} />
+      </Stack>
 
       <Flex justify='right'>
         <BugReportModal />
