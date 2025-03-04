@@ -1,5 +1,6 @@
 import { Flex, IconButton, Link, Text, Tooltip } from '@chakra-ui/react'
 import { IconBrandGithub, IconBrandLinkedin, IconWorld } from '@tabler/icons-react'
+import ContactModal from '../components/Modals/ContactModal'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -31,6 +32,7 @@ export default function Footer() {
             </IconButton>
           </Link>
         </Tooltip>
+        <ContactModal />
       </Flex>
     </Flex>
   )

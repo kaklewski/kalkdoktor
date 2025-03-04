@@ -74,6 +74,7 @@
       <div class="loader-container">
         <span class="loader"></span>
       </div>
+
       <form
         hidden
         name="bug-report"
@@ -84,6 +85,18 @@
         <input type="email" name="email" />
         <textarea name="message"></textarea>
         <input type="text" name="calculator-link" />
+        <input name="bot-field" />
+      </form>
+
+      <form
+        hidden
+        name="contact-form"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field">
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
         <input name="bot-field" />
       </form>
     </div>
