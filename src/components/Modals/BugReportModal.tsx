@@ -25,7 +25,7 @@ export default function BugReportModal() {
 
   return (
     <>
-      <Button leftIcon={<IconFlag stroke={1.8} size={20} />} size='sm' onClick={onOpen}>
+      <Button leftIcon={<IconFlag stroke={1.5} size={16} />} size='xs' onClick={onOpen}>
         Zgłoś błąd
       </Button>
 
