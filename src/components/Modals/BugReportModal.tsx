@@ -47,23 +47,18 @@ export default function BugReportModal() {
             <ModalBody>
               <Stack gap={4}>
                 <FormControl isRequired>
-                  <FormLabel>Imię</FormLabel>
-                  <Input ref={initialRef} name='name' placeholder='Podaj swoje imię' />
+                  <FormLabel>Twoje imię</FormLabel>
+                  <Input ref={initialRef} name='name' />
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel>Adres mejlowy</FormLabel>
-                  <Input type='email' name='email' placeholder='Podaj swój adres mejlowy' />
+                  <FormLabel>Twój adres mejlowy</FormLabel>
+                  <Input type='email' name='email' />
                 </FormControl>
 
                 <FormControl isRequired>
                   <FormLabel>Opis błędu</FormLabel>
-                  <Textarea
-                    name='message'
-                    placeholder='Postaraj się jak najbardziej szczegółowo opisać błąd'
-                    rows={5}
-                    minH='5rem'
-                  />
+                  <Textarea name='message' rows={5} minH='5rem' />
                 </FormControl>
 
                 <FormControl>
