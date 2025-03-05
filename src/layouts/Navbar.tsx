@@ -1,7 +1,7 @@
 import { Box, Flex, IconButton, Link, Button, Text, Badge, Tooltip } from '@chakra-ui/react'
 import { IconHeart, IconMedicalCross } from '@tabler/icons-react'
-import ThemeButton from '../components/Buttons/ThemeButton'
-import SearchBox from '../components/Modals/SearchBox/SearchBox'
+import ThemeButton from '../components/buttons/ThemeButton'
+import SearchBox from '../components/modals/SearchBox/SearchBox'
 
 export default function Navbar() {
   return (

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Flex, Heading, Stack } from '@chakra-ui/react'
-import FavButton from '../components/Buttons/FavButton'
+import FavButton from '../components/buttons/FavButton'
 import { CalculatorType } from '../types/calculatorTypes'
 import useDocumentTitle from '../hooks/useDocumentTitle'
-import FormCard from '../components/Cards/FormCard'
-import ResultCard from '../components/Cards/ResultCard'
-import DetailsCard from '../components/Cards/DetailsCard'
-import BugReportModal from '../components/Modals/BugReportModal'
+import FormCard from '../components/cards/FormCard'
+import ResultCard from '../components/cards/ResultCard'
+import DetailsCard from '../components/cards/DetailsCard'
+import BugReportModal from '../components/modals/BugReportModal'
 
 type CalculatorPageProps = {
   calculator: CalculatorType
