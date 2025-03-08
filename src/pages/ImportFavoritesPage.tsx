@@ -12,35 +12,31 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { IconHeartPlus } from '@tabler/icons-react'
-import { useEffect } from 'react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 
 export default function ImportFavoritesPage() {
   useDocumentTitle('Importuj ulubione kalkulatory')
 
-  useEffect(() => {
-    if (!areIdsValid) {
-      window.location.href = '/'
-    }
-  }, [])
-
   const urlParams = new URLSearchParams(window.location.search)
-  const favoriteCalculatorIds = urlParams.get('id')
-  const areIdsValid: boolean =
-    favoriteCalculatorIds === null ||
-    favoriteCalculatorIds === undefined ||
-    favoriteCalculatorIds === '' ||
-    JSON.parse(favoriteCalculatorIds).length === 0
-      ? false
-      : true
+  const favCalcIdString = urlParams.get('id')
+  let favCalcIds: number[]
 
-  const favoritesToImport =
-    favoriteCalculatorIds === null
-      ? []
-      : sortedCalculators.filter(calculator =>
-          JSON.parse(favoriteCalculatorIds).includes(calculator.id)
-        )
+  const isEachIdValid = (() => {
+    if (!favCalcIdString) return false
+    try {
+      favCalcIds = JSON.parse(favCalcIdString)
+      return favCalcIds.length > 0 && favCalcIds.every((id: number) => typeof id === 'number')
+    } catch {
+      return false
+    }
+  })()
+
+  if (!isEachIdValid) window.location.href = '/'
+
+  const favsToImport = favCalcIdString
+    ? sortedCalculators.filter(calculator => favCalcIds.includes(calculator.id))
+    : []
 
   function importFavorites(favorites: string) {
     localStorage.setItem('favorites', favorites)
@@ -49,7 +45,7 @@ export default function ImportFavoritesPage() {
 
   return (
     <>
-      {areIdsValid && (
+      {isEachIdValid && (
         <Card variant='outline'>
           <CardBody>
             <VStack mx='auto' maxW='80%'>
@@ -59,12 +55,12 @@ export default function ImportFavoritesPage() {
               </Heading>
               <Text align='center'>
                 Poniższe kalkulatory zostaną dodane do ulubionych na tym urządzeniu. Jeśli masz już
-                jakieś ulubione kalkulatory, zostaną one nadpisane.
+                jakieś ulubione kalkulatory, zostaną one zastąpione.
               </Text>
               <UnorderedList>
-                {favoritesToImport.map(fav => {
-                  return <ListItem key={fav.id}>{fav.name}</ListItem>
-                }, [])}
+                {favsToImport.map(fav => (
+                  <ListItem key={fav.id}>{fav.name}</ListItem>
+                ))}
               </UnorderedList>
             </VStack>
           </CardBody>
@@ -77,7 +73,7 @@ export default function ImportFavoritesPage() {
               <Button
                 colorScheme='red'
                 onClick={() => {
-                  if (favoriteCalculatorIds !== null) importFavorites(favoriteCalculatorIds)
+                  if (favCalcIdString) importFavorites(favCalcIdString)
                 }}>
                 Importuj
               </Button>
