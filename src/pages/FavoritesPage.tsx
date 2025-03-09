@@ -11,41 +11,39 @@ import CalculatorCard from '../components/cards/CalculatorCard'
 export default function FavoritesPage() {
   useDocumentTitle('Ulubione')
 
-  const sortingStorageKey = 'sort-favorites'
+  const STORAGE_KEY_FAVORITES_SORTING = 'sort-favorites'
 
-  const [sortingType, setSortingType] = useState<string>(() => {
-    let initial = localStorage.getItem(sortingStorageKey)
-    if (initial == null) initial = 'alphabetically'
-    return initial
+  const [sortingOrder, setSortingOrder] = useState<string>(() => {
+    const initialSorting = localStorage.getItem(STORAGE_KEY_FAVORITES_SORTING)
+    if (!initialSorting) return 'alphabetically'
+    return initialSorting
   })
 
   useEffect(() => {
-    localStorage.setItem(sortingStorageKey, sortingType)
-  }, [sortingType])
+    localStorage.setItem(STORAGE_KEY_FAVORITES_SORTING, sortingOrder)
+  }, [sortingOrder])
 
   const favIds = (() => {
-    const fav = localStorage.getItem('favorites')
-    if (fav === null) return []
-    return JSON.parse(fav)
+    const favs = localStorage.getItem('favorites')
+    if (!favs) return []
+    return JSON.parse(favs)
   })()
-
-  const favoriteCalculators = sortedCalculators.filter(c => favIds.includes(c.id))
-
+  const favoriteCalculators = sortedCalculators.filter(calc => favIds.includes(calc.id))
   const categories: string[] = getCategories(favoriteCalculators)
 
   return (
     <>
       <Flex justify='space-between' gap='2'>
         <Heading as='h1'>Ulubione</Heading>
-        {favoriteCalculators.length !== 0 && (
+        {favoriteCalculators.length > 0 && (
           <Stack direction='row' gap={{ base: 3, md: 2 }}>
             <ShareFavModal />
-            <SortButton sortingType={sortingType} setSortingType={setSortingType} />
+            <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
           </Stack>
         )}
       </Flex>
 
-      {sortingType === 'alphabetically' && (
+      {sortingOrder === 'alphabetically' && (
         <Stack spacing={4}>
           {favoriteCalculators.length === 0 ? (
             <NoFavoritesPlaceholder />
@@ -63,7 +61,7 @@ export default function FavoritesPage() {
         </Stack>
       )}
 
-      {sortingType === 'by-specialization' && (
+      {sortingOrder === 'by-specialization' && (
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>

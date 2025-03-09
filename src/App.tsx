@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
-import IndexPage from './pages/IndexPage'
+import HomePage from './pages/HomePage'
 import CalculatorPage from './pages/CalculatorPage'
 import { calculators } from './data/calculators'
 import FavoritesPage from './pages/FavoritesPage'
@@ -18,7 +18,7 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<RootLayout />} errorElement={<RouterErrorBoundary />}>
-        <Route index element={<IndexPage />} />
+        <Route index element={<HomePage />} />
         <Route path='*' element={<Error404Page />} />
         <Route path='ulubione' element={<FavoritesPage />} />
         <Route path='importuj-ulubione' element={<ImportFavoritesPage />} />

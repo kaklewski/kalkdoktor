@@ -10,11 +10,11 @@ import {
 import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react'
 
 type SortMenuProps = {
-  sortingType: string
-  setSortingType: (value: string) => void
+  sortingOrder: string
+  setSortingOrder: (value: string) => void
 }
 
-export default function SortButton({ sortingType, setSortingType }: SortMenuProps) {
+export default function SortButton({ sortingOrder, setSortingOrder }: SortMenuProps) {
   return (
     <Menu closeOnSelect={true}>
       <Tooltip label='Zmień sposób sortowania'>
@@ -22,7 +22,7 @@ export default function SortButton({ sortingType, setSortingType }: SortMenuProp
           as={IconButton}
           aria-label='Sortuj'
           icon={
-            sortingType === 'alphabetically' ? (
+            sortingOrder === 'alphabetically' ? (
               <IconSortAscendingLetters stroke={1.5} />
             ) : (
               <IconSortAscendingShapes stroke={1.5} />
@@ -31,13 +31,13 @@ export default function SortButton({ sortingType, setSortingType }: SortMenuProp
         />
       </Tooltip>
       <MenuList minWidth='240px'>
-        <MenuOptionGroup defaultValue={sortingType} title='Sortuj' type='radio'>
-          <MenuItemOption value='alphabetically' onClick={() => setSortingType('alphabetically')}>
+        <MenuOptionGroup defaultValue={sortingOrder} title='Sortuj' type='radio'>
+          <MenuItemOption value='alphabetically' onClick={() => setSortingOrder('alphabetically')}>
             Alfabetycznie
           </MenuItemOption>
           <MenuItemOption
             value='by-specialization'
-            onClick={() => setSortingType('by-specialization')}>
+            onClick={() => setSortingOrder('by-specialization')}>
             Po specjalizacji
           </MenuItemOption>
         </MenuOptionGroup>
