@@ -7,7 +7,7 @@ type SearchResultItemProps = {
   link: CalculatorType['urlPath']
   index: number
   isSelected: boolean
-  selectedItemRef: any
+  selectedItemRef: React.RefObject<HTMLButtonElement> | false
   setSelectedItemIndex: (value: number) => void
 }
 

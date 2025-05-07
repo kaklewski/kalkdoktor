@@ -2,7 +2,7 @@ import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from '
 import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react'
 
 type SearchBarProps = {
-  searchBarRef: any
+  searchBarRef: React.RefObject<HTMLInputElement>
   searchQuery: string
   setSearchQuery: (value: string) => void
   focusOnSearchBar: () => void
