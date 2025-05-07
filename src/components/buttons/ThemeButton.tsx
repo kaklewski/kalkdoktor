@@ -22,7 +22,7 @@ export default function ThemeButton() {
 
     if (isAutoTheme === false) return
 
-    function changeTheme(event: any) {
+    function changeTheme(event: MediaQueryListEvent) {
       if (event.matches) {
         setColorMode('dark')
       } else {
@@ -32,7 +32,7 @@ export default function ThemeButton() {
 
     prefersDarkScheme.addEventListener('change', changeTheme)
     return () => prefersDarkScheme.removeEventListener('change', changeTheme)
-  }, [isAutoTheme])
+  }, [isAutoTheme, prefersDarkScheme, setColorMode])
 
   return (
     <>
