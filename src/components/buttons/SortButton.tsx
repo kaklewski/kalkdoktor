@@ -10,7 +10,7 @@ import {
 import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react'
 
 type SortMenuProps = {
-  sortingOrder: string
+  sortingOrder: 'alphabetically' | 'by-specialization'
   setSortingOrder: (value: string) => void
 }
 
