@@ -34,7 +34,7 @@ export default function ShareFavModal() {
     const favString = localStorage.getItem('favorites')
 
     setValue(urlHostname + '?id=' + favString)
-  }, [])
+  }, [setValue])
 
   const toast = useToast()
 
