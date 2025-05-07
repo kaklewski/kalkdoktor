@@ -1,15 +1,9 @@
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Button,
-  Flex,
-} from '@chakra-ui/react'
+import { Alert, AlertDescription, AlertTitle, Button, Flex } from '@chakra-ui/react'
 import { IconExclamationCircle } from '@tabler/icons-react'
 import { useRouteError } from 'react-router-dom'
 
 export default function RouterErrorBoundary() {
-  let error = useRouteError()
+  const error = useRouteError()
   console.error(error)
   return (
     <Flex height='100vh' justifyContent='center' alignItems='center'>

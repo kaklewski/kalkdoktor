@@ -23,7 +23,7 @@ export default function ResultCard({ result, resultUnit, resultInterpretation }:
     setTimeout(() => {
       setResultCardAnimation(false)
     }, 300)
-  }, [result, resultInterpretation])
+  }, [result, resultInterpretation, isFirstRender])
 
   if (Number.isNaN(result)) result = 0
 

@@ -2,7 +2,7 @@ export function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
   event.preventDefault()
 
   const myForm = event.target
-  const formData = new FormData(myForm as any)
+  const formData = new FormData(myForm as HTMLFormElement)
 
   fetch('/', {
     method: 'POST',
