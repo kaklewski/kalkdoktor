@@ -41,6 +41,7 @@ export default function SearchBox() {
     function toggleModal(event: any) {
       if (event.ctrlKey && event.key === 'k') {
         event.preventDefault()
+
         if (isSearchBoxOpen) {
           closeSearchBox()
         } else {
@@ -48,9 +49,10 @@ export default function SearchBox() {
         }
       }
     }
+
     document.addEventListener('keydown', toggleModal)
     return () => document.removeEventListener('keydown', toggleModal)
-  }, [isSearchBoxOpen])
+  }, [isSearchBoxOpen, openSearchBox, closeSearchBox])
 
   useEffect(() => {
     setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX)
