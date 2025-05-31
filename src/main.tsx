@@ -4,11 +4,14 @@ import App from './App.tsx'
 import { ChakraProvider } from '@chakra-ui/react'
 import './assets/main.scss'
 import { theme } from './theme'
+import { MathJaxContext } from 'better-react-mathjax'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ChakraProvider theme={theme}>
-      <App />
+      <MathJaxContext>
+        <App />
+      </MathJaxContext>
     </ChakraProvider>
   </StrictMode>
 )
