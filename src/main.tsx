@@ -6,10 +6,14 @@ import './assets/main.scss'
 import { theme } from './theme'
 import { MathJaxContext } from 'better-react-mathjax'
 
+const mathJaxConfig = {
+  loader: { load: ['input/asciimath'] },
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ChakraProvider theme={theme}>
-      <MathJaxContext>
+      <MathJaxContext config={mathJaxConfig}>
         <App />
       </MathJaxContext>
     </ChakraProvider>

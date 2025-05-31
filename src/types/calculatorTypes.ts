@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export type SourceType = {
   id: number
   author: string
@@ -38,14 +40,14 @@ export type CalculatorType = {
   urlPath: string
   category: string
   description: string
-  methodology?: string | null
-  sources?: SourceType[] | null
+  methodology?: null | ReactNode
+  sources?: null | SourceType[]
   fields: {
-    numberInputs?: NumberInputType[] | null
-    checkboxes?: CheckboxType[] | null
-    radioGroups?: RadioGroupType[] | null
+    numberInputs?: null | NumberInputType[]
+    checkboxes?: null | CheckboxType[]
+    radioGroups?: null | RadioGroupType[]
   }
-  resultUnit?: string | null
+  resultUnit?: null | string
   getResult: () => number
   getResultInterpretation: (result: number) => string
 }
