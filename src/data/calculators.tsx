@@ -1,5 +1,6 @@
 import sumInputValues from '../utils/sumInputValues'
 import { CalculatorType } from '../types/calculatorTypes'
+import { MathJax } from 'better-react-mathjax'
 
 export const calculators: CalculatorType[] = [
   {
@@ -9,7 +10,40 @@ export const calculators: CalculatorType[] = [
     category: 'antropometria',
     description:
       'Pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska lub zbyt wysoka w stosunku do wzrostu.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wskaźnik masy ciała (BMI, ang. <em>Body Mass Index</em>) oblicza się jako iloraz masy
+          ciała i kwadratu wzrostu.
+        </p>
+        <br />
+        <MathJax>{'`BMI = m/(h^2)`'}</MathJax>
+        <br />
+        <p>Gdzie:</p>
+        <p>
+          <ul>
+            <li>
+              <strong>m</strong> – masa ciała wyrażona w kilogramach (kg),
+            </li>
+            <li>
+              <strong>h</strong> – wzrost wyrażony w metrach (m).
+            </li>
+          </ul>
+        </p>
+        <br />
+        <p>
+          Interpretacja wartości BMI:
+          <ul>
+            <li>Niedowaga: BMI &lt; 18.5</li>
+            <li>Wartość prawidłowa: 18.5 ≤ BMI &lt; 25</li>
+            <li>Nadwaga: 25 ≤ BMI &lt; 30</li>
+            <li>Otyłość I stopnia: 30 ≤ BMI &lt; 35</li>
+            <li>Otyłość II stopnia: 35 ≤ BMI &lt; 40</li>
+            <li>Otyłość III stopnia: BMI ≥ 40</li>
+          </ul>
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
