@@ -49,3 +49,10 @@ a {
     scale: 100%;
   }
 }
+
+#methodologyTab {
+  ul,
+  ol {
+    list-style-position: inside;
+  }
+}
