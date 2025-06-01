@@ -471,7 +471,31 @@ export const calculators: CalculatorType[] = [
     category: 'dawkowanie leków',
     description:
       'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy ciała pacjenta i
+          ograniczeń wiekowych.
+        </p>
+        <br />
+        <MathJax>{'`d = (60 * m) / 1000`'}</MathJax>
+        <br />
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w gramach (g),
+          </li>
+          <li>
+            <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach (kg).
+          </li>
+        </ul>
+        <br />
+        <p>
+          W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna przekraczać 2 g, a u
+          dorosłych 4 g.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
