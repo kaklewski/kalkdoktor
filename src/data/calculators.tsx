@@ -31,17 +31,15 @@ export const calculators: CalculatorType[] = [
           </ul>
         </p>
         <br />
-        <p>
-          Interpretacja wartości BMI:
-          <ul>
-            <li>Niedowaga: BMI &lt; 18.5</li>
-            <li>Wartość prawidłowa: 18.5 ≤ BMI &lt; 25</li>
-            <li>Nadwaga: 25 ≤ BMI &lt; 30</li>
-            <li>Otyłość I stopnia: 30 ≤ BMI &lt; 35</li>
-            <li>Otyłość II stopnia: 35 ≤ BMI &lt; 40</li>
-            <li>Otyłość III stopnia: BMI ≥ 40</li>
-          </ul>
-        </p>
+        <p>Interpretacja wartości BMI:</p>
+        <ul>
+          <li>Niedowaga: BMI &lt; 18.5</li>
+          <li>Wartość prawidłowa: 18.5 ≤ BMI &lt; 25</li>
+          <li>Nadwaga: 25 ≤ BMI &lt; 30</li>
+          <li>Otyłość I stopnia: 30 ≤ BMI &lt; 35</li>
+          <li>Otyłość II stopnia: 35 ≤ BMI &lt; 40</li>
+          <li>Otyłość III stopnia: BMI ≥ 40</li>
+        </ul>
       </>
     ),
     sources: [
@@ -378,7 +376,37 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kalkulator-liczby-opakowan-na-okres',
     category: 'dawkowanie leków',
     description: 'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza się według wzoru:</p>
+        <br />
+        <MathJax>{'`p = (t * d * n ) / c`'}</MathJax>
+        <br />
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>p</strong> – liczba wymaganych opakowań,
+          </li>
+          <li>
+            <strong>t</strong> – liczba tabletek w jednej dawce,
+          </li>
+          <li>
+            <strong>d</strong> – liczba dawek dziennie,
+          </li>
+          <li>
+            <strong>n</strong> – liczba dni terapii,
+          </li>
+          <li>
+            <strong>c</strong> – liczba tabletek w jednym opakowaniu.
+          </li>
+        </ul>
+        <br />
+        <p>
+          Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby całkowitej, aby zapewnić
+          wystarczającą liczbę tabletek na cały okres terapii.
+        </p>
+      </>
+    ),
     sources: null,
     fields: {
       numberInputs: [
