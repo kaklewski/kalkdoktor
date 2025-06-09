@@ -1120,7 +1120,41 @@ export const calculators: CalculatorType[] = [
     urlPath: 'wskaznik-maddreya',
     category: 'hepatologia',
     description: 'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do oceny rokowania u
+          pacjentów z alkoholowym zapaleniem wątroby. Oblicza się go na podstawie czasu
+          protrombinowego, wartości referencyjnej oraz stężenia bilirubiny całkowitej.
+        </p>
+
+        <br />
+        <MathJax>{'`DF = (PT - CT) * 4.6 + B`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>DF</strong> – wskaźnik rokowniczy (czynnik dyskryminujący),
+          </li>
+          <li>
+            <strong>PT</strong> – czas protrombinowy pacjenta (w sekundach),
+          </li>
+          <li>
+            <strong>CT</strong> – czas protrombinowy prawidłowy (w sekundach),
+          </li>
+          <li>
+            <strong>B</strong> – stężenie bilirubiny całkowitej (w mg/dl).
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może wskazywać na konieczność
+          intensywniejszego leczenia.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
