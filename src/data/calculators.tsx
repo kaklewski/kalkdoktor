@@ -1048,7 +1048,25 @@ export const calculators: CalculatorType[] = [
     urlPath: 'kalkulator-qtc-bazetta',
     category: 'kardiologia',
     description: 'Oblicza skorygowany odstęp QT.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:</p>
+        <br />
+        <MathJax>{'`QTc = (QT) / sqrt(R"R)`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>QT</strong> – odstęp QT w milisekundach (ms),
+          </li>
+          <li>
+            <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć jako 60 podzielone
+            przez czynność serca (liczba uderzeń serca na minutę).
+          </li>
+        </ul>
+      </>
+    ),
     sources: [
       {
         id: 1,
