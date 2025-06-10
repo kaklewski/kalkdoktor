@@ -1220,7 +1220,28 @@ export const calculators: CalculatorType[] = [
     category: 'dawkowanie leków',
     description:
       'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać 3,2 g. U dzieci
+          dawkę tę oblicza się na podstawie masy ciała według poniższego wzoru:
+        </p>
+
+        <br />
+        <MathJax>{'`D = (30 * M) / 1000`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>D</strong> – maksymalna dobowa dawka ibuprofenu (w gramach),
+          </li>
+          <li>
+            <strong>M</strong> – masa ciała pacjenta (w kilogramach).
+          </li>
+        </ul>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -1276,7 +1297,36 @@ export const calculators: CalculatorType[] = [
     urlPath: 'skala-pesi',
     category: 'kardiologia',
     description: 'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do oceny ryzyka zgonu u
+          pacjentów z ostrą zatorowością płucną. Wartość wskaźnika oblicza się na podstawie wieku
+          pacjenta oraz obecności określonych czynników klinicznych, którym przypisano punktację.
+        </p>
+
+        <br />
+        <MathJax>{'`PESI = A + R`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </li>
+          <li>
+            <strong>R</strong> – suma punktów przypisanych za obecność poszczególnych czynników
+            ryzyka.
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z pięciu klas ryzyka
+          (I–V), które pomagają w ocenie rokowania i podejmowaniu decyzji terapeutycznych.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -1536,7 +1586,35 @@ export const calculators: CalculatorType[] = [
     urlPath: 'kalkulator-whr',
     category: 'antropometria',
     description: 'Oblicza stosunek obwodu talii do bioder.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia tkanki tłuszczowej
+          w organizmie i określa proporcję obwodu talii do obwodu bioder. Stosuje się go w ocenie
+          ryzyka chorób sercowo-naczyniowych oraz metabolicznych.
+        </p>
+
+        <br />
+        <MathJax>{'`WHR = W / H`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>W</strong> – obwód talii (w centymetrach),
+          </li>
+          <li>
+            <strong>H</strong> – obwód bioder (w centymetrach).
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże się ze zwiększonym
+          ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2 oraz chorób układu krążenia.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -1935,7 +2013,43 @@ export const calculators: CalculatorType[] = [
     urlPath: 'wskaznik-gfr',
     category: 'nefrologia',
     description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR), który pozwala na
+          ocenę czynności nerek. Uwzględnia wiek pacjenta, masę ciała oraz stężenie kreatyniny we
+          krwi. Wartość ta pomaga dostosować dawki leków wydalanych przez nerki i monitorować
+          funkcję nerek.
+        </p>
+
+        <br />
+        <MathJax>{'`eGFR = ((140 - A) * M) / (C * 72)`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>eGFR</strong> – szacowany klirens kreatyniny (w ml/min),
+          </li>
+          <li>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </li>
+          <li>
+            <strong>M</strong> – masa ciała pacjenta (w kilogramach),
+          </li>
+          <li>
+            <strong>C</strong> – stężenie kreatyniny w surowicy krwi (w mg/dl).
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          W przypadku kobiet otrzymany wynik należy pomnożyć przez współczynnik{' '}
+          <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą masę mięśniową w
+          porównaniu do mężczyzn.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -2019,7 +2133,43 @@ export const calculators: CalculatorType[] = [
     urlPath: 'wskaznik-fib-4',
     category: 'hepatologia',
     description: 'Ocenia stopień włóknienia wątroby.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia wątroby u pacjentów z
+          chorobami wątroby, takimi jak wirusowe zapalenie wątroby typu C lub alkoholowe uszkodzenie
+          wątroby. Wartość FIB-4 jest obliczana na podstawie wieku pacjenta, stężenia enzymów
+          wątrobowych (ALT i AST) oraz liczby płytek krwi.
+        </p>
+
+        <br />
+        <MathJax>{'`FIB\\text{-}4 = (A * B) / (C * sqrt(D))`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </li>
+          <li>
+            <strong>B</strong> – aktywność AST (w U/l),
+          </li>
+          <li>
+            <strong>C</strong> – liczba płytek krwi (×10⁹/l),
+          </li>
+          <li>
+            <strong>D</strong> – aktywność ALT (w U/l).
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie prawdopodobieństwo
+          zaawansowanego włóknienia, natomiast wartość poniżej <strong>1,45</strong> wskazuje na
+          niskie ryzyko obecności włóknienia.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
