@@ -55,4 +55,9 @@ a {
   ol {
     list-style-position: inside;
   }
+
+  li > ul,
+  li > ol {
+    margin-left: 1.5rem;
+  }
 }
