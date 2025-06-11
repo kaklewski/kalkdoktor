@@ -2789,7 +2789,43 @@ export const calculators: CalculatorType[] = [
     urlPath: 'prognozowany-wzrost-dziecka',
     category: 'antropometria',
     description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Prognozowany wzrost dziecka można oszacować na podstawie wzrostu rodziców, korzystając z
+          uproszczonego wzoru pediatrycznego. Pozwala on orientacyjnie określić, jaki wzrost dziecko
+          może osiągnąć w wieku dorosłym.
+        </p>
+
+        <br />
+        <MathJax>{'`W = (M + O \\pm 13) / 2`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>W</strong> – prognozowany wzrost dziecka (w cm),
+          </li>
+          <li>
+            <strong>M</strong> – wzrost matki (w cm),
+          </li>
+          <li>
+            <strong>O</strong> – wzrost ojca (w cm),
+          </li>
+          <li>
+            <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku chłopców, odejmij{' '}
+            <strong>13 cm</strong> w przypadku dziewczynek.
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości i nie uwzględnia
+          czynników genetycznych, środowiskowych oraz zdrowotnych, które również wpływają na wzrost
+          dziecka.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -4046,7 +4082,45 @@ export const calculators: CalculatorType[] = [
     urlPath: 'obliczanie-alkoholu-widmarka',
     category: 'używki',
     description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
-    methodology: null,
+    methodology: (
+      <>
+        <p>
+          Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu we krwi (BAC –
+          <em>Blood Alcohol Concentration</em>) na podstawie ilości spożytego alkoholu, masy ciała
+          oraz płci.
+        </p>
+
+        <br />
+        <MathJax>{'`BAC = A / (r \\cdot W)`'}</MathJax>
+        <br />
+
+        <p>Gdzie:</p>
+        <ul>
+          <li>
+            <strong>BAC</strong> – szacowane stężenie alkoholu we krwi (w ‰),
+          </li>
+          <li>
+            <strong>A</strong> – ilość spożytego czystego alkoholu (w gramach),
+          </li>
+          <li>
+            <strong>r</strong> – współczynnik dystrybucji alkoholu:
+            <ul>
+              <li>0,7 dla mężczyzn,</li>
+              <li>0,6 dla kobiet,</li>
+            </ul>
+          </li>
+          <li>
+            <strong>W</strong> – masa ciała (w kilogramach),
+          </li>
+        </ul>
+
+        <br />
+        <p>
+          Wzór ten daje jedynie przybliżony wynik i nie uwzględnia indywidualnych różnic w
+          metabolizmie, stanie zdrowia czy sposobie spożywania alkoholu.
+        </p>
+      </>
+    ),
     sources: [
       {
         id: 1,
