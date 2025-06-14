@@ -13,8 +13,8 @@ export default function ResultCard({
   resultUnit,
   resultInterpretation,
 }: ResultCardProps) {
+  const [isAnimation, setIsAnimation] = useState<boolean>(false)
   const isFirstRender = useRef(true)
-  const [resultCardAnimation, setResultCardAnimation] = useState<boolean>(false)
 
   useEffect(() => {
     if (isFirstRender.current === true) {
@@ -22,13 +22,13 @@ export default function ResultCard({
       return
     }
 
-    setResultCardAnimation(true)
+    setIsAnimation(true)
 
-    const timeout = setTimeout(() => {
-      setResultCardAnimation(false)
-    }, 300)
+    const isAnimationTimeout = setTimeout(() => {
+      setIsAnimation(false)
+    }, 301)
 
-    return () => clearTimeout(timeout)
+    return () => clearTimeout(isAnimationTimeout)
   }, [result])
 
   const formattedResult = result.toFixed(1).replace(/\.0$/, '')
@@ -36,11 +36,7 @@ export default function ResultCard({
     resultUnit && `${resultUnit === '%' || resultUnit === '‰' ? '' : ' '}${resultUnit}`
 
   return (
-    <Card
-      overflow='hidden'
-      variant='filled'
-      id='resultCard'
-      className={resultCardAnimation ? 'animation' : ''}>
+    <Card overflow='hidden' variant='filled' id='resultCard' data-card-animation={isAnimation}>
       <CardHeader>
         <Heading as='p' size='md'>
           Wynik: {formattedResult}

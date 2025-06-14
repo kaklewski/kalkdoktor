@@ -33,20 +33,20 @@ a {
 }
 
 #resultCard {
-  &.animation {
+  &[data-card-animation='true'] {
     animation: 0.3s scaleUpDown ease-in-out;
   }
 }
 
 @keyframes scaleUpDown {
   0% {
-    scale: 100%;
+    scale: 1;
   }
-  50% {
-    scale: 103%;
+  40% {
+    scale: 1.06;
   }
   100% {
-    scale: 100%;
+    scale: 1;
   }
 }
 
