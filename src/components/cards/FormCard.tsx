@@ -65,7 +65,8 @@ export default function FormCard({
                   max={input.max}
                 />
               ))}
-
+          </Stack>
+          <Stack mt={5}>
             <Button
               type='submit'
               colorScheme='teal'
