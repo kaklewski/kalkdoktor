@@ -8,6 +8,9 @@ import { MathJaxContext } from 'better-react-mathjax'
 
 const mathJaxConfig = {
   loader: { load: ['input/asciimath'] },
+  options: {
+    enableMenu: false,
+  },
 }
 
 createRoot(document.getElementById('root')!).render(
