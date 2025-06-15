@@ -1,6 +1,7 @@
 import sumInputValues from '../utils/sumInputValues'
 import { CalculatorType } from '../types/calculatorTypes'
 import { MathJax } from 'better-react-mathjax'
+import { ListItem, Text, UnorderedList } from '@chakra-ui/react'
 
 export const calculators: CalculatorType[] = [
   {
@@ -12,34 +13,34 @@ export const calculators: CalculatorType[] = [
       'Pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska lub zbyt wysoka w stosunku do wzrostu.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wskaźnik masy ciała (BMI, ang. <em>Body Mass Index</em>) oblicza się jako iloraz masy
           ciała i kwadratu wzrostu.
-        </p>
+        </Text>
         <br />
         <MathJax>{'`BMI = m/(h^2)`'}</MathJax>
         <br />
-        <p>Gdzie:</p>
-        <p>
-          <ul>
-            <li>
+        <Text>Gdzie:</Text>
+        <Text>
+          <UnorderedList>
+            <ListItem>
               <strong>m</strong> – masa ciała wyrażona w kilogramach (kg),
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <strong>h</strong> – wzrost wyrażony w metrach (m).
-            </li>
-          </ul>
-        </p>
+            </ListItem>
+          </UnorderedList>
+        </Text>
         <br />
-        <p>Interpretacja wartości BMI:</p>
-        <ul>
-          <li>Niedowaga: BMI &lt; 18.5</li>
-          <li>Wartość prawidłowa: 18.5 ≤ BMI &lt; 25</li>
-          <li>Nadwaga: 25 ≤ BMI &lt; 30</li>
-          <li>Otyłość I stopnia: 30 ≤ BMI &lt; 35</li>
-          <li>Otyłość II stopnia: 35 ≤ BMI &lt; 40</li>
-          <li>Otyłość III stopnia: BMI ≥ 40</li>
-        </ul>
+        <Text>Interpretacja wartości BMI:</Text>
+        <UnorderedList>
+          <ListItem>Niedowaga: BMI &lt; 18.5</ListItem>
+          <ListItem>Wartość prawidłowa: 18.5 ≤ BMI &lt; 25</ListItem>
+          <ListItem>Nadwaga: 25 ≤ BMI &lt; 30</ListItem>
+          <ListItem>Otyłość I stopnia: 30 ≤ BMI &lt; 35</ListItem>
+          <ListItem>Otyłość II stopnia: 35 ≤ BMI &lt; 40</ListItem>
+          <ListItem>Otyłość III stopnia: BMI ≥ 40</ListItem>
+        </UnorderedList>
       </>
     ),
     sources: [
@@ -378,33 +379,35 @@ export const calculators: CalculatorType[] = [
     description: 'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
     methodology: (
       <>
-        <p>Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza się według wzoru:</p>
+        <Text>
+          Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza się według wzoru:
+        </Text>
         <br />
         <MathJax>{'`p = (t * d * n ) / c`'}</MathJax>
         <br />
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>p</strong> – liczba wymaganych opakowań,
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>t</strong> – liczba tabletek w jednej dawce,
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>d</strong> – liczba dawek dziennie,
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>n</strong> – liczba dni terapii,
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>c</strong> – liczba tabletek w jednym opakowaniu.
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
         <br />
-        <p>
+        <Text>
           Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby całkowitej, aby zapewnić
           wystarczającą liczbę tabletek na cały okres terapii.
-        </p>
+        </Text>
       </>
     ),
     sources: null,
@@ -473,27 +476,27 @@ export const calculators: CalculatorType[] = [
       'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
     methodology: (
       <>
-        <p>
+        <Text>
           Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy ciała pacjenta i
           ograniczeń wiekowych.
-        </p>
+        </Text>
         <br />
         <MathJax>{'`d = (60 * m) / 1000`'}</MathJax>
         <br />
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w gramach (g),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach (kg).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
         <br />
-        <p>
+        <Text>
           W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna przekraczać 2 g, a u
           dorosłych 4 g.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -1050,21 +1053,21 @@ export const calculators: CalculatorType[] = [
     description: 'Oblicza skorygowany odstęp QT.',
     methodology: (
       <>
-        <p>Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:</p>
+        <Text>Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:</Text>
         <br />
         <MathJax>{'`QTc = (QT) / sqrt(R"R)`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>QT</strong> – odstęp QT w milisekundach (ms),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć jako 60 podzielone
             przez czynność serca (liczba uderzeń serca na minutę).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
       </>
     ),
     sources: [
@@ -1122,37 +1125,37 @@ export const calculators: CalculatorType[] = [
     description: 'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do oceny rokowania u
           pacjentów z alkoholowym zapaleniem wątroby. Oblicza się go na podstawie czasu
           protrombinowego, wartości referencyjnej oraz stężenia bilirubiny całkowitej.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`DF = (PT - CT) * 4.6 + B`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>DF</strong> – wskaźnik rokowniczy (czynnik dyskryminujący),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>PT</strong> – czas protrombinowy pacjenta (w sekundach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>CT</strong> – czas protrombinowy prawidłowy (w sekundach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>B</strong> – stężenie bilirubiny całkowitej (w mg/dl).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może wskazywać na konieczność
           intensywniejszego leczenia.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -1222,24 +1225,24 @@ export const calculators: CalculatorType[] = [
       'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
     methodology: (
       <>
-        <p>
+        <Text>
           Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać 3,2 g. U dzieci
           dawkę tę oblicza się na podstawie masy ciała według poniższego wzoru:
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`D = (30 * M) / 1000`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>D</strong> – maksymalna dobowa dawka ibuprofenu (w gramach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>M</strong> – masa ciała pacjenta (w kilogramach).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
       </>
     ),
     sources: [
@@ -1299,32 +1302,32 @@ export const calculators: CalculatorType[] = [
     description: 'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
     methodology: (
       <>
-        <p>
+        <Text>
           Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do oceny ryzyka zgonu u
           pacjentów z ostrą zatorowością płucną. Wartość wskaźnika oblicza się na podstawie wieku
           pacjenta oraz obecności określonych czynników klinicznych, którym przypisano punktację.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`PESI = A + R`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>A</strong> – wiek pacjenta (w latach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>R</strong> – suma punktów przypisanych za obecność poszczególnych czynników
             ryzyka.
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z pięciu klas ryzyka
           (I–V), które pomagają w ocenie rokowania i podejmowaniu decyzji terapeutycznych.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -1588,31 +1591,31 @@ export const calculators: CalculatorType[] = [
     description: 'Oblicza stosunek obwodu talii do bioder.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia tkanki tłuszczowej
           w organizmie i określa proporcję obwodu talii do obwodu bioder. Stosuje się go w ocenie
           ryzyka chorób sercowo-naczyniowych oraz metabolicznych.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`WHR = W / H`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>W</strong> – obwód talii (w centymetrach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>H</strong> – obwód bioder (w centymetrach).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże się ze zwiększonym
           ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2 oraz chorób układu krążenia.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -2015,39 +2018,39 @@ export const calculators: CalculatorType[] = [
     description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR), który pozwala na
           ocenę czynności nerek. Uwzględnia wiek pacjenta, masę ciała oraz stężenie kreatyniny we
           krwi. Wartość ta pomaga dostosować dawki leków wydalanych przez nerki i monitorować
           funkcję nerek.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`eGFR = ((140 - A) * M) / (C * 72)`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>eGFR</strong> – szacowany klirens kreatyniny (w ml/min),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>A</strong> – wiek pacjenta (w latach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>M</strong> – masa ciała pacjenta (w kilogramach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>C</strong> – stężenie kreatyniny w surowicy krwi (w mg/dl).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           W przypadku kobiet otrzymany wynik należy pomnożyć przez współczynnik{' '}
           <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą masę mięśniową w
           porównaniu do mężczyzn.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -2135,39 +2138,39 @@ export const calculators: CalculatorType[] = [
     description: 'Ocenia stopień włóknienia wątroby.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia wątroby u pacjentów z
           chorobami wątroby, takimi jak wirusowe zapalenie wątroby typu C lub alkoholowe uszkodzenie
           wątroby. Wartość FIB-4 jest obliczana na podstawie wieku pacjenta, stężenia enzymów
           wątrobowych (ALT i AST) oraz liczby płytek krwi.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`FIB\\text{-}4 = (A * B) / (C * sqrt(D))`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>A</strong> – wiek pacjenta (w latach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>B</strong> – aktywność AST (w U/l),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>C</strong> – liczba płytek krwi (×10⁹/l),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>D</strong> – aktywność ALT (w U/l).
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie prawdopodobieństwo
           zaawansowanego włóknienia, natomiast wartość poniżej <strong>1,45</strong> wskazuje na
           niskie ryzyko obecności włóknienia.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -2791,39 +2794,39 @@ export const calculators: CalculatorType[] = [
     description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
     methodology: (
       <>
-        <p>
+        <Text>
           Prognozowany wzrost dziecka można oszacować na podstawie wzrostu rodziców, korzystając z
           uproszczonego wzoru pediatrycznego. Pozwala on orientacyjnie określić, jaki wzrost dziecko
           może osiągnąć w wieku dorosłym.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`W = (M + O \\pm 13) / 2`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>W</strong> – prognozowany wzrost dziecka (w cm),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>M</strong> – wzrost matki (w cm),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>O</strong> – wzrost ojca (w cm),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku chłopców, odejmij{' '}
             <strong>13 cm</strong> w przypadku dziewczynek.
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości i nie uwzględnia
           czynników genetycznych, środowiskowych oraz zdrowotnych, które również wpływają na wzrost
           dziecka.
-        </p>
+        </Text>
       </>
     ),
     sources: [
@@ -4084,41 +4087,41 @@ export const calculators: CalculatorType[] = [
     description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
     methodology: (
       <>
-        <p>
+        <Text>
           Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu we krwi (BAC –
           <em>Blood Alcohol Concentration</em>) na podstawie ilości spożytego alkoholu, masy ciała
           oraz płci.
-        </p>
+        </Text>
 
         <br />
         <MathJax>{'`BAC = A / (r \\cdot W)`'}</MathJax>
         <br />
 
-        <p>Gdzie:</p>
-        <ul>
-          <li>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
             <strong>BAC</strong> – szacowane stężenie alkoholu we krwi (w ‰),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>A</strong> – ilość spożytego czystego alkoholu (w gramach),
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <strong>r</strong> – współczynnik dystrybucji alkoholu:
-            <ul>
-              <li>0,7 dla mężczyzn,</li>
-              <li>0,6 dla kobiet,</li>
-            </ul>
-          </li>
-          <li>
+            <UnorderedList>
+              <ListItem>0,7 dla mężczyzn,</ListItem>
+              <ListItem>0,6 dla kobiet,</ListItem>
+            </UnorderedList>
+          </ListItem>
+          <ListItem>
             <strong>W</strong> – masa ciała (w kilogramach),
-          </li>
-        </ul>
+          </ListItem>
+        </UnorderedList>
 
         <br />
-        <p>
+        <Text>
           Wzór ten daje jedynie przybliżony wynik i nie uwzględnia indywidualnych różnic w
           metabolizmie, stanie zdrowia czy sposobie spożywania alkoholu.
-        </p>
+        </Text>
       </>
     ),
     sources: [

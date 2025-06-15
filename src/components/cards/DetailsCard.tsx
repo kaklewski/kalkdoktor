@@ -40,7 +40,7 @@ export default function DetailsCard({ description, methodology, sources }: Detai
           </TabPanel>
           {methodology && (
             <TabPanel>
-              <Box id='methodologyTab'>{methodology}</Box>
+              <Box>{methodology}</Box>
             </TabPanel>
           )}
         </TabPanels>

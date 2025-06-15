@@ -49,15 +49,3 @@ a {
     scale: 1;
   }
 }
-
-#methodologyTab {
-  ul,
-  ol {
-    list-style-position: inside;
-  }
-
-  li > ul,
-  li > ol {
-    margin-left: 1.5rem;
-  }
-}
