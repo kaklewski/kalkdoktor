@@ -1,7 +1,8 @@
-import { Box, Flex, IconButton, Link, Button, Text, Tooltip } from '@chakra-ui/react'
-import { IconHeart, IconMedicalCross } from '@tabler/icons-react'
+import { Box, Flex, IconButton, Link, Button, Tooltip } from '@chakra-ui/react'
+import { IconHeart } from '@tabler/icons-react'
 import ThemeButton from '../components/buttons/ThemeButton'
 import SearchBox from '../components/modals/SearchBox/SearchBox'
+import Logo from '../components/other/Logo'
 
 export default function Navbar() {
   return (
@@ -9,9 +10,8 @@ export default function Navbar() {
       <Flex align='center' justify='space-between' gap={4} wrap='wrap'>
         <Flex align='start'>
           <Link href='/' id='navLogo' borderRadius='md' _hover={{ textDecoration: 'none' }}>
-            <Flex align='center'>
-              <IconMedicalCross />
-              <Text>kalkdoktor</Text>
+            <Flex align='center' height={{ base: 8, sm: 10 }}>
+              <Logo width='100%' height='100%' />
             </Flex>
           </Link>
         </Flex>

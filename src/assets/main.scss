@@ -1,35 +1,5 @@
-/* dosis-regular - latin-ext */
-@font-face {
-  font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Dosis';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/src/assets/dosis-v32-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-/* dosis-600 - latin-ext */
-@font-face {
-  font-display: block; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Dosis';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/src/assets/dosis-v32-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 a {
   -webkit-tap-highlight-color: transparent;
-}
-
-#navLogo {
-  font-family: 'Dosis', sans-serif;
-  font-size: 1.7rem;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-
-  svg {
-    min-width: 1.7rem;
-    min-height: 1.7rem;
-  }
 }
 
 #resultCard {
