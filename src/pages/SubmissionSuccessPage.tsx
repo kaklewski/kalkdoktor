@@ -1,9 +1,10 @@
 import { Alert, AlertTitle, Button } from '@chakra-ui/react'
 import { IconMailCheck } from '@tabler/icons-react'
 import useDocumentTitle from '../hooks/useDocumentTitle'
+import STRINGS from '../data/strings'
 
 export default function SubmissionSuccessPage() {
-  useDocumentTitle('Wiadomość została wysłana!')
+  useDocumentTitle(STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE)
 
   return (
     <Alert
@@ -16,10 +17,10 @@ export default function SubmissionSuccessPage() {
       borderRadius='base'>
       <IconMailCheck size={100} stroke={1.5} />
 
-      <AlertTitle fontSize='lg'>Wiadomość została wysłana!</AlertTitle>
+      <AlertTitle fontSize='lg'>{STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE}</AlertTitle>
 
       <Button colorScheme='green' as='a' href='/' my={3}>
-        Strona główna
+        {STRINGS.BUTTONS.HOMEPAGE}
       </Button>
     </Alert>
   )

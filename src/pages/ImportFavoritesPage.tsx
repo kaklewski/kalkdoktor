@@ -14,9 +14,10 @@ import {
 import { IconHeartPlus } from '@tabler/icons-react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import useDocumentTitle from '../hooks/useDocumentTitle'
+import STRINGS from '../data/strings'
 
 export default function ImportFavoritesPage() {
-  useDocumentTitle('Importuj ulubione kalkulatory')
+  useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE)
 
   const urlParams = new URLSearchParams(window.location.search)
   const favCalcIdString = urlParams.get('id')
@@ -51,12 +52,9 @@ export default function ImportFavoritesPage() {
             <VStack mx='auto' maxW='80%'>
               <IconHeartPlus stroke={1.5} size={100} />
               <Heading as='h1' mx='auto' size='md'>
-                Importuj ulubione
+                {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
               </Heading>
-              <Text align='center'>
-                Poniższe kalkulatory zostaną dodane do ulubionych na tym urządzeniu. Jeśli masz już
-                jakieś ulubione kalkulatory, zostaną one zastąpione.
-              </Text>
+              <Text align='center'>{STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}</Text>
               <UnorderedList>
                 {favsToImport.map(fav => (
                   <ListItem key={fav.id}>{fav.name}</ListItem>
@@ -68,14 +66,14 @@ export default function ImportFavoritesPage() {
           <CardFooter mb={2}>
             <Flex justify='center' align='center' gap={2} w='100%'>
               <Link href='/'>
-                <Button>Anuluj</Button>
+                <Button>{STRINGS.BUTTONS.CANCEL}</Button>
               </Link>
               <Button
                 colorScheme='red'
                 onClick={() => {
                   if (favCalcIdString) importFavorites(favCalcIdString)
                 }}>
-                Importuj
+                {STRINGS.BUTTONS.IMPORT}
               </Button>
             </Flex>
           </CardFooter>

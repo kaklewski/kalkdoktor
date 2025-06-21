@@ -20,6 +20,7 @@ import {
 import { useRef } from 'react'
 import { handleFormSubmit } from '../../utils/handleFormSubmit'
 import { IconMail } from '@tabler/icons-react'
+import STRINGS from '../../data/strings'
 
 export default function ContactModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -27,8 +28,12 @@ export default function ContactModal() {
 
   return (
     <>
-      <Tooltip label='Skontaktuj się ze mną'>
-        <IconButton aria-label='Skontaktuj się ze mną' variant='ghost' size='sm' onClick={onOpen}>
+      <Tooltip label={STRINGS.MODALS.CONTACT.TITLE}>
+        <IconButton
+          aria-label={STRINGS.MODALS.CONTACT.TITLE}
+          variant='ghost'
+          size='sm'
+          onClick={onOpen}>
           <IconMail size={20} stroke={1.8} />
         </IconButton>
       </Tooltip>
@@ -45,23 +50,23 @@ export default function ContactModal() {
 
           <ModalOverlay />
           <ModalContent mx={2}>
-            <ModalHeader>Skontaktuj się ze mną</ModalHeader>
+            <ModalHeader>{STRINGS.MODALS.CONTACT.TITLE} </ModalHeader>
             <ModalCloseButton />
 
             <ModalBody>
               <Stack gap={4}>
                 <FormControl isRequired>
-                  <FormLabel>Twoje imię</FormLabel>
+                  <FormLabel>{STRINGS.FORM.NAME}</FormLabel>
                   <Input ref={initialRef} name='name' />
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel>Twój adres mejlowy</FormLabel>
+                  <FormLabel>{STRINGS.FORM.EMAIL}</FormLabel>
                   <Input type='email' name='email' />
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel>Wiadomość</FormLabel>
+                  <FormLabel>{STRINGS.MODALS.CONTACT.FORM.MESSAGE}</FormLabel>
                   <Textarea name='message' rows={5} minH='5rem' />
                 </FormControl>
               </Stack>
@@ -72,7 +77,7 @@ export default function ContactModal() {
             <ModalFooter>
               <Flex justify='center' w='100%'>
                 <Button colorScheme='teal' type='submit'>
-                  Wyślij
+                  {STRINGS.BUTTONS.SEND}
                 </Button>
               </Flex>
             </ModalFooter>

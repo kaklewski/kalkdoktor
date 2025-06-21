@@ -24,10 +24,12 @@ import {
 } from '@chakra-ui/react'
 import { IconShare } from '@tabler/icons-react'
 import { useEffect } from 'react'
+import STRINGS from '../../data/strings'
 
 export default function ShareFavModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { onCopy, value, setValue } = useClipboard('')
+
   useEffect(() => {
     const urlPath = '/importuj-ulubione'
     const urlHostname = window.location.toString().replace(window.location.pathname, urlPath)
@@ -40,7 +42,7 @@ export default function ShareFavModal() {
 
   function showToast() {
     toast({
-      title: 'Skopiowano link',
+      title: STRINGS.TOASTS.COPIED,
       status: 'success',
       position: 'top',
       duration: 1500,
@@ -50,10 +52,10 @@ export default function ShareFavModal() {
 
   return (
     <>
-      <Tooltip label='Udostępnij ulubione kalkulatory'>
+      <Tooltip label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}>
         <IconButton
           icon={<IconShare stroke={1.5} />}
-          aria-label='Udostępnij ulubione kalkulatory'
+          aria-label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}
           onClick={onOpen}
         />
       </Tooltip>
@@ -61,15 +63,12 @@ export default function ShareFavModal() {
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalOverlay />
         <ModalContent mx={2}>
-          <ModalHeader>Udostępnij ulubione kalkulatory</ModalHeader>
+          <ModalHeader>{STRINGS.MODALS.SHARE_FAVORITES.TITLE}</ModalHeader>
           <ModalCloseButton />
 
           <ModalBody>
             <Stack spacing={3}>
-              <Text>
-                Skopiuj poniższy link i otwórz go na innym urządzeniu, aby zaimportować ulubione
-                kalkulatory.
-              </Text>
+              <Text>{STRINGS.MODALS.SHARE_FAVORITES.DESCRIPTION}</Text>
 
               <Flex mb={2} gap={2}>
                 <Input variant='filled' value={value} readOnly />
@@ -79,7 +78,7 @@ export default function ShareFavModal() {
                     onCopy()
                     showToast()
                   }}>
-                  Skopiuj
+                  {STRINGS.BUTTONS.COPY}
                 </Button>
               </Flex>
 
@@ -92,7 +91,7 @@ export default function ShareFavModal() {
                     _hover={{ backgroundColor: 'none' }}>
                     <Flex align='center'>
                       <Button size='sm' variant='link' fontWeight='normal'>
-                        Jak to działa?
+                        {STRINGS.MODALS.SHARE_FAVORITES.HOW_IT_WORKS.TITLE}
                       </Button>
                       <AccordionIcon />
                     </Flex>
@@ -101,9 +100,7 @@ export default function ShareFavModal() {
                   <AccordionPanel px={0}>
                     <Divider mb={3} />
                     <Text fontSize='sm'>
-                      Kalkdoktor zapisuje listę ulubionych kalkulatorów w pamięci lokalnej
-                      przeglądarki na danym urządzeniu. Oznacza to, że aby móc korzystać z tych
-                      samych ulubionych na innym urządzeniu, trzeba je najpierw udostępnić.
+                      {STRINGS.MODALS.SHARE_FAVORITES.HOW_IT_WORKS.DESCRIPTION}
                     </Text>
                   </AccordionPanel>
                 </AccordionItem>

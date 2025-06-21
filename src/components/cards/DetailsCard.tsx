@@ -1,6 +1,7 @@
 import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { CalculatorType, SourceType } from '../../types/calculatorTypes'
+import STRINGS from '../../data/strings'
 
 type DetailsCardProps = {
   description: CalculatorType['description']
@@ -9,14 +10,17 @@ type DetailsCardProps = {
 }
 
 export default function DetailsCard({ description, methodology, sources }: DetailsCardProps) {
-  sources = typeof sources !== 'object' ? null : sources
   return (
     <Card variant='outline'>
       <Tabs variant='enclosed' isFitted colorScheme='teal'>
         <TabList px={4} pt={4}>
-          <Tab>Opis</Tab>
-          <Tab>{sources && sources.length > 1 ? 'Źródła' : 'Źródło'}</Tab>
-          {methodology && <Tab>Metodologia</Tab>}
+          <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
+          <Tab>
+            {sources && sources.length > 1
+              ? STRINGS.PAGES.CALCULATOR.SOURCES
+              : STRINGS.PAGES.CALCULATOR.SOURCE}
+          </Tab>
+          {methodology && <Tab>{STRINGS.PAGES.CALCULATOR.METHODOLOGY}</Tab>}
         </TabList>
 
         <TabPanels>
@@ -24,9 +28,8 @@ export default function DetailsCard({ description, methodology, sources }: Detai
             <Text>{description}</Text>
           </TabPanel>
           <TabPanel>
-            {sources === null
-              ? 'Opracowanie własne.'
-              : sources.map(sourceItem => {
+            {sources && sources.length > 1
+              ? sources.map(sourceItem => {
                   return (
                     <SourceLink
                       key={sourceItem.id}
@@ -36,7 +39,8 @@ export default function DetailsCard({ description, methodology, sources }: Detai
                       link={sourceItem.link}
                     />
                   )
-                })}
+                })
+              : STRINGS.PAGES.CALCULATOR.OWN_WORK}
           </TabPanel>
           {methodology && (
             <TabPanel>
@@ -56,7 +60,7 @@ function SourceLink({ author, title, dateOfAccess, link }: SourceLinkProps) {
     <Box mb={2}>
       <Link href={link} isExternal>
         <Text as='span'>
-          {author}, <Text as='i'>{title}</Text>, dostęp: {dateOfAccess}
+          {author}, <Text as='i'>{title}</Text>, {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
         </Text>
         <ExternalLinkIcon mx='2px' ml={1} mt={-1} />
       </Link>

@@ -8,19 +8,20 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react'
+import STRINGS from '../../data/strings'
 
-type SortMenuProps = {
+type SortButtonProps = {
   sortingOrder: string
   setSortingOrder: (value: string) => void
 }
 
-export default function SortButton({ sortingOrder, setSortingOrder }: SortMenuProps) {
+export default function SortButton({ sortingOrder, setSortingOrder }: SortButtonProps) {
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label='Zmień sposób sortowania'>
+      <Tooltip label={STRINGS.BUTTONS.SORT.TITLE}>
         <MenuButton
           as={IconButton}
-          aria-label='Sortuj'
+          aria-label={STRINGS.BUTTONS.SORT.TITLE}
           icon={
             sortingOrder === 'alphabetically' ? (
               <IconSortAscendingLetters stroke={1.5} />
@@ -30,15 +31,18 @@ export default function SortButton({ sortingOrder, setSortingOrder }: SortMenuPr
           }
         />
       </Tooltip>
-      <MenuList minWidth='240px'>
-        <MenuOptionGroup defaultValue={sortingOrder} title='Sortuj' type='radio'>
+      <MenuList>
+        <MenuOptionGroup
+          defaultValue={sortingOrder}
+          title={STRINGS.BUTTONS.SORT.TITLE}
+          type='radio'>
           <MenuItemOption value='alphabetically' onClick={() => setSortingOrder('alphabetically')}>
-            Alfabetycznie
+            {STRINGS.BUTTONS.SORT.ORDER.ALPHABETICALLY}
           </MenuItemOption>
           <MenuItemOption
             value='by-specialization'
             onClick={() => setSortingOrder('by-specialization')}>
-            Po specjalizacji
+            {STRINGS.BUTTONS.SORT.ORDER.BY_SPECIALIZATION}
           </MenuItemOption>
         </MenuOptionGroup>
       </MenuList>

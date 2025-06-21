@@ -8,6 +8,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { NumberInputType } from '../../types/calculatorTypes'
+import STRINGS from '../../data/strings'
 
 type CustomNumberInputProps = NumberInputType
 
@@ -16,7 +17,7 @@ export default function CustomNumberInput({ id, text, min, max }: CustomNumberIn
     <Box>
       <Text mb={2}>{text}</Text>
       <NumberInput min={min} max={max} id={id.toString()} isRequired>
-        <NumberInputField placeholder='Podaj wartość' />
+        <NumberInputField placeholder={STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER} />
         <NumberInputStepper>
           <NumberIncrementStepper />
           <NumberDecrementStepper />

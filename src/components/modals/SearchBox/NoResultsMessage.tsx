@@ -1,5 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react'
 import { IconZoomQuestion } from '@tabler/icons-react'
+import STRINGS from '../../../data/strings'
 
 export default function NoResultsMessage() {
   return (
@@ -10,7 +11,7 @@ export default function NoResultsMessage() {
       textAlign='center'
       py={4}>
       <IconZoomQuestion size={100} stroke={1.5} />
-      <Text fontSize='lg'>Nie znaleziono kalkulatora</Text>
+      <Text fontSize='lg'>{STRINGS.MODALS.SEARCH.NO_RESULTS}</Text>
     </Flex>
   )
 }

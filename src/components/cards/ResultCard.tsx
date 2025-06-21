@@ -1,6 +1,7 @@
 import { Card, CardBody, CardHeader, Divider, Heading, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { CalculatorType } from '../../types/calculatorTypes'
+import STRINGS from '../../data/strings'
 
 type ResultCardProps = {
   result: number
@@ -39,7 +40,7 @@ export default function ResultCard({
     <Card overflow='hidden' variant='filled' id='resultCard' data-card-animation={isAnimation}>
       <CardHeader>
         <Heading as='p' size='md'>
-          Wynik: {formattedResult}
+          {STRINGS.PAGES.CALCULATOR.RESULT}: {formattedResult}
           {formattedResultUnit}
         </Heading>
       </CardHeader>

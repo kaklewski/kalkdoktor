@@ -7,9 +7,10 @@ import { useEffect, useState } from 'react'
 import { getCategories } from '../utils/getCategories'
 import SortButton from '../components/buttons/SortButton'
 import CalculatorCard from '../components/cards/CalculatorCard'
+import STRINGS from '../data/strings'
 
 export default function FavoritesPage() {
-  useDocumentTitle('Ulubione')
+  useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE)
 
   const STORAGE_KEY_FAVORITES_SORTING = 'sort-favorites'
 
@@ -34,7 +35,7 @@ export default function FavoritesPage() {
   return (
     <>
       <Flex justify='space-between' gap='2'>
-        <Heading as='h1'>Ulubione</Heading>
+        <Heading as='h1'>{STRINGS.PAGES.FAVORITES.TITLE}</Heading>
         {favoriteCalculators.length > 0 && (
           <Stack direction='row' gap={{ base: 3, md: 2 }}>
             <ShareFavModal />
@@ -96,11 +97,9 @@ function NoFavoritesPlaceholder() {
     <VStack my={10} mx='auto'>
       <IconHeartOff stroke={1.5} size={100} />
       <Heading as='h1' size='md' mx='auto'>
-        Brak ulubionych
+        {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
       </Heading>
-      <Text align='center'>
-        Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.
-      </Text>
+      <Text align='center'>{STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}</Text>
     </VStack>
   )
 }

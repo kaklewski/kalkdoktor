@@ -20,6 +20,7 @@ import SearchResultItem from './SearchResultItem'
 import SearchBar from './SearchBar'
 import NoResultsMessage from './NoResultsMessage'
 import { sortedCalculators } from '../../../data/sortedCalculators'
+import STRINGS from '../../../data/strings'
 
 export default function SearchBox() {
   const {
@@ -92,12 +93,12 @@ export default function SearchBox() {
   return (
     <>
       <Box display={{ base: 'none', md: 'initial' }}>
-        <Tooltip label='Ctrl + K'>
+        <Tooltip label='Ctrl+K'>
           <Button
             onClick={openSearchBox}
             leftIcon={<IconSearch stroke={1.5} />}
             colorScheme='teal'
-            aria-label='Wyszukaj kalkulator'
+            aria-label={STRINGS.MODALS.SEARCH.TITLE}
             _focus={{
               borderColor: 'teal',
               boxShadow: '0 0 0 3px teal',
@@ -107,12 +108,12 @@ export default function SearchBox() {
         </Tooltip>
       </Box>
       <Box display={{ base: 'initial', md: 'none' }}>
-        <Tooltip label='Wyszukaj kalkulator'>
+        <Tooltip label={STRINGS.MODALS.SEARCH.TITLE}>
           <IconButton
             onClick={openSearchBox}
             colorScheme='teal'
             variant='solid'
-            aria-label='Wyszukaj kalkulator'>
+            aria-label={STRINGS.MODALS.SEARCH.TITLE}>
             <IconSearch stroke={1.5} />
           </IconButton>
         </Tooltip>

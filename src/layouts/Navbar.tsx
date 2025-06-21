@@ -1,8 +1,9 @@
-import { Box, Flex, IconButton, Link, Button, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, IconButton, Link, Button } from '@chakra-ui/react'
 import { IconHeart } from '@tabler/icons-react'
 import ThemeButton from '../components/buttons/ThemeButton'
 import SearchBox from '../components/modals/SearchBox/SearchBox'
 import Logo from '../components/other/Logo'
+import STRINGS from '../data/strings'
 
 export default function Navbar() {
   return (
@@ -24,18 +25,16 @@ export default function Navbar() {
               as='a'
               href='/ulubione'
               leftIcon={<IconHeart stroke={1.5} />}
-              aria-label='Ulubione'>
-              Ulubione
+              aria-label={STRINGS.BUTTONS.FAVORITES}>
+              {STRINGS.BUTTONS.FAVORITES}
             </Button>
           </Box>
           <Box display={{ base: 'initial', md: 'none' }}>
-            <Tooltip label='Zobacz ulubione kalkulatory'>
-              <Link href='/ulubione'>
-                <IconButton aria-label='Ulubione'>
-                  <IconHeart stroke={1.5} />
-                </IconButton>
-              </Link>
-            </Tooltip>
+            <Link href='/ulubione'>
+              <IconButton aria-label={STRINGS.BUTTONS.FAVORITES}>
+                <IconHeart stroke={1.5} />
+              </IconButton>
+            </Link>
           </Box>
 
           <ThemeButton />

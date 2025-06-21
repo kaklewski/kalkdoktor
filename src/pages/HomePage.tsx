@@ -5,6 +5,7 @@ import { getCategories } from '../utils/getCategories'
 import SortButton from '../components/buttons/SortButton'
 import { calculators } from '../data/calculators'
 import CalculatorCard from '../components/cards/CalculatorCard'
+import STRINGS from '../data/strings'
 
 export default function HomePage() {
   const STORAGE_KEY_HOMEPAGE_SORTING = 'sort-homepage'
@@ -25,7 +26,7 @@ export default function HomePage() {
     <>
       <Flex justify='space-between' gap={2}>
         <Heading as='h1'>
-          <Text>Kalkulatory</Text>
+          <Text>{STRINGS.PAGES.HOME.TITLE}</Text>
         </Heading>
         <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
       </Flex>

@@ -1,5 +1,6 @@
 import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
 import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react'
+import STRINGS from '../../../data/strings'
 
 type SearchBarProps = {
   searchBarRef: React.RefObject<HTMLInputElement>
@@ -22,7 +23,7 @@ export default function SearchBar({
 
       <Input
         variant='filled'
-        placeholder='Wyszukaj kalkulator'
+        placeholder={STRINGS.MODALS.SEARCH.TITLE}
         ref={searchBarRef}
         value={searchQuery}
         onChange={event => setSearchQuery(event.target.value)}
@@ -38,7 +39,7 @@ export default function SearchBar({
               setSearchQuery('')
               focusOnSearchBar()
             }}
-            aria-label='Wyczyść tekst'>
+            aria-label={STRINGS.BUTTONS.CLEAR}>
             <IconBackspaceFilled stroke={1.5} />
           </Button>
         </InputRightElement>

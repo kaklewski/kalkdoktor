@@ -2,13 +2,16 @@ import { IconButton, Tooltip, useColorMode } from '@chakra-ui/react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import setThemeAttribute from '../../utils/setThemeAttribute'
+import STRINGS from '../../data/strings'
 
 export default function ThemeButton() {
+  const { colorMode, setColorMode } = useColorMode()
   const [isAutoTheme, setIsAutoTheme] = useState<boolean>(() => {
-    if (localStorage.getItem('auto-color-mode') === 'false') return false
+    if (localStorage.getItem('auto-color-mode') === 'false') {
+      return false
+    }
     return true
   })
-  const { colorMode, setColorMode } = useColorMode()
 
   // Set up the theme before React loads the Virtual-DOM to remove the flashing effect.
   useEffect(() => {
@@ -20,7 +23,7 @@ export default function ThemeButton() {
   useEffect(() => {
     localStorage.setItem('auto-color-mode', `${isAutoTheme}`)
 
-    if (isAutoTheme === false) return
+    if (!isAutoTheme) return
 
     function changeTheme(event: MediaQueryListEvent) {
       if (event.matches) {
@@ -37,10 +40,10 @@ export default function ThemeButton() {
   return (
     <>
       {/* Auto theme is active */}
-      {isAutoTheme === true && (
-        <Tooltip label='Zmień motyw na jasny' placement='bottom-start'>
+      {isAutoTheme && (
+        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.LIGHT} placement='bottom-start'>
           <IconButton
-            aria-label='Zmień motyw na jasny'
+            aria-label={STRINGS.BUTTONS.CHANGE_THEME.LIGHT}
             onClick={() => {
               setIsAutoTheme(false)
               setColorMode('light')
@@ -51,10 +54,10 @@ export default function ThemeButton() {
       )}
 
       {/* Light theme is active */}
-      {isAutoTheme === false && colorMode === 'light' && (
-        <Tooltip label='Zmień motyw na ciemny' placement='bottom-start'>
+      {!isAutoTheme && colorMode === 'light' && (
+        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.DARK} placement='bottom-start'>
           <IconButton
-            aria-label='Zmień motyw na ciemny'
+            aria-label={STRINGS.BUTTONS.CHANGE_THEME.DARK}
             onClick={() => {
               setIsAutoTheme(false)
               setColorMode('dark')
@@ -65,10 +68,10 @@ export default function ThemeButton() {
       )}
 
       {/* Dark theme is active */}
-      {isAutoTheme === false && colorMode === 'dark' && (
-        <Tooltip label='Zmień motyw na automatyczny' placement='bottom-start'>
+      {!isAutoTheme && colorMode === 'dark' && (
+        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.AUTO} placement='bottom-start'>
           <IconButton
-            aria-label='Zmień motyw na automatyczny'
+            aria-label={STRINGS.BUTTONS.CHANGE_THEME.AUTO}
             onClick={() => {
               setIsAutoTheme(true)
               setColorMode('system')

@@ -6,6 +6,7 @@ import CustomRadio from '../inputs/CustomRadio'
 import CustomCheckbox from '../inputs/CustomCheckbox'
 import CustomNumberInput from '../inputs/CustomNumberInput'
 import { CalculatorType } from '../../types/calculatorTypes'
+import STRINGS from '../../data/strings'
 
 type FormCardProps = {
   numberInputs?: CalculatorType['fields']['numberInputs']
@@ -76,7 +77,7 @@ export default function FormCard({
                 borderColor: 'teal',
                 boxShadow: '0 0 0 3px teal',
               }}>
-              Oblicz
+              {STRINGS.BUTTONS.CALCULATE}
             </Button>
           </Stack>
         </CardBody>

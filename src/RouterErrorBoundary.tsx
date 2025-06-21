@@ -1,6 +1,7 @@
 import { Alert, AlertDescription, AlertTitle, Button, Flex } from '@chakra-ui/react'
 import { IconExclamationCircle } from '@tabler/icons-react'
 import { useRouteError } from 'react-router-dom'
+import STRINGS from './data/strings'
 
 export default function RouterErrorBoundary() {
   const error = useRouteError()
@@ -19,14 +20,12 @@ export default function RouterErrorBoundary() {
         <IconExclamationCircle size={70} stroke={1.5} />
 
         <AlertTitle fontSize='lg' mt={4} mb={1}>
-          Błąd
+          {STRINGS.PAGES.ERROR_BOUNDARY.TITLE}
         </AlertTitle>
-        <AlertDescription>
-          Coś poszło nie tak. Spróbuj ponownie lub przejdź na stronę główną.
-        </AlertDescription>
+        <AlertDescription>{STRINGS.PAGES.ERROR_BOUNDARY.DESCRIPTION}</AlertDescription>
 
         <Button as='a' href='/' mt={4} mb={4}>
-          Strona główna
+          {STRINGS.BUTTONS.HOMEPAGE}
         </Button>
       </Alert>
     </Flex>

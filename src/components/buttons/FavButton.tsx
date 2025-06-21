@@ -2,6 +2,7 @@ import { IconButton, Tooltip, useToast } from '@chakra-ui/react'
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import { useState } from 'react'
 import { CalculatorType } from '../../types/calculatorTypes'
+import STRINGS from '../../data/strings'
 
 type FavButtonProps = {
   pageId: CalculatorType['id']
@@ -17,7 +18,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
     if (favString === null) return false
 
     // If the item is not in the string of fav in local storage, return false
-    let favorites = JSON.parse(favString)
+    const favorites = JSON.parse(favString)
     if (!favorites.includes(pageId)) return false
 
     // Else return true
@@ -27,7 +28,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   function showToast(type: string) {
     toast({
-      title: type === 'added' ? 'Dodano do ulubionych.' : 'Usunięto z ulubionych.',
+      title: type === 'added' ? STRINGS.TOASTS.FAVORITES.ADDED : STRINGS.TOASTS.FAVORITES.REMOVED,
       status: type === 'added' ? 'success' : 'warning',
       position: 'top',
       duration: 1500,
@@ -61,9 +62,9 @@ export default function FavButton({ pageId }: FavButtonProps) {
   }
 
   return (
-    <Tooltip label={`${isFav === true ? 'Usuń z' : 'Dodaj do'} ulubionych`}>
+    <Tooltip label={isFav ? STRINGS.BUTTONS.FAVORITES_REMOVE : STRINGS.BUTTONS.FAVORITES_ADD}>
       <IconButton
-        aria-label={isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
+        aria-label={isFav ? STRINGS.BUTTONS.FAVORITES_REMOVE : STRINGS.BUTTONS.FAVORITES_ADD}
         variant='outline'
         colorScheme={isFav ? 'red' : 'teal'}
         icon={isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />}
