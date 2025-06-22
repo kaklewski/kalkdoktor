@@ -4,9 +4,9 @@ const STRINGS = {
     CANCEL: 'Anuluj',
     CHANGE_THEME: {
       TITLE: 'Zmień motyw',
-      LIGHT: 'Zmień motyw na jasny',
-      DARK: 'Zmień motyw na ciemny',
-      AUTO: 'Zmień motyw na automatyczny',
+      AUTO: 'Automatyczny',
+      LIGHT: 'Jasny',
+      DARK: 'Ciemny',
     },
     CLEAR: 'Wyczyść',
     COPY: 'Skopiuj',

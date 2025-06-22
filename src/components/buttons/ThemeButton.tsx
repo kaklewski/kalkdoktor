@@ -1,22 +1,28 @@
-import { IconButton, Tooltip, useColorMode } from '@chakra-ui/react'
-import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
-import { useEffect, useState } from 'react'
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
+  Tooltip,
+  useColorMode,
+} from '@chakra-ui/react'
+import { IconMoon, IconPercentage50, IconSun } from '@tabler/icons-react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import setThemeAttribute from '../../utils/setThemeAttribute'
 import STRINGS from '../../data/strings'
 
 export default function ThemeButton() {
   const { colorMode, setColorMode } = useColorMode()
-  const [isAutoTheme, setIsAutoTheme] = useState<boolean>(() => {
-    if (localStorage.getItem('auto-color-mode') === 'false') {
-      return false
-    }
-    return true
-  })
+  const [isAutoTheme, setIsAutoTheme] = useState<boolean>(
+    () => localStorage.getItem('auto-color-mode') === 'true'
+  )
 
-  // Set up the theme before React loads the Virtual-DOM to remove the flashing effect.
-  useEffect(() => {
+  // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
+  useLayoutEffect(() => {
     setThemeAttribute()
-  }, [colorMode])
+  }, [isAutoTheme, colorMode])
 
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
@@ -37,49 +43,53 @@ export default function ThemeButton() {
     return () => prefersDarkScheme.removeEventListener('change', changeTheme)
   }, [isAutoTheme, prefersDarkScheme, setColorMode])
 
+  const currentTheme = isAutoTheme ? 'auto' : colorMode
+  const currentThemeIcon = {
+    auto: <IconPercentage50 stroke={1.5} />,
+    light: <IconSun stroke={1.5} />,
+    dark: <IconMoon stroke={1.5} />,
+  }
+
   return (
-    <>
-      {/* Auto theme is active */}
-      {isAutoTheme && (
-        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.LIGHT} placement='bottom-start'>
-          <IconButton
-            aria-label={STRINGS.BUTTONS.CHANGE_THEME.LIGHT}
-            onClick={() => {
-              setIsAutoTheme(false)
-              setColorMode('light')
-            }}>
-            <IconSunMoon stroke={1.5} />
-          </IconButton>
-        </Tooltip>
-      )}
-
-      {/* Light theme is active */}
-      {!isAutoTheme && colorMode === 'light' && (
-        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.DARK} placement='bottom-start'>
-          <IconButton
-            aria-label={STRINGS.BUTTONS.CHANGE_THEME.DARK}
-            onClick={() => {
-              setIsAutoTheme(false)
-              setColorMode('dark')
-            }}>
-            <IconSun stroke={1.5} />
-          </IconButton>
-        </Tooltip>
-      )}
-
-      {/* Dark theme is active */}
-      {!isAutoTheme && colorMode === 'dark' && (
-        <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.AUTO} placement='bottom-start'>
-          <IconButton
-            aria-label={STRINGS.BUTTONS.CHANGE_THEME.AUTO}
+    <Menu closeOnSelect={true}>
+      <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}>
+        <MenuButton
+          as={IconButton}
+          aria-label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}
+          icon={currentThemeIcon[currentTheme]}
+        />
+      </Tooltip>
+      <MenuList>
+        <MenuOptionGroup
+          defaultValue={currentTheme}
+          title={STRINGS.BUTTONS.CHANGE_THEME.TITLE}
+          type='radio'>
+          <MenuItemOption
+            value='auto'
             onClick={() => {
               setIsAutoTheme(true)
               setColorMode('system')
             }}>
-            <IconMoon stroke={1.5} />
-          </IconButton>
-        </Tooltip>
-      )}
-    </>
+            {STRINGS.BUTTONS.CHANGE_THEME.AUTO}
+          </MenuItemOption>
+          <MenuItemOption
+            value='light'
+            onClick={() => {
+              setIsAutoTheme(false)
+              setColorMode('light')
+            }}>
+            {STRINGS.BUTTONS.CHANGE_THEME.LIGHT}
+          </MenuItemOption>
+          <MenuItemOption
+            value='dark'
+            onClick={() => {
+              setIsAutoTheme(false)
+              setColorMode('dark')
+            }}>
+            {STRINGS.BUTTONS.CHANGE_THEME.DARK}
+          </MenuItemOption>
+        </MenuOptionGroup>
+      </MenuList>
+    </Menu>
   )
 }
