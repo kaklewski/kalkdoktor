@@ -62,9 +62,14 @@ export default function FavButton({ pageId }: FavButtonProps) {
   }
 
   return (
-    <Tooltip label={isFav ? STRINGS.BUTTONS.FAVORITES_REMOVE : STRINGS.BUTTONS.FAVORITES_ADD}>
+    <Tooltip
+      label={
+        isFav ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
+      }>
       <IconButton
-        aria-label={isFav ? STRINGS.BUTTONS.FAVORITES_REMOVE : STRINGS.BUTTONS.FAVORITES_ADD}
+        aria-label={
+          isFav ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
+        }
         variant='outline'
         colorScheme={isFav ? 'red' : 'teal'}
         icon={isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />}

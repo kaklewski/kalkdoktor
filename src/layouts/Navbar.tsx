@@ -25,13 +25,13 @@ export default function Navbar() {
               as='a'
               href='/ulubione'
               leftIcon={<IconHeart stroke={1.5} />}
-              aria-label={STRINGS.BUTTONS.FAVORITES}>
-              {STRINGS.BUTTONS.FAVORITES}
+              aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
+              {STRINGS.BUTTONS.FAVORITES.TITLE}
             </Button>
           </Box>
           <Box display={{ base: 'initial', md: 'none' }}>
             <Link href='/ulubione'>
-              <IconButton aria-label={STRINGS.BUTTONS.FAVORITES}>
+              <IconButton aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
                 <IconHeart stroke={1.5} />
               </IconButton>
             </Link>

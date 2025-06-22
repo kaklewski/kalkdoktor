@@ -1,40 +1,44 @@
 const STRINGS = {
-  PAGES: {
-    CALCULATOR: {
-      METHODOLOGY: 'Metodologia',
-      DESCRIPTION: 'Opis',
-      RESULT: 'Wynik',
-      SOURCE: 'Źródło',
-      SOURCES: 'Źródła',
-      OWN_WORK: 'Opracowanie własne',
-      ACCESS: 'dostęp',
+  BUTTONS: {
+    CALCULATE: 'Oblicz',
+    CANCEL: 'Anuluj',
+    CHANGE_THEME: {
+      TITLE: 'Zmień motyw',
+      LIGHT: 'Zmień motyw na jasny',
+      DARK: 'Zmień motyw na ciemny',
+      AUTO: 'Zmień motyw na automatyczny',
     },
-    HOME: {
-      TITLE: 'Kalkulatory',
-    },
-    ERROR404: {
-      TITLE: 'Nie znaleziono strony!',
-    },
-    ERROR_BOUNDARY: {
-      TITLE: 'Coś poszło nie tak!',
-      DESCRIPTION:
-        'Przepraszamy, wystąpił błąd. Spróbuj ponownie później lub przejdź na stronę główną.',
-    },
+    CLEAR: 'Wyczyść',
+    COPY: 'Skopiuj',
     FAVORITES: {
       TITLE: 'Ulubione',
-      NO_FAVORITES: {
-        TITLE: 'Brak ulubionych',
-        DESCRIPTION: 'Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.',
+      ACTION: {
+        ADD: 'Dodaj do ulubionych',
+        REMOVE: 'Usuń z ulubionych',
       },
     },
-    IMPORT_FAVORITES: {
-      TITLE: 'Importuj ulubione',
-      DESCRIPTION:
-        'Poniższe kalkulatory zostaną dodane do ulubionych na tym urządzeniu. Jeśli masz już jakieś ulubione kalkulatory, zostaną one zastąpione.',
+    HOMEPAGE: 'Strona główna',
+    IMPORT: 'Importuj',
+    REPORT_BUG: 'Zgłoś błąd',
+    SEND: 'Wyślij',
+    SORT: {
+      TITLE: 'Sortuj kalkulatory',
+      ORDER: {
+        ALPHABETICALLY: 'Alfabetycznie',
+        BY_SPECIALIZATION: 'Według specjalizacji',
+      },
     },
-    SUBMISSION_SUCCESS: {
-      TITLE: 'Wiadomość została wysłana!',
+  },
+  FIELDS: {
+    NUMBER_INPUT: {
+      PLACEHOLDER: 'Podaj wartość',
     },
+  },
+  FORM: {
+    // Common form strings
+    // These are used in multiple modals
+    EMAIL: 'Twój adres e-mail',
+    NAME: 'Twoje imię',
   },
   LAYOUTS: {
     FOOTER: {
@@ -84,41 +88,41 @@ const STRINGS = {
       },
     },
   },
-  FORM: {
-    // Common form strings
-    // These are used in multiple modals
-    EMAIL: 'Twój adres e-mail',
-    NAME: 'Twoje imię',
-  },
-  BUTTONS: {
-    CALCULATE: 'Oblicz',
-    CANCEL: 'Anuluj',
-    CHANGE_THEME: {
-      TITLE: 'Zmień motyw',
-      LIGHT: 'Zmień motyw na jasny',
-      DARK: 'Zmień motyw na ciemny',
-      AUTO: 'Zmień motyw na automatyczny',
+  PAGES: {
+    CALCULATOR: {
+      METHODOLOGY: 'Metodologia',
+      DESCRIPTION: 'Opis',
+      RESULT: 'Wynik',
+      SOURCE: 'Źródło',
+      SOURCES: 'Źródła',
+      OWN_WORK: 'Opracowanie własne',
+      ACCESS: 'dostęp',
     },
-    CLEAR: 'Wyczyść',
-    COPY: 'Skopiuj',
-    FAVORITES: 'Ulubione',
-    FAVORITES_ADD: 'Dodaj do ulubionych',
-    FAVORITES_REMOVE: 'Usuń z ulubionych',
-    HOMEPAGE: 'Strona główna',
-    IMPORT: 'Importuj',
-    REPORT_BUG: 'Zgłoś błąd',
-    SEND: 'Wyślij',
-    SORT: {
-      TITLE: 'Sortuj kalkulatory',
-      ORDER: {
-        ALPHABETICALLY: 'Alfabetycznie',
-        BY_SPECIALIZATION: 'Według specjalizacji',
+    ERROR404: {
+      TITLE: 'Nie znaleziono strony!',
+    },
+    ERROR_BOUNDARY: {
+      TITLE: 'Coś poszło nie tak!',
+      DESCRIPTION:
+        'Przepraszamy, wystąpił błąd. Spróbuj ponownie później lub przejdź na stronę główną.',
+    },
+    FAVORITES: {
+      TITLE: 'Ulubione',
+      NO_FAVORITES: {
+        TITLE: 'Brak ulubionych',
+        DESCRIPTION: 'Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.',
       },
     },
-  },
-  FIELDS: {
-    NUMBER_INPUT: {
-      PLACEHOLDER: 'Podaj wartość',
+    HOME: {
+      TITLE: 'Kalkulatory',
+    },
+    IMPORT_FAVORITES: {
+      TITLE: 'Importuj ulubione',
+      DESCRIPTION:
+        'Poniższe kalkulatory zostaną dodane do ulubionych na tym urządzeniu. Jeśli masz już jakieś ulubione kalkulatory, zostaną one zastąpione.',
+    },
+    SUBMISSION_SUCCESS: {
+      TITLE: 'Wiadomość została wysłana!',
     },
   },
   TOASTS: {
