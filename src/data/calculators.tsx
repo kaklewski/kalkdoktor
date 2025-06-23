@@ -21,16 +21,14 @@ export const calculators: CalculatorType[] = [
         <MathJax>{'`BMI = m/(h^2)`'}</MathJax>
         <br />
         <Text>Gdzie:</Text>
-        <Text>
-          <UnorderedList>
-            <ListItem>
-              <strong>m</strong> – masa ciała wyrażona w kilogramach (kg),
-            </ListItem>
-            <ListItem>
-              <strong>h</strong> – wzrost wyrażony w metrach (m).
-            </ListItem>
-          </UnorderedList>
-        </Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>m</strong> – masa ciała wyrażona w kilogramach (kg),
+          </ListItem>
+          <ListItem>
+            <strong>h</strong> – wzrost wyrażony w metrach (m).
+          </ListItem>
+        </UnorderedList>
         <br />
         <Text>Interpretacja wartości BMI:</Text>
         <UnorderedList>
@@ -374,7 +372,7 @@ export const calculators: CalculatorType[] = [
   {
     id: 5,
     name: 'Kalkulator liczby opakowań leków na dany okres',
-    urlPath: '/kalkulator-liczby-opakowan-na-okres',
+    urlPath: 'kalkulator-liczby-opakowan-na-okres',
     category: 'dawkowanie leków',
     description: 'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
     methodology: (
