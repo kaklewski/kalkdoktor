@@ -38,7 +38,7 @@ export default function CalculatorCard({ id, name, link, description }: Calculat
         }}>
         <CardHeader>
           <Flex gap={1}>
-            <LinkOverlay as={RouterLink} to={`/${link}`}>
+            <LinkOverlay as={RouterLink} to={link}>
               <Heading as='h3' size='md'>
                 {name}
               </Heading>

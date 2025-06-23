@@ -89,7 +89,7 @@ export default function SearchBox() {
     } else if (event.key === 'ArrowDown' && selectedItemIndex < filteredCalculators.length - 1) {
       setSelectedItemIndex(previousItem => previousItem + 1)
     } else if (event.key === 'Enter') {
-      navigate(`/${filteredCalculators[selectedItemIndex].urlPath}`)
+      navigate(filteredCalculators[selectedItemIndex].urlPath)
       closeSearchBox()
     }
   }
