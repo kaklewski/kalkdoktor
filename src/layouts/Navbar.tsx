@@ -1,40 +1,37 @@
-import { Box, Flex, IconButton, Link, Button } from '@chakra-ui/react'
+import { Box, Flex, IconButton, Button } from '@chakra-ui/react'
 import { IconHeart } from '@tabler/icons-react'
 import ThemeButton from '../components/buttons/ThemeButton'
 import SearchBox from '../components/modals/SearchBox/SearchBox'
 import Logo from '../components/other/Logo'
 import STRINGS from '../data/strings'
+import { Link as RouterLink } from 'react-router-dom'
 
 export default function Navbar() {
   return (
     <Box p={4} borderBottomWidth='1px'>
       <Flex align='center' justify='space-between' gap={4} wrap='wrap'>
-        <Flex align='start'>
-          <Link href='/' id='navLogo' borderRadius='md' _hover={{ textDecoration: 'none' }}>
-            <Flex align='center' height={{ base: 8, sm: 10 }}>
-              <Logo width='100%' height='100%' />
-            </Flex>
-          </Link>
-        </Flex>
+        <RouterLink to='/'>
+          <Box height={{ base: 8, sm: 10 }}>
+            <Logo width='100%' height='100%' />
+          </Box>
+        </RouterLink>
 
         <Flex align='center' gap={{ base: 3, md: 2 }} wrap='wrap'>
           <SearchBox />
 
           <Box display={{ base: 'none', md: 'initial' }}>
             <Button
-              as='a'
-              href='/ulubione'
+              as={RouterLink}
+              to='/ulubione'
               leftIcon={<IconHeart stroke={1.5} />}
               aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
               {STRINGS.BUTTONS.FAVORITES.TITLE}
             </Button>
           </Box>
           <Box display={{ base: 'initial', md: 'none' }}>
-            <Link href='/ulubione'>
-              <IconButton aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
-                <IconHeart stroke={1.5} />
-              </IconButton>
-            </Link>
+            <IconButton as={RouterLink} to='/ulubione' aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
+              <IconHeart stroke={1.5} />
+            </IconButton>
           </Box>
 
           <ThemeButton />

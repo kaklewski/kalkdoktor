@@ -21,6 +21,7 @@ import SearchBar from './SearchBar'
 import NoResultsMessage from './NoResultsMessage'
 import { sortedCalculators } from '../../../data/sortedCalculators'
 import STRINGS from '../../../data/strings'
+import { useNavigate } from 'react-router-dom'
 
 export default function SearchBox() {
   const {
@@ -66,6 +67,8 @@ export default function SearchBox() {
     })
   }, [selectedItemIndex])
 
+  const navigate = useNavigate()
+
   const filteredCalculators = sortedCalculators.filter(value =>
     value.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
@@ -86,7 +89,8 @@ export default function SearchBox() {
     } else if (event.key === 'ArrowDown' && selectedItemIndex < filteredCalculators.length - 1) {
       setSelectedItemIndex(previousItem => previousItem + 1)
     } else if (event.key === 'Enter') {
-      window.location.href = filteredCalculators[selectedItemIndex].urlPath
+      navigate(`/${filteredCalculators[selectedItemIndex].urlPath}`)
+      closeSearchBox()
     }
   }
 
@@ -153,6 +157,7 @@ export default function SearchBox() {
                       isSelected={index === selectedItemIndex && true}
                       selectedItemRef={index === selectedItemIndex && selectedItemRef}
                       setSelectedItemIndex={setSelectedItemIndex}
+                      closeSearchBox={closeSearchBox}
                     />
                   )
                 })}

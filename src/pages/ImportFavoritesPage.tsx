@@ -5,7 +5,6 @@ import {
   CardFooter,
   Flex,
   Heading,
-  Link,
   ListItem,
   Text,
   UnorderedList,
@@ -15,6 +14,8 @@ import { IconHeartPlus } from '@tabler/icons-react'
 import { sortedCalculators } from '../data/sortedCalculators'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 import STRINGS from '../data/strings'
+import { Link as RouterLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function ImportFavoritesPage() {
   useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE)
@@ -22,6 +23,8 @@ export default function ImportFavoritesPage() {
   const urlParams = new URLSearchParams(window.location.search)
   const favCalcIdString = urlParams.get('id')
   let favCalcIds: number[]
+
+  const navigate = useNavigate()
 
   const isEachIdValid = (() => {
     if (!favCalcIdString) return false
@@ -33,7 +36,7 @@ export default function ImportFavoritesPage() {
     }
   })()
 
-  if (!isEachIdValid) window.location.href = '/'
+  if (!isEachIdValid) navigate('/')
 
   const favsToImport = favCalcIdString
     ? sortedCalculators.filter(calculator => favCalcIds.includes(calculator.id))
@@ -41,7 +44,7 @@ export default function ImportFavoritesPage() {
 
   function importFavorites(favorites: string) {
     localStorage.setItem('favorites', favorites)
-    window.location.href = '/ulubione'
+    navigate('/ulubione')
   }
 
   return (
@@ -65,9 +68,9 @@ export default function ImportFavoritesPage() {
 
           <CardFooter mb={2}>
             <Flex justify='center' align='center' gap={2} w='100%'>
-              <Link href='/'>
-                <Button>{STRINGS.BUTTONS.CANCEL}</Button>
-              </Link>
+              <Button as={RouterLink} to='/'>
+                {STRINGS.BUTTONS.CANCEL}
+              </Button>
               <Button
                 colorScheme='red'
                 onClick={() => {

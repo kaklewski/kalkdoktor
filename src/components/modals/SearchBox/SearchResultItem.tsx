@@ -1,6 +1,7 @@
 import { Button, Flex } from '@chakra-ui/react'
 import { IconCornerDownLeft } from '@tabler/icons-react'
 import { CalculatorType } from '../../../types/calculatorTypes'
+import { Link as RouterLink } from 'react-router-dom'
 
 type SearchResultItemProps = {
   name: CalculatorType['name']
@@ -9,6 +10,7 @@ type SearchResultItemProps = {
   isSelected: boolean
   selectedItemRef: React.RefObject<HTMLButtonElement> | false
   setSelectedItemIndex: (value: number) => void
+  closeSearchBox: () => void
 }
 
 export default function SearchResultItem({
@@ -18,11 +20,13 @@ export default function SearchResultItem({
   isSelected,
   selectedItemRef,
   setSelectedItemIndex,
+  closeSearchBox,
 }: SearchResultItemProps) {
   return (
     <Button
-      as='a'
-      href={link}
+      as={RouterLink}
+      to={link}
+      onClick={closeSearchBox}
       height='auto'
       p={4}
       fontSize='md'

@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { CalculatorType } from '../../types/calculatorTypes'
 import FavButton from '../buttons/FavButton'
+import { Link as RouterLink } from 'react-router-dom'
 
 type CalculatorCardProps = {
   id: CalculatorType['id']
@@ -37,7 +38,7 @@ export default function CalculatorCard({ id, name, link, description }: Calculat
         }}>
         <CardHeader>
           <Flex gap={1}>
-            <LinkOverlay href={link}>
+            <LinkOverlay as={RouterLink} to={`/${link}`}>
               <Heading as='h3' size='md'>
                 {name}
               </Heading>
