@@ -2,6 +2,8 @@ import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { CalculatorType, SourceType } from '../../types/calculatorTypes'
 import STRINGS from '../../data/strings'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 type DetailsCardProps = {
   description: CalculatorType['description']
@@ -10,9 +12,22 @@ type DetailsCardProps = {
 }
 
 export default function DetailsCard({ description, methodology, sources }: DetailsCardProps) {
+  const [tabIndex, setTabIndex] = useState(0)
+  const location = useLocation()
+
+  useEffect(() => {
+    setTabIndex(0)
+  }, [location.pathname])
+
   return (
     <Card variant='outline'>
-      <Tabs variant='enclosed' isFitted colorScheme='teal'>
+      <Tabs
+        index={tabIndex}
+        onChange={setTabIndex}
+        variant='enclosed'
+        colorScheme='teal'
+        isFitted
+        isLazy>
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
           <Tab>
@@ -42,11 +57,7 @@ export default function DetailsCard({ description, methodology, sources }: Detai
                 })
               : STRINGS.PAGES.CALCULATOR.OWN_WORK}
           </TabPanel>
-          {methodology && (
-            <TabPanel>
-              <Box>{methodology}</Box>
-            </TabPanel>
-          )}
+          {methodology && <TabPanel>{methodology}</TabPanel>}
         </TabPanels>
       </Tabs>
     </Card>
