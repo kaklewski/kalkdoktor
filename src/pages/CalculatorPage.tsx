@@ -62,7 +62,7 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
       </Stack>
 
       <Flex justify='right'>
-        <BugReportModal />
+        <BugReportModal calculatorName={name} />
       </Flex>
     </>
   )

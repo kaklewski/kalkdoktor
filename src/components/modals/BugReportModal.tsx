@@ -20,7 +20,11 @@ import { useRef } from 'react'
 import { handleFormSubmit } from '../../utils/handleFormSubmit'
 import STRINGS from '../../data/strings'
 
-export default function BugReportModal() {
+type BugReportModalProps = {
+  calculatorName: string
+}
+
+export default function BugReportModal({ calculatorName }: BugReportModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const initialRef = useRef(null)
 
@@ -64,7 +68,7 @@ export default function BugReportModal() {
 
                 <FormControl>
                   <FormLabel>{STRINGS.MODALS.BUG_REPORT.FORM.RELATED_CALCULATOR}</FormLabel>
-                  <Input readOnly name='calculator-link' variant='filled' value={location.href} />
+                  <Input readOnly name='calculator-link' variant='filled' value={calculatorName} />
                 </FormControl>
               </Stack>
             </ModalBody>
