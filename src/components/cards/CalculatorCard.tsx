@@ -31,8 +31,15 @@ export default function CalculatorCard({ id, name, link, description }: Calculat
           borderColor: 'teal.500',
           transition: 'border-color 0.2s ease-in-out',
         }}
+        _active={{
+          borderColor: 'teal.500',
+          transition: 'border-color 0.2s ease-in-out',
+        }}
         _dark={{
           _hover: {
+            borderColor: 'teal.200',
+          },
+          _active: {
             borderColor: 'teal.200',
           },
         }}>
