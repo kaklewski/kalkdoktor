@@ -16,7 +16,7 @@ export default defineConfig({
         lang: 'pl',
         description:
           'Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi.',
-        start_url: '/',
+        start_url: ROUTES.HOME,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#319795',

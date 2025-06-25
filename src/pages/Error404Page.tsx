@@ -3,6 +3,7 @@ import { IconError404 } from '@tabler/icons-react'
 import useDocumentTitle from '../hooks/useDocumentTitle'
 import STRINGS from '../data/strings'
 import { Link as RouterLink } from 'react-router-dom'
+import ROUTES from '../data/routes'
 
 export default function Error404Page() {
   useDocumentTitle(STRINGS.PAGES.ERROR404.TITLE)
@@ -20,7 +21,7 @@ export default function Error404Page() {
 
       <AlertTitle fontSize='lg'>{STRINGS.PAGES.ERROR404.TITLE}</AlertTitle>
 
-      <Button colorScheme='red' as={RouterLink} to='/' my={3}>
+      <Button colorScheme='red' as={RouterLink} to={ROUTES.HOME} my={3}>
         {STRINGS.BUTTONS.HOMEPAGE}
       </Button>
     </Alert>

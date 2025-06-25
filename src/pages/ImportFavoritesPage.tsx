@@ -37,7 +37,7 @@ export default function ImportFavoritesPage() {
     }
   })()
 
-  if (!isEachIdValid) navigate('/')
+  if (!isEachIdValid) navigate(ROUTES.HOME)
 
   const favsToImport = favCalcIdString
     ? sortedCalculators.filter(calculator => favCalcIds.includes(calculator.id))
@@ -69,7 +69,7 @@ export default function ImportFavoritesPage() {
 
           <CardFooter mb={2}>
             <Flex justify='center' align='center' gap={2} w='100%'>
-              <Button as={RouterLink} to='/'>
+              <Button as={RouterLink} to={ROUTES.HOME}>
                 {STRINGS.BUTTONS.CANCEL}
               </Button>
               <Button

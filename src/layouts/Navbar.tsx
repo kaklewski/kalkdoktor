@@ -18,7 +18,7 @@ export default function Navbar() {
       bg='white'
       _dark={{ bg: 'gray.800' }}>
       <Flex align='center' justify='space-between' gap={4} wrap='wrap'>
-        <RouterLink to='/'>
+        <RouterLink to={ROUTES.HOME}>
           <Box height={{ base: 8, sm: 10 }}>
             <Logo width='100%' height='100%' />
           </Box>
@@ -37,7 +37,10 @@ export default function Navbar() {
             </Button>
           </Box>
           <Box display={{ base: 'initial', md: 'none' }}>
-            <IconButton as={RouterLink} to={ROUTES.FAVORITES} aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
+            <IconButton
+              as={RouterLink}
+              to={ROUTES.FAVORITES}
+              aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
               <IconHeart stroke={1.5} />
             </IconButton>
           </Box>
