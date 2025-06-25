@@ -132,6 +132,14 @@ const STRINGS = {
       REMOVED: 'Usunięto z ulubionych!',
     },
   },
+  PWA: {
+    SHORTCUTS:{
+      FAVORITES: {
+        TITLE: 'Ulubione',
+        DESCRIPTION: 'Zobacz ulubione kalkulatory',
+      },
+    },
+  },
 }
 
 export default STRINGS
