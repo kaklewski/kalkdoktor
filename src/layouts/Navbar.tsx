@@ -8,7 +8,14 @@ import { Link as RouterLink } from 'react-router-dom'
 
 export default function Navbar() {
   return (
-    <Box p={4} borderBottomWidth='1px'>
+    <Box
+      p={4}
+      borderBottomWidth='1px'
+      position='sticky'
+      top={0}
+      zIndex={10}
+      bg='white'
+      _dark={{ bg: 'gray.800' }}>
       <Flex align='center' justify='space-between' gap={4} wrap='wrap'>
         <RouterLink to='/'>
           <Box height={{ base: 8, sm: 10 }}>
