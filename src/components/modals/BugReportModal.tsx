@@ -68,7 +68,7 @@ export default function BugReportModal({ calculatorName }: BugReportModalProps) 
 
                 <FormControl>
                   <FormLabel>{STRINGS.MODALS.BUG_REPORT.FORM.RELATED_CALCULATOR}</FormLabel>
-                  <Input readOnly name='calculator-link' variant='filled' value={calculatorName} />
+                  <Input readOnly name='calculator-name' variant='filled' value={calculatorName} />
                 </FormControl>
               </Stack>
             </ModalBody>
