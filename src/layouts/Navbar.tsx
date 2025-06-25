@@ -5,6 +5,7 @@ import SearchBox from '../components/modals/SearchBox/SearchBox'
 import Logo from '../components/other/Logo'
 import STRINGS from '../data/strings'
 import { Link as RouterLink } from 'react-router-dom'
+import ROUTES from '../data/routes'
 
 export default function Navbar() {
   return (
@@ -29,14 +30,14 @@ export default function Navbar() {
           <Box display={{ base: 'none', md: 'initial' }}>
             <Button
               as={RouterLink}
-              to='/ulubione'
+              to={ROUTES.FAVORITES}
               leftIcon={<IconHeart stroke={1.5} />}
               aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
               {STRINGS.BUTTONS.FAVORITES.TITLE}
             </Button>
           </Box>
           <Box display={{ base: 'initial', md: 'none' }}>
-            <IconButton as={RouterLink} to='/ulubione' aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
+            <IconButton as={RouterLink} to={ROUTES.FAVORITES} aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
               <IconHeart stroke={1.5} />
             </IconButton>
           </Box>

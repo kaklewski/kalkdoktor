@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import ROUTES from './src/data/routes'
+import STRINGS from './src/data/strings'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,9 +43,9 @@ export default defineConfig({
         ],
         shortcuts: [
           {
-            name: 'Ulubione',
-            url: '/ulubione',
-            description: 'Zobacz ulubione kalkulatory',
+            name: STRINGS.PWA.SHORTCUTS.FAVORITES.TITLE,
+            description: STRINGS.PWA.SHORTCUTS.FAVORITES.DESCRIPTION,
+            url: ROUTES.FAVORITES,
             icons: [
               {
                 src: 'icon-ulubione.png',

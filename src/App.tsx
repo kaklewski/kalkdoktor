@@ -14,15 +14,17 @@ import Error404Page from './pages/Error404Page'
 import RouterErrorBoundary from './RouterErrorBoundary'
 import SubmissionSuccessPage from './pages/SubmissionSuccessPage'
 
+import ROUTES from './data/routes'
+
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<RootLayout />} errorElement={<RouterErrorBoundary />}>
+      <Route path={ROUTES.HOME} element={<RootLayout />} errorElement={<RouterErrorBoundary />}>
         <Route index element={<HomePage />} />
+        <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
+        <Route path={ROUTES.IMPORT_FAVORITES} element={<ImportFavoritesPage />} />
+        <Route path={ROUTES.SUCCESS} element={<SubmissionSuccessPage />} />
         <Route path='*' element={<Error404Page />} />
-        <Route path='ulubione' element={<FavoritesPage />} />
-        <Route path='importuj-ulubione' element={<ImportFavoritesPage />} />
-        <Route path='sukces' element={<SubmissionSuccessPage />} />
 
         {calculators.map(calculator => (
           <Route

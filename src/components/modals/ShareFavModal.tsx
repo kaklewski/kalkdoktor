@@ -25,13 +25,14 @@ import {
 import { IconShare } from '@tabler/icons-react'
 import { useEffect } from 'react'
 import STRINGS from '../../data/strings'
+import ROUTES from '../../data/routes'
 
 export default function ShareFavModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { onCopy, value, setValue } = useClipboard('')
 
   useEffect(() => {
-    const urlPath = '/importuj-ulubione'
+    const urlPath = ROUTES.IMPORT_FAVORITES
     const urlHostname = window.location.toString().replace(window.location.pathname, urlPath)
     const favString = localStorage.getItem('favorites')
 

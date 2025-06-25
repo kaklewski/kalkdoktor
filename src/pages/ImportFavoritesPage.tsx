@@ -16,6 +16,7 @@ import useDocumentTitle from '../hooks/useDocumentTitle'
 import STRINGS from '../data/strings'
 import { Link as RouterLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import ROUTES from '../data/routes'
 
 export default function ImportFavoritesPage() {
   useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE)
@@ -44,7 +45,7 @@ export default function ImportFavoritesPage() {
 
   function importFavorites(favorites: string) {
     localStorage.setItem('favorites', favorites)
-    navigate('/ulubione')
+    navigate(ROUTES.FAVORITES)
   }
 
   return (

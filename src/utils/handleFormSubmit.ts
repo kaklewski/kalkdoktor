@@ -1,3 +1,5 @@
+import ROUTES from '../data/routes'
+
 export function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
   event.preventDefault()
 
@@ -9,6 +11,6 @@ export function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData as any).toString(),
   })
-    .then(() => window.location.replace('/sukces'))
+    .then(() => window.location.replace(ROUTES.SUCCESS))
     .catch(error => alert(error))
 }
