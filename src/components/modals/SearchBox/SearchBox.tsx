@@ -40,7 +40,7 @@ export default function SearchBox() {
   }, [isSearchBoxOpen])
 
   useEffect(() => {
-    function toggleModal(event: any) {
+    function toggleModal(event: globalThis.KeyboardEvent) {
       if (event.ctrlKey && event.key === 'k') {
         event.preventDefault()
 
