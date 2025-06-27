@@ -1,16 +1,29 @@
 import ROUTES from '../data/routes'
 
-export function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+export async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
   event.preventDefault()
 
-  const myForm = event.target
-  const formData = new FormData(myForm as HTMLFormElement)
-
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData as any).toString(),
+  const form = event.target as HTMLFormElement
+  const formData = new FormData(form)
+  
+  const plainFormData: Record<string, string> = {}
+  formData.forEach((value, key) => {
+    plainFormData[key] = value.toString()
   })
-    .then(() => window.location.replace(ROUTES.SUCCESS))
-    .catch(error => alert(error))
+
+  try {
+    const response = await fetch(ROUTES.HOME, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(plainFormData).toString(),
+    })
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`)
+    }
+
+    window.location.replace(ROUTES.SUCCESS)
+  } catch (error) {
+    alert(error instanceof Error ? error.message : String(error))
+  }
 }
