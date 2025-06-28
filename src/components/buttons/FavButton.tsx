@@ -3,18 +3,18 @@ import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import { useState } from 'react'
 import { CalculatorType } from '../../types/calculatorTypes'
 import STRINGS from '../../data/strings'
+import STORAGE_KEYS from '../../data/storageKeys'
 
 type FavButtonProps = {
   pageId: CalculatorType['id']
 }
 
 export default function FavButton({ pageId }: FavButtonProps) {
-  const LOCAL_STORAGE_KEY: string = 'favorites'
   const [isFav, setIsFav] = useState<boolean>(() => {
     // Determine if the button should initially be displayed as added to favorites or not
 
     // If there is no string with favorites, return false
-    const favString = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const favString = localStorage.getItem(STORAGE_KEYS.FAVORITES)
     if (favString === null) return false
 
     // If the item is not in the string of fav in local storage, return false
@@ -38,9 +38,9 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   function addToFav() {
     // If there are no favorites, add the item
-    let favString = localStorage.getItem(LOCAL_STORAGE_KEY)
+    let favString = localStorage.getItem(STORAGE_KEYS.FAVORITES)
     if (favString === null) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([pageId]))
+      localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify([pageId]))
       favString = '[]'
     }
 
@@ -58,7 +58,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
       showToast('added')
       setIsFav(true)
     }
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favorites))
+    localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites))
   }
 
   return (

@@ -8,27 +8,20 @@ import { getCategories } from '../utils/getCategories'
 import SortButton from '../components/buttons/SortButton'
 import CalculatorCard from '../components/cards/CalculatorCard'
 import STRINGS from '../data/strings'
+import STORAGE_KEYS from '../data/storageKeys'
 
 export default function FavoritesPage() {
   useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE)
 
-  const STORAGE_KEY_FAVORITES_SORTING = 'sort-favorites'
-
-  const [sortingOrder, setSortingOrder] = useState<string>(() => {
-    const initialSorting = localStorage.getItem(STORAGE_KEY_FAVORITES_SORTING)
-    if (!initialSorting) return 'alphabetically'
-    return initialSorting
-  })
+  const [sortingOrder, setSortingOrder] = useState<string>(
+    localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) || STORAGE_KEYS.SORT.ALPHABETICALLY
+  )
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_FAVORITES_SORTING, sortingOrder)
+    localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sortingOrder)
   }, [sortingOrder])
 
-  const favIds = (() => {
-    const favs = localStorage.getItem('favorites')
-    if (!favs) return []
-    return JSON.parse(favs)
-  })()
+  const favIds = JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]')
   const favoriteCalculators = sortedCalculators.filter(calc => favIds.includes(calc.id))
   const categories: string[] = getCategories(favoriteCalculators)
 
@@ -44,7 +37,7 @@ export default function FavoritesPage() {
         )}
       </Flex>
 
-      {sortingOrder === 'alphabetically' && (
+      {sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY && (
         <Stack spacing={4}>
           {favoriteCalculators.length === 0 ? (
             <NoFavoritesPlaceholder />
@@ -62,7 +55,7 @@ export default function FavoritesPage() {
         </Stack>
       )}
 
-      {sortingOrder === 'by-specialization' && (
+      {sortingOrder === STORAGE_KEYS.SORT.BY_SPECIALIZATION && (
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>

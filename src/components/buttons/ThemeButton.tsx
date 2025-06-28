@@ -12,11 +12,12 @@ import { IconMoon, IconPercentage50, IconSun } from '@tabler/icons-react'
 import { useEffect, useLayoutEffect, useState } from 'react'
 import setThemeAttribute from '../../utils/setThemeAttribute'
 import STRINGS from '../../data/strings'
+import STORAGE_KEYS from '../../data/storageKeys'
 
 export default function ThemeButton() {
   const { colorMode, setColorMode } = useColorMode()
   const [isAutoTheme, setIsAutoTheme] = useState<boolean>(
-    () => localStorage.getItem('auto-color-mode') === 'true'
+    () => localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true'
   )
 
   // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
@@ -27,7 +28,7 @@ export default function ThemeButton() {
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
   useEffect(() => {
-    localStorage.setItem('auto-color-mode', `${isAutoTheme}`)
+    localStorage.setItem(STORAGE_KEYS.COLOR_THEME.AUTO, `${isAutoTheme}`)
 
     if (!isAutoTheme) return
 

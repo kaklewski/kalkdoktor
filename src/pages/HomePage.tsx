@@ -6,18 +6,15 @@ import SortButton from '../components/buttons/SortButton'
 import { calculators } from '../data/calculators'
 import CalculatorCard from '../components/cards/CalculatorCard'
 import STRINGS from '../data/strings'
+import STORAGE_KEYS from '../data/storageKeys'
 
 export default function HomePage() {
-  const STORAGE_KEY_HOMEPAGE_SORTING = 'sort-homepage'
-
-  const [sortingOrder, setSortingOrder] = useState<string>(() => {
-    const initialSorting = localStorage.getItem(STORAGE_KEY_HOMEPAGE_SORTING)
-    if (!initialSorting) return 'alphabetically'
-    return initialSorting
-  })
+  const [sortingOrder, setSortingOrder] = useState<string>(
+    localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) || STORAGE_KEYS.SORT.ALPHABETICALLY
+  )
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_HOMEPAGE_SORTING, sortingOrder)
+    localStorage.setItem(STORAGE_KEYS.SORT.HOMEPAGE, sortingOrder)
   }, [sortingOrder])
 
   const categories: string[] = getCategories(calculators)
@@ -31,7 +28,7 @@ export default function HomePage() {
         <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
       </Flex>
 
-      {sortingOrder === 'alphabetically' && (
+      {sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY && (
         <Stack spacing={4}>
           {sortedCalculators.map(calculator => (
             <CalculatorCard
@@ -45,7 +42,7 @@ export default function HomePage() {
         </Stack>
       )}
 
-      {sortingOrder === 'by-specialization' && (
+      {sortingOrder === STORAGE_KEYS.SORT.BY_SPECIALIZATION && (
         <Stack spacing={12}>
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>

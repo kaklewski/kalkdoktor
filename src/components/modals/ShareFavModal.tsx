@@ -26,6 +26,7 @@ import { IconShare } from '@tabler/icons-react'
 import { useEffect } from 'react'
 import STRINGS from '../../data/strings'
 import ROUTES from '../../data/routes'
+import STORAGE_KEYS from '../../data/storageKeys'
 
 export default function ShareFavModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,7 +35,7 @@ export default function ShareFavModal() {
   useEffect(() => {
     const urlPath = ROUTES.IMPORT_FAVORITES
     const urlHostname = window.location.toString().replace(window.location.pathname, urlPath)
-    const favString = localStorage.getItem('favorites')
+    const favString = localStorage.getItem(STORAGE_KEYS.FAVORITES)
 
     setValue(urlHostname + '?id=' + favString)
   }, [setValue])
