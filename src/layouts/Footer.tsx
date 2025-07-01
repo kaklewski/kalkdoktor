@@ -13,7 +13,7 @@ export default function Footer() {
       </Text>
 
       <Flex>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}>
+        <Tooltip hasArrow label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}>
           <Link href={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.URL} isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}
@@ -23,7 +23,7 @@ export default function Footer() {
             </IconButton>
           </Link>
         </Tooltip>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}>
+        <Tooltip hasArrow label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}>
           <Link href={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.URL} isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}
@@ -33,7 +33,7 @@ export default function Footer() {
             </IconButton>
           </Link>
         </Tooltip>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}>
+        <Tooltip hasArrow label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}>
           <Link href='https://www.linkedin.com/in/oskar-kaklewski' isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}

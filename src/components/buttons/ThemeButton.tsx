@@ -53,7 +53,7 @@ export default function ThemeButton() {
 
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}>
+      <Tooltip hasArrow label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}>
         <MenuButton
           as={IconButton}
           aria-label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}

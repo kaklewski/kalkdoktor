@@ -19,7 +19,7 @@ type SortButtonProps = {
 export default function SortButton({ sortingOrder, setSortingOrder }: SortButtonProps) {
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label={STRINGS.BUTTONS.SORT.TITLE}>
+      <Tooltip hasArrow label={STRINGS.BUTTONS.SORT.TITLE}>
         <MenuButton
           as={IconButton}
           aria-label={STRINGS.BUTTONS.SORT.TITLE}

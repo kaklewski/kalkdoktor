@@ -28,7 +28,7 @@ export default function ContactModal() {
 
   return (
     <>
-      <Tooltip label={STRINGS.MODALS.CONTACT.TITLE}>
+      <Tooltip hasArrow label={STRINGS.MODALS.CONTACT.TITLE}>
         <IconButton
           aria-label={STRINGS.MODALS.CONTACT.TITLE}
           variant='ghost'

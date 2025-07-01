@@ -63,6 +63,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   return (
     <Tooltip
+      hasArrow
       label={
         isFav ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
       }>

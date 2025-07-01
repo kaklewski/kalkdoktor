@@ -97,7 +97,7 @@ export default function SearchBox() {
   return (
     <>
       <Box display={{ base: 'none', md: 'initial' }}>
-        <Tooltip label='Ctrl+K'>
+        <Tooltip hasArrow label='Ctrl+K'>
           <Button
             onClick={openSearchBox}
             leftIcon={<IconSearch />}
@@ -112,7 +112,7 @@ export default function SearchBox() {
         </Tooltip>
       </Box>
       <Box display={{ base: 'initial', md: 'none' }}>
-        <Tooltip label={STRINGS.MODALS.SEARCH.TITLE}>
+        <Tooltip hasArrow label={STRINGS.MODALS.SEARCH.TITLE}>
           <IconButton
             onClick={openSearchBox}
             colorScheme='teal'
