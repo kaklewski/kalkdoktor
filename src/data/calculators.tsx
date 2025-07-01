@@ -2482,9 +2482,11 @@ export const calculators: CalculatorType[] = [
         (document.getElementById('cholesterol') as HTMLInputElement).value
       )
       const manCheckbox = document.getElementById('man') as HTMLInputElement
-      const gender: string = manCheckbox.checked ? 'male' : 'female'
+      const gender: 'male' | 'female' = manCheckbox.checked ? 'male' : 'female'
       const smokingCheckbox = document.getElementById('smoking') as HTMLInputElement
-      const smokingStatus: string = smokingCheckbox.checked ? 'smoking' : 'nonSmoking'
+      const smokingStatus: 'smoking' | 'nonSmoking' = smokingCheckbox.checked
+        ? 'smoking'
+        : 'nonSmoking'
 
       function getCholesterolGroup(cholesterol: number) {
         if (cholesterol < 150) return 0
@@ -2503,7 +2505,21 @@ export const calculators: CalculatorType[] = [
       const cholesterolGroup: number = getCholesterolGroup(cholesterol)
       const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure)
 
-      const score2ValuesTable: any = {
+      type Score2ValuesTable = {
+        female: GenderGroup
+        male: GenderGroup
+      }
+
+      type GenderGroup = {
+        nonSmoking: AgeGroups
+        smoking: AgeGroups
+      }
+
+      type AgeGroups = {
+        [age: number]: number[][]
+      }
+
+      const score2ValuesTable: Score2ValuesTable = {
         female: {
           nonSmoking: {
             40: [
