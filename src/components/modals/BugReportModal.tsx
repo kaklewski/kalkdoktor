@@ -30,7 +30,7 @@ export default function BugReportModal({ calculatorName }: BugReportModalProps) 
 
   return (
     <>
-      <Button leftIcon={<IconFlag stroke={1.5} size={16} />} size='xs' onClick={onOpen}>
+      <Button leftIcon={<IconFlag size={16} />} size='xs' onClick={onOpen}>
         {STRINGS.BUTTONS.REPORT_BUG}
       </Button>
 

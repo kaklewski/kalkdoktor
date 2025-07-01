@@ -100,7 +100,7 @@ export default function SearchBox() {
         <Tooltip label='Ctrl+K'>
           <Button
             onClick={openSearchBox}
-            leftIcon={<IconSearch stroke={1.5} />}
+            leftIcon={<IconSearch />}
             colorScheme='teal'
             aria-label={STRINGS.MODALS.SEARCH.TITLE}
             _focus={{
@@ -118,7 +118,7 @@ export default function SearchBox() {
             colorScheme='teal'
             variant='solid'
             aria-label={STRINGS.MODALS.SEARCH.TITLE}>
-            <IconSearch stroke={1.5} />
+            <IconSearch />
           </IconButton>
         </Tooltip>
       </Box>

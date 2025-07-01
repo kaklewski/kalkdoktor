@@ -17,7 +17,7 @@ export default function Error404Page() {
       justifyContent='center'
       textAlign='center'
       borderRadius='base'>
-      <IconError404 size={100} stroke={1.5} />
+      <IconError404 size={100} />
 
       <AlertTitle fontSize='lg'>{STRINGS.PAGES.ERROR404.TITLE}</AlertTitle>
 

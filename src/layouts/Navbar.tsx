@@ -31,7 +31,7 @@ export default function Navbar() {
             <Button
               as={RouterLink}
               to={ROUTES.FAVORITES}
-              leftIcon={<IconHeart stroke={1.5} />}
+              leftIcon={<IconHeart />}
               aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
               {STRINGS.BUTTONS.FAVORITES.TITLE}
             </Button>
@@ -41,7 +41,7 @@ export default function Navbar() {
               as={RouterLink}
               to={ROUTES.FAVORITES}
               aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}>
-              <IconHeart stroke={1.5} />
+              <IconHeart />
             </IconButton>
           </Box>
 

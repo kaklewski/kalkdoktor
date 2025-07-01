@@ -72,7 +72,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
         }
         variant='outline'
         colorScheme={isFav ? 'red' : 'teal'}
-        icon={isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />}
+        icon={isFav ? <IconHeartFilled /> : <IconHeart />}
         onClick={addToFav}
       />
     </Tooltip>

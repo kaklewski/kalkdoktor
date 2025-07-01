@@ -18,7 +18,7 @@ export default function RouterErrorBoundary() {
         textAlign='center'
         borderRadius='base'
         maxWidth='sm'>
-        <IconExclamationCircle size={70} stroke={1.5} />
+        <IconExclamationCircle size={70} />
 
         <AlertTitle fontSize='lg' mt={4} mb={1}>
           {STRINGS.PAGES.ERROR_BOUNDARY.TITLE}

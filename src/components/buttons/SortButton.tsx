@@ -25,9 +25,9 @@ export default function SortButton({ sortingOrder, setSortingOrder }: SortButton
           aria-label={STRINGS.BUTTONS.SORT.TITLE}
           icon={
             sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY ? (
-              <IconSortAscendingLetters stroke={1.5} />
+              <IconSortAscendingLetters />
             ) : (
-              <IconSortAscendingShapes stroke={1.5} />
+              <IconSortAscendingShapes />
             )
           }
         />

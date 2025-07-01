@@ -88,7 +88,7 @@ export default function FavoritesPage() {
 function NoFavoritesPlaceholder() {
   return (
     <VStack my={10} mx='auto'>
-      <IconHeartOff stroke={1.5} size={100} />
+      <IconHeartOff size={100} />
       <Heading as='h1' size='md' mx='auto'>
         {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
       </Heading>

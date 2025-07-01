@@ -56,7 +56,7 @@ export default function ShareFavModal() {
     <>
       <Tooltip label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}>
         <IconButton
-          icon={<IconShare stroke={1.5} />}
+          icon={<IconShare />}
           aria-label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}
           onClick={onOpen}
         />

@@ -18,7 +18,7 @@ export default function SearchBar({
   return (
     <InputGroup>
       <InputLeftElement pointerEvents='none'>
-        <IconSearch stroke={1.5} />
+        <IconSearch />
       </InputLeftElement>
 
       <Input
@@ -40,7 +40,7 @@ export default function SearchBar({
               focusOnSearchBar()
             }}
             aria-label={STRINGS.BUTTONS.CLEAR}>
-            <IconBackspaceFilled stroke={1.5} />
+            <IconBackspaceFilled />
           </Button>
         </InputRightElement>
       )}

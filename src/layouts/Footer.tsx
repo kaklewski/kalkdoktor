@@ -19,7 +19,7 @@ export default function Footer() {
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}
               variant='ghost'
               size='sm'>
-              <IconBrandGithub size={20} stroke={1.8} />
+              <IconBrandGithub size={20} />
             </IconButton>
           </Link>
         </Tooltip>
@@ -29,7 +29,7 @@ export default function Footer() {
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}
               variant='ghost'
               size='sm'>
-              <IconWorld size={20} stroke={1.8} />
+              <IconWorld size={20} />
             </IconButton>
           </Link>
         </Tooltip>
@@ -39,7 +39,7 @@ export default function Footer() {
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}
               variant='ghost'
               size='sm'>
-              <IconBrandLinkedin size={20} stroke={1.8} />
+              <IconBrandLinkedin size={20} />
             </IconButton>
           </Link>
         </Tooltip>

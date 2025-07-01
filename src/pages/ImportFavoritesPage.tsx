@@ -55,7 +55,7 @@ export default function ImportFavoritesPage() {
         <Card variant='outline'>
           <CardBody>
             <VStack mx='auto' maxW='80%'>
-              <IconHeartPlus stroke={1.5} size={100} />
+              <IconHeartPlus size={100} />
               <Heading as='h1' mx='auto' size='md'>
                 {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
               </Heading>

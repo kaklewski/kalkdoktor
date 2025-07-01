@@ -17,7 +17,7 @@ export default function SubmissionSuccessPage() {
       justifyContent='center'
       textAlign='center'
       borderRadius='base'>
-      <IconMailCheck size={100} stroke={1.5} />
+      <IconMailCheck size={100} />
 
       <AlertTitle fontSize='lg'>{STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE}</AlertTitle>
 

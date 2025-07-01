@@ -10,7 +10,7 @@ export default function NoResultsMessage() {
       justifyContent='center'
       textAlign='center'
       py={4}>
-      <IconZoomQuestion size={100} stroke={1.5} />
+      <IconZoomQuestion size={100} />
       <Text fontSize='lg'>{STRINGS.MODALS.SEARCH.NO_RESULTS}</Text>
     </Flex>
   )

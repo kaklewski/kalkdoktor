@@ -46,9 +46,9 @@ export default function ThemeButton() {
 
   const currentTheme = isAutoTheme ? 'auto' : colorMode
   const currentThemeIcon = {
-    auto: <IconPercentage50 stroke={1.5} />,
-    light: <IconSun stroke={1.5} />,
-    dark: <IconMoon stroke={1.5} />,
+    auto: <IconPercentage50 />,
+    light: <IconSun />,
+    dark: <IconMoon />,
   }
 
   return (

@@ -34,7 +34,7 @@ export default function ContactModal() {
           variant='ghost'
           size='sm'
           onClick={onOpen}>
-          <IconMail size={20} stroke={1.8} />
+          <IconMail size={20} />
         </IconButton>
       </Tooltip>
 

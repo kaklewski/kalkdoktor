@@ -50,7 +50,6 @@ export default function SearchResultItem({
         {name}
         <Flex justifyContent='center' alignItems='center'>
           <IconCornerDownLeft
-            stroke={1.5}
             size={20}
             style={{
               opacity: '55%',
