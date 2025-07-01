@@ -5017,6 +5017,130 @@ export const calculators: CalculatorType[] = [
     },
   },
 
+  {
+    id: 35,
+    name: 'Kalkulator beztłuszczowej masy ciała',
+    urlPath: '/kalkulator-beztluszczowej-masy-ciala',
+    category: 'antropometria',
+    description:
+      'Pomaga obliczyć beztłuszczową masę ciała (LBM) na podstawie wzrostu, wagi i płci.',
+    methodology: (
+      <>
+        <Text>
+          Beztłuszczowa masa ciała (LBM – <em>Lean Body Mass</em>) to masa organizmu po odjęciu
+          tkanki tłuszczowej. Jest to istotny wskaźnik w ocenie składu ciała, wykorzystywany do
+          monitorowania postępów w redukcji masy tłuszczowej lub w budowaniu masy mięśniowej.
+        </Text>
+
+        <br />
+        <Text>Wzór do obliczenia LBM jest różny dla kobiet i mężczyzn:</Text>
+
+        <UnorderedList>
+          <ListItem>
+            <strong>Mężczyźni:</strong>{' '}
+            <MathJax>{'`LBM = 0.407 \\times M + 0.267 \\times H - 19.2`'}</MathJax>
+          </ListItem>
+          <ListItem>
+            <strong>Kobiety:</strong>{' '}
+            <MathJax>{'`LBM = 0.252 \\times M + 0.473 \\times H - 48.3`'}</MathJax>
+          </ListItem>
+        </UnorderedList>
+
+        <br />
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>LBM</strong> – beztłuszczowa masa ciała (w kg),
+          </ListItem>
+          <ListItem>
+            <strong>M</strong> – masa ciała (w kg),
+          </ListItem>
+          <ListItem>
+            <strong>H</strong> – wzrost (w cm).
+          </ListItem>
+        </UnorderedList>
+
+        <br />
+        <Text>
+          Wzory te oparte są na badaniach populacyjnych i stanowią przybliżenie, które może być
+          wykorzystywane u dorosłych w celu orientacyjnego oszacowania beztłuszczowej masy ciała.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Omni Calculator (Mateusz Mucha, Piotr Małek, Łucja Zaborowska)',
+        title: 'Kalkulator beztłuszczowej masy ciała',
+        dateOfAccess: '01.07.2025',
+        link: 'https://www.omnicalculator.com/pl/zdrowie/beztluszczowa-masa-ciala',
+      },
+    ],
+    fields: {
+      numberInputs: [
+        {
+          id: 'weight',
+          text: 'Masa ciała (kg)',
+          min: 1,
+          max: 250,
+        },
+        {
+          id: 'height',
+          text: 'Wzrost (cm)',
+          min: 1,
+          max: 230,
+        },
+      ],
+      checkboxes: null,
+      radioGroups: [
+        {
+          id: 'sex',
+          text: 'Płeć',
+          radios: [
+            {
+              id: 'female',
+              value: 'female',
+              hideBadge: true,
+              text: 'Kobieta',
+            },
+            {
+              id: 'male',
+              value: 'male',
+              hideBadge: true,
+              text: 'Mężczyzna',
+            },
+          ],
+        },
+      ],
+    },
+    resultUnit: 'kg',
+
+    getResult: () => {
+      const weight: number = parseFloat(
+        (document.getElementById('weight') as HTMLInputElement).value
+      )
+      const height: number = parseFloat(
+        (document.getElementById('height') as HTMLInputElement).value
+      )
+      const sex: string = (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)
+        ?.value
+
+      let result: number
+      if (sex === 'male') {
+        result = 0.407 * weight + 0.267 * height - 19.2
+      } else {
+        result = 0.252 * weight + 0.473 * height - 48.3
+      }
+
+      return result
+    },
+
+    getResultInterpretation: (result: number) => {
+      if (result === 0) return 'Uzupełnij wszystkie informacje.'
+      return 'Beztłuszczowa masa ciała.'
+    },
+  },
+
   // {
   // 	id: ,
   // 	name: '',
