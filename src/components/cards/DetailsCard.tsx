@@ -43,7 +43,7 @@ export default function DetailsCard({ description, methodology, sources }: Detai
             <Text>{description}</Text>
           </TabPanel>
           <TabPanel>
-            {sources && sources.length > 1
+            {sources && sources.length > 0
               ? sources.map(sourceItem => {
                   return (
                     <SourceLink
