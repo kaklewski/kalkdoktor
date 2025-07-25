@@ -133,13 +133,13 @@ const STRINGS = {
     },
   },
   PWA: {
-    SHORTCUTS:{
+    SHORTCUTS: {
       FAVORITES: {
         TITLE: 'Ulubione',
         DESCRIPTION: 'Zobacz ulubione kalkulatory',
       },
     },
   },
-}
+};
 
-export default STRINGS
+export default STRINGS;

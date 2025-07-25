@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 export default function useDocumentTitle(pageTitle: string) {
   useEffect(() => {
-    document.title = `${pageTitle} - Kalkdoktor`
-  }, [pageTitle])
+    document.title = `${pageTitle} - Kalkdoktor`;
+  }, [pageTitle]);
 }

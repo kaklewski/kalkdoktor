@@ -1,33 +1,34 @@
-import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { CalculatorType, SourceType } from '../../types/calculatorTypes'
-import STRINGS from '../../data/strings'
-import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { CalculatorType, SourceType } from '../../types/calculatorTypes';
+import STRINGS from '../../data/strings';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type DetailsCardProps = {
-  description: CalculatorType['description']
-  methodology: CalculatorType['methodology']
-  sources: CalculatorType['sources']
-}
+  description: CalculatorType['description'];
+  methodology: CalculatorType['methodology'];
+  sources: CalculatorType['sources'];
+};
 
 export default function DetailsCard({ description, methodology, sources }: DetailsCardProps) {
-  const [tabIndex, setTabIndex] = useState(0)
-  const location = useLocation()
+  const [tabIndex, setTabIndex] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
-    setTabIndex(0)
-  }, [location.pathname])
+    setTabIndex(0);
+  }, [location.pathname]);
 
   return (
-    <Card variant='outline'>
+    <Card variant="outline">
       <Tabs
         index={tabIndex}
         onChange={setTabIndex}
-        variant='enclosed'
-        colorScheme='teal'
+        variant="enclosed"
+        colorScheme="teal"
         isFitted
-        isLazy>
+        isLazy
+      >
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
           <Tab>
@@ -44,7 +45,7 @@ export default function DetailsCard({ description, methodology, sources }: Detai
           </TabPanel>
           <TabPanel>
             {sources && sources.length > 0
-              ? sources.map(sourceItem => {
+              ? sources.map((sourceItem) => {
                   return (
                     <SourceLink
                       key={sourceItem.id}
@@ -53,7 +54,7 @@ export default function DetailsCard({ description, methodology, sources }: Detai
                       dateOfAccess={sourceItem.dateOfAccess}
                       link={sourceItem.link}
                     />
-                  )
+                  );
                 })
               : STRINGS.PAGES.CALCULATOR.OWN_WORK}
           </TabPanel>
@@ -61,20 +62,20 @@ export default function DetailsCard({ description, methodology, sources }: Detai
         </TabPanels>
       </Tabs>
     </Card>
-  )
+  );
 }
 
-type SourceLinkProps = Omit<SourceType, 'id'>
+type SourceLinkProps = Omit<SourceType, 'id'>;
 
 function SourceLink({ author, title, dateOfAccess, link }: SourceLinkProps) {
   return (
     <Box mb={2}>
       <Link href={link} isExternal>
-        <Text as='span'>
-          {author}, <Text as='i'>{title}</Text>, {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
+        <Text as="span">
+          {author}, <Text as="i">{title}</Text>, {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
         </Text>
-        <ExternalLinkIcon mx='2px' ml={1} mt={-1} />
+        <ExternalLinkIcon mx="2px" ml={1} mt={-1} />
       </Link>
     </Box>
-  )
+  );
 }

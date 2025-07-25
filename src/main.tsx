@@ -1,17 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import { ChakraProvider } from '@chakra-ui/react'
-import './assets/styles.scss'
-import { theme } from './theme'
-import { MathJaxContext } from 'better-react-mathjax'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import { ChakraProvider } from '@chakra-ui/react';
+import './assets/styles.scss';
+import { theme } from './theme';
+import { MathJaxContext } from 'better-react-mathjax';
 
 const mathJaxConfig = {
   loader: { load: ['input/asciimath'] },
   options: {
     enableMenu: false,
   },
-}
+};
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -20,5 +20,5 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </MathJaxContext>
     </ChakraProvider>
-  </StrictMode>
-)
+  </StrictMode>,
+);

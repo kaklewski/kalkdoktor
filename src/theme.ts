@@ -1,6 +1,6 @@
 // https://codesandbox.io/p/sandbox/chakra-change-focus-ring-color-c2yis?file=%2Fsrc%2Ftheme.ts%3A1%2C1-78%2C1
 
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react';
 
 const variantOutlined = () => ({
   field: {
@@ -9,7 +9,7 @@ const variantOutlined = () => ({
       boxShadow: '0 0 0 1px var(--chakra-ui-focus-ring-color)',
     },
   },
-})
+});
 
 const variantFilled = () => ({
   field: {
@@ -18,7 +18,7 @@ const variantFilled = () => ({
       boxShadow: '0 0 0 1px var(--chakra-ui-focus-ring-color)',
     },
   },
-})
+});
 
 const variantFlushed = () => ({
   field: {
@@ -27,7 +27,7 @@ const variantFlushed = () => ({
       boxShadow: '0 1px 0 0 var(--chakra-ui-focus-ring-color)',
     },
   },
-})
+});
 
 export const theme = extendTheme({
   config: {
@@ -76,4 +76,4 @@ export const theme = extendTheme({
       },
     },
   },
-})
+});

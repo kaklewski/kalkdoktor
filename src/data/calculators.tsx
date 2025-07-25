@@ -1,7 +1,7 @@
-import sumInputValues from '../utils/sumInputValues'
-import { CalculatorType } from '../types/calculatorTypes'
-import { MathJax } from 'better-react-mathjax'
-import { ListItem, Text, UnorderedList } from '@chakra-ui/react'
+import sumInputValues from '../utils/sumInputValues';
+import { CalculatorType } from '../types/calculatorTypes';
+import { MathJax } from 'better-react-mathjax';
+import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
 
 export const calculators: CalculatorType[] = [
   {
@@ -71,21 +71,22 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const bodyMass = parseFloat((document.getElementById('bodyMass') as HTMLInputElement).value)
-      const height = parseFloat((document.getElementById('height') as HTMLInputElement).value) / 100
-      const result: number = Math.round(bodyMass / (height * height))
-      return result
+      const bodyMass = parseFloat((document.getElementById('bodyMass') as HTMLInputElement).value);
+      const height =
+        parseFloat((document.getElementById('height') as HTMLInputElement).value) / 100;
+      const result: number = Math.round(bodyMass / (height * height));
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      if (result > 0 && result < 18.5) return 'Niedowaga'
-      if (result >= 18.5 && result < 25) return 'Wartość prawidłowa'
-      if (result >= 25 && result < 30) return 'Nadwaga'
-      if (result >= 30 && result < 35) return 'Otyłość I stopnia'
-      if (result >= 35 && result < 40) return 'Otyłość II stopnia'
-      if (result >= 40) return 'Otyłość III stopnia'
-      return ''
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      if (result > 0 && result < 18.5) return 'Niedowaga';
+      if (result >= 18.5 && result < 25) return 'Wartość prawidłowa';
+      if (result >= 25 && result < 30) return 'Nadwaga';
+      if (result >= 30 && result < 35) return 'Otyłość I stopnia';
+      if (result >= 35 && result < 40) return 'Otyłość II stopnia';
+      if (result >= 40) return 'Otyłość III stopnia';
+      return '';
     },
   },
 
@@ -180,24 +181,24 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      const maleCheckbox = document.getElementById('male') as HTMLInputElement
-      const isMale: boolean = maleCheckbox && maleCheckbox.checked ? true : false
+      const maleCheckbox = document.getElementById('male') as HTMLInputElement;
+      const isMale: boolean = maleCheckbox && maleCheckbox.checked ? true : false;
 
-      const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.'
+      const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
       const mediumRisk: string =
-        'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.'
-      const highRisk: string = 'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.'
+        'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
+      const highRisk: string = 'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
 
       if (isMale) {
-        if (result <= 0) return lowRisk
-        if (result == 1) return mediumRisk
-        if (result >= 2) return highRisk
+        if (result <= 0) return lowRisk;
+        if (result == 1) return mediumRisk;
+        if (result >= 2) return highRisk;
       } else {
-        if (result <= 1) return lowRisk
-        if (result == 2) return mediumRisk
-        if (result >= 3) return highRisk
+        if (result <= 1) return lowRisk;
+        if (result == 2) return mediumRisk;
+        if (result >= 3) return highRisk;
       }
-      return lowRisk
+      return lowRisk;
     },
   },
 
@@ -272,12 +273,12 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result >= 4) {
-        return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
+        return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
       }
       if (result >= 2 && result <= 3) {
-        return 'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.'
+        return 'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
       }
-      return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.'
+      return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.';
     },
   },
 
@@ -360,12 +361,12 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result >= 3) {
-        return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.'
+        return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.';
       }
       if (result === 1 || result === 2) {
-        return 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.'
+        return 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.';
       }
-      return 'Małe prawdopodobieństwo zakrzepicy żył głębokich.'
+      return 'Małe prawdopodobieństwo zakrzepicy żył głębokich.';
     },
   },
 
@@ -443,25 +444,25 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const amountPerIntake: number = parseFloat(
-        (document.getElementById('amountPerIntake') as HTMLInputElement).value
-      )
+        (document.getElementById('amountPerIntake') as HTMLInputElement).value,
+      );
       const numberOfIntakes: number = parseFloat(
-        (document.getElementById('numberOfIntakes') as HTMLInputElement).value
-      )
+        (document.getElementById('numberOfIntakes') as HTMLInputElement).value,
+      );
       const daysOfUse: number = parseFloat(
-        (document.getElementById('daysOfUse') as HTMLInputElement).value
-      )
+        (document.getElementById('daysOfUse') as HTMLInputElement).value,
+      );
       const packageSize: number = parseFloat(
-        (document.getElementById('packageSize') as HTMLInputElement).value
-      )
+        (document.getElementById('packageSize') as HTMLInputElement).value,
+      );
       const result: number = Math.round(
-        (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize
-      )
-      return result
+        (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
+      );
+      return result;
     },
 
     getResultInterpretation: () => {
-      return 'Liczba opakowań, które należy przepisać.'
+      return 'Liczba opakowań, które należy przepisać.';
     },
   },
 
@@ -527,19 +528,19 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'g',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value)
+      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
       const weight: number = parseFloat(
-        (document.getElementById('weight') as HTMLInputElement).value
-      )
-      let result: number = (60 * weight) / 1000
-      if (age <= 12 && result > 2) result = 2
-      if (result > 4) result = 4
-      return result
+        (document.getElementById('weight') as HTMLInputElement).value,
+      );
+      let result: number = (60 * weight) / 1000;
+      if (age <= 12 && result > 2) result = 2;
+      if (result > 4) result = 4;
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Maksymalna dobowa dawka paracetamolu.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Maksymalna dobowa dawka paracetamolu.';
     },
   },
 
@@ -624,9 +625,9 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result >= 4) {
-        return 'Duże ryzyko krwawienia.'
+        return 'Duże ryzyko krwawienia.';
       }
-      return 'Nieduże ryzyko krwawienia.'
+      return 'Nieduże ryzyko krwawienia.';
     },
   },
 
@@ -757,13 +758,13 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 13) return 'Łagodne zaburzenia świadomości.'
-      if (result >= 9) return 'Umiarkowane zaburzenia świadomości.'
-      if (result >= 6) return 'Brak przytomności.'
-      if (result === 5) return 'Odkorowanie.'
-      if (result === 4) return 'Odmóżdżenie.'
-      if (result === 3) return 'Śmierć mózgu.'
-      return 'Uzupełnij wszystkie informacje.'
+      if (result >= 13) return 'Łagodne zaburzenia świadomości.';
+      if (result >= 9) return 'Umiarkowane zaburzenia świadomości.';
+      if (result >= 6) return 'Brak przytomności.';
+      if (result === 5) return 'Odkorowanie.';
+      if (result === 4) return 'Odmóżdżenie.';
+      if (result === 3) return 'Śmierć mózgu.';
+      return 'Uzupełnij wszystkie informacje.';
     },
   },
 
@@ -1035,11 +1036,11 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 20) return 'Ciężki epizod depresyjny.'
-      if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.'
-      if (result >= 10) return 'Umiarkowany epizod depresyjny.'
-      if (result >= 5) return 'Łagodny epizod depresyjny.'
-      return 'Brak depresji.'
+      if (result >= 20) return 'Ciężki epizod depresyjny.';
+      if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.';
+      if (result >= 10) return 'Umiarkowany epizod depresyjny.';
+      if (result >= 5) return 'Łagodny epizod depresyjny.';
+      return 'Brak depresji.';
     },
   },
 
@@ -1099,19 +1100,19 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const qtInterval: number = parseFloat(
-        (document.getElementById('qtInterval') as HTMLInputElement).value
-      )
+        (document.getElementById('qtInterval') as HTMLInputElement).value,
+      );
       const heartRate: number = parseFloat(
-        (document.getElementById('heartRate') as HTMLInputElement).value
-      )
-      const rr: number = 60 / heartRate
-      const result: number = qtInterval / Math.sqrt(rr)
-      return result
+        (document.getElementById('heartRate') as HTMLInputElement).value,
+      );
+      const rr: number = 60 / heartRate;
+      const result: number = qtInterval / Math.sqrt(rr);
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Skorygowany odstęp QTc.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Skorygowany odstęp QTc.';
     },
   },
 
@@ -1193,24 +1194,24 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const prothrombinTime: number = parseFloat(
-        (document.getElementById('prothrombinTime') as HTMLInputElement).value
-      )
+        (document.getElementById('prothrombinTime') as HTMLInputElement).value,
+      );
       const controlTime: number = parseFloat(
-        (document.getElementById('controlTime') as HTMLInputElement).value
-      )
+        (document.getElementById('controlTime') as HTMLInputElement).value,
+      );
       const bilirubin: number = parseFloat(
-        (document.getElementById('bilirubin') as HTMLInputElement).value
-      )
-      const result: number = (prothrombinTime - controlTime) * 4.6 + bilirubin
-      return result
+        (document.getElementById('bilirubin') as HTMLInputElement).value,
+      );
+      const result: number = (prothrombinTime - controlTime) * 4.6 + bilirubin;
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
       if (result > 32)
-        return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.'
+        return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.';
       if (result <= 32 && result > 0)
-        return 'Alkoholowe zapalenie wątroby o umiarkowanym lub niewielkim nasileniu.'
-      return 'Uzupełnij wszystkie informacje.'
+        return 'Alkoholowe zapalenie wątroby o umiarkowanym lub niewielkim nasileniu.';
+      return 'Uzupełnij wszystkie informacje.';
     },
   },
 
@@ -1273,22 +1274,22 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'g',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value)
+      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
       const weight: number = parseFloat(
-        (document.getElementById('weight') as HTMLInputElement).value
-      )
-      let result: number
+        (document.getElementById('weight') as HTMLInputElement).value,
+      );
+      let result: number;
       if (age <= 12) {
-        result = (30 * weight) / 1000
+        result = (30 * weight) / 1000;
       } else {
-        result = 3.2
+        result = 3.2;
       }
-      return result
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Maksymalna dobowa dawka ibuprofenu.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Maksymalna dobowa dawka ibuprofenu.';
     },
   },
 
@@ -1403,23 +1404,23 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value)
-      const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input')
-      let sum: number = age
+      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+      const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+      let sum: number = age;
 
-      inputs.forEach(input => {
-        if (input.checked) sum += parseInt(input.value)
-      })
+      inputs.forEach((input) => {
+        if (input.checked) sum += parseInt(input.value);
+      });
 
-      return sum
+      return sum;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result > 125) return 'Klasa V: ryzyko bardzo duże.'
-      if (result > 105) return 'Klasa IV: ryzyko duże.'
-      if (result > 85) return 'Klasa III: ryzyko umiarkowane.'
-      if (result > 65) return 'Klasa II: ryzyko małe.'
-      return 'Klasa I: ryzyko bardzo małe.'
+      if (result > 125) return 'Klasa V: ryzyko bardzo duże.';
+      if (result > 105) return 'Klasa IV: ryzyko duże.';
+      if (result > 85) return 'Klasa III: ryzyko umiarkowane.';
+      if (result > 65) return 'Klasa II: ryzyko małe.';
+      return 'Klasa I: ryzyko bardzo małe.';
     },
   },
 
@@ -1508,9 +1509,9 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 11) return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.'
-      if (result >= 4) return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.'
-      return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.'
+      if (result >= 11) return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.';
+      if (result >= 4) return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.';
+      return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.';
     },
   },
 
@@ -1575,9 +1576,9 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result >= 3)
-        return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.'
-      if (result === 2) return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.'
-      return 'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.'
+        return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.';
+      if (result === 2) return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.';
+      return 'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.';
     },
   },
 
@@ -1665,22 +1666,22 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const waist = parseFloat((document.getElementById('waist') as HTMLInputElement).value)
-      const hips = parseFloat((document.getElementById('hips') as HTMLInputElement).value)
-      const result = waist / hips
-      return result
+      const waist = parseFloat((document.getElementById('waist') as HTMLInputElement).value);
+      const hips = parseFloat((document.getElementById('hips') as HTMLInputElement).value);
+      const result = waist / hips;
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      const maleCheckbox = document.getElementById('male') as HTMLInputElement
-      const isMale = maleCheckbox && maleCheckbox.checked ? true : false
+      const maleCheckbox = document.getElementById('male') as HTMLInputElement;
+      const isMale = maleCheckbox && maleCheckbox.checked ? true : false;
 
       if (isMale) {
-        if (result >= 1) return 'Otyłość androidalna (brzuszna).'
-        return 'Waga w normie.'
+        if (result >= 1) return 'Otyłość androidalna (brzuszna).';
+        return 'Waga w normie.';
       }
-      if (result >= 0.85) return 'Otyłość androidalna (brzuszna).'
-      return 'Waga w normie.'
+      if (result >= 0.85) return 'Otyłość androidalna (brzuszna).';
+      return 'Waga w normie.';
     },
   },
 
@@ -1733,8 +1734,8 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 2) return 'Wysokie ryzyko zgonu.'
-      return 'Niewysokie ryzyko zgonu.'
+      if (result >= 2) return 'Wysokie ryzyko zgonu.';
+      return 'Niewysokie ryzyko zgonu.';
     },
   },
 
@@ -1881,9 +1882,9 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 7) return 'Silne uzależnienie od nikotyny.'
-      if (result >= 4) return 'Średnie uzależnienie od nikotyny.'
-      return 'Słabe uzależnienie od nikotyny.'
+      if (result >= 7) return 'Silne uzależnienie od nikotyny.';
+      if (result >= 4) return 'Średnie uzależnienie od nikotyny.';
+      return 'Słabe uzależnienie od nikotyny.';
     },
   },
 
@@ -1940,10 +1941,10 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result === 4) return 'NYHA IV'
-      if (result === 3) return 'NYHA III'
-      if (result === 2) return 'NYHA II'
-      return 'NYHA I'
+      if (result === 4) return 'NYHA IV';
+      if (result === 3) return 'NYHA III';
+      if (result === 2) return 'NYHA II';
+      return 'NYHA I';
     },
   },
 
@@ -2001,10 +2002,10 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result === 4) return 'Klasa CCS IV'
-      if (result === 3) return 'Klasa CCS III'
-      if (result === 2) return 'Klasa CCS II'
-      return 'Klasa CCS I'
+      if (result === 4) return 'Klasa CCS IV';
+      if (result === 3) return 'Klasa CCS III';
+      if (result === 2) return 'Klasa CCS II';
+      return 'Klasa CCS I';
     },
   },
 
@@ -2106,25 +2107,25 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'ml/min',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value)
+      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
       const weight: number = parseFloat(
-        (document.getElementById('weight') as HTMLInputElement).value
-      )
+        (document.getElementById('weight') as HTMLInputElement).value,
+      );
       const creatinine: number = parseFloat(
-        (document.getElementById('creatinine') as HTMLInputElement).value
-      )
-      const femaleCheckbox = document.getElementById('female') as HTMLInputElement
-      const isWoman: boolean = femaleCheckbox && femaleCheckbox.checked ? true : false
+        (document.getElementById('creatinine') as HTMLInputElement).value,
+      );
+      const femaleCheckbox = document.getElementById('female') as HTMLInputElement;
+      const isWoman: boolean = femaleCheckbox && femaleCheckbox.checked ? true : false;
 
-      let result: number = ((140 - age) * weight) / (creatinine * 72)
-      if (isWoman) result = result * 0.85
+      let result: number = ((140 - age) * weight) / (creatinine * 72);
+      if (isWoman) result = result * 0.85;
 
-      return result
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Klirens kreatyniny.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Klirens kreatyniny.';
     },
   },
 
@@ -2227,23 +2228,23 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value)
-      const alt: number = parseFloat((document.getElementById('alt') as HTMLInputElement).value)
-      const ast: number = parseFloat((document.getElementById('ast') as HTMLInputElement).value)
+      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+      const alt: number = parseFloat((document.getElementById('alt') as HTMLInputElement).value);
+      const ast: number = parseFloat((document.getElementById('ast') as HTMLInputElement).value);
       const platelet: number = parseFloat(
-        (document.getElementById('platelet') as HTMLInputElement).value
-      )
+        (document.getElementById('platelet') as HTMLInputElement).value,
+      );
 
-      const result: number = (age * ast) / (platelet * Math.sqrt(alt))
-      return result
+      const result: number = (age * ast) / (platelet * Math.sqrt(alt));
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      if (result > 3.25) return 'Duże prawdopodobieństwo zaawansowanego włóknienia.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      if (result > 3.25) return 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
       if (result > 1.45)
-        return 'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.'
-      return 'Małe prawdopodobieństwo zaawansowanego włóknienia.'
+        return 'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.';
+      return 'Małe prawdopodobieństwo zaawansowanego włóknienia.';
     },
   },
 
@@ -2381,10 +2382,10 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      if (result >= 10) return 'Klasa C. Są wskazania do przeszczepu wątroby.'
-      if (result >= 7) return 'Klasa B. Są wskazania do przeszczepu wątroby.'
-      return 'Klasa A. Nie ma wskazań do przeszczepu wątroby.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      if (result >= 10) return 'Klasa C. Są wskazania do przeszczepu wątroby.';
+      if (result >= 7) return 'Klasa B. Są wskazania do przeszczepu wątroby.';
+      return 'Klasa A. Nie ma wskazań do przeszczepu wątroby.';
     },
   },
 
@@ -2473,51 +2474,51 @@ export const calculators: CalculatorType[] = [
     resultUnit: '%',
 
     getResult: () => {
-      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value)
-      const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40
+      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value);
+      const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40;
       const bloodPressure: number = parseFloat(
-        (document.getElementById('bloodPressure') as HTMLInputElement).value
-      )
+        (document.getElementById('bloodPressure') as HTMLInputElement).value,
+      );
       const cholesterol: number = parseFloat(
-        (document.getElementById('cholesterol') as HTMLInputElement).value
-      )
-      const manCheckbox = document.getElementById('man') as HTMLInputElement
-      const gender: 'male' | 'female' = manCheckbox.checked ? 'male' : 'female'
-      const smokingCheckbox = document.getElementById('smoking') as HTMLInputElement
+        (document.getElementById('cholesterol') as HTMLInputElement).value,
+      );
+      const manCheckbox = document.getElementById('man') as HTMLInputElement;
+      const gender: 'male' | 'female' = manCheckbox.checked ? 'male' : 'female';
+      const smokingCheckbox = document.getElementById('smoking') as HTMLInputElement;
       const smokingStatus: 'smoking' | 'nonSmoking' = smokingCheckbox.checked
         ? 'smoking'
-        : 'nonSmoking'
+        : 'nonSmoking';
 
       function getCholesterolGroup(cholesterol: number) {
-        if (cholesterol < 150) return 0
-        if (cholesterol < 200) return 1
-        if (cholesterol < 250) return 2
-        return 3
+        if (cholesterol < 150) return 0;
+        if (cholesterol < 200) return 1;
+        if (cholesterol < 250) return 2;
+        return 3;
       }
 
       function getBloodPressureGroup(bloodPressure: number) {
-        if (bloodPressure < 120) return 0
-        if (bloodPressure < 140) return 1
-        if (bloodPressure < 160) return 2
-        return 3
+        if (bloodPressure < 120) return 0;
+        if (bloodPressure < 140) return 1;
+        if (bloodPressure < 160) return 2;
+        return 3;
       }
 
-      const cholesterolGroup: number = getCholesterolGroup(cholesterol)
-      const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure)
+      const cholesterolGroup: number = getCholesterolGroup(cholesterol);
+      const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure);
 
       type Score2ValuesTable = {
-        female: GenderGroup
-        male: GenderGroup
-      }
+        female: GenderGroup;
+        male: GenderGroup;
+      };
 
       type GenderGroup = {
-        nonSmoking: AgeGroups
-        smoking: AgeGroups
-      }
+        nonSmoking: AgeGroups;
+        smoking: AgeGroups;
+      };
 
       type AgeGroups = {
-        [age: number]: number[][]
-      }
+        [age: number]: number[][];
+      };
 
       const score2ValuesTable: Score2ValuesTable = {
         female: {
@@ -2772,31 +2773,31 @@ export const calculators: CalculatorType[] = [
             ],
           },
         },
-      }
+      };
 
       const risk: number =
-        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][cholesterolGroup]
+        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][cholesterolGroup];
 
-      return risk
+      return risk;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
 
-      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value)
+      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value);
       if (age >= 70) {
-        if (result < 7.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.'
-        if (result < 15) return 'Duże ryzyko w skali SCORE2-OP.'
-        return 'Bardzo duże ryzyko w skali SCORE2-OP.'
+        if (result < 7.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.';
+        if (result < 15) return 'Duże ryzyko w skali SCORE2-OP.';
+        return 'Bardzo duże ryzyko w skali SCORE2-OP.';
       }
       if (age >= 50) {
-        if (result < 5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.'
-        if (result < 10) return 'Duże ryzyko w skali SCORE2.'
-        return 'Bardzo duże ryzyko w skali SCORE2.'
+        if (result < 5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.';
+        if (result < 10) return 'Duże ryzyko w skali SCORE2.';
+        return 'Bardzo duże ryzyko w skali SCORE2.';
       }
-      if (result < 2.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.'
-      if (result < 7.5) return 'Duże ryzyko w skali SCORE2.'
-      return 'Bardzo duże ryzyko w skali SCORE2.'
+      if (result < 2.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.';
+      if (result < 7.5) return 'Duże ryzyko w skali SCORE2.';
+      return 'Bardzo duże ryzyko w skali SCORE2.';
     },
   },
 
@@ -2893,27 +2894,27 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const mothersHeight: number = parseInt(
-        (document.getElementById('mothersHeight') as HTMLInputElement).value
-      )
+        (document.getElementById('mothersHeight') as HTMLInputElement).value,
+      );
       const fathersHeight: number = parseInt(
-        (document.getElementById('fathersHeight') as HTMLInputElement).value
-      )
-      const maleCheckbox = document.getElementById('male') as HTMLInputElement
-      const gender: string = maleCheckbox.checked ? 'male' : 'female'
+        (document.getElementById('fathersHeight') as HTMLInputElement).value,
+      );
+      const maleCheckbox = document.getElementById('male') as HTMLInputElement;
+      const gender: string = maleCheckbox.checked ? 'male' : 'female';
 
-      let childsHeight: number
+      let childsHeight: number;
       if (gender === 'male') {
-        childsHeight = (mothersHeight + fathersHeight + 13) / 2
+        childsHeight = (mothersHeight + fathersHeight + 13) / 2;
       } else {
-        childsHeight = (mothersHeight + fathersHeight - 13) / 2
+        childsHeight = (mothersHeight + fathersHeight - 13) / 2;
       }
 
-      return childsHeight
+      return childsHeight;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Przewidywany wzrost dziecka.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Przewidywany wzrost dziecka.';
     },
   },
 
@@ -3194,18 +3195,18 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      const happenedCheckbox = document.getElementById('happenedAtTheSameTime') as HTMLInputElement
+      const happenedCheckbox = document.getElementById('happenedAtTheSameTime') as HTMLInputElement;
       const happenedAtTheSameTime: boolean =
-        happenedCheckbox && happenedCheckbox.checked ? true : false
+        happenedCheckbox && happenedCheckbox.checked ? true : false;
 
-      const problem = document.querySelector('input[name="problem"]:checked') as HTMLInputElement
+      const problem = document.querySelector('input[name="problem"]:checked') as HTMLInputElement;
       const isProblem: boolean =
-        problem && (problem.value === 'medium' || problem.value === 'big') ? true : false
+        problem && (problem.value === 'medium' || problem.value === 'big') ? true : false;
 
       if (result >= 7 && happenedAtTheSameTime && isProblem) {
-        return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.'
+        return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.';
       }
-      return 'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.'
+      return 'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.';
     },
   },
 
@@ -3550,18 +3551,18 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       const sex: string = (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)
-        ?.value
+        ?.value;
 
-      const lowRisk: string = 'Picie o niskim poziomie ryzyka.'
-      const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.'
-      const highRisk: string = 'Szkodliwe picie alkoholu.'
-      const criticalRisk: string = 'Podejrzenie uzależnienia od alkoholu.'
+      const lowRisk: string = 'Picie o niskim poziomie ryzyka.';
+      const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.';
+      const highRisk: string = 'Szkodliwe picie alkoholu.';
+      const criticalRisk: string = 'Podejrzenie uzależnienia od alkoholu.';
 
-      if (result > 19) return criticalRisk
-      if (result > 15) return highRisk
-      if (sex === 'male' && result > 7) return mediumRisk
-      if (sex === 'female' && result > 6) return mediumRisk
-      return lowRisk
+      if (result > 19) return criticalRisk;
+      if (result > 15) return highRisk;
+      if (sex === 'male' && result > 7) return mediumRisk;
+      if (sex === 'female' && result > 6) return mediumRisk;
+      return lowRisk;
     },
   },
 
@@ -3685,10 +3686,10 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      if (result >= 13) return 'Łagodne zaburzenia przytomności.'
-      if (result >= 9) return 'Umiarkowane zaburzenia przytomności.'
-      return 'Ciężkie zaburzenia przytomności.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      if (result >= 13) return 'Łagodne zaburzenia przytomności.';
+      if (result >= 9) return 'Umiarkowane zaburzenia przytomności.';
+      return 'Ciężkie zaburzenia przytomności.';
     },
   },
 
@@ -3831,9 +3832,9 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 8) return 'Stan dobry.'
-      if (result >= 4) return 'Stan średni.'
-      return 'Stan zły (ciężki).'
+      if (result >= 8) return 'Stan dobry.';
+      if (result >= 4) return 'Stan średni.';
+      return 'Stan zły (ciężki).';
     },
   },
 
@@ -4087,9 +4088,9 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.'
-      if (result > 20) return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.'
-      return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.'
+      if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.';
+      if (result > 20) return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.';
+      return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.';
     },
   },
 
@@ -4195,21 +4196,21 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const consumedAlcohol: number = parseFloat(
-        (document.getElementById('consumedAlcohol') as HTMLInputElement).value
-      )
+        (document.getElementById('consumedAlcohol') as HTMLInputElement).value,
+      );
       const bodyWeight: number = parseFloat(
-        (document.getElementById('bodyWeight') as HTMLInputElement).value
-      )
+        (document.getElementById('bodyWeight') as HTMLInputElement).value,
+      );
       const sexIndex: number = parseFloat(
-        (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)?.value
-      )
+        (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)?.value,
+      );
 
-      const result = consumedAlcohol / (sexIndex * bodyWeight)
-      return result
+      const result = consumedAlcohol / (sexIndex * bodyWeight);
+      return result;
     },
 
     getResultInterpretation: () => {
-      return 'Przybliżona zawartość alkoholu we krwi.'
+      return 'Przybliżona zawartość alkoholu we krwi.';
     },
   },
 
@@ -4402,8 +4403,8 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result > 8) return 'Poważne krwawienie. Wskazana jest hospitalizacja.'
-      return 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.'
+      if (result > 8) return 'Poważne krwawienie. Wskazana jest hospitalizacja.';
+      return 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.';
     },
   },
 
@@ -4570,31 +4571,31 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       function checkIfHighRisk() {
-        const stop = ['s', 't', 'o', 'p']
-        const stopElements = stop.map(letter => document.querySelector(`input#${letter}`))
-        const bng = ['b', 'n', 'g']
-        const bngElements = bng.map(letter => document.querySelector(`input#${letter}`))
+        const stop = ['s', 't', 'o', 'p'];
+        const stopElements = stop.map((letter) => document.querySelector(`input#${letter}`));
+        const bng = ['b', 'n', 'g'];
+        const bngElements = bng.map((letter) => document.querySelector(`input#${letter}`));
 
-        let stopSum: number = 0
-        let bngSum: number = 0
+        let stopSum: number = 0;
+        let bngSum: number = 0;
 
-        stopElements.forEach(input => {
-          if ((input as HTMLInputElement)?.checked) stopSum += 1
-        })
+        stopElements.forEach((input) => {
+          if ((input as HTMLInputElement)?.checked) stopSum += 1;
+        });
 
-        bngElements.forEach(input => {
-          if ((input as HTMLInputElement)?.checked) bngSum += 1
-        })
+        bngElements.forEach((input) => {
+          if ((input as HTMLInputElement)?.checked) bngSum += 1;
+        });
 
-        return stopSum >= 2 && bngSum >= 1 ? true : false
+        return stopSum >= 2 && bngSum >= 1 ? true : false;
       }
 
-      const isHighRisk = checkIfHighRisk()
+      const isHighRisk = checkIfHighRisk();
 
       if (result >= 5 || isHighRisk === true)
-        return 'Wysokie ryzyko obturacyjnego bezdechu sennego.'
-      if (result >= 3) return 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.'
-      return 'Niskie ryzyko obturacyjnego bezdechu sennego.'
+        return 'Wysokie ryzyko obturacyjnego bezdechu sennego.';
+      if (result >= 3) return 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.';
+      return 'Niskie ryzyko obturacyjnego bezdechu sennego.';
     },
   },
 
@@ -5009,11 +5010,11 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result > 20) return 'Ciężki udar.'
-      if (result > 15) return 'Udar umiarkowany do ciężkiego.'
-      if (result > 4) return 'Umiarkowany udar.'
-      if (result > 0) return 'Niewielki udar.'
-      return 'Brak objawów udaru.'
+      if (result > 20) return 'Ciężki udar.';
+      if (result > 15) return 'Udar umiarkowany do ciężkiego.';
+      if (result > 4) return 'Umiarkowany udar.';
+      if (result > 0) return 'Niewielki udar.';
+      return 'Brak objawów udaru.';
     },
   },
 
@@ -5117,27 +5118,27 @@ export const calculators: CalculatorType[] = [
 
     getResult: () => {
       const weight: number = parseFloat(
-        (document.getElementById('weight') as HTMLInputElement).value
-      )
+        (document.getElementById('weight') as HTMLInputElement).value,
+      );
       const height: number = parseFloat(
-        (document.getElementById('height') as HTMLInputElement).value
-      )
+        (document.getElementById('height') as HTMLInputElement).value,
+      );
       const sex: string = (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)
-        ?.value
+        ?.value;
 
-      let result: number
+      let result: number;
       if (sex === 'male') {
-        result = 0.407 * weight + 0.267 * height - 19.2
+        result = 0.407 * weight + 0.267 * height - 19.2;
       } else {
-        result = 0.252 * weight + 0.473 * height - 48.3
+        result = 0.252 * weight + 0.473 * height - 48.3;
       }
 
-      return result
+      return result;
     },
 
     getResultInterpretation: (result: number) => {
-      if (result === 0) return 'Uzupełnij wszystkie informacje.'
-      return 'Beztłuszczowa masa ciała.'
+      if (result === 0) return 'Uzupełnij wszystkie informacje.';
+      return 'Beztłuszczowa masa ciała.';
     },
   },
 
@@ -5168,4 +5169,4 @@ export const calculators: CalculatorType[] = [
 
   // 	getResultInterpretation: (result: number) => {},
   // },
-]
+];

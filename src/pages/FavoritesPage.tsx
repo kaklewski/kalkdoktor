@@ -1,36 +1,36 @@
-import { Box, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react'
-import { sortedCalculators } from '../data/sortedCalculators'
-import { IconHeartOff } from '@tabler/icons-react'
-import ShareFavModal from '../components/modals/ShareFavModal'
-import useDocumentTitle from '../hooks/useDocumentTitle'
-import { useEffect, useState } from 'react'
-import { getCategories } from '../utils/getCategories'
-import SortButton from '../components/buttons/SortButton'
-import CalculatorCard from '../components/cards/CalculatorCard'
-import STRINGS from '../data/strings'
-import STORAGE_KEYS from '../data/storageKeys'
+import { Box, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react';
+import { sortedCalculators } from '../data/sortedCalculators';
+import { IconHeartOff } from '@tabler/icons-react';
+import ShareFavModal from '../components/modals/ShareFavModal';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import { useEffect, useState } from 'react';
+import { getCategories } from '../utils/getCategories';
+import SortButton from '../components/buttons/SortButton';
+import CalculatorCard from '../components/cards/CalculatorCard';
+import STRINGS from '../data/strings';
+import STORAGE_KEYS from '../data/storageKeys';
 
 export default function FavoritesPage() {
-  useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE)
+  useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE);
 
   const [sortingOrder, setSortingOrder] = useState<string>(
-    localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) || STORAGE_KEYS.SORT.ALPHABETICALLY
-  )
+    localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) || STORAGE_KEYS.SORT.ALPHABETICALLY,
+  );
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sortingOrder)
-  }, [sortingOrder])
+    localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sortingOrder);
+  }, [sortingOrder]);
 
-  const favIds = JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]')
-  const favoriteCalculators = sortedCalculators.filter(calc => favIds.includes(calc.id))
-  const categories: string[] = getCategories(favoriteCalculators)
+  const favIds = JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]');
+  const favoriteCalculators = sortedCalculators.filter((calc) => favIds.includes(calc.id));
+  const categories: string[] = getCategories(favoriteCalculators);
 
   return (
     <>
-      <Flex justify='space-between' gap='2'>
-        <Heading as='h1'>{STRINGS.PAGES.FAVORITES.TITLE}</Heading>
+      <Flex justify="space-between" gap="2">
+        <Heading as="h1">{STRINGS.PAGES.FAVORITES.TITLE}</Heading>
         {favoriteCalculators.length > 0 && (
-          <Stack direction='row' gap={{ base: 3, md: 2 }}>
+          <Stack direction="row" gap={{ base: 3, md: 2 }}>
             <ShareFavModal />
             <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
           </Stack>
@@ -42,7 +42,7 @@ export default function FavoritesPage() {
           {favoriteCalculators.length === 0 ? (
             <NoFavoritesPlaceholder />
           ) : (
-            favoriteCalculators.map(calculator => (
+            favoriteCalculators.map((calculator) => (
               <CalculatorCard
                 key={calculator.id}
                 id={calculator.id}
@@ -60,14 +60,14 @@ export default function FavoritesPage() {
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>
               <Box mb={4}>
-                <Heading as='h2' fontSize='2xl' borderBottomWidth='1px'>
+                <Heading as="h2" fontSize="2xl" borderBottomWidth="1px">
                   {category.toUpperCase()}
                 </Heading>
               </Box>
               <Stack spacing={4}>
                 {favoriteCalculators
-                  .filter(calc => calc.category === category)
-                  .map(calculator => (
+                  .filter((calc) => calc.category === category)
+                  .map((calculator) => (
                     <CalculatorCard
                       key={calculator.id}
                       id={calculator.id}
@@ -82,17 +82,17 @@ export default function FavoritesPage() {
         </Stack>
       )}
     </>
-  )
+  );
 }
 
 function NoFavoritesPlaceholder() {
   return (
-    <VStack my={10} mx='auto'>
+    <VStack my={10} mx="auto">
       <IconHeartOff stroke={1.5} size={100} />
-      <Heading as='h1' size='md' mx='auto'>
+      <Heading as="h1" size="md" mx="auto">
         {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
       </Heading>
-      <Text align='center'>{STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}</Text>
+      <Text align="center">{STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}</Text>
     </VStack>
-  )
+  );
 }

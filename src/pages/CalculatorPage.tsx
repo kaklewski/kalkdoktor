@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { Flex, Heading, Stack } from '@chakra-ui/react'
-import FavButton from '../components/buttons/FavButton'
-import { CalculatorType } from '../types/calculatorTypes'
-import useDocumentTitle from '../hooks/useDocumentTitle'
-import FormCard from '../components/cards/FormCard'
-import ResultCard from '../components/cards/ResultCard'
-import DetailsCard from '../components/cards/DetailsCard'
-import BugReportModal from '../components/modals/BugReportModal'
+import { useState } from 'react';
+import { Flex, Heading, Stack } from '@chakra-ui/react';
+import FavButton from '../components/buttons/FavButton';
+import { CalculatorType } from '../types/calculatorTypes';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import FormCard from '../components/cards/FormCard';
+import ResultCard from '../components/cards/ResultCard';
+import DetailsCard from '../components/cards/DetailsCard';
+import BugReportModal from '../components/modals/BugReportModal';
 
 type CalculatorPageProps = {
-  calculator: CalculatorType
-}
+  calculator: CalculatorType;
+};
 
 export default function CalculatorPage({ calculator }: CalculatorPageProps) {
   const {
@@ -23,24 +23,24 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
     sources,
     description,
     methodology,
-  } = calculator
+  } = calculator;
 
-  useDocumentTitle(name)
+  useDocumentTitle(name);
 
-  const [result, setResult] = useState<number>(0)
+  const [result, setResult] = useState<number>(0);
   const [resultInterpretation, setResultInterpretation] = useState<string>(
-    getResultInterpretation(result)
-  )
+    getResultInterpretation(result),
+  );
 
   function displayResultAndInterpretation() {
-    setResult(getResult())
-    setResultInterpretation(getResultInterpretation(getResult()))
+    setResult(getResult());
+    setResultInterpretation(getResultInterpretation(getResult()));
   }
 
   return (
     <>
-      <Flex justify='space-between' gap={2}>
-        <Heading as='h1'>{name}</Heading>
+      <Flex justify="space-between" gap={2}>
+        <Heading as="h1">{name}</Heading>
         <FavButton pageId={id} />
       </Flex>
 
@@ -61,9 +61,9 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
         <DetailsCard description={description} sources={sources} methodology={methodology} />
       </Stack>
 
-      <Flex justify='right'>
+      <Flex justify="right">
         <BugReportModal calculatorName={name} />
       </Flex>
     </>
-  )
+  );
 }

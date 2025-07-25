@@ -10,6 +10,6 @@ const STORAGE_KEYS = {
     ALPHABETICALLY: 'alphabetically',
     BY_SPECIALIZATION: 'by-specialization',
   },
-}
+};
 
-export default STORAGE_KEYS
+export default STORAGE_KEYS;

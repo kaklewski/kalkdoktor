@@ -6,15 +6,15 @@ import {
   MenuList,
   MenuOptionGroup,
   Tooltip,
-} from '@chakra-ui/react'
-import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react'
-import STRINGS from '../../data/strings'
-import STORAGE_KEYS from '../../data/storageKeys'
+} from '@chakra-ui/react';
+import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react';
+import STRINGS from '../../data/strings';
+import STORAGE_KEYS from '../../data/storageKeys';
 
 type SortButtonProps = {
-  sortingOrder: string
-  setSortingOrder: (value: string) => void
-}
+  sortingOrder: string;
+  setSortingOrder: (value: string) => void;
+};
 
 export default function SortButton({ sortingOrder, setSortingOrder }: SortButtonProps) {
   return (
@@ -36,19 +36,22 @@ export default function SortButton({ sortingOrder, setSortingOrder }: SortButton
         <MenuOptionGroup
           defaultValue={sortingOrder}
           title={STRINGS.BUTTONS.SORT.TITLE}
-          type='radio'>
+          type="radio"
+        >
           <MenuItemOption
             value={STORAGE_KEYS.SORT.ALPHABETICALLY}
-            onClick={() => setSortingOrder(STORAGE_KEYS.SORT.ALPHABETICALLY)}>
+            onClick={() => setSortingOrder(STORAGE_KEYS.SORT.ALPHABETICALLY)}
+          >
             {STRINGS.BUTTONS.SORT.ORDER.ALPHABETICALLY}
           </MenuItemOption>
           <MenuItemOption
             value={STORAGE_KEYS.SORT.BY_SPECIALIZATION}
-            onClick={() => setSortingOrder(STORAGE_KEYS.SORT.BY_SPECIALIZATION)}>
+            onClick={() => setSortingOrder(STORAGE_KEYS.SORT.BY_SPECIALIZATION)}
+          >
             {STRINGS.BUTTONS.SORT.ORDER.BY_SPECIALIZATION}
           </MenuItemOption>
         </MenuOptionGroup>
       </MenuList>
     </Menu>
-  )
+  );
 }

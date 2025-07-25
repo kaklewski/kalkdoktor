@@ -1,19 +1,19 @@
-import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react'
-import { Form } from 'react-router-dom'
-import { FormEvent } from 'react'
-import CustomRadioGroup from '../inputs/CustomRadioGroup'
-import CustomRadio from '../inputs/CustomRadio'
-import CustomCheckbox from '../inputs/CustomCheckbox'
-import CustomNumberInput from '../inputs/CustomNumberInput'
-import { CalculatorType } from '../../types/calculatorTypes'
-import STRINGS from '../../data/strings'
+import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react';
+import { Form } from 'react-router-dom';
+import { FormEvent } from 'react';
+import CustomRadioGroup from '../inputs/CustomRadioGroup';
+import CustomRadio from '../inputs/CustomRadio';
+import CustomCheckbox from '../inputs/CustomCheckbox';
+import CustomNumberInput from '../inputs/CustomNumberInput';
+import { CalculatorType } from '../../types/calculatorTypes';
+import STRINGS from '../../data/strings';
 
 type FormCardProps = {
-  numberInputs?: CalculatorType['fields']['numberInputs']
-  checkboxes?: CalculatorType['fields']['checkboxes']
-  radioGroups?: CalculatorType['fields']['radioGroups']
-  displayResultAndInterpretation: () => void
-}
+  numberInputs?: CalculatorType['fields']['numberInputs'];
+  checkboxes?: CalculatorType['fields']['checkboxes'];
+  radioGroups?: CalculatorType['fields']['radioGroups'];
+  displayResultAndInterpretation: () => void;
+};
 
 export default function FormCard({
   numberInputs,
@@ -22,19 +22,19 @@ export default function FormCard({
   displayResultAndInterpretation,
 }: FormCardProps) {
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    displayResultAndInterpretation()
+    event.preventDefault();
+    displayResultAndInterpretation();
   }
 
   return (
-    <Card overflow='hidden' variant='outline'>
+    <Card overflow="hidden" variant="outline">
       <Form onSubmit={handleFormSubmit}>
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
             {radioGroups &&
-              radioGroups.map(radioGroup => (
+              radioGroups.map((radioGroup) => (
                 <CustomRadioGroup key={radioGroup.id} id={radioGroup.id} text={radioGroup.text}>
-                  {radioGroup.radios.map(radio => (
+                  {radioGroup.radios.map((radio) => (
                     <CustomRadio
                       key={radio.id}
                       id={radio.id}
@@ -47,7 +47,7 @@ export default function FormCard({
               ))}
 
             {checkboxes &&
-              checkboxes.map(checkbox => (
+              checkboxes.map((checkbox) => (
                 <CustomCheckbox
                   key={checkbox.id}
                   id={checkbox.id}
@@ -57,7 +57,7 @@ export default function FormCard({
               ))}
 
             {numberInputs &&
-              numberInputs.map(input => (
+              numberInputs.map((input) => (
                 <CustomNumberInput
                   key={input.id}
                   id={input.id}
@@ -69,19 +69,20 @@ export default function FormCard({
           </Stack>
           <Stack mt={5}>
             <Button
-              type='submit'
-              colorScheme='teal'
-              w='fit-content'
-              mx='auto'
+              type="submit"
+              colorScheme="teal"
+              w="fit-content"
+              mx="auto"
               _focus={{
                 borderColor: 'teal',
                 boxShadow: '0 0 0 3px teal',
-              }}>
+              }}
+            >
               {STRINGS.BUTTONS.CALCULATE}
             </Button>
           </Stack>
         </CardBody>
       </Form>
     </Card>
-  )
+  );
 }

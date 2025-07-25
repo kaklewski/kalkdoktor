@@ -3,6 +3,6 @@ const ROUTES = {
   FAVORITES: '/ulubione',
   IMPORT_FAVORITES: '/importuj-ulubione',
   SUCCESS: '/sukces',
-}
+};
 
-export default ROUTES
+export default ROUTES;

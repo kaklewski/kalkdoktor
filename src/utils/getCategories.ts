@@ -1,13 +1,13 @@
-import { CalculatorType } from '../types/calculatorTypes'
+import { CalculatorType } from '../types/calculatorTypes';
 
 export function getCategories(calculators: CalculatorType[]) {
-  const categoriesArray: string[] = []
+  const categoriesArray: string[] = [];
 
-  calculators.forEach(calculator => {
+  calculators.forEach((calculator) => {
     if (!categoriesArray.includes(calculator.category)) {
-      categoriesArray.push(calculator.category)
+      categoriesArray.push(calculator.category);
     }
-  })
+  });
 
-  return categoriesArray.sort()
+  return categoriesArray.sort();
 }

@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
-import ROUTES from './src/data/routes'
-import STRINGS from './src/data/strings'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import ROUTES from './src/data/routes';
+import STRINGS from './src/data/strings';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -64,4 +64,4 @@ export default defineConfig({
       '@tabler/icons-react': '@tabler/icons-react/dist/esm/icons/index.mjs',
     },
   },
-})
+});

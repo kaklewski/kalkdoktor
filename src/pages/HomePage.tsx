@@ -1,28 +1,28 @@
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react'
-import { sortedCalculators } from '../data/sortedCalculators'
-import { useEffect, useState } from 'react'
-import { getCategories } from '../utils/getCategories'
-import SortButton from '../components/buttons/SortButton'
-import { calculators } from '../data/calculators'
-import CalculatorCard from '../components/cards/CalculatorCard'
-import STRINGS from '../data/strings'
-import STORAGE_KEYS from '../data/storageKeys'
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { sortedCalculators } from '../data/sortedCalculators';
+import { useEffect, useState } from 'react';
+import { getCategories } from '../utils/getCategories';
+import SortButton from '../components/buttons/SortButton';
+import { calculators } from '../data/calculators';
+import CalculatorCard from '../components/cards/CalculatorCard';
+import STRINGS from '../data/strings';
+import STORAGE_KEYS from '../data/storageKeys';
 
 export default function HomePage() {
   const [sortingOrder, setSortingOrder] = useState<string>(
-    localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) || STORAGE_KEYS.SORT.ALPHABETICALLY
-  )
+    localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) || STORAGE_KEYS.SORT.ALPHABETICALLY,
+  );
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SORT.HOMEPAGE, sortingOrder)
-  }, [sortingOrder])
+    localStorage.setItem(STORAGE_KEYS.SORT.HOMEPAGE, sortingOrder);
+  }, [sortingOrder]);
 
-  const categories: string[] = getCategories(calculators)
+  const categories: string[] = getCategories(calculators);
 
   return (
     <>
-      <Flex justify='space-between' gap={2}>
-        <Heading as='h1'>
+      <Flex justify="space-between" gap={2}>
+        <Heading as="h1">
           <Text>{STRINGS.PAGES.HOME.TITLE}</Text>
         </Heading>
         <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
@@ -30,7 +30,7 @@ export default function HomePage() {
 
       {sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY && (
         <Stack spacing={4}>
-          {sortedCalculators.map(calculator => (
+          {sortedCalculators.map((calculator) => (
             <CalculatorCard
               key={calculator.id}
               id={calculator.id}
@@ -47,14 +47,14 @@ export default function HomePage() {
           {categories.map((category, categoryId) => (
             <Box key={categoryId}>
               <Box mb={4}>
-                <Heading as='h2' fontSize='2xl' borderBottomWidth='1px'>
+                <Heading as="h2" fontSize="2xl" borderBottomWidth="1px">
                   {category.toUpperCase()}
                 </Heading>
               </Box>
               <Stack spacing={4}>
                 {sortedCalculators
-                  .filter(calc => calc.category === category)
-                  .map(calculator => (
+                  .filter((calc) => calc.category === category)
+                  .map((calculator) => (
                     <CalculatorCard
                       key={calculator.id}
                       id={calculator.id}
@@ -69,5 +69,5 @@ export default function HomePage() {
         </Stack>
       )}
     </>
-  )
+  );
 }
