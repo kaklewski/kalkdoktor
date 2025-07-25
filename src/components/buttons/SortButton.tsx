@@ -8,8 +8,9 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react';
-import STRINGS from '../../data/strings';
+
 import STORAGE_KEYS from '../../data/storageKeys';
+import STRINGS from '../../data/strings';
 
 type SortButtonProps = {
   sortingOrder: string;

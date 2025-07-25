@@ -17,8 +17,9 @@ import {
 } from '@chakra-ui/react';
 import { IconFlag } from '@tabler/icons-react';
 import { useRef } from 'react';
-import { handleFormSubmit } from '../../utils/handleFormSubmit';
+
 import STRINGS from '../../data/strings';
+import { handleFormSubmit } from '../../utils/handleFormSubmit';
 
 type BugReportModalProps = {
   calculatorName: string;

@@ -17,10 +17,11 @@ import {
   Tooltip,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
-import { handleFormSubmit } from '../../utils/handleFormSubmit';
 import { IconMail } from '@tabler/icons-react';
+import { useRef } from 'react';
+
 import STRINGS from '../../data/strings';
+import { handleFormSubmit } from '../../utils/handleFormSubmit';
 
 export default function ContactModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();

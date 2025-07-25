@@ -1,9 +1,10 @@
 import { Alert, AlertTitle, Button } from '@chakra-ui/react';
 import { IconMailCheck } from '@tabler/icons-react';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import STRINGS from '../data/strings';
 import { Link as RouterLink } from 'react-router-dom';
+
 import ROUTES from '../data/routes';
+import STRINGS from '../data/strings';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function SubmissionSuccessPage() {
   useDocumentTitle(STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE);

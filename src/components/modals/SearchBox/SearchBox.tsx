@@ -16,12 +16,13 @@ import {
 } from '@chakra-ui/react';
 import { IconSearch } from '@tabler/icons-react';
 import { KeyboardEvent, useEffect, useRef, useState } from 'react';
-import SearchResultItem from './SearchResultItem';
-import SearchBar from './SearchBar';
-import NoResultsMessage from './NoResultsMessage';
+import { useNavigate } from 'react-router-dom';
+
 import { sortedCalculators } from '../../../data/sortedCalculators';
 import STRINGS from '../../../data/strings';
-import { useNavigate } from 'react-router-dom';
+import NoResultsMessage from './NoResultsMessage';
+import SearchBar from './SearchBar';
+import SearchResultItem from './SearchResultItem';
 
 export default function SearchBox() {
   const {

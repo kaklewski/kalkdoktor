@@ -1,8 +1,9 @@
 import { Alert, AlertDescription, AlertTitle, Button, Flex } from '@chakra-ui/react';
 import { IconExclamationCircle } from '@tabler/icons-react';
 import { useRouteError } from 'react-router-dom';
-import STRINGS from './data/strings';
+
 import ROUTES from './data/routes';
+import STRINGS from './data/strings';
 
 export default function RouterErrorBoundary() {
   const error = useRouteError();

@@ -4,17 +4,17 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
-import RootLayout from './layouts/RootLayout';
-import HomePage from './pages/HomePage';
-import CalculatorPage from './pages/CalculatorPage';
-import { calculators } from './data/calculators';
-import FavoritesPage from './pages/FavoritesPage';
-import ImportFavoritesPage from './pages/ImportFavoritesPage';
-import Error404Page from './pages/Error404Page';
-import RouterErrorBoundary from './RouterErrorBoundary';
-import SubmissionSuccessPage from './pages/SubmissionSuccessPage';
 
+import { calculators } from './data/calculators';
 import ROUTES from './data/routes';
+import RootLayout from './layouts/RootLayout';
+import CalculatorPage from './pages/CalculatorPage';
+import Error404Page from './pages/Error404Page';
+import FavoritesPage from './pages/FavoritesPage';
+import HomePage from './pages/HomePage';
+import ImportFavoritesPage from './pages/ImportFavoritesPage';
+import SubmissionSuccessPage from './pages/SubmissionSuccessPage';
+import RouterErrorBoundary from './RouterErrorBoundary';
 
 export default function App() {
   const router = createBrowserRouter(

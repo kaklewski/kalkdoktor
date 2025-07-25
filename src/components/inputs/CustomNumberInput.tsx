@@ -7,9 +7,10 @@ import {
   NumberInputStepper,
   Text,
 } from '@chakra-ui/react';
-import { NumberInputType } from '../../types/calculatorTypes';
-import STRINGS from '../../data/strings';
 import { useRef } from 'react';
+
+import STRINGS from '../../data/strings';
+import { NumberInputType } from '../../types/calculatorTypes';
 
 type CustomNumberInputProps = NumberInputType;
 

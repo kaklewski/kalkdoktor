@@ -1,5 +1,6 @@
 import { Flex, IconButton, Link, Text, Tooltip } from '@chakra-ui/react';
 import { IconBrandGithub, IconBrandLinkedin, IconWorld } from '@tabler/icons-react';
+
 import ContactModal from '../components/modals/ContactModal';
 import STRINGS from '../data/strings';
 

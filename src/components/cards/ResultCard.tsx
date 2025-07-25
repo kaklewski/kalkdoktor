@@ -1,7 +1,8 @@
 import { Card, CardBody, CardHeader, Divider, Heading, Text } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
-import { CalculatorType } from '../../types/calculatorTypes';
+
 import STRINGS from '../../data/strings';
+import { CalculatorType } from '../../types/calculatorTypes';
 
 type ResultCardProps = {
   result: number;

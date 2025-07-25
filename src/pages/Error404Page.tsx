@@ -1,9 +1,10 @@
 import { Alert, AlertTitle, Button } from '@chakra-ui/react';
 import { IconError404 } from '@tabler/icons-react';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import STRINGS from '../data/strings';
 import { Link as RouterLink } from 'react-router-dom';
+
 import ROUTES from '../data/routes';
+import STRINGS from '../data/strings';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function Error404Page() {
   useDocumentTitle(STRINGS.PAGES.ERROR404.TITLE);

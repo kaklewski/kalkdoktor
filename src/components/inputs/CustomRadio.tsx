@@ -1,6 +1,7 @@
 import { Flex, Radio } from '@chakra-ui/react';
-import CustomBadge from './CustomBadge';
+
 import { RadioType } from '../../types/calculatorTypes';
+import CustomBadge from './CustomBadge';
 
 type CustomRadioProps = RadioType;
 

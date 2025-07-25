@@ -1,12 +1,13 @@
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import { sortedCalculators } from '../data/sortedCalculators';
 import { useEffect, useState } from 'react';
-import { getCategories } from '../utils/getCategories';
+
 import SortButton from '../components/buttons/SortButton';
-import { calculators } from '../data/calculators';
 import CalculatorCard from '../components/cards/CalculatorCard';
-import STRINGS from '../data/strings';
+import { calculators } from '../data/calculators';
+import { sortedCalculators } from '../data/sortedCalculators';
 import STORAGE_KEYS from '../data/storageKeys';
+import STRINGS from '../data/strings';
+import { getCategories } from '../utils/getCategories';
 
 export default function HomePage() {
   const [sortingOrder, setSortingOrder] = useState<string>(

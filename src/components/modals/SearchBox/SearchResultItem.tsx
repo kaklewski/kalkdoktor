@@ -1,7 +1,8 @@
 import { Button, Flex } from '@chakra-ui/react';
 import { IconCornerDownLeft } from '@tabler/icons-react';
-import { CalculatorType } from '../../../types/calculatorTypes';
 import { Link as RouterLink } from 'react-router-dom';
+
+import { CalculatorType } from '../../../types/calculatorTypes';
 
 type SearchResultItemProps = {
   name: CalculatorType['name'];

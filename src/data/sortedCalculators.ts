@@ -1,5 +1,5 @@
-import { calculators } from './calculators';
 import { CalculatorType } from '../types/calculatorTypes';
+import { calculators } from './calculators';
 
 export const sortedCalculators = calculators.sort(
   (calculator1: CalculatorType, calculator2: CalculatorType) => {

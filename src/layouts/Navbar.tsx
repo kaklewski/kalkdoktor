@@ -1,11 +1,12 @@
-import { Box, Flex, IconButton, Button } from '@chakra-ui/react';
+import { Box, Button,Flex, IconButton } from '@chakra-ui/react';
 import { IconHeart } from '@tabler/icons-react';
+import { Link as RouterLink } from 'react-router-dom';
+
 import ThemeButton from '../components/buttons/ThemeButton';
 import SearchBox from '../components/modals/SearchBox/SearchBox';
 import Logo from '../components/other/Logo';
-import STRINGS from '../data/strings';
-import { Link as RouterLink } from 'react-router-dom';
 import ROUTES from '../data/routes';
+import STRINGS from '../data/strings';
 
 export default function Navbar() {
   return (

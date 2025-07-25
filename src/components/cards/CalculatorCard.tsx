@@ -9,9 +9,10 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+
 import { CalculatorType } from '../../types/calculatorTypes';
 import FavButton from '../buttons/FavButton';
-import { Link as RouterLink } from 'react-router-dom';
 
 type CalculatorCardProps = {
   id: CalculatorType['id'];

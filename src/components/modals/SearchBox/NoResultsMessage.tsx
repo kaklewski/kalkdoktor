@@ -1,5 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { IconZoomQuestion } from '@tabler/icons-react';
+
 import STRINGS from '../../../data/strings';
 
 export default function NoResultsMessage() {

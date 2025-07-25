@@ -10,9 +10,10 @@ import {
 } from '@chakra-ui/react';
 import { IconMoon, IconPercentage50, IconSun } from '@tabler/icons-react';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import setThemeAttribute from '../../utils/setThemeAttribute';
-import STRINGS from '../../data/strings';
+
 import STORAGE_KEYS from '../../data/storageKeys';
+import STRINGS from '../../data/strings';
+import setThemeAttribute from '../../utils/setThemeAttribute';
 
 export default function ThemeButton() {
   const { colorMode, setColorMode } = useColorMode();

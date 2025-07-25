@@ -1,6 +1,7 @@
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
-import CustomBadge from './CustomBadge';
+
 import { CheckboxType } from '../../types/calculatorTypes';
+import CustomBadge from './CustomBadge';
 
 type CustomCheckboxProps = CheckboxType;
 

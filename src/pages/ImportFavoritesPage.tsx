@@ -11,13 +11,14 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { IconHeartPlus } from '@tabler/icons-react';
-import { sortedCalculators } from '../data/sortedCalculators';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import STRINGS from '../data/strings';
 import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 import ROUTES from '../data/routes';
+import { sortedCalculators } from '../data/sortedCalculators';
 import STORAGE_KEYS from '../data/storageKeys';
+import STRINGS from '../data/strings';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function ImportFavoritesPage() {
   useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE);

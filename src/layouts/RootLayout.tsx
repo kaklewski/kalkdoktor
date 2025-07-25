@@ -1,8 +1,9 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
 import { Container, Stack } from '@chakra-ui/react';
 import { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 export default function RootLayout() {
   const { pathname } = useLocation();

@@ -24,9 +24,10 @@ import {
 } from '@chakra-ui/react';
 import { IconShare } from '@tabler/icons-react';
 import { useEffect } from 'react';
-import STRINGS from '../../data/strings';
+
 import ROUTES from '../../data/routes';
 import STORAGE_KEYS from '../../data/storageKeys';
+import STRINGS from '../../data/strings';
 
 export default function ShareFavModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();

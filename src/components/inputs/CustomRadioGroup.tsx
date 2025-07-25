@@ -1,5 +1,6 @@
 import { Box, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+
 import { RadioGroupType } from '../../types/calculatorTypes';
 
 type CustomRadioGroupProps = Omit<RadioGroupType, 'radios'> & {

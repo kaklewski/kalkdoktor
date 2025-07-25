@@ -1,7 +1,8 @@
-import sumInputValues from '../utils/sumInputValues';
-import { CalculatorType } from '../types/calculatorTypes';
-import { MathJax } from 'better-react-mathjax';
 import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
+import { MathJax } from 'better-react-mathjax';
+
+import { CalculatorType } from '../types/calculatorTypes';
+import sumInputValues from '../utils/sumInputValues';
 
 export const calculators: CalculatorType[] = [
   {

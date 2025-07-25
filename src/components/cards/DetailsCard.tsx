@@ -1,9 +1,10 @@
-import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { CalculatorType, SourceType } from '../../types/calculatorTypes';
-import STRINGS from '../../data/strings';
+import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import STRINGS from '../../data/strings';
+import { CalculatorType, SourceType } from '../../types/calculatorTypes';
 
 type DetailsCardProps = {
   description: CalculatorType['description'];
