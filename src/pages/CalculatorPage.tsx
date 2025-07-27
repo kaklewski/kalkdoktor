@@ -59,7 +59,11 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
           resultInterpretation={resultInterpretation}
         />
 
-        <DetailsCard description={description} sources={sources} methodology={methodology} />
+        <DetailsCard
+          description={description}
+          sources={sources}
+          methodology={methodology}
+        />
       </Stack>
 
       <Flex justify="right">

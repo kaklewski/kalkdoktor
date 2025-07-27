@@ -1,5 +1,6 @@
 export default function sumInputValues() {
-  const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+  const inputs: NodeListOf<HTMLInputElement> =
+    document.querySelectorAll('input');
   let sum: number = 0;
 
   inputs.forEach((input) => {

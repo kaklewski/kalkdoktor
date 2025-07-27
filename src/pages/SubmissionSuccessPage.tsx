@@ -21,7 +21,9 @@ export default function SubmissionSuccessPage() {
     >
       <IconMailCheck size={100} stroke={1.5} />
 
-      <AlertTitle fontSize="lg">{STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE}</AlertTitle>
+      <AlertTitle fontSize="lg">
+        {STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE}
+      </AlertTitle>
 
       <Button colorScheme="green" as={RouterLink} to={ROUTES.HOME} my={3}>
         {STRINGS.BUTTONS.HOMEPAGE}

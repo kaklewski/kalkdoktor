@@ -1,5 +1,15 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { Box, Card, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  Link,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -12,7 +22,11 @@ type DetailsCardProps = {
   sources: CalculatorType['sources'];
 };
 
-export default function DetailsCard({ description, methodology, sources }: DetailsCardProps) {
+export default function DetailsCard({
+  description,
+  methodology,
+  sources,
+}: DetailsCardProps) {
   const [tabIndex, setTabIndex] = useState(0);
   const location = useLocation();
 
@@ -73,7 +87,8 @@ function SourceLink({ author, title, dateOfAccess, link }: SourceLinkProps) {
     <Box mb={2}>
       <Link href={link} isExternal>
         <Text as="span">
-          {author}, <Text as="i">{title}</Text>, {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
+          {author}, <Text as="i">{title}</Text>,{' '}
+          {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
         </Text>
         <ExternalLinkIcon mx="2px" ml={1} mt={-1} />
       </Link>

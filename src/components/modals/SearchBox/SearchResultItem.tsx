@@ -48,7 +48,12 @@ export default function SearchResultItem({
         setSelectedItemIndex(index);
       }}
     >
-      <Flex justifyContent="space-between" alignItems="stretch" gap={2} w="100%">
+      <Flex
+        justifyContent="space-between"
+        alignItems="stretch"
+        gap={2}
+        w="100%"
+      >
         {name}
         <Flex justifyContent="center" alignItems="center">
           <IconCornerDownLeft

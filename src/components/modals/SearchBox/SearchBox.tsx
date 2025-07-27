@@ -33,7 +33,9 @@ export default function SearchBox() {
   const searchBarRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const INITIAL_SELECTED_ITEM_INDEX = 0;
-  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(INITIAL_SELECTED_ITEM_INDEX);
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
+    INITIAL_SELECTED_ITEM_INDEX,
+  );
   const selectedItemRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -87,7 +89,10 @@ export default function SearchBox() {
 
     if (event.key === 'ArrowUp' && selectedItemIndex > 0) {
       setSelectedItemIndex((previousItem) => previousItem - 1);
-    } else if (event.key === 'ArrowDown' && selectedItemIndex < filteredCalculators.length - 1) {
+    } else if (
+      event.key === 'ArrowDown' &&
+      selectedItemIndex < filteredCalculators.length - 1
+    ) {
       setSelectedItemIndex((previousItem) => previousItem + 1);
     } else if (event.key === 'Enter') {
       navigate(filteredCalculators[selectedItemIndex].urlPath);
@@ -159,7 +164,9 @@ export default function SearchBox() {
                       link={calc.urlPath}
                       name={calc.name}
                       isSelected={index === selectedItemIndex && true}
-                      selectedItemRef={index === selectedItemIndex && selectedItemRef}
+                      selectedItemRef={
+                        index === selectedItemIndex && selectedItemRef
+                      }
                       setSelectedItemIndex={setSelectedItemIndex}
                       closeSearchBox={closeSearchBox}
                     />

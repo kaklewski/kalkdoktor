@@ -1,4 +1,10 @@
-import { Alert, AlertDescription, AlertTitle, Button, Flex } from '@chakra-ui/react';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Button,
+  Flex,
+} from '@chakra-ui/react';
 import { IconExclamationCircle } from '@tabler/icons-react';
 import { useRouteError } from 'react-router-dom';
 
@@ -25,7 +31,9 @@ export default function RouterErrorBoundary() {
         <AlertTitle fontSize="lg" mt={4} mb={1}>
           {STRINGS.PAGES.ERROR_BOUNDARY.TITLE}
         </AlertTitle>
-        <AlertDescription>{STRINGS.PAGES.ERROR_BOUNDARY.DESCRIPTION}</AlertDescription>
+        <AlertDescription>
+          {STRINGS.PAGES.ERROR_BOUNDARY.DESCRIPTION}
+        </AlertDescription>
 
         <Button as="a" href={ROUTES.HOME} mt={4} mb={4}>
           {STRINGS.BUTTONS.HOMEPAGE}

@@ -21,7 +21,12 @@ type CalculatorCardProps = {
   description: CalculatorType['description'];
 };
 
-export default function CalculatorCard({ id, name, link, description }: CalculatorCardProps) {
+export default function CalculatorCard({
+  id,
+  name,
+  link,
+  description,
+}: CalculatorCardProps) {
   return (
     <LinkBox>
       <Card

@@ -7,7 +7,11 @@ type CustomRadioGroupProps = Omit<RadioGroupType, 'radios'> & {
   children: ReactNode;
 };
 
-export default function CustomRadioGroup({ text, id, children }: CustomRadioGroupProps) {
+export default function CustomRadioGroup({
+  text,
+  id,
+  children,
+}: CustomRadioGroupProps) {
   return (
     <Box>
       <RadioGroup colorScheme="teal" name={id.toString()}>

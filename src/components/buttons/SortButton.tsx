@@ -7,7 +7,10 @@ import {
   MenuOptionGroup,
   Tooltip,
 } from '@chakra-ui/react';
-import { IconSortAscendingLetters, IconSortAscendingShapes } from '@tabler/icons-react';
+import {
+  IconSortAscendingLetters,
+  IconSortAscendingShapes,
+} from '@tabler/icons-react';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
@@ -17,7 +20,10 @@ type SortButtonProps = {
   setSortingOrder: (value: string) => void;
 };
 
-export default function SortButton({ sortingOrder, setSortingOrder }: SortButtonProps) {
+export default function SortButton({
+  sortingOrder,
+  setSortingOrder,
+}: SortButtonProps) {
   return (
     <Menu closeOnSelect={true}>
       <Tooltip label={STRINGS.BUTTONS.SORT.TITLE}>

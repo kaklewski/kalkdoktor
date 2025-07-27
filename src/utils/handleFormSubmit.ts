@@ -1,6 +1,8 @@
 import ROUTES from '../data/routes';
 
-export async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+export async function handleFormSubmit(
+  event: React.FormEvent<HTMLFormElement>,
+) {
   event.preventDefault();
 
   const form = event.target as HTMLFormElement;

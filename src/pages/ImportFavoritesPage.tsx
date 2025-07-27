@@ -33,7 +33,10 @@ export default function ImportFavoritesPage() {
     if (!favCalcIdString) return false;
     try {
       favCalcIds = JSON.parse(favCalcIdString);
-      return favCalcIds.length > 0 && favCalcIds.every((id: number) => typeof id === 'number');
+      return (
+        favCalcIds.length > 0 &&
+        favCalcIds.every((id: number) => typeof id === 'number')
+      );
     } catch {
       return false;
     }
@@ -42,7 +45,9 @@ export default function ImportFavoritesPage() {
   if (!isEachIdValid) navigate(ROUTES.HOME);
 
   const favsToImport = favCalcIdString
-    ? sortedCalculators.filter((calculator) => favCalcIds.includes(calculator.id))
+    ? sortedCalculators.filter((calculator) =>
+        favCalcIds.includes(calculator.id),
+      )
     : [];
 
   function importFavorites(favorites: string) {
@@ -60,7 +65,9 @@ export default function ImportFavoritesPage() {
               <Heading as="h1" mx="auto" size="md">
                 {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
               </Heading>
-              <Text align="center">{STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}</Text>
+              <Text align="center">
+                {STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}
+              </Text>
               <UnorderedList>
                 {favsToImport.map((fav) => (
                   <ListItem key={fav.id}>{fav.name}</ListItem>

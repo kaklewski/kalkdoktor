@@ -11,7 +11,8 @@ import { getCategories } from '../utils/getCategories';
 
 export default function HomePage() {
   const [sortingOrder, setSortingOrder] = useState<string>(
-    localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) || STORAGE_KEYS.SORT.ALPHABETICALLY,
+    localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) ||
+      STORAGE_KEYS.SORT.ALPHABETICALLY,
   );
 
   useEffect(() => {
@@ -26,7 +27,10 @@ export default function HomePage() {
         <Heading as="h1">
           <Text>{STRINGS.PAGES.HOME.TITLE}</Text>
         </Heading>
-        <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
+        <SortButton
+          sortingOrder={sortingOrder}
+          setSortingOrder={setSortingOrder}
+        />
       </Flex>
 
       {sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY && (

@@ -12,8 +12,16 @@
     />
 
     <!-- PWA theme colors -->
-    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1A202C" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="theme-color"
+      content="#FFFFFF"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1A202C"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <style>
       :root {
@@ -109,13 +117,17 @@
       import STORAGE_KEYS from './src/data/storageKeys.ts';
 
       const isAutoColorMode =
-        localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true' ? true : false;
+        localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true'
+          ? true
+          : false;
 
       // When the page is open for the first time, set automatic theme
-      if (!isAutoColorMode) localStorage.setItem(STORAGE_KEYS.COLOR_THEME.AUTO, 'true');
+      if (!isAutoColorMode)
+        localStorage.setItem(STORAGE_KEYS.COLOR_THEME.AUTO, 'true');
 
       // When automatic theme is on, set proper initial theme
-      if (isAutoColorMode) localStorage.removeItem(STORAGE_KEYS.COLOR_THEME.CHAKRA);
+      if (isAutoColorMode)
+        localStorage.removeItem(STORAGE_KEYS.COLOR_THEME.CHAKRA);
 
       // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
       setThemeAttribute();

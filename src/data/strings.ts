@@ -110,7 +110,8 @@ const STRINGS = {
       TITLE: 'Ulubione',
       NO_FAVORITES: {
         TITLE: 'Brak ulubionych',
-        DESCRIPTION: 'Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.',
+        DESCRIPTION:
+          'Możesz dodać kalkulator do ulubionych, klikając przycisk z ikoną serca.',
       },
     },
     HOME: {

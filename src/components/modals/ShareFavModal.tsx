@@ -35,7 +35,9 @@ export default function ShareFavModal() {
 
   useEffect(() => {
     const urlPath = ROUTES.IMPORT_FAVORITES;
-    const urlHostname = window.location.toString().replace(window.location.pathname, urlPath);
+    const urlHostname = window.location
+      .toString()
+      .replace(window.location.pathname, urlPath);
     const favString = localStorage.getItem(STORAGE_KEYS.FAVORITES);
 
     setValue(urlHostname + '?id=' + favString);

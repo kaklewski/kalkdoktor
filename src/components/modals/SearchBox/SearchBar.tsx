@@ -1,4 +1,10 @@
-import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react';
+import {
+  Button,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from '@chakra-ui/react';
 import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react';
 
 import STRINGS from '../../../data/strings';

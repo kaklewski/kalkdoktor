@@ -15,8 +15,8 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Wskaźnik masy ciała (BMI, ang. <em>Body Mass Index</em>) oblicza się jako iloraz masy
-          ciała i kwadratu wzrostu.
+          Wskaźnik masy ciała (BMI, ang. <em>Body Mass Index</em>) oblicza się
+          jako iloraz masy ciała i kwadratu wzrostu.
         </Text>
         <br />
         <MathJax>{'`BMI = m/(h^2)`'}</MathJax>
@@ -72,9 +72,13 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const bodyMass = parseFloat((document.getElementById('bodyMass') as HTMLInputElement).value);
+      const bodyMass = parseFloat(
+        (document.getElementById('bodyMass') as HTMLInputElement).value,
+      );
       const height =
-        parseFloat((document.getElementById('height') as HTMLInputElement).value) / 100;
+        parseFloat(
+          (document.getElementById('height') as HTMLInputElement).value,
+        ) / 100;
       const result: number = Math.round(bodyMass / (height * height));
       return result;
     },
@@ -183,12 +187,15 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       const maleCheckbox = document.getElementById('male') as HTMLInputElement;
-      const isMale: boolean = maleCheckbox && maleCheckbox.checked ? true : false;
+      const isMale: boolean =
+        maleCheckbox && maleCheckbox.checked ? true : false;
 
-      const lowRisk: string = 'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
+      const lowRisk: string =
+        'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
       const mediumRisk: string =
         'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
-      const highRisk: string = 'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
+      const highRisk: string =
+        'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
 
       if (isMale) {
         if (result <= 0) return lowRisk;
@@ -376,11 +383,13 @@ export const calculators: CalculatorType[] = [
     name: 'Kalkulator liczby opakowań leków na dany okres',
     urlPath: '/kalkulator-liczby-opakowan-na-okres',
     category: 'dawkowanie leków',
-    description: 'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
+    description:
+      'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
     methodology: (
       <>
         <Text>
-          Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza się według wzoru:
+          Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza
+          się według wzoru:
         </Text>
         <br />
         <MathJax>{'`p = (t * d * n ) / c`'}</MathJax>
@@ -405,8 +414,9 @@ export const calculators: CalculatorType[] = [
         </UnorderedList>
         <br />
         <Text>
-          Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby całkowitej, aby zapewnić
-          wystarczającą liczbę tabletek na cały okres terapii.
+          Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby
+          całkowitej, aby zapewnić wystarczającą liczbę tabletek na cały okres
+          terapii.
         </Text>
       </>
     ),
@@ -477,8 +487,8 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy ciała pacjenta i
-          ograniczeń wiekowych.
+          Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy
+          ciała pacjenta i ograniczeń wiekowych.
         </Text>
         <br />
         <MathJax>{'`d = (60 * m) / 1000`'}</MathJax>
@@ -486,16 +496,18 @@ export const calculators: CalculatorType[] = [
         <Text>Gdzie:</Text>
         <UnorderedList>
           <ListItem>
-            <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w gramach (g),
+            <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w
+            gramach (g),
           </ListItem>
           <ListItem>
-            <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach (kg).
+            <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach
+            (kg).
           </ListItem>
         </UnorderedList>
         <br />
         <Text>
-          W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna przekraczać 2 g, a u
-          dorosłych 4 g.
+          W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna
+          przekraczać 2 g, a u dorosłych 4 g.
         </Text>
       </>
     ),
@@ -529,7 +541,9 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'g',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+      const age: number = parseFloat(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
       const weight: number = parseFloat(
         (document.getElementById('weight') as HTMLInputElement).value,
       );
@@ -550,7 +564,8 @@ export const calculators: CalculatorType[] = [
     name: 'Skala HAS-BLED',
     urlPath: '/skala-has-bled',
     category: 'kardiologia',
-    description: 'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
+    description:
+      'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
     methodology: null,
     sources: [
       {
@@ -1053,7 +1068,9 @@ export const calculators: CalculatorType[] = [
     description: 'Oblicza skorygowany odstęp QT.',
     methodology: (
       <>
-        <Text>Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:</Text>
+        <Text>
+          Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:
+        </Text>
         <br />
         <MathJax>{'`QTc = (QT) / sqrt(R"R)`'}</MathJax>
         <br />
@@ -1064,8 +1081,9 @@ export const calculators: CalculatorType[] = [
             <strong>QT</strong> – odstęp QT w milisekundach (ms),
           </ListItem>
           <ListItem>
-            <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć jako 60 podzielone
-            przez czynność serca (liczba uderzeń serca na minutę).
+            <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć
+            jako 60 podzielone przez czynność serca (liczba uderzeń serca na
+            minutę).
           </ListItem>
         </UnorderedList>
       </>
@@ -1122,13 +1140,15 @@ export const calculators: CalculatorType[] = [
     name: 'Wskaźnik Maddreya',
     urlPath: '/wskaznik-maddreya',
     category: 'hepatologia',
-    description: 'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
+    description:
+      'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
     methodology: (
       <>
         <Text>
-          Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do oceny rokowania u
-          pacjentów z alkoholowym zapaleniem wątroby. Oblicza się go na podstawie czasu
-          protrombinowego, wartości referencyjnej oraz stężenia bilirubiny całkowitej.
+          Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do
+          oceny rokowania u pacjentów z alkoholowym zapaleniem wątroby. Oblicza
+          się go na podstawie czasu protrombinowego, wartości referencyjnej oraz
+          stężenia bilirubiny całkowitej.
         </Text>
 
         <br />
@@ -1153,8 +1173,8 @@ export const calculators: CalculatorType[] = [
 
         <br />
         <Text>
-          Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może wskazywać na konieczność
-          intensywniejszego leczenia.
+          Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może
+          wskazywać na konieczność intensywniejszego leczenia.
         </Text>
       </>
     ),
@@ -1226,8 +1246,9 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać 3,2 g. U dzieci
-          dawkę tę oblicza się na podstawie masy ciała według poniższego wzoru:
+          Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać
+          3,2 g. U dzieci dawkę tę oblicza się na podstawie masy ciała według
+          poniższego wzoru:
         </Text>
 
         <br />
@@ -1275,7 +1296,9 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'g',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+      const age: number = parseFloat(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
       const weight: number = parseFloat(
         (document.getElementById('weight') as HTMLInputElement).value,
       );
@@ -1303,9 +1326,10 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do oceny ryzyka zgonu u
-          pacjentów z ostrą zatorowością płucną. Wartość wskaźnika oblicza się na podstawie wieku
-          pacjenta oraz obecności określonych czynników klinicznych, którym przypisano punktację.
+          Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do
+          oceny ryzyka zgonu u pacjentów z ostrą zatorowością płucną. Wartość
+          wskaźnika oblicza się na podstawie wieku pacjenta oraz obecności
+          określonych czynników klinicznych, którym przypisano punktację.
         </Text>
 
         <br />
@@ -1318,15 +1342,16 @@ export const calculators: CalculatorType[] = [
             <strong>A</strong> – wiek pacjenta (w latach),
           </ListItem>
           <ListItem>
-            <strong>R</strong> – suma punktów przypisanych za obecność poszczególnych czynników
-            ryzyka.
+            <strong>R</strong> – suma punktów przypisanych za obecność
+            poszczególnych czynników ryzyka.
           </ListItem>
         </UnorderedList>
 
         <br />
         <Text>
-          Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z pięciu klas ryzyka
-          (I–V), które pomagają w ocenie rokowania i podejmowaniu decyzji terapeutycznych.
+          Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z
+          pięciu klas ryzyka (I–V), które pomagają w ocenie rokowania i
+          podejmowaniu decyzji terapeutycznych.
         </Text>
       </>
     ),
@@ -1405,8 +1430,11 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
-      const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+      const age: number = parseFloat(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
+      const inputs: NodeListOf<HTMLInputElement> =
+        document.querySelectorAll('input');
       let sum: number = age;
 
       inputs.forEach((input) => {
@@ -1510,8 +1538,10 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result >= 11) return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.';
-      if (result >= 4) return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.';
+      if (result >= 11)
+        return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.';
+      if (result >= 4)
+        return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.';
       return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.';
     },
   },
@@ -1578,7 +1608,8 @@ export const calculators: CalculatorType[] = [
     getResultInterpretation: (result: number) => {
       if (result >= 3)
         return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.';
-      if (result === 2) return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.';
+      if (result === 2)
+        return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.';
       return 'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.';
     },
   },
@@ -1592,9 +1623,10 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia tkanki tłuszczowej
-          w organizmie i określa proporcję obwodu talii do obwodu bioder. Stosuje się go w ocenie
-          ryzyka chorób sercowo-naczyniowych oraz metabolicznych.
+          Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia
+          tkanki tłuszczowej w organizmie i określa proporcję obwodu talii do
+          obwodu bioder. Stosuje się go w ocenie ryzyka chorób
+          sercowo-naczyniowych oraz metabolicznych.
         </Text>
 
         <br />
@@ -1613,8 +1645,9 @@ export const calculators: CalculatorType[] = [
 
         <br />
         <Text>
-          Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże się ze zwiększonym
-          ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2 oraz chorób układu krążenia.
+          Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże
+          się ze zwiększonym ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2
+          oraz chorób układu krążenia.
         </Text>
       </>
     ),
@@ -1667,8 +1700,12 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const waist = parseFloat((document.getElementById('waist') as HTMLInputElement).value);
-      const hips = parseFloat((document.getElementById('hips') as HTMLInputElement).value);
+      const waist = parseFloat(
+        (document.getElementById('waist') as HTMLInputElement).value,
+      );
+      const hips = parseFloat(
+        (document.getElementById('hips') as HTMLInputElement).value,
+      );
       const result = waist / hips;
       return result;
     },
@@ -1691,7 +1728,8 @@ export const calculators: CalculatorType[] = [
     name: 'Uproszczona skala SOFA (qSOFA)',
     urlPath: '/skala-qsofa',
     category: 'anestezjologia',
-    description: 'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
+    description:
+      'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
     methodology: null,
     sources: [
       {
@@ -1751,7 +1789,8 @@ export const calculators: CalculatorType[] = [
       {
         id: 1,
         author: 'Medycyna Praktyczna',
-        title: 'Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma',
+        title:
+          'Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma',
         dateOfAccess: '01.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.3.23-2.',
       },
@@ -1900,7 +1939,8 @@ export const calculators: CalculatorType[] = [
       {
         id: 1,
         author: 'Medycyna Praktyczna',
-        title: 'Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association',
+        title:
+          'Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association',
         dateOfAccess: '01.10.2024',
         link: 'https://www.mp.pl/interna/table/B16.2.19-1.',
       },
@@ -2019,10 +2059,10 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR), który pozwala na
-          ocenę czynności nerek. Uwzględnia wiek pacjenta, masę ciała oraz stężenie kreatyniny we
-          krwi. Wartość ta pomaga dostosować dawki leków wydalanych przez nerki i monitorować
-          funkcję nerek.
+          Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR),
+          który pozwala na ocenę czynności nerek. Uwzględnia wiek pacjenta, masę
+          ciała oraz stężenie kreatyniny we krwi. Wartość ta pomaga dostosować
+          dawki leków wydalanych przez nerki i monitorować funkcję nerek.
         </Text>
 
         <br />
@@ -2048,8 +2088,8 @@ export const calculators: CalculatorType[] = [
         <br />
         <Text>
           W przypadku kobiet otrzymany wynik należy pomnożyć przez współczynnik{' '}
-          <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą masę mięśniową w
-          porównaniu do mężczyzn.
+          <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą
+          masę mięśniową w porównaniu do mężczyzn.
         </Text>
       </>
     ),
@@ -2108,15 +2148,20 @@ export const calculators: CalculatorType[] = [
     resultUnit: 'ml/min',
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+      const age: number = parseFloat(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
       const weight: number = parseFloat(
         (document.getElementById('weight') as HTMLInputElement).value,
       );
       const creatinine: number = parseFloat(
         (document.getElementById('creatinine') as HTMLInputElement).value,
       );
-      const femaleCheckbox = document.getElementById('female') as HTMLInputElement;
-      const isWoman: boolean = femaleCheckbox && femaleCheckbox.checked ? true : false;
+      const femaleCheckbox = document.getElementById(
+        'female',
+      ) as HTMLInputElement;
+      const isWoman: boolean =
+        femaleCheckbox && femaleCheckbox.checked ? true : false;
 
       let result: number = ((140 - age) * weight) / (creatinine * 72);
       if (isWoman) result = result * 0.85;
@@ -2139,10 +2184,11 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia wątroby u pacjentów z
-          chorobami wątroby, takimi jak wirusowe zapalenie wątroby typu C lub alkoholowe uszkodzenie
-          wątroby. Wartość FIB-4 jest obliczana na podstawie wieku pacjenta, stężenia enzymów
-          wątrobowych (ALT i AST) oraz liczby płytek krwi.
+          Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia
+          wątroby u pacjentów z chorobami wątroby, takimi jak wirusowe zapalenie
+          wątroby typu C lub alkoholowe uszkodzenie wątroby. Wartość FIB-4 jest
+          obliczana na podstawie wieku pacjenta, stężenia enzymów wątrobowych
+          (ALT i AST) oraz liczby płytek krwi.
         </Text>
 
         <br />
@@ -2167,9 +2213,10 @@ export const calculators: CalculatorType[] = [
 
         <br />
         <Text>
-          Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie prawdopodobieństwo
-          zaawansowanego włóknienia, natomiast wartość poniżej <strong>1,45</strong> wskazuje na
-          niskie ryzyko obecności włóknienia.
+          Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie
+          prawdopodobieństwo zaawansowanego włóknienia, natomiast wartość
+          poniżej <strong>1,45</strong> wskazuje na niskie ryzyko obecności
+          włóknienia.
         </Text>
       </>
     ),
@@ -2229,9 +2276,15 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
-      const age: number = parseFloat((document.getElementById('age') as HTMLInputElement).value);
-      const alt: number = parseFloat((document.getElementById('alt') as HTMLInputElement).value);
-      const ast: number = parseFloat((document.getElementById('ast') as HTMLInputElement).value);
+      const age: number = parseFloat(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
+      const alt: number = parseFloat(
+        (document.getElementById('alt') as HTMLInputElement).value,
+      );
+      const ast: number = parseFloat(
+        (document.getElementById('ast') as HTMLInputElement).value,
+      );
       const platelet: number = parseFloat(
         (document.getElementById('platelet') as HTMLInputElement).value,
       );
@@ -2242,7 +2295,8 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result === 0) return 'Uzupełnij wszystkie informacje.';
-      if (result > 3.25) return 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
+      if (result > 3.25)
+        return 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
       if (result > 1.45)
         return 'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.';
       return 'Małe prawdopodobieństwo zaawansowanego włóknienia.';
@@ -2401,7 +2455,8 @@ export const calculators: CalculatorType[] = [
       {
         id: 1,
         author: 'Medycyna Praktyczna',
-        title: 'Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski',
+        title:
+          'Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski',
         dateOfAccess: '14.10.2024',
         link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
       },
@@ -2475,7 +2530,9 @@ export const calculators: CalculatorType[] = [
     resultUnit: '%',
 
     getResult: () => {
-      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value);
+      const age: number = parseInt(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
       const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40;
       const bloodPressure: number = parseFloat(
         (document.getElementById('bloodPressure') as HTMLInputElement).value,
@@ -2485,7 +2542,9 @@ export const calculators: CalculatorType[] = [
       );
       const manCheckbox = document.getElementById('man') as HTMLInputElement;
       const gender: 'male' | 'female' = manCheckbox.checked ? 'male' : 'female';
-      const smokingCheckbox = document.getElementById('smoking') as HTMLInputElement;
+      const smokingCheckbox = document.getElementById(
+        'smoking',
+      ) as HTMLInputElement;
       const smokingStatus: 'smoking' | 'nonSmoking' = smokingCheckbox.checked
         ? 'smoking'
         : 'nonSmoking';
@@ -2777,7 +2836,9 @@ export const calculators: CalculatorType[] = [
       };
 
       const risk: number =
-        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][cholesterolGroup];
+        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][
+          cholesterolGroup
+        ];
 
       return risk;
     },
@@ -2785,9 +2846,12 @@ export const calculators: CalculatorType[] = [
     getResultInterpretation: (result: number) => {
       if (result === 0) return 'Uzupełnij wszystkie informacje.';
 
-      const age: number = parseInt((document.getElementById('age') as HTMLInputElement).value);
+      const age: number = parseInt(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
       if (age >= 70) {
-        if (result < 7.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.';
+        if (result < 7.5)
+          return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.';
         if (result < 15) return 'Duże ryzyko w skali SCORE2-OP.';
         return 'Bardzo duże ryzyko w skali SCORE2-OP.';
       }
@@ -2811,9 +2875,10 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Prognozowany wzrost dziecka można oszacować na podstawie wzrostu rodziców, korzystając z
-          uproszczonego wzoru pediatrycznego. Pozwala on orientacyjnie określić, jaki wzrost dziecko
-          może osiągnąć w wieku dorosłym.
+          Prognozowany wzrost dziecka można oszacować na podstawie wzrostu
+          rodziców, korzystając z uproszczonego wzoru pediatrycznego. Pozwala on
+          orientacyjnie określić, jaki wzrost dziecko może osiągnąć w wieku
+          dorosłym.
         </Text>
 
         <br />
@@ -2832,16 +2897,16 @@ export const calculators: CalculatorType[] = [
             <strong>O</strong> – wzrost ojca (w cm),
           </ListItem>
           <ListItem>
-            <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku chłopców, odejmij{' '}
-            <strong>13 cm</strong> w przypadku dziewczynek.
+            <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku
+            chłopców, odejmij <strong>13 cm</strong> w przypadku dziewczynek.
           </ListItem>
         </UnorderedList>
 
         <br />
         <Text>
-          Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości i nie uwzględnia
-          czynników genetycznych, środowiskowych oraz zdrowotnych, które również wpływają na wzrost
-          dziecka.
+          Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości
+          i nie uwzględnia czynników genetycznych, środowiskowych oraz
+          zdrowotnych, które również wpływają na wzrost dziecka.
         </Text>
       </>
     ),
@@ -3196,13 +3261,19 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      const happenedCheckbox = document.getElementById('happenedAtTheSameTime') as HTMLInputElement;
+      const happenedCheckbox = document.getElementById(
+        'happenedAtTheSameTime',
+      ) as HTMLInputElement;
       const happenedAtTheSameTime: boolean =
         happenedCheckbox && happenedCheckbox.checked ? true : false;
 
-      const problem = document.querySelector('input[name="problem"]:checked') as HTMLInputElement;
+      const problem = document.querySelector(
+        'input[name="problem"]:checked',
+      ) as HTMLInputElement;
       const isProblem: boolean =
-        problem && (problem.value === 'medium' || problem.value === 'big') ? true : false;
+        problem && (problem.value === 'medium' || problem.value === 'big')
+          ? true
+          : false;
 
       if (result >= 7 && happenedAtTheSameTime && isProblem) {
         return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.';
@@ -3221,7 +3292,8 @@ export const calculators: CalculatorType[] = [
     sources: [
       {
         id: 1,
-        author: 'Centrum Dobrej Terapii (mgr Maria Kaleńczuk, mgr Teresa Janus)',
+        author:
+          'Centrum Dobrej Terapii (mgr Maria Kaleńczuk, mgr Teresa Janus)',
         title: 'Czy jesteś uzależniony od alkoholu – test AUDIT',
         dateOfAccess: '22.10.2024',
         link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
@@ -3551,8 +3623,9 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      const sex: string = (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)
-        ?.value;
+      const sex: string = (
+        document.querySelector('input[name="sex"]:checked') as HTMLInputElement
+      )?.value;
 
       const lowRisk: string = 'Picie o niskim poziomie ryzyka.';
       const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.';
@@ -4090,7 +4163,8 @@ export const calculators: CalculatorType[] = [
 
     getResultInterpretation: (result: number) => {
       if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.';
-      if (result > 20) return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.';
+      if (result > 20)
+        return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.';
       return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.';
     },
   },
@@ -4104,9 +4178,9 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu we krwi (BAC –
-          <em>Blood Alcohol Concentration</em>) na podstawie ilości spożytego alkoholu, masy ciała
-          oraz płci.
+          Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu
+          we krwi (BAC –<em>Blood Alcohol Concentration</em>) na podstawie
+          ilości spożytego alkoholu, masy ciała oraz płci.
         </Text>
 
         <br />
@@ -4135,8 +4209,9 @@ export const calculators: CalculatorType[] = [
 
         <br />
         <Text>
-          Wzór ten daje jedynie przybliżony wynik i nie uwzględnia indywidualnych różnic w
-          metabolizmie, stanie zdrowia czy sposobie spożywania alkoholu.
+          Wzór ten daje jedynie przybliżony wynik i nie uwzględnia
+          indywidualnych różnic w metabolizmie, stanie zdrowia czy sposobie
+          spożywania alkoholu.
         </Text>
       </>
     ),
@@ -4203,7 +4278,11 @@ export const calculators: CalculatorType[] = [
         (document.getElementById('bodyWeight') as HTMLInputElement).value,
       );
       const sexIndex: number = parseFloat(
-        (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)?.value,
+        (
+          document.querySelector(
+            'input[name="sex"]:checked',
+          ) as HTMLInputElement
+        )?.value,
       );
 
       const result = consumedAlcohol / (sexIndex * bodyWeight);
@@ -4220,13 +4299,15 @@ export const calculators: CalculatorType[] = [
     name: 'Skala Oakland',
     urlPath: '/skala-oakland',
     category: 'gastrologia',
-    description: 'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
+    description:
+      'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
     methodology: null,
     sources: [
       {
         id: 1,
         author: 'Medycyna Praktyczna',
-        title: 'Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego',
+        title:
+          'Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego',
         dateOfAccess: '29.10.2024',
         link: 'https://www.mp.pl/chirurgia/wytyczne-przegladowe/242727,rozpoznanie-i-leczenie-ostrego-krwawienia-do-dolnego-odcinka-przewodu-pokarmowego',
       },
@@ -4404,7 +4485,8 @@ export const calculators: CalculatorType[] = [
     getResult: sumInputValues,
 
     getResultInterpretation: (result: number) => {
-      if (result > 8) return 'Poważne krwawienie. Wskazana jest hospitalizacja.';
+      if (result > 8)
+        return 'Poważne krwawienie. Wskazana jest hospitalizacja.';
       return 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.';
     },
   },
@@ -4573,9 +4655,13 @@ export const calculators: CalculatorType[] = [
     getResultInterpretation: (result: number) => {
       function checkIfHighRisk() {
         const stop = ['s', 't', 'o', 'p'];
-        const stopElements = stop.map((letter) => document.querySelector(`input#${letter}`));
+        const stopElements = stop.map((letter) =>
+          document.querySelector(`input#${letter}`),
+        );
         const bng = ['b', 'n', 'g'];
-        const bngElements = bng.map((letter) => document.querySelector(`input#${letter}`));
+        const bngElements = bng.map((letter) =>
+          document.querySelector(`input#${letter}`),
+        );
 
         let stopSum: number = 0;
         let bngSum: number = 0;
@@ -4595,7 +4681,8 @@ export const calculators: CalculatorType[] = [
 
       if (result >= 5 || isHighRisk === true)
         return 'Wysokie ryzyko obturacyjnego bezdechu sennego.';
-      if (result >= 3) return 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.';
+      if (result >= 3)
+        return 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.';
       return 'Niskie ryzyko obturacyjnego bezdechu sennego.';
     },
   },
@@ -4611,7 +4698,8 @@ export const calculators: CalculatorType[] = [
       {
         id: 1,
         author: 'Medycyna Praktyczna',
-        title: 'Ocena kliniczna i leczenie w warunkach stanu naglącego (Portal lekarzy)',
+        title:
+          'Ocena kliniczna i leczenie w warunkach stanu naglącego (Portal lekarzy)',
         dateOfAccess: '15.01.2025',
         link: 'https://www.mp.pl/neurologia/udar-mozgu/195346,2-ocena-kliniczna-i-leczenie-w-warunkach-stanu-naglacego',
       },
@@ -5029,9 +5117,10 @@ export const calculators: CalculatorType[] = [
     methodology: (
       <>
         <Text>
-          Beztłuszczowa masa ciała (LBM – <em>Lean Body Mass</em>) to masa organizmu po odjęciu
-          tkanki tłuszczowej. Jest to istotny wskaźnik w ocenie składu ciała, wykorzystywany do
-          monitorowania postępów w redukcji masy tłuszczowej lub w budowaniu masy mięśniowej.
+          Beztłuszczowa masa ciała (LBM – <em>Lean Body Mass</em>) to masa
+          organizmu po odjęciu tkanki tłuszczowej. Jest to istotny wskaźnik w
+          ocenie składu ciała, wykorzystywany do monitorowania postępów w
+          redukcji masy tłuszczowej lub w budowaniu masy mięśniowej.
         </Text>
 
         <br />
@@ -5040,11 +5129,15 @@ export const calculators: CalculatorType[] = [
         <UnorderedList>
           <ListItem>
             <strong>Mężczyźni:</strong>{' '}
-            <MathJax>{'`LBM = 0.407 \\times M + 0.267 \\times H - 19.2`'}</MathJax>
+            <MathJax>
+              {'`LBM = 0.407 \\times M + 0.267 \\times H - 19.2`'}
+            </MathJax>
           </ListItem>
           <ListItem>
             <strong>Kobiety:</strong>{' '}
-            <MathJax>{'`LBM = 0.252 \\times M + 0.473 \\times H - 48.3`'}</MathJax>
+            <MathJax>
+              {'`LBM = 0.252 \\times M + 0.473 \\times H - 48.3`'}
+            </MathJax>
           </ListItem>
         </UnorderedList>
 
@@ -5064,15 +5157,17 @@ export const calculators: CalculatorType[] = [
 
         <br />
         <Text>
-          Wzory te oparte są na badaniach populacyjnych i stanowią przybliżenie, które może być
-          wykorzystywane u dorosłych w celu orientacyjnego oszacowania beztłuszczowej masy ciała.
+          Wzory te oparte są na badaniach populacyjnych i stanowią przybliżenie,
+          które może być wykorzystywane u dorosłych w celu orientacyjnego
+          oszacowania beztłuszczowej masy ciała.
         </Text>
       </>
     ),
     sources: [
       {
         id: 1,
-        author: 'Omni Calculator (Mateusz Mucha, Piotr Małek, Łucja Zaborowska)',
+        author:
+          'Omni Calculator (Mateusz Mucha, Piotr Małek, Łucja Zaborowska)',
         title: 'Kalkulator beztłuszczowej masy ciała',
         dateOfAccess: '01.07.2025',
         link: 'https://www.omnicalculator.com/pl/zdrowie/beztluszczowa-masa-ciala',
@@ -5124,8 +5219,9 @@ export const calculators: CalculatorType[] = [
       const height: number = parseFloat(
         (document.getElementById('height') as HTMLInputElement).value,
       );
-      const sex: string = (document.querySelector('input[name="sex"]:checked') as HTMLInputElement)
-        ?.value;
+      const sex: string = (
+        document.querySelector('input[name="sex"]:checked') as HTMLInputElement
+      )?.value;
 
       let result: number;
       if (sex === 'male') {

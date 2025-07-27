@@ -19,10 +19,17 @@ import RouterErrorBoundary from './RouterErrorBoundary';
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path={ROUTES.HOME} element={<RootLayout />} errorElement={<RouterErrorBoundary />}>
+      <Route
+        path={ROUTES.HOME}
+        element={<RootLayout />}
+        errorElement={<RouterErrorBoundary />}
+      >
         <Route index element={<HomePage />} />
         <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
-        <Route path={ROUTES.IMPORT_FAVORITES} element={<ImportFavoritesPage />} />
+        <Route
+          path={ROUTES.IMPORT_FAVORITES}
+          element={<ImportFavoritesPage />}
+        />
         <Route path={ROUTES.SUCCESS} element={<SubmissionSuccessPage />} />
         <Route path="*" element={<Error404Page />} />
 

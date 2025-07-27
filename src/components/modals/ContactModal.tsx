@@ -40,7 +40,12 @@ export default function ContactModal() {
         </IconButton>
       </Tooltip>
 
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} size="xl">
+      <Modal
+        initialFocusRef={initialRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="xl"
+      >
         <form
           name="contact-form"
           method="POST"

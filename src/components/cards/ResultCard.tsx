@@ -1,4 +1,11 @@
-import { Card, CardBody, CardHeader, Divider, Heading, Text } from '@chakra-ui/react';
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  Heading,
+  Text,
+} from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
 import STRINGS from '../../data/strings';
@@ -35,10 +42,16 @@ export default function ResultCard({
 
   const formattedResult = result.toFixed(1).replace(/\.0$/, '');
   const formattedResultUnit =
-    resultUnit && `${resultUnit === '%' || resultUnit === '‰' ? '' : ' '}${resultUnit}`;
+    resultUnit &&
+    `${resultUnit === '%' || resultUnit === '‰' ? '' : ' '}${resultUnit}`;
 
   return (
-    <Card overflow="hidden" variant="filled" id="resultCard" data-card-animation={isAnimation}>
+    <Card
+      overflow="hidden"
+      variant="filled"
+      id="resultCard"
+      data-card-animation={isAnimation}
+    >
       <CardHeader>
         <Heading as="p" size="md">
           {STRINGS.PAGES.CALCULATOR.RESULT}: {formattedResult}

@@ -15,15 +15,20 @@ export default function FavoritesPage() {
   useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE);
 
   const [sortingOrder, setSortingOrder] = useState<string>(
-    localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) || STORAGE_KEYS.SORT.ALPHABETICALLY,
+    localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) ||
+      STORAGE_KEYS.SORT.ALPHABETICALLY,
   );
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sortingOrder);
   }, [sortingOrder]);
 
-  const favIds = JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]');
-  const favoriteCalculators = sortedCalculators.filter((calc) => favIds.includes(calc.id));
+  const favIds = JSON.parse(
+    localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]',
+  );
+  const favoriteCalculators = sortedCalculators.filter((calc) =>
+    favIds.includes(calc.id),
+  );
   const categories: string[] = getCategories(favoriteCalculators);
 
   return (
@@ -33,7 +38,10 @@ export default function FavoritesPage() {
         {favoriteCalculators.length > 0 && (
           <Stack direction="row" gap={{ base: 3, md: 2 }}>
             <ShareFavModal />
-            <SortButton sortingOrder={sortingOrder} setSortingOrder={setSortingOrder} />
+            <SortButton
+              sortingOrder={sortingOrder}
+              setSortingOrder={setSortingOrder}
+            />
           </Stack>
         )}
       </Flex>
@@ -93,7 +101,9 @@ function NoFavoritesPlaceholder() {
       <Heading as="h1" size="md" mx="auto">
         {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
       </Heading>
-      <Text align="center">{STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}</Text>
+      <Text align="center">
+        {STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}
+      </Text>
     </VStack>
   );
 }

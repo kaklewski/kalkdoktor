@@ -14,7 +14,12 @@ import { NumberInputType } from '../../types/calculatorTypes';
 
 type CustomNumberInputProps = NumberInputType;
 
-export default function CustomNumberInput({ id, text, min, max }: CustomNumberInputProps) {
+export default function CustomNumberInput({
+  id,
+  text,
+  min,
+  max,
+}: CustomNumberInputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -26,7 +31,8 @@ export default function CustomNumberInput({ id, text, min, max }: CustomNumberIn
       const { selectionStart, selectionEnd, value } = input;
 
       if (selectionStart !== null && selectionEnd !== null) {
-        const newValue = value.slice(0, selectionStart) + '.' + value.slice(selectionEnd);
+        const newValue =
+          value.slice(0, selectionStart) + '.' + value.slice(selectionEnd);
         input.value = newValue;
         input.setSelectionRange(selectionStart + 1, selectionStart + 1);
 

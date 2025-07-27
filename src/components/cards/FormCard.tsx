@@ -34,7 +34,11 @@ export default function FormCard({
           <Stack spacing={4} divider={<StackDivider />}>
             {radioGroups &&
               radioGroups.map((radioGroup) => (
-                <CustomRadioGroup key={radioGroup.id} id={radioGroup.id} text={radioGroup.text}>
+                <CustomRadioGroup
+                  key={radioGroup.id}
+                  id={radioGroup.id}
+                  text={radioGroup.text}
+                >
                   {radioGroup.radios.map((radio) => (
                     <CustomRadio
                       key={radio.id}

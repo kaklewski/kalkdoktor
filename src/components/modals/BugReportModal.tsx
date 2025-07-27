@@ -25,17 +25,28 @@ type BugReportModalProps = {
   calculatorName: string;
 };
 
-export default function BugReportModal({ calculatorName }: BugReportModalProps) {
+export default function BugReportModal({
+  calculatorName,
+}: BugReportModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
 
   return (
     <>
-      <Button leftIcon={<IconFlag stroke={1.5} size={16} />} size="xs" onClick={onOpen}>
+      <Button
+        leftIcon={<IconFlag stroke={1.5} size={16} />}
+        size="xs"
+        onClick={onOpen}
+      >
         {STRINGS.BUTTONS.REPORT_BUG}
       </Button>
 
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose} size="xl">
+      <Modal
+        initialFocusRef={initialRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="xl"
+      >
         <form
           name="bug-report"
           method="POST"
@@ -64,13 +75,22 @@ export default function BugReportModal({ calculatorName }: BugReportModalProps) 
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel>{STRINGS.MODALS.BUG_REPORT.FORM.BUG_DESCRIPTION}</FormLabel>
+                  <FormLabel>
+                    {STRINGS.MODALS.BUG_REPORT.FORM.BUG_DESCRIPTION}
+                  </FormLabel>
                   <Textarea name="message" rows={5} minH="5rem" />
                 </FormControl>
 
                 <FormControl>
-                  <FormLabel>{STRINGS.MODALS.BUG_REPORT.FORM.RELATED_CALCULATOR}</FormLabel>
-                  <Input readOnly name="calculator-name" variant="filled" value={calculatorName} />
+                  <FormLabel>
+                    {STRINGS.MODALS.BUG_REPORT.FORM.RELATED_CALCULATOR}
+                  </FormLabel>
+                  <Input
+                    readOnly
+                    name="calculator-name"
+                    variant="filled"
+                    value={calculatorName}
+                  />
                 </FormControl>
               </Stack>
             </ModalBody>

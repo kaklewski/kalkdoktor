@@ -29,7 +29,10 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   function showToast(type: string) {
     toast({
-      title: type === 'added' ? STRINGS.TOASTS.FAVORITES.ADDED : STRINGS.TOASTS.FAVORITES.REMOVED,
+      title:
+        type === 'added'
+          ? STRINGS.TOASTS.FAVORITES.ADDED
+          : STRINGS.TOASTS.FAVORITES.REMOVED,
       status: type === 'added' ? 'success' : 'warning',
       position: 'top',
       duration: 1500,
@@ -64,15 +67,23 @@ export default function FavButton({ pageId }: FavButtonProps) {
 
   return (
     <Tooltip
-      label={isFav ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE : STRINGS.BUTTONS.FAVORITES.ACTION.ADD}
+      label={
+        isFav
+          ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
+          : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
+      }
     >
       <IconButton
         aria-label={
-          isFav ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
+          isFav
+            ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
+            : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
         }
         variant="outline"
         colorScheme={isFav ? 'red' : 'teal'}
-        icon={isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />}
+        icon={
+          isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />
+        }
         onClick={addToFav}
       />
     </Tooltip>
