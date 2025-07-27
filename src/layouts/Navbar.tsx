@@ -1,4 +1,4 @@
-import { Box, Button,Flex, IconButton } from '@chakra-ui/react';
+import { Box, Button, Flex, IconButton } from '@chakra-ui/react';
 import { IconHeart } from '@tabler/icons-react';
 import { Link as RouterLink } from 'react-router-dom';
 
