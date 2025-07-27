@@ -1,4 +1,5 @@
 import prettierConfig from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
@@ -29,6 +30,7 @@ export default [
       react: react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      prettier: prettierPlugin,
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
     },
@@ -39,6 +41,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/ban-ts-comment': 'warn',
+      'prettier/prettier': 'warn',
       'simple-import-sort/imports': 'warn',
       'simple-import-sort/exports': 'warn',
       'unused-imports/no-unused-imports': 'warn',
