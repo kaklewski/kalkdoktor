@@ -38,7 +38,7 @@ export default function ResultCard({
     }, 301);
 
     return () => clearTimeout(isAnimationTimeout);
-  }, [result]);
+  }, [result, resultInterpretation]);
 
   const formattedResult = result.toFixed(1).replace(/\.0$/, '');
   const formattedResultUnit =
