@@ -33,15 +33,15 @@ export default function FormCard({
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
             {radioGroups &&
-              radioGroups.map((radioGroup) => (
+              radioGroups.map((radioGroup, index) => (
                 <CustomRadioGroup
-                  key={radioGroup.id}
+                  key={`${radioGroup.id}-${index}`}
                   id={radioGroup.id}
                   text={radioGroup.text}
                 >
-                  {radioGroup.radios.map((radio) => (
+                  {radioGroup.radios.map((radio, index) => (
                     <CustomRadio
-                      key={radio.id}
+                      key={`${radio.id}-${index}`}
                       id={radio.id}
                       value={radio.value}
                       hideBadge={radio.hideBadge}
@@ -52,19 +52,20 @@ export default function FormCard({
               ))}
 
             {checkboxes &&
-              checkboxes.map((checkbox) => (
+              checkboxes.map((checkbox, index) => (
                 <CustomCheckbox
-                  key={checkbox.id}
+                  key={`${checkbox.id}-${index}`}
                   id={checkbox.id}
-                  text={checkbox.text}
                   value={checkbox.value}
+                  hideBadge={checkbox.hideBadge}
+                  text={checkbox.text}
                 />
               ))}
 
             {numberInputs &&
-              numberInputs.map((input) => (
+              numberInputs.map((input, index) => (
                 <CustomNumberInput
-                  key={input.id}
+                  key={`${input.id}-${index}`}
                   id={input.id}
                   text={input.text}
                   min={input.min}
