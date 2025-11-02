@@ -18,6 +18,7 @@ export type NumberInputType = {
 export type CheckboxType = {
   id: string | number;
   value: number;
+  hideBadge?: boolean;
   text: string;
 };
 

@@ -1,4 +1,4 @@
-import { Flex, Radio } from '@chakra-ui/react';
+import { Flex, Radio, Text } from '@chakra-ui/react';
 
 import { RadioType } from '../../types/calculatorTypes';
 import CustomBadge from './CustomBadge';
@@ -11,13 +11,13 @@ export default function CustomRadio({
   hideBadge,
   text,
 }: CustomRadioProps) {
+  const isBadgeDisplayed = !hideBadge && typeof value === 'number';
+
   return (
     <Radio value={value.toString()} id={id.toString()} isRequired>
       <Flex align="center" gap={2}>
-        {text}
-        {hideBadge !== true && typeof value === 'number' && (
-          <CustomBadge value={value} />
-        )}
+        <Text style={{ whiteSpace: 'pre-line' }}>{text}</Text>
+        {isBadgeDisplayed && <CustomBadge value={value} />}
       </Flex>
     </Radio>
   );
