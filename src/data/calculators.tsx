@@ -5238,6 +5238,232 @@ export const calculators: CalculatorType[] = [
       return 'Beztłuszczowa masa ciała.';
     },
   },
+  {
+    id: 36,
+    name: 'Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD)',
+    urlPath: '/skala-prawdopodobienstwa-cad',
+    category: 'kardiologia',
+    description:
+      'Oszacowuje prawdopodobieństwo występowania choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
+    methodology: null,
+    sources: [
+      {
+        id: 1,
+        author: 'Medcyna Praktyczna',
+        title:
+          'Oszacowanie prawdopodobieństwa przed testem (PTL) choroby wieńcowej (ChW) z istotnymi zwężeniami tętnic nasierdziowych za pomocą modelu klinicznego opartego na sile poszczególnych czynników ryzyka sercowo-naczyniowego (RF-CL)',
+        dateOfAccess: '03.11.2025',
+        link: 'https://www.mp.pl/interna/table/B16.2.5-2.',
+      },
+      {
+        id: 2,
+        author: 'European Society of Cardiology (ESC)',
+        title:
+          '2024 ESC Guidelines for the management of chronic coronary syndromes (dokument PDF)',
+        dateOfAccess: '03.11.2025',
+        link: 'https://icus-society.org/wp-content/uploads/2024/09/ESCCCS-2024-guideline7.pdf',
+      },
+    ],
+    fields: {
+      numberInputs: [
+        {
+          id: 'age',
+          text: 'Wiek (lata)',
+          min: 30,
+          max: 120,
+        },
+      ],
+      checkboxes: [
+        {
+          id: 'riskFactors',
+          value: 1,
+          hideBadge: true,
+          text: 'Czynnik ryzyka: ChW w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
+        },
+        {
+          id: 'riskFactors',
+          value: 1,
+          hideBadge: true,
+          text: 'Czynnik ryzyka: Palenie papierosów (obecne lub przeszłe)',
+        },
+        {
+          id: 'riskFactors',
+          value: 1,
+          hideBadge: true,
+          text: 'Czynnik ryzyka: Dyslipidemia',
+        },
+        {
+          id: 'riskFactors',
+          value: 1,
+          hideBadge: true,
+          text: 'Czynnik ryzyka: Nadciśnienie tętnicze',
+        },
+        {
+          id: 'riskFactors',
+          value: 1,
+          hideBadge: true,
+          text: 'Czynnik ryzyka: Cukrzyca',
+        },
+      ],
+      radioGroups: [
+        {
+          id: 'sex',
+          text: 'Płeć',
+          radios: [
+            {
+              id: 'female',
+              value: 'female',
+              hideBadge: true,
+              text: 'Kobieta',
+            },
+            {
+              id: 'male',
+              value: 'male',
+              hideBadge: true,
+              text: 'Mężczyzna',
+            },
+          ],
+        },
+        {
+          id: 'mainSymptom',
+          text: 'Główny objaw',
+          radios: [
+            {
+              id: 1,
+              // 02 is a hack to distinguish this option from others with numeric values
+              value: '02',
+              hideBadge: true,
+              text: 'Duszność',
+            },
+            {
+              id: 2,
+              value: 3,
+              hideBadge: true,
+              text: 'Ból w klatce piersiowej z trzema cechami: \n 1) Ściskający, promieniujący za mostek, do szyi, żuchwy lub ramienia \n 2) Wysiłek lub stres jako czynniki wyzwalające \n 3) Wystąpienie w spoczynku lub w ciągu 5 min po przyjęciu azotanu',
+            },
+            {
+              id: 3,
+              value: 2,
+              hideBadge: true,
+              text: 'Ból w klatce piersiowej z dwoma z wymienionych powyżej cech',
+            },
+            {
+              id: 4,
+              value: 1,
+              hideBadge: true,
+              text: 'Ból w klatce piersiowej z jedną z wymienionych powyżej cech lub bez żadnej z nich',
+            },
+          ],
+        },
+      ],
+    },
+    resultUnit: null,
+
+    getResult: () => {
+      const age: number = parseInt(
+        (document.getElementById('age') as HTMLInputElement).value,
+      );
+
+      const ageGroup: number = (() => {
+        let result = Math.floor((age - 30) / 10) * 10 + 30;
+        if (result > 70) result = 70;
+        return result;
+      })();
+
+      const sex: string = (
+        document.querySelector('input[name="sex"]:checked') as HTMLInputElement
+      )?.value;
+
+      const mainSymptomValue: number = parseInt(
+        (
+          document.querySelector(
+            'input[name="mainSymptom"]:checked',
+          ) as HTMLInputElement
+        )?.value,
+      );
+
+      const riskFactorsElements = document.querySelectorAll(
+        'input[name="riskFactors"]',
+      ) as NodeListOf<HTMLInputElement>;
+
+      const riskFactorsSum: number = (() => {
+        let sum = 0;
+        riskFactorsElements.forEach((input) => {
+          if (input.checked) sum += parseInt(input.value);
+        });
+        return sum;
+      })();
+
+      const riskFactorGroup: number = (() => {
+        if (riskFactorsSum <= 1) return 0;
+        if (riskFactorsSum <= 3) return 1;
+        return 2;
+      })();
+
+      const cadProbabilityTable = {
+        // mainSymptomValue -> sex -> ageGroup -> riskFactorGroup -> probability %
+        1: {
+          female: {
+            30: [0, 1, 2],
+            40: [1, 1, 3],
+            50: [1, 2, 5],
+            60: [2, 4, 7],
+            70: [4, 7, 11],
+          },
+          male: {
+            30: [1, 2, 5],
+            40: [2, 4, 8],
+            50: [4, 7, 12],
+            60: [8, 12, 17],
+            70: [15, 19, 24],
+          },
+        },
+        2: {
+          female: {
+            30: [0, 1, 3],
+            40: [1, 2, 5],
+            50: [2, 3, 7],
+            60: [3, 6, 11],
+            70: [6, 10, 16],
+          },
+          male: {
+            30: [2, 4, 8],
+            40: [3, 6, 12],
+            50: [6, 11, 17],
+            60: [12, 17, 25],
+            70: [22, 27, 34],
+          },
+        },
+        3: {
+          female: {
+            30: [2, 5, 10],
+            40: [4, 7, 12],
+            50: [6, 10, 15],
+            60: [10, 14, 19],
+            70: [16, 19, 23],
+          },
+          male: {
+            30: [9, 14, 22],
+            40: [14, 20, 27],
+            50: [21, 27, 33],
+            60: [32, 35, 39],
+            70: [44, 44, 45],
+          },
+        },
+      };
+
+      return cadProbabilityTable[mainSymptomValue][sex][ageGroup][
+        riskFactorGroup
+      ];
+    },
+
+    getResultInterpretation: (result: number) => {
+      if (result <= 5)
+        return 'Bardzo niskie prawdopodobieństwo choroby wieńcowej.';
+      if (result <= 15) return 'Niskie prawdopodobieństwo choroby wieńcowej.';
+      return 'Umiarkowane prawdopodobieństwo choroby wieńcowej.';
+    },
+  },
 
   // {
   // 	id: ,
