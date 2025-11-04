@@ -5244,8 +5244,34 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-prawdopodobienstwa-cad',
     category: 'kardiologia',
     description:
-      'Oszacowuje prawdopodobieństwo występowania choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
-    methodology: null,
+      'Oszacowuje prawdopodobieństwo choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
+    methodology: (
+      <>
+        <Text>
+          Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD – Coronary
+          Artery Disease) została opracowana przez Europejskie Towarzystwo
+          Kardiologiczne (ESC) i służy do oceny prawdopodobieństwa istotnej ChW
+          u pacjentów z dusznością lub bólem w klatce piersiowej.
+        </Text>
+        <br />
+        <Text>Uwzględnia:</Text>
+        <UnorderedList>
+          <ListItem>Charakterystykę objawów (ból/duszność),</ListItem>
+          <ListItem>
+            Liczbę czynników ryzyka (wywiad rodzinny, nikotynizm, dyslipidemia,
+            nadciśnienie tętnicze, cukrzyca),
+          </ListItem>
+          <ListItem>Wiek i płeć pacjenta.</ListItem>
+        </UnorderedList>
+        <br />
+        <Text>
+          Końcowy wynik obliczany jest na podstawie tabeli prawdopodobieństwa
+          CAD, która przypisuje wartości punktowe w zależności od kombinacji
+          powyższych czynników. Przykładowa tabela znajduje się na stronie nr 25
+          w dokumencie PDF załączonym w źródłach.
+        </Text>
+      </>
+    ),
     sources: [
       {
         id: 1,
@@ -5278,31 +5304,31 @@ export const calculators: CalculatorType[] = [
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Czynnik ryzyka: ChW w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
+          text: 'Choroba wieńcowa w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Czynnik ryzyka: Palenie papierosów (obecne lub przeszłe)',
+          text: 'Palenie papierosów (obecnie lub w przeszłości)',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Czynnik ryzyka: Dyslipidemia',
+          text: 'Dyslipidemia',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Czynnik ryzyka: Nadciśnienie tętnicze',
+          text: 'Nadciśnienie tętnicze',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Czynnik ryzyka: Cukrzyca',
+          text: 'Cukrzyca',
         },
       ],
       radioGroups: [
@@ -5360,27 +5386,37 @@ export const calculators: CalculatorType[] = [
     resultUnit: null,
 
     getResult: () => {
+      type Sex = 'male' | 'female';
+      type AgeGroup = 30 | 40 | 50 | 60 | 70;
+      type RiskFactorGroup = [number, number, number];
+      type MainSymptomValue = 1 | 2 | 3;
+
+      type CadProbabilityTable = Record<
+        MainSymptomValue,
+        Record<Sex, Record<AgeGroup, RiskFactorGroup>>
+      >;
+
       const age: number = parseInt(
         (document.getElementById('age') as HTMLInputElement).value,
       );
 
-      const ageGroup: number = (() => {
+      const ageGroup: AgeGroup = (() => {
         let result = Math.floor((age - 30) / 10) * 10 + 30;
         if (result > 70) result = 70;
         return result;
-      })();
+      })() as AgeGroup;
 
-      const sex: string = (
+      const sex: Sex = (
         document.querySelector('input[name="sex"]:checked') as HTMLInputElement
-      )?.value;
+      )?.value as Sex;
 
-      const mainSymptomValue: number = parseInt(
+      const mainSymptomValue: MainSymptomValue = parseInt(
         (
           document.querySelector(
             'input[name="mainSymptom"]:checked',
           ) as HTMLInputElement
         )?.value,
-      );
+      ) as MainSymptomValue;
 
       const riskFactorsElements = document.querySelectorAll(
         'input[name="riskFactors"]',
@@ -5400,7 +5436,7 @@ export const calculators: CalculatorType[] = [
         return 2;
       })();
 
-      const cadProbabilityTable = {
+      const cadProbabilityTable: CadProbabilityTable = {
         // mainSymptomValue -> sex -> ageGroup -> riskFactorGroup -> probability %
         1: {
           female: {
@@ -5452,9 +5488,9 @@ export const calculators: CalculatorType[] = [
         },
       };
 
-      return cadProbabilityTable[mainSymptomValue][sex][ageGroup][
-        riskFactorGroup
-      ];
+      return cadProbabilityTable[mainSymptomValue as MainSymptomValue][
+        sex as Sex
+      ][ageGroup as AgeGroup][riskFactorGroup];
     },
 
     getResultInterpretation: (result: number) => {
