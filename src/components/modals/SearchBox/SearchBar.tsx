@@ -23,7 +23,7 @@ export default function SearchBar({
   focusOnSearchBar,
 }: SearchBarProps) {
   return (
-    <InputGroup>
+    <InputGroup size="lg">
       <InputLeftElement pointerEvents="none">
         <IconSearch stroke={1.5} />
       </InputLeftElement>

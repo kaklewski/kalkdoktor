@@ -1,9 +1,7 @@
 import {
   Box,
   Button,
-  CloseButton,
   Divider,
-  Flex,
   IconButton,
   Modal,
   ModalBody,
@@ -32,7 +30,7 @@ export default function SearchBox() {
   } = useDisclosure();
   const searchBarRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const INITIAL_SELECTED_ITEM_INDEX = 0;
+  const INITIAL_SELECTED_ITEM_INDEX = -1;
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
     INITIAL_SELECTED_ITEM_INDEX,
   );
@@ -48,7 +46,7 @@ export default function SearchBox() {
         event.preventDefault();
 
         if (isSearchBoxOpen) {
-          closeSearchBox();
+          handleSearchBoxClose();
         } else {
           openSearchBox();
         }
@@ -96,8 +94,13 @@ export default function SearchBox() {
       setSelectedItemIndex((previousItem) => previousItem + 1);
     } else if (event.key === 'Enter') {
       navigate(filteredCalculators[selectedItemIndex].urlPath);
-      closeSearchBox();
+      handleSearchBoxClose();
     }
+  }
+
+  function handleSearchBoxClose() {
+    setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
+    closeSearchBox();
   }
 
   return (
@@ -133,7 +136,7 @@ export default function SearchBox() {
 
       <Modal
         isOpen={isSearchBoxOpen}
-        onClose={closeSearchBox}
+        onClose={handleSearchBoxClose}
         initialFocusRef={searchBarRef}
         size="xl"
         scrollBehavior="inside"
@@ -141,41 +144,36 @@ export default function SearchBox() {
         <ModalOverlay />
         <ModalContent py={4} mx={2} onKeyDown={handleKeyDown}>
           <ModalHeader>
-            <Flex align="center" gap={2}>
-              <SearchBar
-                searchBarRef={searchBarRef}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                focusOnSearchBar={focusOnSearchBar}
-              />
-              <CloseButton size="lg" onClick={closeSearchBox} />
-            </Flex>
+            <SearchBar
+              searchBarRef={searchBarRef}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              focusOnSearchBar={focusOnSearchBar}
+            />
           </ModalHeader>
 
-          {searchQuery && (
+          {
             <ModalBody pt={1}>
               <Divider mb={4} />
               <Stack>
-                {filteredCalculators.map((calc, index) => {
-                  return (
-                    <SearchResultItem
-                      key={calc.id}
-                      index={index}
-                      link={calc.urlPath}
-                      name={calc.name}
-                      isSelected={index === selectedItemIndex && true}
-                      selectedItemRef={
-                        index === selectedItemIndex && selectedItemRef
-                      }
-                      setSelectedItemIndex={setSelectedItemIndex}
-                      closeSearchBox={closeSearchBox}
-                    />
-                  );
-                })}
+                {filteredCalculators.map((calc, index) => (
+                  <SearchResultItem
+                    key={calc.id}
+                    index={index}
+                    link={calc.urlPath}
+                    name={calc.name}
+                    isSelected={index === selectedItemIndex}
+                    selectedItemRef={
+                      index === selectedItemIndex && selectedItemRef
+                    }
+                    setSelectedItemIndex={setSelectedItemIndex}
+                    closeSearchBox={handleSearchBoxClose}
+                  />
+                ))}
                 {filteredCalculators.length === 0 && <NoResultsMessage />}
               </Stack>
             </ModalBody>
-          )}
+          }
         </ModalContent>
       </Modal>
     </>

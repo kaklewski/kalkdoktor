@@ -31,7 +31,7 @@ export default function SearchResultItem({
       height="auto"
       p={4}
       fontSize="md"
-      colorScheme={isSelected === true ? 'teal' : 'gray'}
+      colorScheme={isSelected ? 'teal' : 'gray'}
       style={{
         whiteSpace: 'normal',
         wordWrap: 'break-word',
@@ -42,11 +42,8 @@ export default function SearchResultItem({
       }}
       // Remove the default shadow-outline of a focused element
       _focus={{ shadow: 'none' }}
-      ref={selectedItemRef !== false ? selectedItemRef : null}
+      ref={selectedItemRef || null}
       onFocus={() => setSelectedItemIndex(index)}
-      onMouseMove={() => {
-        setSelectedItemIndex(index);
-      }}
     >
       <Flex
         justifyContent="space-between"
@@ -61,7 +58,7 @@ export default function SearchResultItem({
               stroke={1.5}
               size={20}
               style={{
-                opacity: '55%',
+                opacity: '75%',
               }}
             />
           )}
