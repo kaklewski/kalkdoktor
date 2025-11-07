@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconSearch } from '@tabler/icons-react';
-import { KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { sortedCalculators } from '../../../data/sortedCalculators';
@@ -36,6 +36,11 @@ export default function SearchBox() {
   );
   const selectedItemRef = useRef<HTMLButtonElement>(null);
 
+  const handleSearchBoxClose = useCallback(() => {
+    setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
+    closeSearchBox();
+  }, [INITIAL_SELECTED_ITEM_INDEX, closeSearchBox]);
+
   useEffect(() => {
     if (!isSearchBoxOpen) setSearchQuery('');
   }, [isSearchBoxOpen]);
@@ -55,11 +60,11 @@ export default function SearchBox() {
 
     document.addEventListener('keydown', toggleModal);
     return () => document.removeEventListener('keydown', toggleModal);
-  }, [isSearchBoxOpen, openSearchBox, closeSearchBox]);
+  }, [isSearchBoxOpen, openSearchBox, closeSearchBox, handleSearchBoxClose]);
 
   useEffect(() => {
     setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
-  }, [searchQuery]);
+  }, [INITIAL_SELECTED_ITEM_INDEX, searchQuery]);
 
   useEffect(() => {
     selectedItemRef.current?.scrollIntoView({
@@ -96,11 +101,6 @@ export default function SearchBox() {
       navigate(filteredCalculators[selectedItemIndex].urlPath);
       handleSearchBoxClose();
     }
-  }
-
-  function handleSearchBoxClose() {
-    setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
-    closeSearchBox();
   }
 
   return (
