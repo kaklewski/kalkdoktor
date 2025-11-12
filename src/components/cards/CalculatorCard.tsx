@@ -58,7 +58,7 @@ export default function CalculatorCard({
               </Heading>
             </LinkOverlay>
             <Spacer />
-            <FavButton pageId={id} />
+            <FavButton calculatorId={id} />
           </Flex>
         </CardHeader>
 

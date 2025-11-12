@@ -1,67 +1,65 @@
 import { IconButton, Tooltip, useToast } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
 
 type FavButtonProps = {
-  pageId: CalculatorType['id'];
+  calculatorId: CalculatorType['id'];
 };
 
-export default function FavButton({ pageId }: FavButtonProps) {
-  const [isFav, setIsFav] = useState<boolean>(() => {
-    // Determine if the button should initially be displayed as added to favorites or not
+export default function FavButton({ calculatorId }: FavButtonProps) {
+  const [isFav, setIsFav] = useState(false);
 
-    // If there is no string with favorites, return false
-    const favString = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    if (favString === null) return false;
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
+    if (stored) {
+      const favorites: number[] = JSON.parse(stored);
+      setIsFav(favorites.includes(calculatorId));
+    }
+  }, [calculatorId]);
 
-    // If the item is not in the string of fav in local storage, return false
-    const favorites = JSON.parse(favString);
-    if (!favorites.includes(pageId)) return false;
-
-    // Else return true
-    return true;
-  });
   const toast = useToast();
 
-  function showToast(type: string) {
+  const TOAST_CONFIG = {
+    added: {
+      title: STRINGS.TOASTS.FAVORITES.ADDED,
+      status: 'success',
+    },
+    removed: {
+      title: STRINGS.TOASTS.FAVORITES.REMOVED,
+      status: 'warning',
+    },
+  } as const;
+
+  function showToast(type: keyof typeof TOAST_CONFIG) {
+    const config = TOAST_CONFIG[type];
     toast({
-      title:
-        type === 'added'
-          ? STRINGS.TOASTS.FAVORITES.ADDED
-          : STRINGS.TOASTS.FAVORITES.REMOVED,
-      status: type === 'added' ? 'success' : 'warning',
+      title: config.title,
+      status: config.status,
       position: 'top',
       duration: 1500,
       isClosable: true,
     });
   }
 
-  function addToFav() {
-    // If there are no favorites, add the item
-    let favString = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    if (favString === null) {
-      localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify([pageId]));
-      favString = '[]';
+  function toggleFav() {
+    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
+    let favorites: number[] = stored ? JSON.parse(stored) : [];
+
+    if (favorites.includes(calculatorId)) {
+      favorites = favorites.filter((favId) => favId !== calculatorId);
+      setIsFav(false);
+      showToast('removed');
+    } else {
+      favorites.push(calculatorId);
+      favorites.sort();
+      setIsFav(true);
+      showToast('added');
     }
 
-    const favorites = JSON.parse(favString);
-    if (favorites.includes(pageId)) {
-      // If the page is in the favorites, remove it
-      const index = favorites.indexOf(pageId);
-      favorites.splice(index, 1);
-      showToast('removed');
-      setIsFav(false);
-    } else {
-      // If the page is not in the favorites, add it
-      favorites.push(pageId);
-      favorites.sort();
-      showToast('added');
-      setIsFav(true);
-    }
     localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
   }
 
@@ -84,7 +82,7 @@ export default function FavButton({ pageId }: FavButtonProps) {
         icon={
           isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />
         }
-        onClick={addToFav}
+        onClick={toggleFav}
       />
     </Tooltip>
   );

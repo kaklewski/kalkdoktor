@@ -42,7 +42,7 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
     <>
       <Flex justify="space-between" gap={2}>
         <Heading as="h1">{name}</Heading>
-        <FavButton pageId={id} />
+        <FavButton calculatorId={id} />
       </Flex>
 
       <Stack spacing={4}>
