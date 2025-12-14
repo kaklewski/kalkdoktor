@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -5,16 +6,20 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import Loader from './components/other/Loader';
 import { calculators } from './data/calculators';
 import ROUTES from './data/routes';
 import RootLayout from './layouts/RootLayout';
-import CalculatorPage from './pages/CalculatorPage';
-import Error404Page from './pages/Error404Page';
-import FavoritesPage from './pages/FavoritesPage';
-import HomePage from './pages/HomePage';
-import ImportFavoritesPage from './pages/ImportFavoritesPage';
-import SubmissionSuccessPage from './pages/SubmissionSuccessPage';
+import CalculatorPageWrapper from './pages/CalculatorPageWrapper';
 import RouterErrorBoundary from './RouterErrorBoundary';
+
+const Error404Page = lazy(() => import('./pages/Error404Page'));
+const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ImportFavoritesPage = lazy(() => import('./pages/ImportFavoritesPage'));
+const SubmissionSuccessPage = lazy(
+  () => import('./pages/SubmissionSuccessPage'),
+);
 
 export default function App() {
   const router = createBrowserRouter(
@@ -37,12 +42,16 @@ export default function App() {
           <Route
             key={calculator.id}
             path={calculator.urlPath}
-            element={<CalculatorPage calculator={calculator} />}
+            element={<CalculatorPageWrapper calculator={calculator} />}
           />
         ))}
       </Route>,
     ),
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
