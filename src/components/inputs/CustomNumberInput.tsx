@@ -7,7 +7,7 @@ import {
   NumberInputStepper,
   Text,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
+import { KeyboardEvent, useRef } from 'react';
 
 import STRINGS from '../../data/strings';
 import { NumberInputType } from '../../types/calculatorTypes';
@@ -22,7 +22,7 @@ export default function CustomNumberInput({
 }: CustomNumberInputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === ',') {
       event.preventDefault();
 

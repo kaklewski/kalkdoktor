@@ -6,11 +6,12 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 import { IconBackspaceFilled, IconSearch } from '@tabler/icons-react';
+import { RefObject } from 'react';
 
 import STRINGS from '../../../data/strings';
 
 type SearchBarProps = {
-  searchBarRef: React.RefObject<HTMLInputElement>;
+  searchBarRef: RefObject<HTMLInputElement | null>;
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   focusOnSearchBar: () => void;
