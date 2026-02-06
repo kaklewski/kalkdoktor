@@ -22,7 +22,11 @@ export default function Navbar() {
       <Flex align="center" justify="space-between" gap={4} wrap="wrap">
         <RouterLink to={ROUTES.HOME}>
           <Box height={{ base: 8, sm: 10 }}>
-            <Logo width="100%" height="100%" />
+            <Logo
+              width="100%"
+              height="100%"
+              aria-label={STRINGS.NAV.LOGO_ARIA}
+            />
           </Box>
         </RouterLink>
 
