@@ -1,6 +1,6 @@
 import { IconButton, Tooltip, useToast } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
@@ -11,15 +11,14 @@ type FavButtonProps = {
 };
 
 export default function FavButton({ calculatorId }: FavButtonProps) {
-  const [isFav, setIsFav] = useState(false);
-
-  useEffect(() => {
+  const [isFav, setIsFav] = useState(() => {
     const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
     if (stored) {
       const favorites: number[] = JSON.parse(stored);
-      setIsFav(favorites.includes(calculatorId));
+      return favorites.includes(calculatorId);
     }
-  }, [calculatorId]);
+    return false;
+  });
 
   const toast = useToast();
 
