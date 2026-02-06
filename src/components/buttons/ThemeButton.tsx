@@ -5,7 +5,6 @@ import {
   MenuItemOption,
   MenuList,
   MenuOptionGroup,
-  Tooltip,
   useColorMode,
 } from '@chakra-ui/react';
 import { IconMoon, IconPercentage50, IconSun } from '@tabler/icons-react';
@@ -14,6 +13,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
 import setThemeAttribute from '../../utils/setThemeAttribute';
+import AppTooltip from '../other/AppTooltip';
 
 export default function ThemeButton() {
   const { colorMode, setColorMode } = useColorMode();
@@ -54,13 +54,13 @@ export default function ThemeButton() {
 
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}>
+      <AppTooltip label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}>
         <MenuButton
           as={IconButton}
           aria-label={STRINGS.BUTTONS.CHANGE_THEME.TITLE}
           icon={currentThemeIcon[currentTheme]}
         />
-      </Tooltip>
+      </AppTooltip>
       <MenuList>
         <MenuOptionGroup
           defaultValue={currentTheme}

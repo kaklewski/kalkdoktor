@@ -9,7 +9,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Stack,
-  Tooltip,
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconSearch } from '@tabler/icons-react';
@@ -18,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { sortedCalculators } from '../../../data/sortedCalculators';
 import STRINGS from '../../../data/strings';
+import AppTooltip from '../../other/AppTooltip';
 import NoResultsMessage from './NoResultsMessage';
 import SearchBar from './SearchBar';
 import SearchResultItem from './SearchResultItem';
@@ -106,7 +106,7 @@ export default function SearchBox() {
   return (
     <>
       <Box display={{ base: 'none', md: 'initial' }}>
-        <Tooltip label="Ctrl+K">
+        <AppTooltip label="Ctrl+K">
           <Button
             onClick={openSearchBox}
             leftIcon={<IconSearch stroke={1.5} />}
@@ -119,10 +119,10 @@ export default function SearchBox() {
           >
             Szukaj
           </Button>
-        </Tooltip>
+        </AppTooltip>
       </Box>
       <Box display={{ base: 'initial', md: 'none' }}>
-        <Tooltip label={STRINGS.MODALS.SEARCH.TITLE}>
+        <AppTooltip label={STRINGS.MODALS.SEARCH.TITLE}>
           <IconButton
             onClick={openSearchBox}
             colorScheme="teal"
@@ -131,7 +131,7 @@ export default function SearchBox() {
           >
             <IconSearch stroke={1.5} />
           </IconButton>
-        </Tooltip>
+        </AppTooltip>
       </Box>
 
       <Modal

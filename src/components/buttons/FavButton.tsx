@@ -1,10 +1,11 @@
-import { IconButton, Tooltip, useToast } from '@chakra-ui/react';
+import { IconButton, useToast } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import { useState } from 'react';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
+import AppTooltip from '../other/AppTooltip';
 
 type FavButtonProps = {
   calculatorId: CalculatorType['id'];
@@ -63,7 +64,7 @@ export default function FavButton({ calculatorId }: FavButtonProps) {
   }
 
   return (
-    <Tooltip
+    <AppTooltip
       label={
         isFav
           ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
@@ -83,6 +84,6 @@ export default function FavButton({ calculatorId }: FavButtonProps) {
         }
         onClick={toggleFav}
       />
-    </Tooltip>
+    </AppTooltip>
   );
 }

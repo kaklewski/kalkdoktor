@@ -5,7 +5,6 @@ import {
   MenuItemOption,
   MenuList,
   MenuOptionGroup,
-  Tooltip,
 } from '@chakra-ui/react';
 import {
   IconSortAscendingLetters,
@@ -14,6 +13,7 @@ import {
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
+import AppTooltip from '../other/AppTooltip';
 
 type SortButtonProps = {
   sortingOrder: string;
@@ -26,7 +26,7 @@ export default function SortButton({
 }: SortButtonProps) {
   return (
     <Menu closeOnSelect={true}>
-      <Tooltip label={STRINGS.BUTTONS.SORT.TITLE}>
+      <AppTooltip label={STRINGS.BUTTONS.SORT.TITLE}>
         <MenuButton
           as={IconButton}
           aria-label={STRINGS.BUTTONS.SORT.TITLE}
@@ -38,7 +38,7 @@ export default function SortButton({
             )
           }
         />
-      </Tooltip>
+      </AppTooltip>
       <MenuList>
         <MenuOptionGroup
           defaultValue={sortingOrder}

@@ -14,7 +14,6 @@ import {
   ModalOverlay,
   Stack,
   Textarea,
-  Tooltip,
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconMail } from '@tabler/icons-react';
@@ -22,6 +21,7 @@ import { useRef } from 'react';
 
 import STRINGS from '../../data/strings';
 import { handleFormSubmit } from '../../utils/handleFormSubmit';
+import AppTooltip from '../other/AppTooltip';
 
 export default function ContactModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,7 +29,7 @@ export default function ContactModal() {
 
   return (
     <>
-      <Tooltip label={STRINGS.MODALS.CONTACT.TITLE}>
+      <AppTooltip label={STRINGS.MODALS.CONTACT.TITLE}>
         <IconButton
           aria-label={STRINGS.MODALS.CONTACT.TITLE}
           variant="ghost"
@@ -38,7 +38,7 @@ export default function ContactModal() {
         >
           <IconMail size={20} stroke={1.8} />
         </IconButton>
-      </Tooltip>
+      </AppTooltip>
 
       <Modal
         initialFocusRef={initialRef}

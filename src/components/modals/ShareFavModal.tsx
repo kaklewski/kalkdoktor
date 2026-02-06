@@ -17,7 +17,6 @@ import {
   ModalOverlay,
   Stack,
   Text,
-  Tooltip,
   useClipboard,
   useDisclosure,
   useToast,
@@ -28,6 +27,7 @@ import { useEffect } from 'react';
 import ROUTES from '../../data/routes';
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
+import AppTooltip from '../other/AppTooltip';
 
 export default function ShareFavModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,13 +57,13 @@ export default function ShareFavModal() {
 
   return (
     <>
-      <Tooltip label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}>
+      <AppTooltip label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}>
         <IconButton
           icon={<IconShare stroke={1.5} />}
           aria-label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}
           onClick={onOpen}
         />
-      </Tooltip>
+      </AppTooltip>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />

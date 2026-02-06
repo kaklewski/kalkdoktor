@@ -1,4 +1,4 @@
-import { Flex, IconButton, Link, Text, Tooltip } from '@chakra-ui/react';
+import { Flex, IconButton, Link, Text } from '@chakra-ui/react';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -6,6 +6,7 @@ import {
 } from '@tabler/icons-react';
 
 import ContactModal from '../components/modals/ContactModal';
+import AppTooltip from '../components/other/AppTooltip';
 import STRINGS from '../data/strings';
 
 export default function Footer() {
@@ -24,7 +25,7 @@ export default function Footer() {
       </Text>
 
       <Flex>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}>
+        <AppTooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}>
           <Link href={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.URL} isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.GITHUB.TITLE}
@@ -34,8 +35,8 @@ export default function Footer() {
               <IconBrandGithub size={20} stroke={1.8} />
             </IconButton>
           </Link>
-        </Tooltip>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}>
+        </AppTooltip>
+        <AppTooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}>
           <Link href={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.URL} isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.PORTFOLIO.TITLE}
@@ -45,8 +46,8 @@ export default function Footer() {
               <IconWorld size={20} stroke={1.8} />
             </IconButton>
           </Link>
-        </Tooltip>
-        <Tooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}>
+        </AppTooltip>
+        <AppTooltip label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}>
           <Link href="https://www.linkedin.com/in/oskar-kaklewski" isExternal>
             <IconButton
               aria-label={STRINGS.LAYOUTS.FOOTER.LINKS.LINKEDIN.TITLE}
@@ -56,7 +57,7 @@ export default function Footer() {
               <IconBrandLinkedin size={20} stroke={1.8} />
             </IconButton>
           </Link>
-        </Tooltip>
+        </AppTooltip>
 
         <ContactModal />
       </Flex>
