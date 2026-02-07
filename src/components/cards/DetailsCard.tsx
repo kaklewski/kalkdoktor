@@ -10,8 +10,6 @@ import {
   Tabs,
   Text,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import STRINGS from '../../data/strings';
 import { CalculatorType, SourceType } from '../../types/calculatorTypes';
@@ -27,23 +25,9 @@ export default function DetailsCard({
   methodology,
   sources,
 }: DetailsCardProps) {
-  const [tabIndex, setTabIndex] = useState(0);
-  const location = useLocation();
-
-  useEffect(() => {
-    setTabIndex(0);
-  }, [location.pathname]);
-
   return (
     <Card variant="outline">
-      <Tabs
-        index={tabIndex}
-        onChange={setTabIndex}
-        variant="enclosed"
-        colorScheme="teal"
-        isFitted
-        isLazy
-      >
+      <Tabs variant="enclosed" colorScheme="teal" isFitted isLazy>
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
           <Tab>
