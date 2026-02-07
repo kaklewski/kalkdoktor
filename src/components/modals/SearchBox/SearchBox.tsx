@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  CloseButton,
   Divider,
+  Flex,
   IconButton,
   Modal,
   ModalBody,
@@ -37,13 +39,12 @@ export default function SearchBox() {
   const selectedItemRef = useRef<HTMLButtonElement>(null);
 
   const handleSearchBoxClose = useCallback(() => {
-    setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
-    closeSearchBox();
+    setSearchQuery('');
+    // Close the modal after a timeout to navigate first and avoid disclosure state becoming inconsistent after route change.
+    setTimeout(() => closeSearchBox(), 10);
+    // Reset selected item index after closing the modal.
+    setTimeout(() => setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX), 20);
   }, [INITIAL_SELECTED_ITEM_INDEX, closeSearchBox]);
-
-  useEffect(() => {
-    if (!isSearchBoxOpen) setSearchQuery('');
-  }, [isSearchBoxOpen]);
 
   useEffect(() => {
     function toggleModal(event: globalThis.KeyboardEvent) {
@@ -61,10 +62,6 @@ export default function SearchBox() {
     document.addEventListener('keydown', toggleModal);
     return () => document.removeEventListener('keydown', toggleModal);
   }, [isSearchBoxOpen, openSearchBox, closeSearchBox, handleSearchBoxClose]);
-
-  useEffect(() => {
-    setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
-  }, [INITIAL_SELECTED_ITEM_INDEX, searchQuery]);
 
   useEffect(() => {
     selectedItemRef.current?.scrollIntoView({
@@ -97,9 +94,16 @@ export default function SearchBox() {
       selectedItemIndex < filteredCalculators.length - 1
     ) {
       setSelectedItemIndex((previousItem) => previousItem + 1);
-    } else if (event.key === 'Enter') {
+    } else if (
+      event.key === 'Enter' &&
+      selectedItemIndex >= 0 &&
+      selectedItemIndex < filteredCalculators.length
+    ) {
+      event.preventDefault();
       navigate(filteredCalculators[selectedItemIndex].urlPath);
       handleSearchBoxClose();
+    } else if (event.key !== 'Tab') {
+      setSelectedItemIndex(0);
     }
   }
 
@@ -144,12 +148,15 @@ export default function SearchBox() {
         <ModalOverlay />
         <ModalContent py={4} mx={2} onKeyDown={handleKeyDown}>
           <ModalHeader>
-            <SearchBar
-              searchBarRef={searchBarRef}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              focusOnSearchBar={focusOnSearchBar}
-            />
+            <Flex align="center" gap={2}>
+              <SearchBar
+                searchBarRef={searchBarRef}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                focusOnSearchBar={focusOnSearchBar}
+              />
+              <CloseButton size="lg" onClick={handleSearchBoxClose} />
+            </Flex>
           </ModalHeader>
 
           {

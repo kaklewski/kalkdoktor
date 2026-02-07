@@ -54,15 +54,13 @@ export default function SearchResultItem({
       >
         {name}
         <Flex justifyContent="center" alignItems="center">
-          {isSelected && (
-            <IconCornerDownLeft
-              stroke={1.5}
-              size={20}
-              style={{
-                opacity: '75%',
-              }}
-            />
-          )}
+          <IconCornerDownLeft
+            stroke={1.5}
+            size={20}
+            style={{
+              opacity: isSelected ? '75%' : '0%',
+            }}
+          />
         </Flex>
       </Flex>
     </Button>
