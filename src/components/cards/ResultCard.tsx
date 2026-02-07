@@ -31,13 +31,18 @@ export default function ResultCard({
       return;
     }
 
-    setIsAnimation(true);
+    const setAnimationTimeout = setTimeout(() => {
+      setIsAnimation(true);
+    }, 0);
 
     const isAnimationTimeout = setTimeout(() => {
       setIsAnimation(false);
     }, 301);
 
-    return () => clearTimeout(isAnimationTimeout);
+    return () => {
+      clearTimeout(setAnimationTimeout);
+      clearTimeout(isAnimationTimeout);
+    };
   }, [result, resultInterpretation]);
 
   const formattedResult = result.toFixed(1).replace(/\.0$/, '');
