@@ -10,9 +10,9 @@ import Loader from './components/other/Loader';
 import { calculators } from './data/calculators';
 import ROUTES from './data/routes';
 import RootLayout from './layouts/RootLayout';
-import CalculatorPageWrapper from './pages/CalculatorPageWrapper';
 import RouterErrorBoundary from './RouterErrorBoundary';
 
+const CalculatorPage = lazy(() => import('./pages/CalculatorPage'));
 const Error404Page = lazy(() => import('./pages/Error404Page'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -42,7 +42,11 @@ export default function App() {
           <Route
             key={calculator.id}
             path={calculator.urlPath}
-            element={<CalculatorPageWrapper calculator={calculator} />}
+            element={
+              <Suspense fallback={<Loader />}>
+                <CalculatorPage key={calculator.id} calculator={calculator} />
+              </Suspense>
+            }
           />
         ))}
       </Route>,
