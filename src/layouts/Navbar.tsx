@@ -3,7 +3,7 @@ import { IconHeart } from '@tabler/icons-react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import ThemeButton from '../components/buttons/ThemeButton';
-import SearchBox from '../components/modals/SearchBox/SearchBox';
+import SearchCommandModal from '../components/modals/SearchCommandModal';
 import Logo from '../components/other/Logo';
 import ROUTES from '../data/routes';
 import STRINGS from '../data/strings';
@@ -31,7 +31,7 @@ export default function Navbar() {
         </RouterLink>
 
         <Flex align="center" gap={{ base: 3, md: 2 }} wrap="wrap">
-          <SearchBox />
+          <SearchCommandModal />
 
           <Box display={{ base: 'none', md: 'initial' }}>
             <Button
