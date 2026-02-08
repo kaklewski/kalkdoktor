@@ -20,13 +20,9 @@ export default function Navbar() {
       _dark={{ bg: 'gray.800' }}
     >
       <Flex align="center" justify="space-between" gap={4} wrap="wrap">
-        <RouterLink to={ROUTES.HOME}>
+        <RouterLink to={ROUTES.HOME} aria-label={STRINGS.NAV.LOGO_ARIA}>
           <Box height={{ base: 8, sm: 10 }}>
-            <Logo
-              width="100%"
-              height="100%"
-              aria-label={STRINGS.NAV.LOGO_ARIA}
-            />
+            <Logo width="100%" height="100%" />
           </Box>
         </RouterLink>
 
