@@ -116,20 +116,20 @@
       import setThemeAttribute from './src/utils/setThemeAttribute.ts';
       import STORAGE_KEYS from './src/data/storageKeys.ts';
 
+      const isFirstVisit = !localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO);
       const isAutoColorMode =
-        localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true'
-          ? true
-          : false;
+        localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true';
 
-      // When the page is open for the first time, set automatic theme
-      if (!isAutoColorMode)
+      if (isFirstVisit) {
         localStorage.setItem(STORAGE_KEYS.COLOR_THEME.AUTO, 'true');
+      }
 
-      // When automatic theme is on, set proper initial theme
-      if (isAutoColorMode)
+      // When auto mode is on, set proper initial theme.
+      if (isAutoColorMode) {
         localStorage.removeItem(STORAGE_KEYS.COLOR_THEME.CHAKRA);
+      }
 
-      // Set up the theme before React loads the Virtual-DOM to remove the flashing effect
+      // Hack: Set up the theme before React loads the Virtual-DOM to remove the flashing effect (Chakra issue).
       setThemeAttribute();
     </script>
 
