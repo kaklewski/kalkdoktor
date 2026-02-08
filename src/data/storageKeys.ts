@@ -1,5 +1,5 @@
 const STORAGE_KEYS = {
-  COLOR_THEME: {
+  COLOR_MODE: {
     AUTO: 'auto-color-mode',
     CHAKRA: 'chakra-ui-color-mode',
   },

@@ -30,16 +30,8 @@
         --body-color: light-dark(#fff, #1a202c);
       }
 
-      html {
+      html:not([data-theme]) {
         color-scheme: light dark;
-      }
-
-      html[data-theme='light'] {
-        color-scheme: light;
-      }
-
-      html[data-theme='dark'] {
-        color-scheme: dark;
       }
 
       body {
@@ -69,10 +61,7 @@
       }
 
       @keyframes rotation {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
+        to {
           transform: rotate(360deg);
         }
       }
@@ -113,24 +102,20 @@
     </div>
 
     <script type="module">
-      import setThemeAttribute from './src/utils/setThemeAttribute.ts';
       import STORAGE_KEYS from './src/data/storageKeys.ts';
 
-      const isFirstVisit = !localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO);
+      const isFirstVisit = !localStorage.getItem(STORAGE_KEYS.COLOR_MODE.AUTO);
       const isAutoColorMode =
-        localStorage.getItem(STORAGE_KEYS.COLOR_THEME.AUTO) === 'true';
+        localStorage.getItem(STORAGE_KEYS.COLOR_MODE.AUTO) === 'true';
 
       if (isFirstVisit) {
-        localStorage.setItem(STORAGE_KEYS.COLOR_THEME.AUTO, 'true');
+        localStorage.setItem(STORAGE_KEYS.COLOR_MODE.AUTO, 'true');
       }
 
-      // When auto mode is on, set proper initial theme.
+      // When auto mode is on, set proper initial color mode (Chakra workaround).
       if (isAutoColorMode) {
-        localStorage.removeItem(STORAGE_KEYS.COLOR_THEME.CHAKRA);
+        localStorage.removeItem(STORAGE_KEYS.COLOR_MODE.CHAKRA);
       }
-
-      // Hack: Set up the theme before React loads the Virtual-DOM to remove the flashing effect (Chakra issue).
-      setThemeAttribute();
     </script>
 
     <script type="module" src="/src/main.tsx"></script>

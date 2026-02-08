@@ -2,7 +2,7 @@ import { Box, Button, Flex, IconButton } from '@chakra-ui/react';
 import { IconHeart } from '@tabler/icons-react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import ThemeButton from '../components/buttons/ThemeButton';
+import ColorModeButton from '../components/buttons/ColorModeButton';
 import SearchCommandModal from '../components/modals/SearchCommandModal';
 import Logo from '../components/other/Logo';
 import ROUTES from '../data/routes';
@@ -53,7 +53,7 @@ export default function Navbar() {
             </IconButton>
           </Box>
 
-          <ThemeButton />
+          <ColorModeButton />
         </Flex>
       </Flex>
     </Box>

@@ -2,7 +2,7 @@ const STRINGS = {
   BUTTONS: {
     CALCULATE: 'Oblicz',
     CANCEL: 'Anuluj',
-    CHANGE_THEME: {
+    CHANGE_COLOR_MODE: {
       TITLE: 'Zmień motyw',
       AUTO: 'Automatyczny',
       LIGHT: 'Jasny',
