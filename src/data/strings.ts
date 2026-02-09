@@ -89,7 +89,10 @@ const STRINGS = {
     },
   },
   NAV: {
-    LOGO_ARIA: 'Logo Kalkdoktor',
+    LOGO: 'Logo Kalkdoktor',
+    LINKS: {
+      HOMEPAGE: 'Strona główna',
+    },
   },
   PAGES: {
     CALCULATOR: {

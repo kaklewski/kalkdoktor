@@ -1,9 +1,9 @@
 import {
-  Box,
   Button,
   CloseButton,
   Divider,
   Flex,
+  Hide,
   IconButton,
   Input,
   InputGroup,
@@ -14,6 +14,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Show,
   Stack,
   Text,
   useDisclosure,
@@ -139,34 +140,7 @@ const SearchCommandModal = () => {
 
   return (
     <>
-      <Box display={{ base: 'none', md: 'initial' }}>
-        <AppTooltip label="Ctrl+K">
-          <Button
-            onClick={openSearchModal}
-            leftIcon={<IconSearch stroke={1.5} />}
-            colorScheme="teal"
-            aria-label={STRINGS.MODALS.SEARCH.TITLE}
-            _focus={{
-              borderColor: 'teal',
-              boxShadow: '0 0 0 3px teal',
-            }}
-          >
-            Szukaj
-          </Button>
-        </AppTooltip>
-      </Box>
-      <Box display={{ base: 'initial', md: 'none' }}>
-        <AppTooltip label={STRINGS.MODALS.SEARCH.TITLE}>
-          <IconButton
-            onClick={openSearchModal}
-            colorScheme="teal"
-            variant="solid"
-            aria-label={STRINGS.MODALS.SEARCH.TITLE}
-          >
-            <IconSearch stroke={1.5} />
-          </IconButton>
-        </AppTooltip>
-      </Box>
+      <SearchButton onClick={openSearchModal} />
 
       <Modal
         isOpen={isSearchModalOpen}
@@ -218,6 +192,44 @@ const SearchCommandModal = () => {
     </>
   );
 };
+
+type SearchButtonProps = {
+  onClick: () => void;
+};
+
+const SearchButton = ({ onClick }: SearchButtonProps) => (
+  <>
+    <Hide above="md">
+      <AppTooltip label={STRINGS.MODALS.SEARCH.TITLE}>
+        <IconButton
+          onClick={onClick}
+          colorScheme="teal"
+          variant="solid"
+          aria-label={STRINGS.MODALS.SEARCH.TITLE}
+        >
+          <IconSearch stroke={1.5} />
+        </IconButton>
+      </AppTooltip>
+    </Hide>
+
+    <Show above="md">
+      <AppTooltip label="Ctrl+K">
+        <Button
+          onClick={onClick}
+          leftIcon={<IconSearch stroke={1.5} />}
+          colorScheme="teal"
+          aria-label={STRINGS.MODALS.SEARCH.TITLE}
+          _focus={{
+            borderColor: 'teal',
+            boxShadow: '0 0 0 3px teal',
+          }}
+        >
+          Szukaj
+        </Button>
+      </AppTooltip>
+    </Show>
+  </>
+);
 
 type SearchBarProps = {
   searchBarRef: RefObject<HTMLInputElement | null>;
