@@ -14,6 +14,7 @@ export default function Footer() {
 
   return (
     <Flex
+      as="footer"
       p={4}
       direction="column"
       justify="center"

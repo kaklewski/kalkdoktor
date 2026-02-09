@@ -28,7 +28,7 @@ export default function CalculatorCard({
   description,
 }: CalculatorCardProps) {
   return (
-    <LinkBox>
+    <LinkBox as="article">
       <Card
         size="sm"
         variant="outline"
