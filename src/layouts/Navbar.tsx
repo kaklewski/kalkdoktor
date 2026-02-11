@@ -56,7 +56,7 @@ type NavbarContainerProps = {
 
 const NavbarContainer = ({ children }: NavbarContainerProps) => (
   <Box
-    as="nav"
+    as="header"
     p={4}
     borderBottomWidth="1px"
     position="sticky"

@@ -9,7 +9,7 @@ const STRINGS = {
       DARK: 'Ciemny',
     },
     CLEAR: 'Wyczyść',
-    COPY: 'Skopiuj',
+    COPY: 'Kopiuj',
     FAVORITES: {
       TITLE: 'Ulubione',
       ACTION: {
@@ -89,7 +89,6 @@ const STRINGS = {
     },
   },
   NAV: {
-    LOGO: 'Logo Kalkdoktor',
     LINKS: {
       HOMEPAGE: 'Strona główna',
     },
