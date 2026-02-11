@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import SortButton from '../components/buttons/SortButton';
 import CalculatorCard from '../components/cards/CalculatorCard';
-import ShareFavModal from '../components/modals/ShareFavModal';
+import ShareFavoritesModal from '../components/modals/ShareFavoritesModal';
 import { sortedCalculators } from '../data/sortedCalculators';
 import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
@@ -37,7 +37,7 @@ export default function FavoritesPage() {
         <Heading as="h1">{STRINGS.PAGES.FAVORITES.TITLE}</Heading>
         {favoriteCalculators.length > 0 && (
           <Stack direction="row" gap={{ base: 3, md: 2 }}>
-            <ShareFavModal />
+            <ShareFavoritesModal />
             <SortButton
               sortingOrder={sortingOrder}
               setSortingOrder={setSortingOrder}
