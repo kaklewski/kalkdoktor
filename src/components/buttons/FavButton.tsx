@@ -1,82 +1,65 @@
-import { IconButton, useToast } from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import { useState } from 'react';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
+import useShowToast from '../../hooks/useShowToast';
 import { CalculatorType } from '../../types/calculatorTypes';
 import AppTooltip from '../other/AppTooltip';
+
+const getFavoritesFromLocalStorage = (): number[] => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveFavoritesToLocalStorage = (favorites: number[]) => {
+  localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
+};
 
 type FavButtonProps = {
   calculatorId: CalculatorType['id'];
 };
 
-export default function FavButton({ calculatorId }: FavButtonProps) {
-  const [isFav, setIsFav] = useState(() => {
-    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    if (stored) {
-      const favorites: number[] = JSON.parse(stored);
-      return favorites.includes(calculatorId);
-    }
-    return false;
-  });
+const FavButton = ({ calculatorId }: FavButtonProps) => {
+  const showToast = useShowToast();
 
-  const toast = useToast();
+  const [isFav, setIsFav] = useState<boolean>(() =>
+    getFavoritesFromLocalStorage().includes(calculatorId),
+  );
 
-  const TOAST_CONFIG = {
-    added: {
-      title: STRINGS.TOASTS.FAVORITES.ADDED,
-      status: 'success',
-    },
-    removed: {
-      title: STRINGS.TOASTS.FAVORITES.REMOVED,
-      status: 'warning',
-    },
-  } as const;
+  const label = isFav
+    ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
+    : STRINGS.BUTTONS.FAVORITES.ACTION.ADD;
 
-  function showToast(type: keyof typeof TOAST_CONFIG) {
-    const config = TOAST_CONFIG[type];
-    toast({
-      title: config.title,
-      status: config.status,
-      position: 'top',
-      duration: 1500,
-      isClosable: true,
+  const toggleFav = () => {
+    setIsFav((prev) => {
+      const newIsFav = !prev;
+      const favorites = getFavoritesFromLocalStorage();
+      let newFavorites: number[];
+
+      if (newIsFav) {
+        newFavorites = [...favorites, calculatorId].sort((a, b) => a - b);
+        showToast(STRINGS.TOASTS.FAVORITES.ADDED, 'success');
+      } else {
+        newFavorites = favorites.filter((favId) => favId !== calculatorId);
+        showToast(STRINGS.TOASTS.FAVORITES.REMOVED, 'warning');
+      }
+
+      saveFavoritesToLocalStorage(newFavorites);
+
+      return newIsFav;
     });
-  }
-
-  function toggleFav() {
-    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    let favorites: number[] = stored ? JSON.parse(stored) : [];
-
-    if (favorites.includes(calculatorId)) {
-      favorites = favorites.filter((favId) => favId !== calculatorId);
-      setIsFav(false);
-      showToast('removed');
-    } else {
-      favorites.push(calculatorId);
-      favorites.sort();
-      setIsFav(true);
-      showToast('added');
-    }
-
-    localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
-  }
+  };
 
   return (
-    <AppTooltip
-      label={
-        isFav
-          ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
-          : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
-      }
-    >
+    <AppTooltip label={label}>
       <IconButton
-        aria-label={
-          isFav
-            ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
-            : STRINGS.BUTTONS.FAVORITES.ACTION.ADD
-        }
+        aria-label={label}
         variant="outline"
         colorScheme={isFav ? 'red' : 'teal'}
         icon={
@@ -86,4 +69,6 @@ export default function FavButton({ calculatorId }: FavButtonProps) {
       />
     </AppTooltip>
   );
-}
+};
+
+export default FavButton;
