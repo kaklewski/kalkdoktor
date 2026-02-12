@@ -7,7 +7,7 @@ type AppTooltipProps = {
 };
 
 const AppTooltip = ({ children, label }: AppTooltipProps) => (
-  <Tooltip label={label} hasArrow arrowSize={8}>
+  <Tooltip label={label} hasArrow arrowSize={8} closeOnScroll>
     {children}
   </Tooltip>
 );
