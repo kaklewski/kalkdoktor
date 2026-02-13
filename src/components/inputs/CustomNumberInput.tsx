@@ -14,7 +14,7 @@ import { NumberInputType } from '../../types/calculatorTypes';
 
 type CustomNumberInputProps = NumberInputType;
 
-const CustomNumberInput = ({ id, text, min, max }: CustomNumberInputProps) => {
+const CustomNumberInput = ({ id, label, min, max }: CustomNumberInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ const CustomNumberInput = ({ id, text, min, max }: CustomNumberInputProps) => {
   return (
     <Box>
       <Text as="label" htmlFor={id.toString()} mb={2}>
-        {text}
+        {label}
       </Text>
       <NumberInput min={min} max={max} id={id.toString()} isRequired>
         <NumberInputField

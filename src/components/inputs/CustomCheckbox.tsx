@@ -9,7 +9,7 @@ const CustomCheckbox = ({
   id,
   name,
   value,
-  text,
+  label,
   hideBadge,
 }: CustomCheckboxProps) => {
   const isBadgeVisible = !hideBadge && typeof value === 'number';
@@ -24,7 +24,7 @@ const CustomCheckbox = ({
         w="100%"
       >
         <Flex align="center" gap={2}>
-          <Text style={{ whiteSpace: 'pre-line' }}>{text}</Text>
+          <Text style={{ whiteSpace: 'pre-line' }}>{label}</Text>
           {isBadgeVisible && <CustomBadge value={value} />}
         </Flex>
       </Checkbox>

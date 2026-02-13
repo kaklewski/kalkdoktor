@@ -5,13 +5,13 @@ import CustomBadge from './CustomBadge';
 
 type CustomRadioProps = RadioType;
 
-const CustomRadio = ({ id, value, text, hideBadge }: CustomRadioProps) => {
+const CustomRadio = ({ id, value, label, hideBadge }: CustomRadioProps) => {
   const isBadgeDisplayed = !hideBadge && typeof value === 'number';
 
   return (
     <Radio value={value.toString()} id={id.toString()} isRequired>
       <Flex align="center" gap={2}>
-        <Text style={{ whiteSpace: 'pre-line' }}>{text}</Text>
+        <Text style={{ whiteSpace: 'pre-line' }}>{label}</Text>
         {isBadgeDisplayed && <CustomBadge value={value} />}
       </Flex>
     </Radio>

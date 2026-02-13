@@ -55,21 +55,18 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'bodyMass',
-          text: 'Masa ciała (kg)',
+          label: 'Masa ciała (kg)',
           min: 1,
           max: 200,
         },
         {
           id: 'height',
-          text: 'Wzrost (cm)',
+          label: 'Wzrost (cm)',
           min: 1,
           max: 230,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: () => {
       const bodyMass = parseFloat(
@@ -102,7 +99,7 @@ export const calculators: CalculatorType[] = [
     category: 'kardiologia',
     description:
       'Ocenia ryzyko wystąpienia powikłań zakrzepowo-zatorowych u pacjentów z migotaniem przedsionków.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -113,75 +110,74 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Zastoinowa niewydolność serca / dysfunkcja lewej komory',
+          label: 'Zastoinowa niewydolność serca / dysfunkcja lewej komory',
         },
         {
           id: 2,
           value: 1,
-          text: 'Nadciśnienie tętnicze',
+          label: 'Nadciśnienie tętnicze',
         },
         {
           id: 3,
           value: 1,
-          text: 'Cukrzyca',
+          label: 'Cukrzyca',
         },
         {
           id: 4,
           value: 1,
-          text: 'Choroba naczyniowa (przebyty zawał serca, miażdżycowa choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)',
+          label:
+            'Choroba naczyniowa (przebyty zawał serca, miażdżycowa choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)',
         },
         {
           id: 5,
           value: 2,
-          text: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
+          label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
         },
       ],
       radioGroups: [
         {
           id: 1,
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'male',
               value: 0,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
             {
               id: 'female',
               value: 1,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
           ],
         },
         {
           id: 2,
-          text: 'Wiek',
+          label: 'Wiek',
           radioInputs: [
             {
               id: 1,
               value: 0,
-              text: 'Mniej niż 65 lat',
+              label: 'Mniej niż 65 lat',
             },
             {
               id: 2,
               value: 1,
-              text: '65 - 74 lata',
+              label: '65 - 74 lata',
             },
             {
               id: 3,
               value: 2,
-              text: '75 lat lub więcej',
+              label: '75 lat lub więcej',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -217,7 +213,7 @@ export const calculators: CalculatorType[] = [
     category: 'choroby zakaźne',
     description:
       'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -228,54 +224,52 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Temperatura ciała powyżej 38°C',
+          label: 'Temperatura ciała powyżej 38°C',
         },
         {
           id: 2,
           value: 1,
-          text: 'Nie występuje kaszel',
+          label: 'Nie występuje kaszel',
         },
         {
           id: 3,
           value: 1,
-          text: 'Powiększone węzły chłonne szyjne przednie',
+          label: 'Powiększone węzły chłonne szyjne przednie',
         },
         {
           id: 4,
           value: 1,
-          text: 'Wysięk na migdałkach i ich obrzęk',
+          label: 'Wysięk na migdałkach i ich obrzęk',
         },
       ],
       radioGroups: [
         {
           id: 10,
-          text: 'Wiek',
+          label: 'Wiek',
           radioInputs: [
             {
               id: 11,
               value: 1,
-              text: '3 - 14 lat',
+              label: '3 - 14 lat',
             },
             {
               id: 12,
               value: 0,
-              text: '15 - 44 lata',
+              label: '15 - 44 lata',
             },
             {
               id: 13,
               value: -1,
-              text: '45 lat lub więcej',
+              label: '45 lat lub więcej',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -297,7 +291,7 @@ export const calculators: CalculatorType[] = [
     category: 'kardiologia',
     description:
       'Oblicza ryzyko wystąpienia zakrzepicy żył głębokich na podstawie kryteriów klinicznych.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -308,62 +302,64 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy)',
+          label:
+            'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy)',
         },
         {
           id: 2,
           value: 1,
-          text: 'Porażenie, niedowład lub niedawne unieruchomienie kończyny dolnej w opatrunku gipsowym',
+          label:
+            'Porażenie, niedowład lub niedawne unieruchomienie kończyny dolnej w opatrunku gipsowym',
         },
         {
           id: 3,
           value: 1,
-          text: 'Niedawne unieruchomienie w łóżku przez ponad 3 dni lub duża operacja w ciągu ostatnich 4 tygodni',
+          label:
+            'Niedawne unieruchomienie w łóżku przez ponad 3 dni lub duża operacja w ciągu ostatnich 4 tygodni',
         },
         {
           id: 4,
           value: 1,
-          text: 'Bolesność miejscowa w przebiegu żył głębokich kończyny dolnej',
+          label:
+            'Bolesność miejscowa w przebiegu żył głębokich kończyny dolnej',
         },
         {
           id: 5,
           value: 1,
-          text: 'Obrzęk całej kończyny dolnej',
+          label: 'Obrzęk całej kończyny dolnej',
         },
         {
           id: 6,
           value: 1,
-          text: 'Obrzęk łydki ponad 3 cm w porównaniu do drugiej nogi (mierzony 10 cm poniżej guzowatości kości piszczelowej)',
+          label:
+            'Obrzęk łydki ponad 3 cm w porównaniu do drugiej nogi (mierzony 10 cm poniżej guzowatości kości piszczelowej)',
         },
         {
           id: 7,
           value: 1,
-          text: 'Obrzęk ciastowaty, większy na objawowej kończynie',
+          label: 'Obrzęk ciastowaty, większy na objawowej kończynie',
         },
         {
           id: 8,
           value: 1,
-          text: 'Widoczne żyły powierzchowne krążenia obocznego (nieżylakowe)',
+          label: 'Widoczne żyły powierzchowne krążenia obocznego (nieżylakowe)',
         },
         {
           id: 9,
           value: -2,
-          text: 'Inne rozpoznanie niż ZŻG równie lub bardziej prawdopodobne',
+          label: 'Inne rozpoznanie niż ZŻG równie lub bardziej prawdopodobne',
         },
         {
           id: 10,
           value: 1,
-          text: 'Wcześniej przebyta ZŻG',
+          label: 'Wcześniej przebyta ZŻG',
         },
       ],
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -420,38 +416,35 @@ export const calculators: CalculatorType[] = [
         </Text>
       </>
     ),
-    sources: null,
+
     fields: {
       numberInputs: [
         {
           id: 'amountPerIntake',
-          text: 'Liczba tabletek w jednej dawce',
+          label: 'Liczba tabletek w jednej dawce',
           min: 1,
           max: 100,
         },
         {
           id: 'numberOfIntakes',
-          text: 'Liczba dawek dziennie',
+          label: 'Liczba dawek dziennie',
           min: 1,
           max: 100,
         },
         {
           id: 'daysOfUse',
-          text: 'Okres (liczba dni) brania leku',
+          label: 'Okres (liczba dni) brania leku',
           min: 1,
           max: 365,
         },
         {
           id: 'packageSize',
-          text: 'Liczba tabletek w opakowaniu',
+          label: 'Liczba tabletek w opakowaniu',
           min: 1,
           max: 200,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: () => {
       const amountPerIntake: number = parseFloat(
@@ -524,19 +517,17 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 1,
           max: 120,
         },
         {
           id: 'weight',
-          text: 'Masa ciała (kg)',
+          label: 'Masa ciała (kg)',
           min: 1,
           max: 200,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
     resultUnit: 'g',
 
@@ -566,7 +557,7 @@ export const calculators: CalculatorType[] = [
     category: 'kardiologia',
     description:
       'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -585,57 +576,58 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Nadciśnienie tętnicze z SBP powyżej 160 mmHg',
+          label: 'Nadciśnienie tętnicze z SBP powyżej 160 mmHg',
         },
         {
           id: 2,
           value: 1,
-          text: 'Nieprawidłowa funkcja nerek: przewlekła dializoterapia, stan po przeszczepieniu nerki lub stężenie kreatyniny w surowicy powyżej 200 µmol/l (2.26 mg/dL)',
+          label:
+            'Nieprawidłowa funkcja nerek: przewlekła dializoterapia, stan po przeszczepieniu nerki lub stężenie kreatyniny w surowicy powyżej 200 µmol/l (2.26 mg/dL)',
         },
         {
           id: 3,
           value: 1,
-          text: 'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub biochemiczne cechy istotnego uszkodzenia wątroby',
+          label:
+            'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub biochemiczne cechy istotnego uszkodzenia wątroby',
         },
         {
           id: 4,
           value: 1,
-          text: 'Przebyty udar mózgu',
+          label: 'Przebyty udar mózgu',
         },
         {
           id: 5,
           value: 1,
-          text: 'Predyspozycja do krwawienia i/lub poważne krwawienie w wywiadzie',
+          label:
+            'Predyspozycja do krwawienia i/lub poważne krwawienie w wywiadzie',
         },
         {
           id: 6,
           value: 1,
-          text: 'Niestabilne wartości INR - wahające się duże wartości lub często poza przedziałem terapeutycznym',
+          label:
+            'Niestabilne wartości INR - wahające się duże wartości lub często poza przedziałem terapeutycznym',
         },
         {
           id: 7,
           value: 1,
-          text: 'Wiek powyżej 65 lat',
+          label: 'Wiek powyżej 65 lat',
         },
         {
           id: 8,
           value: 1,
-          text: 'Przyjmowanie leków z grupy NLPZ',
+          label: 'Przyjmowanie leków z grupy NLPZ',
         },
         {
           id: 9,
           value: 1,
-          text: 'Nadmierne spożycie alkoholu',
+          label: 'Nadmierne spożycie alkoholu',
         },
       ],
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -653,7 +645,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-glasgow',
     category: 'neurologia',
     description: 'Ocenia poziom przytomności u dorosłych.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -671,105 +663,103 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Otwieranie oczu',
+          label: 'Otwieranie oczu',
           radioInputs: [
             {
               id: 11,
               value: 4,
-              text: 'Spontaniczne',
+              label: 'Spontaniczne',
             },
             {
               id: 12,
               value: 3,
-              text: 'Na polecenie',
+              label: 'Na polecenie',
             },
             {
               id: 13,
               value: 2,
-              text: 'W odpowiedzi na bodziec bólowy',
+              label: 'W odpowiedzi na bodziec bólowy',
             },
             {
               id: 14,
               value: 1,
-              text: 'Nie otwiera oczu',
+              label: 'Nie otwiera oczu',
             },
           ],
         },
         {
           id: 20,
-          text: 'Odpowiedź słowna',
+          label: 'Odpowiedź słowna',
           radioInputs: [
             {
               id: 21,
               value: 5,
-              text: 'Prawidłowa, pacjent jest w pełni zorientowany',
+              label: 'Prawidłowa, pacjent jest w pełni zorientowany',
             },
             {
               id: 22,
               value: 4,
-              text: 'Odpowiada, ale jest zdezorientowany',
+              label: 'Odpowiada, ale jest zdezorientowany',
             },
             {
               id: 23,
               value: 3,
-              text: 'Używa niewłaściwych słów',
+              label: 'Używa niewłaściwych słów',
             },
             {
               id: 24,
               value: 2,
-              text: 'Wydaje nieartykułowane dźwięki',
+              label: 'Wydaje nieartykułowane dźwięki',
             },
             {
               id: 25,
               value: 1,
-              text: 'Brak reakcji',
+              label: 'Brak reakcji',
             },
           ],
         },
         {
           id: 30,
-          text: 'Reakcja ruchowa',
+          label: 'Reakcja ruchowa',
           radioInputs: [
             {
               id: 31,
               value: 6,
-              text: 'Na polecenie',
+              label: 'Na polecenie',
             },
             {
               id: 32,
               value: 5,
-              text: 'Potrafi umiejscowić bodziec bólowy',
+              label: 'Potrafi umiejscowić bodziec bólowy',
             },
             {
               id: 33,
               value: 4,
-              text: 'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
+              label:
+                'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
             },
             {
               id: 34,
               value: 3,
-              text: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
+              label: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
             },
             {
               id: 35,
               value: 2,
-              text: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
+              label: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
             },
             {
               id: 36,
               value: 1,
-              text: 'Brak reakcji',
+              label: 'Brak reakcji',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -790,7 +780,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kwestionariusz-phq9',
     category: 'psychiatria',
     description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -808,246 +798,252 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Wcale nie dokuczało',
+              label: 'Wcale nie dokuczało',
             },
             {
               id: 12,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 13,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 14,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 20,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
           radioInputs: [
             {
               id: 21,
               value: 0,
-              text: 'Wcale nie dokuczało',
+              label: 'Wcale nie dokuczało',
             },
             {
               id: 22,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 23,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 24,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 30,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Wcale nie dokuczały',
+              label: 'Wcale nie dokuczały',
             },
             {
               id: 32,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 33,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 34,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 40,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Wcale nie dokuczało',
+              label: 'Wcale nie dokuczało',
             },
             {
               id: 42,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 43,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 44,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 50,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Wcale nie dokuczały',
+              label: 'Wcale nie dokuczały',
             },
             {
               id: 52,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 53,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 54,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 60,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
           radioInputs: [
             {
               id: 61,
               value: 0,
-              text: 'Wcale nie dokuczało',
+              label: 'Wcale nie dokuczało',
             },
             {
               id: 62,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 63,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 64,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 70,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
           radioInputs: [
             {
               id: 71,
               value: 0,
-              text: 'Wcale nie dokuczały',
+              label: 'Wcale nie dokuczały',
             },
             {
               id: 72,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 73,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 74,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 80,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
           radioInputs: [
             {
               id: 81,
               value: 0,
-              text: 'Wcale nie dokuczało',
+              label: 'Wcale nie dokuczało',
             },
             {
               id: 82,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 83,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 84,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
         {
           id: 90,
-          text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
+          label:
+            'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
           radioInputs: [
             {
               id: 91,
               value: 0,
-              text: 'Wcale nie dokuczały',
+              label: 'Wcale nie dokuczały',
             },
             {
               id: 92,
               value: 1,
-              text: 'Kilka dni',
+              label: 'Kilka dni',
             },
             {
               id: 93,
               value: 2,
-              text: 'Więcej niż połowę dni',
+              label: 'Więcej niż połowę dni',
             },
             {
               id: 94,
               value: 3,
-              text: 'Niemal codziennie',
+              label: 'Niemal codziennie',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1101,19 +1097,17 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'qtInterval',
-          text: 'Odstęp QT (ms)',
+          label: 'Odstęp QT (ms)',
           min: 1,
           max: 1000,
         },
         {
           id: 'heartRate',
-          text: 'Czynność serca (na minutę)',
+          label: 'Czynność serca (na minutę)',
           min: 1,
           max: 700,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
     resultUnit: 'ms',
 
@@ -1191,27 +1185,24 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'prothrombinTime',
-          text: 'Czas protrombinowy pacjenta (s)',
+          label: 'Czas protrombinowy pacjenta (s)',
           min: 0.1,
           max: 1000,
         },
         {
           id: 'controlTime',
-          text: 'Czas protrombinowy prawidłowy (s)',
+          label: 'Czas protrombinowy prawidłowy (s)',
           min: 0.1,
           max: 1000,
         },
         {
           id: 'bilirubin',
-          text: 'Stężenie bilirubiny całkowitej (mg/dl)',
+          label: 'Stężenie bilirubiny całkowitej (mg/dl)',
           min: 0.1,
           max: 1000,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: () => {
       const prothrombinTime: number = parseFloat(
@@ -1279,19 +1270,17 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 1,
           max: 120,
         },
         {
           id: 'weight',
-          text: 'Masa ciała (kg)',
+          label: 'Masa ciała (kg)',
           min: 1,
           max: 200,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
     resultUnit: 'g',
 
@@ -1368,7 +1357,7 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 1,
           max: 125,
         },
@@ -1377,57 +1366,55 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           value: 10,
-          text: 'Płeć męska',
+          label: 'Płeć męska',
         },
         {
           id: 2,
           value: 30,
-          text: 'Nowotwór złośliwy',
+          label: 'Nowotwór złośliwy',
         },
         {
           id: 3,
           value: 10,
-          text: 'Przewlekła niewydolność serca',
+          label: 'Przewlekła niewydolność serca',
         },
         {
           id: 4,
           value: 10,
-          text: 'Przewlekła choroba płuc',
+          label: 'Przewlekła choroba płuc',
         },
         {
           id: 5,
           value: 20,
-          text: 'Tętno powyżej 110/min',
+          label: 'Tętno powyżej 110/min',
         },
         {
           id: 6,
           value: 30,
-          text: 'Skurczowe ciśnienie tętnicze poniżej 100 mm Hg',
+          label: 'Skurczowe ciśnienie tętnicze poniżej 100 mm Hg',
         },
         {
           id: 7,
           value: 20,
-          text: 'Częstość oddechów powyżej 30/min',
+          label: 'Częstość oddechów powyżej 30/min',
         },
         {
           id: 8,
           value: 20,
-          text: 'Temperatura poniżej 36°C',
+          label: 'Temperatura poniżej 36°C',
         },
         {
           id: 9,
           value: 60,
-          text: 'Zmiana stanu psychicznego',
+          label: 'Zmiana stanu psychicznego',
         },
         {
           id: 10,
           value: 20,
-          text: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
+          label: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
         },
       ],
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: () => {
       const age: number = parseFloat(
@@ -1459,7 +1446,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-genewska-oryginalna',
     category: 'kardiologia',
     description: 'Ocenia prawdopodobieństwo zatorowości płucnej.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -1471,69 +1458,68 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Wiek powyżej 65 lat',
+          label: 'Wiek powyżej 65 lat',
         },
         {
           id: 2,
           value: 3,
-          text: 'Przebyta zakrzepica żył głębokich lub zatorowość płucna',
+          label: 'Przebyta zakrzepica żył głębokich lub zatorowość płucna',
         },
         {
           id: 3,
           value: 2,
-          text: 'Zabieg chirurgiczny lub złamanie w ciągu ostatniego miesiąca',
+          label: 'Zabieg chirurgiczny lub złamanie w ciągu ostatniego miesiąca',
         },
         {
           id: 4,
           value: 2,
-          text: 'Niewyleczony nowotwór złośliwy',
+          label: 'Niewyleczony nowotwór złośliwy',
         },
         {
           id: 5,
           value: 3,
-          text: 'Jednostronny ból kończyny dolnej',
+          label: 'Jednostronny ból kończyny dolnej',
         },
         {
           id: 6,
           value: 2,
-          text: 'Krwioplucie',
+          label: 'Krwioplucie',
         },
         {
           id: 7,
           value: 4,
-          text: 'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
+          label:
+            'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
         },
       ],
       radioGroups: [
         {
           id: 10,
-          text: 'Tętno',
+          label: 'Tętno',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Poniżej 75',
+              label: 'Poniżej 75',
             },
             {
               id: 12,
               value: 3,
-              text: '75 - 94',
+              label: '75 - 94',
             },
             {
               id: 13,
               value: 5,
-              text: '95 lub więcej',
+              label: '95 lub więcej',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1552,7 +1538,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-curb65',
     category: 'pulmonologia',
     description: 'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -1571,37 +1557,34 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Zaburzenia świadomości',
+          label: 'Zaburzenia świadomości',
         },
         {
           id: 2,
           value: 1,
-          text: 'Poziom mocznika większy niż 7 mmol/l',
+          label: 'Poziom mocznika większy niż 7 mmol/l',
         },
         {
           id: 3,
           value: 1,
-          text: 'Częstość oddechów równa lub większa 30 na minutę',
+          label: 'Częstość oddechów równa lub większa 30 na minutę',
         },
         {
           id: 4,
           value: 1,
-          text: 'Ciśnienie tętnicze krwi równe lub niższe od 90/60 mmHg',
+          label: 'Ciśnienie tętnicze krwi równe lub niższe od 90/60 mmHg',
         },
         {
           id: 5,
           value: 1,
-          text: 'Wiek większy lub równy 65 lat',
+          label: 'Wiek większy lub równy 65 lat',
         },
       ],
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1664,40 +1647,39 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'waist',
-          text: 'Obwód talii (cm)',
+          label: 'Obwód talii (cm)',
           min: 1,
           max: 250,
         },
         {
           id: 'hips',
-          text: 'Obwód bioder (cm)',
+          label: 'Obwód bioder (cm)',
           min: 1,
           max: 250,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'female',
               value: 0.85,
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'male',
               value: 0,
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: () => {
       const waist = parseFloat(
@@ -1730,7 +1712,7 @@ export const calculators: CalculatorType[] = [
     category: 'anestezjologia',
     description:
       'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -1748,27 +1730,25 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
       checkboxes: [
         {
           id: 1,
           value: 1,
-          text: 'Zaburzenia przytomności (mniej niż 15 punktów w skali Glasgow)',
+          label:
+            'Zaburzenia przytomności (mniej niż 15 punktów w skali Glasgow)',
         },
         {
           id: 2,
           value: 1,
-          text: 'Częstotliwość oddechów większa lub równa 22/min',
+          label: 'Częstotliwość oddechów większa lub równa 22/min',
         },
         {
           id: 3,
           value: 1,
-          text: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
+          label: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
         },
       ],
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1784,7 +1764,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kwestionariusz-fagerstroma',
     category: 'używki',
     description: 'Ocenia stopień uzależnienia od nikotyny.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -1796,128 +1776,127 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
+          label: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
           radioInputs: [
             {
               id: 11,
               value: 3,
-              text: 'Do 5 minut',
+              label: 'Do 5 minut',
             },
             {
               id: 12,
               value: 2,
-              text: 'Od 6 do 30 minut',
+              label: 'Od 6 do 30 minut',
             },
             {
               id: 13,
               value: 1,
-              text: 'Od 31 do 60 minut',
+              label: 'Od 31 do 60 minut',
             },
             {
               id: 14,
               value: 0,
-              text: 'Po 60 minutach',
+              label: 'Po 60 minutach',
             },
           ],
         },
         {
           id: 20,
-          text: 'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
+          label:
+            'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
           radioInputs: [
             {
               id: 21,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 22,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 30,
-          text: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
+          label: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
           radioInputs: [
             {
               id: 31,
               value: 1,
-              text: 'Z pierwszego rano',
+              label: 'Z pierwszego rano',
             },
             {
               id: 32,
               value: 0,
-              text: 'Z każdego innego',
+              label: 'Z każdego innego',
             },
           ],
         },
         {
           id: 40,
-          text: 'Ile papierosów pacjent wypala dziennie?',
+          label: 'Ile papierosów pacjent wypala dziennie?',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: '10 lub mniej',
+              label: '10 lub mniej',
             },
             {
               id: 42,
               value: 1,
-              text: 'Od 11 do 20',
+              label: 'Od 11 do 20',
             },
             {
               id: 43,
               value: 2,
-              text: 'Od 21 do 30',
+              label: 'Od 21 do 30',
             },
             {
               id: 44,
               value: 3,
-              text: '31 lub więcej',
+              label: '31 lub więcej',
             },
           ],
         },
         {
           id: 50,
-          text: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
+          label: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
           radioInputs: [
             {
               id: 51,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 52,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 60,
-          text: 'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
+          label:
+            'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
           radioInputs: [
             {
               id: 61,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 62,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1934,7 +1913,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-nyha',
     category: 'kardiologia',
     description: 'Ocenia stopień niewydolności serca na podstawie objawów.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -1946,38 +1925,39 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 1,
-          text: 'Wydolność wysiłkowa',
+          label: 'Wydolność wysiłkowa',
           radioInputs: [
             {
               id: 1,
               value: 1,
-              text: 'Bez ograniczeń w aktywności fizycznej. Zwykły wysiłek fizyczny nie powoduje nadmiernego zmęczenia, duszności ani kołatania serca',
+              label:
+                'Bez ograniczeń w aktywności fizycznej. Zwykły wysiłek fizyczny nie powoduje nadmiernego zmęczenia, duszności ani kołatania serca',
             },
             {
               id: 2,
               value: 2,
-              text: 'Niewielkie ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale zwykła aktywność powoduje zmęczenie, kołatanie serca lub duszność',
+              label:
+                'Niewielkie ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale zwykła aktywność powoduje zmęczenie, kołatanie serca lub duszność',
             },
             {
               id: 3,
               value: 3,
-              text: 'Znaczne ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale aktywność mniejsza niż zwykła powoduje wystąpienie objawów',
+              label:
+                'Znaczne ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale aktywność mniejsza niż zwykła powoduje wystąpienie objawów',
             },
             {
               id: 4,
               value: 4,
-              text: 'Każda aktywność fizyczna wywołuje dolegliwości. Objawy podmiotowe niewydolności serca występują nawet w spoczynku, a jakakolwiek aktywność nasila dolegliwości',
+              label:
+                'Każda aktywność fizyczna wywołuje dolegliwości. Objawy podmiotowe niewydolności serca występują nawet w spoczynku, a jakakolwiek aktywność nasila dolegliwości',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -1995,7 +1975,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-ccs',
     category: 'kardiologia',
     description: 'Ocenia zaawansowanie choroby niedokrwiennej serca.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -2007,38 +1987,39 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 1,
-          text: 'Aktywność fizyczna',
+          label: 'Aktywność fizyczna',
           radioInputs: [
             {
               id: 1,
               value: 1,
-              text: 'Zwyczajna aktywność fizyczna, taka jak chodzenie po płaskim terenie lub wchodzenie po schodach, nie wywołuje dławicy. Dławica występuje przy większym, gwałtowniejszym lub dłużej trwającym wysiłku fizycznym, związanym z pracą lub rekreacją',
+              label:
+                'Zwyczajna aktywność fizyczna, taka jak chodzenie po płaskim terenie lub wchodzenie po schodach, nie wywołuje dławicy. Dławica występuje przy większym, gwałtowniejszym lub dłużej trwającym wysiłku fizycznym, związanym z pracą lub rekreacją',
             },
             {
               id: 2,
               value: 2,
-              text: 'Niewielkie ograniczenie zwyczajnej aktywności fizycznej. Dławica występuje przy szybkim chodzeniu po płaskim terenie lub szybkim wchodzeniu po schodach, przy wchodzeniu pod górę, przy chodzeniu po płaskim terenie lub wchodzeniu po schodach, po posiłkach, gdy jest zimno, wieje wiatr, pod wpływem stresu emocjonalnego lub tylko w ciągu kilku godzin po przebudzeniu lub po przejściu ponad 200 m po terenie płaskim i przy wchodzeniu po schodach na więcej niż jedno piętro w normalnym tempie i w zwykłych warunkach',
+              label:
+                'Niewielkie ograniczenie zwyczajnej aktywności fizycznej. Dławica występuje przy szybkim chodzeniu po płaskim terenie lub szybkim wchodzeniu po schodach, przy wchodzeniu pod górę, przy chodzeniu po płaskim terenie lub wchodzeniu po schodach, po posiłkach, gdy jest zimno, wieje wiatr, pod wpływem stresu emocjonalnego lub tylko w ciągu kilku godzin po przebudzeniu lub po przejściu ponad 200 m po terenie płaskim i przy wchodzeniu po schodach na więcej niż jedno piętro w normalnym tempie i w zwykłych warunkach',
             },
             {
               id: 3,
               value: 3,
-              text: 'Znaczne ograniczenie zwykłej aktywności fizycznej. Dławica występuje po przejściu od 100 do 200 metrów po terenie płaskim lub przy wchodzeniu po schodach na jedno piętro w normalnym tempie i w zwykłych warunkach',
+              label:
+                'Znaczne ograniczenie zwykłej aktywności fizycznej. Dławica występuje po przejściu od 100 do 200 metrów po terenie płaskim lub przy wchodzeniu po schodach na jedno piętro w normalnym tempie i w zwykłych warunkach',
             },
             {
               id: 4,
               value: 4,
-              text: 'Jakakolwiek aktywność fizyczna wywołuje dławicę. Może ona występować w spoczynku',
+              label:
+                'Jakakolwiek aktywność fizyczna wywołuje dławicę. Może ona występować w spoczynku',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -2106,40 +2087,40 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 1,
           max: 120,
         },
         {
           id: 'weight',
-          text: 'Masa ciała (kg)',
+          label: 'Masa ciała (kg)',
           min: 1,
           max: 250,
         },
         {
           id: 'creatinine',
-          text: 'Stężenie kreatyniny (mg/dl)',
+          label: 'Stężenie kreatyniny (mg/dl)',
           min: 0.01,
           max: 100,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'female',
               value: 0.85,
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'man',
               value: 1,
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
@@ -2247,33 +2228,30 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 1,
           max: 120,
         },
         {
           id: 'alt',
-          text: 'ALT',
+          label: 'ALT',
           min: 1,
           max: 2500,
         },
         {
           id: 'ast',
-          text: 'AST',
+          label: 'AST',
           min: 1,
           max: 2500,
         },
         {
           id: 'platelet',
-          text: 'Liczba płytek krwi (x10⁹/l)',
+          label: 'Liczba płytek krwi (x10⁹/l)',
           min: 1,
           max: 1000,
         },
       ],
-      checkboxes: null,
-      radioGroups: null,
     },
-    resultUnit: null,
 
     getResult: () => {
       const age: number = parseFloat(
@@ -2310,7 +2288,7 @@ export const calculators: CalculatorType[] = [
     category: 'hepatologia',
     description:
       'Określa stopień niewydolności wątroby i klasyfikację pacjenta do przeszczepu wątroby.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -2322,117 +2300,114 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Encefalopatia',
+          label: 'Encefalopatia',
           radioInputs: [
             {
               id: 11,
               value: 1,
-              text: 'Nie ma',
+              label: 'Nie ma',
             },
             {
               id: 12,
               value: 2,
-              text: 'Stopień 1–2',
+              label: 'Stopień 1–2',
             },
             {
               id: 13,
               value: 3,
-              text: 'Stopień 3–4',
+              label: 'Stopień 3–4',
             },
           ],
         },
         {
           id: 20,
-          text: 'Wodobrzusze',
+          label: 'Wodobrzusze',
           radioInputs: [
             {
               id: 21,
               value: 1,
-              text: 'Nie ma',
+              label: 'Nie ma',
             },
             {
               id: 22,
               value: 2,
-              text: 'Umiarkowane',
+              label: 'Umiarkowane',
             },
             {
               id: 23,
               value: 3,
-              text: 'Napięte',
+              label: 'Napięte',
             },
           ],
         },
         {
           id: 30,
-          text: 'Stężenie bilirubiny',
+          label: 'Stężenie bilirubiny',
           radioInputs: [
             {
               id: 31,
               value: 1,
-              text: 'Poniżej 2mg/dl (34.2 µmol/l)',
+              label: 'Poniżej 2mg/dl (34.2 µmol/l)',
             },
             {
               id: 32,
               value: 2,
-              text: '2-3mg/dl (34.2-51.3 µmol/l)',
+              label: '2-3mg/dl (34.2-51.3 µmol/l)',
             },
             {
               id: 33,
               value: 3,
-              text: 'Ponad 3mg/dl (51.3 µmol/l)',
+              label: 'Ponad 3mg/dl (51.3 µmol/l)',
             },
           ],
         },
         {
           id: 40,
-          text: 'Stężenie albuminy',
+          label: 'Stężenie albuminy',
           radioInputs: [
             {
               id: 41,
               value: 1,
-              text: 'Powyżej 3.5 g/dl (35 g/l)',
+              label: 'Powyżej 3.5 g/dl (35 g/l)',
             },
             {
               id: 42,
               value: 2,
-              text: '2.8-3.5 g/dl (28-35 g/l)',
+              label: '2.8-3.5 g/dl (28-35 g/l)',
             },
             {
               id: 43,
               value: 3,
-              text: 'Poniżej 2.8 g/dl (28 g/l)',
+              label: 'Poniżej 2.8 g/dl (28 g/l)',
             },
           ],
         },
         {
           id: 50,
-          text: 'Czas protrombinowy / INR',
+          label: 'Czas protrombinowy / INR',
           radioInputs: [
             {
               id: 51,
               value: 1,
-              text: 'Poniżej 5 / 1,70',
+              label: 'Poniżej 5 / 1,70',
             },
             {
               id: 52,
               value: 2,
-              text: '5–10 / 1,70–2,20',
+              label: '5–10 / 1,70–2,20',
             },
             {
               id: 53,
               value: 3,
-              text: 'Ponad 10 / 2,20',
+              label: 'Ponad 10 / 2,20',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -2450,7 +2425,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kalkulator-score2',
     category: 'kardiologia',
     description: 'Ocenia ryzyko sercowo-naczyniowe dla populacji Polski.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -2472,56 +2447,56 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 40,
           max: 89,
         },
         {
           id: 'bloodPressure',
-          text: 'Ciśnienie tętnicze skurczowe (mm Hg)',
+          label: 'Ciśnienie tętnicze skurczowe (mm Hg)',
           min: 100,
           max: 179,
         },
         {
           id: 'cholesterol',
-          text: 'Cholesterol nie-HDL (mg/dl)',
+          label: 'Cholesterol nie-HDL (mg/dl)',
           min: 116,
           max: 265,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 1,
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'man',
               value: 'man',
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
             {
               id: 'woman',
               value: 'woman',
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
           ],
         },
         {
           id: 2,
-          text: 'Palenie papierosów',
+          label: 'Palenie papierosów',
           radioInputs: [
             {
               id: 'smoking',
               value: 'true',
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 2,
               value: 'false',
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
@@ -2923,34 +2898,34 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'mothersHeight',
-          text: 'Wzrost matki (w cm)',
+          label: 'Wzrost matki (w cm)',
           min: 140,
           max: 220,
         },
         {
           id: 'fathersHeight',
-          text: 'Wzrost ojca (w cm)',
+          label: 'Wzrost ojca (w cm)',
           min: 140,
           max: 220,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 1,
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'male',
               value: 'male',
               hideBadge: true,
-              text: 'Chłopiec',
+              label: 'Chłopiec',
             },
             {
               id: 'female',
               value: 'female',
               hideBadge: true,
-              text: 'Dziewczynka',
+              label: 'Dziewczynka',
             },
           ],
         },
@@ -2990,7 +2965,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kwestionariusz-mdq',
     category: 'psychiatria',
     description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -3001,262 +2976,274 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
           radioInputs: [
             {
               id: 11,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 12,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 20,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
           radioInputs: [
             {
               id: 21,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 22,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 30,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
           radioInputs: [
             {
               id: 31,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 32,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 40,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
           radioInputs: [
             {
               id: 41,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 42,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 50,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
           radioInputs: [
             {
               id: 51,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 52,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 60,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
           radioInputs: [
             {
               id: 61,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 62,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 70,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
           radioInputs: [
             {
               id: 71,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 72,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 80,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
           radioInputs: [
             {
               id: 81,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 82,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 90,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
           radioInputs: [
             {
               id: 91,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 92,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 100,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
           radioInputs: [
             {
               id: 101,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 102,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 110,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
           radioInputs: [
             {
               id: 111,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 112,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 120,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
           radioInputs: [
             {
               id: 121,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 122,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 130,
-          text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
+          label:
+            'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
           radioInputs: [
             {
               id: 131,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 132,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 14,
-          text: 'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
+          label:
+            'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
           radioInputs: [
             {
               id: 'happenedAtTheSameTime',
               value: 'happenedAtTheSameTime',
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 'notApplicable',
               value: 'notApplicable',
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 'problem',
-          text: 'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
+          label:
+            'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
           radioInputs: [
             {
               id: 'no',
               value: 'no',
-              text: 'Bez problemu',
+              label: 'Bez problemu',
             },
             {
               id: 'small',
               value: 'small',
-              text: 'Mały problem',
+              label: 'Mały problem',
             },
             {
               id: 'medium',
               value: 'medium',
-              text: 'Średni problem',
+              label: 'Średni problem',
             },
             {
               id: 'big',
               value: 'big',
-              text: 'Duży problem',
+              label: 'Duży problem',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -3288,7 +3275,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/test-audit',
     category: 'używki',
     description: 'Ocenia stopień uzależnienia od alkoholu.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -3307,318 +3294,324 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'male',
               value: 'male',
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
             {
               id: 'female',
               value: 'female',
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
           ],
         },
         {
           id: 10,
-          text: 'Jak często pacjent pije napoje alkoholowe?',
+          label: 'Jak często pacjent pije napoje alkoholowe?',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 12,
               value: 1,
-              text: 'Raz w miesiącu',
+              label: 'Raz w miesiącu',
             },
             {
               id: 13,
               value: 2,
-              text: 'Od 2 do 4 razy w miesiącu',
+              label: 'Od 2 do 4 razy w miesiącu',
             },
             {
               id: 14,
               value: 3,
-              text: 'Od 2 do 3 razy w tygodniu',
+              label: 'Od 2 do 3 razy w tygodniu',
             },
             {
               id: 15,
               value: 4,
-              text: '4 razy w tygodniu lub częściej',
+              label: '4 razy w tygodniu lub częściej',
             },
           ],
         },
         {
           id: 20,
-          text: 'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
+          label:
+            'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: '1 lub 2 porcje',
+              label: '1 lub 2 porcje',
             },
             {
               id: 12,
               value: 1,
-              text: '3 lub 4 porcje',
+              label: '3 lub 4 porcje',
             },
             {
               id: 13,
               value: 2,
-              text: '5 lub 6 porcji',
+              label: '5 lub 6 porcji',
             },
             {
               id: 14,
               value: 3,
-              text: 'Od 7 do 9 porcji',
+              label: 'Od 7 do 9 porcji',
             },
             {
               id: 15,
               value: 4,
-              text: '10 porcji lub więcej',
+              label: '10 porcji lub więcej',
             },
           ],
         },
         {
           id: 30,
-          text: 'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
+          label:
+            'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 32,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 33,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 34,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 35,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 40,
-          text: 'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
+          label:
+            'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 42,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 43,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 44,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 45,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 50,
-          text: 'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
+          label:
+            'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 52,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 53,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 54,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 55,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 60,
-          text: 'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
+          label:
+            'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
           radioInputs: [
             {
               id: 61,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 62,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 63,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 64,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 65,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 70,
-          text: 'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
+          label:
+            'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
           radioInputs: [
             {
               id: 71,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 72,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 73,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 74,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 75,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 80,
-          text: 'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
+          label:
+            'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
           radioInputs: [
             {
               id: 81,
               value: 0,
-              text: 'Nigdy',
+              label: 'Nigdy',
             },
             {
               id: 82,
               value: 1,
-              text: 'Rzadziej niż raz w miesiącu',
+              label: 'Rzadziej niż raz w miesiącu',
             },
             {
               id: 83,
               value: 2,
-              text: 'Około raz w miesiącu',
+              label: 'Około raz w miesiącu',
             },
             {
               id: 84,
               value: 3,
-              text: 'Około raz w tygodniu',
+              label: 'Około raz w tygodniu',
             },
             {
               id: 85,
               value: 4,
-              text: 'Codziennie lub prawie codziennie',
+              label: 'Codziennie lub prawie codziennie',
             },
           ],
         },
         {
           id: 90,
-          text: 'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
+          label:
+            'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
           radioInputs: [
             {
               id: 91,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
             {
               id: 92,
               value: 2,
-              text: 'Tak, ale nie w ostatnim roku',
+              label: 'Tak, ale nie w ostatnim roku',
             },
             {
               id: 93,
               value: 4,
-              text: 'Tak, w ostatnim roku',
+              label: 'Tak, w ostatnim roku',
             },
           ],
         },
         {
           id: 100,
-          text: 'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
+          label:
+            'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
           radioInputs: [
             {
               id: 101,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
             {
               id: 102,
               value: 2,
-              text: 'Tak, ale nie w ostatnim roku',
+              label: 'Tak, ale nie w ostatnim roku',
             },
             {
               id: 103,
               value: 4,
-              text: 'Tak, w ostatnim roku',
+              label: 'Tak, w ostatnim roku',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -3646,7 +3639,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/pediatryczna-skala-glasgow',
     category: 'pediatria',
     description: 'Ocenia poziom przytomności u dzieci do 2 roku życia.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -3657,105 +3650,104 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Otwieranie oczu',
+          label: 'Otwieranie oczu',
           radioInputs: [
             {
               id: 11,
               value: 4,
-              text: 'Spontaniczne',
+              label: 'Spontaniczne',
             },
             {
               id: 12,
               value: 3,
-              text: 'W odpowiedzi na bodziec głosowy',
+              label: 'W odpowiedzi na bodziec głosowy',
             },
             {
               id: 13,
               value: 2,
-              text: 'W odpowiedzi na bodziec bólowy',
+              label: 'W odpowiedzi na bodziec bólowy',
             },
             {
               id: 14,
               value: 1,
-              text: 'Nie otwiera oczu',
+              label: 'Nie otwiera oczu',
             },
           ],
         },
         {
           id: 20,
-          text: 'Odpowiedź słowna',
+          label: 'Odpowiedź słowna',
           radioInputs: [
             {
               id: 21,
               value: 5,
-              text: 'Uśmiech lub adekwatny płacz',
+              label: 'Uśmiech lub adekwatny płacz',
             },
             {
               id: 22,
               value: 4,
-              text: 'Gwałtowny, nieustępujący płacz',
+              label: 'Gwałtowny, nieustępujący płacz',
             },
             {
               id: 23,
               value: 3,
-              text: 'Nieadekwatny płacz lub krzyk',
+              label: 'Nieadekwatny płacz lub krzyk',
             },
             {
               id: 24,
               value: 2,
-              text: 'Jęki lub pochrząkiwanie',
+              label: 'Jęki lub pochrząkiwanie',
             },
             {
               id: 25,
               value: 1,
-              text: 'Brak reakcji',
+              label: 'Brak reakcji',
             },
           ],
         },
         {
           id: 30,
-          text: 'Reakcja ruchowa',
+          label: 'Reakcja ruchowa',
           radioInputs: [
             {
               id: 31,
               value: 6,
-              text: 'Ruchy spontaniczne',
+              label: 'Ruchy spontaniczne',
             },
             {
               id: 32,
               value: 5,
-              text: 'Zlokalizowanie, próba usunięcia bodźca bólowego',
+              label: 'Zlokalizowanie, próba usunięcia bodźca bólowego',
             },
             {
               id: 33,
               value: 4,
-              text: 'Wycofanie przed bodźcem bólowym',
+              label: 'Wycofanie przed bodźcem bólowym',
             },
             {
               id: 34,
               value: 3,
-              text: 'Patologiczna reakcja zgięciowa w reakcji na bodziec bólowy',
+              label:
+                'Patologiczna reakcja zgięciowa w reakcji na bodziec bólowy',
             },
             {
               id: 35,
               value: 2,
-              text: 'Patologiczna reakcja wyprostna w reakcji na bodziec bólowy',
+              label:
+                'Patologiczna reakcja wyprostna w reakcji na bodziec bólowy',
             },
             {
               id: 36,
               value: 1,
-              text: 'Brak reakcji',
+              label: 'Brak reakcji',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -3773,7 +3765,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-apgar',
     category: 'pediatria',
     description: 'Ocenia noworodka w pierwszej i w piątej minucie życia.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -3791,117 +3783,114 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Akcja serca',
+          label: 'Akcja serca',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Brak czynności',
+              label: 'Brak czynności',
             },
             {
               id: 12,
               value: 1,
-              text: 'Poniżej 100 uderzeń na minutę',
+              label: 'Poniżej 100 uderzeń na minutę',
             },
             {
               id: 13,
               value: 2,
-              text: 'Co najmniej 100 uderzeń na minutę',
+              label: 'Co najmniej 100 uderzeń na minutę',
             },
           ],
         },
         {
           id: 20,
-          text: 'Oddychanie',
+          label: 'Oddychanie',
           radioInputs: [
             {
               id: 21,
               value: 0,
-              text: 'Brak oddechu',
+              label: 'Brak oddechu',
             },
             {
               id: 22,
               value: 1,
-              text: 'Zwolnione lub nieregularne',
+              label: 'Zwolnione lub nieregularne',
             },
             {
               id: 23,
               value: 2,
-              text: 'Aktywne ruchy',
+              label: 'Aktywne ruchy',
             },
           ],
         },
         {
           id: 30,
-          text: 'Napięcie mięśni',
+          label: 'Napięcie mięśni',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Wiotkie',
+              label: 'Wiotkie',
             },
             {
               id: 32,
               value: 1,
-              text: 'Obecne',
+              label: 'Obecne',
             },
             {
               id: 33,
               value: 2,
-              text: 'Aktywne ruchy',
+              label: 'Aktywne ruchy',
             },
           ],
         },
         {
           id: 40,
-          text: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
+          label: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Brak reakcji',
+              label: 'Brak reakcji',
             },
             {
               id: 42,
               value: 1,
-              text: 'Słaba reakcja (grymas)',
+              label: 'Słaba reakcja (grymas)',
             },
             {
               id: 43,
               value: 2,
-              text: 'Adekwatna reakcja (kichanie)',
+              label: 'Adekwatna reakcja (kichanie)',
             },
           ],
         },
         {
           id: 50,
-          text: 'Zabarwienie skóry',
+          label: 'Zabarwienie skóry',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Blada',
+              label: 'Blada',
             },
             {
               id: 52,
               value: 1,
-              text: 'Sinica obwodowa',
+              label: 'Sinica obwodowa',
             },
             {
               id: 53,
               value: 2,
-              text: 'Różowa',
+              label: 'Różowa',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -3919,7 +3908,7 @@ export const calculators: CalculatorType[] = [
     category: 'geriatria',
     description:
       'Ocenia poziom samodzielności i zdolność zaspokajania podstawowych potrzeb życiowych pacjentów.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -3937,227 +3926,236 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Spożywanie posiłków',
+          label: 'Spożywanie posiłków',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Nie jest w stanie samodzielnie jeść lub przełykać',
+              label: 'Nie jest w stanie samodzielnie jeść lub przełykać',
             },
             {
               id: 12,
               value: 5,
-              text: 'Potrzebuje pomocy w krojeniu, smarowaniu, karmieniu doustnym',
+              label:
+                'Potrzebuje pomocy w krojeniu, smarowaniu, karmieniu doustnym',
             },
             {
               id: 13,
               value: 10,
-              text: 'Samodzielny, niezależny',
+              label: 'Samodzielny, niezależny',
             },
           ],
         },
         {
           id: 20,
-          text: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
+          label: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
           radioInputs: [
             {
               id: 21,
               value: 0,
-              text: 'Nie jest w stanie się przemieszczać, nie zachowuje równowagi przy siadaniu oraz siedzeniu',
+              label:
+                'Nie jest w stanie się przemieszczać, nie zachowuje równowagi przy siadaniu oraz siedzeniu',
             },
             {
               id: 22,
               value: 5,
-              text: 'Przemieszcza się z pomocą fizyczną jednej lub dwóch osób, może siedzieć',
+              label:
+                'Przemieszcza się z pomocą fizyczną jednej lub dwóch osób, może siedzieć',
             },
             {
               id: 23,
               value: 10,
-              text: 'Mniejsza pomoc (słowna lub fizyczna)',
+              label: 'Mniejsza pomoc (słowna lub fizyczna)',
             },
             {
               id: 24,
               value: 15,
-              text: 'Samodzielny',
+              label: 'Samodzielny',
             },
           ],
         },
         {
           id: 30,
-          text: 'Utrzymanie higieny osobistej',
+          label: 'Utrzymanie higieny osobistej',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Nie jest w stanie wykonać żadnych czynności higienicznych',
+              label:
+                'Nie jest w stanie wykonać żadnych czynności higienicznych',
             },
             {
               id: 32,
               value: 5,
-              text: 'Potrzebuje pomocy przy wykonywaniu czynności higienicznych',
+              label:
+                'Potrzebuje pomocy przy wykonywaniu czynności higienicznych',
             },
             {
               id: 33,
               value: 10,
-              text: 'Samodzielny przy myciu twarzy, czesaniu się, myciu zębów, także z zapewnionymi pomocami',
+              label:
+                'Samodzielny przy myciu twarzy, czesaniu się, myciu zębów, także z zapewnionymi pomocami',
             },
           ],
         },
         {
           id: 40,
-          text: 'Korzystanie z toalety',
+          label: 'Korzystanie z toalety',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Nie korzysta w ogóle z toalety',
+              label: 'Nie korzysta w ogóle z toalety',
             },
             {
               id: 42,
               value: 5,
-              text: 'Potrzebuje lub częściowo potrzebuje pomocy przy korzystaniu z toalety',
+              label:
+                'Potrzebuje lub częściowo potrzebuje pomocy przy korzystaniu z toalety',
             },
             {
               id: 43,
               value: 10,
-              text: 'Samodzielny w dotarciu do toalety oraz w zdejmowaniu i zakładaniu części garderoby',
+              label:
+                'Samodzielny w dotarciu do toalety oraz w zdejmowaniu i zakładaniu części garderoby',
             },
           ],
         },
         {
           id: 50,
-          text: 'Mycie i kąpiel całego ciała',
+          label: 'Mycie i kąpiel całego ciała',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Kąpany w wannie przy pomocy podnośnika',
+              label: 'Kąpany w wannie przy pomocy podnośnika',
             },
             {
               id: 52,
               value: 5,
-              text: 'Wymaga pomocy',
+              label: 'Wymaga pomocy',
             },
             {
               id: 53,
               value: 10,
-              text: 'Samodzielny',
+              label: 'Samodzielny',
             },
           ],
         },
         {
           id: 60,
-          text: 'Poruszanie się po powierzchniach płaskich',
+          label: 'Poruszanie się po powierzchniach płaskich',
           radioInputs: [
             {
               id: 61,
               value: 0,
-              text: 'W ogóle nie porusza się',
+              label: 'W ogóle nie porusza się',
             },
             {
               id: 62,
               value: 5,
-              text: 'Porusza się na odległość do 50 m za pomocą sprzętu wspomagającego i z pomocą co najmniej jednej osoby',
+              label:
+                'Porusza się na odległość do 50 m za pomocą sprzętu wspomagającego i z pomocą co najmniej jednej osoby',
             },
             {
               id: 63,
               value: 10,
-              text: 'Samodzielny, niezależny w poruszaniu się na odległość powyżej 50m, także w użyciem sprzętu wspomagającego',
+              label:
+                'Samodzielny, niezależny w poruszaniu się na odległość powyżej 50m, także w użyciem sprzętu wspomagającego',
             },
           ],
         },
         {
           id: 70,
-          text: 'Chodzenie po schodach',
+          label: 'Chodzenie po schodach',
           radioInputs: [
             {
               id: 71,
               value: 0,
-              text: 'Nie jest w stanie wchodzić i schodzić po schodach nawet z pomocą innej osoby',
+              label:
+                'Nie jest w stanie wchodzić i schodzić po schodach nawet z pomocą innej osoby',
             },
             {
               id: 72,
               value: 5,
-              text: 'Potrzebuje pomocy fizycznej, asekuracji, przenoszenia',
+              label: 'Potrzebuje pomocy fizycznej, asekuracji, przenoszenia',
             },
             {
               id: 73,
               value: 10,
-              text: 'Samodzielny',
+              label: 'Samodzielny',
             },
           ],
         },
         {
           id: 90,
-          text: 'Ubieranie i rozbieranie się',
+          label: 'Ubieranie i rozbieranie się',
           radioInputs: [
             {
               id: 91,
               value: 0,
-              text: 'Potrzebuje kompleksowej pomocy innej osoby',
+              label: 'Potrzebuje kompleksowej pomocy innej osoby',
             },
             {
               id: 92,
               value: 5,
-              text: 'Potrzebuje częściowej pomocy innej osoby',
+              label: 'Potrzebuje częściowej pomocy innej osoby',
             },
             {
               id: 93,
               value: 10,
-              text: 'Samodzielny, niezależny (także w zapinaniu guzików, zamka, zawiązywaniu sznurowadeł)',
+              label:
+                'Samodzielny, niezależny (także w zapinaniu guzików, zamka, zawiązywaniu sznurowadeł)',
             },
           ],
         },
         {
           id: 100,
-          text: 'Kontrola zwieracza odbytu',
+          label: 'Kontrola zwieracza odbytu',
           radioInputs: [
             {
               id: 101,
               value: 0,
-              text: 'Nie panuje nad oddawaniem stolca',
+              label: 'Nie panuje nad oddawaniem stolca',
             },
             {
               id: 102,
               value: 5,
-              text: 'Sporadycznie bezwiednie oddaje stolec',
+              label: 'Sporadycznie bezwiednie oddaje stolec',
             },
             {
               id: 103,
               value: 10,
-              text: 'Kontroluje oddawanie stolca',
+              label: 'Kontroluje oddawanie stolca',
             },
           ],
         },
         {
           id: 110,
-          text: 'Kontrola zwieraczy pęcherza moczowego',
+          label: 'Kontrola zwieraczy pęcherza moczowego',
           radioInputs: [
             {
               id: 111,
               value: 0,
-              text: 'Nie panuje nad oddawaniem moczu',
+              label: 'Nie panuje nad oddawaniem moczu',
             },
             {
               id: 112,
               value: 5,
-              text: 'Sporadycznie bezwiednie oddaje mocz',
+              label: 'Sporadycznie bezwiednie oddaje mocz',
             },
             {
               id: 113,
               value: 10,
-              text: 'Kontroluje oddawanie moczu',
+              label: 'Kontroluje oddawanie moczu',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -4235,34 +4233,35 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'consumedAlcohol',
-          text: 'Ilość wypitego czystego alkoholu w gramach (1 ml czystego alkoholu to 0,8 g)',
+          label:
+            'Ilość wypitego czystego alkoholu w gramach (1 ml czystego alkoholu to 0,8 g)',
           min: 1,
           max: 1000,
         },
         {
           id: 'bodyWeight',
-          text: 'Masa ciała (w kg)',
+          label: 'Masa ciała (w kg)',
           min: 1,
           max: 250,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'female',
               value: 0.6,
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'male',
               value: 0.7,
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
@@ -4301,7 +4300,7 @@ export const calculators: CalculatorType[] = [
     category: 'gastrologia',
     description:
       'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -4313,174 +4312,171 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Wiek',
+          label: 'Wiek',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Mniej niż 40 lat',
+              label: 'Mniej niż 40 lat',
             },
             {
               id: 12,
               value: 1,
-              text: 'Od 40 do 59 lat',
+              label: 'Od 40 do 59 lat',
             },
             {
               id: 13,
               value: 2,
-              text: '70 lat lub więcej',
+              label: '70 lat lub więcej',
             },
           ],
         },
         {
           id: 20,
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 21,
               value: 0,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 22,
               value: 1,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
         {
           id: 30,
-          text: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
+          label: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
             {
               id: 32,
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
           ],
         },
         {
           id: 40,
-          text: 'Wynik badania per rectum',
+          label: 'Wynik badania per rectum',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Bez krwi',
+              label: 'Bez krwi',
             },
             {
               id: 42,
               value: 1,
-              text: 'Obecna krew',
+              label: 'Obecna krew',
             },
           ],
         },
         {
           id: 50,
-          text: 'Częstotliwość rytmu serca',
+          label: 'Częstotliwość rytmu serca',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Mniej niż 70 na minutę',
+              label: 'Mniej niż 70 na minutę',
             },
             {
               id: 52,
               value: 1,
-              text: 'Między 70 a 89 na minutę',
+              label: 'Między 70 a 89 na minutę',
             },
             {
               id: 53,
               value: 2,
-              text: 'Między 90 a 109 na minutę',
+              label: 'Między 90 a 109 na minutę',
             },
             {
               id: 54,
               value: 3,
-              text: '110 na minutę lub więcej',
+              label: '110 na minutę lub więcej',
             },
           ],
         },
         {
           id: 60,
-          text: 'Ciśnienie tętnicze skurczowe',
+          label: 'Ciśnienie tętnicze skurczowe',
           radioInputs: [
             {
               id: 61,
               value: 5,
-              text: 'Mniej niż 90 mm Hg',
+              label: 'Mniej niż 90 mm Hg',
             },
             {
               id: 62,
               value: 4,
-              text: 'Od 90 do 119 mm Hg',
+              label: 'Od 90 do 119 mm Hg',
             },
             {
               id: 63,
               value: 3,
-              text: 'Od 120 do 129 mm Hg',
+              label: 'Od 120 do 129 mm Hg',
             },
             {
               id: 64,
               value: 2,
-              text: 'Od 130 do 159 mm Hg',
+              label: 'Od 130 do 159 mm Hg',
             },
             {
               id: 65,
               value: 0,
-              text: '160 mm Hg lub więcej',
+              label: '160 mm Hg lub więcej',
             },
           ],
         },
         {
           id: 70,
-          text: 'Stężenie hemoglobiny',
+          label: 'Stężenie hemoglobiny',
           radioInputs: [
             {
               id: 71,
               value: 22,
-              text: 'Mniej niż 7 g/dl',
+              label: 'Mniej niż 7 g/dl',
             },
             {
               id: 72,
               value: 17,
-              text: 'Od 7 do 8,9 g/dl',
+              label: 'Od 7 do 8,9 g/dl',
             },
             {
               id: 73,
               value: 13,
-              text: 'Od 9 do 10,9 g/dl',
+              label: 'Od 9 do 10,9 g/dl',
             },
             {
               id: 74,
               value: 8,
-              text: 'Od 11 do 12,9 g/dl',
+              label: 'Od 11 do 12,9 g/dl',
             },
             {
               id: 75,
               value: 4,
-              text: 'Od 13 do 15,9 g/dl',
+              label: 'Od 13 do 15,9 g/dl',
             },
             {
               id: 76,
               value: 0,
-              text: '16 g/dl lub więcej',
+              label: '16 g/dl lub więcej',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -4497,7 +4493,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/stop-bang',
     category: 'pulmonologia',
     description: 'Ocenia ryzyko obturacyjnego bezdechu sennego.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -4515,140 +4511,140 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
+          label:
+            'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
           radioInputs: [
             {
               id: 's',
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 12,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 20,
-          text: 'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
+          label:
+            'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
           radioInputs: [
             {
               id: 't',
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 22,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 30,
-          text: 'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
+          label:
+            'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
           radioInputs: [
             {
               id: 'o',
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 32,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 40,
-          text: 'Czy pacjent choruje na nadciśnienie tętnicze?',
+          label: 'Czy pacjent choruje na nadciśnienie tętnicze?',
           radioInputs: [
             {
               id: 'p',
               value: 1,
-              text: 'Tak',
+              label: 'Tak',
             },
             {
               id: 42,
               value: 0,
-              text: 'Nie',
+              label: 'Nie',
             },
           ],
         },
         {
           id: 50,
-          text: 'BMI pacjenta',
+          label: 'BMI pacjenta',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Mniejsze lub równe 35',
+              label: 'Mniejsze lub równe 35',
             },
             {
               id: 'b',
               value: 1,
-              text: 'Powyżej 35',
+              label: 'Powyżej 35',
             },
           ],
         },
         {
           id: 60,
-          text: 'Wiek pacjenta',
+          label: 'Wiek pacjenta',
           radioInputs: [
             {
               id: 61,
               value: 0,
-              text: 'Mniejszy lub równy 50 lat',
+              label: 'Mniejszy lub równy 50 lat',
             },
             {
               id: 62,
               value: 1,
-              text: 'Powyżej 50 lat',
+              label: 'Powyżej 50 lat',
             },
           ],
         },
         {
           id: 70,
-          text: 'Obwód szyi pacjenta',
+          label: 'Obwód szyi pacjenta',
           radioInputs: [
             {
               id: 71,
               value: 0,
-              text: 'Mniejszy lub równy 40 cm',
+              label: 'Mniejszy lub równy 40 cm',
             },
             {
               id: 'n',
               value: 1,
-              text: 'Powyżej 40 cm',
+              label: 'Powyżej 40 cm',
             },
           ],
         },
         {
           id: 80,
-          text: 'Płeć pacjenta',
+          label: 'Płeć pacjenta',
           radioInputs: [
             {
               id: 81,
               value: 0,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'g',
               value: 1,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -4693,7 +4689,7 @@ export const calculators: CalculatorType[] = [
     urlPath: '/skala-nihss',
     category: 'neurologia',
     description: 'Określa ciężkość udaru mózgu.',
-    methodology: null,
+
     sources: [
       {
         id: 1,
@@ -4714,387 +4710,384 @@ export const calculators: CalculatorType[] = [
       },
     ],
     fields: {
-      numberInputs: null,
-      checkboxes: null,
       radioGroups: [
         {
           id: 10,
-          text: 'Stan przytomności',
+          label: 'Stan przytomności',
           radioInputs: [
             {
               id: 11,
               value: 0,
-              text: 'Przytomny',
+              label: 'Przytomny',
             },
             {
               id: 12,
               value: 1,
-              text: 'Przebudza się przy niewielkiej stymulacji',
+              label: 'Przebudza się przy niewielkiej stymulacji',
             },
             {
               id: 13,
               value: 2,
-              text: 'Wymaga powtarzającej się stymulacji w celu pobudzenia',
+              label: 'Wymaga powtarzającej się stymulacji w celu pobudzenia',
             },
             {
               id: 14,
               value: 3,
-              text: 'Brak reakcji na bodźce',
+              label: 'Brak reakcji na bodźce',
             },
           ],
         },
         {
           id: 20,
-          text: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
+          label: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
           radioInputs: [
             {
               id: 21,
               value: 0,
-              text: 'Obie odpowiedzi prawidłowe',
+              label: 'Obie odpowiedzi prawidłowe',
             },
             {
               id: 22,
               value: 1,
-              text: 'Jedna odpowiedź prawidłowa',
+              label: 'Jedna odpowiedź prawidłowa',
             },
             {
               id: 23,
               value: 2,
-              text: 'Obie odpowiedzi nieprawidłowe',
+              label: 'Obie odpowiedzi nieprawidłowe',
             },
           ],
         },
         {
           id: 30,
-          text: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
+          label: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
           radioInputs: [
             {
               id: 31,
               value: 0,
-              text: 'Spełnia prawidłowo oba polecenia',
+              label: 'Spełnia prawidłowo oba polecenia',
             },
             {
               id: 32,
               value: 1,
-              text: 'Spełnia prawidłowo jedno polecenie',
+              label: 'Spełnia prawidłowo jedno polecenie',
             },
             {
               id: 33,
               value: 2,
-              text: 'Nie spełnia żadnego polecenia',
+              label: 'Nie spełnia żadnego polecenia',
             },
           ],
         },
         {
           id: 40,
-          text: 'Ruchy gałek ocznych w poziomie',
+          label: 'Ruchy gałek ocznych w poziomie',
           radioInputs: [
             {
               id: 41,
               value: 0,
-              text: 'Prawidłowe',
+              label: 'Prawidłowe',
             },
             {
               id: 42,
               value: 1,
-              text: 'Częściowe porażenie',
+              label: 'Częściowe porażenie',
             },
             {
               id: 43,
               value: 2,
-              text: 'Całkowite porażenie',
+              label: 'Całkowite porażenie',
             },
           ],
         },
         {
           id: 50,
-          text: 'Pole widzenia',
+          label: 'Pole widzenia',
           radioInputs: [
             {
               id: 51,
               value: 0,
-              text: 'Prawidłowe pole widzenia',
+              label: 'Prawidłowe pole widzenia',
             },
             {
               id: 52,
               value: 1,
-              text: 'Częściowe niedowidzenie połowicze',
+              label: 'Częściowe niedowidzenie połowicze',
             },
             {
               id: 53,
               value: 2,
-              text: 'Całkowite niedowidzenie połowicze',
+              label: 'Całkowite niedowidzenie połowicze',
             },
             {
               id: 54,
               value: 3,
-              text: 'Obustronne niedowidzenie połowicze',
+              label: 'Obustronne niedowidzenie połowicze',
             },
           ],
         },
         {
           id: 60,
-          text: 'Niedowład mięśni twarzy',
+          label: 'Niedowład mięśni twarzy',
           radioInputs: [
             {
               id: 61,
               value: 0,
-              text: 'Bez niedowładu',
+              label: 'Bez niedowładu',
             },
             {
               id: 62,
               value: 1,
-              text: 'Niewielki niedowład',
+              label: 'Niewielki niedowład',
             },
             {
               id: 63,
               value: 2,
-              text: 'Umiarkowany niedowład',
+              label: 'Umiarkowany niedowład',
             },
             {
               id: 64,
               value: 3,
-              text: 'Jednostronne porażenie',
+              label: 'Jednostronne porażenie',
             },
           ],
         },
         {
           id: 70,
-          text: 'Niedowład kończyny górnej lewej',
+          label: 'Niedowład kończyny górnej lewej',
           radioInputs: [
             {
               id: 71,
               value: 0,
-              text: 'Utrzymuje uniesioną kończynę',
+              label: 'Utrzymuje uniesioną kończynę',
             },
             {
               id: 72,
               value: 1,
-              text: 'Kończyna opada częściowo przed upływem 10 sekund',
+              label: 'Kończyna opada częściowo przed upływem 10 sekund',
             },
             {
               id: 73,
               value: 2,
-              text: 'Kończyna opada całkowicie przed upływem 10 sekund',
+              label: 'Kończyna opada całkowicie przed upływem 10 sekund',
             },
             {
               id: 74,
               value: 3,
-              text: 'Brak ruchu przeciw sile ciężkości',
+              label: 'Brak ruchu przeciw sile ciężkości',
             },
             {
               id: 75,
               value: 4,
-              text: 'Brak ruchu',
+              label: 'Brak ruchu',
             },
           ],
         },
         {
           id: 80,
-          text: 'Niedowład kończyny górnej prawej',
+          label: 'Niedowład kończyny górnej prawej',
           radioInputs: [
             {
               id: 81,
               value: 0,
-              text: 'Utrzymuje uniesioną kończynę',
+              label: 'Utrzymuje uniesioną kończynę',
             },
             {
               id: 82,
               value: 1,
-              text: 'Kończyna opada częściowo przed upływem 10 sekund',
+              label: 'Kończyna opada częściowo przed upływem 10 sekund',
             },
             {
               id: 83,
               value: 2,
-              text: 'Kończyna opada całkowicie przed upływem 10 sekund',
+              label: 'Kończyna opada całkowicie przed upływem 10 sekund',
             },
             {
               id: 84,
               value: 3,
-              text: 'Brak ruchu przeciw sile ciężkości',
+              label: 'Brak ruchu przeciw sile ciężkości',
             },
             {
               id: 85,
               value: 4,
-              text: 'Brak ruchu',
+              label: 'Brak ruchu',
             },
           ],
         },
         {
           id: 90,
-          text: 'Niedowład kończyny dolnej lewej',
+          label: 'Niedowład kończyny dolnej lewej',
           radioInputs: [
             {
               id: 91,
               value: 0,
-              text: 'Utrzymuje uniesioną kończynę',
+              label: 'Utrzymuje uniesioną kończynę',
             },
             {
               id: 92,
               value: 1,
-              text: 'Kończyna opada częściowo przed upływem 5 sekund',
+              label: 'Kończyna opada częściowo przed upływem 5 sekund',
             },
             {
               id: 93,
               value: 2,
-              text: 'Kończyna opada całkowicie przed upływem 5 sekund',
+              label: 'Kończyna opada całkowicie przed upływem 5 sekund',
             },
             {
               id: 94,
               value: 3,
-              text: 'Brak ruchu przeciw sile ciężkości',
+              label: 'Brak ruchu przeciw sile ciężkości',
             },
             {
               id: 95,
               value: 4,
-              text: 'Brak ruchu',
+              label: 'Brak ruchu',
             },
           ],
         },
         {
           id: 100,
-          text: 'Niedowład kończyny dolnej prawej',
+          label: 'Niedowład kończyny dolnej prawej',
           radioInputs: [
             {
               id: 101,
               value: 0,
-              text: 'Utrzymuje uniesioną kończynę',
+              label: 'Utrzymuje uniesioną kończynę',
             },
             {
               id: 102,
               value: 1,
-              text: 'Kończyna opada częściowo przed upływem 5 sekund',
+              label: 'Kończyna opada częściowo przed upływem 5 sekund',
             },
             {
               id: 103,
               value: 2,
-              text: 'Kończyna opada całkowicie przed upływem 5 sekund',
+              label: 'Kończyna opada całkowicie przed upływem 5 sekund',
             },
             {
               id: 104,
               value: 3,
-              text: 'Brak ruchu przeciw sile ciężkości',
+              label: 'Brak ruchu przeciw sile ciężkości',
             },
             {
               id: 105,
               value: 4,
-              text: 'Brak ruchu',
+              label: 'Brak ruchu',
             },
           ],
         },
         {
           id: 110,
-          text: 'Ataksja kończyn',
+          label: 'Ataksja kończyn',
           radioInputs: [
             {
               id: 111,
               value: 0,
-              text: 'Bez ataksji',
+              label: 'Bez ataksji',
             },
             {
               id: 112,
               value: 1,
-              text: 'W jednej kończynie',
+              label: 'W jednej kończynie',
             },
             {
               id: 113,
               value: 2,
-              text: 'W dwóch kończynach',
+              label: 'W dwóch kończynach',
             },
           ],
         },
         {
           id: 120,
-          text: 'Czucie',
+          label: 'Czucie',
           radioInputs: [
             {
               id: 121,
               value: 0,
-              text: 'Prawidłowe',
+              label: 'Prawidłowe',
             },
             {
               id: 122,
               value: 1,
-              text: 'Niewielka niedoczulica',
+              label: 'Niewielka niedoczulica',
             },
             {
               id: 123,
               value: 2,
-              text: 'Ciężka niedoczulica',
+              label: 'Ciężka niedoczulica',
             },
           ],
         },
         {
           id: 130,
-          text: 'Mowa',
+          label: 'Mowa',
           radioInputs: [
             {
               id: 131,
               value: 0,
-              text: 'Prawidłowa, bez afazji',
+              label: 'Prawidłowa, bez afazji',
             },
             {
               id: 132,
               value: 1,
-              text: 'Niewielka afazja',
+              label: 'Niewielka afazja',
             },
             {
               id: 133,
               value: 2,
-              text: 'Ciężka afazja',
+              label: 'Ciężka afazja',
             },
             {
               id: 134,
               value: 3,
-              text: 'Brak mowy, całkowita afazja',
+              label: 'Brak mowy, całkowita afazja',
             },
           ],
         },
         {
           id: 140,
-          text: 'Dyzartria',
+          label: 'Dyzartria',
           radioInputs: [
             {
               id: 141,
               value: 0,
-              text: 'Bez dyzartii',
+              label: 'Bez dyzartii',
             },
             {
               id: 142,
               value: 1,
-              text: 'Niewielka dyzartia',
+              label: 'Niewielka dyzartia',
             },
             {
               id: 143,
               value: 2,
-              text: 'Ciężka dyzartia',
+              label: 'Ciężka dyzartia',
             },
           ],
         },
         {
           id: 150,
-          text: 'Nieuwaga',
+          label: 'Nieuwaga',
           radioInputs: [
             {
               id: 151,
               value: 0,
-              text: 'Nieobecna',
+              label: 'Nieobecna',
             },
             {
               id: 152,
               value: 1,
-              text: 'Niewielka (w zakresie jednego zmysłu)',
+              label: 'Niewielka (w zakresie jednego zmysłu)',
             },
             {
               id: 153,
               value: 2,
-              text: 'Ciężka (w zakresie dwóch zmysłów)',
+              label: 'Ciężka (w zakresie dwóch zmysłów)',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: sumInputValues,
 
@@ -5177,34 +5170,34 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'weight',
-          text: 'Masa ciała (kg)',
+          label: 'Masa ciała (kg)',
           min: 1,
           max: 250,
         },
         {
           id: 'height',
-          text: 'Wzrost (cm)',
+          label: 'Wzrost (cm)',
           min: 1,
           max: 230,
         },
       ],
-      checkboxes: null,
+
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'female',
               value: 'female',
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'male',
               value: 'male',
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
@@ -5294,7 +5287,7 @@ export const calculators: CalculatorType[] = [
       numberInputs: [
         {
           id: 'age',
-          text: 'Wiek (lata)',
+          label: 'Wiek (lata)',
           min: 30,
           max: 120,
         },
@@ -5304,86 +5297,89 @@ export const calculators: CalculatorType[] = [
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Choroba wieńcowa w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
+          label:
+            'Choroba wieńcowa w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Palenie papierosów (obecnie lub w przeszłości)',
+          label: 'Palenie papierosów (obecnie lub w przeszłości)',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Dyslipidemia',
+          label: 'Dyslipidemia',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Nadciśnienie tętnicze',
+          label: 'Nadciśnienie tętnicze',
         },
         {
           id: 'riskFactors',
           value: 1,
           hideBadge: true,
-          text: 'Cukrzyca',
+          label: 'Cukrzyca',
         },
       ],
       radioGroups: [
         {
           id: 'sex',
-          text: 'Płeć',
+          label: 'Płeć',
           radioInputs: [
             {
               id: 'female',
               value: 'female',
               hideBadge: true,
-              text: 'Kobieta',
+              label: 'Kobieta',
             },
             {
               id: 'male',
               value: 'male',
               hideBadge: true,
-              text: 'Mężczyzna',
+              label: 'Mężczyzna',
             },
           ],
         },
         {
           id: 'mainSymptom',
-          text: 'Główny objaw',
+          label: 'Główny objaw',
           radioInputs: [
             {
               id: 1,
               // 02 is a hack to distinguish this option from others with numeric values
               value: '02',
               hideBadge: true,
-              text: 'Duszność',
+              label: 'Duszność',
             },
             {
               id: 2,
               value: 3,
               hideBadge: true,
-              text: 'Ból w klatce piersiowej z trzema cechami: \n 1) Ściskający, promieniujący za mostek, do szyi, żuchwy lub ramienia \n 2) Wysiłek lub stres jako czynniki wyzwalające \n 3) Wystąpienie w spoczynku lub w ciągu 5 min po przyjęciu azotanu',
+              label:
+                'Ból w klatce piersiowej z trzema cechami: \n 1) Ściskający, promieniujący za mostek, do szyi, żuchwy lub ramienia \n 2) Wysiłek lub stres jako czynniki wyzwalające \n 3) Wystąpienie w spoczynku lub w ciągu 5 min po przyjęciu azotanu',
             },
             {
               id: 3,
               value: 2,
               hideBadge: true,
-              text: 'Ból w klatce piersiowej z dwoma z wymienionych powyżej cech',
+              label:
+                'Ból w klatce piersiowej z dwoma z wymienionych powyżej cech',
             },
             {
               id: 4,
               value: 1,
               hideBadge: true,
-              text: 'Ból w klatce piersiowej z jedną z wymienionych powyżej cech lub bez żadnej z nich',
+              label:
+                'Ból w klatce piersiowej z jedną z wymienionych powyżej cech lub bez żadnej z nich',
             },
           ],
         },
       ],
     },
-    resultUnit: null,
 
     getResult: () => {
       type Sex = 'male' | 'female';

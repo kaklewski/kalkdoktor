@@ -16,16 +16,16 @@ type FormCardProps = {
   displayResultAndInterpretation: () => void;
 };
 
-export default function FormCard({
+const FormCard = ({
   numberInputs,
   checkboxes,
   radioGroups,
   displayResultAndInterpretation,
-}: FormCardProps) {
-  function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
+}: FormCardProps) => {
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     displayResultAndInterpretation();
-  }
+  };
 
   return (
     <Card overflow="hidden" variant="outline">
@@ -36,43 +36,22 @@ export default function FormCard({
               radioGroups.map((radioGroup, index) => (
                 <CustomRadioGroup
                   key={`${radioGroup.id}-${index}`}
-                  id={radioGroup.id}
-                  name={radioGroup.name}
-                  text={radioGroup.text}
+                  {...radioGroup}
                 >
                   {radioGroup.radioInputs.map((radio, index) => (
-                    <CustomRadio
-                      key={`${radio.id}-${index}`}
-                      id={radio.id}
-                      value={radio.value}
-                      hideBadge={radio.hideBadge}
-                      text={radio.text}
-                    />
+                    <CustomRadio key={`${radio.id}-${index}`} {...radio} />
                   ))}
                 </CustomRadioGroup>
               ))}
 
             {checkboxes &&
               checkboxes.map((checkbox, index) => (
-                <CustomCheckbox
-                  key={`${checkbox.id}-${index}`}
-                  id={checkbox.id}
-                  name={checkbox.name}
-                  value={checkbox.value}
-                  hideBadge={checkbox.hideBadge}
-                  text={checkbox.text}
-                />
+                <CustomCheckbox key={`${checkbox.id}-${index}`} {...checkbox} />
               ))}
 
             {numberInputs &&
               numberInputs.map((input, index) => (
-                <CustomNumberInput
-                  key={`${input.id}-${index}`}
-                  id={input.id}
-                  text={input.text}
-                  min={input.min}
-                  max={input.max}
-                />
+                <CustomNumberInput key={`${input.id}-${index}`} {...input} />
               ))}
           </Stack>
           <Stack mt={5}>
@@ -93,4 +72,6 @@ export default function FormCard({
       </Form>
     </Card>
   );
-}
+};
+
+export default FormCard;

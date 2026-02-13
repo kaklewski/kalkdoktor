@@ -10,12 +10,12 @@ type CustomRadioGroupProps = Omit<RadioGroupType, 'radioInputs'> & {
 const CustomRadioGroup = ({
   id,
   name,
-  text,
+  label,
   children,
 }: CustomRadioGroupProps) => (
   <RadioGroup colorScheme="teal" name={name || id.toString()}>
     <Stack>
-      <Text as="legend">{text}</Text>
+      <Text as="legend">{label}</Text>
       {children}
     </Stack>
   </RadioGroup>

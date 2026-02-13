@@ -13,7 +13,7 @@ type CalculatorPageProps = {
   calculator: CalculatorType;
 };
 
-export default function CalculatorPage({ calculator }: CalculatorPageProps) {
+const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
   const {
     id,
     name,
@@ -71,4 +71,6 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
       </Flex>
     </>
   );
-}
+};
+
+export default CalculatorPage;

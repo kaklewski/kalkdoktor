@@ -6,14 +6,14 @@ type CalculatorType = {
   urlPath: string;
   category: string;
   description: string;
-  methodology?: null | ReactNode;
-  sources?: null | SourceType[];
+  methodology?: ReactNode;
+  sources?: SourceType[];
   fields: {
-    numberInputs?: null | NumberInputType[];
-    checkboxes?: null | CheckboxType[];
-    radioGroups?: null | RadioGroupType[];
+    numberInputs?: NumberInputType[];
+    checkboxes?: CheckboxType[];
+    radioGroups?: RadioGroupType[];
   };
-  resultUnit?: null | string;
+  resultUnit?: string;
   getResult: () => number;
   getResultInterpretation: (result: number) => string;
 };
@@ -28,7 +28,7 @@ type SourceType = {
 
 type NumberInputType = {
   id: string | number;
-  text: string;
+  label: string;
   min: number;
   max: number;
 };
@@ -37,7 +37,7 @@ type CheckboxType = {
   id: string | number;
   value: number;
   name?: string;
-  text: string;
+  label: string;
   hideBadge?: boolean;
 };
 
@@ -45,13 +45,13 @@ type RadioType = {
   id: string | number;
   value: number | string;
   hideBadge?: boolean;
-  text: string;
+  label: string;
 };
 
 type RadioGroupType = {
   id: string | number;
   name?: string;
-  text: string;
+  label: string;
   radioInputs: RadioType[];
 };
 
