@@ -5,12 +5,7 @@ import CustomBadge from './CustomBadge';
 
 type CustomRadioProps = RadioType;
 
-export default function CustomRadio({
-  id,
-  value,
-  hideBadge,
-  text,
-}: CustomRadioProps) {
+const CustomRadio = ({ id, value, text, hideBadge }: CustomRadioProps) => {
   const isBadgeDisplayed = !hideBadge && typeof value === 'number';
 
   return (
@@ -21,4 +16,6 @@ export default function CustomRadio({
       </Flex>
     </Radio>
   );
-}
+};
+
+export default CustomRadio;

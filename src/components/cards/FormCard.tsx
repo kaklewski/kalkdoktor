@@ -37,9 +37,10 @@ export default function FormCard({
                 <CustomRadioGroup
                   key={`${radioGroup.id}-${index}`}
                   id={radioGroup.id}
+                  name={radioGroup.name}
                   text={radioGroup.text}
                 >
-                  {radioGroup.radios.map((radio, index) => (
+                  {radioGroup.radioInputs.map((radio, index) => (
                     <CustomRadio
                       key={`${radio.id}-${index}`}
                       id={radio.id}
@@ -56,6 +57,7 @@ export default function FormCard({
                 <CustomCheckbox
                   key={`${checkbox.id}-${index}`}
                   id={checkbox.id}
+                  name={checkbox.name}
                   value={checkbox.value}
                   hideBadge={checkbox.hideBadge}
                   text={checkbox.text}

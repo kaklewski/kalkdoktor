@@ -1,25 +1,24 @@
-import { Box, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 import { RadioGroupType } from '../../types/calculatorTypes';
 
-type CustomRadioGroupProps = Omit<RadioGroupType, 'radios'> & {
+type CustomRadioGroupProps = Omit<RadioGroupType, 'radioInputs'> & {
   children: ReactNode;
 };
 
-export default function CustomRadioGroup({
-  text,
+const CustomRadioGroup = ({
   id,
+  name,
+  text,
   children,
-}: CustomRadioGroupProps) {
-  return (
-    <Box>
-      <RadioGroup colorScheme="teal" name={id.toString()}>
-        <Stack>
-          <Text>{text}</Text>
-          {children}
-        </Stack>
-      </RadioGroup>
-    </Box>
-  );
-}
+}: CustomRadioGroupProps) => (
+  <RadioGroup colorScheme="teal" name={name || id.toString()}>
+    <Stack>
+      <Text as="legend">{text}</Text>
+      {children}
+    </Stack>
+  </RadioGroup>
+);
+
+export default CustomRadioGroup;

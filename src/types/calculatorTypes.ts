@@ -50,8 +50,9 @@ type RadioType = {
 
 type RadioGroupType = {
   id: string | number;
+  name?: string;
   text: string;
-  radios: RadioType[];
+  radioInputs: RadioType[];
 };
 
 export type {

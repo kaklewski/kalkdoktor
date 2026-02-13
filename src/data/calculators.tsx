@@ -145,7 +145,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'male',
               value: 0,
@@ -161,7 +161,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 2,
           text: 'Wiek',
-          radios: [
+          radioInputs: [
             {
               id: 1,
               value: 0,
@@ -255,7 +255,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Wiek',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 1,
@@ -677,7 +677,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Otwieranie oczu',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 4,
@@ -703,7 +703,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Odpowiedź słowna',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 5,
@@ -734,7 +734,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Reakcja ruchowa',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 6,
@@ -814,7 +814,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -840,7 +840,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 0,
@@ -866,7 +866,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -892,7 +892,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -918,7 +918,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -944,7 +944,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 0,
@@ -970,7 +970,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 0,
@@ -996,7 +996,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 80,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
-          radios: [
+          radioInputs: [
             {
               id: 81,
               value: 0,
@@ -1022,7 +1022,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 90,
           text: 'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
-          radios: [
+          radioInputs: [
             {
               id: 91,
               value: 0,
@@ -1513,7 +1513,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Tętno',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -1680,7 +1680,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'female',
               value: 0.85,
@@ -1802,7 +1802,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 3,
@@ -1828,7 +1828,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 1,
@@ -1844,7 +1844,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 1,
@@ -1860,7 +1860,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Ile papierosów pacjent wypala dziennie?',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -1886,7 +1886,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 1,
@@ -1902,7 +1902,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 1,
@@ -1952,7 +1952,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           text: 'Wydolność wysiłkowa',
-          radios: [
+          radioInputs: [
             {
               id: 1,
               value: 1,
@@ -2013,7 +2013,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           text: 'Aktywność fizyczna',
-          radios: [
+          radioInputs: [
             {
               id: 1,
               value: 1,
@@ -2128,7 +2128,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'female',
               value: 0.85,
@@ -2328,7 +2328,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Encefalopatia',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 1,
@@ -2349,7 +2349,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Wodobrzusze',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 1,
@@ -2370,7 +2370,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Stężenie bilirubiny',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 1,
@@ -2391,7 +2391,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Stężenie albuminy',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 1,
@@ -2412,7 +2412,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Czas protrombinowy / INR',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 1,
@@ -2494,7 +2494,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'man',
               value: 'man',
@@ -2512,7 +2512,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 2,
           text: 'Palenie papierosów',
-          radios: [
+          radioInputs: [
             {
               id: 'smoking',
               value: 'true',
@@ -2939,7 +2939,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 1,
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'male',
               value: 'male',
@@ -3007,7 +3007,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 1,
@@ -3023,7 +3023,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 1,
@@ -3039,7 +3039,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 1,
@@ -3055,7 +3055,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 1,
@@ -3071,7 +3071,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 1,
@@ -3087,7 +3087,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 1,
@@ -3103,7 +3103,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 1,
@@ -3119,7 +3119,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 80,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
-          radios: [
+          radioInputs: [
             {
               id: 81,
               value: 1,
@@ -3135,7 +3135,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 90,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
-          radios: [
+          radioInputs: [
             {
               id: 91,
               value: 1,
@@ -3151,7 +3151,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 100,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
-          radios: [
+          radioInputs: [
             {
               id: 101,
               value: 1,
@@ -3167,7 +3167,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 110,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
-          radios: [
+          radioInputs: [
             {
               id: 111,
               value: 1,
@@ -3183,7 +3183,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 120,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
-          radios: [
+          radioInputs: [
             {
               id: 121,
               value: 1,
@@ -3199,7 +3199,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 130,
           text: 'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
-          radios: [
+          radioInputs: [
             {
               id: 131,
               value: 1,
@@ -3215,7 +3215,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 14,
           text: 'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
-          radios: [
+          radioInputs: [
             {
               id: 'happenedAtTheSameTime',
               value: 'happenedAtTheSameTime',
@@ -3231,7 +3231,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'problem',
           text: 'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
-          radios: [
+          radioInputs: [
             {
               id: 'no',
               value: 'no',
@@ -3313,7 +3313,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'male',
               value: 'male',
@@ -3329,7 +3329,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Jak często pacjent pije napoje alkoholowe?',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -3360,7 +3360,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -3391,7 +3391,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -3422,7 +3422,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -3453,7 +3453,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -3484,7 +3484,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 0,
@@ -3515,7 +3515,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 0,
@@ -3546,7 +3546,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 80,
           text: 'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
-          radios: [
+          radioInputs: [
             {
               id: 81,
               value: 0,
@@ -3577,7 +3577,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 90,
           text: 'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
-          radios: [
+          radioInputs: [
             {
               id: 91,
               value: 0,
@@ -3598,7 +3598,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 100,
           text: 'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
-          radios: [
+          radioInputs: [
             {
               id: 101,
               value: 0,
@@ -3663,7 +3663,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Otwieranie oczu',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 4,
@@ -3689,7 +3689,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Odpowiedź słowna',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 5,
@@ -3720,7 +3720,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Reakcja ruchowa',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 6,
@@ -3797,7 +3797,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Akcja serca',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -3818,7 +3818,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Oddychanie',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 0,
@@ -3839,7 +3839,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Napięcie mięśni',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -3860,7 +3860,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -3881,7 +3881,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Zabarwienie skóry',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -3943,7 +3943,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Spożywanie posiłków',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -3964,7 +3964,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 0,
@@ -3990,7 +3990,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Utrzymanie higieny osobistej',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -4011,7 +4011,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Korzystanie z toalety',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -4032,7 +4032,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Mycie i kąpiel całego ciała',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -4053,7 +4053,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Poruszanie się po powierzchniach płaskich',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 0,
@@ -4074,7 +4074,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Chodzenie po schodach',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 0,
@@ -4095,7 +4095,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 90,
           text: 'Ubieranie i rozbieranie się',
-          radios: [
+          radioInputs: [
             {
               id: 91,
               value: 0,
@@ -4116,7 +4116,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 100,
           text: 'Kontrola zwieracza odbytu',
-          radios: [
+          radioInputs: [
             {
               id: 101,
               value: 0,
@@ -4137,7 +4137,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 110,
           text: 'Kontrola zwieraczy pęcherza moczowego',
-          radios: [
+          radioInputs: [
             {
               id: 111,
               value: 0,
@@ -4251,7 +4251,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'female',
               value: 0.6,
@@ -4319,7 +4319,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Wiek',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -4340,7 +4340,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 0,
@@ -4356,7 +4356,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -4372,7 +4372,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Wynik badania per rectum',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -4388,7 +4388,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Częstotliwość rytmu serca',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -4414,7 +4414,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Ciśnienie tętnicze skurczowe',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 5,
@@ -4445,7 +4445,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Stężenie hemoglobiny',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 22,
@@ -4521,7 +4521,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
-          radios: [
+          radioInputs: [
             {
               id: 's',
               value: 1,
@@ -4537,7 +4537,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
-          radios: [
+          radioInputs: [
             {
               id: 't',
               value: 1,
@@ -4553,7 +4553,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
-          radios: [
+          radioInputs: [
             {
               id: 'o',
               value: 1,
@@ -4569,7 +4569,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Czy pacjent choruje na nadciśnienie tętnicze?',
-          radios: [
+          radioInputs: [
             {
               id: 'p',
               value: 1,
@@ -4585,7 +4585,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'BMI pacjenta',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -4601,7 +4601,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Wiek pacjenta',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 0,
@@ -4617,7 +4617,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Obwód szyi pacjenta',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 0,
@@ -4633,7 +4633,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 80,
           text: 'Płeć pacjenta',
-          radios: [
+          radioInputs: [
             {
               id: 81,
               value: 0,
@@ -4720,7 +4720,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 10,
           text: 'Stan przytomności',
-          radios: [
+          radioInputs: [
             {
               id: 11,
               value: 0,
@@ -4746,7 +4746,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 20,
           text: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
-          radios: [
+          radioInputs: [
             {
               id: 21,
               value: 0,
@@ -4767,7 +4767,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 30,
           text: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
-          radios: [
+          radioInputs: [
             {
               id: 31,
               value: 0,
@@ -4788,7 +4788,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 40,
           text: 'Ruchy gałek ocznych w poziomie',
-          radios: [
+          radioInputs: [
             {
               id: 41,
               value: 0,
@@ -4809,7 +4809,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 50,
           text: 'Pole widzenia',
-          radios: [
+          radioInputs: [
             {
               id: 51,
               value: 0,
@@ -4835,7 +4835,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 60,
           text: 'Niedowład mięśni twarzy',
-          radios: [
+          radioInputs: [
             {
               id: 61,
               value: 0,
@@ -4861,7 +4861,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 70,
           text: 'Niedowład kończyny górnej lewej',
-          radios: [
+          radioInputs: [
             {
               id: 71,
               value: 0,
@@ -4892,7 +4892,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 80,
           text: 'Niedowład kończyny górnej prawej',
-          radios: [
+          radioInputs: [
             {
               id: 81,
               value: 0,
@@ -4923,7 +4923,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 90,
           text: 'Niedowład kończyny dolnej lewej',
-          radios: [
+          radioInputs: [
             {
               id: 91,
               value: 0,
@@ -4954,7 +4954,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 100,
           text: 'Niedowład kończyny dolnej prawej',
-          radios: [
+          radioInputs: [
             {
               id: 101,
               value: 0,
@@ -4985,7 +4985,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 110,
           text: 'Ataksja kończyn',
-          radios: [
+          radioInputs: [
             {
               id: 111,
               value: 0,
@@ -5006,7 +5006,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 120,
           text: 'Czucie',
-          radios: [
+          radioInputs: [
             {
               id: 121,
               value: 0,
@@ -5027,7 +5027,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 130,
           text: 'Mowa',
-          radios: [
+          radioInputs: [
             {
               id: 131,
               value: 0,
@@ -5053,7 +5053,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 140,
           text: 'Dyzartria',
-          radios: [
+          radioInputs: [
             {
               id: 141,
               value: 0,
@@ -5074,7 +5074,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 150,
           text: 'Nieuwaga',
-          radios: [
+          radioInputs: [
             {
               id: 151,
               value: 0,
@@ -5193,7 +5193,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'female',
               value: 'female',
@@ -5335,7 +5335,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'sex',
           text: 'Płeć',
-          radios: [
+          radioInputs: [
             {
               id: 'female',
               value: 'female',
@@ -5353,7 +5353,7 @@ export const calculators: CalculatorType[] = [
         {
           id: 'mainSymptom',
           text: 'Główny objaw',
-          radios: [
+          radioInputs: [
             {
               id: 1,
               // 02 is a hack to distinguish this option from others with numeric values
