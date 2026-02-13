@@ -5,22 +5,31 @@ import CustomBadge from './CustomBadge';
 
 type CustomCheckboxProps = CheckboxType;
 
-export default function CustomCheckbox({
+const CustomCheckbox = ({
   id,
+  name,
   value,
-  hideBadge,
   text,
-}: CustomCheckboxProps) {
-  const isBadgeDisplayed = !hideBadge && typeof value === 'number';
+  hideBadge,
+}: CustomCheckboxProps) => {
+  const isBadgeVisible = !hideBadge && typeof value === 'number';
 
   return (
     <Box>
-      <Checkbox value={value} name={id.toString()} colorScheme="teal" w="100%">
+      <Checkbox
+        id={id.toString()}
+        value={value}
+        name={name || id.toString()}
+        colorScheme="teal"
+        w="100%"
+      >
         <Flex align="center" gap={2}>
           <Text style={{ whiteSpace: 'pre-line' }}>{text}</Text>
-          {isBadgeDisplayed && <CustomBadge value={value} />}
+          {isBadgeVisible && <CustomBadge value={value} />}
         </Flex>
       </Checkbox>
     </Box>
   );
-}
+};
+
+export default CustomCheckbox;
