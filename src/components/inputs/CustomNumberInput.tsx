@@ -14,19 +14,14 @@ import { NumberInputType } from '../../types/calculatorTypes';
 
 type CustomNumberInputProps = NumberInputType;
 
-export default function CustomNumberInput({
-  id,
-  text,
-  min,
-  max,
-}: CustomNumberInputProps) {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const CustomNumberInput = ({ id, text, min, max }: CustomNumberInputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === ',') {
       event.preventDefault();
 
-      // Replace comma with dot at cursor position
+      // Chakra NumberInput hack: Replace comma with dot at cursor position
       const input = event.currentTarget;
       const { selectionStart, selectionEnd, value } = input;
 
@@ -51,8 +46,10 @@ export default function CustomNumberInput({
 
   return (
     <Box>
-      <Text mb={2}>{text}</Text>
-      <NumberInput min={min} max={max} id={`${id}`} isRequired>
+      <Text as="label" htmlFor={id.toString()} mb={2}>
+        {text}
+      </Text>
+      <NumberInput min={min} max={max} id={id.toString()} isRequired>
         <NumberInputField
           ref={inputRef}
           onKeyDown={handleKeyDown}
@@ -65,4 +62,6 @@ export default function CustomNumberInput({
       </NumberInput>
     </Box>
   );
-}
+};
+
+export default CustomNumberInput;
