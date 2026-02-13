@@ -20,23 +20,22 @@ type SortButtonProps = {
   setSortingOrder: (value: string) => void;
 };
 
-export default function SortButton({
-  sortingOrder,
-  setSortingOrder,
-}: SortButtonProps) {
+const SortButton = ({ sortingOrder, setSortingOrder }: SortButtonProps) => {
+  const isAlphabeticalSorting =
+    sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY;
+  const icon = isAlphabeticalSorting ? (
+    <IconSortAscendingLetters stroke={1.5} />
+  ) : (
+    <IconSortAscendingShapes stroke={1.5} />
+  );
+
   return (
     <Menu closeOnSelect={true}>
       <AppTooltip label={STRINGS.BUTTONS.SORT.TITLE}>
         <MenuButton
           as={IconButton}
           aria-label={STRINGS.BUTTONS.SORT.TITLE}
-          icon={
-            sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY ? (
-              <IconSortAscendingLetters stroke={1.5} />
-            ) : (
-              <IconSortAscendingShapes stroke={1.5} />
-            )
-          }
+          icon={icon}
         />
       </AppTooltip>
       <MenuList>
@@ -61,4 +60,6 @@ export default function SortButton({
       </MenuList>
     </Menu>
   );
-}
+};
+
+export default SortButton;
