@@ -1,25 +1,11 @@
 import { IconButton } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { useState } from 'react';
 
-import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
+import useFavorites from '../../hooks/useFavorites';
 import useShowToast from '../../hooks/useShowToast';
 import { CalculatorType } from '../../types/calculatorTypes';
 import AppTooltip from '../other/AppTooltip';
-
-const getFavoritesFromLocalStorage = (): number[] => {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    return stored ? JSON.parse(stored) : [];
-  } catch {
-    return [];
-  }
-};
-
-const saveFavoritesToLocalStorage = (favorites: number[]) => {
-  localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
-};
 
 type FavButtonProps = {
   calculatorId: CalculatorType['id'];
@@ -27,33 +13,26 @@ type FavButtonProps = {
 
 const FavButton = ({ calculatorId }: FavButtonProps) => {
   const showToast = useShowToast();
+  const { isFavorite, toggleFavorite } = useFavorites(calculatorId);
 
-  const [isFav, setIsFav] = useState<boolean>(() =>
-    getFavoritesFromLocalStorage().includes(calculatorId),
-  );
-
-  const label = isFav
+  const label = isFavorite
     ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
     : STRINGS.BUTTONS.FAVORITES.ACTION.ADD;
 
-  const toggleFav = () => {
-    setIsFav((prev) => {
-      const newIsFav = !prev;
-      const favorites = getFavoritesFromLocalStorage();
-      let newFavorites: number[];
+  const icon = isFavorite ? (
+    <IconHeartFilled stroke={1.5} />
+  ) : (
+    <IconHeart stroke={1.5} />
+  );
 
-      if (newIsFav) {
-        newFavorites = [...favorites, calculatorId].sort((a, b) => a - b);
-        showToast(STRINGS.TOASTS.FAVORITES.ADDED, 'success');
-      } else {
-        newFavorites = favorites.filter((favId) => favId !== calculatorId);
-        showToast(STRINGS.TOASTS.FAVORITES.REMOVED, 'warning');
-      }
-
-      saveFavoritesToLocalStorage(newFavorites);
-
-      return newIsFav;
-    });
+  const handleClick = () => {
+    toggleFavorite();
+    showToast(
+      isFavorite
+        ? STRINGS.TOASTS.FAVORITES.REMOVED
+        : STRINGS.TOASTS.FAVORITES.ADDED,
+      isFavorite ? 'warning' : 'success',
+    );
   };
 
   return (
@@ -61,11 +40,9 @@ const FavButton = ({ calculatorId }: FavButtonProps) => {
       <IconButton
         aria-label={label}
         variant="outline"
-        colorScheme={isFav ? 'red' : 'teal'}
-        icon={
-          isFav ? <IconHeartFilled stroke={1.5} /> : <IconHeart stroke={1.5} />
-        }
-        onClick={toggleFav}
+        colorScheme={isFavorite ? 'red' : 'teal'}
+        icon={icon}
+        onClick={handleClick}
       />
     </AppTooltip>
   );
