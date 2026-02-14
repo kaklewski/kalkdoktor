@@ -4,8 +4,8 @@ import { Form } from 'react-router-dom';
 
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
+import AppNumberInput from '../inputs/AppNumberInput';
 import CustomCheckbox from '../inputs/CustomCheckbox';
-import CustomNumberInput from '../inputs/CustomNumberInput';
 import CustomRadio from '../inputs/CustomRadio';
 import CustomRadioGroup from '../inputs/CustomRadioGroup';
 
@@ -51,7 +51,7 @@ const FormCard = ({
 
             {numberInputs &&
               numberInputs.map((input, index) => (
-                <CustomNumberInput key={`${input.id}-${index}`} {...input} />
+                <AppNumberInput key={`${input.id}-${index}`} {...input} />
               ))}
           </Stack>
           <Stack mt={5}>
