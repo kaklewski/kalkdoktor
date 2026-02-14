@@ -3,16 +3,11 @@ import { ReactNode } from 'react';
 
 import { RadioGroupType } from '../../types/calculatorTypes';
 
-type CustomRadioGroupProps = Omit<RadioGroupType, 'radioInputs'> & {
+type AppRadioGroupProps = Omit<RadioGroupType, 'radioInputs'> & {
   children: ReactNode;
 };
 
-const CustomRadioGroup = ({
-  id,
-  name,
-  label,
-  children,
-}: CustomRadioGroupProps) => (
+const AppRadioGroup = ({ id, name, label, children }: AppRadioGroupProps) => (
   <RadioGroup colorScheme="teal" name={name || id.toString()}>
     <Stack>
       <Text as="legend">{label}</Text>
@@ -21,4 +16,4 @@ const CustomRadioGroup = ({
   </RadioGroup>
 );
 
-export default CustomRadioGroup;
+export default AppRadioGroup;

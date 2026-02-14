@@ -1,17 +1,17 @@
 import { Box, Checkbox, Flex, Text } from '@chakra-ui/react';
 
 import { CheckboxType } from '../../types/calculatorTypes';
-import CustomBadge from './CustomBadge';
+import AppBadge from './AppBadge';
 
-type CustomCheckboxProps = CheckboxType;
+type AppCheckboxProps = CheckboxType;
 
-const CustomCheckbox = ({
+const AppCheckbox = ({
   id,
   name,
   value,
   label,
   hideBadge,
-}: CustomCheckboxProps) => {
+}: AppCheckboxProps) => {
   const isBadgeVisible = !hideBadge && typeof value === 'number';
 
   return (
@@ -25,11 +25,11 @@ const CustomCheckbox = ({
       >
         <Flex align="center" gap={2}>
           <Text style={{ whiteSpace: 'pre-line' }}>{label}</Text>
-          {isBadgeVisible && <CustomBadge value={value} />}
+          {isBadgeVisible && <AppBadge value={value} />}
         </Flex>
       </Checkbox>
     </Box>
   );
 };
 
-export default CustomCheckbox;
+export default AppCheckbox;
