@@ -1,5 +1,5 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import FavButton from '../components/buttons/FavButton';
@@ -28,15 +28,10 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
 
   useDocumentTitle(name);
 
+  const [submittedValues, setSubmittedValues] = useState({});
   const formMethods = useForm();
 
-  // tylko zatwierdzone wartości
-  const [submittedValues, setSubmittedValues] = useState({});
-
-  const [result, interpretation] = useMemo(
-    () => calculateResult(submittedValues),
-    [submittedValues, calculateResult],
-  );
+  const [result, interpretation] = calculateResult(submittedValues);
 
   const handleCalculate = (values: any) => {
     setSubmittedValues(values);

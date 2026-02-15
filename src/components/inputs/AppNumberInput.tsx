@@ -23,7 +23,6 @@ type AppNumberInputProps = NumberInputType & {
 const AppNumberInput = forwardRef(
   (
     {
-      id,
       name,
       label,
       min,
@@ -99,13 +98,13 @@ const AppNumberInput = forwardRef(
 
     return (
       <Box>
-        <Text as="label" htmlFor={id.toString()} mb={2}>
+        <Text as="label" htmlFor={name} mb={2}>
           {label}
         </Text>
         <NumberInput>
           <Input
             ref={ref}
-            id={id.toString()}
+            id={name}
             name={name}
             placeholder={STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER}
             type="text"

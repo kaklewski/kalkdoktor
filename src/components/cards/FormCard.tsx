@@ -1,4 +1,11 @@
-import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react';
+import {
+  Button,
+  Card,
+  CardBody,
+  Flex,
+  Stack,
+  StackDivider,
+} from '@chakra-ui/react';
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 import STRINGS from '../../data/strings';
@@ -27,17 +34,12 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                 case 'numberInput':
                   return (
                     <Controller
-                      key={input.id}
                       name={input.name}
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
                         <AppNumberInput
-                          id={input.id}
-                          name={input.name}
-                          label={input.label}
-                          min={input.min}
-                          max={input.max}
+                          {...input}
                           value={field.value ?? ''}
                           onChange={field.onChange}
                           onBlur={field.onBlur}
@@ -49,27 +51,22 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                 case 'radioGroup':
                   return (
                     <Controller
-                      key={input.id}
                       name={input.name}
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
                         <AppRadioGroup
-                          id={input.id}
-                          name={input.name}
-                          label={input.label}
+                          {...input}
+                          ref={field.ref}
                           value={field.value}
                           onChange={field.onChange}
+                          onBlur={field.onBlur}
                         >
-                          {input.options.map((option: any) => (
-                            <AppRadioInput
-                              key={option.id}
-                              id={option.id}
-                              value={option.value}
-                              label={option.label}
-                              hideBadge={option.hideBadge}
-                            />
-                          ))}
+                          {input.radioInputs.map(
+                            (option: any, index: number) => (
+                              <AppRadioInput key={index} {...option} />
+                            ),
+                          )}
                         </AppRadioGroup>
                       )}
                     />
@@ -78,18 +75,17 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                 case 'checkbox':
                   return (
                     <Controller
-                      key={input.id}
                       name={input.name}
                       control={control}
-                      defaultValue={false}
                       render={({ field }) => (
                         <AppCheckbox
-                          id={input.id}
-                          name={input.name}
-                          value={field.value}
-                          onChange={field.onChange}
-                          label={input.label}
-                          hideBadge={input.hideBadge}
+                          {...input}
+                          ref={field.ref}
+                          checked={field.value !== undefined}
+                          onChange={(checked) =>
+                            field.onChange(checked ? input.value : undefined)
+                          }
+                          onBlur={field.onBlur}
                         />
                       )}
                     />
@@ -101,11 +97,14 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
             })}
           </Stack>
 
-          <Stack mt={5}>
-            <Button type="submit" colorScheme="teal" w="fit-content" mx="auto">
+          <Flex justify="center" gap={2} mt={5}>
+            <Button type="submit" colorScheme="teal">
               {STRINGS.BUTTONS.CALCULATE}
             </Button>
-          </Stack>
+            <Button type="reset" onClick={() => formMethods.reset()}>
+              {STRINGS.BUTTONS.RESET}
+            </Button>
+          </Flex>
         </CardBody>
       </form>
     </Card>

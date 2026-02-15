@@ -53,7 +53,6 @@ export const calculators: CalculatorType[] = [
     form: [
       {
         type: 'numberInput',
-        id: 'bodyMass',
         name: 'bodyMass',
         label: 'Masa ciała (kg)',
         min: 1,
@@ -61,7 +60,6 @@ export const calculators: CalculatorType[] = [
       },
       {
         type: 'numberInput',
-        id: 'height',
         name: 'height',
         label: 'Wzrost (cm)',
         min: 1,
@@ -84,6 +82,124 @@ export const calculators: CalculatorType[] = [
       if (result >= 30 && result < 35) interpretation = 'Otyłość I stopnia';
       if (result >= 35 && result < 40) interpretation = 'Otyłość II stopnia';
       if (result >= 40) interpretation = 'Otyłość III stopnia';
+      return [result, interpretation];
+    },
+  },
+
+  {
+    id: 2,
+    name: 'Skala CHA₂DS₂-VASc',
+    urlPath: '/skala-cha2ds2-vasc',
+    category: 'kardiologia',
+    description:
+      'Ocenia ryzyko wystąpienia powikłań zakrzepowo-zatorowych u pacjentów z migotaniem przedsionków.',
+    sources: [
+      {
+        id: 1,
+        author: 'MDCalc (dr Gregory Lip)',
+        title: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            id: 'male',
+            value: 0,
+            label: 'Mężczyzna',
+          },
+          {
+            id: 'female',
+            value: 1,
+            label: 'Kobieta',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'age',
+        label: 'Wiek',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniej niż 65 lat',
+          },
+          {
+            value: 1,
+            label: '65 - 74 lata',
+          },
+          {
+            value: 2,
+            label: '75 lat lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        name: 'heartFailure',
+        value: 1,
+        label: 'Zastoinowa niewydolność serca / dysfunkcja lewej komory',
+      },
+      {
+        type: 'checkbox',
+        name: 'hypertension',
+        value: 1,
+        label: 'Nadciśnienie tętnicze',
+      },
+      {
+        type: 'checkbox',
+        name: 'diabetes',
+        value: 1,
+        label: 'Cukrzyca',
+      },
+      {
+        type: 'checkbox',
+        name: 'vascularDisease',
+        value: 1,
+        label:
+          'Choroba naczyniowa (przebyty zawał serca, miażdżycowa choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)',
+      },
+      {
+        type: 'checkbox',
+        name: 'stroke',
+        value: 2,
+        label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
+      },
+    ],
+    calculateResult(fieldValues: { [key: string]: string }) {
+      let result: number = 0;
+      let interpretation: string = '';
+
+      const isMale: boolean = fieldValues['gender'] === '0';
+      const lowRisk: string =
+        'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
+      const mediumRisk: string =
+        'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
+      const highRisk: string =
+        'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
+
+      Object.keys(fieldValues).forEach((key) => {
+        const value = parseInt(fieldValues[key]);
+        if (!isNaN(value)) {
+          result += value;
+        }
+      });
+
+      if (isMale) {
+        if (result <= 0) interpretation = lowRisk;
+        if (result == 1) interpretation = mediumRisk;
+        if (result >= 2) interpretation = highRisk;
+      } else {
+        if (result <= 1) interpretation = lowRisk;
+        if (result == 2) interpretation = mediumRisk;
+        if (result >= 3) interpretation = highRisk;
+      }
+
       return [result, interpretation];
     },
   },
