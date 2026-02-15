@@ -8,14 +8,9 @@ type CalculatorType = {
   description: string;
   methodology?: ReactNode;
   sources?: SourceType[];
-  fields: {
-    numberInputs?: NumberInputType[];
-    checkboxes?: CheckboxType[];
-    radioGroups?: RadioGroupType[];
-  };
+  form: any; // todo - define form type
+  calculateResult: any; // todo - define calculateResult type
   resultUnit?: string;
-  getResult: () => number;
-  getResultInterpretation: (result: number) => string;
 };
 
 type SourceType = {
@@ -28,6 +23,7 @@ type SourceType = {
 
 type NumberInputType = {
   id: string | number;
+  name?: string;
   label: string;
   min: number;
   max: number;

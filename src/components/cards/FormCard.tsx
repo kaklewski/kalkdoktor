@@ -1,6 +1,5 @@
 import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react';
-import { FormEvent } from 'react';
-import { Form } from 'react-router-dom';
+import { Controller, UseFormReturn } from 'react-hook-form';
 
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
@@ -10,66 +9,105 @@ import AppRadioGroup from '../inputs/AppRadioGroup';
 import AppRadioInput from '../inputs/AppRadioInput';
 
 type FormCardProps = {
-  numberInputs?: CalculatorType['fields']['numberInputs'];
-  checkboxes?: CalculatorType['fields']['checkboxes'];
-  radioGroups?: CalculatorType['fields']['radioGroups'];
-  displayResultAndInterpretation: () => void;
+  form: CalculatorType['form'];
+  formMethods: UseFormReturn;
+  onSubmit: (values: any) => void;
 };
 
-const FormCard = ({
-  numberInputs,
-  checkboxes,
-  radioGroups,
-  displayResultAndInterpretation,
-}: FormCardProps) => {
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    displayResultAndInterpretation();
-  };
+const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
+  const { control, handleSubmit } = formMethods;
 
   return (
     <Card overflow="hidden" variant="outline">
-      <Form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
-            {radioGroups &&
-              radioGroups.map((radioGroup, index) => (
-                <AppRadioGroup
-                  key={`${radioGroup.id}-${index}`}
-                  {...radioGroup}
-                >
-                  {radioGroup.radioInputs.map((radio, index) => (
-                    <AppRadioInput key={`${radio.id}-${index}`} {...radio} />
-                  ))}
-                </AppRadioGroup>
-              ))}
+            {form.map((input: any) => {
+              switch (input.type) {
+                case 'numberInput':
+                  return (
+                    <Controller
+                      key={input.id}
+                      name={input.name}
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <AppNumberInput
+                          id={input.id}
+                          name={input.name}
+                          label={input.label}
+                          min={input.min}
+                          max={input.max}
+                          value={field.value ?? ''}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                        />
+                      )}
+                    />
+                  );
 
-            {checkboxes &&
-              checkboxes.map((checkbox, index) => (
-                <AppCheckbox key={`${checkbox.id}-${index}`} {...checkbox} />
-              ))}
+                case 'radioGroup':
+                  return (
+                    <Controller
+                      key={input.id}
+                      name={input.name}
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <AppRadioGroup
+                          id={input.id}
+                          name={input.name}
+                          label={input.label}
+                          value={field.value}
+                          onChange={field.onChange}
+                        >
+                          {input.options.map((option: any) => (
+                            <AppRadioInput
+                              key={option.id}
+                              id={option.id}
+                              value={option.value}
+                              label={option.label}
+                              hideBadge={option.hideBadge}
+                            />
+                          ))}
+                        </AppRadioGroup>
+                      )}
+                    />
+                  );
 
-            {numberInputs &&
-              numberInputs.map((input, index) => (
-                <AppNumberInput key={`${input.id}-${index}`} {...input} />
-              ))}
+                case 'checkbox':
+                  return (
+                    <Controller
+                      key={input.id}
+                      name={input.name}
+                      control={control}
+                      defaultValue={false}
+                      render={({ field }) => (
+                        <AppCheckbox
+                          id={input.id}
+                          name={input.name}
+                          value={field.value}
+                          onChange={field.onChange}
+                          label={input.label}
+                          hideBadge={input.hideBadge}
+                        />
+                      )}
+                    />
+                  );
+
+                default:
+                  return null;
+              }
+            })}
           </Stack>
+
           <Stack mt={5}>
-            <Button
-              type="submit"
-              colorScheme="teal"
-              w="fit-content"
-              mx="auto"
-              _focus={{
-                borderColor: 'teal',
-                boxShadow: '0 0 0 3px teal',
-              }}
-            >
+            <Button type="submit" colorScheme="teal" w="fit-content" mx="auto">
               {STRINGS.BUTTONS.CALCULATE}
             </Button>
           </Stack>
         </CardBody>
-      </Form>
+      </form>
     </Card>
   );
 };

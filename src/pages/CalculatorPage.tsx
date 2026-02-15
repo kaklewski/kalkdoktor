@@ -1,5 +1,6 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import FavButton from '../components/buttons/FavButton';
 import DetailsCard from '../components/cards/DetailsCard';
@@ -17,10 +18,9 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
   const {
     id,
     name,
-    fields,
-    getResult,
+    form,
+    calculateResult,
     resultUnit,
-    getResultInterpretation,
     sources,
     description,
     methodology,
@@ -28,15 +28,19 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
 
   useDocumentTitle(name);
 
-  const [result, setResult] = useState<number>(0);
-  const [resultInterpretation, setResultInterpretation] = useState<string>(
-    getResultInterpretation(result),
+  const formMethods = useForm();
+
+  // tylko zatwierdzone wartości
+  const [submittedValues, setSubmittedValues] = useState({});
+
+  const [result, interpretation] = useMemo(
+    () => calculateResult(submittedValues),
+    [submittedValues, calculateResult],
   );
 
-  function displayResultAndInterpretation() {
-    setResult(getResult());
-    setResultInterpretation(getResultInterpretation(getResult()));
-  }
+  const handleCalculate = (values: any) => {
+    setSubmittedValues(values);
+  };
 
   return (
     <>
@@ -47,16 +51,15 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
 
       <Stack spacing={4}>
         <FormCard
-          numberInputs={fields.numberInputs}
-          checkboxes={fields.checkboxes}
-          radioGroups={fields.radioGroups}
-          displayResultAndInterpretation={displayResultAndInterpretation}
+          form={form}
+          formMethods={formMethods}
+          onSubmit={handleCalculate}
         />
 
         <ResultCard
           result={result}
           resultUnit={resultUnit}
-          resultInterpretation={resultInterpretation}
+          resultInterpretation={interpretation}
         />
 
         <DetailsCard
