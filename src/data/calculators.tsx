@@ -546,12 +546,11 @@ export const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    resultUnit: 'g',
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+    calculateResult(inputFields: { [key: string]: string }): [string, string] {
       const age: number = parseFloat(inputFields['age']);
       const weight: number = parseFloat(inputFields['weight']);
 
-      if (!age || !weight) return [0, 'Uzupełnij wszystkie informacje.'];
+      if (!age || !weight) return [`${0} g`, 'Uzupełnij wszystkie informacje.'];
 
       let result: number = (60 * weight) / 1000;
       let interpretation: string = 'Uzupełnij wszystkie informacje.';
@@ -561,10 +560,9 @@ export const calculators: CalculatorType[] = [
 
       if (result > 0) interpretation = 'Maksymalna dobowa dawka paracetamolu.';
 
-      return [result, interpretation];
+      return [`${result} g`, interpretation];
     },
   },
-
 
   //   {
   //     id: 7,

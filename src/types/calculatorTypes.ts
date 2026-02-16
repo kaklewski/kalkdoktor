@@ -9,8 +9,9 @@ type CalculatorType = {
   methodology?: ReactNode;
   sources?: SourceType[];
   form: FormFieldType[];
-  calculateResult: (inputFields: { [key: string]: string }) => [number, string];
-  resultUnit?: string;
+  calculateResult: (inputFields: {
+    [key: string]: string;
+  }) => [number | string, string];
 };
 
 type SourceType = {

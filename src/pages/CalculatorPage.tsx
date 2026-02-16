@@ -15,16 +15,8 @@ type CalculatorPageProps = {
 };
 
 const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
-  const {
-    id,
-    name,
-    sources,
-    description,
-    methodology,
-    form,
-    calculateResult,
-    resultUnit,
-  } = calculator;
+  const { id, name, sources, description, methodology, form, calculateResult } =
+    calculator;
 
   useDocumentTitle(name);
 
@@ -51,11 +43,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
           onSubmit={handleCalculate}
         />
 
-        <ResultCard
-          result={result}
-          resultUnit={resultUnit}
-          resultInterpretation={interpretation}
-        />
+        <ResultCard result={result} interpretation={interpretation} />
 
         <DetailsCard
           description={description}
