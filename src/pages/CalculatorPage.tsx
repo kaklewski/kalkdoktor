@@ -18,12 +18,12 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
   const {
     id,
     name,
-    form,
-    calculateResult,
-    resultUnit,
     sources,
     description,
     methodology,
+    form,
+    calculateResult,
+    resultUnit,
   } = calculator;
 
   useDocumentTitle(name);

@@ -23,6 +23,8 @@ const AppCheckbox = forwardRef<HTMLInputElement, AppCheckboxProps>(
     },
     ref,
   ) => {
+    const isBadgeVisible = !hideBadge && typeof badgeValue === 'number';
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.checked);
     };
@@ -40,10 +42,7 @@ const AppCheckbox = forwardRef<HTMLInputElement, AppCheckboxProps>(
         >
           <Flex align="center" gap={2}>
             <Text whiteSpace="pre-line">{label}</Text>
-
-            {!hideBadge && typeof badgeValue === 'number' && (
-              <AppBadge value={badgeValue} />
-            )}
+            {isBadgeVisible && <AppBadge value={badgeValue} />}
           </Flex>
         </Checkbox>
       </Box>

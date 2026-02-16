@@ -48,30 +48,6 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                     />
                   );
 
-                case 'radioGroup':
-                  return (
-                    <Controller
-                      name={input.name}
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <AppRadioGroup
-                          {...input}
-                          ref={field.ref}
-                          value={field.value}
-                          onChange={field.onChange}
-                          onBlur={field.onBlur}
-                        >
-                          {input.radioInputs.map(
-                            (option: any, index: number) => (
-                              <AppRadioInput key={index} {...option} />
-                            ),
-                          )}
-                        </AppRadioGroup>
-                      )}
-                    />
-                  );
-
                 case 'checkbox':
                   return (
                     <Controller
@@ -87,6 +63,30 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                           }
                           onBlur={field.onBlur}
                         />
+                      )}
+                    />
+                  );
+
+                case 'radioGroup':
+                  return (
+                    <Controller
+                      name={input.name}
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <AppRadioGroup
+                          {...input}
+                          ref={field.ref}
+                          value={field.value}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                        >
+                          {input.radioInputs.map(
+                            (radio: any, index: number) => (
+                              <AppRadioInput key={index} {...radio} />
+                            ),
+                          )}
+                        </AppRadioGroup>
                       )}
                     />
                   );
