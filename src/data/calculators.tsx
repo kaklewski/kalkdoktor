@@ -201,349 +201,370 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 3,
-  //     name: 'Skala Centora w modyfikacji McIsaaca',
-  //     urlPath: '/skala-centora-mcisaaca',
-  //     category: 'choroby zakaźne',
-  //     description:
-  //       'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
+  {
+    id: 3,
+    name: 'Skala Centora w modyfikacji McIsaaca',
+    urlPath: '/skala-centora-mcisaaca',
+    category: 'choroby zakaźne',
+    description:
+      'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mp.pl/interna/table/B16.3.3-1.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'age',
+        label: 'Wiek',
+        radioInputs: [
+          {
+            value: 1,
+            label: '3 - 14 lat',
+          },
+          {
+            value: 0,
+            label: '15 - 44 lata',
+          },
+          {
+            value: -1,
+            label: '45 lat lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        name: 'fever',
+        value: 1,
+        label: 'Temperatura ciała powyżej 38°C',
+      },
+      {
+        type: 'checkbox',
+        name: 'cough',
+        value: 1,
+        label: 'Nie występuje kaszel',
+      },
+      {
+        type: 'checkbox',
+        name: 'swollenLymphNodes',
+        value: 1,
+        label: 'Powiększone węzły chłonne szyjne przednie',
+      },
+      {
+        type: 'checkbox',
+        name: 'exudate',
+        value: 1,
+        label: 'Wysięk na migdałkach i ich obrzęk',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      let result: number = 0;
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Tabela 3.3-1. Skala Centora w modyfikacji McIsaaca',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.3.3-1.',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label: 'Temperatura ciała powyżej 38°C',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label: 'Nie występuje kaszel',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label: 'Powiększone węzły chłonne szyjne przednie',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 1,
-  //           label: 'Wysięk na migdałkach i ich obrzęk',
-  //         },
-  //       ],
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Wiek',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 1,
-  //               label: '3 - 14 lat',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 0,
-  //               label: '15 - 44 lata',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: -1,
-  //               label: '45 lat lub więcej',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      Object.keys(inputFields).forEach((key) => {
+        const value = parseInt(inputFields[key]);
+        if (!isNaN(value)) {
+          result += value;
+        }
+      });
 
-  //     getResult: sumInputValues,
+      if (result >= 4) {
+        interpretation =
+          'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
+      } else if (result >= 2 && result <= 3) {
+        interpretation =
+          'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
+      } else {
+        interpretation =
+          'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.';
+      }
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 4) {
-  //         return 'Przy nasilonych objawach należy stosować antybiotyk. Przy łagodnych objawach zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
-  //       }
-  //       if (result >= 2 && result <= 3) {
-  //         return 'Zalecane jest wykonanie szybkiego testu na obecność antygenu PBHA lub posiewu wymazu z gardła. Decyzja o leczeniu zależna od wyniku.';
-  //       }
-  //       return 'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
-  //   {
-  //     id: 4,
-  //     name: 'Ocena ryzyka ZŻG w skali Wellsa',
-  //     urlPath: '/ocena-zakrzepicy-wellsa',
-  //     category: 'kardiologia',
-  //     description:
-  //       'Oblicza ryzyko wystąpienia zakrzepicy żył głębokich na podstawie kryteriów klinicznych.',
+  {
+    id: 4,
+    name: 'Ocena ryzyka ZŻG w skali Wellsa',
+    urlPath: '/ocena-zakrzepicy-wellsa',
+    category: 'kardiologia',
+    description:
+      'Oblicza ryzyko wystąpienia zakrzepicy żył głębokich na podstawie kryteriów klinicznych.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
+      },
+    ],
+    form: [
+      {
+        type: 'checkbox',
+        name: 'malignantTumor',
+        value: 1,
+        label:
+          'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy)',
+      },
+      {
+        type: 'checkbox',
+        name: 'immobilization',
+        value: 1,
+        label:
+          'Porażenie, niedowład lub niedawne unieruchomienie kończyny dolnej w opatrunku gipsowym',
+      },
+      {
+        type: 'checkbox',
+        name: 'recentImmobilization',
+        value: 1,
+        label:
+          'Niedawne unieruchomienie w łóżku przez ponad 3 dni lub duża operacja w ciągu ostatnich 4 tygodni',
+      },
+      {
+        type: 'checkbox',
+        name: 'localPain',
+        value: 1,
+        label: 'Bolesność miejscowa w przebiegu żył głębokich kończyny dolnej',
+      },
+      {
+        type: 'checkbox',
+        name: 'swellingWholeLeg',
+        value: 1,
+        label: 'Obrzęk całej kończyny dolnej',
+      },
+      {
+        type: 'checkbox',
+        name: 'swellingCalf',
+        value: 1,
+        label:
+          'Obrzęk łydki ponad 3 cm w porównaniu do drugiej nogi (mierzony 10 cm poniżej guzowatości kości piszczelowej)',
+      },
+      {
+        type: 'checkbox',
+        name: 'pittingEdema',
+        value: 1,
+        label: 'Obrzęk ciastowaty, większy na objawowej kończynie',
+      },
+      {
+        type: 'checkbox',
+        name: 'visibleVeins',
+        value: 1,
+        label: 'Widoczne żyły powierzchowne krążenia obocznego (nieżylakowe)',
+      },
+      {
+        type: 'checkbox',
+        name: 'alternativeDiagnosis',
+        value: -2,
+        label: 'Inne rozpoznanie niż ZŻG równie lub bardziej prawdopodobne',
+      },
+      {
+        type: 'checkbox',
+        name: 'previousDVT',
+        value: 1,
+        label: 'Wcześniej przebyta ZŻG',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      let result: number = 0;
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Ocena prawdopodobieństwa klinicznego ZŻG w skali Wellsa',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.33-1.',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label:
-  //             'Nowotwór złośliwy (w trakcie leczenia lub rozpoznany w ciągu ostatnich 6 miesięcy)',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label:
-  //             'Porażenie, niedowład lub niedawne unieruchomienie kończyny dolnej w opatrunku gipsowym',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label:
-  //             'Niedawne unieruchomienie w łóżku przez ponad 3 dni lub duża operacja w ciągu ostatnich 4 tygodni',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 1,
-  //           label:
-  //             'Bolesność miejscowa w przebiegu żył głębokich kończyny dolnej',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 1,
-  //           label: 'Obrzęk całej kończyny dolnej',
-  //         },
-  //         {
-  //           id: 6,
-  //           value: 1,
-  //           label:
-  //             'Obrzęk łydki ponad 3 cm w porównaniu do drugiej nogi (mierzony 10 cm poniżej guzowatości kości piszczelowej)',
-  //         },
-  //         {
-  //           id: 7,
-  //           value: 1,
-  //           label: 'Obrzęk ciastowaty, większy na objawowej kończynie',
-  //         },
-  //         {
-  //           id: 8,
-  //           value: 1,
-  //           label: 'Widoczne żyły powierzchowne krążenia obocznego (nieżylakowe)',
-  //         },
-  //         {
-  //           id: 9,
-  //           value: -2,
-  //           label: 'Inne rozpoznanie niż ZŻG równie lub bardziej prawdopodobne',
-  //         },
-  //         {
-  //           id: 10,
-  //           value: 1,
-  //           label: 'Wcześniej przebyta ZŻG',
-  //         },
-  //       ],
-  //     },
+      Object.keys(inputFields).forEach((key) => {
+        const value = parseInt(inputFields[key]);
+        if (!isNaN(value)) {
+          result += value;
+        }
+      });
 
-  //     getResult: sumInputValues,
+      if (result >= 3) {
+        interpretation = 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.';
+      } else if (result === 1 || result === 2) {
+        interpretation = 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.';
+      } else {
+        interpretation = 'Małe prawdopodobieństwo zakrzepicy żył głębokich.';
+      }
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 3) {
-  //         return 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.';
-  //       }
-  //       if (result === 1 || result === 2) {
-  //         return 'Średnie prawdopodobieństwo zakrzepicy żył głębokich.';
-  //       }
-  //       return 'Małe prawdopodobieństwo zakrzepicy żył głębokich.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
-  //   {
-  //     id: 5,
-  //     name: 'Kalkulator liczby opakowań leków na dany okres',
-  //     urlPath: '/kalkulator-liczby-opakowan-na-okres',
-  //     category: 'dawkowanie leków',
-  //     description:
-  //       'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza
-  //           się według wzoru:
-  //         </Text>
-  //         <br />
-  //         <MathJax>{'`p = (t * d * n ) / c`'}</MathJax>
-  //         <br />
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>p</strong> – liczba wymaganych opakowań,
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>t</strong> – liczba tabletek w jednej dawce,
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>d</strong> – liczba dawek dziennie,
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>n</strong> – liczba dni terapii,
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>c</strong> – liczba tabletek w jednym opakowaniu.
-  //           </ListItem>
-  //         </UnorderedList>
-  //         <br />
-  //         <Text>
-  //           Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby
-  //           całkowitej, aby zapewnić wystarczającą liczbę tabletek na cały okres
-  //           terapii.
-  //         </Text>
-  //       </>
-  //     ),
+  {
+    id: 5,
+    name: 'Kalkulator liczby opakowań leków na dany okres',
+    urlPath: '/kalkulator-liczby-opakowan-na-okres',
+    category: 'dawkowanie leków',
+    description:
+      'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
+    methodology: (
+      <>
+        <Text>
+          Liczbę opakowań leku niezbędnych do przeprowadzenia terapii oblicza
+          się według wzoru:
+        </Text>
+        <br />
+        <MathJax>{'`p = (t * d * n ) / c`'}</MathJax>
+        <br />
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>p</strong> – liczba wymaganych opakowań,
+          </ListItem>
+          <ListItem>
+            <strong>t</strong> – liczba tabletek w jednej dawce,
+          </ListItem>
+          <ListItem>
+            <strong>d</strong> – liczba dawek dziennie,
+          </ListItem>
+          <ListItem>
+            <strong>n</strong> – liczba dni terapii,
+          </ListItem>
+          <ListItem>
+            <strong>c</strong> – liczba tabletek w jednym opakowaniu.
+          </ListItem>
+        </UnorderedList>
+        <br />
+        <Text>
+          Uzyskany wynik należy zaokrąglić w górę do najbliższej liczby
+          całkowitej, aby zapewnić wystarczającą liczbę tabletek na cały okres
+          terapii.
+        </Text>
+      </>
+    ),
+    form: [
+      {
+        type: 'numberInput',
+        name: 'amountPerIntake',
+        label: 'Liczba tabletek w jednej dawce',
+        min: 1,
+        max: 100,
+      },
+      {
+        type: 'numberInput',
+        name: 'numberOfIntakes',
+        label: 'Liczba dawek dziennie',
+        min: 1,
+        max: 100,
+      },
+      {
+        type: 'numberInput',
+        name: 'daysOfUse',
+        label: 'Okres (liczba dni) brania leku',
+        min: 1,
+        max: 365,
+      },
+      {
+        type: 'numberInput',
+        name: 'packageSize',
+        label: 'Liczba tabletek w opakowaniu',
+        min: 1,
+        max: 200,
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const amountPerIntake: number = parseFloat(
+        inputFields['amountPerIntake'],
+      );
+      const numberOfIntakes: number = parseFloat(
+        inputFields['numberOfIntakes'],
+      );
+      const daysOfUse: number = parseFloat(inputFields['daysOfUse']);
+      const packageSize: number = parseFloat(inputFields['packageSize']);
 
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'amountPerIntake',
-  //           label: 'Liczba tabletek w jednej dawce',
-  //           min: 1,
-  //           max: 100,
-  //         },
-  //         {
-  //           id: 'numberOfIntakes',
-  //           label: 'Liczba dawek dziennie',
-  //           min: 1,
-  //           max: 100,
-  //         },
-  //         {
-  //           id: 'daysOfUse',
-  //           label: 'Okres (liczba dni) brania leku',
-  //           min: 1,
-  //           max: 365,
-  //         },
-  //         {
-  //           id: 'packageSize',
-  //           label: 'Liczba tabletek w opakowaniu',
-  //           min: 1,
-  //           max: 200,
-  //         },
-  //       ],
-  //     },
+      if (!amountPerIntake || !numberOfIntakes || !daysOfUse || !packageSize) {
+        return [0, 'Uzupełnij wszystkie informacje.'];
+      }
 
-  //     getResult: () => {
-  //       const amountPerIntake: number = parseFloat(
-  //         (document.getElementById('amountPerIntake') as HTMLInputElement).value,
-  //       );
-  //       const numberOfIntakes: number = parseFloat(
-  //         (document.getElementById('numberOfIntakes') as HTMLInputElement).value,
-  //       );
-  //       const daysOfUse: number = parseFloat(
-  //         (document.getElementById('daysOfUse') as HTMLInputElement).value,
-  //       );
-  //       const packageSize: number = parseFloat(
-  //         (document.getElementById('packageSize') as HTMLInputElement).value,
-  //       );
-  //       const result: number = Math.round(
-  //         (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
-  //       );
-  //       return result;
-  //     },
+      const result: number = Math.round(
+        (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
+      );
 
-  //     getResultInterpretation: () => {
-  //       return 'Liczba opakowań, które należy przepisać.';
-  //     },
-  //   },
+      return [result, 'Liczba opakowań, które należy przepisać.'];
+    },
+  },
 
-  //   {
-  //     id: 6,
-  //     name: 'Obliczanie dawki paracetamolu',
-  //     urlPath: '/obliczanie-dawki-paracetamolu',
-  //     category: 'dawkowanie leków',
-  //     description:
-  //       'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy
-  //           ciała pacjenta i ograniczeń wiekowych.
-  //         </Text>
-  //         <br />
-  //         <MathJax>{'`d = (60 * m) / 1000`'}</MathJax>
-  //         <br />
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w
-  //             gramach (g),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach
-  //             (kg).
-  //           </ListItem>
-  //         </UnorderedList>
-  //         <br />
-  //         <Text>
-  //           W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna
-  //           przekraczać 2 g, a u dorosłych 4 g.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Paracetamol (Portal lekarzy)',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://indeks.mp.pl/leki/desc.php?id=631',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 1,
-  //           max: 120,
-  //         },
-  //         {
-  //           id: 'weight',
-  //           label: 'Masa ciała (kg)',
-  //           min: 1,
-  //           max: 200,
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'g',
+  {
+    id: 6,
+    name: 'Obliczanie dawki paracetamolu',
+    urlPath: '/obliczanie-dawki-paracetamolu',
+    category: 'dawkowanie leków',
+    description:
+      'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
+    methodology: (
+      <>
+        <Text>
+          Maksymalna dobowa dawka paracetamolu jest obliczana na podstawie masy
+          ciała pacjenta i ograniczeń wiekowych.
+        </Text>
+        <br />
+        <MathJax>{'`d = (60 * m) / 1000`'}</MathJax>
+        <br />
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>d</strong> – maksymalna dobowa dawka paracetamolu wyrażona w
+            gramach (g),
+          </ListItem>
+          <ListItem>
+            <strong>m</strong> – masa ciała pacjenta wyrażona w kilogramach
+            (kg).
+          </ListItem>
+        </UnorderedList>
+        <br />
+        <Text>
+          W przypadku dzieci do 12. roku życia maksymalna dawka nie powinna
+          przekraczać 2 g, a u dorosłych 4 g.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Paracetamol (Portal lekarzy)',
+        dateOfAccess: '20.09.2024',
+        link: 'https://indeks.mp.pl/leki/desc.php?id=631',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 1,
+        max: 120,
+      },
+      {
+        type: 'numberInput',
+        name: 'weight',
+        label: 'Masa ciała (kg)',
+        min: 1,
+        max: 200,
+      },
+    ],
+    resultUnit: 'g',
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const age: number = parseFloat(inputFields['age']);
+      const weight: number = parseFloat(inputFields['weight']);
 
-  //     getResult: () => {
-  //       const age: number = parseFloat(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const weight: number = parseFloat(
-  //         (document.getElementById('weight') as HTMLInputElement).value,
-  //       );
-  //       let result: number = (60 * weight) / 1000;
-  //       if (age <= 12 && result > 2) result = 2;
-  //       if (result > 4) result = 4;
-  //       return result;
-  //     },
+      if (!age || !weight) return [0, 'Uzupełnij wszystkie informacje.'];
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
-  //       return 'Maksymalna dobowa dawka paracetamolu.';
-  //     },
-  //   },
+      let result: number = (60 * weight) / 1000;
+      let interpretation: string = 'Uzupełnij wszystkie informacje.';
+
+      if (age <= 12 && result > 2) result = 2;
+      if (result > 4) result = 4;
+
+      if (result > 0) interpretation = 'Maksymalna dobowa dawka paracetamolu.';
+
+      return [result, interpretation];
+    },
+  },
+
 
   //   {
   //     id: 7,
