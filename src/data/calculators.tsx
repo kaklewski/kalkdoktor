@@ -66,22 +66,22 @@ export const calculators: CalculatorType[] = [
         max: 230,
       },
     ],
-    calculateResult(fieldValues: { [key: string]: string }) {
-      const bodyMass: number = parseFloat(fieldValues['bodyMass']);
-      const height: number = parseFloat(fieldValues['height']) / 100;
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const bodyMass: number = parseFloat(inputFields['bodyMass']);
+      const height: number = parseFloat(inputFields['height']) / 100;
 
       if (!bodyMass || !height) return [0, 'Uzupełnij wszystkie informacje.'];
 
       const result: number = Math.round(bodyMass / (height * height));
       let interpretation: string = '';
 
-      if (result === 0) interpretation = 'Uzupełnij wszystkie informacje.';
       if (result > 0 && result < 18.5) interpretation = 'Niedowaga';
       if (result >= 18.5 && result < 25) interpretation = 'Wartość prawidłowa';
       if (result >= 25 && result < 30) interpretation = 'Nadwaga';
       if (result >= 30 && result < 35) interpretation = 'Otyłość I stopnia';
       if (result >= 35 && result < 40) interpretation = 'Otyłość II stopnia';
       if (result >= 40) interpretation = 'Otyłość III stopnia';
+
       return [result, interpretation];
     },
   },
@@ -109,12 +109,10 @@ export const calculators: CalculatorType[] = [
         label: 'Płeć',
         radioInputs: [
           {
-            id: 'male',
             value: 0,
             label: 'Mężczyzna',
           },
           {
-            id: 'female',
             value: 1,
             label: 'Kobieta',
           },
@@ -171,20 +169,19 @@ export const calculators: CalculatorType[] = [
         label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
       },
     ],
-    calculateResult(fieldValues: { [key: string]: string }) {
-      let result: number = 0;
-      let interpretation: string = '';
-
-      const isMale: boolean = fieldValues['gender'] === '0';
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
       const lowRisk: string =
         'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
       const mediumRisk: string =
         'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
       const highRisk: string =
         'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
+      const isMale: boolean = inputFields['gender'] === '0';
+      let result: number = 0;
+      let interpretation: string = '';
 
-      Object.keys(fieldValues).forEach((key) => {
-        const value = parseInt(fieldValues[key]);
+      Object.keys(inputFields).forEach((key) => {
+        const value = parseInt(inputFields[key]);
         if (!isNaN(value)) {
           result += value;
         }
@@ -203,120 +200,6 @@ export const calculators: CalculatorType[] = [
       return [result, interpretation];
     },
   },
-
-  //   {
-  //     id: 2,
-  //     name: 'Skala CHA₂DS₂-VASc',
-  //     urlPath: '/skala-cha2ds2-vasc',
-  //     category: 'kardiologia',
-  //     description:
-  //       'Ocenia ryzyko wystąpienia powikłań zakrzepowo-zatorowych u pacjentów z migotaniem przedsionków.',
-
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'MDCalc (dr Gregory Lip)',
-  //         title: 'CHA₂DS₂-VASc Score for Atrial Fibrillation Stroke Risk',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mdcalc.com/calc/801/cha2ds2-vasc-score-atrial-fibrillation-stroke-risk',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label: 'Zastoinowa niewydolność serca / dysfunkcja lewej komory',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label: 'Nadciśnienie tętnicze',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label: 'Cukrzyca',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 1,
-  //           label:
-  //             'Choroba naczyniowa (przebyty zawał serca, miażdżycowa choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 2,
-  //           label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
-  //         },
-  //       ],
-  //       radioGroups: [
-  //         {
-  //           id: 1,
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'male',
-  //               value: 0,
-  //               label: 'Mężczyzna',
-  //             },
-  //             {
-  //               id: 'female',
-  //               value: 1,
-  //               label: 'Kobieta',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 2,
-  //           label: 'Wiek',
-  //           radioInputs: [
-  //             {
-  //               id: 1,
-  //               value: 0,
-  //               label: 'Mniej niż 65 lat',
-  //             },
-  //             {
-  //               id: 2,
-  //               value: 1,
-  //               label: '65 - 74 lata',
-  //             },
-  //             {
-  //               id: 3,
-  //               value: 2,
-  //               label: '75 lat lub więcej',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       const maleCheckbox = document.getElementById('male') as HTMLInputElement;
-  //       const isMale: boolean =
-  //         maleCheckbox && maleCheckbox.checked ? true : false;
-
-  //       const lowRisk: string =
-  //         'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
-  //       const mediumRisk: string =
-  //         'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
-  //       const highRisk: string =
-  //         'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
-
-  //       if (isMale) {
-  //         if (result <= 0) return lowRisk;
-  //         if (result == 1) return mediumRisk;
-  //         if (result >= 2) return highRisk;
-  //       } else {
-  //         if (result <= 1) return lowRisk;
-  //         if (result == 2) return mediumRisk;
-  //         if (result >= 3) return highRisk;
-  //       }
-  //       return lowRisk;
-  //     },
-  //   },
 
   //   {
   //     id: 3,
