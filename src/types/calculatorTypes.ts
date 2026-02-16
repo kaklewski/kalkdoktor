@@ -8,8 +8,8 @@ type CalculatorType = {
   description: string;
   methodology?: ReactNode;
   sources?: SourceType[];
-  form: any; // todo - define form type
-  calculateResult: any; // todo - define calculateResult type
+  form: FormFieldType[];
+  calculateResult: (inputFields: { [key: string]: string }) => [number, string];
   resultUnit?: string;
 };
 
@@ -21,34 +21,35 @@ type SourceType = {
   link: string;
 };
 
+type FormFieldType = NumberInputType | CheckboxType | RadioGroupType;
+
 type NumberInputType = {
-  id: string | number;
-  name?: string;
+  type: 'numberInput';
+  name: string;
   label: string;
   min: number;
   max: number;
 };
 
 type CheckboxType = {
-  id: string | number;
+  type: 'checkbox';
+  name: string;
   value: number;
-  name?: string;
   label: string;
   hideBadge?: boolean;
-};
-
-type RadioType = {
-  id: string | number;
-  value: number | string;
-  hideBadge?: boolean;
-  label: string;
 };
 
 type RadioGroupType = {
-  id: string | number;
-  name?: string;
+  type: 'radioGroup';
+  name: string;
   label: string;
   radioInputs: RadioType[];
+};
+
+type RadioType = {
+  value: number | string;
+  label: string;
+  hideBadge?: boolean;
 };
 
 export type {
