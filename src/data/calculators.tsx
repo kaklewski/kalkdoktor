@@ -2,6 +2,7 @@ import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
 import { MathJax } from 'better-react-mathjax';
 
 import { CalculatorType } from '../types/calculatorTypes';
+import sumValues from '../utils/sumValues';
 
 export const calculators: CalculatorType[] = [
   {
@@ -177,15 +178,9 @@ export const calculators: CalculatorType[] = [
       const highRisk: string =
         'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
       const isMale: boolean = inputFields['gender'] === '0';
-      let result: number = 0;
-      let interpretation: string = '';
 
-      Object.keys(inputFields).forEach((key) => {
-        const value = parseInt(inputFields[key]);
-        if (!isNaN(value)) {
-          result += value;
-        }
-      });
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
       if (isMale) {
         if (result <= 0) interpretation = lowRisk;
@@ -263,15 +258,8 @@ export const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      let result: number = 0;
+      const result: number = sumValues(inputFields);
       let interpretation: string = '';
-
-      Object.keys(inputFields).forEach((key) => {
-        const value = parseInt(inputFields[key]);
-        if (!isNaN(value)) {
-          result += value;
-        }
-      });
 
       if (result >= 4) {
         interpretation =
@@ -371,15 +359,8 @@ export const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      let result: number = 0;
+      const result: number = sumValues(inputFields);
       let interpretation: string = '';
-
-      Object.keys(inputFields).forEach((key) => {
-        const value = parseInt(inputFields[key]);
-        if (!isNaN(value)) {
-          result += value;
-        }
-      });
 
       if (result >= 3) {
         interpretation = 'Wysokie prawdopodobieństwo zakrzepicy żył głębokich.';
@@ -564,511 +545,484 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 7,
-  //     name: 'Skala HAS-BLED',
-  //     urlPath: '/skala-has-bled',
-  //     category: 'kardiologia',
-  //     description:
-  //       'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
+  {
+    id: 7,
+    name: 'Skala HAS-BLED',
+    urlPath: '/skala-has-bled',
+    category: 'kardiologia',
+    description:
+      'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mp.pl/interna/table/016_4938',
+      },
+      {
+        id: 2,
+        author: 'MDCalc (dr Ron Pisters)',
+        title: 'HAS-BLED Score for Major Bleeding Risk',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
+      },
+    ],
+    form: [
+      {
+        type: 'checkbox',
+        name: 'hypertension',
+        value: 1,
+        label: 'Nadciśnienie tętnicze z SBP powyżej 160 mmHg',
+      },
+      {
+        type: 'checkbox',
+        name: 'renalFunction',
+        value: 1,
+        label:
+          'Nieprawidłowa funkcja nerek: przewlekła dializoterapia, stan po przeszczepieniu nerki lub stężenie kreatyniny w surowicy powyżej 200 µmol/l (2.26 mg/dL)',
+      },
+      {
+        type: 'checkbox',
+        name: 'liverFunction',
+        value: 1,
+        label:
+          'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub biochemiczne cechy istotnego uszkodzenia wątroby',
+      },
+      {
+        type: 'checkbox',
+        name: 'stroke',
+        value: 1,
+        label: 'Przebyty udar mózgu',
+      },
+      {
+        type: 'checkbox',
+        name: 'bleedingHistory',
+        value: 1,
+        label:
+          'Predyspozycja do krwawienia i/lub poważne krwawienie w wywiadzie',
+      },
+      {
+        type: 'checkbox',
+        name: 'inrUnstable',
+        value: 1,
+        label:
+          'Niestabilne wartości INR - wahające się duże wartości lub często poza przedziałem terapeutycznym',
+      },
+      {
+        type: 'checkbox',
+        name: 'age',
+        value: 1,
+        label: 'Wiek powyżej 65 lat',
+      },
+      {
+        type: 'checkbox',
+        name: 'anticoagulants',
+        value: 1,
+        label: 'Przyjmowanie leków z grupy NLPZ',
+      },
+      {
+        type: 'checkbox',
+        name: 'alcohol',
+        value: 1,
+        label: 'Nadmierne spożycie alkoholu',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 2.6-8. Skala HAS-BLED do oceny ryzyka krwawienia u chorych z migotaniem przedsionków',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/016_4938',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'MDCalc (dr Ron Pisters)',
-  //         title: 'HAS-BLED Score for Major Bleeding Risk',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mdcalc.com/calc/807/has-bled-score-major-bleeding-risk',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label: 'Nadciśnienie tętnicze z SBP powyżej 160 mmHg',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label:
-  //             'Nieprawidłowa funkcja nerek: przewlekła dializoterapia, stan po przeszczepieniu nerki lub stężenie kreatyniny w surowicy powyżej 200 µmol/l (2.26 mg/dL)',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label:
-  //             'Nieprawidłowa funkcja wątroby: przewlekła choroba wątroby lub biochemiczne cechy istotnego uszkodzenia wątroby',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 1,
-  //           label: 'Przebyty udar mózgu',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 1,
-  //           label:
-  //             'Predyspozycja do krwawienia i/lub poważne krwawienie w wywiadzie',
-  //         },
-  //         {
-  //           id: 6,
-  //           value: 1,
-  //           label:
-  //             'Niestabilne wartości INR - wahające się duże wartości lub często poza przedziałem terapeutycznym',
-  //         },
-  //         {
-  //           id: 7,
-  //           value: 1,
-  //           label: 'Wiek powyżej 65 lat',
-  //         },
-  //         {
-  //           id: 8,
-  //           value: 1,
-  //           label: 'Przyjmowanie leków z grupy NLPZ',
-  //         },
-  //         {
-  //           id: 9,
-  //           value: 1,
-  //           label: 'Nadmierne spożycie alkoholu',
-  //         },
-  //       ],
-  //     },
+      if (result >= 4) {
+        interpretation = 'Duże ryzyko krwawienia.';
+      } else {
+        interpretation = 'Nieduże ryzyko krwawienia.';
+      }
 
-  //     getResult: sumInputValues,
+      return [result, interpretation];
+    },
+  },
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 4) {
-  //         return 'Duże ryzyko krwawienia.';
-  //       }
-  //       return 'Nieduże ryzyko krwawienia.';
-  //     },
-  //   },
+  {
+    id: 8,
+    name: 'Skala Glasgow',
+    urlPath: '/skala-glasgow',
+    category: 'neurologia',
+    description: 'Ocenia poziom przytomności u dorosłych.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 1.34-2. Skala Glasgow',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
+      },
+      {
+        id: 2,
+        author: 'remedium.md',
+        title: 'Skala Glasgow - ocena stopnia przytomności u dorosłych',
+        dateOfAccess: '20.09.2024',
+        link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'eyeOpening',
+        label: 'Otwieranie oczu',
+        radioInputs: [
+          {
+            value: 4,
+            label: 'Spontaniczne',
+          },
+          {
+            value: 3,
+            label: 'Na polecenie',
+          },
+          {
+            value: 2,
+            label: 'W odpowiedzi na bodziec bólowy',
+          },
+          {
+            value: 1,
+            label: 'Nie otwiera oczu',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'speechResponse',
+        label: 'Odpowiedź słowna',
+        radioInputs: [
+          {
+            value: 5,
+            label: 'Prawidłowa, pacjent jest w pełni zorientowany',
+          },
+          {
+            value: 4,
+            label: 'Odpowiada, ale jest zdezorientowany',
+          },
+          {
+            value: 3,
+            label: 'Używa niewłaściwych słów',
+          },
+          {
+            value: 2,
+            label: 'Wydaje nieartykułowane dźwięki',
+          },
+          {
+            value: 1,
+            label: 'Brak reakcji',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'motorResponse',
+        label: 'Reakcja ruchowa',
+        radioInputs: [
+          {
+            value: 6,
+            label: 'Na polecenie',
+          },
+          {
+            value: 5,
+            label: 'Potrafi umiejscowić bodziec bólowy',
+          },
+          {
+            value: 4,
+            label:
+              'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
+          },
+          {
+            value: 3,
+            label: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
+          },
+          {
+            value: 2,
+            label: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
+          },
+          {
+            value: 1,
+            label: 'Brak reakcji',
+          },
+        ],
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //   {
-  //     id: 8,
-  //     name: 'Skala Glasgow',
-  //     urlPath: '/skala-glasgow',
-  //     category: 'neurologia',
-  //     description: 'Ocenia poziom przytomności u dorosłych.',
+      if (result >= 13) interpretation = 'Łagodne zaburzenia świadomości.';
+      else if (result >= 9 && result <= 12)
+        interpretation = 'Umiarkowane zaburzenia świadomości.';
+      else if (result >= 6 && result <= 8)
+        interpretation = 'Brak przytomności.';
+      else if (result === 5) interpretation = 'Odkorowanie.';
+      else if (result === 4) interpretation = 'Odmóżdżenie.';
+      else if (result === 3) interpretation = 'Śmierć mózgu.';
+      else interpretation = 'Uzupełnij wszystkie informacje.';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Tabela 1.34-2. Skala Glasgow',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.1.33-2.',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'remedium.md',
-  //         title: 'Skala Glasgow - ocena stopnia przytomności u dorosłych',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://remedium.md/kalkulatory/neurologia/skala-glasgow-ocena-stopnia-przytomno%C5%9Bci-u-doros%C5%82ych',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Otwieranie oczu',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 4,
-  //               label: 'Spontaniczne',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 3,
-  //               label: 'Na polecenie',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'W odpowiedzi na bodziec bólowy',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 1,
-  //               label: 'Nie otwiera oczu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Odpowiedź słowna',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 5,
-  //               label: 'Prawidłowa, pacjent jest w pełni zorientowany',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 4,
-  //               label: 'Odpowiada, ale jest zdezorientowany',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 3,
-  //               label: 'Używa niewłaściwych słów',
-  //             },
-  //             {
-  //               id: 24,
-  //               value: 2,
-  //               label: 'Wydaje nieartykułowane dźwięki',
-  //             },
-  //             {
-  //               id: 25,
-  //               value: 1,
-  //               label: 'Brak reakcji',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Reakcja ruchowa',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 6,
-  //               label: 'Na polecenie',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 5,
-  //               label: 'Potrafi umiejscowić bodziec bólowy',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 4,
-  //               label:
-  //                 'Prawidłowa reakcja zgięciowa (wycofanie w odpowiedzi na bodziec bólowy)',
-  //             },
-  //             {
-  //               id: 34,
-  //               value: 3,
-  //               label: 'Nieprawidłowa reakcja zgięciowa (odkorowanie)',
-  //             },
-  //             {
-  //               id: 35,
-  //               value: 2,
-  //               label: 'Reakcja wyprostna (sztywność odmóżdżeniowa)',
-  //             },
-  //             {
-  //               id: 36,
-  //               value: 1,
-  //               label: 'Brak reakcji',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      return [result, interpretation];
+    },
+  },
 
-  //     getResult: sumInputValues,
+  {
+    id: 9,
+    name: 'Kwestionariusz PHQ-9',
+    urlPath: '/kwestionariusz-phq9',
+    category: 'psychiatria',
+    description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
+    sources: [
+      {
+        id: 1,
+        author: 'phq9.pl',
+        title: 'PHQ-9',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.phq9.pl/',
+      },
+      {
+        id: 2,
+        author: 'ECFS.eu',
+        title: 'Kwestionariusz zdrowia pacjenta-9 (PHQ-9)',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'interest',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczało',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'depression',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczało',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'sleepProblems',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczały',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'energy',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczało',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'appetite',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczały',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'selfEsteem',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczało',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'concentration',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczały',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'movement',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczało',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'suicidalThoughts',
+        label:
+          'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wcale nie dokuczały',
+          },
+          {
+            value: 1,
+            label: 'Kilka dni',
+          },
+          {
+            value: 2,
+            label: 'Więcej niż połowę dni',
+          },
+          {
+            value: 3,
+            label: 'Niemal codziennie',
+          },
+        ],
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 13) return 'Łagodne zaburzenia świadomości.';
-  //       if (result >= 9) return 'Umiarkowane zaburzenia świadomości.';
-  //       if (result >= 6) return 'Brak przytomności.';
-  //       if (result === 5) return 'Odkorowanie.';
-  //       if (result === 4) return 'Odmóżdżenie.';
-  //       if (result === 3) return 'Śmierć mózgu.';
-  //       return 'Uzupełnij wszystkie informacje.';
-  //     },
-  //   },
+      if (result >= 20) interpretation = 'Ciężki epizod depresyjny.';
+      else if (result >= 15 && result < 20)
+        interpretation = 'Umiarkowanie ciężki epizod depresyjny.';
+      else if (result >= 10 && result < 15)
+        interpretation = 'Umiarkowany epizod depresyjny.';
+      else if (result >= 5 && result < 10)
+        interpretation = 'Łagodny epizod depresyjny.';
+      else interpretation = 'Brak depresji.';
 
-  //   {
-  //     id: 9,
-  //     name: 'Kwestionariusz PHQ-9',
-  //     urlPath: '/kwestionariusz-phq9',
-  //     category: 'psychiatria',
-  //     description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
-
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'phq9.pl',
-  //         title: 'PHQ-9',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.phq9.pl/',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'ECFS.eu',
-  //         title: 'Kwestionariusz zdrowia pacjenta-9 (PHQ-9)',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.ecfs.eu/sites/default/files/general-content-files/working-groups/Mental%20Health/PHQ9_Polish%20for%20Poland.pdf',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczało',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczało',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 24,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczały',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 34,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczało',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 44,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczały',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 54,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczało',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 63,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 64,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczały',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 73,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 74,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 80,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
-  //           radioInputs: [
-  //             {
-  //               id: 81,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczało',
-  //             },
-  //             {
-  //               id: 82,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 83,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 84,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 90,
-  //           label:
-  //             'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
-  //           radioInputs: [
-  //             {
-  //               id: 91,
-  //               value: 0,
-  //               label: 'Wcale nie dokuczały',
-  //             },
-  //             {
-  //               id: 92,
-  //               value: 1,
-  //               label: 'Kilka dni',
-  //             },
-  //             {
-  //               id: 93,
-  //               value: 2,
-  //               label: 'Więcej niż połowę dni',
-  //             },
-  //             {
-  //               id: 94,
-  //               value: 3,
-  //               label: 'Niemal codziennie',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 20) return 'Ciężki epizod depresyjny.';
-  //       if (result >= 15) return 'Umiarkowanie ciężki epizod depresyjny.';
-  //       if (result >= 10) return 'Umiarkowany epizod depresyjny.';
-  //       if (result >= 5) return 'Łagodny epizod depresyjny.';
-  //       return 'Brak depresji.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
   //   {
   //     id: 10,
