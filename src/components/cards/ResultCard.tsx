@@ -15,10 +15,7 @@ type ResultCardProps = {
   interpretation: string;
 };
 
-export default function ResultCard({
-  result,
-  interpretation,
-}: ResultCardProps) {
+const ResultCard = ({ result, interpretation }: ResultCardProps) => {
   const [isAnimation, setIsAnimation] = useState<boolean>(false);
   const isFirstRender = useRef(true);
 
@@ -62,4 +59,6 @@ export default function ResultCard({
       </CardBody>
     </Card>
   );
-}
+};
+
+export default ResultCard;
