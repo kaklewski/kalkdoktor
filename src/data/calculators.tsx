@@ -1266,404 +1266,421 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 13,
-  //     name: 'Skala PESI',
-  //     urlPath: '/skala-pesi',
-  //     category: 'kardiologia',
-  //     description: 'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do
-  //           oceny ryzyka zgonu u pacjentów z ostrą zatorowością płucną. Wartość
-  //           wskaźnika oblicza się na podstawie wieku pacjenta oraz obecności
-  //           określonych czynników klinicznych, którym przypisano punktację.
-  //         </Text>
+  {
+    id: 13,
+    name: 'Skala PESI',
+    urlPath: '/skala-pesi',
+    category: 'kardiologia',
+    description: 'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
+    methodology: (
+      <>
+        <Text>
+          Skala PESI (ang. <em>Pulmonary Embolism Severity Index</em>) służy do
+          oceny ryzyka zgonu u pacjentów z ostrą zatorowością płucną. Wartość
+          wskaźnika oblicza się na podstawie wieku pacjenta oraz obecności
+          określonych czynników klinicznych, którym przypisano punktację.
+        </Text>
 
-  //         <br />
-  //         <MathJax>{'`PESI = A + R`'}</MathJax>
-  //         <br />
+        <br />
+        <MathJax>{'`PESI = A + R`'}</MathJax>
+        <br />
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>A</strong> – wiek pacjenta (w latach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>R</strong> – suma punktów przypisanych za obecność
-  //             poszczególnych czynników ryzyka.
-  //           </ListItem>
-  //         </UnorderedList>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </ListItem>
+          <ListItem>
+            <strong>R</strong> – suma punktów przypisanych za obecność
+            poszczególnych czynników ryzyka.
+          </ListItem>
+        </UnorderedList>
 
-  //         <br />
-  //         <Text>
-  //           Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z
-  //           pięciu klas ryzyka (I–V), które pomagają w ocenie rokowania i
-  //           podejmowaniu decyzji terapeutycznych.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Tabela 2.33-7. Ocena rokowania w zatorowości płucnej',
-  //         dateOfAccess: '26.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.33-15.',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 1,
-  //           max: 125,
-  //         },
-  //       ],
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 10,
-  //           label: 'Płeć męska',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 30,
-  //           label: 'Nowotwór złośliwy',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 10,
-  //           label: 'Przewlekła niewydolność serca',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 10,
-  //           label: 'Przewlekła choroba płuc',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 20,
-  //           label: 'Tętno powyżej 110/min',
-  //         },
-  //         {
-  //           id: 6,
-  //           value: 30,
-  //           label: 'Skurczowe ciśnienie tętnicze poniżej 100 mm Hg',
-  //         },
-  //         {
-  //           id: 7,
-  //           value: 20,
-  //           label: 'Częstość oddechów powyżej 30/min',
-  //         },
-  //         {
-  //           id: 8,
-  //           value: 20,
-  //           label: 'Temperatura poniżej 36°C',
-  //         },
-  //         {
-  //           id: 9,
-  //           value: 60,
-  //           label: 'Zmiana stanu psychicznego',
-  //         },
-  //         {
-  //           id: 10,
-  //           value: 20,
-  //           label: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
-  //         },
-  //       ],
-  //     },
+        <br />
+        <Text>
+          Na podstawie końcowego wyniku pacjenta kwalifikuje się do jednej z
+          pięciu klas ryzyka (I–V), które pomagają w ocenie rokowania i
+          podejmowaniu decyzji terapeutycznych.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Tabela 2.33-7. Ocena rokowania w zatorowości płucnej',
+        dateOfAccess: '26.09.2024',
+        link: 'https://www.mp.pl/interna/table/B16.2.33-15.',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 1,
+        max: 125,
+      },
+      {
+        type: 'checkbox',
+        name: 'gender',
+        value: 10,
+        label: 'Płeć męska',
+      },
+      {
+        type: 'checkbox',
+        name: 'malignantTumor',
+        value: 30,
+        label: 'Nowotwór złośliwy',
+      },
+      {
+        type: 'checkbox',
+        name: 'heartFailure',
+        value: 10,
+        label: 'Przewlekła niewydolność serca',
+      },
+      {
+        type: 'checkbox',
+        name: 'chronicLungDisease',
+        value: 10,
+        label: 'Przewlekła choroba płuc',
+      },
+      {
+        type: 'checkbox',
+        name: 'tachycardia',
+        value: 20,
+        label: 'Tętno powyżej 110/min',
+      },
+      {
+        type: 'checkbox',
+        name: 'lowBloodPressure',
+        value: 30,
+        label: 'Skurczowe ciśnienie tętnicze poniżej 100 mm Hg',
+      },
+      {
+        type: 'checkbox',
+        name: 'highRespiratoryRate',
+        value: 20,
+        label: 'Częstość oddechów powyżej 30/min',
+      },
+      {
+        type: 'checkbox',
+        name: 'lowTemperature',
+        value: 20,
+        label: 'Temperatura poniżej 36°C',
+      },
+      {
+        type: 'checkbox',
+        name: 'mentalChange',
+        value: 60,
+        label: 'Zmiana stanu psychicznego',
+      },
+      {
+        type: 'checkbox',
+        name: 'lowOxygenSaturation',
+        value: 20,
+        label: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     getResult: () => {
-  //       const age: number = parseFloat(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const inputs: NodeListOf<HTMLInputElement> =
-  //         document.querySelectorAll('input');
-  //       let sum: number = age;
+      if (result > 125) {
+        interpretation = 'Klasa V: ryzyko bardzo duże.';
+      } else if (result > 105 && result <= 125) {
+        interpretation = 'Klasa IV: ryzyko duże.';
+      } else if (result > 85 && result <= 105) {
+        interpretation = 'Klasa III: ryzyko umiarkowane.';
+      } else if (result > 65 && result <= 85) {
+        interpretation = 'Klasa II: ryzyko małe.';
+      } else if (result > 0 && result <= 65) {
+        interpretation = 'Klasa I: ryzyko bardzo małe.';
+      } else {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      }
 
-  //       inputs.forEach((input) => {
-  //         if (input.checked) sum += parseInt(input.value);
-  //       });
+      return [result, interpretation];
+    },
+  },
 
-  //       return sum;
-  //     },
+  {
+    id: 14,
+    name: 'Zmodyfikowana skala genewska (oryginalna)',
+    urlPath: '/skala-genewska-oryginalna',
+    category: 'kardiologia',
+    description: 'Ocenia prawdopodobieństwo zatorowości płucnej.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.33-9. Ocena prawdopodobieństwa klinicznego ZP wg zmodyfikowanej skali genewskiej',
+        dateOfAccess: '30.09.2024',
+        link: 'https://www.mp.pl/interna/table/B16.2.33-8.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'heartRate',
+        label: 'Tętno',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Poniżej 75',
+          },
+          {
+            value: 3,
+            label: '75 - 94',
+          },
+          {
+            value: 5,
+            label: '95 lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        name: 'age',
+        value: 1,
+        label: 'Wiek powyżej 65 lat',
+      },
+      {
+        type: 'checkbox',
+        name: 'previousDVT',
+        value: 3,
+        label: 'Przebyta zakrzepica żył głębokich lub zatorowość płucna',
+      },
+      {
+        type: 'checkbox',
+        name: 'surgeryOrFracture',
+        value: 2,
+        label: 'Zabieg chirurgiczny lub złamanie w ciągu ostatniego miesiąca',
+      },
+      {
+        type: 'checkbox',
+        name: 'malignantTumor',
+        value: 2,
+        label: 'Niewyleczony nowotwór złośliwy',
+      },
+      {
+        type: 'checkbox',
+        name: 'unilateralLegPain',
+        value: 3,
+        label: 'Jednostronny ból kończyny dolnej',
+      },
+      {
+        type: 'checkbox',
+        name: 'hemoptysis',
+        value: 2,
+        label: 'Krwioplucie',
+      },
+      {
+        type: 'checkbox',
+        name: 'deepVeinTenderness',
+        value: 4,
+        label:
+          'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result > 125) return 'Klasa V: ryzyko bardzo duże.';
-  //       if (result > 105) return 'Klasa IV: ryzyko duże.';
-  //       if (result > 85) return 'Klasa III: ryzyko umiarkowane.';
-  //       if (result > 65) return 'Klasa II: ryzyko małe.';
-  //       return 'Klasa I: ryzyko bardzo małe.';
-  //     },
-  //   },
+      if (result >= 11) {
+        interpretation =
+          'Duże prawdopodobieństwo kliniczne zatorowości płucnej.';
+      } else if (result >= 4 && result < 11) {
+        interpretation =
+          'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.';
+      } else {
+        interpretation =
+          'Małe prawdopodobieństwo kliniczne zatorowości płucnej.';
+      }
 
-  //   {
-  //     id: 14,
-  //     name: 'Zmodyfikowana skala genewska (oryginalna)',
-  //     urlPath: '/skala-genewska-oryginalna',
-  //     category: 'kardiologia',
-  //     description: 'Ocenia prawdopodobieństwo zatorowości płucnej.',
+      return [result, interpretation];
+    },
+  },
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 2.33-9. Ocena prawdopodobieństwa klinicznego ZP wg zmodyfikowanej skali genewskiej',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.33-8.',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label: 'Wiek powyżej 65 lat',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 3,
-  //           label: 'Przebyta zakrzepica żył głębokich lub zatorowość płucna',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 2,
-  //           label: 'Zabieg chirurgiczny lub złamanie w ciągu ostatniego miesiąca',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 2,
-  //           label: 'Niewyleczony nowotwór złośliwy',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 3,
-  //           label: 'Jednostronny ból kończyny dolnej',
-  //         },
-  //         {
-  //           id: 6,
-  //           value: 2,
-  //           label: 'Krwioplucie',
-  //         },
-  //         {
-  //           id: 7,
-  //           value: 4,
-  //           label:
-  //             'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
-  //         },
-  //       ],
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Tętno',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Poniżej 75',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 3,
-  //               label: '75 - 94',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 5,
-  //               label: '95 lub więcej',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+  {
+    id: 15,
+    name: 'Skala CURB-65',
+    urlPath: '/skala-curb65',
+    category: 'pulmonologia',
+    description: 'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
 
-  //     getResult: sumInputValues,
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Rycina 3.13-2. Ocena ciężkości pozaszpitalnego zapalenia płuc u chorych w szpitalu – skala CURB-65',
+        dateOfAccess: '30.09.2024',
+        link: 'https://www.mp.pl/interna/image/B16.016_8678.',
+      },
+      {
+        id: 2,
+        author: 'Wikipedia',
+        title: 'Skala CURB-65',
+        dateOfAccess: '30.09.2024',
+        link: 'https://pl.wikipedia.org/wiki/Skala_CURB-65',
+      },
+    ],
+    form: [
+      {
+        type: 'checkbox',
+        name: 'confusion',
+        value: 1,
+        label: 'Zaburzenia świadomości',
+      },
+      {
+        type: 'checkbox',
+        name: 'urea',
+        value: 1,
+        label: 'Poziom mocznika większy niż 7 mmol/l',
+      },
+      {
+        type: 'checkbox',
+        name: 'respiratoryRate',
+        value: 1,
+        label: 'Częstość oddechów równa lub większa 30 na minutę',
+      },
+      {
+        type: 'checkbox',
+        name: 'lowBloodPressure',
+        value: 1,
+        label: 'Ciśnienie tętnicze krwi równe lub niższe od 90/60 mmHg',
+      },
+      {
+        type: 'checkbox',
+        name: 'age',
+        value: 1,
+        label: 'Wiek większy lub równy 65 lat',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 11)
-  //         return 'Duże prawdopodobieństwo kliniczne zatorowości płucnej.';
-  //       if (result >= 4)
-  //         return 'Pośrednie prawdopodobieństwo kliniczne zatorowości płucnej.';
-  //       return 'Małe prawdopodobieństwo kliniczne zatorowości płucnej.';
-  //     },
-  //   },
+      if (result >= 3) {
+        interpretation =
+          'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.';
+      } else if (result === 2) {
+        interpretation =
+          'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.';
+      } else {
+        interpretation =
+          'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.';
+      }
+      return [result, interpretation];
+    },
+  },
 
-  //   {
-  //     id: 15,
-  //     name: 'Skala CURB-65',
-  //     urlPath: '/skala-curb65',
-  //     category: 'pulmonologia',
-  //     description: 'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
+  {
+    id: 16,
+    name: 'Kalkulator WHR (Waist-Hip Ratio)',
+    urlPath: '/kalkulator-whr',
+    category: 'antropometria',
+    description: 'Oblicza stosunek obwodu talii do bioder.',
+    methodology: (
+      <>
+        <Text>
+          Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia
+          tkanki tłuszczowej w organizmie i określa proporcję obwodu talii do
+          obwodu bioder. Stosuje się go w ocenie ryzyka chorób
+          sercowo-naczyniowych oraz metabolicznych.
+        </Text>
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Rycina 3.13-2. Ocena ciężkości pozaszpitalnego zapalenia płuc u chorych w szpitalu – skala CURB-65',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://www.mp.pl/interna/image/B16.016_8678.',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'Wikipedia',
-  //         title: 'Skala CURB-65',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://pl.wikipedia.org/wiki/Skala_CURB-65',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label: 'Zaburzenia świadomości',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label: 'Poziom mocznika większy niż 7 mmol/l',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label: 'Częstość oddechów równa lub większa 30 na minutę',
-  //         },
-  //         {
-  //           id: 4,
-  //           value: 1,
-  //           label: 'Ciśnienie tętnicze krwi równe lub niższe od 90/60 mmHg',
-  //         },
-  //         {
-  //           id: 5,
-  //           value: 1,
-  //           label: 'Wiek większy lub równy 65 lat',
-  //         },
-  //       ],
-  //     },
+        <br />
+        <MathJax>{'`WHR = W / H`'}</MathJax>
+        <br />
 
-  //     getResult: sumInputValues,
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>W</strong> – obwód talii (w centymetrach),
+          </ListItem>
+          <ListItem>
+            <strong>H</strong> – obwód bioder (w centymetrach).
+          </ListItem>
+        </UnorderedList>
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 3)
-  //         return 'PZP ciężkie. Pacjent wymaga leczenia w szpitalu. Rozważ leczenie na oddziale intensywnej terapii.';
-  //       if (result === 2)
-  //         return 'PZP umiarkowane. Zaleca się przyjęcie pacjenta do szpitala.';
-  //       return 'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.';
-  //     },
-  //   },
+        <br />
+        <Text>
+          Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże
+          się ze zwiększonym ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2
+          oraz chorób układu krążenia.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Wikipedia',
+        title: 'Waist–hip ratio',
+        dateOfAccess: '30.09.2024',
+        link: 'https://en.wikipedia.org/wiki/Waist%E2%80%93hip_ratio',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'female',
+            hideBadge: true,
+            label: 'Kobieta',
+          },
+          {
+            value: 'male',
+            hideBadge: true,
+            label: 'Mężczyzna',
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'waist',
+        label: 'Obwód talii (cm)',
+        min: 1,
+        max: 250,
+      },
+      {
+        type: 'numberInput',
+        name: 'hips',
+        label: 'Obwód bioder (cm)',
+        min: 1,
+        max: 250,
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const gender: string = inputFields['gender'];
+      const waist: number = parseFloat(inputFields['waist']);
+      const hips: number = parseFloat(inputFields['hips']);
 
-  //   {
-  //     id: 16,
-  //     name: 'Kalkulator WHR (Waist-Hip Ratio)',
-  //     urlPath: '/kalkulator-whr',
-  //     category: 'antropometria',
-  //     description: 'Oblicza stosunek obwodu talii do bioder.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Wskaźnik WHR (ang. <em>Waist-Hip Ratio</em>) jest miarą rozmieszczenia
-  //           tkanki tłuszczowej w organizmie i określa proporcję obwodu talii do
-  //           obwodu bioder. Stosuje się go w ocenie ryzyka chorób
-  //           sercowo-naczyniowych oraz metabolicznych.
-  //         </Text>
+      if (!gender || !waist || !hips) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
 
-  //         <br />
-  //         <MathJax>{'`WHR = W / H`'}</MathJax>
-  //         <br />
+      const result: number = waist / hips;
+      const formattedResult: number = parseFloat(result.toFixed(2));
+      let interpretation: string = '';
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>W</strong> – obwód talii (w centymetrach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>H</strong> – obwód bioder (w centymetrach).
-  //           </ListItem>
-  //         </UnorderedList>
+      if (gender === 'male') {
+        if (result >= 1) interpretation = 'Otyłość androidalna (brzuszna).';
+        interpretation = 'Waga w normie.';
+      } else {
+        if (result >= 0.85) interpretation = 'Otyłość androidalna (brzuszna).';
+        interpretation = 'Waga w normie.';
+      }
 
-  //         <br />
-  //         <Text>
-  //           Wyższe wartości WHR mogą wskazywać na otyłość brzuszną, która wiąże
-  //           się ze zwiększonym ryzykiem wystąpienia nadciśnienia, cukrzycy typu 2
-  //           oraz chorób układu krążenia.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Wikipedia',
-  //         title: 'Waist–hip ratio',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://en.wikipedia.org/wiki/Waist%E2%80%93hip_ratio',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'waist',
-  //           label: 'Obwód talii (cm)',
-  //           min: 1,
-  //           max: 250,
-  //         },
-  //         {
-  //           id: 'hips',
-  //           label: 'Obwód bioder (cm)',
-  //           min: 1,
-  //           max: 250,
-  //         },
-  //       ],
+      return [formattedResult, interpretation];
+    },
+  },
 
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'female',
-  //               value: 0.85,
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'male',
-  //               value: 0,
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: () => {
-  //       const waist = parseFloat(
-  //         (document.getElementById('waist') as HTMLInputElement).value,
-  //       );
-  //       const hips = parseFloat(
-  //         (document.getElementById('hips') as HTMLInputElement).value,
-  //       );
-  //       const result = waist / hips;
-  //       return result;
-  //     },
-
-  //     getResultInterpretation: (result: number) => {
-  //       const maleCheckbox = document.getElementById('male') as HTMLInputElement;
-  //       const isMale = maleCheckbox && maleCheckbox.checked ? true : false;
-
-  //       if (isMale) {
-  //         if (result >= 1) return 'Otyłość androidalna (brzuszna).';
-  //         return 'Waga w normie.';
-  //       }
-  //       if (result >= 0.85) return 'Otyłość androidalna (brzuszna).';
-  //       return 'Waga w normie.';
-  //     },
-  //   },
 
   //   {
   //     id: 17,
