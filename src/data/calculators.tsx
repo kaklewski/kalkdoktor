@@ -1681,208 +1681,200 @@ export const calculators: CalculatorType[] = [
     },
   },
 
+  {
+    id: 17,
+    name: 'Uproszczona skala SOFA (qSOFA)',
+    urlPath: '/skala-qsofa',
+    category: 'anestezjologia',
+    description:
+      'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
+    sources: [
+      {
+        id: 1,
+        author: 'MDCalc (dr Christopher Seymour)',
+        title: 'qSOFA (Quick SOFA) Score for Sepsis',
+        dateOfAccess: '30.09.2024',
+        link: 'https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis',
+      },
+      {
+        id: 2,
+        author: 'Medycyna i Statystyka',
+        title: 'Uproszczona skala SOFA (qSOFA)',
+        dateOfAccess: '30.09.2024',
+        link: 'https://www.medycynaistatystyka.pl/skala-qsofa',
+      },
+    ],
+    form: [
+      {
+        type: 'checkbox',
+        name: 'consciousness',
+        value: 1,
+        label: 'Zaburzenia przytomności (mniej niż 15 punktów w skali Glasgow)',
+      },
+      {
+        type: 'checkbox',
+        name: 'respiratoryRate',
+        value: 1,
+        label: 'Częstotliwość oddechów większa lub równa 22/min',
+      },
+      {
+        type: 'checkbox',
+        name: 'bloodPressure',
+        value: 1,
+        label: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      const interpretation: string =
+        result >= 2 ? 'Wysokie ryzyko zgonu.' : 'Niewysokie ryzyko zgonu.';
 
-  //   {
-  //     id: 17,
-  //     name: 'Uproszczona skala SOFA (qSOFA)',
-  //     urlPath: '/skala-qsofa',
-  //     category: 'anestezjologia',
-  //     description:
-  //       'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
+      return [result, interpretation];
+    },
+  },
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'MDCalc (dr Christopher Seymour)',
-  //         title: 'qSOFA (Quick SOFA) Score for Sepsis',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'Medycyna i Statystyka',
-  //         title: 'Uproszczona skala SOFA (qSOFA)',
-  //         dateOfAccess: '30.09.2024',
-  //         link: 'https://www.medycynaistatystyka.pl/skala-qsofa',
-  //       },
-  //     ],
-  //     fields: {
-  //       checkboxes: [
-  //         {
-  //           id: 1,
-  //           value: 1,
-  //           label:
-  //             'Zaburzenia przytomności (mniej niż 15 punktów w skali Glasgow)',
-  //         },
-  //         {
-  //           id: 2,
-  //           value: 1,
-  //           label: 'Częstotliwość oddechów większa lub równa 22/min',
-  //         },
-  //         {
-  //           id: 3,
-  //           value: 1,
-  //           label: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
-  //         },
-  //       ],
-  //     },
+  {
+    id: 18,
+    name: 'Kwestionariusz Fagerströma',
+    urlPath: '/kwestionariusz-fagerstroma',
+    category: 'używki',
+    description: 'Ocenia stopień uzależnienia od nikotyny.',
 
-  //     getResult: sumInputValues,
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma',
+        dateOfAccess: '01.10.2024',
+        link: 'https://www.mp.pl/interna/table/B16.3.23-2.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'firstCigarette',
+        label: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
+        radioInputs: [
+          {
+            value: 3,
+            label: 'Do 5 minut',
+          },
+          {
+            value: 2,
+            label: 'Od 6 do 30 minut',
+          },
+          {
+            value: 1,
+            label: 'Od 31 do 60 minut',
+          },
+          {
+            value: 0,
+            label: 'Po 60 minutach',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'difficultyAvoidingSmoking',
+        label:
+          'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'hardestCigarette',
+        label: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Z pierwszego rano',
+          },
+          {
+            value: 0,
+            label: 'Z każdego innego',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'cigarettesPerDay',
+        label: 'Ile papierosów pacjent wypala dziennie?',
+        radioInputs: [
+          {
+            value: 0,
+            label: '10 lub mniej',
+          },
+          {
+            value: 1,
+            label: 'Od 11 do 20',
+          },
+          {
+            value: 2,
+            label: 'Od 21 do 30',
+          },
+          {
+            value: 3,
+            label: '31 lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'earlyMorningSmoking',
+        label: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'smokingDuringIllness',
+        label:
+          'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const result: number = sumValues(inputFields);
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 2) return 'Wysokie ryzyko zgonu.';
-  //       return 'Niewysokie ryzyko zgonu.';
-  //     },
-  //   },
+      if (result >= 7) {
+        interpretation = 'Silne uzależnienie od nikotyny.';
+      } else if (result >= 4 && result < 7) {
+        interpretation = 'Średnie uzależnienie od nikotyny.';
+      } else {
+        interpretation = 'Słabe uzależnienie od nikotyny.';
+      }
 
-  //   {
-  //     id: 18,
-  //     name: 'Kwestionariusz Fagerströma',
-  //     urlPath: '/kwestionariusz-fagerstroma',
-  //     category: 'używki',
-  //     description: 'Ocenia stopień uzależnienia od nikotyny.',
-
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 3.22-2. Kwestionariusz oceny uzależnienia od nikotyny wg Fagerströma',
-  //         dateOfAccess: '01.10.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.3.23-2.',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 3,
-  //               label: 'Do 5 minut',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 2,
-  //               label: 'Od 6 do 30 minut',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 1,
-  //               label: 'Od 31 do 60 minut',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 0,
-  //               label: 'Po 60 minutach',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label:
-  //             'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 1,
-  //               label: 'Z pierwszego rano',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 0,
-  //               label: 'Z każdego innego',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Ile papierosów pacjent wypala dziennie?',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: '10 lub mniej',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Od 11 do 20',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 2,
-  //               label: 'Od 21 do 30',
-  //             },
-  //             {
-  //               id: 44,
-  //               value: 3,
-  //               label: '31 lub więcej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label:
-  //             'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 7) return 'Silne uzależnienie od nikotyny.';
-  //       if (result >= 4) return 'Średnie uzależnienie od nikotyny.';
-  //       return 'Słabe uzależnienie od nikotyny.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
   //   {
   //     id: 19,
