@@ -71,7 +71,7 @@ export const calculators: CalculatorType[] = [
       const bodyMass: number = parseFloat(inputFields['bodyMass']);
       const height: number = parseFloat(inputFields['height']) / 100;
 
-      if (!bodyMass || !height) return [0, 'Uzupełnij wszystkie informacje.'];
+      if (!bodyMass || !height) return [0, 'Uzupełnij wszystkie dane.'];
 
       const result: number = Math.round(bodyMass / (height * height));
       let interpretation: string = '';
@@ -457,7 +457,7 @@ export const calculators: CalculatorType[] = [
       const packageSize: number = parseFloat(inputFields['packageSize']);
 
       if (!amountPerIntake || !numberOfIntakes || !daysOfUse || !packageSize) {
-        return [0, 'Uzupełnij wszystkie informacje.'];
+        return [0, 'Uzupełnij wszystkie dane.'];
       }
 
       const result: number = Math.round(
@@ -531,10 +531,10 @@ export const calculators: CalculatorType[] = [
       const age: number = parseFloat(inputFields['age']);
       const weight: number = parseFloat(inputFields['weight']);
 
-      if (!age || !weight) return [`${0} g`, 'Uzupełnij wszystkie informacje.'];
+      if (!age || !weight) return [`${0} g`, 'Uzupełnij wszystkie dane.'];
 
       let result: number = (60 * weight) / 1000;
-      let interpretation: string = 'Uzupełnij wszystkie informacje.';
+      let interpretation: string = 'Uzupełnij wszystkie dane.';
 
       if (age <= 12 && result > 2) result = 2;
       if (result > 4) result = 4;
@@ -761,7 +761,7 @@ export const calculators: CalculatorType[] = [
       else if (result === 5) interpretation = 'Odkorowanie.';
       else if (result === 4) interpretation = 'Odmóżdżenie.';
       else if (result === 3) interpretation = 'Śmierć mózgu.';
-      else interpretation = 'Uzupełnij wszystkie informacje.';
+      else interpretation = 'Uzupełnij wszystkie dane.';
 
       return [result, interpretation];
     },
@@ -1024,255 +1024,247 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 10,
-  //     name: 'Kalkulator odstępu QTc (wzór Bazetta)',
-  //     urlPath: '/kalkulator-qtc-bazetta',
-  //     category: 'kardiologia',
-  //     description: 'Oblicza skorygowany odstęp QT.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:
-  //         </Text>
-  //         <br />
-  //         <MathJax>{'`QTc = (QT) / sqrt(R"R)`'}</MathJax>
-  //         <br />
+  {
+    id: 10,
+    name: 'Kalkulator odstępu QTc (wzór Bazetta)',
+    urlPath: '/kalkulator-qtc-bazetta',
+    category: 'kardiologia',
+    description: 'Oblicza skorygowany odstęp QT.',
+    methodology: (
+      <>
+        <Text>
+          Skorygowany odstęp QT (QTc) oblicza się za pomocą poniższego wzoru:
+        </Text>
+        <br />
+        <MathJax>{'`QTc = (QT) / sqrt(R"R)`'}</MathJax>
+        <br />
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>QT</strong> – odstęp QT w milisekundach (ms),
+          </ListItem>
+          <ListItem>
+            <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć
+            jako 60 podzielone przez czynność serca (liczba uderzeń serca na
+            minutę).
+          </ListItem>
+        </UnorderedList>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna i Statystyka',
+        title: 'Skorygowany odstęp QT (QTc)',
+        dateOfAccess: '20.09.2024',
+        link: 'https://www.medycynaistatystyka.pl/skorygowany-qt-bazett',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'qtInterval',
+        label: 'Odstęp QT (ms)',
+        min: 1,
+        max: 1000,
+      },
+      {
+        type: 'numberInput',
+        name: 'heartRate',
+        label: 'Czynność serca (na minutę)',
+        min: 1,
+        max: 700,
+      },
+    ],
+    calculateResult(inputFields: {
+      [key: string]: string;
+    }): [string | number, string] {
+      const qtInterval: number = parseFloat(inputFields['qtInterval']);
+      const heartRate: number = parseFloat(inputFields['heartRate']);
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>QT</strong> – odstęp QT w milisekundach (ms),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>RR</strong> – odstęp RR w sekundach, który można obliczyć
-  //             jako 60 podzielone przez czynność serca (liczba uderzeń serca na
-  //             minutę).
-  //           </ListItem>
-  //         </UnorderedList>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna i Statystyka',
-  //         title: 'Skorygowany odstęp QT (QTc)',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://www.medycynaistatystyka.pl/skorygowany-qt-bazett',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'qtInterval',
-  //           label: 'Odstęp QT (ms)',
-  //           min: 1,
-  //           max: 1000,
-  //         },
-  //         {
-  //           id: 'heartRate',
-  //           label: 'Czynność serca (na minutę)',
-  //           min: 1,
-  //           max: 700,
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'ms',
+      if (!qtInterval || !heartRate)
+        return ['0 ms', 'Uzupełnij wszystkie dane.'];
 
-  //     getResult: () => {
-  //       const qtInterval: number = parseFloat(
-  //         (document.getElementById('qtInterval') as HTMLInputElement).value,
-  //       );
-  //       const heartRate: number = parseFloat(
-  //         (document.getElementById('heartRate') as HTMLInputElement).value,
-  //       );
-  //       const rr: number = 60 / heartRate;
-  //       const result: number = qtInterval / Math.sqrt(rr);
-  //       return result;
-  //     },
+      const rr: number = 60 / heartRate;
+      const result: number = qtInterval / Math.sqrt(rr);
+      const formattedResult: number = parseFloat(result.toFixed(1));
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
-  //       return 'Skorygowany odstęp QTc.';
-  //     },
-  //   },
+      return [`${formattedResult} ms`, 'Skorygowany odstęp QTc'];
+    },
+  },
 
-  //   {
-  //     id: 11,
-  //     name: 'Wskaźnik Maddreya',
-  //     urlPath: '/wskaznik-maddreya',
-  //     category: 'hepatologia',
-  //     description:
-  //       'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do
-  //           oceny rokowania u pacjentów z alkoholowym zapaleniem wątroby. Oblicza
-  //           się go na podstawie czasu protrombinowego, wartości referencyjnej oraz
-  //           stężenia bilirubiny całkowitej.
-  //         </Text>
+  {
+    id: 11,
+    name: 'Wskaźnik Maddreya',
+    urlPath: '/wskaznik-maddreya',
+    category: 'hepatologia',
+    description:
+      'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
+    methodology: (
+      <>
+        <Text>
+          Wskaźnik Maddreya (DF, ang. <em>Discriminant Function</em>) służy do
+          oceny rokowania u pacjentów z alkoholowym zapaleniem wątroby. Oblicza
+          się go na podstawie czasu protrombinowego, wartości referencyjnej oraz
+          stężenia bilirubiny całkowitej.
+        </Text>
 
-  //         <br />
-  //         <MathJax>{'`DF = (PT - CT) * 4.6 + B`'}</MathJax>
-  //         <br />
+        <br />
+        <MathJax>{'`DF = (PT - CT) * 4.6 + B`'}</MathJax>
+        <br />
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>DF</strong> – wskaźnik rokowniczy (czynnik dyskryminujący),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>PT</strong> – czas protrombinowy pacjenta (w sekundach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>CT</strong> – czas protrombinowy prawidłowy (w sekundach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>B</strong> – stężenie bilirubiny całkowitej (w mg/dl).
-  //           </ListItem>
-  //         </UnorderedList>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>DF</strong> – wskaźnik rokowniczy (czynnik dyskryminujący),
+          </ListItem>
+          <ListItem>
+            <strong>PT</strong> – czas protrombinowy pacjenta (w sekundach),
+          </ListItem>
+          <ListItem>
+            <strong>CT</strong> – czas protrombinowy prawidłowy (w sekundach),
+          </ListItem>
+          <ListItem>
+            <strong>B</strong> – stężenie bilirubiny całkowitej (w mg/dl).
+          </ListItem>
+        </UnorderedList>
 
-  //         <br />
-  //         <Text>
-  //           Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może
-  //           wskazywać na konieczność intensywniejszego leczenia.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Wikipedia',
-  //         title: 'Wskaźnik Maddreya',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://pl.wikipedia.org/wiki/Wska%C5%BAnik_Maddreya',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'prothrombinTime',
-  //           label: 'Czas protrombinowy pacjenta (s)',
-  //           min: 0.1,
-  //           max: 1000,
-  //         },
-  //         {
-  //           id: 'controlTime',
-  //           label: 'Czas protrombinowy prawidłowy (s)',
-  //           min: 0.1,
-  //           max: 1000,
-  //         },
-  //         {
-  //           id: 'bilirubin',
-  //           label: 'Stężenie bilirubiny całkowitej (mg/dl)',
-  //           min: 0.1,
-  //           max: 1000,
-  //         },
-  //       ],
-  //     },
+        <br />
+        <Text>
+          Wartość DF większa niż 32 sugeruje ciężki przebieg choroby i może
+          wskazywać na konieczność intensywniejszego leczenia.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Wikipedia',
+        title: 'Wskaźnik Maddreya',
+        dateOfAccess: '20.09.2024',
+        link: 'https://pl.wikipedia.org/wiki/Wska%C5%BAnik_Maddreya',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'prothrombinTime',
+        label: 'Czas protrombinowy pacjenta (s)',
+        min: 0.1,
+        max: 1000,
+      },
+      {
+        type: 'numberInput',
+        name: 'controlTime',
+        label: 'Czas protrombinowy prawidłowy (s)',
+        min: 0.1,
+        max: 1000,
+      },
+      {
+        type: 'numberInput',
+        name: 'bilirubin',
+        label: 'Stężenie bilirubiny całkowitej (mg/dl)',
+        min: 0.1,
+        max: 1000,
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+      const prothrombinTime: number = parseFloat(
+        inputFields['prothrombinTime'],
+      );
+      const controlTime: number = parseFloat(inputFields['controlTime']);
+      const bilirubin: number = parseFloat(inputFields['bilirubin']);
 
-  //     getResult: () => {
-  //       const prothrombinTime: number = parseFloat(
-  //         (document.getElementById('prothrombinTime') as HTMLInputElement).value,
-  //       );
-  //       const controlTime: number = parseFloat(
-  //         (document.getElementById('controlTime') as HTMLInputElement).value,
-  //       );
-  //       const bilirubin: number = parseFloat(
-  //         (document.getElementById('bilirubin') as HTMLInputElement).value,
-  //       );
-  //       const result: number = (prothrombinTime - controlTime) * 4.6 + bilirubin;
-  //       return result;
-  //     },
+      if (!prothrombinTime || !controlTime || !bilirubin)
+        return [0, 'Uzupełnij wszystkie dane.'];
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result > 32)
-  //         return 'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.';
-  //       if (result <= 32 && result > 0)
-  //         return 'Alkoholowe zapalenie wątroby o umiarkowanym lub niewielkim nasileniu.';
-  //       return 'Uzupełnij wszystkie informacje.';
-  //     },
-  //   },
+      const result: number = (prothrombinTime - controlTime) * 4.6 + bilirubin;
+      const formattedResult: number = parseFloat(result.toFixed(0));
+      let interpretation: string = '';
 
-  //   {
-  //     id: 12,
-  //     name: 'Obliczanie dawki ibuprofenu',
-  //     urlPath: '/obliczanie-dawki-ibuprofenu',
-  //     category: 'dawkowanie leków',
-  //     description:
-  //       'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać
-  //           3,2 g. U dzieci dawkę tę oblicza się na podstawie masy ciała według
-  //           poniższego wzoru:
-  //         </Text>
+      if (result > 32) {
+        interpretation =
+          'Ciężki stan pacjenta i ryzyko zgonu w przedziale 35-45% w ciągu 30 dni.';
+      } else if (result <= 32 && result > 0) {
+        interpretation =
+          'Alkoholowe zapalenie wątroby o umiarkowanym lub niewielkim nasileniu.';
+      } else {
+        interpretation = 'Podaj prawidłowe dane.';
+      }
 
-  //         <br />
-  //         <MathJax>{'`D = (30 * M) / 1000`'}</MathJax>
-  //         <br />
+      return [formattedResult, interpretation];
+    },
+  },
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>D</strong> – maksymalna dobowa dawka ibuprofenu (w gramach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>M</strong> – masa ciała pacjenta (w kilogramach).
-  //           </ListItem>
-  //         </UnorderedList>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Deksibuprofen (Portal lekarzy)',
-  //         dateOfAccess: '20.09.2024',
-  //         link: 'https://indeks.mp.pl/leki/desc.php?id=370',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 1,
-  //           max: 120,
-  //         },
-  //         {
-  //           id: 'weight',
-  //           label: 'Masa ciała (kg)',
-  //           min: 1,
-  //           max: 200,
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'g',
+  {
+    id: 12,
+    name: 'Obliczanie dawki ibuprofenu',
+    urlPath: '/obliczanie-dawki-ibuprofenu',
+    category: 'dawkowanie leków',
+    description:
+      'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
+    methodology: (
+      <>
+        <Text>
+          Maksymalna dobowa dawka ibuprofenu u dorosłych nie powinna przekraczać
+          3,2 g. U dzieci dawkę tę oblicza się na podstawie masy ciała według
+          poniższego wzoru:
+        </Text>
 
-  //     getResult: () => {
-  //       const age: number = parseFloat(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const weight: number = parseFloat(
-  //         (document.getElementById('weight') as HTMLInputElement).value,
-  //       );
-  //       let result: number;
-  //       if (age <= 12) {
-  //         result = (30 * weight) / 1000;
-  //       } else {
-  //         result = 3.2;
-  //       }
-  //       return result;
-  //     },
+        <br />
+        <MathJax>{'`D = (30 * M) / 1000`'}</MathJax>
+        <br />
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
-  //       return 'Maksymalna dobowa dawka ibuprofenu.';
-  //     },
-  //   },
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>D</strong> – maksymalna dobowa dawka ibuprofenu (w gramach),
+          </ListItem>
+          <ListItem>
+            <strong>M</strong> – masa ciała pacjenta (w kilogramach).
+          </ListItem>
+        </UnorderedList>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Deksibuprofen (Portal lekarzy)',
+        dateOfAccess: '20.09.2024',
+        link: 'https://indeks.mp.pl/leki/desc.php?id=370',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 1,
+        max: 120,
+      },
+      {
+        type: 'numberInput',
+        name: 'weight',
+        label: 'Masa ciała (kg)',
+        min: 1,
+        max: 200,
+      },
+    ],
+    calculateResult(inputFields: { [key: string]: string }): [string, string] {
+      const age: number = parseFloat(inputFields['age']);
+      const weight: number = parseFloat(inputFields['weight']);
+
+      if (!age || !weight) {
+        return ['0 g', 'Uzupełnij wszystkie dane.'];
+      }
+
+      const result: number = age > 12 ? 3.2 : (30 * weight) / 1000;
+      const formattedResult: number = parseFloat(result.toFixed(1));
+
+      return [`${formattedResult} g`, 'Maksymalna dobowa dawka ibuprofenu.'];
+    },
+  },
 
   //   {
   //     id: 13,
@@ -2119,7 +2111,7 @@ export const calculators: CalculatorType[] = [
   //     },
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       return 'Klirens kreatyniny.';
   //     },
   //   },
@@ -2240,7 +2232,7 @@ export const calculators: CalculatorType[] = [
   //     },
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       if (result > 3.25)
   //         return 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
   //       if (result > 1.45)
@@ -2380,7 +2372,7 @@ export const calculators: CalculatorType[] = [
   //     getResult: sumInputValues,
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       if (result >= 10) return 'Klasa C. Są wskazania do przeszczepu wątroby.';
   //       if (result >= 7) return 'Klasa B. Są wskazania do przeszczepu wątroby.';
   //       return 'Klasa A. Nie ma wskazań do przeszczepu wątroby.';
@@ -2787,7 +2779,7 @@ export const calculators: CalculatorType[] = [
   //     },
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
 
   //       const age: number = parseInt(
   //         (document.getElementById('age') as HTMLInputElement).value,
@@ -2922,7 +2914,7 @@ export const calculators: CalculatorType[] = [
   //     },
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       return 'Przewidywany wzrost dziecka.';
   //     },
   //   },
@@ -3720,7 +3712,7 @@ export const calculators: CalculatorType[] = [
   //     getResult: sumInputValues,
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       if (result >= 13) return 'Łagodne zaburzenia przytomności.';
   //       if (result >= 9) return 'Umiarkowane zaburzenia przytomności.';
   //       return 'Ciężkie zaburzenia przytomności.';
@@ -5195,7 +5187,7 @@ export const calculators: CalculatorType[] = [
   //     },
 
   //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie informacje.';
+  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
   //       return 'Beztłuszczowa masa ciała.';
   //     },
   //   },
