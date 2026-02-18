@@ -2889,7 +2889,7 @@ export const calculators: CalculatorType[] = [
 
       const interpretation = 'Przewidywany wzrost dziecka.';
 
-      return [`${result} cm`, interpretation];
+      return [`${result.toFixed(0)} cm`, interpretation];
     },
   },
 
@@ -2899,7 +2899,6 @@ export const calculators: CalculatorType[] = [
     urlPath: '/kwestionariusz-mdq',
     category: 'psychiatria',
     description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
-
     sources: [
       {
         id: 1,
@@ -3186,7 +3185,6 @@ export const calculators: CalculatorType[] = [
     urlPath: '/test-audit',
     category: 'używki',
     description: 'Ocenia stopień uzależnienia od alkoholu.',
-
     sources: [
       {
         id: 1,
@@ -3513,1055 +3511,966 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 28,
-  //     name: 'Pediatryczna skala Glasgow',
-  //     urlPath: '/pediatryczna-skala-glasgow',
-  //     category: 'pediatria',
-  //     description: 'Ocenia poziom przytomności u dzieci do 2 roku życia.',
+  {
+    id: 28,
+    name: 'Pediatryczna skala Glasgow',
+    urlPath: '/pediatryczna-skala-glasgow',
+    category: 'pediatria',
+    description: 'Ocenia poziom przytomności u dzieci do 2 roku życia.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna i Statystyka',
+        title: 'Pediatryczna skala Glasgow (Pediatric Glasgow Coma Scale)',
+        dateOfAccess: '23.10.2024',
+        link: 'https://medycynaistatystyka.pl/pediatryczna-skala-glasgow',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'openingEyes',
+        label: 'Otwieranie oczu',
+        radioInputs: [
+          {
+            value: 4,
+            label: 'Spontaniczne',
+          },
+          {
+            value: 3,
+            label: 'W odpowiedzi na bodziec głosowy',
+          },
+          {
+            value: 2,
+            label: 'W odpowiedzi na bodziec bólowy',
+          },
+          {
+            value: 1,
+            label: 'Nie otwiera oczu',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'verbalResponse',
+        label: 'Odpowiedź słowna',
+        radioInputs: [
+          {
+            value: 5,
+            label: 'Uśmiech lub adekwatny płacz',
+          },
+          {
+            value: 4,
+            label: 'Gwałtowny, nieustępujący płacz',
+          },
+          {
+            value: 3,
+            label: 'Nieadekwatny płacz lub krzyk',
+          },
+          {
+            value: 2,
+            label: 'Jęki lub pochrząkiwanie',
+          },
+          {
+            value: 1,
+            label: 'Brak reakcji',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'motorReaction',
+        label: 'Reakcja ruchowa',
+        radioInputs: [
+          {
+            value: 6,
+            label: 'Ruchy spontaniczne',
+          },
+          {
+            value: 5,
+            label: 'Zlokalizowanie, próba usunięcia bodźca bólowego',
+          },
+          {
+            value: 4,
+            label: 'Wycofanie przed bodźcem bólowym',
+          },
+          {
+            value: 3,
+            label: 'Patologiczna reakcja zgięciowa w reakcji na bodziec bólowy',
+          },
+          {
+            value: 2,
+            label: 'Patologiczna reakcja wyprostna w reakcji na bodziec bólowy',
+          },
+          {
+            value: 1,
+            label: 'Brak reakcji',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna i Statystyka',
-  //         title: 'Pediatryczna skala Glasgow (Pediatric Glasgow Coma Scale)',
-  //         dateOfAccess: '23.10.2024',
-  //         link: 'https://medycynaistatystyka.pl/pediatryczna-skala-glasgow',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Otwieranie oczu',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 4,
-  //               label: 'Spontaniczne',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 3,
-  //               label: 'W odpowiedzi na bodziec głosowy',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'W odpowiedzi na bodziec bólowy',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 1,
-  //               label: 'Nie otwiera oczu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Odpowiedź słowna',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 5,
-  //               label: 'Uśmiech lub adekwatny płacz',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 4,
-  //               label: 'Gwałtowny, nieustępujący płacz',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 3,
-  //               label: 'Nieadekwatny płacz lub krzyk',
-  //             },
-  //             {
-  //               id: 24,
-  //               value: 2,
-  //               label: 'Jęki lub pochrząkiwanie',
-  //             },
-  //             {
-  //               id: 25,
-  //               value: 1,
-  //               label: 'Brak reakcji',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Reakcja ruchowa',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 6,
-  //               label: 'Ruchy spontaniczne',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 5,
-  //               label: 'Zlokalizowanie, próba usunięcia bodźca bólowego',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 4,
-  //               label: 'Wycofanie przed bodźcem bólowym',
-  //             },
-  //             {
-  //               id: 34,
-  //               value: 3,
-  //               label:
-  //                 'Patologiczna reakcja zgięciowa w reakcji na bodziec bólowy',
-  //             },
-  //             {
-  //               id: 35,
-  //               value: 2,
-  //               label:
-  //                 'Patologiczna reakcja wyprostna w reakcji na bodziec bólowy',
-  //             },
-  //             {
-  //               id: 36,
-  //               value: 1,
-  //               label: 'Brak reakcji',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      if (result >= 13) {
+        interpretation = 'Łagodne zaburzenia przytomności.';
+      } else if (result >= 9 && result < 13) {
+        interpretation = 'Umiarkowane zaburzenia przytomności.';
+      } else if (result < 9 && result > 0) {
+        interpretation = 'Ciężkie zaburzenia przytomności.';
+      } else {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      }
 
-  //     getResult: sumInputValues,
+      return [result, interpretation];
+    },
+  },
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       if (result >= 13) return 'Łagodne zaburzenia przytomności.';
-  //       if (result >= 9) return 'Umiarkowane zaburzenia przytomności.';
-  //       return 'Ciężkie zaburzenia przytomności.';
-  //     },
-  //   },
+  {
+    id: 29,
+    name: 'Skala Apgar',
+    urlPath: '/skala-apgar',
+    category: 'pediatria',
+    description: 'Ocenia noworodka w pierwszej i w piątej minucie życia.',
+    sources: [
+      {
+        id: 1,
+        author: 'Szpital Położniczo-Ginekologiczny Ujastek',
+        title: 'Skala Apgar – za co przyznawane są noworodkowi punkty?',
+        dateOfAccess: '23.10.2024',
+        link: 'https://szpital.ujastek.pl/blogosfera/skala-apgar-za-co-przyznawane-sa-noworodkowi-punkty',
+      },
+      {
+        id: 2,
+        author: 'Serwis Zdrowie (Państwowa Agencja Prasowa)',
+        title: 'Skala Apgar, czyli za co noworodek dostaje punkty',
+        dateOfAccess: '23.10.2024',
+        link: 'https://zdrowie.pap.pl/rodzice/skala-apgar-czyli-za-co-noworodek-dostaje-punkty',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'heartbeat',
+        label: 'Akcja serca',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Brak czynności',
+          },
+          {
+            value: 1,
+            label: 'Poniżej 100 uderzeń na minutę',
+          },
+          {
+            value: 2,
+            label: 'Co najmniej 100 uderzeń na minutę',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'breathing',
+        label: 'Oddychanie',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Brak oddechu',
+          },
+          {
+            value: 1,
+            label: 'Zwolnione lub nieregularne',
+          },
+          {
+            value: 2,
+            label: 'Aktywne ruchy',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'muscleTension',
+        label: 'Napięcie mięśni',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Wiotkie',
+          },
+          {
+            value: 1,
+            label: 'Obecne',
+          },
+          {
+            value: 2,
+            label: 'Aktywne ruchy',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'reflexes',
+        label: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Brak reakcji',
+          },
+          {
+            value: 1,
+            label: 'Słaba reakcja (grymas)',
+          },
+          {
+            value: 2,
+            label: 'Adekwatna reakcja (kichanie)',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'skinColor',
+        label: 'Zabarwienie skóry',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Blada',
+          },
+          {
+            value: 1,
+            label: 'Sinica obwodowa',
+          },
+          {
+            value: 2,
+            label: 'Różowa',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //   {
-  //     id: 29,
-  //     name: 'Skala Apgar',
-  //     urlPath: '/skala-apgar',
-  //     category: 'pediatria',
-  //     description: 'Ocenia noworodka w pierwszej i w piątej minucie życia.',
+      if (result >= 8) {
+        interpretation = 'Stan dobry.';
+      } else if (result >= 4 && result < 8) {
+        interpretation = 'Stan średni.';
+      } else {
+        interpretation = 'Stan zły (ciężki).';
+      }
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Szpital Położniczo-Ginekologiczny Ujastek',
-  //         title: 'Skala Apgar – za co przyznawane są noworodkowi punkty?',
-  //         dateOfAccess: '23.10.2024',
-  //         link: 'https://szpital.ujastek.pl/blogosfera/skala-apgar-za-co-przyznawane-sa-noworodkowi-punkty',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'Serwis Zdrowie (Państwowa Agencja Prasowa)',
-  //         title: 'Skala Apgar, czyli za co noworodek dostaje punkty',
-  //         dateOfAccess: '23.10.2024',
-  //         link: 'https://zdrowie.pap.pl/rodzice/skala-apgar-czyli-za-co-noworodek-dostaje-punkty',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Akcja serca',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Brak czynności',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: 'Poniżej 100 uderzeń na minutę',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'Co najmniej 100 uderzeń na minutę',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Oddychanie',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 0,
-  //               label: 'Brak oddechu',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 1,
-  //               label: 'Zwolnione lub nieregularne',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 2,
-  //               label: 'Aktywne ruchy',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Napięcie mięśni',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label: 'Wiotkie',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 1,
-  //               label: 'Obecne',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 2,
-  //               label: 'Aktywne ruchy',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Brak reakcji',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Słaba reakcja (grymas)',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 2,
-  //               label: 'Adekwatna reakcja (kichanie)',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Zabarwienie skóry',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Blada',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 1,
-  //               label: 'Sinica obwodowa',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 2,
-  //               label: 'Różowa',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      return [result, interpretation];
+    },
+  },
 
-  //     getResult: sumInputValues,
+  {
+    id: 30,
+    name: 'Skala Barthel',
+    urlPath: '/skala-barthel',
+    category: 'geriatria',
+    description:
+      'Ocenia poziom samodzielności i zdolność zaspokajania podstawowych potrzeb życiowych pacjentów.',
+    sources: [
+      {
+        id: 1,
+        author: 'Swissmed',
+        title: 'Ocena pacjenta wg skali Barthel',
+        dateOfAccess: '27.10.2024',
+        link: 'https://swissmed.com.pl/pliki/seniorzy/ocena_pacjenta_barthel.pdf',
+      },
+      {
+        id: 2,
+        author: 'gov.pl',
+        title: 'Karta oceny stanu pacjenta wg zmodyfikowanej skali Barthel',
+        dateOfAccess: '27.10.2024',
+        link: 'https://www.gov.pl/attachment/203e5ac4-0bac-42ec-9b86-3da58772bda4',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'eatingMeals',
+        label: 'Spożywanie posiłków',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie jest w stanie samodzielnie jeść lub przełykać',
+          },
+          {
+            value: 5,
+            label:
+              'Potrzebuje pomocy w krojeniu, smarowaniu, karmieniu doustnym',
+          },
+          {
+            value: 10,
+            label: 'Samodzielny, niezależny',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'movingAndSitting',
+        label: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
+        radioInputs: [
+          {
+            value: 0,
+            label:
+              'Nie jest w stanie się przemieszczać, nie zachowuje równowagi przy siadaniu oraz siedzeniu',
+          },
+          {
+            value: 5,
+            label:
+              'Przemieszcza się z pomocą fizyczną jednej lub dwóch osób, może siedzieć',
+          },
+          {
+            value: 10,
+            label: 'Mniejsza pomoc (słowna lub fizyczna)',
+          },
+          {
+            value: 15,
+            label: 'Samodzielny',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'keepingPersonalHygiene',
+        label: 'Utrzymanie higieny osobistej',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie jest w stanie wykonać żadnych czynności higienicznych',
+          },
+          {
+            value: 5,
+            label: 'Potrzebuje pomocy przy wykonywaniu czynności higienicznych',
+          },
+          {
+            value: 10,
+            label:
+              'Samodzielny przy myciu twarzy, czesaniu się, myciu zębów, także z zapewnionymi pomocami',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'usingToilet',
+        label: 'Korzystanie z toalety',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie korzysta w ogóle z toalety',
+          },
+          {
+            value: 5,
+            label:
+              'Potrzebuje lub częściowo potrzebuje pomocy przy korzystaniu z toalety',
+          },
+          {
+            value: 10,
+            label:
+              'Samodzielny w dotarciu do toalety oraz w zdejmowaniu i zakładaniu części garderoby',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'washingBody',
+        label: 'Mycie i kąpiel całego ciała',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Kąpany w wannie przy pomocy podnośnika',
+          },
+          {
+            value: 5,
+            label: 'Wymaga pomocy',
+          },
+          {
+            value: 10,
+            label: 'Samodzielny',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'movingOnFlatSurfaces',
+        label: 'Poruszanie się po powierzchniach płaskich',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'W ogóle nie porusza się',
+          },
+          {
+            value: 5,
+            label:
+              'Porusza się na odległość do 50 m za pomocą sprzętu wspomagającego i z pomocą co najmniej jednej osoby',
+          },
+          {
+            value: 10,
+            label:
+              'Samodzielny, niezależny w poruszaniu się na odległość powyżej 50m, także w użyciem sprzętu wspomagającego',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'usingStairs',
+        label: 'Chodzenie po schodach',
+        radioInputs: [
+          {
+            value: 0,
+            label:
+              'Nie jest w stanie wchodzić i schodzić po schodach nawet z pomocą innej osoby',
+          },
+          {
+            value: 5,
+            label: 'Potrzebuje pomocy fizycznej, asekuracji, przenoszenia',
+          },
+          {
+            value: 10,
+            label: 'Samodzielny',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'dressing',
+        label: 'Ubieranie i rozbieranie się',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Potrzebuje kompleksowej pomocy innej osoby',
+          },
+          {
+            value: 5,
+            label: 'Potrzebuje częściowej pomocy innej osoby',
+          },
+          {
+            value: 10,
+            label:
+              'Samodzielny, niezależny (także w zapinaniu guzików, zamka, zawiązywaniu sznurowadeł)',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'analSphincterControl',
+        label: 'Kontrola zwieracza odbytu',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie panuje nad oddawaniem stolca',
+          },
+          {
+            value: 5,
+            label: 'Sporadycznie bezwiednie oddaje stolec',
+          },
+          {
+            value: 10,
+            label: 'Kontroluje oddawanie stolca',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'bladderSphincterControl',
+        label: 'Kontrola zwieraczy pęcherza moczowego',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie panuje nad oddawaniem moczu',
+          },
+          {
+            value: 5,
+            label: 'Sporadycznie bezwiednie oddaje mocz',
+          },
+          {
+            value: 10,
+            label: 'Kontroluje oddawanie moczu',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result >= 8) return 'Stan dobry.';
-  //       if (result >= 4) return 'Stan średni.';
-  //       return 'Stan zły (ciężki).';
-  //     },
-  //   },
+      if (result > 85) {
+        interpretation = 'Lekki stan pacjenta, osoba samodzielna.';
+      } else if (result > 20 && result <= 85) {
+        interpretation =
+          'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.';
+      } else {
+        interpretation =
+          'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.';
+      }
 
-  //   {
-  //     id: 30,
-  //     name: 'Skala Barthel',
-  //     urlPath: '/skala-barthel',
-  //     category: 'geriatria',
-  //     description:
-  //       'Ocenia poziom samodzielności i zdolność zaspokajania podstawowych potrzeb życiowych pacjentów.',
+      return [result, interpretation];
+    },
+  },
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Swissmed',
-  //         title: 'Ocena pacjenta wg skali Barthel',
-  //         dateOfAccess: '27.10.2024',
-  //         link: 'https://swissmed.com.pl/pliki/seniorzy/ocena_pacjenta_barthel.pdf',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'gov.pl',
-  //         title: 'Karta oceny stanu pacjenta wg zmodyfikowanej skali Barthel',
-  //         dateOfAccess: '27.10.2024',
-  //         link: 'https://www.gov.pl/attachment/203e5ac4-0bac-42ec-9b86-3da58772bda4',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Spożywanie posiłków',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Nie jest w stanie samodzielnie jeść lub przełykać',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 5,
-  //               label:
-  //                 'Potrzebuje pomocy w krojeniu, smarowaniu, karmieniu doustnym',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 10,
-  //               label: 'Samodzielny, niezależny',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 0,
-  //               label:
-  //                 'Nie jest w stanie się przemieszczać, nie zachowuje równowagi przy siadaniu oraz siedzeniu',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 5,
-  //               label:
-  //                 'Przemieszcza się z pomocą fizyczną jednej lub dwóch osób, może siedzieć',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 10,
-  //               label: 'Mniejsza pomoc (słowna lub fizyczna)',
-  //             },
-  //             {
-  //               id: 24,
-  //               value: 15,
-  //               label: 'Samodzielny',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Utrzymanie higieny osobistej',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label:
-  //                 'Nie jest w stanie wykonać żadnych czynności higienicznych',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 5,
-  //               label:
-  //                 'Potrzebuje pomocy przy wykonywaniu czynności higienicznych',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 10,
-  //               label:
-  //                 'Samodzielny przy myciu twarzy, czesaniu się, myciu zębów, także z zapewnionymi pomocami',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Korzystanie z toalety',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Nie korzysta w ogóle z toalety',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 5,
-  //               label:
-  //                 'Potrzebuje lub częściowo potrzebuje pomocy przy korzystaniu z toalety',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 10,
-  //               label:
-  //                 'Samodzielny w dotarciu do toalety oraz w zdejmowaniu i zakładaniu części garderoby',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Mycie i kąpiel całego ciała',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Kąpany w wannie przy pomocy podnośnika',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 5,
-  //               label: 'Wymaga pomocy',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 10,
-  //               label: 'Samodzielny',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label: 'Poruszanie się po powierzchniach płaskich',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 0,
-  //               label: 'W ogóle nie porusza się',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 5,
-  //               label:
-  //                 'Porusza się na odległość do 50 m za pomocą sprzętu wspomagającego i z pomocą co najmniej jednej osoby',
-  //             },
-  //             {
-  //               id: 63,
-  //               value: 10,
-  //               label:
-  //                 'Samodzielny, niezależny w poruszaniu się na odległość powyżej 50m, także w użyciem sprzętu wspomagającego',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label: 'Chodzenie po schodach',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 0,
-  //               label:
-  //                 'Nie jest w stanie wchodzić i schodzić po schodach nawet z pomocą innej osoby',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 5,
-  //               label: 'Potrzebuje pomocy fizycznej, asekuracji, przenoszenia',
-  //             },
-  //             {
-  //               id: 73,
-  //               value: 10,
-  //               label: 'Samodzielny',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 90,
-  //           label: 'Ubieranie i rozbieranie się',
-  //           radioInputs: [
-  //             {
-  //               id: 91,
-  //               value: 0,
-  //               label: 'Potrzebuje kompleksowej pomocy innej osoby',
-  //             },
-  //             {
-  //               id: 92,
-  //               value: 5,
-  //               label: 'Potrzebuje częściowej pomocy innej osoby',
-  //             },
-  //             {
-  //               id: 93,
-  //               value: 10,
-  //               label:
-  //                 'Samodzielny, niezależny (także w zapinaniu guzików, zamka, zawiązywaniu sznurowadeł)',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 100,
-  //           label: 'Kontrola zwieracza odbytu',
-  //           radioInputs: [
-  //             {
-  //               id: 101,
-  //               value: 0,
-  //               label: 'Nie panuje nad oddawaniem stolca',
-  //             },
-  //             {
-  //               id: 102,
-  //               value: 5,
-  //               label: 'Sporadycznie bezwiednie oddaje stolec',
-  //             },
-  //             {
-  //               id: 103,
-  //               value: 10,
-  //               label: 'Kontroluje oddawanie stolca',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 110,
-  //           label: 'Kontrola zwieraczy pęcherza moczowego',
-  //           radioInputs: [
-  //             {
-  //               id: 111,
-  //               value: 0,
-  //               label: 'Nie panuje nad oddawaniem moczu',
-  //             },
-  //             {
-  //               id: 112,
-  //               value: 5,
-  //               label: 'Sporadycznie bezwiednie oddaje mocz',
-  //             },
-  //             {
-  //               id: 113,
-  //               value: 10,
-  //               label: 'Kontroluje oddawanie moczu',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+  {
+    id: 31,
+    name: 'Obliczanie zawartości alkoholu we krwi (wzór Erika Widmarka)',
+    urlPath: '/obliczanie-alkoholu-widmarka',
+    category: 'używki',
+    description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
+    methodology: (
+      <>
+        <Text>
+          Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu
+          we krwi (BAC –<em>Blood Alcohol Concentration</em>) na podstawie
+          ilości spożytego alkoholu, masy ciała oraz płci.
+        </Text>
 
-  //     getResult: sumInputValues,
+        <br />
+        <MathJax>{'`BAC = A / (r \\cdot W)`'}</MathJax>
+        <br />
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result > 85) return 'Lekki stan pacjenta, osoba samodzielna.';
-  //       if (result > 20)
-  //         return 'Średnio ciężki stan pacjenta, osoba częściowo samodzielna.';
-  //       return 'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.';
-  //     },
-  //   },
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>BAC</strong> – szacowane stężenie alkoholu we krwi (w ‰),
+          </ListItem>
+          <ListItem>
+            <strong>A</strong> – ilość spożytego czystego alkoholu (w gramach),
+          </ListItem>
+          <ListItem>
+            <strong>r</strong> – współczynnik dystrybucji alkoholu:
+            <UnorderedList>
+              <ListItem>0,7 dla mężczyzn,</ListItem>
+              <ListItem>0,6 dla kobiet,</ListItem>
+            </UnorderedList>
+          </ListItem>
+          <ListItem>
+            <strong>W</strong> – masa ciała (w kilogramach),
+          </ListItem>
+        </UnorderedList>
 
-  //   {
-  //     id: 31,
-  //     name: 'Obliczanie zawartości alkoholu we krwi (wzór Erika Widmarka)',
-  //     urlPath: '/obliczanie-alkoholu-widmarka',
-  //     category: 'używki',
-  //     description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Wzór Erika Widmarka służy do szacunkowego obliczenia stężenia alkoholu
-  //           we krwi (BAC –<em>Blood Alcohol Concentration</em>) na podstawie
-  //           ilości spożytego alkoholu, masy ciała oraz płci.
-  //         </Text>
+        <br />
+        <Text>
+          Wzór ten daje jedynie przybliżony wynik i nie uwzględnia
+          indywidualnych różnic w metabolizmie, stanie zdrowia czy sposobie
+          spożywania alkoholu.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Kalibrujemy.pl',
+        title: 'Przeliczanie zawartości alkoholu we krwi na promile - wzór',
+        dateOfAccess: '28.10.2024',
+        link: 'https://www.kalibrujemy.pl/blog/48-przeliczanie-zawartosci-alkoholu-we-krwi-na-promile-wzor-przyklady',
+      },
+      {
+        id: 2,
+        author: 'Polityka',
+        title: 'Ile mam promili?',
+        dateOfAccess: '28.10.2024',
+        link: 'https://www.polityka.pl/tygodnikpolityka/kraj/1560509,1,ile-mam-promili.read',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'female',
+            label: 'Kobieta',
+            hideBadge: true,
+          },
+          {
+            value: 'male',
+            label: 'Mężczyzna',
+            hideBadge: true,
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'bodyWeight',
+        label: 'Masa ciała (w kg)',
+        min: 1,
+        max: 250,
+      },
+      {
+        type: 'numberInput',
+        name: 'consumedAlcohol',
+        label:
+          'Ilość wypitego czystego alkoholu w gramach (1 ml czystego alkoholu to 0,8 g)',
+        min: 1,
+        max: 1000,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const gender = formValues['gender'] as 'male' | 'female';
+      const genderIndex: number = gender === 'male' ? 0.7 : 0.6;
+      const consumedAlcohol: number = parseFloat(formValues['consumedAlcohol']);
+      const bodyWeight: number = parseFloat(formValues['bodyWeight']);
 
-  //         <br />
-  //         <MathJax>{'`BAC = A / (r \\cdot W)`'}</MathJax>
-  //         <br />
+      if (!gender || !consumedAlcohol || !bodyWeight) {
+        return ['0‰', 'Przybliżona zawartość alkoholu we krwi.'];
+      }
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>BAC</strong> – szacowane stężenie alkoholu we krwi (w ‰),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>A</strong> – ilość spożytego czystego alkoholu (w gramach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>r</strong> – współczynnik dystrybucji alkoholu:
-  //             <UnorderedList>
-  //               <ListItem>0,7 dla mężczyzn,</ListItem>
-  //               <ListItem>0,6 dla kobiet,</ListItem>
-  //             </UnorderedList>
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>W</strong> – masa ciała (w kilogramach),
-  //           </ListItem>
-  //         </UnorderedList>
+      const result: number = consumedAlcohol / (genderIndex * bodyWeight);
+      const formattedResult: number = parseFloat(result.toFixed(1));
+      const interpretation: string = 'Przybliżona zawartość alkoholu we krwi.';
 
-  //         <br />
-  //         <Text>
-  //           Wzór ten daje jedynie przybliżony wynik i nie uwzględnia
-  //           indywidualnych różnic w metabolizmie, stanie zdrowia czy sposobie
-  //           spożywania alkoholu.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Kalibrujemy.pl',
-  //         title: 'Przeliczanie zawartości alkoholu we krwi na promile - wzór',
-  //         dateOfAccess: '28.10.2024',
-  //         link: 'https://www.kalibrujemy.pl/blog/48-przeliczanie-zawartosci-alkoholu-we-krwi-na-promile-wzor-przyklady',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'Polityka',
-  //         title: 'Ile mam promili?',
-  //         dateOfAccess: '28.10.2024',
-  //         link: 'https://www.polityka.pl/tygodnikpolityka/kraj/1560509,1,ile-mam-promili.read',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'consumedAlcohol',
-  //           label:
-  //             'Ilość wypitego czystego alkoholu w gramach (1 ml czystego alkoholu to 0,8 g)',
-  //           min: 1,
-  //           max: 1000,
-  //         },
-  //         {
-  //           id: 'bodyWeight',
-  //           label: 'Masa ciała (w kg)',
-  //           min: 1,
-  //           max: 250,
-  //         },
-  //       ],
+      return [`${formattedResult} ‰`, interpretation];
+    },
+  },
 
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'female',
-  //               value: 0.6,
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'male',
-  //               value: 0.7,
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: '‰',
+  {
+    id: 32,
+    name: 'Skala Oakland',
+    urlPath: '/skala-oakland',
+    category: 'gastrologia',
+    description:
+      'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego',
+        dateOfAccess: '29.10.2024',
+        link: 'https://www.mp.pl/chirurgia/wytyczne-przegladowe/242727,rozpoznanie-i-leczenie-ostrego-krwawienia-do-dolnego-odcinka-przewodu-pokarmowego',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'age',
+        label: 'Wiek',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniej niż 40 lat',
+          },
+          {
+            value: 1,
+            label: 'Od 40 do 59 lat',
+          },
+          {
+            value: 2,
+            label: '70 lat lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Kobieta',
+          },
+          {
+            value: 1,
+            label: 'Mężczyzna',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'previousHospitalization',
+        label: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie',
+          },
+          {
+            value: 1,
+            label: 'Tak',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'rectalExamination',
+        label: 'Wynik badania per rectum',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Bez krwi',
+          },
+          {
+            value: 1,
+            label: 'Obecna krew',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'heartRate',
+        label: 'Częstotliwość rytmu serca',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniej niż 70 na minutę',
+          },
+          {
+            value: 1,
+            label: 'Między 70 a 89 na minutę',
+          },
+          {
+            value: 2,
+            label: 'Między 90 a 109 na minutę',
+          },
+          {
+            value: 3,
+            label: '110 na minutę lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'bloodPressure',
+        label: 'Ciśnienie tętnicze skurczowe',
+        radioInputs: [
+          {
+            value: 5,
+            label: 'Mniej niż 90 mm Hg',
+          },
+          {
+            value: 4,
+            label: 'Od 90 do 119 mm Hg',
+          },
+          {
+            value: 3,
+            label: 'Od 120 do 129 mm Hg',
+          },
+          {
+            value: 2,
+            label: 'Od 130 do 159 mm Hg',
+          },
+          {
+            value: 0,
+            label: '160 mm Hg lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'hemoglobinConcentration',
+        label: 'Stężenie hemoglobiny',
+        radioInputs: [
+          {
+            value: 22,
+            label: 'Mniej niż 7 g/dl',
+          },
+          {
+            value: 17,
+            label: 'Od 7 do 8,9 g/dl',
+          },
+          {
+            value: 13,
+            label: 'Od 9 do 10,9 g/dl',
+          },
+          {
+            value: 8,
+            label: 'Od 11 do 12,9 g/dl',
+          },
+          {
+            value: 4,
+            label: 'Od 13 do 15,9 g/dl',
+          },
+          {
+            value: 0,
+            label: '16 g/dl lub więcej',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      const interpretation: string =
+        result > 8
+          ? 'Poważne krwawienie. Wskazana jest hospitalizacja.'
+          : 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.';
 
-  //     getResult: () => {
-  //       const consumedAlcohol: number = parseFloat(
-  //         (document.getElementById('consumedAlcohol') as HTMLInputElement).value,
-  //       );
-  //       const bodyWeight: number = parseFloat(
-  //         (document.getElementById('bodyWeight') as HTMLInputElement).value,
-  //       );
-  //       const sexIndex: number = parseFloat(
-  //         (
-  //           document.querySelector(
-  //             'input[name="sex"]:checked',
-  //           ) as HTMLInputElement
-  //         )?.value,
-  //       );
+      return [result, interpretation];
+    },
+  },
 
-  //       const result = consumedAlcohol / (sexIndex * bodyWeight);
-  //       return result;
-  //     },
+  {
+    id: 33,
+    name: 'Kwestionariusz STOP-BANG',
+    urlPath: '/stop-bang',
+    category: 'pulmonologia',
+    description: 'Ocenia ryzyko obturacyjnego bezdechu sennego.',
 
-  //     getResultInterpretation: () => {
-  //       return 'Przybliżona zawartość alkoholu we krwi.';
-  //     },
-  //   },
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'OBS – ocena obturacyjnego bezdechu sennego u dorosłych',
+        dateOfAccess: '15.11.2024',
+        link: 'https://www.mp.pl/kalkulatory/313248,obs-ocena-obturacyjnego-bezdechu-sennego-u-doroslych',
+      },
+      {
+        id: 2,
+        author: 'MDCalc (dr Frances Chung)',
+        title: 'STOP-BANG Score for Obstructive Sleep Apnea',
+        dateOfAccess: '15.11.2024',
+        link: 'https://www.mdcalc.com/calc/3992/stop-bang-score-obstructive-sleep-apnea',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 's',
+        label:
+          'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 't',
+        label:
+          'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'o',
+        label:
+          'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'p',
+        label: 'Czy pacjent choruje na nadciśnienie tętnicze?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'b',
+        label: 'BMI pacjenta',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniejsze lub równe 35',
+          },
+          {
+            value: 1,
+            label: 'Powyżej 35',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'a',
+        label: 'Wiek pacjenta',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniejszy lub równy 50 lat',
+          },
+          {
+            value: 1,
+            label: 'Powyżej 50 lat',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'n',
+        label: 'Obwód szyi pacjenta',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Mniejszy lub równy 40 cm',
+          },
+          {
+            value: 1,
+            label: 'Powyżej 40 cm',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'g',
+        label: 'Płeć pacjenta',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Kobieta',
+          },
+          {
+            value: 1,
+            label: 'Mężczyzna',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      const s: number = parseInt(formValues['s']);
+      const t: number = parseInt(formValues['t']);
+      const o: number = parseInt(formValues['o']);
+      const p: number = parseInt(formValues['p']);
+      const b: number = parseInt(formValues['b']);
+      const n: number = parseInt(formValues['n']);
+      const g: number = parseInt(formValues['g']);
+      const stopSum: number = s + t + o + p;
+      const bngSum: number = b + n + g;
+      const isHighRisk: boolean = stopSum >= 2 && bngSum >= 1 ? true : false;
+      let interpretation: string = '';
 
-  //   {
-  //     id: 32,
-  //     name: 'Skala Oakland',
-  //     urlPath: '/skala-oakland',
-  //     category: 'gastrologia',
-  //     description:
-  //       'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
+      if (result >= 5 || isHighRisk) {
+        interpretation = 'Wysokie ryzyko obturacyjnego bezdechu sennego.';
+      } else if (result >= 3 && result < 5) {
+        interpretation = 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.';
+      } else {
+        interpretation = 'Niskie ryzyko obturacyjnego bezdechu sennego.';
+      }
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Rozpoznanie i leczenie ostrego krwawienia do dolnego odcinka przewodu pokarmowego',
-  //         dateOfAccess: '29.10.2024',
-  //         link: 'https://www.mp.pl/chirurgia/wytyczne-przegladowe/242727,rozpoznanie-i-leczenie-ostrego-krwawienia-do-dolnego-odcinka-przewodu-pokarmowego',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Wiek',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Mniej niż 40 lat',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: 'Od 40 do 59 lat',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: '70 lat lub więcej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 0,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 1,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Wynik badania per rectum',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Bez krwi',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Obecna krew',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Częstotliwość rytmu serca',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Mniej niż 70 na minutę',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 1,
-  //               label: 'Między 70 a 89 na minutę',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 2,
-  //               label: 'Między 90 a 109 na minutę',
-  //             },
-  //             {
-  //               id: 54,
-  //               value: 3,
-  //               label: '110 na minutę lub więcej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label: 'Ciśnienie tętnicze skurczowe',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 5,
-  //               label: 'Mniej niż 90 mm Hg',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 4,
-  //               label: 'Od 90 do 119 mm Hg',
-  //             },
-  //             {
-  //               id: 63,
-  //               value: 3,
-  //               label: 'Od 120 do 129 mm Hg',
-  //             },
-  //             {
-  //               id: 64,
-  //               value: 2,
-  //               label: 'Od 130 do 159 mm Hg',
-  //             },
-  //             {
-  //               id: 65,
-  //               value: 0,
-  //               label: '160 mm Hg lub więcej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label: 'Stężenie hemoglobiny',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 22,
-  //               label: 'Mniej niż 7 g/dl',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 17,
-  //               label: 'Od 7 do 8,9 g/dl',
-  //             },
-  //             {
-  //               id: 73,
-  //               value: 13,
-  //               label: 'Od 9 do 10,9 g/dl',
-  //             },
-  //             {
-  //               id: 74,
-  //               value: 8,
-  //               label: 'Od 11 do 12,9 g/dl',
-  //             },
-  //             {
-  //               id: 75,
-  //               value: 4,
-  //               label: 'Od 13 do 15,9 g/dl',
-  //             },
-  //             {
-  //               id: 76,
-  //               value: 0,
-  //               label: '16 g/dl lub więcej',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       if (result > 8)
-  //         return 'Poważne krwawienie. Wskazana jest hospitalizacja.';
-  //       return 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.';
-  //     },
-  //   },
-
-  //   {
-  //     id: 33,
-  //     name: 'Kwestionariusz STOP-BANG',
-  //     urlPath: '/stop-bang',
-  //     category: 'pulmonologia',
-  //     description: 'Ocenia ryzyko obturacyjnego bezdechu sennego.',
-
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'OBS – ocena obturacyjnego bezdechu sennego u dorosłych',
-  //         dateOfAccess: '15.11.2024',
-  //         link: 'https://www.mp.pl/kalkulatory/313248,obs-ocena-obturacyjnego-bezdechu-sennego-u-doroslych',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'MDCalc (dr Frances Chung)',
-  //         title: 'STOP-BANG Score for Obstructive Sleep Apnea',
-  //         dateOfAccess: '15.11.2024',
-  //         link: 'https://www.mdcalc.com/calc/3992/stop-bang-score-obstructive-sleep-apnea',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label:
-  //             'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
-  //           radioInputs: [
-  //             {
-  //               id: 's',
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label:
-  //             'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
-  //           radioInputs: [
-  //             {
-  //               id: 't',
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label:
-  //             'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
-  //           radioInputs: [
-  //             {
-  //               id: 'o',
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Czy pacjent choruje na nadciśnienie tętnicze?',
-  //           radioInputs: [
-  //             {
-  //               id: 'p',
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'BMI pacjenta',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Mniejsze lub równe 35',
-  //             },
-  //             {
-  //               id: 'b',
-  //               value: 1,
-  //               label: 'Powyżej 35',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label: 'Wiek pacjenta',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 0,
-  //               label: 'Mniejszy lub równy 50 lat',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 1,
-  //               label: 'Powyżej 50 lat',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label: 'Obwód szyi pacjenta',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 0,
-  //               label: 'Mniejszy lub równy 40 cm',
-  //             },
-  //             {
-  //               id: 'n',
-  //               value: 1,
-  //               label: 'Powyżej 40 cm',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 80,
-  //           label: 'Płeć pacjenta',
-  //           radioInputs: [
-  //             {
-  //               id: 81,
-  //               value: 0,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'g',
-  //               value: 1,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       function checkIfHighRisk() {
-  //         const stop = ['s', 't', 'o', 'p'];
-  //         const stopElements = stop.map((letter) =>
-  //           document.querySelector(`input#${letter}`),
-  //         );
-  //         const bng = ['b', 'n', 'g'];
-  //         const bngElements = bng.map((letter) =>
-  //           document.querySelector(`input#${letter}`),
-  //         );
-
-  //         let stopSum: number = 0;
-  //         let bngSum: number = 0;
-
-  //         stopElements.forEach((input) => {
-  //           if ((input as HTMLInputElement)?.checked) stopSum += 1;
-  //         });
-
-  //         bngElements.forEach((input) => {
-  //           if ((input as HTMLInputElement)?.checked) bngSum += 1;
-  //         });
-
-  //         return stopSum >= 2 && bngSum >= 1 ? true : false;
-  //       }
-
-  //       const isHighRisk = checkIfHighRisk();
-
-  //       if (result >= 5 || isHighRisk === true)
-  //         return 'Wysokie ryzyko obturacyjnego bezdechu sennego.';
-  //       if (result >= 3)
-  //         return 'Umiarkowane ryzyko obturacyjnego bezdechu sennego.';
-  //       return 'Niskie ryzyko obturacyjnego bezdechu sennego.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
   //   {
   //     id: 34,
