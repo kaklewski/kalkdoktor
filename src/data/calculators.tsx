@@ -67,9 +67,9 @@ export const calculators: CalculatorType[] = [
         max: 230,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const bodyMass: number = parseFloat(inputFields['bodyMass']);
-      const height: number = parseFloat(inputFields['height']) / 100;
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const bodyMass: number = parseFloat(formValues['bodyMass']);
+      const height: number = parseFloat(formValues['height']) / 100;
 
       if (!bodyMass || !height) return [0, 'Uzupełnij wszystkie dane.'];
 
@@ -170,16 +170,16 @@ export const calculators: CalculatorType[] = [
         label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
+    calculateResult(formValues: Record<string, string>): [number, string] {
       const lowRisk: string =
         'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
       const mediumRisk: string =
         'Umiarkowane ryzyko powikłań. Należy rozważyć doustny antykoagulant.';
       const highRisk: string =
         'Wysokie ryzyko powikłań. Należy zastosować doustny antykoagulant.';
-      const isMale: boolean = inputFields['gender'] === '0';
+      const isMale: boolean = formValues['gender'] === '0';
 
-      const result: number = sumValues(inputFields);
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (isMale) {
@@ -257,8 +257,8 @@ export const calculators: CalculatorType[] = [
         label: 'Wysięk na migdałkach i ich obrzęk',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 4) {
@@ -358,8 +358,8 @@ export const calculators: CalculatorType[] = [
         label: 'Wcześniej przebyta ZŻG',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 3) {
@@ -446,15 +446,11 @@ export const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const amountPerIntake: number = parseFloat(
-        inputFields['amountPerIntake'],
-      );
-      const numberOfIntakes: number = parseFloat(
-        inputFields['numberOfIntakes'],
-      );
-      const daysOfUse: number = parseFloat(inputFields['daysOfUse']);
-      const packageSize: number = parseFloat(inputFields['packageSize']);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const amountPerIntake: number = parseFloat(formValues['amountPerIntake']);
+      const numberOfIntakes: number = parseFloat(formValues['numberOfIntakes']);
+      const daysOfUse: number = parseFloat(formValues['daysOfUse']);
+      const packageSize: number = parseFloat(formValues['packageSize']);
 
       if (!amountPerIntake || !numberOfIntakes || !daysOfUse || !packageSize) {
         return [0, 'Uzupełnij wszystkie dane.'];
@@ -527,9 +523,9 @@ export const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [string, string] {
-      const age: number = parseFloat(inputFields['age']);
-      const weight: number = parseFloat(inputFields['weight']);
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const age: number = parseFloat(formValues['age']);
+      const weight: number = parseFloat(formValues['weight']);
 
       if (!age || !weight) return [`${0} g`, 'Uzupełnij wszystkie dane.'];
 
@@ -629,8 +625,8 @@ export const calculators: CalculatorType[] = [
         label: 'Nadmierne spożycie alkoholu',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 4) {
@@ -749,8 +745,8 @@ export const calculators: CalculatorType[] = [
         ],
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 13) interpretation = 'Łagodne zaburzenia świadomości.';
@@ -1007,8 +1003,8 @@ export const calculators: CalculatorType[] = [
         ],
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 20) interpretation = 'Ciężki epizod depresyjny.';
@@ -1076,11 +1072,11 @@ export const calculators: CalculatorType[] = [
         max: 700,
       },
     ],
-    calculateResult(inputFields: {
+    calculateResult(formValues: {
       [key: string]: string;
     }): [string | number, string] {
-      const qtInterval: number = parseFloat(inputFields['qtInterval']);
-      const heartRate: number = parseFloat(inputFields['heartRate']);
+      const qtInterval: number = parseFloat(formValues['qtInterval']);
+      const heartRate: number = parseFloat(formValues['heartRate']);
 
       if (!qtInterval || !heartRate)
         return ['0 ms', 'Uzupełnij wszystkie dane.'];
@@ -1168,12 +1164,10 @@ export const calculators: CalculatorType[] = [
         max: 1000,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const prothrombinTime: number = parseFloat(
-        inputFields['prothrombinTime'],
-      );
-      const controlTime: number = parseFloat(inputFields['controlTime']);
-      const bilirubin: number = parseFloat(inputFields['bilirubin']);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const prothrombinTime: number = parseFloat(formValues['prothrombinTime']);
+      const controlTime: number = parseFloat(formValues['controlTime']);
+      const bilirubin: number = parseFloat(formValues['bilirubin']);
 
       if (!prothrombinTime || !controlTime || !bilirubin)
         return [0, 'Uzupełnij wszystkie dane.'];
@@ -1251,9 +1245,9 @@ export const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [string, string] {
-      const age: number = parseFloat(inputFields['age']);
-      const weight: number = parseFloat(inputFields['weight']);
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const age: number = parseFloat(formValues['age']);
+      const weight: number = parseFloat(formValues['weight']);
 
       if (!age || !weight) {
         return ['0 g', 'Uzupełnij wszystkie dane.'];
@@ -1382,8 +1376,8 @@ export const calculators: CalculatorType[] = [
         label: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result > 125) {
@@ -1484,8 +1478,8 @@ export const calculators: CalculatorType[] = [
           'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 11) {
@@ -1559,8 +1553,8 @@ export const calculators: CalculatorType[] = [
         label: 'Wiek większy lub równy 65 lat',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 3) {
@@ -1656,10 +1650,10 @@ export const calculators: CalculatorType[] = [
         max: 250,
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const gender: string = inputFields['gender'];
-      const waist: number = parseFloat(inputFields['waist']);
-      const hips: number = parseFloat(inputFields['hips']);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const gender: string = formValues['gender'];
+      const waist: number = parseFloat(formValues['waist']);
+      const hips: number = parseFloat(formValues['hips']);
 
       if (!gender || !waist || !hips) {
         return [0, 'Uzupełnij wszystkie dane.'];
@@ -1724,8 +1718,8 @@ export const calculators: CalculatorType[] = [
         label: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       const interpretation: string =
         result >= 2 ? 'Wysokie ryzyko zgonu.' : 'Niewysokie ryzyko zgonu.';
 
@@ -1860,8 +1854,8 @@ export const calculators: CalculatorType[] = [
         ],
       },
     ],
-    calculateResult(inputFields: { [key: string]: string }): [number, string] {
-      const result: number = sumValues(inputFields);
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
       let interpretation: string = '';
 
       if (result >= 7) {
@@ -1876,1731 +1870,1648 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 19,
-  //     name: 'Skala NYHA',
-  //     urlPath: '/skala-nyha',
-  //     category: 'kardiologia',
-  //     description: 'Ocenia stopień niewydolności serca na podstawie objawów.',
+  {
+    id: 19,
+    name: 'Skala NYHA',
+    urlPath: '/skala-nyha',
+    category: 'kardiologia',
+    description: 'Ocenia stopień niewydolności serca na podstawie objawów.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association',
+        dateOfAccess: '01.10.2024',
+        link: 'https://www.mp.pl/interna/table/B16.2.19-1.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'exerciseTolerance',
+        label: 'Wydolność wysiłkowa',
+        radioInputs: [
+          {
+            value: 1,
+            label:
+              'Bez ograniczeń w aktywności fizycznej. Zwykły wysiłek fizyczny nie powoduje nadmiernego zmęczenia, duszności ani kołatania serca',
+          },
+          {
+            value: 2,
+            label:
+              'Niewielkie ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale zwykła aktywność powoduje zmęczenie, kołatanie serca lub duszność',
+          },
+          {
+            value: 3,
+            label:
+              'Znaczne ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale aktywność mniejsza niż zwykła powoduje wystąpienie objawów',
+          },
+          {
+            value: 4,
+            label:
+              'Każda aktywność fizyczna wywołuje dolegliwości. Objawy podmiotowe niewydolności serca występują nawet w spoczynku, a jakakolwiek aktywność nasila dolegliwości',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 2.19-1. Klasyfikacja niewydolności serca wg New York Heart Association',
-  //         dateOfAccess: '01.10.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.19-1.',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 1,
-  //           label: 'Wydolność wysiłkowa',
-  //           radioInputs: [
-  //             {
-  //               id: 1,
-  //               value: 1,
-  //               label:
-  //                 'Bez ograniczeń w aktywności fizycznej. Zwykły wysiłek fizyczny nie powoduje nadmiernego zmęczenia, duszności ani kołatania serca',
-  //             },
-  //             {
-  //               id: 2,
-  //               value: 2,
-  //               label:
-  //                 'Niewielkie ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale zwykła aktywność powoduje zmęczenie, kołatanie serca lub duszność',
-  //             },
-  //             {
-  //               id: 3,
-  //               value: 3,
-  //               label:
-  //                 'Znaczne ograniczenie aktywności fizycznej. Bez dolegliwości w spoczynku, ale aktywność mniejsza niż zwykła powoduje wystąpienie objawów',
-  //             },
-  //             {
-  //               id: 4,
-  //               value: 4,
-  //               label:
-  //                 'Każda aktywność fizyczna wywołuje dolegliwości. Objawy podmiotowe niewydolności serca występują nawet w spoczynku, a jakakolwiek aktywność nasila dolegliwości',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      if (result === 4) {
+        interpretation = 'NYHA IV';
+      } else if (result === 3) {
+        interpretation = 'NYHA III';
+      } else if (result === 2) {
+        interpretation = 'NYHA II';
+      } else if (result === 1) {
+        interpretation = 'NYHA I';
+      } else {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      }
 
-  //     getResult: sumInputValues,
+      return [result, interpretation];
+    },
+  },
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 4) return 'NYHA IV';
-  //       if (result === 3) return 'NYHA III';
-  //       if (result === 2) return 'NYHA II';
-  //       return 'NYHA I';
-  //     },
-  //   },
+  {
+    id: 20,
+    name: 'Skala CCS',
+    urlPath: '/skala-ccs',
+    category: 'kardiologia',
+    description: 'Ocenia zaawansowanie choroby niedokrwiennej serca.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.5-1. Klasyfikacja dławicy piersiowej na podstawie jej nasilenia wg Canadian Cardiovascular Society (CCS)',
+        dateOfAccess: '01.10.2024',
+        link: 'https://www.mp.pl/interna/table/B16.2.5-1.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'activityLevel',
+        label: 'Aktywność fizyczna',
+        radioInputs: [
+          {
+            value: 1,
+            label:
+              'Zwyczajna aktywność fizyczna, taka jak chodzenie po płaskim terenie lub wchodzenie po schodach, nie wywołuje dławicy. Dławica występuje przy większym, gwałtowniejszym lub dłużej trwającym wysiłku fizycznym, związanym z pracą lub rekreacją',
+          },
+          {
+            value: 2,
+            label:
+              'Niewielkie ograniczenie zwyczajnej aktywności fizycznej. Dławica występuje przy szybkim chodzeniu po płaskim terenie lub szybkim wchodzeniu po schodach, przy wchodzeniu pod górę, przy chodzeniu po płaskim terenie lub wchodzeniu po schodach, po posiłkach, gdy jest zimno, wieje wiatr, pod wpływem stresu emocjonalnego lub tylko w ciągu kilku godzin po przebudzeniu lub po przejściu ponad 200 m po terenie płaskim i przy wchodzeniu po schodach na więcej niż jedno piętro w normalnym tempie i w zwykłych warunkach',
+          },
+          {
+            value: 3,
+            label:
+              'Znaczne ograniczenie zwykłej aktywności fizycznej. Dławica występuje po przejściu od 100 do 200 metrów po terenie płaskim lub przy wchodzeniu po schodach na jedno piętro w normalnym tempie i w zwykłych warunkach',
+          },
+          {
+            value: 4,
+            label:
+              'Jakakolwiek aktywność fizyczna wywołuje dławicę. Może ona występować w spoczynku',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //   {
-  //     id: 20,
-  //     name: 'Skala CCS',
-  //     urlPath: '/skala-ccs',
-  //     category: 'kardiologia',
-  //     description: 'Ocenia zaawansowanie choroby niedokrwiennej serca.',
+      if (result === 4) {
+        interpretation = 'Klasa CCS IV';
+      } else if (result === 3) {
+        interpretation = 'Klasa CCS III';
+      } else if (result === 2) {
+        interpretation = 'Klasa CCS II';
+      } else if (result === 1) {
+        interpretation = 'Klasa CCS I';
+      } else {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      }
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 2.5-1. Klasyfikacja dławicy piersiowej na podstawie jej nasilenia wg Canadian Cardiovascular Society (CCS)',
-  //         dateOfAccess: '01.10.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.5-1.',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 1,
-  //           label: 'Aktywność fizyczna',
-  //           radioInputs: [
-  //             {
-  //               id: 1,
-  //               value: 1,
-  //               label:
-  //                 'Zwyczajna aktywność fizyczna, taka jak chodzenie po płaskim terenie lub wchodzenie po schodach, nie wywołuje dławicy. Dławica występuje przy większym, gwałtowniejszym lub dłużej trwającym wysiłku fizycznym, związanym z pracą lub rekreacją',
-  //             },
-  //             {
-  //               id: 2,
-  //               value: 2,
-  //               label:
-  //                 'Niewielkie ograniczenie zwyczajnej aktywności fizycznej. Dławica występuje przy szybkim chodzeniu po płaskim terenie lub szybkim wchodzeniu po schodach, przy wchodzeniu pod górę, przy chodzeniu po płaskim terenie lub wchodzeniu po schodach, po posiłkach, gdy jest zimno, wieje wiatr, pod wpływem stresu emocjonalnego lub tylko w ciągu kilku godzin po przebudzeniu lub po przejściu ponad 200 m po terenie płaskim i przy wchodzeniu po schodach na więcej niż jedno piętro w normalnym tempie i w zwykłych warunkach',
-  //             },
-  //             {
-  //               id: 3,
-  //               value: 3,
-  //               label:
-  //                 'Znaczne ograniczenie zwykłej aktywności fizycznej. Dławica występuje po przejściu od 100 do 200 metrów po terenie płaskim lub przy wchodzeniu po schodach na jedno piętro w normalnym tempie i w zwykłych warunkach',
-  //             },
-  //             {
-  //               id: 4,
-  //               value: 4,
-  //               label:
-  //                 'Jakakolwiek aktywność fizyczna wywołuje dławicę. Może ona występować w spoczynku',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      return [result, interpretation];
+    },
+  },
 
-  //     getResult: sumInputValues,
+  {
+    id: 21,
+    name: 'Wskaźnik eGFR (wzór Cockcrofta i Gaulta)',
+    urlPath: '/wskaznik-gfr',
+    category: 'nefrologia',
+    description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
+    methodology: (
+      <>
+        <Text>
+          Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR),
+          który pozwala na ocenę czynności nerek. Uwzględnia wiek pacjenta, masę
+          ciała oraz stężenie kreatyniny we krwi. Wartość ta pomaga dostosować
+          dawki leków wydalanych przez nerki i monitorować funkcję nerek.
+        </Text>
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 4) return 'Klasa CCS IV';
-  //       if (result === 3) return 'Klasa CCS III';
-  //       if (result === 2) return 'Klasa CCS II';
-  //       return 'Klasa CCS I';
-  //     },
-  //   },
+        <br />
+        <MathJax>{'`eGFR = ((140 - A) * M) / (C * 72)`'}</MathJax>
+        <br />
 
-  //   {
-  //     id: 21,
-  //     name: 'Wskaźnik eGFR (wzór Cockcrofta i Gaulta)',
-  //     urlPath: '/wskaznik-gfr',
-  //     category: 'nefrologia',
-  //     description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Wzór Cockcrofta–Gaulta służy do szacowania klirensu kreatyniny (eGFR),
-  //           który pozwala na ocenę czynności nerek. Uwzględnia wiek pacjenta, masę
-  //           ciała oraz stężenie kreatyniny we krwi. Wartość ta pomaga dostosować
-  //           dawki leków wydalanych przez nerki i monitorować funkcję nerek.
-  //         </Text>
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>eGFR</strong> – szacowany klirens kreatyniny (w ml/min),
+          </ListItem>
+          <ListItem>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </ListItem>
+          <ListItem>
+            <strong>M</strong> – masa ciała pacjenta (w kilogramach),
+          </ListItem>
+          <ListItem>
+            <strong>C</strong> – stężenie kreatyniny w surowicy krwi (w mg/dl).
+          </ListItem>
+        </UnorderedList>
 
-  //         <br />
-  //         <MathJax>{'`eGFR = ((140 - A) * M) / (C * 72)`'}</MathJax>
-  //         <br />
+        <br />
+        <Text>
+          W przypadku kobiet otrzymany wynik należy pomnożyć przez współczynnik{' '}
+          <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą
+          masę mięśniową w porównaniu do mężczyzn.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'National Kidney Foundation',
+        title: 'Cockcroft-Gault Formula',
+        dateOfAccess: '02.10.2024',
+        link: 'https://www.kidney.org/professionals/kdoqi/gfr_calculatorCoc',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'female',
+            hideBadge: true,
+            label: 'Kobieta',
+          },
+          {
+            value: 'male',
+            hideBadge: true,
+            label: 'Mężczyzna',
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 1,
+        max: 120,
+      },
+      {
+        type: 'numberInput',
+        name: 'weight',
+        label: 'Masa ciała (kg)',
+        min: 1,
+        max: 250,
+      },
+      {
+        type: 'numberInput',
+        name: 'creatinine',
+        label: 'Stężenie kreatyniny (mg/dl)',
+        min: 0.01,
+        max: 100,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const age: number = parseFloat(formValues['age']);
+      const weight: number = parseFloat(formValues['weight']);
+      const creatinine: number = parseFloat(formValues['creatinine']);
+      const gender: string = formValues['gender'];
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>eGFR</strong> – szacowany klirens kreatyniny (w ml/min),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>A</strong> – wiek pacjenta (w latach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>M</strong> – masa ciała pacjenta (w kilogramach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>C</strong> – stężenie kreatyniny w surowicy krwi (w mg/dl).
-  //           </ListItem>
-  //         </UnorderedList>
+      if (!age || !weight || !creatinine || !gender) {
+        return ['0 ml/min', 'Uzupełnij wszystkie dane.'];
+      }
 
-  //         <br />
-  //         <Text>
-  //           W przypadku kobiet otrzymany wynik należy pomnożyć przez współczynnik{' '}
-  //           <strong>0,85</strong>, co pozwala uwzględnić fizjologicznie niższą
-  //           masę mięśniową w porównaniu do mężczyzn.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'National Kidney Foundation',
-  //         title: 'Cockcroft-Gault Formula',
-  //         dateOfAccess: '02.10.2024',
-  //         link: 'https://www.kidney.org/professionals/kdoqi/gfr_calculatorCoc',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 1,
-  //           max: 120,
-  //         },
-  //         {
-  //           id: 'weight',
-  //           label: 'Masa ciała (kg)',
-  //           min: 1,
-  //           max: 250,
-  //         },
-  //         {
-  //           id: 'creatinine',
-  //           label: 'Stężenie kreatyniny (mg/dl)',
-  //           min: 0.01,
-  //           max: 100,
-  //         },
-  //       ],
+      let result: number = ((140 - age) * weight) / (creatinine * 72);
+      if (gender === 'female') {
+        result = result * 0.85;
+      }
+      const formattedResult: string = `${result.toFixed(2)} ml/min`;
+      const interpretation: string = 'Klirens kreatyniny.';
 
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'female',
-  //               value: 0.85,
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'man',
-  //               value: 1,
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'ml/min',
+      return [formattedResult, interpretation];
+    },
+  },
 
-  //     getResult: () => {
-  //       const age: number = parseFloat(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const weight: number = parseFloat(
-  //         (document.getElementById('weight') as HTMLInputElement).value,
-  //       );
-  //       const creatinine: number = parseFloat(
-  //         (document.getElementById('creatinine') as HTMLInputElement).value,
-  //       );
-  //       const femaleCheckbox = document.getElementById(
-  //         'female',
-  //       ) as HTMLInputElement;
-  //       const isWoman: boolean =
-  //         femaleCheckbox && femaleCheckbox.checked ? true : false;
+  {
+    id: 22,
+    name: 'Wskaźnik FIB-4',
+    urlPath: '/wskaznik-fib-4',
+    category: 'hepatologia',
+    description: 'Ocenia stopień włóknienia wątroby.',
+    methodology: (
+      <>
+        <Text>
+          Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia
+          wątroby u pacjentów z chorobami wątroby, takimi jak wirusowe zapalenie
+          wątroby typu C lub alkoholowe uszkodzenie wątroby. Wartość FIB-4 jest
+          obliczana na podstawie wieku pacjenta, stężenia enzymów wątrobowych
+          (ALT i AST) oraz liczby płytek krwi.
+        </Text>
 
-  //       let result: number = ((140 - age) * weight) / (creatinine * 72);
-  //       if (isWoman) result = result * 0.85;
+        <br />
+        <MathJax>{'`FIB\\text{-}4 = (A * B) / (C * sqrt(D))`'}</MathJax>
+        <br />
 
-  //       return result;
-  //     },
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>A</strong> – wiek pacjenta (w latach),
+          </ListItem>
+          <ListItem>
+            <strong>B</strong> – aktywność AST (w U/l),
+          </ListItem>
+          <ListItem>
+            <strong>C</strong> – liczba płytek krwi (×10⁹/l),
+          </ListItem>
+          <ListItem>
+            <strong>D</strong> – aktywność ALT (w U/l).
+          </ListItem>
+        </UnorderedList>
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       return 'Klirens kreatyniny.';
-  //     },
-  //   },
+        <br />
+        <Text>
+          Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie
+          prawdopodobieństwo zaawansowanego włóknienia, natomiast wartość
+          poniżej <strong>1,45</strong> wskazuje na niskie ryzyko obecności
+          włóknienia.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Kalkulator FIB-4',
+        dateOfAccess: '03.10.2024',
+        link: 'https://www.mp.pl/gastrologia/skale/300695,fib-4',
+      },
+      {
+        id: 2,
+        author: 'remedium.md',
+        title: 'Wskaźnik FIB-4',
+        dateOfAccess: '03.10.2024',
+        link: 'https://remedium.md/kalkulatory/hepatologia/wska%C5%BAnik-fib-4-ocena-prawdopodobie%C5%84stwa-zw%C5%82%C3%B3knienia-w%C4%85troby',
+      },
+      {
+        id: 3,
+        author: 'Hepatitis C Online',
+        title: 'Fibrosis-4 (FIB-4) Calculator',
+        dateOfAccess: '03.10.2024',
+        link: 'https://www.hepatitisc.uw.edu/page/clinical-calculators/fib-4',
+      },
+    ],
+    form: [
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 1,
+        max: 120,
+      },
+      {
+        type: 'numberInput',
+        name: 'alt',
+        label: 'ALT',
+        min: 1,
+        max: 2500,
+      },
+      {
+        type: 'numberInput',
+        name: 'ast',
+        label: 'AST',
+        min: 1,
+        max: 2500,
+      },
+      {
+        type: 'numberInput',
+        name: 'platelet',
+        label: 'Liczba płytek krwi (x10⁹/l)',
+        min: 1,
+        max: 1000,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const age: number = parseFloat(formValues['age']);
+      const alt: number = parseFloat(formValues['alt']);
+      const ast: number = parseFloat(formValues['ast']);
+      const platelet: number = parseFloat(formValues['platelet']);
 
-  //   {
-  //     id: 22,
-  //     name: 'Wskaźnik FIB-4',
-  //     urlPath: '/wskaznik-fib-4',
-  //     category: 'hepatologia',
-  //     description: 'Ocenia stopień włóknienia wątroby.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Wskaźnik FIB-4 jest narzędziem służącym do oceny stopnia włóknienia
-  //           wątroby u pacjentów z chorobami wątroby, takimi jak wirusowe zapalenie
-  //           wątroby typu C lub alkoholowe uszkodzenie wątroby. Wartość FIB-4 jest
-  //           obliczana na podstawie wieku pacjenta, stężenia enzymów wątrobowych
-  //           (ALT i AST) oraz liczby płytek krwi.
-  //         </Text>
+      if (!age || !alt || !ast || !platelet) {
+        return ['0', 'Uzupełnij wszystkie dane.'];
+      }
 
-  //         <br />
-  //         <MathJax>{'`FIB\\text{-}4 = (A * B) / (C * sqrt(D))`'}</MathJax>
-  //         <br />
+      const result: number = (age * ast) / (platelet * Math.sqrt(alt));
+      const formattedResult: string = result.toFixed(2);
+      let interpretation: string = '';
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>A</strong> – wiek pacjenta (w latach),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>B</strong> – aktywność AST (w U/l),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>C</strong> – liczba płytek krwi (×10⁹/l),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>D</strong> – aktywność ALT (w U/l).
-  //           </ListItem>
-  //         </UnorderedList>
+      if (result > 3.25) {
+        interpretation = 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
+      } else if (result > 1.45 && result <= 3.25) {
+        interpretation =
+          'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.';
+      } else {
+        interpretation = 'Małe prawdopodobieństwo zaawansowanego włóknienia.';
+      }
 
-  //         <br />
-  //         <Text>
-  //           Wartość FIB-4 powyżej <strong>3,25</strong> sugeruje wysokie
-  //           prawdopodobieństwo zaawansowanego włóknienia, natomiast wartość
-  //           poniżej <strong>1,45</strong> wskazuje na niskie ryzyko obecności
-  //           włóknienia.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Kalkulator FIB-4',
-  //         dateOfAccess: '03.10.2024',
-  //         link: 'https://www.mp.pl/gastrologia/skale/300695,fib-4',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'remedium.md',
-  //         title: 'Wskaźnik FIB-4',
-  //         dateOfAccess: '03.10.2024',
-  //         link: 'https://remedium.md/kalkulatory/hepatologia/wska%C5%BAnik-fib-4-ocena-prawdopodobie%C5%84stwa-zw%C5%82%C3%B3knienia-w%C4%85troby',
-  //       },
-  //       {
-  //         id: 3,
-  //         author: 'Hepatitis C Online',
-  //         title: 'Fibrosis-4 (FIB-4) Calculator',
-  //         dateOfAccess: '03.10.2024',
-  //         link: 'https://www.hepatitisc.uw.edu/page/clinical-calculators/fib-4',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 1,
-  //           max: 120,
-  //         },
-  //         {
-  //           id: 'alt',
-  //           label: 'ALT',
-  //           min: 1,
-  //           max: 2500,
-  //         },
-  //         {
-  //           id: 'ast',
-  //           label: 'AST',
-  //           min: 1,
-  //           max: 2500,
-  //         },
-  //         {
-  //           id: 'platelet',
-  //           label: 'Liczba płytek krwi (x10⁹/l)',
-  //           min: 1,
-  //           max: 1000,
-  //         },
-  //       ],
-  //     },
+      return [formattedResult, interpretation];
+    },
+  },
 
-  //     getResult: () => {
-  //       const age: number = parseFloat(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const alt: number = parseFloat(
-  //         (document.getElementById('alt') as HTMLInputElement).value,
-  //       );
-  //       const ast: number = parseFloat(
-  //         (document.getElementById('ast') as HTMLInputElement).value,
-  //       );
-  //       const platelet: number = parseFloat(
-  //         (document.getElementById('platelet') as HTMLInputElement).value,
-  //       );
+  {
+    id: 23,
+    name: 'Skala Childa-Pugha',
+    urlPath: '/skala-childa-pugha',
+    category: 'hepatologia',
+    description:
+      'Określa stopień niewydolności wątroby i klasyfikację pacjenta do przeszczepu wątroby.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 7.12-1. Klasyfikacja Childa (zmodyfikowana przez Pugha) niewydolności wątroby',
+        dateOfAccess: '03.10.2024',
+        link: 'https://www.mp.pl/interna/table/B16.7.12-1.',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'encephalopathy',
+        label: 'Encefalopatia',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Nie ma',
+          },
+          {
+            value: 2,
+            label: 'Stopień 1–2',
+          },
+          {
+            value: 3,
+            label: 'Stopień 3–4',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'ascites',
+        label: 'Wodobrzusze',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Nie ma',
+          },
+          {
+            value: 2,
+            label: 'Umiarkowane',
+          },
+          {
+            value: 3,
+            label: 'Napięte',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'bilirubin',
+        label: 'Stężenie bilirubiny',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Poniżej 2mg/dl (34.2 µmol/l)',
+          },
+          {
+            value: 2,
+            label: '2-3mg/dl (34.2-51.3 µmol/l)',
+          },
+          {
+            value: 3,
+            label: 'Ponad 3mg/dl (51.3 µmol/l)',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'albumin',
+        label: 'Stężenie albuminy',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Powyżej 3.5 g/dl (35 g/l)',
+          },
+          {
+            value: 2,
+            label: '2.8-3.5 g/dl (28-35 g/l)',
+          },
+          {
+            value: 3,
+            label: 'Poniżej 2.8 g/dl (28 g/l)',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'prothrombinTime',
+        label: 'Czas protrombinowy / INR',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Poniżej 5 / 1,70',
+          },
+          {
+            value: 2,
+            label: '5–10 / 1,70–2,20',
+          },
+          {
+            value: 3,
+            label: 'Ponad 10 / 2,20',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //       const result: number = (age * ast) / (platelet * Math.sqrt(alt));
-  //       return result;
-  //     },
+      if (result >= 10) {
+        interpretation = 'Klasa C. Są wskazania do przeszczepu wątroby.';
+      } else if (result >= 7 && result < 10) {
+        interpretation = 'Klasa B. Są wskazania do przeszczepu wątroby.';
+      } else if (result < 7 && result > 0) {
+        interpretation = 'Klasa A. Nie ma wskazań do przeszczepu wątroby.';
+      } else {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      }
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       if (result > 3.25)
-  //         return 'Duże prawdopodobieństwo zaawansowanego włóknienia.';
-  //       if (result > 1.45)
-  //         return 'Umiarkowane prawdopodobieństwo zaawansowanego włóknienia. Warto przeprowadzić dodatkowe badania.';
-  //       return 'Małe prawdopodobieństwo zaawansowanego włóknienia.';
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
-  //   {
-  //     id: 23,
-  //     name: 'Skala Childa-Pugha',
-  //     urlPath: '/skala-childa-pugha',
-  //     category: 'hepatologia',
-  //     description:
-  //       'Określa stopień niewydolności wątroby i klasyfikację pacjenta do przeszczepu wątroby.',
+  {
+    id: 24,
+    name: 'Kalkulator SCORE2 / SCORE2-OP',
+    urlPath: '/kalkulator-score2',
+    category: 'kardiologia',
+    description: 'Ocenia ryzyko sercowo-naczyniowe dla populacji Polski.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski',
+        dateOfAccess: '14.10.2024',
+        link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
+      },
+      {
+        id: 2,
+        author: 'remedium.md',
+        title: 'Wskaźnik SCORE2 i SCORE2-OP',
+        dateOfAccess: '16.10.2024',
+        link: 'https://remedium.md/kalkulatory/kardiologia/wska%C5%BAnik-score2-i-score2-op-ocena-ryzyka-sercowo-naczyniowego',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'male',
+            hideBadge: true,
+            label: 'Mężczyzna',
+          },
+          {
+            value: 'female',
+            hideBadge: true,
+            label: 'Kobieta',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'smokingStatus',
+        label: 'Palenie papierosów',
+        radioInputs: [
+          {
+            value: 'smoking',
+            label: 'Tak',
+          },
+          {
+            value: 'nonSmoking',
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 40,
+        max: 89,
+      },
+      {
+        type: 'numberInput',
+        name: 'bloodPressure',
+        label: 'Ciśnienie tętnicze skurczowe (mm Hg)',
+        min: 100,
+        max: 179,
+      },
+      {
+        type: 'numberInput',
+        name: 'cholesterol',
+        label: 'Cholesterol nie-HDL (mg/dl)',
+        min: 116,
+        max: 265,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const age: number = parseFloat(formValues['age']);
+      const bloodPressure: number = parseFloat(formValues['bloodPressure']);
+      const cholesterol: number = parseFloat(formValues['cholesterol']);
+      const gender = formValues['gender'] as 'male' | 'female';
+      const smokingStatus = formValues['smokingStatus'] as
+        | 'smoking'
+        | 'nonSmoking';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Tabela 7.12-1. Klasyfikacja Childa (zmodyfikowana przez Pugha) niewydolności wątroby',
-  //         dateOfAccess: '03.10.2024',
-  //         link: 'https://www.mp.pl/interna/table/B16.7.12-1.',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Encefalopatia',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 1,
-  //               label: 'Nie ma',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 2,
-  //               label: 'Stopień 1–2',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 3,
-  //               label: 'Stopień 3–4',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Wodobrzusze',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 1,
-  //               label: 'Nie ma',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 2,
-  //               label: 'Umiarkowane',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 3,
-  //               label: 'Napięte',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Stężenie bilirubiny',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 1,
-  //               label: 'Poniżej 2mg/dl (34.2 µmol/l)',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 2,
-  //               label: '2-3mg/dl (34.2-51.3 µmol/l)',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 3,
-  //               label: 'Ponad 3mg/dl (51.3 µmol/l)',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Stężenie albuminy',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 1,
-  //               label: 'Powyżej 3.5 g/dl (35 g/l)',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 2,
-  //               label: '2.8-3.5 g/dl (28-35 g/l)',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 3,
-  //               label: 'Poniżej 2.8 g/dl (28 g/l)',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Czas protrombinowy / INR',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 1,
-  //               label: 'Poniżej 5 / 1,70',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 2,
-  //               label: '5–10 / 1,70–2,20',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 3,
-  //               label: 'Ponad 10 / 2,20',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      if (!age || !bloodPressure || !cholesterol || !gender || !smokingStatus) {
+        return ['0%', 'Uzupełnij wszystkie dane.'];
+      }
 
-  //     getResult: sumInputValues,
+      const getCholesterolGroup = (cholesterol: number) => {
+        if (cholesterol < 150) return 0;
+        if (cholesterol < 200) return 1;
+        if (cholesterol < 250) return 2;
+        return 3;
+      };
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       if (result >= 10) return 'Klasa C. Są wskazania do przeszczepu wątroby.';
-  //       if (result >= 7) return 'Klasa B. Są wskazania do przeszczepu wątroby.';
-  //       return 'Klasa A. Nie ma wskazań do przeszczepu wątroby.';
-  //     },
-  //   },
+      const getBloodPressureGroup = (bloodPressure: number) => {
+        if (bloodPressure < 120) return 0;
+        if (bloodPressure < 140) return 1;
+        if (bloodPressure < 160) return 2;
+        return 3;
+      };
 
-  //   {
-  //     id: 24,
-  //     name: 'Kalkulator SCORE2 / SCORE2-OP',
-  //     urlPath: '/kalkulator-score2',
-  //     category: 'kardiologia',
-  //     description: 'Ocenia ryzyko sercowo-naczyniowe dla populacji Polski.',
+      const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40;
+      const cholesterolGroup: number = getCholesterolGroup(cholesterol);
+      const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure);
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Kalkulator ryzyka sercowo-naczyniowego SCORE2 i SCORE2-OP dla populacji Polski',
-  //         dateOfAccess: '14.10.2024',
-  //         link: 'https://www.mp.pl/kalkulatory/288285,ocena-ryzyka-sercowo-naczyniowego',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'remedium.md',
-  //         title: 'Wskaźnik SCORE2 i SCORE2-OP',
-  //         dateOfAccess: '16.10.2024',
-  //         link: 'https://remedium.md/kalkulatory/kardiologia/wska%C5%BAnik-score2-i-score2-op-ocena-ryzyka-sercowo-naczyniowego',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 40,
-  //           max: 89,
-  //         },
-  //         {
-  //           id: 'bloodPressure',
-  //           label: 'Ciśnienie tętnicze skurczowe (mm Hg)',
-  //           min: 100,
-  //           max: 179,
-  //         },
-  //         {
-  //           id: 'cholesterol',
-  //           label: 'Cholesterol nie-HDL (mg/dl)',
-  //           min: 116,
-  //           max: 265,
-  //         },
-  //       ],
+      type Score2ValuesTable = {
+        female: GenderGroup;
+        male: GenderGroup;
+      };
 
-  //       radioGroups: [
-  //         {
-  //           id: 1,
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'man',
-  //               value: 'man',
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //             {
-  //               id: 'woman',
-  //               value: 'woman',
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 2,
-  //           label: 'Palenie papierosów',
-  //           radioInputs: [
-  //             {
-  //               id: 'smoking',
-  //               value: 'true',
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 2,
-  //               value: 'false',
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: '%',
+      type GenderGroup = {
+        nonSmoking: AgeGroups;
+        smoking: AgeGroups;
+      };
 
-  //     getResult: () => {
-  //       const age: number = parseInt(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40;
-  //       const bloodPressure: number = parseFloat(
-  //         (document.getElementById('bloodPressure') as HTMLInputElement).value,
-  //       );
-  //       const cholesterol: number = parseFloat(
-  //         (document.getElementById('cholesterol') as HTMLInputElement).value,
-  //       );
-  //       const manCheckbox = document.getElementById('man') as HTMLInputElement;
-  //       const gender: 'male' | 'female' = manCheckbox.checked ? 'male' : 'female';
-  //       const smokingCheckbox = document.getElementById(
-  //         'smoking',
-  //       ) as HTMLInputElement;
-  //       const smokingStatus: 'smoking' | 'nonSmoking' = smokingCheckbox.checked
-  //         ? 'smoking'
-  //         : 'nonSmoking';
+      type AgeGroups = {
+        [age: number]: number[][];
+      };
 
-  //       function getCholesterolGroup(cholesterol: number) {
-  //         if (cholesterol < 150) return 0;
-  //         if (cholesterol < 200) return 1;
-  //         if (cholesterol < 250) return 2;
-  //         return 3;
-  //       }
+      const score2ValuesTable: Score2ValuesTable = {
+        female: {
+          nonSmoking: {
+            40: [
+              [1, 1, 1, 1],
+              [1, 1, 1, 2],
+              [1, 2, 2, 2],
+              [2, 3, 3, 4],
+            ],
+            45: [
+              [1, 1, 2, 3],
+              [2, 2, 2, 2],
+              [2, 3, 3, 4],
+              [3, 4, 4, 5],
+            ],
+            50: [
+              [2, 2, 2, 3],
+              [3, 3, 3, 4],
+              [3, 4, 4, 5],
+              [5, 5, 6, 7],
+            ],
+            55: [
+              [3, 3, 4, 4],
+              [4, 4, 5, 5],
+              [5, 6, 7, 7],
+              [7, 8, 9, 10],
+            ],
+            60: [
+              [5, 5, 6, 6],
+              [6, 7, 7, 8],
+              [8, 9, 9, 10],
+              [11, 11, 12, 13],
+            ],
+            65: [
+              [8, 8, 8, 9],
+              [10, 10, 11, 11],
+              [12, 13, 14, 14],
+              [15, 16, 17, 18],
+            ],
+            70: [
+              [11, 12, 13, 14],
+              [14, 15, 16, 17],
+              [17, 18, 19, 20],
+              [21, 22, 24, 25],
+            ],
+            75: [
+              [18, 19, 20, 22],
+              [22, 23, 24, 25],
+              [25, 27, 28, 29],
+              [29, 31, 32, 34],
+            ],
+            80: [
+              [29, 31, 32, 34],
+              [32, 34, 36, 37],
+              [36, 38, 39, 41],
+              [40, 42, 44, 45],
+            ],
+            85: [
+              [44, 46, 48, 50],
+              [47, 49, 51, 52],
+              [50, 52, 54, 55],
+              [53, 55, 57, 58],
+            ],
+          },
+          smoking: {
+            40: [
+              [2, 2, 3, 3],
+              [3, 4, 4, 5],
+              [4, 5, 6, 7],
+              [6, 7, 9, 10],
+            ],
+            45: [
+              [3, 3, 4, 5],
+              [4, 5, 6, 6],
+              [6, 7, 8, 9],
+              [8, 10, 11, 13],
+            ],
+            50: [
+              [4, 5, 6, 6],
+              [6, 7, 8, 9],
+              [8, 9, 10, 12],
+              [11, 13, 14, 16],
+            ],
+            55: [
+              [6, 7, 8, 8],
+              [8, 9, 10, 11],
+              [11, 12, 14, 15],
+              [15, 16, 18, 20],
+            ],
+            60: [
+              [9, 10, 11, 11],
+              [12, 13, 14, 15],
+              [15, 16, 18, 19],
+              [20, 21, 23, 25],
+            ],
+            65: [
+              [13, 14, 14, 15],
+              [16, 17, 18, 19],
+              [21, 22, 23, 24],
+              [26, 27, 29, 30],
+            ],
+            70: [
+              [19, 20, 21, 22],
+              [23, 24, 26, 27],
+              [28, 29, 31, 33],
+              [33, 35, 37, 39],
+            ],
+            75: [
+              [26, 28, 29, 31],
+              [31, 32, 34, 36],
+              [35, 37, 39, 41],
+              [41, 43, 45, 47],
+            ],
+            80: [
+              [36, 38, 40, 41],
+              [40, 42, 44, 46],
+              [44, 46, 48, 50],
+              [49, 51, 53, 55],
+            ],
+            85: [
+              [49, 51, 52, 54],
+              [52, 53, 55, 57],
+              [55, 56, 58, 60],
+              [58, 59, 61, 63],
+            ],
+          },
+        },
+        male: {
+          nonSmoking: {
+            40: [
+              [1, 2, 2, 3],
+              [2, 2, 3, 4],
+              [3, 3, 4, 5],
+              [4, 5, 6, 7],
+            ],
+            45: [
+              [2, 2, 3, 4],
+              [3, 3, 4, 5],
+              [4, 5, 6, 7],
+              [5, 6, 8, 9],
+            ],
+            50: [
+              [3, 3, 4, 5],
+              [4, 5, 5, 6],
+              [5, 6, 7, 9],
+              [7, 8, 10, 11],
+            ],
+            55: [
+              [4, 5, 6, 7],
+              [6, 6, 7, 9],
+              [7, 8, 10, 11],
+              [9, 11, 12, 14],
+            ],
+            60: [
+              [6, 7, 8, 9],
+              [8, 9, 10, 11],
+              [10, 11, 13, 14],
+              [13, 14, 16, 18],
+            ],
+            65: [
+              [9, 10, 11, 12],
+              [11, 12, 13, 15],
+              [14, 15, 16, 18],
+              [17, 18, 20, 22],
+            ],
+            70: [
+              [12, 14, 15, 16],
+              [15, 17, 18, 20],
+              [19, 20, 22, 24],
+              [23, 25, 27, 29],
+            ],
+            75: [
+              [18, 20, 23, 26],
+              [21, 24, 27, 30],
+              [24, 27, 31, 34],
+              [28, 32, 35, 39],
+            ],
+            80: [
+              [26, 30, 35, 40],
+              [29, 33, 38, 44],
+              [31, 36, 42, 47],
+              [34, 40, 45, 51],
+            ],
+            85: [
+              [36, 43, 51, 58],
+              [38, 45, 53, 61],
+              [40, 47, 55, 63],
+              [42, 49, 57, 65],
+            ],
+          },
+          smoking: {
+            40: [
+              [3, 4, 5, 6],
+              [4, 5, 7, 8],
+              [6, 7, 9, 11],
+              [8, 10, 13, 16],
+            ],
+            45: [
+              [4, 5, 6, 7],
+              [6, 7, 8, 10],
+              [8, 9, 11, 14],
+              [10, 13, 15, 18],
+            ],
+            50: [
+              [6, 7, 8, 9],
+              [7, 9, 10, 12],
+              [10, 12, 14, 16],
+              [13, 15, 18, 21],
+            ],
+            55: [
+              [8, 9, 10, 12],
+              [10, 11, 13, 15],
+              [13, 15, 17, 19],
+              [16, 19, 21, 24],
+            ],
+            60: [
+              [10, 12, 13, 15],
+              [13, 15, 16, 18],
+              [16, 18, 20, 23],
+              [20, 23, 25, 28],
+            ],
+            65: [
+              [14, 15, 17, 18],
+              [17, 19, 20, 22],
+              [21, 23, 25, 27],
+              [25, 28, 30, 32],
+            ],
+            70: [
+              [18, 20, 22, 23],
+              [22, 24, 26, 28],
+              [27, 29, 32, 34],
+              [33, 35, 38, 41],
+            ],
+            75: [
+              [23, 26, 29, 33],
+              [27, 30, 34, 37],
+              [31, 34, 38, 43],
+              [35, 39, 44, 48],
+            ],
+            80: [
+              [29, 34, 39, 44],
+              [32, 37, 42, 48],
+              [35, 40, 46, 52],
+              [38, 44, 50, 56],
+            ],
+            85: [
+              [36, 43, 50, 58],
+              [38, 45, 52, 60],
+              [40, 47, 54, 62],
+              [41, 49, 56, 65],
+            ],
+          },
+        },
+      };
 
-  //       function getBloodPressureGroup(bloodPressure: number) {
-  //         if (bloodPressure < 120) return 0;
-  //         if (bloodPressure < 140) return 1;
-  //         if (bloodPressure < 160) return 2;
-  //         return 3;
-  //       }
+      const result: number =
+        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][
+          cholesterolGroup
+        ];
 
-  //       const cholesterolGroup: number = getCholesterolGroup(cholesterol);
-  //       const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure);
+      let interpretation = '';
 
-  //       type Score2ValuesTable = {
-  //         female: GenderGroup;
-  //         male: GenderGroup;
-  //       };
+      if (result === 0) {
+        interpretation = 'Uzupełnij wszystkie dane.';
+      } else if (age >= 70) {
+        if (result < 7.5) {
+          interpretation = 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.';
+        } else if (result < 15) {
+          interpretation = 'Duże ryzyko w skali SCORE2-OP.';
+        } else {
+          interpretation = 'Bardzo duże ryzyko w skali SCORE2-OP.';
+        }
+      } else if (age >= 50) {
+        if (result < 5) {
+          interpretation = 'Małe do umiarkowanego ryzyko w skali SCORE2.';
+        } else if (result < 10) {
+          interpretation = 'Duże ryzyko w skali SCORE2.';
+        } else {
+          interpretation = 'Bardzo duże ryzyko w skali SCORE2.';
+        }
+      } else {
+        if (result < 2.5) {
+          interpretation = 'Małe do umiarkowanego ryzyko w skali SCORE2.';
+        } else if (result < 7.5) {
+          interpretation = 'Duże ryzyko w skali SCORE2.';
+        } else {
+          interpretation = 'Bardzo duże ryzyko w skali SCORE2.';
+        }
+      }
 
-  //       type GenderGroup = {
-  //         nonSmoking: AgeGroups;
-  //         smoking: AgeGroups;
-  //       };
+      return [`${result}%`, interpretation];
+    },
+  },
 
-  //       type AgeGroups = {
-  //         [age: number]: number[][];
-  //       };
+  {
+    id: 25,
+    name: 'Prognozowany wzrost dziecka',
+    urlPath: '/prognozowany-wzrost-dziecka',
+    category: 'antropometria',
+    description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
+    methodology: (
+      <>
+        <Text>
+          Prognozowany wzrost dziecka można oszacować na podstawie wzrostu
+          rodziców, korzystając z uproszczonego wzoru pediatrycznego. Pozwala on
+          orientacyjnie określić, jaki wzrost dziecko może osiągnąć w wieku
+          dorosłym.
+        </Text>
 
-  //       const score2ValuesTable: Score2ValuesTable = {
-  //         female: {
-  //           nonSmoking: {
-  //             40: [
-  //               [1, 1, 1, 1],
-  //               [1, 1, 1, 2],
-  //               [1, 2, 2, 2],
-  //               [2, 3, 3, 4],
-  //             ],
-  //             45: [
-  //               [1, 1, 2, 3],
-  //               [2, 2, 2, 2],
-  //               [2, 3, 3, 4],
-  //               [3, 4, 4, 5],
-  //             ],
-  //             50: [
-  //               [2, 2, 2, 3],
-  //               [3, 3, 3, 4],
-  //               [3, 4, 4, 5],
-  //               [5, 5, 6, 7],
-  //             ],
-  //             55: [
-  //               [3, 3, 4, 4],
-  //               [4, 4, 5, 5],
-  //               [5, 6, 7, 7],
-  //               [7, 8, 9, 10],
-  //             ],
-  //             60: [
-  //               [5, 5, 6, 6],
-  //               [6, 7, 7, 8],
-  //               [8, 9, 9, 10],
-  //               [11, 11, 12, 13],
-  //             ],
-  //             65: [
-  //               [8, 8, 8, 9],
-  //               [10, 10, 11, 11],
-  //               [12, 13, 14, 14],
-  //               [15, 16, 17, 18],
-  //             ],
-  //             70: [
-  //               [11, 12, 13, 14],
-  //               [14, 15, 16, 17],
-  //               [17, 18, 19, 20],
-  //               [21, 22, 24, 25],
-  //             ],
-  //             75: [
-  //               [18, 19, 20, 22],
-  //               [22, 23, 24, 25],
-  //               [25, 27, 28, 29],
-  //               [29, 31, 32, 34],
-  //             ],
-  //             80: [
-  //               [29, 31, 32, 34],
-  //               [32, 34, 36, 37],
-  //               [36, 38, 39, 41],
-  //               [40, 42, 44, 45],
-  //             ],
-  //             85: [
-  //               [44, 46, 48, 50],
-  //               [47, 49, 51, 52],
-  //               [50, 52, 54, 55],
-  //               [53, 55, 57, 58],
-  //             ],
-  //           },
-  //           smoking: {
-  //             40: [
-  //               [2, 2, 3, 3],
-  //               [3, 4, 4, 5],
-  //               [4, 5, 6, 7],
-  //               [6, 7, 9, 10],
-  //             ],
-  //             45: [
-  //               [3, 3, 4, 5],
-  //               [4, 5, 6, 6],
-  //               [6, 7, 8, 9],
-  //               [8, 10, 11, 13],
-  //             ],
-  //             50: [
-  //               [4, 5, 6, 6],
-  //               [6, 7, 8, 9],
-  //               [8, 9, 10, 12],
-  //               [11, 13, 14, 16],
-  //             ],
-  //             55: [
-  //               [6, 7, 8, 8],
-  //               [8, 9, 10, 11],
-  //               [11, 12, 14, 15],
-  //               [15, 16, 18, 20],
-  //             ],
-  //             60: [
-  //               [9, 10, 11, 11],
-  //               [12, 13, 14, 15],
-  //               [15, 16, 18, 19],
-  //               [20, 21, 23, 25],
-  //             ],
-  //             65: [
-  //               [13, 14, 14, 15],
-  //               [16, 17, 18, 19],
-  //               [21, 22, 23, 24],
-  //               [26, 27, 29, 30],
-  //             ],
-  //             70: [
-  //               [19, 20, 21, 22],
-  //               [23, 24, 26, 27],
-  //               [28, 29, 31, 33],
-  //               [33, 35, 37, 39],
-  //             ],
-  //             75: [
-  //               [26, 28, 29, 31],
-  //               [31, 32, 34, 36],
-  //               [35, 37, 39, 41],
-  //               [41, 43, 45, 47],
-  //             ],
-  //             80: [
-  //               [36, 38, 40, 41],
-  //               [40, 42, 44, 46],
-  //               [44, 46, 48, 50],
-  //               [49, 51, 53, 55],
-  //             ],
-  //             85: [
-  //               [49, 51, 52, 54],
-  //               [52, 53, 55, 57],
-  //               [55, 56, 58, 60],
-  //               [58, 59, 61, 63],
-  //             ],
-  //           },
-  //         },
-  //         male: {
-  //           nonSmoking: {
-  //             40: [
-  //               [1, 2, 2, 3],
-  //               [2, 2, 3, 4],
-  //               [3, 3, 4, 5],
-  //               [4, 5, 6, 7],
-  //             ],
-  //             45: [
-  //               [2, 2, 3, 4],
-  //               [3, 3, 4, 5],
-  //               [4, 5, 6, 7],
-  //               [5, 6, 8, 9],
-  //             ],
-  //             50: [
-  //               [3, 3, 4, 5],
-  //               [4, 5, 5, 6],
-  //               [5, 6, 7, 9],
-  //               [7, 8, 10, 11],
-  //             ],
-  //             55: [
-  //               [4, 5, 6, 7],
-  //               [6, 6, 7, 9],
-  //               [7, 8, 10, 11],
-  //               [9, 11, 12, 14],
-  //             ],
-  //             60: [
-  //               [6, 7, 8, 9],
-  //               [8, 9, 10, 11],
-  //               [10, 11, 13, 14],
-  //               [13, 14, 16, 18],
-  //             ],
-  //             65: [
-  //               [9, 10, 11, 12],
-  //               [11, 12, 13, 15],
-  //               [14, 15, 16, 18],
-  //               [17, 18, 20, 22],
-  //             ],
-  //             70: [
-  //               [12, 14, 15, 16],
-  //               [15, 17, 18, 20],
-  //               [19, 20, 22, 24],
-  //               [23, 25, 27, 29],
-  //             ],
-  //             75: [
-  //               [18, 20, 23, 26],
-  //               [21, 24, 27, 30],
-  //               [24, 27, 31, 34],
-  //               [28, 32, 35, 39],
-  //             ],
-  //             80: [
-  //               [26, 30, 35, 40],
-  //               [29, 33, 38, 44],
-  //               [31, 36, 42, 47],
-  //               [34, 40, 45, 51],
-  //             ],
-  //             85: [
-  //               [36, 43, 51, 58],
-  //               [38, 45, 53, 61],
-  //               [40, 47, 55, 63],
-  //               [42, 49, 57, 65],
-  //             ],
-  //           },
-  //           smoking: {
-  //             40: [
-  //               [3, 4, 5, 6],
-  //               [4, 5, 7, 8],
-  //               [6, 7, 9, 11],
-  //               [8, 10, 13, 16],
-  //             ],
-  //             45: [
-  //               [4, 5, 6, 7],
-  //               [6, 7, 8, 10],
-  //               [8, 9, 11, 14],
-  //               [10, 13, 15, 18],
-  //             ],
-  //             50: [
-  //               [6, 7, 8, 9],
-  //               [7, 9, 10, 12],
-  //               [10, 12, 14, 16],
-  //               [13, 15, 18, 21],
-  //             ],
-  //             55: [
-  //               [8, 9, 10, 12],
-  //               [10, 11, 13, 15],
-  //               [13, 15, 17, 19],
-  //               [16, 19, 21, 24],
-  //             ],
-  //             60: [
-  //               [10, 12, 13, 15],
-  //               [13, 15, 16, 18],
-  //               [16, 18, 20, 23],
-  //               [20, 23, 25, 28],
-  //             ],
-  //             65: [
-  //               [14, 15, 17, 18],
-  //               [17, 19, 20, 22],
-  //               [21, 23, 25, 27],
-  //               [25, 28, 30, 32],
-  //             ],
-  //             70: [
-  //               [18, 20, 22, 23],
-  //               [22, 24, 26, 28],
-  //               [27, 29, 32, 34],
-  //               [33, 35, 38, 41],
-  //             ],
-  //             75: [
-  //               [23, 26, 29, 33],
-  //               [27, 30, 34, 37],
-  //               [31, 34, 38, 43],
-  //               [35, 39, 44, 48],
-  //             ],
-  //             80: [
-  //               [29, 34, 39, 44],
-  //               [32, 37, 42, 48],
-  //               [35, 40, 46, 52],
-  //               [38, 44, 50, 56],
-  //             ],
-  //             85: [
-  //               [36, 43, 50, 58],
-  //               [38, 45, 52, 60],
-  //               [40, 47, 54, 62],
-  //               [41, 49, 56, 65],
-  //             ],
-  //           },
-  //         },
-  //       };
+        <br />
+        <MathJax>{'`W = (M + O \\pm 13) / 2`'}</MathJax>
+        <br />
 
-  //       const risk: number =
-  //         score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][
-  //           cholesterolGroup
-  //         ];
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>W</strong> – prognozowany wzrost dziecka (w cm),
+          </ListItem>
+          <ListItem>
+            <strong>M</strong> – wzrost matki (w cm),
+          </ListItem>
+          <ListItem>
+            <strong>O</strong> – wzrost ojca (w cm),
+          </ListItem>
+          <ListItem>
+            <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku
+            chłopców, odejmij <strong>13 cm</strong> w przypadku dziewczynek.
+          </ListItem>
+        </UnorderedList>
 
-  //       return risk;
-  //     },
+        <br />
+        <Text>
+          Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości
+          i nie uwzględnia czynników genetycznych, środowiskowych oraz
+          zdrowotnych, które również wpływają na wzrost dziecka.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title: 'Jak prognozuje się wzrost chłopców i dziewcząt?',
+        dateOfAccess: '17.10.2024',
+        link: 'https://www.mp.pl/pacjent/pediatria/lista/122911,jak-prognozuje-sie-wzrost-chlopcow-i-dziewczat',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'male',
+            hideBadge: true,
+            label: 'Chłopiec',
+          },
+          {
+            value: 'female',
+            hideBadge: true,
+            label: 'Dziewczynka',
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'mothersHeight',
+        label: 'Wzrost matki (w cm)',
+        min: 140,
+        max: 220,
+      },
+      {
+        type: 'numberInput',
+        name: 'fathersHeight',
+        label: 'Wzrost ojca (w cm)',
+        min: 140,
+        max: 220,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const mothersHeight: number = parseInt(formValues['mothersHeight']);
+      const fathersHeight: number = parseInt(formValues['fathersHeight']);
+      const gender = formValues['gender'] as 'male' | 'female';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
+      if (!mothersHeight || !fathersHeight || !gender) {
+        return ['0 cm', 'Uzupełnij wszystkie dane.'];
+      }
 
-  //       const age: number = parseInt(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
-  //       if (age >= 70) {
-  //         if (result < 7.5)
-  //           return 'Małe do umiarkowanego ryzyko w skali SCORE2-OP.';
-  //         if (result < 15) return 'Duże ryzyko w skali SCORE2-OP.';
-  //         return 'Bardzo duże ryzyko w skali SCORE2-OP.';
-  //       }
-  //       if (age >= 50) {
-  //         if (result < 5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.';
-  //         if (result < 10) return 'Duże ryzyko w skali SCORE2.';
-  //         return 'Bardzo duże ryzyko w skali SCORE2.';
-  //       }
-  //       if (result < 2.5) return 'Małe do umiarkowanego ryzyko w skali SCORE2.';
-  //       if (result < 7.5) return 'Duże ryzyko w skali SCORE2.';
-  //       return 'Bardzo duże ryzyko w skali SCORE2.';
-  //     },
-  //   },
+      const result: number =
+        gender === 'male'
+          ? (mothersHeight + fathersHeight + 13) / 2
+          : (mothersHeight + fathersHeight - 13) / 2;
 
-  //   {
-  //     id: 25,
-  //     name: 'Prognozowany wzrost dziecka',
-  //     urlPath: '/prognozowany-wzrost-dziecka',
-  //     category: 'antropometria',
-  //     description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Prognozowany wzrost dziecka można oszacować na podstawie wzrostu
-  //           rodziców, korzystając z uproszczonego wzoru pediatrycznego. Pozwala on
-  //           orientacyjnie określić, jaki wzrost dziecko może osiągnąć w wieku
-  //           dorosłym.
-  //         </Text>
+      const interpretation = 'Przewidywany wzrost dziecka.';
 
-  //         <br />
-  //         <MathJax>{'`W = (M + O \\pm 13) / 2`'}</MathJax>
-  //         <br />
+      return [`${result} cm`, interpretation];
+    },
+  },
 
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>W</strong> – prognozowany wzrost dziecka (w cm),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>M</strong> – wzrost matki (w cm),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>O</strong> – wzrost ojca (w cm),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>± 13</strong> – dodaj <strong>13 cm</strong> w przypadku
-  //             chłopców, odejmij <strong>13 cm</strong> w przypadku dziewczynek.
-  //           </ListItem>
-  //         </UnorderedList>
+  {
+    id: 26,
+    name: 'Kwestionariusz MDQ',
+    urlPath: '/kwestionariusz-mdq',
+    category: 'psychiatria',
+    description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
 
-  //         <br />
-  //         <Text>
-  //           Należy pamiętać, że wzór ten dostarcza jedynie orientacyjnej wartości
-  //           i nie uwzględnia czynników genetycznych, środowiskowych oraz
-  //           zdrowotnych, które również wpływają na wzrost dziecka.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title: 'Jak prognozuje się wzrost chłopców i dziewcząt?',
-  //         dateOfAccess: '17.10.2024',
-  //         link: 'https://www.mp.pl/pacjent/pediatria/lista/122911,jak-prognozuje-sie-wzrost-chlopcow-i-dziewczat',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'mothersHeight',
-  //           label: 'Wzrost matki (w cm)',
-  //           min: 140,
-  //           max: 220,
-  //         },
-  //         {
-  //           id: 'fathersHeight',
-  //           label: 'Wzrost ojca (w cm)',
-  //           min: 140,
-  //           max: 220,
-  //         },
-  //       ],
+    sources: [
+      {
+        id: 1,
+        author: 'PsychiatriaPlus.pl (dr hab. n. med. Jarosław Jóźwiak)',
+        title: 'Kwestionariusz Zaburzeń Nastroju (MDQ)',
+        dateOfAccess: '20.10.2024',
+        link: 'https://psychiatraplus.pl/wp-content/uploads/2022/10/Kwestionariusz-Zaburzen-Nastroju-MDQ.pdf',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'euphoria',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'nervousness',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'confidence',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'sleep',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'talkativeness',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'rushOfThoughts',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'concentration',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'energy',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'activity',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'sociability',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'sexuality',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'riskyBehavior',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'moneySpending',
+        label:
+          'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
+        radioInputs: [
+          {
+            value: 1,
+            label: 'Tak',
+          },
+          {
+            value: 0,
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'happenedAtTheSameTime',
+        label:
+          'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
+        radioInputs: [
+          {
+            value: 'true',
+            label: 'Tak',
+          },
+          {
+            value: 'false',
+            label: 'Nie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'problem',
+        label:
+          'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
+        radioInputs: [
+          {
+            value: 'no',
+            label: 'Bez problemu',
+          },
+          {
+            value: 'small',
+            label: 'Mały problem',
+          },
+          {
+            value: 'medium',
+            label: 'Średni problem',
+          },
+          {
+            value: 'big',
+            label: 'Duży problem',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      const happenedAtTheSameTime: boolean =
+        formValues['happenedAtTheSameTime'] === 'true';
+      const problem: string = formValues['problem'];
+      const isProblem: boolean =
+        problem === 'medium' || problem === 'big' ? true : false;
+      let interpretation: string = '';
 
-  //       radioGroups: [
-  //         {
-  //           id: 1,
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'male',
-  //               value: 'male',
-  //               hideBadge: true,
-  //               label: 'Chłopiec',
-  //             },
-  //             {
-  //               id: 'female',
-  //               value: 'female',
-  //               hideBadge: true,
-  //               label: 'Dziewczynka',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'cm',
+      if (result >= 7 && happenedAtTheSameTime && isProblem) {
+        interpretation =
+          'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.';
+      } else {
+        interpretation =
+          'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.';
+      }
 
-  //     getResult: () => {
-  //       const mothersHeight: number = parseInt(
-  //         (document.getElementById('mothersHeight') as HTMLInputElement).value,
-  //       );
-  //       const fathersHeight: number = parseInt(
-  //         (document.getElementById('fathersHeight') as HTMLInputElement).value,
-  //       );
-  //       const maleCheckbox = document.getElementById('male') as HTMLInputElement;
-  //       const gender: string = maleCheckbox.checked ? 'male' : 'female';
+      return [result, interpretation];
+    },
+  },
 
-  //       let childsHeight: number;
-  //       if (gender === 'male') {
-  //         childsHeight = (mothersHeight + fathersHeight + 13) / 2;
-  //       } else {
-  //         childsHeight = (mothersHeight + fathersHeight - 13) / 2;
-  //       }
+  {
+    id: 27,
+    name: 'Test AUDIT',
+    urlPath: '/test-audit',
+    category: 'używki',
+    description: 'Ocenia stopień uzależnienia od alkoholu.',
 
-  //       return childsHeight;
-  //     },
+    sources: [
+      {
+        id: 1,
+        author:
+          'Centrum Dobrej Terapii (mgr Maria Kaleńczuk, mgr Teresa Janus)',
+        title: 'Czy jesteś uzależniony od alkoholu – test AUDIT',
+        dateOfAccess: '22.10.2024',
+        link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
+      },
+      {
+        id: 2,
+        author: 'Państwowa Agencja Rozwiązywania Problemów Alkoholowych',
+        title: 'Autodiagnoza - Jak ocenić swoje picie?',
+        dateOfAccess: '22.10.2024',
+        link: 'https://www.parpa.pl/images/autodiagnoza_20_10_2020_1.pdf',
+      },
+    ],
+    form: [
+      {
+        type: 'radioGroup',
+        name: 'gender',
+        label: 'Płeć',
+        radioInputs: [
+          {
+            value: 'male',
+            label: 'Mężczyzna',
+            hideBadge: true,
+          },
+          {
+            value: 'female',
+            label: 'Kobieta',
+            hideBadge: true,
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'frequency',
+        label: 'Jak często pacjent pije napoje alkoholowe?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Od 2 do 4 razy w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Od 2 do 3 razy w tygodniu',
+          },
+          {
+            value: 4,
+            label: '4 razy w tygodniu lub częściej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'amount',
+        label:
+          'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
+        radioInputs: [
+          {
+            value: 0,
+            label: '1 lub 2 porcje',
+          },
+          {
+            value: 1,
+            label: '3 lub 4 porcje',
+          },
+          {
+            value: 2,
+            label: '5 lub 6 porcji',
+          },
+          {
+            value: 3,
+            label: 'Od 7 do 9 porcji',
+          },
+          {
+            value: 4,
+            label: '10 porcji lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'amountPerDay',
+        label:
+          'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'inabilityToStop',
+        label:
+          'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'inappropriateBehavior',
+        label:
+          'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'morningDrinking',
+        label:
+          'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'remorse',
+        label:
+          'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'memory',
+        label:
+          'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nigdy',
+          },
+          {
+            value: 1,
+            label: 'Rzadziej niż raz w miesiącu',
+          },
+          {
+            value: 2,
+            label: 'Około raz w miesiącu',
+          },
+          {
+            value: 3,
+            label: 'Około raz w tygodniu',
+          },
+          {
+            value: 4,
+            label: 'Codziennie lub prawie codziennie',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'injury',
+        label:
+          'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie',
+          },
+          {
+            value: 2,
+            label: 'Tak, ale nie w ostatnim roku',
+          },
+          {
+            value: 4,
+            label: 'Tak, w ostatnim roku',
+          },
+        ],
+      },
+      {
+        type: 'radioGroup',
+        name: 'signaling',
+        label:
+          'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
+        radioInputs: [
+          {
+            value: 0,
+            label: 'Nie',
+          },
+          {
+            value: 2,
+            label: 'Tak, ale nie w ostatnim roku',
+          },
+          {
+            value: 4,
+            label: 'Tak, w ostatnim roku',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result = sumValues(formValues);
+      const gender = formValues['gender'];
+      let interpretation: string = '';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       return 'Przewidywany wzrost dziecka.';
-  //     },
-  //   },
+      const lowRisk: string = 'Picie o niskim poziomie ryzyka.';
+      const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.';
+      const highRisk: string = 'Szkodliwe picie alkoholu.';
+      const criticalRisk: string = 'Podejrzenie uzależnienia od alkoholu.';
 
-  //   {
-  //     id: 26,
-  //     name: 'Kwestionariusz MDQ',
-  //     urlPath: '/kwestionariusz-mdq',
-  //     category: 'psychiatria',
-  //     description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
+      if (result > 19) {
+        interpretation = criticalRisk;
+      } else if (result > 15 && result <= 19) {
+        interpretation = highRisk;
+      } else if (
+        (gender === 'male' && result > 7 && result <= 15) ||
+        (gender === 'female' && result > 6 && result <= 15)
+      ) {
+        interpretation = mediumRisk;
+      } else {
+        interpretation = lowRisk;
+      }
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'PsychiatriaPlus.pl (dr hab. n. med. Jarosław Jóźwiak)',
-  //         title: 'Kwestionariusz Zaburzeń Nastroju (MDQ)',
-  //         dateOfAccess: '20.10.2024',
-  //         link: 'https://psychiatraplus.pl/wp-content/uploads/2022/10/Kwestionariusz-Zaburzen-Nastroju-MDQ.pdf',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 80,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
-  //           radioInputs: [
-  //             {
-  //               id: 81,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 82,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 90,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
-  //           radioInputs: [
-  //             {
-  //               id: 91,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 92,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 100,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
-  //           radioInputs: [
-  //             {
-  //               id: 101,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 102,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 110,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
-  //           radioInputs: [
-  //             {
-  //               id: 111,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 112,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 120,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
-  //           radioInputs: [
-  //             {
-  //               id: 121,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 122,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 130,
-  //           label:
-  //             'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
-  //           radioInputs: [
-  //             {
-  //               id: 131,
-  //               value: 1,
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 132,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 14,
-  //           label:
-  //             'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
-  //           radioInputs: [
-  //             {
-  //               id: 'happenedAtTheSameTime',
-  //               value: 'happenedAtTheSameTime',
-  //               label: 'Tak',
-  //             },
-  //             {
-  //               id: 'notApplicable',
-  //               value: 'notApplicable',
-  //               label: 'Nie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 'problem',
-  //           label:
-  //             'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
-  //           radioInputs: [
-  //             {
-  //               id: 'no',
-  //               value: 'no',
-  //               label: 'Bez problemu',
-  //             },
-  //             {
-  //               id: 'small',
-  //               value: 'small',
-  //               label: 'Mały problem',
-  //             },
-  //             {
-  //               id: 'medium',
-  //               value: 'medium',
-  //               label: 'Średni problem',
-  //             },
-  //             {
-  //               id: 'big',
-  //               value: 'big',
-  //               label: 'Duży problem',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       const happenedCheckbox = document.getElementById(
-  //         'happenedAtTheSameTime',
-  //       ) as HTMLInputElement;
-  //       const happenedAtTheSameTime: boolean =
-  //         happenedCheckbox && happenedCheckbox.checked ? true : false;
-
-  //       const problem = document.querySelector(
-  //         'input[name="problem"]:checked',
-  //       ) as HTMLInputElement;
-  //       const isProblem: boolean =
-  //         problem && (problem.value === 'medium' || problem.value === 'big')
-  //           ? true
-  //           : false;
-
-  //       if (result >= 7 && happenedAtTheSameTime && isProblem) {
-  //         return 'Diagnostyka w kierunku choroby dwubiegunowej jest konieczna.';
-  //       }
-  //       return 'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.';
-  //     },
-  //   },
-
-  //   {
-  //     id: 27,
-  //     name: 'Test AUDIT',
-  //     urlPath: '/test-audit',
-  //     category: 'używki',
-  //     description: 'Ocenia stopień uzależnienia od alkoholu.',
-
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author:
-  //           'Centrum Dobrej Terapii (mgr Maria Kaleńczuk, mgr Teresa Janus)',
-  //         title: 'Czy jesteś uzależniony od alkoholu – test AUDIT',
-  //         dateOfAccess: '22.10.2024',
-  //         link: 'https://www.centrumdobrejterapii.pl/materialy/czy-jestes-uzalezniony-od-alkoholu-test-audit/',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'Państwowa Agencja Rozwiązywania Problemów Alkoholowych',
-  //         title: 'Autodiagnoza - Jak ocenić swoje picie?',
-  //         dateOfAccess: '22.10.2024',
-  //         link: 'https://www.parpa.pl/images/autodiagnoza_20_10_2020_1.pdf',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'male',
-  //               value: 'male',
-  //               label: 'Mężczyzna',
-  //             },
-  //             {
-  //               id: 'female',
-  //               value: 'female',
-  //               label: 'Kobieta',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 10,
-  //           label: 'Jak często pacjent pije napoje alkoholowe?',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: 'Raz w miesiącu',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'Od 2 do 4 razy w miesiącu',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 3,
-  //               label: 'Od 2 do 3 razy w tygodniu',
-  //             },
-  //             {
-  //               id: 15,
-  //               value: 4,
-  //               label: '4 razy w tygodniu lub częściej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label:
-  //             'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: '1 lub 2 porcje',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: '3 lub 4 porcje',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: '5 lub 6 porcji',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 3,
-  //               label: 'Od 7 do 9 porcji',
-  //             },
-  //             {
-  //               id: 15,
-  //               value: 4,
-  //               label: '10 porcji lub więcej',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label:
-  //             'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 34,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 35,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label:
-  //             'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 44,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 45,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label:
-  //             'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 54,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 55,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label:
-  //             'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 63,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 64,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 65,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label:
-  //             'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 73,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 74,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 75,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 80,
-  //           label:
-  //             'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
-  //           radioInputs: [
-  //             {
-  //               id: 81,
-  //               value: 0,
-  //               label: 'Nigdy',
-  //             },
-  //             {
-  //               id: 82,
-  //               value: 1,
-  //               label: 'Rzadziej niż raz w miesiącu',
-  //             },
-  //             {
-  //               id: 83,
-  //               value: 2,
-  //               label: 'Około raz w miesiącu',
-  //             },
-  //             {
-  //               id: 84,
-  //               value: 3,
-  //               label: 'Około raz w tygodniu',
-  //             },
-  //             {
-  //               id: 85,
-  //               value: 4,
-  //               label: 'Codziennie lub prawie codziennie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 90,
-  //           label:
-  //             'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
-  //           radioInputs: [
-  //             {
-  //               id: 91,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //             {
-  //               id: 92,
-  //               value: 2,
-  //               label: 'Tak, ale nie w ostatnim roku',
-  //             },
-  //             {
-  //               id: 93,
-  //               value: 4,
-  //               label: 'Tak, w ostatnim roku',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 100,
-  //           label:
-  //             'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
-  //           radioInputs: [
-  //             {
-  //               id: 101,
-  //               value: 0,
-  //               label: 'Nie',
-  //             },
-  //             {
-  //               id: 102,
-  //               value: 2,
-  //               label: 'Tak, ale nie w ostatnim roku',
-  //             },
-  //             {
-  //               id: 103,
-  //               value: 4,
-  //               label: 'Tak, w ostatnim roku',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     getResult: sumInputValues,
-
-  //     getResultInterpretation: (result: number) => {
-  //       const sex: string = (
-  //         document.querySelector('input[name="sex"]:checked') as HTMLInputElement
-  //       )?.value;
-
-  //       const lowRisk: string = 'Picie o niskim poziomie ryzyka.';
-  //       const mediumRisk: string = 'Ryzykowne spożywanie alkoholu.';
-  //       const highRisk: string = 'Szkodliwe picie alkoholu.';
-  //       const criticalRisk: string = 'Podejrzenie uzależnienia od alkoholu.';
-
-  //       if (result > 19) return criticalRisk;
-  //       if (result > 15) return highRisk;
-  //       if (sex === 'male' && result > 7) return mediumRisk;
-  //       if (sex === 'female' && result > 6) return mediumRisk;
-  //       return lowRisk;
-  //     },
-  //   },
+      return [result, interpretation];
+    },
+  },
 
   //   {
   //     id: 28,
