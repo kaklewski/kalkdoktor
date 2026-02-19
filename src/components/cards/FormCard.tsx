@@ -67,7 +67,7 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                     />
                   );
 
-                case 'radioGroup':
+                case 'radioInput':
                   return (
                     <Controller
                       name={input.name}
@@ -81,11 +81,9 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                           onChange={field.onChange}
                           onBlur={field.onBlur}
                         >
-                          {input.radioInputs.map(
-                            (radio: any, index: number) => (
-                              <AppRadioInput key={index} {...radio} />
-                            ),
-                          )}
+                          {input.options.map((radio: any, index: number) => (
+                            <AppRadioInput key={index} {...radio} />
+                          ))}
                         </AppRadioGroup>
                       )}
                     />

@@ -22,7 +22,7 @@ type SourceType = {
   link: string;
 };
 
-type FormFieldType = NumberInputType | CheckboxType | RadioGroupType;
+type FormFieldType = NumberInputType | CheckboxType | RadioInputType;
 
 type NumberInputType = {
   type: 'numberInput';
@@ -40,14 +40,14 @@ type CheckboxType = {
   hideBadge?: boolean;
 };
 
-type RadioGroupType = {
-  type: 'radioGroup';
+type RadioInputType = {
+  type: 'radioInput';
   name: string;
   label: string;
-  radioInputs: RadioType[];
+  options: RadioOptionType[];
 };
 
-type RadioType = {
+type RadioOptionType = {
   value: number | string;
   label: string;
   hideBadge?: boolean;
@@ -57,7 +57,7 @@ export type {
   CalculatorType,
   CheckboxType,
   NumberInputType,
-  RadioGroupType,
-  RadioType,
+  RadioInputType as RadioGroupType,
+  RadioOptionType as RadioType,
   SourceType,
 };

@@ -3,7 +3,7 @@ import { forwardRef, ReactNode } from 'react';
 
 import { RadioGroupType } from '../../types/calculatorTypes';
 
-type AppRadioGroupProps = Omit<RadioGroupType, 'radioInputs'> & {
+type AppRadioGroupProps = Omit<RadioGroupType, 'options'> & {
   children: ReactNode;
   value?: string;
   onChange?: (value: string) => void;

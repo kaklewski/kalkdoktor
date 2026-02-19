@@ -105,10 +105,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mężczyzna',
@@ -120,10 +120,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'age',
         label: 'Wiek',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniej niż 65 lat',
@@ -214,10 +214,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'age',
         label: 'Wiek',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: '3 - 14 lat',
@@ -663,10 +663,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'eyeOpening',
         label: 'Otwieranie oczu',
-        radioInputs: [
+        options: [
           {
             value: 4,
             label: 'Spontaniczne',
@@ -686,10 +686,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'speechResponse',
         label: 'Odpowiedź słowna',
-        radioInputs: [
+        options: [
           {
             value: 5,
             label: 'Prawidłowa, pacjent jest w pełni zorientowany',
@@ -713,10 +713,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'motorResponse',
         label: 'Reakcja ruchowa',
-        radioInputs: [
+        options: [
           {
             value: 6,
             label: 'Na polecenie',
@@ -787,11 +787,11 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'interest',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczało',
@@ -811,11 +811,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'depression',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie smutku, przygnębienia lub beznadziejności?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczało',
@@ -835,11 +835,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'sleepProblems',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi kłopoty z zaśnięciem, przerywany sen albo zbyt długi sen?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczały',
@@ -859,11 +859,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'energy',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi uczucie zmęczenia lub brak energii?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczało',
@@ -883,11 +883,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'appetite',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi brak apetytu lub przejadanie się?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczały',
@@ -907,11 +907,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'selfEsteem',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi poczucie niezadowolenia z siebie lub uczucie, że jest do niczego albo że zawiódł/zawiodła siebie lub rodzinę?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczało',
@@ -931,11 +931,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'concentration',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi problemy ze skupieniem się, na przykład przy czytaniu gazety lub oglądaniu telewizji?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczały',
@@ -955,11 +955,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'movement',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczało pacjentowi spowolnienie albo niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczało',
@@ -979,11 +979,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'suicidalThoughts',
         label:
           'Jak często w ciągu ostatnich 2 tygodni dokuczały pacjentowi myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wcale nie dokuczały',
@@ -1416,10 +1416,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'heartRate',
         label: 'Tętno',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Poniżej 75',
@@ -1619,10 +1619,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'female',
             hideBadge: true,
@@ -1746,10 +1746,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'firstCigarette',
         label: 'Kiedy po przebudzeniu pacjent zapala pierwszego papierosa?',
-        radioInputs: [
+        options: [
           {
             value: 3,
             label: 'Do 5 minut',
@@ -1769,11 +1769,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'difficultyAvoidingSmoking',
         label:
           'Czy pacjent ma trudności z powstrzymaniem się od palenia w miejscach, gdzie jest to zabronione?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -1785,10 +1785,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'hardestCigarette',
         label: 'Z którego papierosa jest pacjentowi najtrudniej zrezygnować?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Z pierwszego rano',
@@ -1800,10 +1800,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'cigarettesPerDay',
         label: 'Ile papierosów pacjent wypala dziennie?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: '10 lub mniej',
@@ -1823,10 +1823,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'earlyMorningSmoking',
         label: 'Czy rano pacjent pali więcej papierosów niż w ciągu dnia?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -1838,11 +1838,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'smokingDuringIllness',
         label:
           'Czy pacjent pali papierosy nawet podczas choroby, gdy musi leżeć w łóżku?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -1888,10 +1888,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'exerciseTolerance',
         label: 'Wydolność wysiłkowa',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label:
@@ -1953,10 +1953,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'activityLevel',
         label: 'Aktywność fizyczna',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label:
@@ -2054,10 +2054,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'female',
             hideBadge: true,
@@ -2257,10 +2257,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'encephalopathy',
         label: 'Encefalopatia',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Nie ma',
@@ -2276,10 +2276,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'ascites',
         label: 'Wodobrzusze',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Nie ma',
@@ -2295,10 +2295,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'bilirubin',
         label: 'Stężenie bilirubiny',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Poniżej 2mg/dl (34.2 µmol/l)',
@@ -2314,10 +2314,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'albumin',
         label: 'Stężenie albuminy',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Powyżej 3.5 g/dl (35 g/l)',
@@ -2333,10 +2333,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'prothrombinTime',
         label: 'Czas protrombinowy / INR',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Poniżej 5 / 1,70',
@@ -2395,10 +2395,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'male',
             hideBadge: true,
@@ -2412,10 +2412,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'smokingStatus',
         label: 'Palenie papierosów',
-        radioInputs: [
+        options: [
           {
             value: 'smoking',
             label: 'Tak',
@@ -2842,10 +2842,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'male',
             hideBadge: true,
@@ -2910,11 +2910,11 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'euphoria',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był w takiej euforii, że inni uważali, że nie jest sobą lub był w takiej euforii, że wdał się z tego powodu w kłopoty?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -2926,11 +2926,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'nervousness',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był tak poirytowany, że krzyczał na ludzi lub wdawał się z nimi w kłótnie?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -2942,11 +2942,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'confidence',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i czuł się znacznie bardziej pewny siebie, niż zwykle?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -2958,11 +2958,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'sleep',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i sypiał znacznie mniej niż zwykle, ale nie było to problemem?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -2974,11 +2974,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'talkativeness',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej rozmowny lub mówił szybciej, niż zwykle?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -2990,11 +2990,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'rushOfThoughts',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał natłok myśli lub nie mógł zwolnić toku myśli?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3006,11 +3006,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'concentration',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i tak łatwo rozpraszał się rzeczami wokół, że miał problem z koncentracją i kontynuowaniem zadania?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3022,11 +3022,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'energy',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i miał znacznie więcej energii niż zazwyczaj?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3038,11 +3038,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'activity',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej aktywny lub robił znacznie więcej, niż zazwyczaj?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3054,11 +3054,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'sociability',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i znacznie bardziej niż zwykle udzielał się towarzysko, np. dzwonił do znajomych w środku nocy?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3070,11 +3070,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'sexuality',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i był znacznie bardziej zainteresowany seksem niż zazwyczaj?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3086,11 +3086,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'riskyBehavior',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i robił rzeczy nietypowe dla siebie lub takie, które inni uznawali za przesadne, głupie lub ryzykowne?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3102,11 +3102,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'moneySpending',
         label:
           'Czy kiedykolwiek zdarzyło się, że pacjent nie czuł się sobą i wydawanie pieniędzy przysporzyło jemu lub jego rodzinie kłopotów?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -3118,11 +3118,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'happenedAtTheSameTime',
         label:
           'Jeśli pacjent odpowiedział "tak" na 7 lub więcej pytań powyżej, czy kilka z powyższych objawów kiedykolwiek wystąpiło w tym samym czasie?',
-        radioInputs: [
+        options: [
           {
             value: 'true',
             label: 'Tak',
@@ -3134,11 +3134,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'problem',
         label:
           'Na ile problematyczne były dla pacjenta powyższe objawy, np. w pracy, rodzinie, zarabianiu pieniędzy, kłopotach z prawem lub wdawaniu się w kłótnie i bójki?',
-        radioInputs: [
+        options: [
           {
             value: 'no',
             label: 'Bez problemu',
@@ -3204,10 +3204,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'male',
             label: 'Mężczyzna',
@@ -3221,10 +3221,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'frequency',
         label: 'Jak często pacjent pije napoje alkoholowe?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3248,11 +3248,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'amount',
         label:
           'Ile standardowych porcji alkoholu pacjent wypija w typowym dniu, gdy spożywa alkohol? Jedna standardowa porcja to 10 g czystego alkoholu, np. 250 ml piwa o mocy 5%, 100 ml wina o mocy 12% lub 30 ml wódki o mocy 40%',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: '1 lub 2 porcje',
@@ -3276,11 +3276,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'amountPerDay',
         label:
           'Jak często pacjent wypija co najmniej 6 porcji alkoholu podczas jednego dnia?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3304,11 +3304,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'inabilityToStop',
         label:
           'Jak często w ostatnim roku pacjent nie mógł przerwać picia po jego rozpoczęciu?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3332,11 +3332,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'inappropriateBehavior',
         label:
           'Jak często w ciągu ostatniego roku z powodu picia pacjent zrobił coś niewłaściwego, niezgodnego z przyjętymi w jego środowisku normami postępowania?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3360,11 +3360,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'morningDrinking',
         label:
           'Jak często w ostatnim roku pacjent musiał napić się alkoholu rano, aby móc dojść do siebie po intensywnym piciu poprzedniego dnia?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3388,11 +3388,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'remorse',
         label:
           'Jak często w ostatnim roku pacjent miał poczucie winy lub wyrzuty sumienia po spożyciu alkoholu?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3416,11 +3416,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'memory',
         label:
           'Jak często w ostatnim roku z powodu picia pacjent nie mógł sobie przypomnieć, co zdarzyło się poprzedniego dnia?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nigdy',
@@ -3444,11 +3444,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'injury',
         label:
           'Czy pacjent lub ktoś inny kiedykolwiek doznał urazu fizycznego z powodu jego picia?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie',
@@ -3464,11 +3464,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'signaling',
         label:
           'Czy ktoś z rodziny, lekarz lub inny pracownik ochrony zdrowia interesował się piciem pacjenta lub sugerował jego ograniczenie?',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie',
@@ -3528,10 +3528,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'openingEyes',
         label: 'Otwieranie oczu',
-        radioInputs: [
+        options: [
           {
             value: 4,
             label: 'Spontaniczne',
@@ -3551,10 +3551,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'verbalResponse',
         label: 'Odpowiedź słowna',
-        radioInputs: [
+        options: [
           {
             value: 5,
             label: 'Uśmiech lub adekwatny płacz',
@@ -3578,10 +3578,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'motorReaction',
         label: 'Reakcja ruchowa',
-        radioInputs: [
+        options: [
           {
             value: 6,
             label: 'Ruchy spontaniczne',
@@ -3651,10 +3651,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'heartbeat',
         label: 'Akcja serca',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Brak czynności',
@@ -3670,10 +3670,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'breathing',
         label: 'Oddychanie',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Brak oddechu',
@@ -3689,10 +3689,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'muscleTension',
         label: 'Napięcie mięśni',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Wiotkie',
@@ -3708,10 +3708,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'reflexes',
         label: 'Odruchy (reakcja na wprowadzenie cewnika do nosa)',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Brak reakcji',
@@ -3727,10 +3727,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'skinColor',
         label: 'Zabarwienie skóry',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Blada',
@@ -3787,10 +3787,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'eatingMeals',
         label: 'Spożywanie posiłków',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie jest w stanie samodzielnie jeść lub przełykać',
@@ -3807,10 +3807,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'movingAndSitting',
         label: 'Przemieszczanie się z łóżka na krzesło i z powrotem/siadanie',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label:
@@ -3832,10 +3832,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'keepingPersonalHygiene',
         label: 'Utrzymanie higieny osobistej',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie jest w stanie wykonać żadnych czynności higienicznych',
@@ -3852,10 +3852,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'usingToilet',
         label: 'Korzystanie z toalety',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie korzysta w ogóle z toalety',
@@ -3873,10 +3873,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'washingBody',
         label: 'Mycie i kąpiel całego ciała',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Kąpany w wannie przy pomocy podnośnika',
@@ -3892,10 +3892,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'movingOnFlatSurfaces',
         label: 'Poruszanie się po powierzchniach płaskich',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'W ogóle nie porusza się',
@@ -3913,10 +3913,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'usingStairs',
         label: 'Chodzenie po schodach',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label:
@@ -3933,10 +3933,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'dressing',
         label: 'Ubieranie i rozbieranie się',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Potrzebuje kompleksowej pomocy innej osoby',
@@ -3953,10 +3953,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'analSphincterControl',
         label: 'Kontrola zwieracza odbytu',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie panuje nad oddawaniem stolca',
@@ -3972,10 +3972,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'bladderSphincterControl',
         label: 'Kontrola zwieraczy pęcherza moczowego',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie panuje nad oddawaniem moczu',
@@ -4073,10 +4073,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 'female',
             label: 'Kobieta',
@@ -4142,10 +4142,10 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'age',
         label: 'Wiek',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniej niż 40 lat',
@@ -4161,10 +4161,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'gender',
         label: 'Płeć',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Kobieta',
@@ -4176,10 +4176,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'previousHospitalization',
         label: 'Wcześniejsze hospitalizacje z powodu krwawienia do DOPP',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Nie',
@@ -4191,10 +4191,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'rectalExamination',
         label: 'Wynik badania per rectum',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Bez krwi',
@@ -4206,10 +4206,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'heartRate',
         label: 'Częstotliwość rytmu serca',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniej niż 70 na minutę',
@@ -4229,10 +4229,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'bloodPressure',
         label: 'Ciśnienie tętnicze skurczowe',
-        radioInputs: [
+        options: [
           {
             value: 5,
             label: 'Mniej niż 90 mm Hg',
@@ -4256,10 +4256,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'hemoglobinConcentration',
         label: 'Stężenie hemoglobiny',
-        radioInputs: [
+        options: [
           {
             value: 22,
             label: 'Mniej niż 7 g/dl',
@@ -4323,11 +4323,11 @@ export const calculators: CalculatorType[] = [
     ],
     form: [
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 's',
         label:
           'Czy pacjent chrapie na tyle głośno, że słychać to przez zamknięte drzwi lub partner/ka szturcha go przez to w nocy?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -4339,11 +4339,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 't',
         label:
           'Czy pacjent często czuje się zmęczony, wyczerpany lub śpiący w ciągu dnia?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -4355,11 +4355,11 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'o',
         label:
           'Czy ktoś zaobserwował u pacjenta przerwy w oddychaniu, krztuszenie się lub dławienie w czasie snu?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -4371,10 +4371,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'p',
         label: 'Czy pacjent choruje na nadciśnienie tętnicze?',
-        radioInputs: [
+        options: [
           {
             value: 1,
             label: 'Tak',
@@ -4386,10 +4386,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'b',
         label: 'BMI pacjenta',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniejsze lub równe 35',
@@ -4401,10 +4401,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'a',
         label: 'Wiek pacjenta',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniejszy lub równy 50 lat',
@@ -4416,10 +4416,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'n',
         label: 'Obwód szyi pacjenta',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Mniejszy lub równy 40 cm',
@@ -4431,10 +4431,10 @@ export const calculators: CalculatorType[] = [
         ],
       },
       {
-        type: 'radioGroup',
+        type: 'radioInput',
         name: 'g',
         label: 'Płeć pacjenta',
-        radioInputs: [
+        options: [
           {
             value: 0,
             label: 'Kobieta',
@@ -4472,845 +4472,789 @@ export const calculators: CalculatorType[] = [
     },
   },
 
-  //   {
-  //     id: 34,
-  //     name: 'Skala NIHSS',
-  //     urlPath: '/skala-nihss',
-  //     category: 'neurologia',
-  //     description: 'Określa ciężkość udaru mózgu.',
+  {
+    id: 34,
+    name: 'Skala NIHSS',
+    urlPath: '/skala-nihss',
+    category: 'neurologia',
+    description: 'Określa ciężkość udaru mózgu.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Ocena kliniczna i leczenie w warunkach stanu naglącego (Portal lekarzy)',
+        dateOfAccess: '15.01.2025',
+        link: 'https://www.mp.pl/neurologia/udar-mozgu/195346,2-ocena-kliniczna-i-leczenie-w-warunkach-stanu-naglacego',
+      },
+      {
+        id: 2,
+        author:
+          'Shenzhen Traditional Chinese Medicine Hospital (Yuanyuan Zhuo, Yimin Qu, Jiaman Wu, Xingxian Huang, Weiqu Yuan, Jack Lee, Zhuoxin Yang, Benny Zee)',
+        title:
+          'Estimation of stroke severity with National Institutes of Health Stroke Scale grading and retinal features: A cross-sectional study',
+        dateOfAccess: '15.01.2025',
+        link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8341321/pdf/medi-100-e26846.pdf',
+      },
+    ],
+    form: [
+      {
+        type: 'radioInput',
+        name: 'consciousness',
+        label: 'Stan przytomności',
+        options: [
+          {
+            value: 0,
+            label: 'Przytomny',
+          },
+          {
+            value: 1,
+            label: 'Przebudza się przy niewielkiej stymulacji',
+          },
+          {
+            value: 2,
+            label: 'Wymaga powtarzającej się stymulacji w celu pobudzenia',
+          },
+          {
+            value: 3,
+            label: 'Brak reakcji na bodźce',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'dateAnswers',
+        label: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
+        options: [
+          {
+            value: 0,
+            label: 'Obie odpowiedzi prawidłowe',
+          },
+          {
+            value: 1,
+            label: 'Jedna odpowiedź prawidłowa',
+          },
+          {
+            value: 2,
+            label: 'Obie odpowiedzi nieprawidłowe',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'blinking',
+        label: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
+        options: [
+          {
+            value: 0,
+            label: 'Spełnia prawidłowo oba polecenia',
+          },
+          {
+            value: 1,
+            label: 'Spełnia prawidłowo jedno polecenie',
+          },
+          {
+            value: 2,
+            label: 'Nie spełnia żadnego polecenia',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'eyeMovement',
+        label: 'Ruchy gałek ocznych w poziomie',
+        options: [
+          {
+            value: 0,
+            label: 'Prawidłowe',
+          },
+          {
+            value: 1,
+            label: 'Częściowe porażenie',
+          },
+          {
+            value: 2,
+            label: 'Całkowite porażenie',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'eyeSight',
+        label: 'Pole widzenia',
+        options: [
+          {
+            value: 0,
+            label: 'Prawidłowe pole widzenia',
+          },
+          {
+            value: 1,
+            label: 'Częściowe niedowidzenie połowicze',
+          },
+          {
+            value: 2,
+            label: 'Całkowite niedowidzenie połowicze',
+          },
+          {
+            value: 3,
+            label: 'Obustronne niedowidzenie połowicze',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'muscleParesis',
+        label: 'Niedowład mięśni twarzy',
+        options: [
+          {
+            value: 0,
+            label: 'Bez niedowładu',
+          },
+          {
+            value: 1,
+            label: 'Niewielki niedowład',
+          },
+          {
+            value: 2,
+            label: 'Umiarkowany niedowład',
+          },
+          {
+            value: 3,
+            label: 'Jednostronne porażenie',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'leftArmParesis',
+        label: 'Niedowład kończyny górnej lewej',
+        options: [
+          {
+            value: 0,
+            label: 'Utrzymuje uniesioną kończynę',
+          },
+          {
+            value: 1,
+            label: 'Kończyna opada częściowo przed upływem 10 sekund',
+          },
+          {
+            value: 2,
+            label: 'Kończyna opada całkowicie przed upływem 10 sekund',
+          },
+          {
+            value: 3,
+            label: 'Brak ruchu przeciw sile ciężkości',
+          },
+          {
+            value: 4,
+            label: 'Brak ruchu',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'rightArmParesis',
+        label: 'Niedowład kończyny górnej prawej',
+        options: [
+          {
+            value: 0,
+            label: 'Utrzymuje uniesioną kończynę',
+          },
+          {
+            value: 1,
+            label: 'Kończyna opada częściowo przed upływem 10 sekund',
+          },
+          {
+            value: 2,
+            label: 'Kończyna opada całkowicie przed upływem 10 sekund',
+          },
+          {
+            value: 3,
+            label: 'Brak ruchu przeciw sile ciężkości',
+          },
+          {
+            value: 4,
+            label: 'Brak ruchu',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'leftLegParesis',
+        label: 'Niedowład kończyny dolnej lewej',
+        options: [
+          {
+            value: 0,
+            label: 'Utrzymuje uniesioną kończynę',
+          },
+          {
+            value: 1,
+            label: 'Kończyna opada częściowo przed upływem 5 sekund',
+          },
+          {
+            value: 2,
+            label: 'Kończyna opada całkowicie przed upływem 5 sekund',
+          },
+          {
+            value: 3,
+            label: 'Brak ruchu przeciw sile ciężkości',
+          },
+          {
+            value: 4,
+            label: 'Brak ruchu',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'rightLegParesis',
+        label: 'Niedowład kończyny dolnej prawej',
+        options: [
+          {
+            value: 0,
+            label: 'Utrzymuje uniesioną kończynę',
+          },
+          {
+            value: 1,
+            label: 'Kończyna opada częściowo przed upływem 5 sekund',
+          },
+          {
+            value: 2,
+            label: 'Kończyna opada całkowicie przed upływem 5 sekund',
+          },
+          {
+            value: 3,
+            label: 'Brak ruchu przeciw sile ciężkości',
+          },
+          {
+            value: 4,
+            label: 'Brak ruchu',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'limbAtaxia',
+        label: 'Ataksja kończyn',
+        options: [
+          {
+            value: 0,
+            label: 'Bez ataksji',
+          },
+          {
+            value: 1,
+            label: 'W jednej kończynie',
+          },
+          {
+            value: 2,
+            label: 'W dwóch kończynach',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'feeling',
+        label: 'Czucie',
+        options: [
+          {
+            value: 0,
+            label: 'Prawidłowe',
+          },
+          {
+            value: 1,
+            label: 'Niewielka niedoczulica',
+          },
+          {
+            value: 2,
+            label: 'Ciężka niedoczulica',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'speech',
+        label: 'Mowa',
+        options: [
+          {
+            value: 0,
+            label: 'Prawidłowa, bez afazji',
+          },
+          {
+            value: 1,
+            label: 'Niewielka afazja',
+          },
+          {
+            value: 2,
+            label: 'Ciężka afazja',
+          },
+          {
+            value: 3,
+            label: 'Brak mowy, całkowita afazja',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'dysarthria',
+        label: 'Dyzartria',
+        options: [
+          {
+            value: 0,
+            label: 'Bez dyzartii',
+          },
+          {
+            value: 1,
+            label: 'Niewielka dyzartia',
+          },
+          {
+            value: 2,
+            label: 'Ciężka dyzartia',
+          },
+        ],
+      },
+      {
+        type: 'radioInput',
+        name: 'inattention',
+        label: 'Nieuwaga',
+        options: [
+          {
+            value: 0,
+            label: 'Nieobecna',
+          },
+          {
+            value: 1,
+            label: 'Niewielka (w zakresie jednego zmysłu)',
+          },
+          {
+            value: 2,
+            label: 'Ciężka (w zakresie dwóch zmysłów)',
+          },
+        ],
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
 
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medycyna Praktyczna',
-  //         title:
-  //           'Ocena kliniczna i leczenie w warunkach stanu naglącego (Portal lekarzy)',
-  //         dateOfAccess: '15.01.2025',
-  //         link: 'https://www.mp.pl/neurologia/udar-mozgu/195346,2-ocena-kliniczna-i-leczenie-w-warunkach-stanu-naglacego',
-  //       },
-  //       {
-  //         id: 2,
-  //         author:
-  //           'Shenzhen Traditional Chinese Medicine Hospital (Yuanyuan Zhuo, Yimin Qu, Jiaman Wu, Xingxian Huang, Weiqu Yuan, Jack Lee, Zhuoxin Yang, Benny Zee)',
-  //         title:
-  //           'Estimation of stroke severity with National Institutes of Health Stroke Scale grading and retinal features: A cross-sectional study',
-  //         dateOfAccess: '15.01.2025',
-  //         link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8341321/pdf/medi-100-e26846.pdf',
-  //       },
-  //     ],
-  //     fields: {
-  //       radioGroups: [
-  //         {
-  //           id: 10,
-  //           label: 'Stan przytomności',
-  //           radioInputs: [
-  //             {
-  //               id: 11,
-  //               value: 0,
-  //               label: 'Przytomny',
-  //             },
-  //             {
-  //               id: 12,
-  //               value: 1,
-  //               label: 'Przebudza się przy niewielkiej stymulacji',
-  //             },
-  //             {
-  //               id: 13,
-  //               value: 2,
-  //               label: 'Wymaga powtarzającej się stymulacji w celu pobudzenia',
-  //             },
-  //             {
-  //               id: 14,
-  //               value: 3,
-  //               label: 'Brak reakcji na bodźce',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 20,
-  //           label: 'Odpowiedzi na pytania dotyczące miesiąca i wieku',
-  //           radioInputs: [
-  //             {
-  //               id: 21,
-  //               value: 0,
-  //               label: 'Obie odpowiedzi prawidłowe',
-  //             },
-  //             {
-  //               id: 22,
-  //               value: 1,
-  //               label: 'Jedna odpowiedź prawidłowa',
-  //             },
-  //             {
-  //               id: 23,
-  //               value: 2,
-  //               label: 'Obie odpowiedzi nieprawidłowe',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 30,
-  //           label: 'Reakcja na polecenia mrugania oczami i ściskania dłoni',
-  //           radioInputs: [
-  //             {
-  //               id: 31,
-  //               value: 0,
-  //               label: 'Spełnia prawidłowo oba polecenia',
-  //             },
-  //             {
-  //               id: 32,
-  //               value: 1,
-  //               label: 'Spełnia prawidłowo jedno polecenie',
-  //             },
-  //             {
-  //               id: 33,
-  //               value: 2,
-  //               label: 'Nie spełnia żadnego polecenia',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 40,
-  //           label: 'Ruchy gałek ocznych w poziomie',
-  //           radioInputs: [
-  //             {
-  //               id: 41,
-  //               value: 0,
-  //               label: 'Prawidłowe',
-  //             },
-  //             {
-  //               id: 42,
-  //               value: 1,
-  //               label: 'Częściowe porażenie',
-  //             },
-  //             {
-  //               id: 43,
-  //               value: 2,
-  //               label: 'Całkowite porażenie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 50,
-  //           label: 'Pole widzenia',
-  //           radioInputs: [
-  //             {
-  //               id: 51,
-  //               value: 0,
-  //               label: 'Prawidłowe pole widzenia',
-  //             },
-  //             {
-  //               id: 52,
-  //               value: 1,
-  //               label: 'Częściowe niedowidzenie połowicze',
-  //             },
-  //             {
-  //               id: 53,
-  //               value: 2,
-  //               label: 'Całkowite niedowidzenie połowicze',
-  //             },
-  //             {
-  //               id: 54,
-  //               value: 3,
-  //               label: 'Obustronne niedowidzenie połowicze',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 60,
-  //           label: 'Niedowład mięśni twarzy',
-  //           radioInputs: [
-  //             {
-  //               id: 61,
-  //               value: 0,
-  //               label: 'Bez niedowładu',
-  //             },
-  //             {
-  //               id: 62,
-  //               value: 1,
-  //               label: 'Niewielki niedowład',
-  //             },
-  //             {
-  //               id: 63,
-  //               value: 2,
-  //               label: 'Umiarkowany niedowład',
-  //             },
-  //             {
-  //               id: 64,
-  //               value: 3,
-  //               label: 'Jednostronne porażenie',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 70,
-  //           label: 'Niedowład kończyny górnej lewej',
-  //           radioInputs: [
-  //             {
-  //               id: 71,
-  //               value: 0,
-  //               label: 'Utrzymuje uniesioną kończynę',
-  //             },
-  //             {
-  //               id: 72,
-  //               value: 1,
-  //               label: 'Kończyna opada częściowo przed upływem 10 sekund',
-  //             },
-  //             {
-  //               id: 73,
-  //               value: 2,
-  //               label: 'Kończyna opada całkowicie przed upływem 10 sekund',
-  //             },
-  //             {
-  //               id: 74,
-  //               value: 3,
-  //               label: 'Brak ruchu przeciw sile ciężkości',
-  //             },
-  //             {
-  //               id: 75,
-  //               value: 4,
-  //               label: 'Brak ruchu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 80,
-  //           label: 'Niedowład kończyny górnej prawej',
-  //           radioInputs: [
-  //             {
-  //               id: 81,
-  //               value: 0,
-  //               label: 'Utrzymuje uniesioną kończynę',
-  //             },
-  //             {
-  //               id: 82,
-  //               value: 1,
-  //               label: 'Kończyna opada częściowo przed upływem 10 sekund',
-  //             },
-  //             {
-  //               id: 83,
-  //               value: 2,
-  //               label: 'Kończyna opada całkowicie przed upływem 10 sekund',
-  //             },
-  //             {
-  //               id: 84,
-  //               value: 3,
-  //               label: 'Brak ruchu przeciw sile ciężkości',
-  //             },
-  //             {
-  //               id: 85,
-  //               value: 4,
-  //               label: 'Brak ruchu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 90,
-  //           label: 'Niedowład kończyny dolnej lewej',
-  //           radioInputs: [
-  //             {
-  //               id: 91,
-  //               value: 0,
-  //               label: 'Utrzymuje uniesioną kończynę',
-  //             },
-  //             {
-  //               id: 92,
-  //               value: 1,
-  //               label: 'Kończyna opada częściowo przed upływem 5 sekund',
-  //             },
-  //             {
-  //               id: 93,
-  //               value: 2,
-  //               label: 'Kończyna opada całkowicie przed upływem 5 sekund',
-  //             },
-  //             {
-  //               id: 94,
-  //               value: 3,
-  //               label: 'Brak ruchu przeciw sile ciężkości',
-  //             },
-  //             {
-  //               id: 95,
-  //               value: 4,
-  //               label: 'Brak ruchu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 100,
-  //           label: 'Niedowład kończyny dolnej prawej',
-  //           radioInputs: [
-  //             {
-  //               id: 101,
-  //               value: 0,
-  //               label: 'Utrzymuje uniesioną kończynę',
-  //             },
-  //             {
-  //               id: 102,
-  //               value: 1,
-  //               label: 'Kończyna opada częściowo przed upływem 5 sekund',
-  //             },
-  //             {
-  //               id: 103,
-  //               value: 2,
-  //               label: 'Kończyna opada całkowicie przed upływem 5 sekund',
-  //             },
-  //             {
-  //               id: 104,
-  //               value: 3,
-  //               label: 'Brak ruchu przeciw sile ciężkości',
-  //             },
-  //             {
-  //               id: 105,
-  //               value: 4,
-  //               label: 'Brak ruchu',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 110,
-  //           label: 'Ataksja kończyn',
-  //           radioInputs: [
-  //             {
-  //               id: 111,
-  //               value: 0,
-  //               label: 'Bez ataksji',
-  //             },
-  //             {
-  //               id: 112,
-  //               value: 1,
-  //               label: 'W jednej kończynie',
-  //             },
-  //             {
-  //               id: 113,
-  //               value: 2,
-  //               label: 'W dwóch kończynach',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 120,
-  //           label: 'Czucie',
-  //           radioInputs: [
-  //             {
-  //               id: 121,
-  //               value: 0,
-  //               label: 'Prawidłowe',
-  //             },
-  //             {
-  //               id: 122,
-  //               value: 1,
-  //               label: 'Niewielka niedoczulica',
-  //             },
-  //             {
-  //               id: 123,
-  //               value: 2,
-  //               label: 'Ciężka niedoczulica',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 130,
-  //           label: 'Mowa',
-  //           radioInputs: [
-  //             {
-  //               id: 131,
-  //               value: 0,
-  //               label: 'Prawidłowa, bez afazji',
-  //             },
-  //             {
-  //               id: 132,
-  //               value: 1,
-  //               label: 'Niewielka afazja',
-  //             },
-  //             {
-  //               id: 133,
-  //               value: 2,
-  //               label: 'Ciężka afazja',
-  //             },
-  //             {
-  //               id: 134,
-  //               value: 3,
-  //               label: 'Brak mowy, całkowita afazja',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 140,
-  //           label: 'Dyzartria',
-  //           radioInputs: [
-  //             {
-  //               id: 141,
-  //               value: 0,
-  //               label: 'Bez dyzartii',
-  //             },
-  //             {
-  //               id: 142,
-  //               value: 1,
-  //               label: 'Niewielka dyzartia',
-  //             },
-  //             {
-  //               id: 143,
-  //               value: 2,
-  //               label: 'Ciężka dyzartia',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 150,
-  //           label: 'Nieuwaga',
-  //           radioInputs: [
-  //             {
-  //               id: 151,
-  //               value: 0,
-  //               label: 'Nieobecna',
-  //             },
-  //             {
-  //               id: 152,
-  //               value: 1,
-  //               label: 'Niewielka (w zakresie jednego zmysłu)',
-  //             },
-  //             {
-  //               id: 153,
-  //               value: 2,
-  //               label: 'Ciężka (w zakresie dwóch zmysłów)',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      if (result > 20) {
+        interpretation = 'Ciężki udar.';
+      } else if (result > 15 && result <= 20) {
+        interpretation = 'Udar umiarkowany do ciężkiego.';
+      } else if (result > 4 && result <= 15) {
+        interpretation = 'Umiarkowany udar.';
+      } else if (result > 0 && result <= 4) {
+        interpretation = 'Niewielki udar.';
+      } else {
+        interpretation = 'Brak objawów udaru.';
+      }
 
-  //     getResult: sumInputValues,
+      return [result, interpretation];
+    },
+  },
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result > 20) return 'Ciężki udar.';
-  //       if (result > 15) return 'Udar umiarkowany do ciężkiego.';
-  //       if (result > 4) return 'Umiarkowany udar.';
-  //       if (result > 0) return 'Niewielki udar.';
-  //       return 'Brak objawów udaru.';
-  //     },
-  //   },
+  {
+    id: 35,
+    name: 'Kalkulator beztłuszczowej masy ciała',
+    urlPath: '/kalkulator-beztluszczowej-masy-ciala',
+    category: 'antropometria',
+    description:
+      'Pomaga obliczyć beztłuszczową masę ciała (LBM) na podstawie wzrostu, wagi i płci.',
+    methodology: (
+      <>
+        <Text>
+          Beztłuszczowa masa ciała (LBM – <em>Lean Body Mass</em>) to masa
+          organizmu po odjęciu tkanki tłuszczowej. Jest to istotny wskaźnik w
+          ocenie składu ciała, wykorzystywany do monitorowania postępów w
+          redukcji masy tłuszczowej lub w budowaniu masy mięśniowej.
+        </Text>
 
-  //   {
-  //     id: 35,
-  //     name: 'Kalkulator beztłuszczowej masy ciała',
-  //     urlPath: '/kalkulator-beztluszczowej-masy-ciala',
-  //     category: 'antropometria',
-  //     description:
-  //       'Pomaga obliczyć beztłuszczową masę ciała (LBM) na podstawie wzrostu, wagi i płci.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Beztłuszczowa masa ciała (LBM – <em>Lean Body Mass</em>) to masa
-  //           organizmu po odjęciu tkanki tłuszczowej. Jest to istotny wskaźnik w
-  //           ocenie składu ciała, wykorzystywany do monitorowania postępów w
-  //           redukcji masy tłuszczowej lub w budowaniu masy mięśniowej.
-  //         </Text>
+        <br />
+        <Text>Wzór do obliczenia LBM jest różny dla kobiet i mężczyzn:</Text>
 
-  //         <br />
-  //         <Text>Wzór do obliczenia LBM jest różny dla kobiet i mężczyzn:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>Mężczyźni:</strong>{' '}
+            <MathJax>
+              {'`LBM = 0.407 \\times M + 0.267 \\times H - 19.2`'}
+            </MathJax>
+          </ListItem>
+          <ListItem>
+            <strong>Kobiety:</strong>{' '}
+            <MathJax>
+              {'`LBM = 0.252 \\times M + 0.473 \\times H - 48.3`'}
+            </MathJax>
+          </ListItem>
+        </UnorderedList>
 
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>Mężczyźni:</strong>{' '}
-  //             <MathJax>
-  //               {'`LBM = 0.407 \\times M + 0.267 \\times H - 19.2`'}
-  //             </MathJax>
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>Kobiety:</strong>{' '}
-  //             <MathJax>
-  //               {'`LBM = 0.252 \\times M + 0.473 \\times H - 48.3`'}
-  //             </MathJax>
-  //           </ListItem>
-  //         </UnorderedList>
+        <br />
+        <Text>Gdzie:</Text>
+        <UnorderedList>
+          <ListItem>
+            <strong>LBM</strong> – beztłuszczowa masa ciała (w kg),
+          </ListItem>
+          <ListItem>
+            <strong>M</strong> – masa ciała (w kg),
+          </ListItem>
+          <ListItem>
+            <strong>H</strong> – wzrost (w cm).
+          </ListItem>
+        </UnorderedList>
 
-  //         <br />
-  //         <Text>Gdzie:</Text>
-  //         <UnorderedList>
-  //           <ListItem>
-  //             <strong>LBM</strong> – beztłuszczowa masa ciała (w kg),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>M</strong> – masa ciała (w kg),
-  //           </ListItem>
-  //           <ListItem>
-  //             <strong>H</strong> – wzrost (w cm).
-  //           </ListItem>
-  //         </UnorderedList>
+        <br />
+        <Text>
+          Wzory te oparte są na badaniach populacyjnych i stanowią przybliżenie,
+          które może być wykorzystywane u dorosłych w celu orientacyjnego
+          oszacowania beztłuszczowej masy ciała.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author:
+          'Omni Calculator (Mateusz Mucha, Piotr Małek, Łucja Zaborowska)',
+        title: 'Kalkulator beztłuszczowej masy ciała',
+        dateOfAccess: '01.07.2025',
+        link: 'https://www.omnicalculator.com/pl/zdrowie/beztluszczowa-masa-ciala',
+      },
+    ],
+    form: [
+      {
+        type: 'radioInput',
+        name: 'gender',
+        label: 'Płeć',
+        options: [
+          {
+            value: 'female',
+            label: 'Kobieta',
+            hideBadge: true,
+          },
+          {
+            value: 'male',
+            label: 'Mężczyzna',
+            hideBadge: true,
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'height',
+        label: 'Wzrost (cm)',
+        min: 1,
+        max: 230,
+      },
+      {
+        type: 'numberInput',
+        name: 'weight',
+        label: 'Masa ciała (kg)',
+        min: 1,
+        max: 250,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [string, string] {
+      const gender = formValues['gender'] as 'male' | 'female';
+      const height: number = parseFloat(formValues['height']);
+      const weight: number = parseFloat(formValues['weight']);
 
-  //         <br />
-  //         <Text>
-  //           Wzory te oparte są na badaniach populacyjnych i stanowią przybliżenie,
-  //           które może być wykorzystywane u dorosłych w celu orientacyjnego
-  //           oszacowania beztłuszczowej masy ciała.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author:
-  //           'Omni Calculator (Mateusz Mucha, Piotr Małek, Łucja Zaborowska)',
-  //         title: 'Kalkulator beztłuszczowej masy ciała',
-  //         dateOfAccess: '01.07.2025',
-  //         link: 'https://www.omnicalculator.com/pl/zdrowie/beztluszczowa-masa-ciala',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'weight',
-  //           label: 'Masa ciała (kg)',
-  //           min: 1,
-  //           max: 250,
-  //         },
-  //         {
-  //           id: 'height',
-  //           label: 'Wzrost (cm)',
-  //           min: 1,
-  //           max: 230,
-  //         },
-  //       ],
+      if (!gender || !height || !weight) {
+        return ['0 kg', 'Uzupełnij wszystkie dane.'];
+      }
 
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'female',
-  //               value: 'female',
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'male',
-  //               value: 'male',
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //     resultUnit: 'kg',
+      let result: number = 0;
 
-  //     getResult: () => {
-  //       const weight: number = parseFloat(
-  //         (document.getElementById('weight') as HTMLInputElement).value,
-  //       );
-  //       const height: number = parseFloat(
-  //         (document.getElementById('height') as HTMLInputElement).value,
-  //       );
-  //       const sex: string = (
-  //         document.querySelector('input[name="sex"]:checked') as HTMLInputElement
-  //       )?.value;
+      if (gender === 'male') {
+        result = 0.407 * weight + 0.267 * height - 19.2;
+      } else {
+        result = 0.252 * weight + 0.473 * height - 48.3;
+      }
 
-  //       let result: number;
-  //       if (sex === 'male') {
-  //         result = 0.407 * weight + 0.267 * height - 19.2;
-  //       } else {
-  //         result = 0.252 * weight + 0.473 * height - 48.3;
-  //       }
+      const formattedResult = result.toFixed(1);
 
-  //       return result;
-  //     },
+      const interpretation: string =
+        result > 0 ? 'Beztłuszczowa masa ciała.' : 'Uzupełnij wszystkie dane.';
 
-  //     getResultInterpretation: (result: number) => {
-  //       if (result === 0) return 'Uzupełnij wszystkie dane.';
-  //       return 'Beztłuszczowa masa ciała.';
-  //     },
-  //   },
-  //   {
-  //     id: 36,
-  //     name: 'Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD)',
-  //     urlPath: '/skala-prawdopodobienstwa-cad',
-  //     category: 'kardiologia',
-  //     description:
-  //       'Oszacowuje prawdopodobieństwo choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
-  //     methodology: (
-  //       <>
-  //         <Text>
-  //           Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD – Coronary
-  //           Artery Disease) została opracowana przez Europejskie Towarzystwo
-  //           Kardiologiczne (ESC) i służy do oceny prawdopodobieństwa istotnej ChW
-  //           u pacjentów z dusznością lub bólem w klatce piersiowej.
-  //         </Text>
-  //         <br />
-  //         <Text>Uwzględnia:</Text>
-  //         <UnorderedList>
-  //           <ListItem>Charakterystykę objawów (ból/duszność),</ListItem>
-  //           <ListItem>
-  //             Liczbę czynników ryzyka (wywiad rodzinny, nikotynizm, dyslipidemia,
-  //             nadciśnienie tętnicze, cukrzyca),
-  //           </ListItem>
-  //           <ListItem>Wiek i płeć pacjenta.</ListItem>
-  //         </UnorderedList>
-  //         <br />
-  //         <Text>
-  //           Końcowy wynik obliczany jest na podstawie tabeli prawdopodobieństwa
-  //           CAD, która przypisuje wartości punktowe w zależności od kombinacji
-  //           powyższych czynników. Przykładowa tabela znajduje się na stronie nr 25
-  //           w dokumencie PDF załączonym w źródłach.
-  //         </Text>
-  //       </>
-  //     ),
-  //     sources: [
-  //       {
-  //         id: 1,
-  //         author: 'Medcyna Praktyczna',
-  //         title:
-  //           'Oszacowanie prawdopodobieństwa przed testem (PTL) choroby wieńcowej (ChW) z istotnymi zwężeniami tętnic nasierdziowych za pomocą modelu klinicznego opartego na sile poszczególnych czynników ryzyka sercowo-naczyniowego (RF-CL)',
-  //         dateOfAccess: '03.11.2025',
-  //         link: 'https://www.mp.pl/interna/table/B16.2.5-2.',
-  //       },
-  //       {
-  //         id: 2,
-  //         author: 'European Society of Cardiology (ESC)',
-  //         title:
-  //           '2024 ESC Guidelines for the management of chronic coronary syndromes (dokument PDF)',
-  //         dateOfAccess: '03.11.2025',
-  //         link: 'https://icus-society.org/wp-content/uploads/2024/09/ESCCCS-2024-guideline7.pdf',
-  //       },
-  //     ],
-  //     fields: {
-  //       numberInputs: [
-  //         {
-  //           id: 'age',
-  //           label: 'Wiek (lata)',
-  //           min: 30,
-  //           max: 120,
-  //         },
-  //       ],
-  //       checkboxes: [
-  //         {
-  //           id: 'riskFactors',
-  //           value: 1,
-  //           hideBadge: true,
-  //           label:
-  //             'Choroba wieńcowa w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
-  //         },
-  //         {
-  //           id: 'riskFactors',
-  //           value: 1,
-  //           hideBadge: true,
-  //           label: 'Palenie papierosów (obecnie lub w przeszłości)',
-  //         },
-  //         {
-  //           id: 'riskFactors',
-  //           value: 1,
-  //           hideBadge: true,
-  //           label: 'Dyslipidemia',
-  //         },
-  //         {
-  //           id: 'riskFactors',
-  //           value: 1,
-  //           hideBadge: true,
-  //           label: 'Nadciśnienie tętnicze',
-  //         },
-  //         {
-  //           id: 'riskFactors',
-  //           value: 1,
-  //           hideBadge: true,
-  //           label: 'Cukrzyca',
-  //         },
-  //       ],
-  //       radioGroups: [
-  //         {
-  //           id: 'sex',
-  //           label: 'Płeć',
-  //           radioInputs: [
-  //             {
-  //               id: 'female',
-  //               value: 'female',
-  //               hideBadge: true,
-  //               label: 'Kobieta',
-  //             },
-  //             {
-  //               id: 'male',
-  //               value: 'male',
-  //               hideBadge: true,
-  //               label: 'Mężczyzna',
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 'mainSymptom',
-  //           label: 'Główny objaw',
-  //           radioInputs: [
-  //             {
-  //               id: 1,
-  //               // 02 is a hack to distinguish this option from others with numeric values
-  //               value: '02',
-  //               hideBadge: true,
-  //               label: 'Duszność',
-  //             },
-  //             {
-  //               id: 2,
-  //               value: 3,
-  //               hideBadge: true,
-  //               label:
-  //                 'Ból w klatce piersiowej z trzema cechami: \n 1) Ściskający, promieniujący za mostek, do szyi, żuchwy lub ramienia \n 2) Wysiłek lub stres jako czynniki wyzwalające \n 3) Wystąpienie w spoczynku lub w ciągu 5 min po przyjęciu azotanu',
-  //             },
-  //             {
-  //               id: 3,
-  //               value: 2,
-  //               hideBadge: true,
-  //               label:
-  //                 'Ból w klatce piersiowej z dwoma z wymienionych powyżej cech',
-  //             },
-  //             {
-  //               id: 4,
-  //               value: 1,
-  //               hideBadge: true,
-  //               label:
-  //                 'Ból w klatce piersiowej z jedną z wymienionych powyżej cech lub bez żadnej z nich',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
+      return [`${formattedResult} kg`, interpretation];
+    },
+  },
 
-  //     getResult: () => {
-  //       type Sex = 'male' | 'female';
-  //       type AgeGroup = 30 | 40 | 50 | 60 | 70;
-  //       type RiskFactorGroup = [number, number, number];
-  //       type MainSymptomValue = 1 | 2 | 3;
+  {
+    id: 36,
+    name: 'Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD)',
+    urlPath: '/skala-prawdopodobienstwa-cad',
+    category: 'kardiologia',
+    description:
+      'Oszacowuje prawdopodobieństwo choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
+    methodology: (
+      <>
+        <Text>
+          Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD – Coronary
+          Artery Disease) została opracowana przez Europejskie Towarzystwo
+          Kardiologiczne (ESC) i służy do oceny prawdopodobieństwa istotnej ChW
+          u pacjentów z dusznością lub bólem w klatce piersiowej.
+        </Text>
+        <br />
+        <Text>Uwzględnia:</Text>
+        <UnorderedList>
+          <ListItem>Charakterystykę objawów (ból/duszność),</ListItem>
+          <ListItem>
+            Liczbę czynników ryzyka (wywiad rodzinny, nikotynizm, dyslipidemia,
+            nadciśnienie tętnicze, cukrzyca),
+          </ListItem>
+          <ListItem>Wiek i płeć pacjenta.</ListItem>
+        </UnorderedList>
+        <br />
+        <Text>
+          Końcowy wynik obliczany jest na podstawie tabeli prawdopodobieństwa
+          CAD, która przypisuje wartości punktowe w zależności od kombinacji
+          powyższych czynników. Przykładowa tabela znajduje się na stronie nr 25
+          w dokumencie PDF załączonym w źródłach.
+        </Text>
+      </>
+    ),
+    sources: [
+      {
+        id: 1,
+        author: 'Medcyna Praktyczna',
+        title:
+          'Oszacowanie prawdopodobieństwa przed testem (PTL) choroby wieńcowej (ChW) z istotnymi zwężeniami tętnic nasierdziowych za pomocą modelu klinicznego opartego na sile poszczególnych czynników ryzyka sercowo-naczyniowego (RF-CL)',
+        dateOfAccess: '03.11.2025',
+        link: 'https://www.mp.pl/interna/table/B16.2.5-2.',
+      },
+      {
+        id: 2,
+        author: 'European Society of Cardiology (ESC)',
+        title:
+          '2024 ESC Guidelines for the management of chronic coronary syndromes (dokument PDF)',
+        dateOfAccess: '03.11.2025',
+        link: 'https://icus-society.org/wp-content/uploads/2024/09/ESCCCS-2024-guideline7.pdf',
+      },
+    ],
+    form: [
+      {
+        type: 'radioInput',
+        name: 'gender',
+        label: 'Płeć',
+        options: [
+          {
+            value: 'female',
+            hideBadge: true,
+            label: 'Kobieta',
+          },
+          {
+            value: 'male',
+            hideBadge: true,
+            label: 'Mężczyzna',
+          },
+        ],
+      },
+      {
+        type: 'numberInput',
+        name: 'age',
+        label: 'Wiek (lata)',
+        min: 30,
+        max: 120,
+      },
+      {
+        type: 'radioInput',
+        name: 'mainSymptom',
+        label: 'Główny objaw',
+        options: [
+          {
+            value: 'dyspnoea',
+            label: 'Duszność',
+            hideBadge: true,
+          },
+          {
+            value: 'painWithThreeCharacteristics',
+            label:
+              'Ból w klatce piersiowej z trzema cechami: \n 1) Ściskający, promieniujący za mostek, do szyi, żuchwy lub ramienia \n 2) Wysiłek lub stres jako czynniki wyzwalające \n 3) Wystąpienie w spoczynku lub w ciągu 5 min po przyjęciu azotanu',
+            hideBadge: true,
+          },
+          {
+            value: 'painWithTwoCharacteristics',
+            label:
+              'Ból w klatce piersiowej z dwoma z wymienionych powyżej cech',
+            hideBadge: true,
+          },
+          {
+            value: 'painWithOneCharacteristic',
+            label:
+              'Ból w klatce piersiowej z jedną z wymienionych powyżej cech lub bez żadnej z nich',
+            hideBadge: true,
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        name: 'coronaryArteryDisease',
+        value: 1,
+        label:
+          'Choroba wieńcowa w wywiadzie rodzinnym (krewny pierwszego stopnia z wczesnymi objawami: kobieta poniżej 65 r.ż., mężczyzna poniżej 55 r.ż.)',
+        hideBadge: true,
+      },
+      {
+        type: 'checkbox',
+        name: 'smoking',
+        value: 1,
+        label: 'Palenie papierosów (obecnie lub w przeszłości)',
+        hideBadge: true,
+      },
+      {
+        type: 'checkbox',
+        name: 'dyslipidemia',
+        value: 1,
+        label: 'Dyslipidemia',
+        hideBadge: true,
+      },
+      {
+        type: 'checkbox',
+        name: 'hypertension',
+        value: 1,
+        hideBadge: true,
+        label: 'Nadciśnienie tętnicze',
+      },
+      {
+        type: 'checkbox',
+        name: 'diabetes',
+        value: 1,
+        label: 'Cukrzyca',
+        hideBadge: true,
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      type Sex = 'male' | 'female';
+      type AgeGroup = 30 | 40 | 50 | 60 | 70;
+      type RiskFactorGroup = [number, number, number];
+      type MainSymptomValue = 1 | 2 | 3;
+      type CadProbabilityTable = Record<
+        MainSymptomValue,
+        Record<Sex, Record<AgeGroup, RiskFactorGroup>>
+      >;
 
-  //       type CadProbabilityTable = Record<
-  //         MainSymptomValue,
-  //         Record<Sex, Record<AgeGroup, RiskFactorGroup>>
-  //       >;
+      const age: number = parseFloat(formValues['age']);
+      const ageGroup: AgeGroup = (() => {
+        let result = Math.floor((age - 30) / 10) * 10 + 30;
+        if (result > 70) result = 70;
+        return result;
+      })() as AgeGroup;
+      const gender = formValues['gender'] as 'male' | 'female';
+      const mainSymptom = formValues['mainSymptom'];
+      const mainSymptomValue = (() => {
+        if (
+          mainSymptom === 'dyspnoea' ||
+          mainSymptom === 'painWithTwoCharacteristics'
+        ) {
+          return 2;
+        } else if (mainSymptom === 'painWithThreeCharacteristics') {
+          return 3;
+        } else {
+          return 1;
+        }
+      })();
+      const coronaryArteryDisease: number = parseFloat(
+        formValues['coronaryArteryDisease'],
+      );
+      const smoking: number = parseFloat(formValues['smoking']);
+      const dyslipidemia: number = parseFloat(
+        formValues['coronaryArteryDisease'],
+      );
+      const hypertension: number = parseFloat(formValues['hypertension']);
+      const diabetes: number = parseFloat(formValues['diabetes']);
+      const riskFactors = [
+        coronaryArteryDisease,
+        smoking,
+        dyslipidemia,
+        hypertension,
+        diabetes,
+      ];
 
-  //       const age: number = parseInt(
-  //         (document.getElementById('age') as HTMLInputElement).value,
-  //       );
+      const riskFactorsSum: number = riskFactors.reduce(
+        (sum, value) => sum + (isNaN(value) ? 0 : value),
+        0,
+      );
 
-  //       const ageGroup: AgeGroup = (() => {
-  //         let result = Math.floor((age - 30) / 10) * 10 + 30;
-  //         if (result > 70) result = 70;
-  //         return result;
-  //       })() as AgeGroup;
+      const riskFactorGroup: number = (() => {
+        if (riskFactorsSum <= 1) {
+          return 0;
+        } else if (riskFactorsSum <= 3) {
+          return 1;
+        } else {
+          return 2;
+        }
+      })();
 
-  //       const sex: Sex = (
-  //         document.querySelector('input[name="sex"]:checked') as HTMLInputElement
-  //       )?.value as Sex;
+      if (!age || !gender || !mainSymptom) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
 
-  //       const mainSymptomValue: MainSymptomValue = parseInt(
-  //         (
-  //           document.querySelector(
-  //             'input[name="mainSymptom"]:checked',
-  //           ) as HTMLInputElement
-  //         )?.value,
-  //       ) as MainSymptomValue;
+      const cadProbabilityTable: CadProbabilityTable = {
+        // mainSymptomValue -> sex -> ageGroup -> riskFactorGroup -> probability %
+        1: {
+          female: {
+            30: [0, 1, 2],
+            40: [1, 1, 3],
+            50: [1, 2, 5],
+            60: [2, 4, 7],
+            70: [4, 7, 11],
+          },
+          male: {
+            30: [1, 2, 5],
+            40: [2, 4, 8],
+            50: [4, 7, 12],
+            60: [8, 12, 17],
+            70: [15, 19, 24],
+          },
+        },
+        2: {
+          female: {
+            30: [0, 1, 3],
+            40: [1, 2, 5],
+            50: [2, 3, 7],
+            60: [3, 6, 11],
+            70: [6, 10, 16],
+          },
+          male: {
+            30: [2, 4, 8],
+            40: [3, 6, 12],
+            50: [6, 11, 17],
+            60: [12, 17, 25],
+            70: [22, 27, 34],
+          },
+        },
+        3: {
+          female: {
+            30: [2, 5, 10],
+            40: [4, 7, 12],
+            50: [6, 10, 15],
+            60: [10, 14, 19],
+            70: [16, 19, 23],
+          },
+          male: {
+            30: [9, 14, 22],
+            40: [14, 20, 27],
+            50: [21, 27, 33],
+            60: [32, 35, 39],
+            70: [44, 44, 45],
+          },
+        },
+      };
 
-  //       const riskFactorsElements = document.querySelectorAll(
-  //         'input[name="riskFactors"]',
-  //       ) as NodeListOf<HTMLInputElement>;
+      const result: number =
+        cadProbabilityTable[mainSymptomValue as MainSymptomValue][
+          gender as Sex
+        ][ageGroup as AgeGroup][riskFactorGroup];
 
-  //       const riskFactorsSum: number = (() => {
-  //         let sum = 0;
-  //         riskFactorsElements.forEach((input) => {
-  //           if (input.checked) sum += parseInt(input.value);
-  //         });
-  //         return sum;
-  //       })();
+      let interpretation: string = '';
 
-  //       const riskFactorGroup: number = (() => {
-  //         if (riskFactorsSum <= 1) return 0;
-  //         if (riskFactorsSum <= 3) return 1;
-  //         return 2;
-  //       })();
+      if (result <= 5) {
+        interpretation = 'Bardzo niskie prawdopodobieństwo choroby wieńcowej.';
+      } else if (result <= 15) {
+        interpretation = 'Niskie prawdopodobieństwo choroby wieńcowej.';
+      } else {
+        interpretation = 'Umiarkowane prawdopodobieństwo choroby wieńcowej.';
+      }
 
-  //       const cadProbabilityTable: CadProbabilityTable = {
-  //         // mainSymptomValue -> sex -> ageGroup -> riskFactorGroup -> probability %
-  //         1: {
-  //           female: {
-  //             30: [0, 1, 2],
-  //             40: [1, 1, 3],
-  //             50: [1, 2, 5],
-  //             60: [2, 4, 7],
-  //             70: [4, 7, 11],
-  //           },
-  //           male: {
-  //             30: [1, 2, 5],
-  //             40: [2, 4, 8],
-  //             50: [4, 7, 12],
-  //             60: [8, 12, 17],
-  //             70: [15, 19, 24],
-  //           },
-  //         },
-  //         2: {
-  //           female: {
-  //             30: [0, 1, 3],
-  //             40: [1, 2, 5],
-  //             50: [2, 3, 7],
-  //             60: [3, 6, 11],
-  //             70: [6, 10, 16],
-  //           },
-  //           male: {
-  //             30: [2, 4, 8],
-  //             40: [3, 6, 12],
-  //             50: [6, 11, 17],
-  //             60: [12, 17, 25],
-  //             70: [22, 27, 34],
-  //           },
-  //         },
-  //         3: {
-  //           female: {
-  //             30: [2, 5, 10],
-  //             40: [4, 7, 12],
-  //             50: [6, 10, 15],
-  //             60: [10, 14, 19],
-  //             70: [16, 19, 23],
-  //           },
-  //           male: {
-  //             30: [9, 14, 22],
-  //             40: [14, 20, 27],
-  //             50: [21, 27, 33],
-  //             60: [32, 35, 39],
-  //             70: [44, 44, 45],
-  //           },
-  //         },
-  //       };
-
-  //       return cadProbabilityTable[mainSymptomValue as MainSymptomValue][
-  //         sex as Sex
-  //       ][ageGroup as AgeGroup][riskFactorGroup];
-  //     },
-
-  //     getResultInterpretation: (result: number) => {
-  //       if (result <= 5)
-  //         return 'Bardzo niskie prawdopodobieństwo choroby wieńcowej.';
-  //       if (result <= 15) return 'Niskie prawdopodobieństwo choroby wieńcowej.';
-  //       return 'Umiarkowane prawdopodobieństwo choroby wieńcowej.';
-  //     },
-  //   },
-
-  // {
-  // 	id: ,
-  // 	name: '',
-  // 	urlPath: '/',
-  // 	category: '',
-  // 	description: '',
-  // 	methodology: null,
-  // 	sources: [
-  // {
-  //   id: 1,
-  //   author: '',
-  //   title: '',
-  //   dateOfAccess: '',
-  //   link: '',
-  // },
-  // 	],
-  // 	fields: {
-  // 		numberInputs: null,
-  // 		checkboxes: null,
-  // 		radioGroups: null,
-  // 	},
-  // 	resultUnit: null,
-
-  // 	getResult: () => {},
-
-  // 	getResultInterpretation: (result: number) => {},
-  // },
+      return [result, interpretation];
+    },
+  },
 ];
