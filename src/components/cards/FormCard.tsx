@@ -99,9 +99,6 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
             <Button type="submit" colorScheme="teal">
               {STRINGS.BUTTONS.CALCULATE}
             </Button>
-            <Button type="reset" onClick={() => formMethods.reset()}>
-              {STRINGS.BUTTONS.RESET}
-            </Button>
           </Flex>
         </CardBody>
       </form>
