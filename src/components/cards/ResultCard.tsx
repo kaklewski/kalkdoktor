@@ -9,19 +9,13 @@ import {
 import { useEffect, useRef, useState } from 'react';
 
 import STRINGS from '../../data/strings';
-import { CalculatorType } from '../../types/calculatorTypes';
 
 type ResultCardProps = {
-  result: number;
-  resultUnit: CalculatorType['resultUnit'];
-  resultInterpretation: string;
+  result: number | string;
+  interpretation: string;
 };
 
-export default function ResultCard({
-  result = 0,
-  resultUnit,
-  resultInterpretation,
-}: ResultCardProps) {
+const ResultCard = ({ result, interpretation }: ResultCardProps) => {
   const [isAnimation, setIsAnimation] = useState<boolean>(false);
   const isFirstRender = useRef(true);
 
@@ -43,12 +37,7 @@ export default function ResultCard({
       clearTimeout(setAnimationTimeout);
       clearTimeout(isAnimationTimeout);
     };
-  }, [result, resultInterpretation]);
-
-  const formattedResult = result.toFixed(1).replace(/\.0$/, '');
-  const formattedResultUnit =
-    resultUnit &&
-    `${resultUnit === '%' || resultUnit === '‰' ? '' : ' '}${resultUnit}`;
+  }, [result, interpretation]);
 
   return (
     <Card
@@ -59,16 +48,17 @@ export default function ResultCard({
     >
       <CardHeader>
         <Heading as="p" size="md">
-          {STRINGS.PAGES.CALCULATOR.RESULT}: {formattedResult}
-          {formattedResultUnit}
+          {STRINGS.PAGES.CALCULATOR.RESULT}: {result}
         </Heading>
       </CardHeader>
 
       <Divider />
 
       <CardBody>
-        <Text>{resultInterpretation}</Text>
+        <Text>{interpretation}</Text>
       </CardBody>
     </Card>
   );
-}
+};
+
+export default ResultCard;

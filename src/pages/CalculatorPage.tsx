@@ -1,5 +1,6 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import FavButton from '../components/buttons/FavButton';
 import DetailsCard from '../components/cards/DetailsCard';
@@ -13,30 +14,20 @@ type CalculatorPageProps = {
   calculator: CalculatorType;
 };
 
-export default function CalculatorPage({ calculator }: CalculatorPageProps) {
-  const {
-    id,
-    name,
-    fields,
-    getResult,
-    resultUnit,
-    getResultInterpretation,
-    sources,
-    description,
-    methodology,
-  } = calculator;
+const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
+  const { id, name, sources, description, methodology, form, calculateResult } =
+    calculator;
 
   useDocumentTitle(name);
 
-  const [result, setResult] = useState<number>(0);
-  const [resultInterpretation, setResultInterpretation] = useState<string>(
-    getResultInterpretation(result),
-  );
+  const [submittedValues, setSubmittedValues] = useState({});
+  const formMethods = useForm();
 
-  function displayResultAndInterpretation() {
-    setResult(getResult());
-    setResultInterpretation(getResultInterpretation(getResult()));
-  }
+  const [result, interpretation] = calculateResult(submittedValues);
+
+  const handleCalculate = (values: any) => {
+    setSubmittedValues(values);
+  };
 
   return (
     <>
@@ -47,17 +38,12 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
 
       <Stack spacing={4}>
         <FormCard
-          numberInputs={fields.numberInputs}
-          checkboxes={fields.checkboxes}
-          radioGroups={fields.radioGroups}
-          displayResultAndInterpretation={displayResultAndInterpretation}
+          form={form}
+          formMethods={formMethods}
+          onSubmit={handleCalculate}
         />
 
-        <ResultCard
-          result={result}
-          resultUnit={resultUnit}
-          resultInterpretation={resultInterpretation}
-        />
+        <ResultCard result={result} interpretation={interpretation} />
 
         <DetailsCard
           description={description}
@@ -71,4 +57,6 @@ export default function CalculatorPage({ calculator }: CalculatorPageProps) {
       </Flex>
     </>
   );
-}
+};
+
+export default CalculatorPage;

@@ -1,94 +1,112 @@
-import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react';
-import { FormEvent } from 'react';
-import { Form } from 'react-router-dom';
+import {
+  Button,
+  Card,
+  CardBody,
+  Flex,
+  Stack,
+  StackDivider,
+} from '@chakra-ui/react';
+import { Controller, UseFormReturn } from 'react-hook-form';
 
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
-import CustomCheckbox from '../inputs/CustomCheckbox';
-import CustomNumberInput from '../inputs/CustomNumberInput';
-import CustomRadio from '../inputs/CustomRadio';
-import CustomRadioGroup from '../inputs/CustomRadioGroup';
+import AppCheckbox from '../inputs/AppCheckbox';
+import AppNumberInput from '../inputs/AppNumberInput';
+import AppRadioInput from '../inputs/AppRadioInput';
+import AppRadioOption from '../inputs/AppRadioOption';
 
 type FormCardProps = {
-  numberInputs?: CalculatorType['fields']['numberInputs'];
-  checkboxes?: CalculatorType['fields']['checkboxes'];
-  radioGroups?: CalculatorType['fields']['radioGroups'];
-  displayResultAndInterpretation: () => void;
+  form: CalculatorType['form'];
+  formMethods: UseFormReturn;
+  onSubmit: (values: any) => void;
 };
 
-export default function FormCard({
-  numberInputs,
-  checkboxes,
-  radioGroups,
-  displayResultAndInterpretation,
-}: FormCardProps) {
-  function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    displayResultAndInterpretation();
-  }
+const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
+  const { control, handleSubmit } = formMethods;
 
   return (
     <Card overflow="hidden" variant="outline">
-      <Form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
-            {radioGroups &&
-              radioGroups.map((radioGroup, index) => (
-                <CustomRadioGroup
-                  key={`${radioGroup.id}-${index}`}
-                  id={radioGroup.id}
-                  text={radioGroup.text}
-                >
-                  {radioGroup.radios.map((radio, index) => (
-                    <CustomRadio
-                      key={`${radio.id}-${index}`}
-                      id={radio.id}
-                      value={radio.value}
-                      hideBadge={radio.hideBadge}
-                      text={radio.text}
+            {form.map((input: any) => {
+              switch (input.type) {
+                case 'numberInput':
+                  return (
+                    <Controller
+                      name={input.name}
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <AppNumberInput
+                          {...input}
+                          value={field.value ?? ''}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                        />
+                      )}
                     />
-                  ))}
-                </CustomRadioGroup>
-              ))}
+                  );
 
-            {checkboxes &&
-              checkboxes.map((checkbox, index) => (
-                <CustomCheckbox
-                  key={`${checkbox.id}-${index}`}
-                  id={checkbox.id}
-                  value={checkbox.value}
-                  hideBadge={checkbox.hideBadge}
-                  text={checkbox.text}
-                />
-              ))}
+                case 'checkbox':
+                  return (
+                    <Controller
+                      name={input.name}
+                      control={control}
+                      render={({ field }) => (
+                        <AppCheckbox
+                          {...input}
+                          ref={field.ref}
+                          checked={field.value !== undefined}
+                          onChange={(checked) =>
+                            field.onChange(checked ? input.value : undefined)
+                          }
+                          onBlur={field.onBlur}
+                        />
+                      )}
+                    />
+                  );
 
-            {numberInputs &&
-              numberInputs.map((input, index) => (
-                <CustomNumberInput
-                  key={`${input.id}-${index}`}
-                  id={input.id}
-                  text={input.text}
-                  min={input.min}
-                  max={input.max}
-                />
-              ))}
+                case 'radioInput':
+                  return (
+                    <Controller
+                      name={input.name}
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <AppRadioInput
+                          {...input}
+                          ref={field.ref}
+                          value={field.value}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                        >
+                          {input.options.map((radio: any, index: number) => (
+                            <AppRadioOption key={index} {...radio} />
+                          ))}
+                        </AppRadioInput>
+                      )}
+                    />
+                  );
+
+                default:
+                  return null;
+              }
+            })}
           </Stack>
-          <Stack mt={5}>
-            <Button
-              type="submit"
-              colorScheme="teal"
-              w="fit-content"
-              mx="auto"
-              _focus={{
-                borderColor: 'teal',
-                boxShadow: '0 0 0 3px teal',
-              }}
-            >
+
+          <Flex justify="center" gap={2} mt={5}>
+            <Button type="submit" colorScheme="teal">
               {STRINGS.BUTTONS.CALCULATE}
             </Button>
-          </Stack>
+            <Button type="reset" onClick={() => formMethods.reset()}>
+              {STRINGS.BUTTONS.RESET}
+            </Button>
+          </Flex>
         </CardBody>
-      </Form>
+      </form>
     </Card>
   );
-}
+};
+
+export default FormCard;

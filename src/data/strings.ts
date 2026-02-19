@@ -20,6 +20,7 @@ const STRINGS = {
     HOMEPAGE: 'Strona główna',
     IMPORT: 'Importuj',
     REPORT_BUG: 'Zgłoś błąd',
+    RESET: 'Reset',
     SEND: 'Wyślij',
     SORT: {
       TITLE: 'Sortuj kalkulatory',
@@ -35,8 +36,7 @@ const STRINGS = {
     },
   },
   FORM: {
-    // Common form strings
-    // These are used in multiple modals
+    // Common form strings used in multiple modals
     EMAIL: 'Twój adres e-mail',
     NAME: 'Twoje imię',
   },

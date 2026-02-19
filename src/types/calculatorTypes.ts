@@ -1,6 +1,20 @@
 import { ReactNode } from 'react';
 
-export type SourceType = {
+type CalculatorType = {
+  id: number;
+  name: string;
+  urlPath: string;
+  category: string;
+  description: string;
+  methodology?: ReactNode;
+  sources?: SourceType[];
+  form: FormFieldType[];
+  calculateResult: (formValues: {
+    [key: string]: string;
+  }) => [number | string, string];
+};
+
+type SourceType = {
   id: number;
   author: string;
   title: string;
@@ -8,47 +22,42 @@ export type SourceType = {
   link: string;
 };
 
-export type NumberInputType = {
-  id: string | number;
-  text: string;
+type FormFieldType = NumberInputType | CheckboxType | RadioInputType;
+
+type NumberInputType = {
+  type: 'numberInput';
+  name: string;
+  label: string;
   min: number;
   max: number;
 };
 
-export type CheckboxType = {
-  id: string | number;
-  value: number;
-  hideBadge?: boolean;
-  text: string;
-};
-
-export type RadioType = {
-  id: string | number;
-  value: number | string;
-  hideBadge?: boolean;
-  text: string;
-};
-
-export type RadioGroupType = {
-  id: string | number;
-  text: string;
-  radios: RadioType[];
-};
-
-export type CalculatorType = {
-  id: number;
+type CheckboxType = {
+  type: 'checkbox';
   name: string;
-  urlPath: string;
-  category: string;
-  description: string;
-  methodology?: null | ReactNode;
-  sources?: null | SourceType[];
-  fields: {
-    numberInputs?: null | NumberInputType[];
-    checkboxes?: null | CheckboxType[];
-    radioGroups?: null | RadioGroupType[];
-  };
-  resultUnit?: null | string;
-  getResult: () => number;
-  getResultInterpretation: (result: number) => string;
+  value: number;
+  label: string;
+  hideBadge?: boolean;
+};
+
+type RadioInputType = {
+  type: 'radioInput';
+  name: string;
+  label: string;
+  options: RadioOptionType[];
+};
+
+type RadioOptionType = {
+  value: number | string;
+  label: string;
+  hideBadge?: boolean;
+};
+
+export type {
+  CalculatorType,
+  CheckboxType,
+  NumberInputType,
+  RadioInputType as RadioGroupType,
+  RadioOptionType as RadioType,
+  SourceType,
 };
