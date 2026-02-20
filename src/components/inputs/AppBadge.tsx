@@ -8,7 +8,7 @@ const AppBadge = ({ value }: AppBadgeProps) => {
   const plusSign = value > 0 ? '+' : '';
 
   return (
-    <Badge>
+    <Badge colorScheme="teal">
       {plusSign}
       {value}
     </Badge>

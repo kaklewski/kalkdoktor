@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Text } from '@chakra-ui/react';
+import { Checkbox, Text } from '@chakra-ui/react';
 import { forwardRef } from 'react';
 
 import { CheckboxType } from '../../types/calculatorTypes';
@@ -30,22 +30,20 @@ const AppCheckbox = forwardRef<HTMLInputElement, AppCheckboxProps>(
     };
 
     return (
-      <Box>
-        <Checkbox
-          ref={ref}
-          name={name}
-          isChecked={checked}
-          onChange={handleChange}
-          onBlur={onBlur}
-          colorScheme="teal"
-          w="100%"
-        >
-          <Flex align="center" gap={2}>
-            <Text whiteSpace="pre-line">{label}</Text>
-            {isBadgeVisible && <AppBadge value={badgeValue} />}
-          </Flex>
-        </Checkbox>
-      </Box>
+      <Checkbox
+        ref={ref}
+        name={name}
+        isChecked={checked}
+        onChange={handleChange}
+        onBlur={onBlur}
+        colorScheme="teal"
+        w="100%"
+      >
+        <Text as="span" mr={isBadgeVisible ? 2 : 0} whiteSpace="pre-line">
+          {label}
+        </Text>
+        {isBadgeVisible && <AppBadge value={badgeValue} />}
+      </Checkbox>
     );
   },
 );

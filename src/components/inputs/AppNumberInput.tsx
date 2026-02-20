@@ -1,13 +1,13 @@
 // This component is a custom number input that allows users to enter comma as decimal separator, which is a workaround for Chakra's NumberInput limitations. Additionally it removes the bug with "home" and "end" buttons not working.
 
 import {
-  Box,
+  FormControl,
+  FormLabel,
   Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputStepper,
-  Text,
 } from '@chakra-ui/react';
 import { ChangeEvent, forwardRef, KeyboardEvent, useState } from 'react';
 
@@ -97,10 +97,8 @@ const AppNumberInput = forwardRef(
     };
 
     return (
-      <Box>
-        <Text as="label" htmlFor={name} mb={2}>
-          {label}
-        </Text>
+      <FormControl>
+        <FormLabel htmlFor={name}>{label}</FormLabel>
         <NumberInput>
           <Input
             ref={ref}
@@ -125,7 +123,7 @@ const AppNumberInput = forwardRef(
             />
           </NumberInputStepper>
         </NumberInput>
-      </Box>
+      </FormControl>
     );
   },
 );

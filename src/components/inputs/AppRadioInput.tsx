@@ -1,4 +1,4 @@
-import { RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { FormLabel, RadioGroup, Stack } from '@chakra-ui/react';
 import { forwardRef, ReactNode } from 'react';
 
 import { RadioGroupType } from '../../types/calculatorTypes';
@@ -21,7 +21,9 @@ const AppRadioInput = forwardRef<HTMLDivElement, AppRadioGroupProps>(
       onBlur={onBlur}
     >
       <Stack>
-        <Text as="legend">{label}</Text>
+        <FormLabel as="legend" mb={0}>
+          {label}
+        </FormLabel>
         {children}
       </Stack>
     </RadioGroup>

@@ -1,4 +1,4 @@
-import { Flex, Radio, Text } from '@chakra-ui/react';
+import { Radio, Text } from '@chakra-ui/react';
 
 import { RadioType } from '../../types/calculatorTypes';
 import AppBadge from './AppBadge';
@@ -10,10 +10,10 @@ const AppRadioOption = ({ value, label, hideBadge }: AppRadioInputProps) => {
 
   return (
     <Radio value={value.toString()} isRequired>
-      <Flex align="center" gap={2}>
-        <Text style={{ whiteSpace: 'pre-line' }}>{label}</Text>
-        {isBadgeVisible && <AppBadge value={value} />}
-      </Flex>
+      <Text as="span" mr={isBadgeVisible ? 2 : 0} whiteSpace="pre-line">
+        {label}
+      </Text>
+      {isBadgeVisible && <AppBadge value={value} />}
     </Radio>
   );
 };
