@@ -129,6 +129,9 @@ const SearchCommandModal = () => {
       case 'Tab':
         break;
 
+      case 'Shift':
+        break;
+
       default:
         setSelectedItemIndex(INITIAL_SELECTED_ITEM_INDEX);
     }
@@ -170,7 +173,7 @@ const SearchCommandModal = () => {
             </Flex>
           </ModalHeader>
 
-          <ModalBody pt={1}>
+          <ModalBody pt={1} tabIndex={-1}>
             <Divider mb={4} />
             <Stack>
               {filteredCalculators.map((calc, index) => (
@@ -219,10 +222,6 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
           leftIcon={<IconSearch stroke={1.5} />}
           colorScheme="teal"
           aria-label={STRINGS.MODALS.SEARCH.TITLE}
-          _focus={{
-            borderColor: 'teal',
-            boxShadow: '0 0 0 3px teal',
-          }}
         >
           Szukaj
         </Button>
