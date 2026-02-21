@@ -1,5 +1,6 @@
 import { IconButton } from '@chakra-ui/react';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
+import { MouseEvent } from 'react';
 
 import STRINGS from '../../data/strings';
 import useFavorites from '../../hooks/useFavorites';
@@ -25,7 +26,10 @@ const FavButton = ({ calculatorId }: FavButtonProps) => {
     <IconHeart stroke={1.5} />
   );
 
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     toggleFavorite();
     showToast(
       isFavorite
