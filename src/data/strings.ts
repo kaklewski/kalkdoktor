@@ -21,6 +21,7 @@ const STRINGS = {
     IMPORT: 'Importuj',
     REPORT_BUG: 'Zgłoś błąd',
     RESET: 'Reset',
+    SEARCH: 'Szukaj',
     SEND: 'Wyślij',
     SORT: {
       TITLE: 'Sortuj kalkulatory',

@@ -1,14 +1,17 @@
+import { SearchIcon } from '@chakra-ui/icons';
 import {
   Button,
   CloseButton,
   Divider,
   Flex,
   Hide,
+  HStack,
   IconButton,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Kbd,
   Modal,
   ModalBody,
   ModalContent,
@@ -206,7 +209,6 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
       <AppTooltip label={STRINGS.MODALS.SEARCH.TITLE}>
         <IconButton
           onClick={onClick}
-          colorScheme="teal"
           variant="solid"
           aria-label={STRINGS.MODALS.SEARCH.TITLE}
         >
@@ -216,16 +218,55 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
     </Hide>
 
     <Show above="md">
-      <AppTooltip label="Ctrl+K">
-        <Button
-          onClick={onClick}
-          leftIcon={<IconSearch stroke={1.5} />}
-          colorScheme="teal"
-          aria-label={STRINGS.MODALS.SEARCH.TITLE}
-        >
-          Szukaj
-        </Button>
-      </AppTooltip>
+      <Button
+        onClick={onClick}
+        size="lg"
+        flex="1"
+        type="button"
+        maxW="500px"
+        mx={6}
+        bg="gray.50"
+        whiteSpace="nowrap"
+        display="flex"
+        alignItems="center"
+        color="gray.600"
+        rounded="full"
+        borderWidth="1px"
+        cursor="text"
+        _hover={{ bg: 'gray.100' }}
+        _dark={{
+          bg: 'gray.700',
+          color: 'gray.400',
+          borderWidth: 0,
+          _hover: {
+            bg: 'gray.600',
+          },
+        }}
+      >
+        <SearchIcon />
+        <HStack w="full" ml="3" spacing={2}>
+          <Text textAlign="left" flex="1">
+            {STRINGS.BUTTONS.SEARCH}
+          </Text>
+          <HStack spacing="2px">
+            <Kbd
+              bg="white"
+              borderColor="gray.300"
+              _dark={{ bg: 'gray.700', borderColor: 'gray.900' }}
+            >
+              Ctrl
+            </Kbd>
+            <Text as="span">+</Text>
+            <Kbd
+              bg="white"
+              borderColor="gray.300"
+              _dark={{ bg: 'gray.700', borderColor: 'gray.900' }}
+            >
+              K
+            </Kbd>
+          </HStack>
+        </HStack>
+      </Button>
     </Show>
   </>
 );

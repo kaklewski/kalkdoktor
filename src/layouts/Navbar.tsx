@@ -41,8 +41,14 @@ const Navbar = () => (
         </AppTooltip>
       </Show>
 
-      <Flex alignItems="center" gap={{ base: 3, md: 2 }} wrap="wrap">
+      <Show above="md">
         <SearchCommandModal />
+      </Show>
+
+      <Flex alignItems="center" gap={{ base: 3, md: 2 }} wrap="wrap">
+        <Hide above="md">
+          <SearchCommandModal />
+        </Hide>
 
         <Hide above="md">
           <AppTooltip label={STRINGS.BUTTONS.FAVORITES.TITLE}>
@@ -79,7 +85,8 @@ type NavbarContainerProps = {
 const NavbarContainer = ({ children }: NavbarContainerProps) => (
   <Box
     as="header"
-    p={4}
+    px={4}
+    py={{ base: 4, md: 2 }}
     borderBottomWidth="1px"
     position="sticky"
     top={0}
