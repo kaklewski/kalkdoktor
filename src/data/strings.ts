@@ -101,7 +101,7 @@ const STRINGS = {
       RESULT: 'Wynik',
       SOURCE: 'Źródło',
       SOURCES: 'Źródła',
-      OWN_WORK: 'Opracowanie własne',
+      OWN_WORK: 'Opracowanie własne.',
       ACCESS: 'dostęp',
     },
     ERROR404: {

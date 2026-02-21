@@ -20,62 +20,63 @@ type DetailsCardProps = {
   sources: CalculatorType['sources'];
 };
 
-export default function DetailsCard({
+const DetailsCard = ({
   description,
   methodology,
   sources,
-}: DetailsCardProps) {
+}: DetailsCardProps) => {
+  const isOwnWork = sources === 'ownWork';
+  const isOneSource =
+    isOwnWork || (Array.isArray(sources) && sources.length === 1);
+
   return (
     <Card variant="outline" rounded="xl">
       <Tabs variant="enclosed" colorScheme="teal" isFitted isLazy>
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
           <Tab>
-            {sources && sources.length > 1
-              ? STRINGS.PAGES.CALCULATOR.SOURCES
-              : STRINGS.PAGES.CALCULATOR.SOURCE}
+            {isOneSource
+              ? STRINGS.PAGES.CALCULATOR.SOURCE
+              : STRINGS.PAGES.CALCULATOR.SOURCES}
           </Tab>
           {methodology && <Tab>{STRINGS.PAGES.CALCULATOR.METHODOLOGY}</Tab>}
         </TabList>
-
         <TabPanels>
           <TabPanel>
             <Text>{description}</Text>
           </TabPanel>
           <TabPanel>
-            {sources && sources.length > 0
-              ? sources.map((sourceItem) => {
-                  return (
-                    <SourceLink
-                      key={sourceItem.id}
-                      author={sourceItem.author}
-                      title={sourceItem.title}
-                      dateOfAccess={sourceItem.dateOfAccess}
-                      link={sourceItem.link}
-                    />
-                  );
-                })
-              : STRINGS.PAGES.CALCULATOR.OWN_WORK}
+            {isOwnWork
+              ? STRINGS.PAGES.CALCULATOR.OWN_WORK
+              : sources.map((source) => (
+                  <SourceLink
+                    key={source.id}
+                    author={source.author}
+                    title={source.title}
+                    dateOfAccess={source.dateOfAccess}
+                    link={source.link}
+                  />
+                ))}
           </TabPanel>
           {methodology && <TabPanel>{methodology}</TabPanel>}
         </TabPanels>
       </Tabs>
     </Card>
   );
-}
+};
 
 type SourceLinkProps = Omit<SourceType, 'id'>;
 
-function SourceLink({ author, title, dateOfAccess, link }: SourceLinkProps) {
-  return (
-    <Box mb={2}>
-      <Link href={link} isExternal>
-        <Text as="span">
-          {author}, <Text as="i">{title}</Text>,{' '}
-          {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
-        </Text>
-        <ExternalLinkIcon mx="2px" ml={1} mt={-1} />
-      </Link>
-    </Box>
-  );
-}
+const SourceLink = ({ author, title, dateOfAccess, link }: SourceLinkProps) => (
+  <Box mb={2}>
+    <Link href={link} isExternal>
+      <Text as="span">
+        {author}, <Text as="i">{title}</Text>, {STRINGS.PAGES.CALCULATOR.ACCESS}
+        : {dateOfAccess}
+      </Text>
+      <ExternalLinkIcon ml={1} mt={-1} />
+    </Link>
+  </Box>
+);
+
+export default DetailsCard;

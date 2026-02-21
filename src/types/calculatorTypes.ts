@@ -7,7 +7,7 @@ type CalculatorType = {
   category: string;
   description: string;
   methodology?: ReactNode;
-  sources?: SourceType[];
+  sources: SourceType[] | 'ownWork';
   form: FormFieldType[];
   calculateResult: (formValues: {
     [key: string]: string;
