@@ -5258,4 +5258,96 @@ export const calculators: CalculatorType[] = [
       return [result, interpretation];
     },
   },
+
+  {
+    id: 37,
+    name: 'Skala CHA₂DS₂-VA',
+    urlPath: '/skala-cha2ds2-va',
+    category: 'kardiologia',
+    description:
+      'Pozwala ocenić ryzyko udaru niedokrwiennego mózgu u chorych z migotaniem przedsionków.',
+    sources: [
+      {
+        id: 1,
+        author: 'Medycyna Praktyczna',
+        title:
+          'Tabela 2.6-7. Skala CHA2DS2-VA do oceny ryzyka udaru niedokrwiennego mózgu u chorych z migotaniem przedsionków niezwiązanym z wadą zastawkową (Portal lekarzy)',
+        dateOfAccess: '21.02.2026',
+        link: 'https://www.mp.pl/interna/table/B16.2.6-6.',
+      },
+      {
+        id: 2,
+        author: 'Medycyna Praktyczna',
+        title: 'Skala CHA2DS2-VA (Portal lekarzy)',
+        dateOfAccess: '21.02.2026',
+        link: 'https://www.mp.pl/kalkulatory/336165,skala-cha2ds2-va',
+      },
+    ],
+    form: [
+      {
+        type: 'radioInput',
+        name: 'age',
+        label: 'Wiek',
+        options: [
+          {
+            value: 0,
+            label: 'Mniej niż 65 lat',
+          },
+          {
+            value: 1,
+            label: '65 - 74 lata',
+          },
+          {
+            value: 2,
+            label: '75 lat lub więcej',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        name: 'heartFailure',
+        value: 1,
+        label: 'Przewlekła niewydolność serca',
+      },
+      {
+        type: 'checkbox',
+        name: 'hypertension',
+        value: 1,
+        label: 'Nadciśnienie tętnicze',
+      },
+      {
+        type: 'checkbox',
+        name: 'diabetes',
+        value: 1,
+        label: 'Cukrzyca typu 1 lub 2',
+      },
+      {
+        type: 'checkbox',
+        name: 'vascularDisease',
+        value: 1,
+        label:
+          'Choroba naczyniowa (przebyty zawał serca, miażdżycowa choroba tętnic obwodowych, blaszki miażdżycowe w aorcie)',
+      },
+      {
+        type: 'checkbox',
+        name: 'stroke',
+        value: 2,
+        label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
+      },
+    ],
+    calculateResult(formValues: Record<string, string>): [number, string] {
+      const result: number = sumValues(formValues);
+      let interpretation: string = '';
+
+      if (result <= 0) {
+        interpretation = 'Niskie ryzyko. Nie trzeba wdrażać leczenia.';
+      } else if (result == 1) {
+        interpretation = 'Należy rozważyć leczenie przeciwkrzepliwe.';
+      } else if (result >= 2) {
+        interpretation = 'Zaleca się włączenie leczenia przeciwkrzepliwego.';
+      }
+
+      return [result, interpretation];
+    },
+  },
 ];
