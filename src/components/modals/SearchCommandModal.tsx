@@ -66,13 +66,10 @@ const SearchCommandModal = () => {
     closeSearchModal();
   }, [closeSearchModal]);
 
-  const navigateAndClose = useCallback(
-    (path: string) => {
-      setPendingPath(path);
-      handleSearchModalClose();
-    },
-    [handleSearchModalClose],
-  );
+  const navigateAndClose = (path: string) => {
+    setPendingPath(path);
+    handleSearchModalClose();
+  };
 
   useEffect(() => {
     const handleKeyboardShortcut = (event: globalThis.KeyboardEvent) => {
