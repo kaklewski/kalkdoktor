@@ -8,7 +8,11 @@ import STRINGS from './src/data/strings';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
