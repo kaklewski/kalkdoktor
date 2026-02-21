@@ -82,7 +82,7 @@ const STRINGS = {
     SHARE_FAVORITES: {
       TITLE: 'Udostępnij ulubione kalkulatory',
       DESCRIPTION:
-        'Skopiuj poniższy link i otwórz go na innym urządzeniu, aby zaimportować ulubione kalkulatory.',
+        'Skopiuj poniższy link i otwórz go na innym urządzeniu lub zeskanuj kod QR, aby zaimportować ulubione kalkulatory.',
       HOW_IT_WORKS: {
         TITLE: 'Jak to działa?',
         DESCRIPTION:

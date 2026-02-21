@@ -4,6 +4,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Box,
   Button,
   Flex,
   IconButton,
@@ -20,6 +21,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconShare } from '@tabler/icons-react';
+import QRCode from 'react-qr-code';
 
 import STRINGS from '../../data/strings';
 import useShowToast from '../../hooks/useShowToast';
@@ -56,6 +58,20 @@ const ShareFavoritesModal = () => {
                   {STRINGS.BUTTONS.COPY}
                 </Button>
               </Flex>
+
+              <Box
+                width="fit-content"
+                marginInline="auto"
+                p={4}
+                bg="white"
+                rounded="lg"
+              >
+                <QRCode
+                  value={value}
+                  size={200}
+                  style={{ marginInline: 'auto' }}
+                />
+              </Box>
 
               <ShareFavoritesHowItWorks />
             </Stack>
