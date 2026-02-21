@@ -40,6 +40,7 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                       render={({ field }) => (
                         <AppNumberInput
                           {...input}
+                          ref={field.ref}
                           value={field.value ?? ''}
                           onChange={field.onChange}
                           onBlur={field.onBlur}

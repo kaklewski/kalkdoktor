@@ -3,13 +3,13 @@
 import {
   FormControl,
   FormLabel,
-  Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
+  NumberInputField,
   NumberInputStepper,
 } from '@chakra-ui/react';
-import { ChangeEvent, forwardRef, KeyboardEvent, useState } from 'react';
+import { forwardRef, KeyboardEvent } from 'react';
 
 import STRINGS from '../../data/strings';
 import { NumberInputType } from '../../types/calculatorTypes';
@@ -20,107 +20,47 @@ type AppNumberInputProps = NumberInputType & {
   onBlur?: () => void;
 };
 
-const AppNumberInput = forwardRef(
-  (
-    {
-      name,
-      label,
-      min,
-      max,
-      value: externalValue,
-      onChange: externalOnChange,
-      onBlur: externalOnBlur,
-    }: AppNumberInputProps,
-    ref: any,
-  ) => {
-    const [value, setValue] = useState<string>(externalValue ?? '');
+const AppNumberInput = forwardRef<HTMLInputElement, AppNumberInputProps>(
+  ({ name, label, min, max, value, onChange, onBlur }, ref) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+      // Chakra hack: replace a comma with a dot.
+      if (event.key === ',') {
+        event.preventDefault();
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const val = e.target.value.replace(/,/g, '.');
+        const input = event.currentTarget;
+        const { selectionStart, selectionEnd, value } = input;
 
-      if (!/^\d*\.?\d*$/.test(val)) return;
+        if (selectionStart !== null && selectionEnd !== null) {
+          const newValue = `${value.slice(0, selectionStart)}.${value.slice(selectionEnd)}`;
 
-      setValue(val);
-
-      externalOnChange?.(val);
-    };
-
-    const handleBlur = () => {
-      if (value === '') {
-        externalOnBlur?.();
-        return;
+          onChange?.(newValue);
+        }
       }
-
-      const numeric = parseFloat(value);
-
-      let nextValue = value;
-
-      if (isNaN(numeric)) {
-        nextValue = '';
-      }
-
-      if (min !== undefined && numeric < min) {
-        nextValue = min.toString();
-      }
-
-      if (max !== undefined && numeric > max) {
-        nextValue = max.toString();
-      }
-
-      setValue(nextValue);
-
-      externalOnChange?.(nextValue);
-      externalOnBlur?.();
-    };
-
-    const updateValueByStep = (action: 'increment' | 'decrement') => {
-      const current = parseFloat(value) || 0;
-      let next = action === 'increment' ? current + 1 : current - 1;
-
-      if (min !== undefined && next < min) next = min;
-      if (max !== undefined && next > max) next = max;
-
-      const nextValue = next.toString();
-
-      setValue(nextValue);
-      externalOnChange?.(nextValue);
-    };
-
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
-
-      e.preventDefault();
-
-      e.key === 'ArrowUp'
-        ? updateValueByStep('increment')
-        : updateValueByStep('decrement');
     };
 
     return (
       <FormControl>
         <FormLabel htmlFor={name}>{label}</FormLabel>
-        <NumberInput>
-          <Input
+
+        <NumberInput
+          min={min}
+          max={max}
+          value={value ?? ''}
+          onChange={(valueString, _valueNumber) => {
+            onChange?.(valueString);
+          }}
+        >
+          <NumberInputField
             ref={ref}
             id={name}
             name={name}
-            placeholder={STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER}
-            type="text"
-            inputMode="decimal"
-            autoComplete="off"
-            value={value ?? ''}
-            onChange={handleChange}
-            onBlur={handleBlur}
             onKeyDown={handleKeyDown}
-            isRequired
+            onBlur={onBlur}
+            placeholder={STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER}
           />
           <NumberInputStepper>
-            <NumberIncrementStepper
-              onClick={() => updateValueByStep('increment')}
-            />
-            <NumberDecrementStepper
-              onClick={() => updateValueByStep('decrement')}
-            />
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
           </NumberInputStepper>
         </NumberInput>
       </FormControl>
