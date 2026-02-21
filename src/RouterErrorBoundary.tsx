@@ -4,6 +4,7 @@ import {
   AlertTitle,
   Button,
   Flex,
+  HStack,
 } from '@chakra-ui/react';
 import { IconExclamationCircle } from '@tabler/icons-react';
 import { useRouteError } from 'react-router-dom';
@@ -11,9 +12,10 @@ import { useRouteError } from 'react-router-dom';
 import ROUTES from './data/routes';
 import STRINGS from './data/strings';
 
-export default function RouterErrorBoundary() {
+const RouterErrorBoundary = () => {
   const error = useRouteError();
   console.error(error);
+
   return (
     <Flex height="100vh" justifyContent="center" alignItems="center">
       <Alert
@@ -35,10 +37,17 @@ export default function RouterErrorBoundary() {
           {STRINGS.PAGES.ERROR_BOUNDARY.DESCRIPTION}
         </AlertDescription>
 
-        <Button as="a" href={ROUTES.HOME} mt={4} mb={4}>
-          {STRINGS.BUTTONS.HOMEPAGE}
-        </Button>
+        <HStack mt={4} mb={4}>
+          <Button onClick={() => window.location.reload()} colorScheme="teal">
+            {STRINGS.BUTTONS.REFRESH}
+          </Button>
+          <Button as="a" href={ROUTES.HOME}>
+            {STRINGS.BUTTONS.HOMEPAGE}
+          </Button>
+        </HStack>
       </Alert>
     </Flex>
   );
-}
+};
+
+export default RouterErrorBoundary;
