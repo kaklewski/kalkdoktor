@@ -30,7 +30,7 @@ const DetailsCard = ({
     isOwnWork || (Array.isArray(sources) && sources.length === 1);
 
   return (
-    <Card variant="outline" rounded="xl">
+    <Card variant="outline" rounded="lg">
       <Tabs variant="enclosed" colorScheme="teal" isFitted isLazy>
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
