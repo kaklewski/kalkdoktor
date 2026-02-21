@@ -26,7 +26,7 @@ export default function DetailsCard({
   sources,
 }: DetailsCardProps) {
   return (
-    <Card variant="outline">
+    <Card variant="outline" rounded="xl">
       <Tabs variant="enclosed" colorScheme="teal" isFitted isLazy>
         <TabList px={4} pt={4}>
           <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>

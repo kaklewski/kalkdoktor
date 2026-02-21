@@ -43,6 +43,7 @@ const ResultCard = ({ result, interpretation }: ResultCardProps) => {
     <Card
       overflow="hidden"
       variant="filled"
+      rounded="xl"
       id="resultCard"
       data-card-animation={isAnimation}
     >

@@ -33,6 +33,8 @@ export default function CalculatorCard({
         size="sm"
         variant="outline"
         p={1}
+        rounded="xl"
+        transition="border-color 0.1s ease-in-out"
         _hover={{
           borderColor: 'teal.500',
           transition: 'border-color 0.2s ease-in-out',

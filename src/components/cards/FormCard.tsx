@@ -25,7 +25,7 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
   const { control, handleSubmit } = formMethods;
 
   return (
-    <Card overflow="hidden" variant="outline">
+    <Card overflow="hidden" variant="outline" rounded="xl">
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
