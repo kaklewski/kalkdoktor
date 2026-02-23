@@ -4,7 +4,7 @@ import { MathJax } from 'better-react-mathjax';
 import { CalculatorType } from '../types/calculatorTypes';
 import sumValues from '../utils/sumValues';
 
-export const calculators: CalculatorType[] = [
+const calculators: CalculatorType[] = [
   {
     id: 1,
     name: 'Kalkulator BMI',
@@ -5351,3 +5351,15 @@ export const calculators: CalculatorType[] = [
     },
   },
 ];
+
+const sortedCalculators = calculators.sort(
+  (calculator1: CalculatorType, calculator2: CalculatorType) => {
+    const calculator1Name = calculator1.name.toLowerCase();
+    const calculator2Name = calculator2.name.toLowerCase();
+    if (calculator1Name < calculator2Name) return -1;
+    if (calculator1Name > calculator2Name) return 1;
+    return 0;
+  },
+);
+
+export { calculators, sortedCalculators };

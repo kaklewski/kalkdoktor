@@ -38,7 +38,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { sortedCalculators } from '../../data/sortedCalculators';
+import { sortedCalculators } from '../../data/calculators';
 import STRINGS from '../../data/strings';
 import { CalculatorType } from '../../types/calculatorTypes';
 import AppTooltip from '../other/AppTooltip';

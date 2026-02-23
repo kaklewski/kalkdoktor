@@ -11,11 +11,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { IconHeartPlus } from '@tabler/icons-react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
+import { sortedCalculators } from '../data/calculators';
 import ROUTES from '../data/routes';
-import { sortedCalculators } from '../data/sortedCalculators';
 import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import SortButton from '../components/buttons/SortButton';
 import CalculatorCard from '../components/cards/CalculatorCard';
 import ShareFavoritesModal from '../components/modals/ShareFavoritesModal';
-import { sortedCalculators } from '../data/sortedCalculators';
+import { sortedCalculators } from '../data/calculators';
 import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
