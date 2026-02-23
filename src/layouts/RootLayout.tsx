@@ -5,7 +5,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import Navbar from './Navbar';
 
-export default function RootLayout() {
+const RootLayout = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -23,4 +23,6 @@ export default function RootLayout() {
       </Container>
     </>
   );
-}
+};
+
+export default RootLayout;

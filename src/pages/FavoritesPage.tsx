@@ -11,7 +11,7 @@ import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import { getCategories } from '../utils/getCategories';
 
-export default function FavoritesPage() {
+const FavoritesPage = () => {
   useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE);
 
   const [sortingOrder, setSortingOrder] = useState<string>(
@@ -92,18 +92,18 @@ export default function FavoritesPage() {
       )}
     </>
   );
-}
+};
 
-function NoFavoritesPlaceholder() {
-  return (
-    <VStack my={10} mx="auto">
-      <IconHeartOff stroke={1.5} size={100} />
-      <Heading as="h1" size="md" mx="auto">
-        {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
-      </Heading>
-      <Text align="center">
-        {STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}
-      </Text>
-    </VStack>
-  );
-}
+const NoFavoritesPlaceholder = () => (
+  <VStack my={10} mx="auto">
+    <IconHeartOff stroke={1.5} size={100} />
+    <Heading as="h1" size="md" mx="auto">
+      {STRINGS.PAGES.FAVORITES.NO_FAVORITES.TITLE}
+    </Heading>
+    <Text align="center">
+      {STRINGS.PAGES.FAVORITES.NO_FAVORITES.DESCRIPTION}
+    </Text>
+  </VStack>
+);
+
+export default FavoritesPage;

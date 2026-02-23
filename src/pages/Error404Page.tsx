@@ -6,7 +6,7 @@ import ROUTES from '../data/routes';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
-export default function Error404Page() {
+const Error404Page = () => {
   useDocumentTitle(STRINGS.PAGES.ERROR404.TITLE);
 
   return (
@@ -28,4 +28,6 @@ export default function Error404Page() {
       </Button>
     </Alert>
   );
-}
+};
+
+export default Error404Page;

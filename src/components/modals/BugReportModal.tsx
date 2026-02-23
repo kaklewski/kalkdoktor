@@ -25,9 +25,7 @@ type BugReportModalProps = {
   calculatorName: string;
 };
 
-export default function BugReportModal({
-  calculatorName,
-}: BugReportModalProps) {
+const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
 
@@ -109,4 +107,6 @@ export default function BugReportModal({
       </Modal>
     </>
   );
-}
+};
+
+export default BugReportModal;

@@ -23,7 +23,7 @@ import STRINGS from '../../data/strings';
 import { handleFormSubmit } from '../../utils/handleFormSubmit';
 import AppTooltip from '../other/AppTooltip';
 
-export default function ContactModal() {
+const ContactModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
 
@@ -94,4 +94,6 @@ export default function ContactModal() {
       </Modal>
     </>
   );
-}
+};
+
+export default ContactModal;

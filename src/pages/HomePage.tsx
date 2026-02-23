@@ -8,7 +8,7 @@ import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import { getCategories } from '../utils/getCategories';
 
-export default function HomePage() {
+const HomePage = () => {
   const [sortingOrder, setSortingOrder] = useState<string>(
     localStorage.getItem(STORAGE_KEYS.SORT.HOMEPAGE) ||
       STORAGE_KEYS.SORT.ALPHABETICALLY,
@@ -74,4 +74,6 @@ export default function HomePage() {
       )}
     </>
   );
-}
+};
+
+export default HomePage;

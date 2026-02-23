@@ -6,7 +6,7 @@ import ROUTES from '../data/routes';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
-export default function SubmissionSuccessPage() {
+const SubmissionSuccessPage = () => {
   useDocumentTitle(STRINGS.PAGES.SUBMISSION_SUCCESS.TITLE);
 
   return (
@@ -30,4 +30,6 @@ export default function SubmissionSuccessPage() {
       </Button>
     </Alert>
   );
-}
+};
+
+export default SubmissionSuccessPage;

@@ -19,7 +19,7 @@ import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
-export default function ImportFavoritesPage() {
+const ImportFavoritesPage = () => {
   useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE);
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -49,49 +49,48 @@ export default function ImportFavoritesPage() {
       )
     : [];
 
-  function importFavorites(favorites: string) {
+  const importFavorites = (favorites: string) => {
     localStorage.setItem(STORAGE_KEYS.FAVORITES, favorites);
     navigate(ROUTES.FAVORITES);
-  }
+  };
+
+  const handleClick = () => {
+    if (favCalcIdString) importFavorites(favCalcIdString);
+  };
+
+  const favList = favsToImport.map((fav) => (
+    <ListItem key={fav.id}>{fav.name}</ListItem>
+  ));
 
   return (
-    <>
-      {isEachIdValid && (
-        <Card variant="outline">
-          <CardBody>
-            <VStack mx="auto" maxW="80%">
-              <IconHeartPlus stroke={1.5} size={100} />
-              <Heading as="h1" mx="auto" size="md">
-                {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
-              </Heading>
-              <Text align="center">
-                {STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}
-              </Text>
-              <UnorderedList>
-                {favsToImport.map((fav) => (
-                  <ListItem key={fav.id}>{fav.name}</ListItem>
-                ))}
-              </UnorderedList>
-            </VStack>
-          </CardBody>
+    isEachIdValid && (
+      <Card variant="outline">
+        <CardBody>
+          <VStack mx="auto" maxW="80%">
+            <IconHeartPlus stroke={1.5} size={100} />
+            <Heading as="h1" mx="auto" size="md">
+              {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
+            </Heading>
+            <Text align="center">
+              {STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}
+            </Text>
+            <UnorderedList>{favList}</UnorderedList>
+          </VStack>
+        </CardBody>
 
-          <CardFooter mb={2}>
-            <Flex justify="center" align="center" gap={2} w="100%">
-              <Button as={RouterLink} to={ROUTES.HOME}>
-                {STRINGS.BUTTONS.CANCEL}
-              </Button>
-              <Button
-                colorScheme="red"
-                onClick={() => {
-                  if (favCalcIdString) importFavorites(favCalcIdString);
-                }}
-              >
-                {STRINGS.BUTTONS.IMPORT}
-              </Button>
-            </Flex>
-          </CardFooter>
-        </Card>
-      )}
-    </>
+        <CardFooter mb={2}>
+          <Flex justify="center" align="center" gap={2} w="100%">
+            <Button as={RouterLink} to={ROUTES.HOME}>
+              {STRINGS.BUTTONS.CANCEL}
+            </Button>
+            <Button colorScheme="red" onClick={handleClick}>
+              {STRINGS.BUTTONS.IMPORT}
+            </Button>
+          </Flex>
+        </CardFooter>
+      </Card>
+    )
   );
-}
+};
+
+export default ImportFavoritesPage;
