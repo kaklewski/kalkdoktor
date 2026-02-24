@@ -2,7 +2,7 @@ import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
 import { MathJax } from 'better-react-mathjax';
 
 import { CalculatorType } from '../types/calculatorTypes';
-import sumValues from '../utils/sumValues';
+import { sumValues } from '../utils/helpers';
 
 const calculators: CalculatorType[] = [
   {
@@ -3536,8 +3536,8 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
-      const result = sumValues(formValues);
-      const gender = formValues['gender'];
+      const result: number = sumValues(formValues);
+      const gender = formValues['gender'] as 'male' | 'female';
       let interpretation: string = '';
 
       const lowRisk: string = 'Picie o niskim poziomie ryzyka.';

@@ -25,7 +25,7 @@ import QRCode from 'react-qr-code';
 
 import STRINGS from '../../data/strings';
 import useShowToast from '../../hooks/useShowToast';
-import getImportFavoritesUrl from '../../utils/getImportFavoritesUrl';
+import { getImportFavoritesUrl } from '../../utils/helpers';
 import AppTooltip from '../other/AppTooltip';
 
 const ShareFavoritesModal = () => {

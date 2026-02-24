@@ -9,7 +9,7 @@ import { sortedCalculators } from '../data/calculators';
 import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import { getCategories } from '../utils/getCategories';
+import { getCategories } from '../utils/helpers';
 
 const FavoritesPage = () => {
   useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE);
