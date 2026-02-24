@@ -121,8 +121,12 @@ const SearchCommandModal = () => {
 
       case 'Enter':
         if (selectedItemIndex >= 0) {
+          const selectedItem = filteredCalculators[selectedItemIndex];
+
+          if (!selectedItem) return;
+
           event.preventDefault();
-          navigateAndClose(filteredCalculators[selectedItemIndex].urlPath);
+          navigateAndClose(selectedItem.urlPath);
         }
         break;
 

@@ -17,8 +17,8 @@ const AppRadioInput = forwardRef<HTMLDivElement, AppRadioGroupProps>(
       colorScheme="teal"
       name={name}
       value={value ?? ''}
-      onChange={onChange}
-      onBlur={onBlur}
+      {...(onChange ? { onChange } : {})}
+      {...(onBlur ? { onBlur } : {})}
     >
       <Stack>
         <FormLabel as="legend" mb={0}>

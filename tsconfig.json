@@ -5,12 +5,26 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+
+    "incremental": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    "noEmit": true
   }
 }

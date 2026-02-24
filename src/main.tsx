@@ -5,7 +5,7 @@ import { MathJaxContext } from 'better-react-mathjax';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App.tsx';
+import App from './App';
 import { theme } from './theme';
 
 const mathJaxConfig = {

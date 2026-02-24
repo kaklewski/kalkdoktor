@@ -68,10 +68,11 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (!formValues.bodyMass || !formValues.height)
+        return [0, 'Uzupełnij wszystkie dane.'];
+
       const bodyMass: number = parseFloat(formValues['bodyMass']);
       const height: number = parseFloat(formValues['height']) / 100;
-
-      if (!bodyMass || !height) return [0, 'Uzupełnij wszystkie dane.'];
 
       const result: number = Math.round(bodyMass / (height * height));
       let interpretation: string = '';
@@ -448,14 +449,19 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (
+        !formValues.amountPerIntake ||
+        !formValues.numberOfIntakes ||
+        !formValues.daysOfUse ||
+        !formValues.packageSize
+      ) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
+
       const amountPerIntake: number = parseFloat(formValues['amountPerIntake']);
       const numberOfIntakes: number = parseFloat(formValues['numberOfIntakes']);
       const daysOfUse: number = parseFloat(formValues['daysOfUse']);
       const packageSize: number = parseFloat(formValues['packageSize']);
-
-      if (!amountPerIntake || !numberOfIntakes || !daysOfUse || !packageSize) {
-        return [0, 'Uzupełnij wszystkie dane.'];
-      }
 
       const result: number = Math.round(
         (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
@@ -525,10 +531,11 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (!formValues.age || !formValues.weight)
+        return [`${0} g`, 'Uzupełnij wszystkie dane.'];
+
       const age: number = parseFloat(formValues['age']);
       const weight: number = parseFloat(formValues['weight']);
-
-      if (!age || !weight) return [`${0} g`, 'Uzupełnij wszystkie dane.'];
 
       let result: number = (60 * weight) / 1000;
       let interpretation: string = 'Uzupełnij wszystkie dane.';
@@ -1076,11 +1083,11 @@ const calculators: CalculatorType[] = [
     calculateResult(formValues: {
       [key: string]: string;
     }): [string | number, string] {
+      if (!formValues.qtInterval || !formValues.heartRate)
+        return ['0 ms', 'Uzupełnij wszystkie dane.'];
+
       const qtInterval: number = parseFloat(formValues['qtInterval']);
       const heartRate: number = parseFloat(formValues['heartRate']);
-
-      if (!qtInterval || !heartRate)
-        return ['0 ms', 'Uzupełnij wszystkie dane.'];
 
       const rr: number = 60 / heartRate;
       const result: number = qtInterval / Math.sqrt(rr);
@@ -1166,12 +1173,17 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (
+        !formValues.prothrombinTime ||
+        !formValues.controlTime ||
+        !formValues.bilirubin
+      ) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
+
       const prothrombinTime: number = parseFloat(formValues['prothrombinTime']);
       const controlTime: number = parseFloat(formValues['controlTime']);
       const bilirubin: number = parseFloat(formValues['bilirubin']);
-
-      if (!prothrombinTime || !controlTime || !bilirubin)
-        return [0, 'Uzupełnij wszystkie dane.'];
 
       const result: number = (prothrombinTime - controlTime) * 4.6 + bilirubin;
       const formattedResult: number = parseFloat(result.toFixed(0));
@@ -1247,12 +1259,12 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
-      const age: number = parseFloat(formValues['age']);
-      const weight: number = parseFloat(formValues['weight']);
-
-      if (!age || !weight) {
+      if (!formValues.age || !formValues.weight) {
         return ['0 g', 'Uzupełnij wszystkie dane.'];
       }
+
+      const age: number = parseFloat(formValues['age']);
+      const weight: number = parseFloat(formValues['weight']);
 
       const result: number = age > 12 ? 3.2 : (30 * weight) / 1000;
       const formattedResult: number = parseFloat(result.toFixed(1));
@@ -1652,13 +1664,13 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (!formValues.gender || !formValues.waist || !formValues.hips) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
+
       const gender: string = formValues['gender'];
       const waist: number = parseFloat(formValues['waist']);
       const hips: number = parseFloat(formValues['hips']);
-
-      if (!gender || !waist || !hips) {
-        return [0, 'Uzupełnij wszystkie dane.'];
-      }
 
       const result: number = waist / hips;
       const formattedResult: number = parseFloat(result.toFixed(2));
@@ -2094,14 +2106,19 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (
+        !formValues.age ||
+        !formValues.weight ||
+        !formValues.creatinine ||
+        !formValues.gender
+      ) {
+        return ['0 ml/min', 'Uzupełnij wszystkie dane.'];
+      }
+
       const age: number = parseFloat(formValues['age']);
       const weight: number = parseFloat(formValues['weight']);
       const creatinine: number = parseFloat(formValues['creatinine']);
       const gender: string = formValues['gender'];
-
-      if (!age || !weight || !creatinine || !gender) {
-        return ['0 ml/min', 'Uzupełnij wszystkie dane.'];
-      }
 
       let result: number = ((140 - age) * weight) / (creatinine * 72);
       if (gender === 'female') {
@@ -2213,14 +2230,19 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (
+        !formValues.age ||
+        !formValues.alt ||
+        !formValues.ast ||
+        !formValues.platelet
+      ) {
+        return ['0', 'Uzupełnij wszystkie dane.'];
+      }
+
       const age: number = parseFloat(formValues['age']);
       const alt: number = parseFloat(formValues['alt']);
       const ast: number = parseFloat(formValues['ast']);
       const platelet: number = parseFloat(formValues['platelet']);
-
-      if (!age || !alt || !ast || !platelet) {
-        return ['0', 'Uzupełnij wszystkie dane.'];
-      }
 
       const result: number = (age * ast) / (platelet * Math.sqrt(alt));
       const formattedResult: string = result.toFixed(2);
@@ -2450,6 +2472,31 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (
+        !formValues.age ||
+        !formValues.bloodPressure ||
+        !formValues.cholesterol ||
+        !formValues.gender ||
+        !formValues.smokingStatus
+      ) {
+        return ['0%', 'Uzupełnij wszystkie dane.'];
+      }
+
+      type Score2ValuesTable = {
+        female: GenderGroup;
+        male: GenderGroup;
+      };
+
+      type GenderGroup = {
+        nonSmoking: AgeGroups;
+        smoking: AgeGroups;
+      };
+
+      const validAges = [40, 45, 50, 55, 60, 65, 70, 75, 80, 85] as const;
+      type ValidAge = (typeof validAges)[number];
+
+      type AgeGroups = Record<ValidAge, number[][]>;
+
       const age: number = parseFloat(formValues['age']);
       const bloodPressure: number = parseFloat(formValues['bloodPressure']);
       const cholesterol: number = parseFloat(formValues['cholesterol']);
@@ -2458,9 +2505,12 @@ const calculators: CalculatorType[] = [
         | 'smoking'
         | 'nonSmoking';
 
-      if (!age || !bloodPressure || !cholesterol || !gender || !smokingStatus) {
-        return ['0%', 'Uzupełnij wszystkie dane.'];
-      }
+      const toValidAge = (age: number): ValidAge | null => {
+        const ageGroup = Math.floor((age - 40) / 5) * 5 + 40;
+        return validAges.includes(ageGroup as ValidAge)
+          ? (ageGroup as ValidAge)
+          : null;
+      };
 
       const getCholesterolGroup = (cholesterol: number) => {
         if (cholesterol < 150) return 0;
@@ -2476,23 +2526,13 @@ const calculators: CalculatorType[] = [
         return 3;
       };
 
-      const ageGroup: number = Math.floor((age - 40) / 5) * 5 + 40;
+      const ageGroup = toValidAge(age);
+
+      if (!ageGroup) {
+        return ['0%', 'Nieprawidłowy wiek.'];
+      }
       const cholesterolGroup: number = getCholesterolGroup(cholesterol);
       const bloodPressureGroup: number = getBloodPressureGroup(bloodPressure);
-
-      type Score2ValuesTable = {
-        female: GenderGroup;
-        male: GenderGroup;
-      };
-
-      type GenderGroup = {
-        nonSmoking: AgeGroups;
-        smoking: AgeGroups;
-      };
-
-      type AgeGroups = {
-        [age: number]: number[][];
-      };
 
       const score2ValuesTable: Score2ValuesTable = {
         female: {
@@ -2749,10 +2789,14 @@ const calculators: CalculatorType[] = [
         },
       };
 
-      const result: number =
-        score2ValuesTable[gender][smokingStatus][ageGroup][bloodPressureGroup][
-          cholesterolGroup
-        ];
+      const ageData = score2ValuesTable[gender][smokingStatus][ageGroup];
+      if (!ageData) return ['0%', 'Nieprawidłowy wiek.'];
+
+      const bpRow = ageData[bloodPressureGroup];
+      if (!bpRow) return ['0%', 'Nieprawidłowe ciśnienie.'];
+
+      const result = bpRow[cholesterolGroup];
+      if (result === undefined) return ['0%', 'Nieprawidłowy cholesterol.'];
 
       let interpretation = '';
 
@@ -2875,13 +2919,17 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (
+        !formValues.mothersHeight ||
+        !formValues.fathersHeight ||
+        !formValues.gender
+      ) {
+        return ['0 cm', 'Uzupełnij wszystkie dane.'];
+      }
+
       const mothersHeight: number = parseInt(formValues['mothersHeight']);
       const fathersHeight: number = parseInt(formValues['fathersHeight']);
       const gender = formValues['gender'] as 'male' | 'female';
-
-      if (!mothersHeight || !fathersHeight || !gender) {
-        return ['0 cm', 'Uzupełnij wszystkie dane.'];
-      }
 
       const result: number =
         gender === 'male'
@@ -3160,6 +3208,8 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (!formValues.problem) return [0, 'Uzupełnij wszystkie dane.'];
+
       const result: number = sumValues(formValues);
       const happenedAtTheSameTime: boolean =
         formValues['happenedAtTheSameTime'] === 'true';
@@ -4107,14 +4157,18 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (
+        !formValues.gender ||
+        !formValues.consumedAlcohol ||
+        !formValues.bodyWeight
+      ) {
+        return ['0‰', 'Przybliżona zawartość alkoholu we krwi.'];
+      }
+
       const gender = formValues['gender'] as 'male' | 'female';
       const genderIndex: number = gender === 'male' ? 0.7 : 0.6;
       const consumedAlcohol: number = parseFloat(formValues['consumedAlcohol']);
       const bodyWeight: number = parseFloat(formValues['bodyWeight']);
-
-      if (!gender || !consumedAlcohol || !bodyWeight) {
-        return ['0‰', 'Przybliżona zawartość alkoholu we krwi.'];
-      }
 
       const result: number = consumedAlcohol / (genderIndex * bodyWeight);
       const formattedResult: number = parseFloat(result.toFixed(1));
@@ -4448,6 +4502,18 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (
+        !formValues.s ||
+        !formValues.t ||
+        !formValues.o ||
+        !formValues.p ||
+        !formValues.b ||
+        !formValues.n ||
+        !formValues.g
+      ) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
+
       const result: number = sumValues(formValues);
       const s: number = parseInt(formValues['s']);
       const t: number = parseInt(formValues['t']);
@@ -4953,13 +5019,13 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [string, string] {
+      if (!formValues.gender || !formValues.height || !formValues.weight) {
+        return ['0 kg', 'Uzupełnij wszystkie dane.'];
+      }
+
       const gender = formValues['gender'] as 'male' | 'female';
       const height: number = parseFloat(formValues['height']);
       const weight: number = parseFloat(formValues['weight']);
-
-      if (!gender || !height || !weight) {
-        return ['0 kg', 'Uzupełnij wszystkie dane.'];
-      }
 
       let result: number = 0;
 
@@ -5123,6 +5189,16 @@ const calculators: CalculatorType[] = [
       },
     ],
     calculateResult(formValues: Record<string, string>): [number, string] {
+      if (
+        !formValues.age ||
+        !formValues.coronaryArteryDisease ||
+        !formValues.smoking ||
+        !formValues.hypertension ||
+        !formValues.diabetes
+      ) {
+        return [0, 'Uzupełnij wszystkie dane.'];
+      }
+
       type Sex = 'male' | 'female';
       type AgeGroup = 30 | 40 | 50 | 60 | 70;
       type RiskFactorGroup = [number, number, number];
@@ -5240,10 +5316,9 @@ const calculators: CalculatorType[] = [
         },
       };
 
-      const result: number =
-        cadProbabilityTable[mainSymptomValue as MainSymptomValue][
-          gender as Sex
-        ][ageGroup as AgeGroup][riskFactorGroup];
+      const result = cadProbabilityTable[mainSymptomValue as MainSymptomValue][
+        gender as Sex
+      ][ageGroup as AgeGroup][riskFactorGroup] as number;
 
       let interpretation: string = '';
 

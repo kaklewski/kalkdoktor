@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
 import { VitePWA } from 'vite-plugin-pwa';
 
 import ROUTES from './src/data/routes';
@@ -11,6 +12,11 @@ export default defineConfig({
     react({
       babel: {
         plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
+    checker({
+      typescript: {
+        tsconfigPath: 'tsconfig.app.json',
       },
     }),
     VitePWA({
