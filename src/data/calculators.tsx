@@ -448,14 +448,16 @@ const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.amountPerIntake ||
         !formValues.numberOfIntakes ||
         !formValues.daysOfUse ||
         !formValues.packageSize
       ) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const amountPerIntake: number = parseFloat(formValues['amountPerIntake']);
@@ -467,7 +469,7 @@ const calculators: CalculatorType[] = [
         (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
       );
 
-      return [result, 'Liczba opakowań, które należy przepisać.'];
+      return [`${result} opak.`, null];
     },
   },
 
@@ -530,22 +532,18 @@ const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
-      if (!formValues.age || !formValues.weight)
-        return [`${0} g`, 'Uzupełnij wszystkie dane.'];
+    calculateResult(formValues: Record<string, string>): [string | null, null] {
+      if (!formValues.age || !formValues.weight) return [null, null];
 
       const age: number = parseFloat(formValues['age']);
       const weight: number = parseFloat(formValues['weight']);
 
       let result: number = (60 * weight) / 1000;
-      let interpretation: string = 'Uzupełnij wszystkie dane.';
 
       if (age <= 12 && result > 2) result = 2;
       if (result > 4) result = 4;
 
-      if (result > 0) interpretation = 'Maksymalna dobowa dawka paracetamolu.';
-
-      return [`${result} g`, interpretation];
+      return [`${result} g`, null];
     },
   },
 
@@ -1080,11 +1078,10 @@ const calculators: CalculatorType[] = [
         max: 700,
       },
     ],
-    calculateResult(formValues: {
-      [key: string]: string;
-    }): [string | number, string] {
-      if (!formValues.qtInterval || !formValues.heartRate)
-        return ['0 ms', 'Uzupełnij wszystkie dane.'];
+    calculateResult(formValues: Record<string, string>): [string, null] {
+      if (!formValues.qtInterval || !formValues.heartRate) {
+        return ['0 ms', null];
+      }
 
       const qtInterval: number = parseFloat(formValues['qtInterval']);
       const heartRate: number = parseFloat(formValues['heartRate']);
@@ -1093,7 +1090,7 @@ const calculators: CalculatorType[] = [
       const result: number = qtInterval / Math.sqrt(rr);
       const formattedResult: number = parseFloat(result.toFixed(1));
 
-      return [`${formattedResult} ms`, 'Skorygowany odstęp QTc'];
+      return [`${formattedResult} ms`, null];
     },
   },
 
@@ -1258,9 +1255,11 @@ const calculators: CalculatorType[] = [
         max: 200,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (!formValues.age || !formValues.weight) {
-        return ['0 g', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const age: number = parseFloat(formValues['age']);
@@ -1269,7 +1268,7 @@ const calculators: CalculatorType[] = [
       const result: number = age > 12 ? 3.2 : (30 * weight) / 1000;
       const formattedResult: number = parseFloat(result.toFixed(1));
 
-      return [`${formattedResult} g`, 'Maksymalna dobowa dawka ibuprofenu.'];
+      return [`${formattedResult} g`, null];
     },
   },
 
@@ -1663,9 +1662,11 @@ const calculators: CalculatorType[] = [
         max: 250,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
       if (!formValues.gender || !formValues.waist || !formValues.hips) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const gender: string = formValues['gender'];
@@ -2105,14 +2106,16 @@ const calculators: CalculatorType[] = [
         max: 100,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.age ||
         !formValues.weight ||
         !formValues.creatinine ||
         !formValues.gender
       ) {
-        return ['0 ml/min', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const age: number = parseFloat(formValues['age']);
@@ -2125,9 +2128,8 @@ const calculators: CalculatorType[] = [
         result = result * 0.85;
       }
       const formattedResult: string = `${result.toFixed(2)} ml/min`;
-      const interpretation: string = 'Klirens kreatyniny.';
 
-      return [formattedResult, interpretation];
+      return [formattedResult, null];
     },
   },
 
@@ -2229,14 +2231,16 @@ const calculators: CalculatorType[] = [
         max: 1000,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.age ||
         !formValues.alt ||
         !formValues.ast ||
         !formValues.platelet
       ) {
-        return ['0', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const age: number = parseFloat(formValues['age']);
@@ -2471,7 +2475,9 @@ const calculators: CalculatorType[] = [
         max: 265,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.age ||
         !formValues.bloodPressure ||
@@ -2479,7 +2485,7 @@ const calculators: CalculatorType[] = [
         !formValues.gender ||
         !formValues.smokingStatus
       ) {
-        return ['0%', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       type Score2ValuesTable = {
@@ -2918,13 +2924,15 @@ const calculators: CalculatorType[] = [
         max: 220,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.mothersHeight ||
         !formValues.fathersHeight ||
         !formValues.gender
       ) {
-        return ['0 cm', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const mothersHeight: number = parseInt(formValues['mothersHeight']);
@@ -2936,9 +2944,7 @@ const calculators: CalculatorType[] = [
           ? (mothersHeight + fathersHeight + 13) / 2
           : (mothersHeight + fathersHeight - 13) / 2;
 
-      const interpretation = 'Przewidywany wzrost dziecka.';
-
-      return [`${result.toFixed(0)} cm`, interpretation];
+      return [`${result.toFixed(0)} cm`, null];
     },
   },
 
@@ -3207,8 +3213,10 @@ const calculators: CalculatorType[] = [
         ],
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
-      if (!formValues.problem) return [0, 'Uzupełnij wszystkie dane.'];
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
+      if (!formValues.problem) return [null, null];
 
       const result: number = sumValues(formValues);
       const happenedAtTheSameTime: boolean =
@@ -4156,13 +4164,15 @@ const calculators: CalculatorType[] = [
         max: 1000,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (
         !formValues.gender ||
         !formValues.consumedAlcohol ||
         !formValues.bodyWeight
       ) {
-        return ['0‰', 'Przybliżona zawartość alkoholu we krwi.'];
+        return [null, null];
       }
 
       const gender = formValues['gender'] as 'male' | 'female';
@@ -4172,9 +4182,8 @@ const calculators: CalculatorType[] = [
 
       const result: number = consumedAlcohol / (genderIndex * bodyWeight);
       const formattedResult: number = parseFloat(result.toFixed(1));
-      const interpretation: string = 'Przybliżona zawartość alkoholu we krwi.';
 
-      return [`${formattedResult} ‰`, interpretation];
+      return [`${formattedResult} ‰`, null];
     },
   },
 
@@ -5018,9 +5027,11 @@ const calculators: CalculatorType[] = [
         max: 250,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [string, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [string | null, string | null] {
       if (!formValues.gender || !formValues.height || !formValues.weight) {
-        return ['0 kg', 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const gender = formValues['gender'] as 'male' | 'female';
@@ -5037,10 +5048,7 @@ const calculators: CalculatorType[] = [
 
       const formattedResult = result.toFixed(1);
 
-      const interpretation: string =
-        result > 0 ? 'Beztłuszczowa masa ciała.' : 'Uzupełnij wszystkie dane.';
-
-      return [`${formattedResult} kg`, interpretation];
+      return [`${formattedResult} kg`, null];
     },
   },
 
@@ -5188,7 +5196,9 @@ const calculators: CalculatorType[] = [
         hideBadge: true,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
       if (
         !formValues.age ||
         !formValues.coronaryArteryDisease ||
@@ -5196,7 +5206,7 @@ const calculators: CalculatorType[] = [
         !formValues.hypertension ||
         !formValues.diabetes
       ) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       type Sex = 'male' | 'female';

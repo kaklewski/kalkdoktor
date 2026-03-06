@@ -1,5 +1,3 @@
-import './assets/styles.scss';
-
 import { ChakraProvider } from '@chakra-ui/react';
 import { MathJaxContext } from 'better-react-mathjax';
 import { StrictMode } from 'react';

@@ -100,6 +100,7 @@ const STRINGS = {
       METHODOLOGY: 'Metodologia',
       DESCRIPTION: 'Opis',
       RESULT: 'Wynik',
+      NO_RESULT_MESSAGE: 'Wypełnij formularz, aby obliczyć wynik.',
       SOURCE: 'Źródło',
       SOURCES: 'Źródła',
       OWN_WORK: 'Opracowanie własne.',

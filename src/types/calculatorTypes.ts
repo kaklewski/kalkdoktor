@@ -9,9 +9,9 @@ type CalculatorType = {
   methodology?: ReactNode;
   sources: SourceType[] | 'ownWork';
   form: FormFieldType[];
-  calculateResult: (formValues: {
-    [key: string]: string;
-  }) => [number | string, string];
+  calculateResult: (
+    formValues: Record<string, string>,
+  ) => [Result, Interpretation];
 };
 
 type SourceType = {
@@ -23,6 +23,8 @@ type SourceType = {
 };
 
 type FormFieldType = NumberInputType | CheckboxType | RadioInputType;
+type Result = number | string | null;
+type Interpretation = string | null;
 
 type NumberInputType = {
   type: 'numberInput';
@@ -56,8 +58,10 @@ type RadioOptionType = {
 export type {
   CalculatorType,
   CheckboxType,
+  Interpretation,
   NumberInputType,
   RadioInputType as RadioGroupType,
   RadioOptionType as RadioType,
+  Result,
   SourceType,
 };

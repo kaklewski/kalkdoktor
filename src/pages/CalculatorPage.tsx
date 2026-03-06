@@ -1,5 +1,5 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import FavButton from '../components/buttons/FavButton';
@@ -22,11 +22,24 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
 
   const [submittedValues, setSubmittedValues] = useState({});
   const formMethods = useForm();
+  const ResultCardRef = useRef<HTMLDivElement | null>(null);
 
-  const [result, interpretation] = calculateResult(submittedValues);
+  const getResultAndInterpretation = (obj: Record<string, string>) => {
+    if (Object.keys(obj).length === 0) {
+      return [null, null];
+    }
+    return calculateResult(obj);
+  };
 
-  const handleCalculate = (values: any) => {
+  const [result, interpretation] = getResultAndInterpretation(submittedValues);
+
+  const handleCalculate = (values: Record<string, string>) => {
     setSubmittedValues(values);
+
+    ResultCardRef?.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   return (
@@ -43,7 +56,11 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
           onSubmit={handleCalculate}
         />
 
-        <ResultCard result={result} interpretation={interpretation} />
+        <ResultCard
+          ref={ResultCardRef}
+          result={result}
+          interpretation={interpretation}
+        />
 
         <DetailsCard
           description={description}
