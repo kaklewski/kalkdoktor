@@ -9,16 +9,20 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html:not([data-theme]) {
-  /* Chakra sets color scheme automatically when dark or light mode is selected */
-  color-scheme: light dark;
-}
-
 @media (display-mode: standalone) {
   html,
   body {
     overscroll-behavior: none;
   }
+}
+
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+html:not([data-theme]) {
+  /* Chakra sets color scheme automatically when dark or light mode is selected */
+  color-scheme: light dark;
 }
 
 body {

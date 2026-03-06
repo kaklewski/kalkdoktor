@@ -30,6 +30,7 @@ const FavButton = ({ calculatorId }: FavButtonProps) => {
     e.preventDefault();
     e.stopPropagation();
 
+    if ('vibrate' in navigator) navigator.vibrate(50);
     toggleFavorite();
     showToast(
       isFavorite
