@@ -67,9 +67,10 @@ const calculators: CalculatorType[] = [
         max: 230,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
-      if (!formValues.bodyMass || !formValues.height)
-        return [0, 'Uzupełnij wszystkie dane.'];
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
+      if (!formValues.bodyMass || !formValues.height) return [null, null];
 
       const bodyMass: number = parseFloat(formValues['bodyMass']);
       const height: number = parseFloat(formValues['height']) / 100;
@@ -1169,13 +1170,15 @@ const calculators: CalculatorType[] = [
         max: 1000,
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
       if (
         !formValues.prothrombinTime ||
         !formValues.controlTime ||
         !formValues.bilirubin
       ) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const prothrombinTime: number = parseFloat(formValues['prothrombinTime']);
@@ -4510,7 +4513,9 @@ const calculators: CalculatorType[] = [
         ],
       },
     ],
-    calculateResult(formValues: Record<string, string>): [number, string] {
+    calculateResult(
+      formValues: Record<string, string>,
+    ): [number | null, string | null] {
       if (
         !formValues.s ||
         !formValues.t ||
@@ -4520,7 +4525,7 @@ const calculators: CalculatorType[] = [
         !formValues.n ||
         !formValues.g
       ) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const result: number = sumValues(formValues);
@@ -5271,7 +5276,7 @@ const calculators: CalculatorType[] = [
       })();
 
       if (!age || !gender || !mainSymptom) {
-        return [0, 'Uzupełnij wszystkie dane.'];
+        return [null, null];
       }
 
       const cadProbabilityTable: CadProbabilityTable = {
