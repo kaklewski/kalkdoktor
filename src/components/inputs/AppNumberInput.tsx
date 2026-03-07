@@ -49,6 +49,9 @@ const AppNumberInput = forwardRef<HTMLInputElement, AppNumberInputProps>(
           onChange={(valueString, _valueNumber) => {
             onChange?.(valueString);
           }}
+          focusBorderColor="teal.400"
+          _dark={{ focusBorderColor: 'teal.50' }}
+          isRequired
         >
           <NumberInputField
             ref={ref}
