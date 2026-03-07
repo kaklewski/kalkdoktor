@@ -1,9 +1,9 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import STORAGE_KEYS from '../../data/storageKeys';
 import STRINGS from '../../data/strings';
+import { render } from '../../test/render';
 import ColorModeButton from './ColorModeButton';
 
 describe('ColorModeButton', () => {
@@ -32,11 +32,7 @@ describe('ColorModeButton', () => {
   });
 
   it('changes to light color mode when light option is clicked', () => {
-    render(
-      <ChakraProvider>
-        <ColorModeButton />
-      </ChakraProvider>,
-    );
+    render(<ColorModeButton />);
 
     const button = screen.getByRole('button', {
       name: STRINGS.BUTTONS.CHANGE_COLOR_MODE.TITLE,
@@ -55,11 +51,7 @@ describe('ColorModeButton', () => {
   });
 
   it('sets color mode to auto when auto option is clicked', () => {
-    render(
-      <ChakraProvider>
-        <ColorModeButton />
-      </ChakraProvider>,
-    );
+    render(<ColorModeButton />);
 
     const button = screen.getByRole('button', {
       name: STRINGS.BUTTONS.CHANGE_COLOR_MODE.TITLE,

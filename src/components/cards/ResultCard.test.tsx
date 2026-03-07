@@ -1,19 +1,15 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import STRINGS from '../../data/strings';
+import { render } from '../../test/render';
 import ResultCard from './ResultCard';
 
 describe('ResultCard', () => {
   it('shows no-result message when the result is null', () => {
     const interpretation = 'test interpretation';
 
-    render(
-      <ChakraProvider>
-        <ResultCard result={null} interpretation={interpretation} />
-      </ChakraProvider>,
-    );
+    render(<ResultCard result={null} interpretation={interpretation} />);
 
     const noResultMessage = screen.getByText(
       STRINGS.PAGES.CALCULATOR.NO_RESULT_MESSAGE,
@@ -25,11 +21,7 @@ describe('ResultCard', () => {
   it('shows the result when it is not null', () => {
     const result = '142 cm';
 
-    render(
-      <ChakraProvider>
-        <ResultCard result={result} interpretation={null} />
-      </ChakraProvider>,
-    );
+    render(<ResultCard result={result} interpretation={null} />);
 
     const resultBlock = screen.getByText(result);
     expect(resultBlock).toHaveTextContent(result);
@@ -38,11 +30,7 @@ describe('ResultCard', () => {
   it('does not show the interpretation block when interpretation is null', () => {
     const result = '142 cm';
 
-    render(
-      <ChakraProvider>
-        <ResultCard result={result} interpretation={null} />
-      </ChakraProvider>,
-    );
+    render(<ResultCard result={result} interpretation={null} />);
 
     const interpretationBlock = screen.queryByTestId('interpretation-block');
     expect(interpretationBlock).not.toBeInTheDocument();
@@ -52,11 +40,7 @@ describe('ResultCard', () => {
     const result = '142 cm';
     const interpretation = 'test interpretation';
 
-    render(
-      <ChakraProvider>
-        <ResultCard result={result} interpretation={interpretation} />
-      </ChakraProvider>,
-    );
+    render(<ResultCard result={result} interpretation={interpretation} />);
 
     const interpretationBlock = screen.getByTestId('interpretation-block');
     expect(interpretationBlock).toHaveTextContent(interpretation);
