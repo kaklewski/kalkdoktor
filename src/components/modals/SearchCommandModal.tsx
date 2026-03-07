@@ -296,6 +296,8 @@ const SearchBar = ({
       ref={searchBarRef}
       value={searchQuery}
       onChange={(event) => setSearchQuery(event.target.value)}
+      focusBorderColor="teal.400"
+      _dark={{ focusBorderColor: 'teal.50' }}
     />
 
     {searchQuery && (
