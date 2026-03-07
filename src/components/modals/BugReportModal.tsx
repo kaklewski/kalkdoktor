@@ -1,6 +1,6 @@
 import {
   Button,
-  Flex,
+  Center,
   FormControl,
   FormLabel,
   Input,
@@ -8,7 +8,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Stack,
@@ -43,7 +42,7 @@ const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
         initialFocusRef={initialRef}
         isOpen={isOpen}
         onClose={onClose}
-        size="xl"
+        size={{ base: 'full', md: 'xl' }}
       >
         <form
           name="bug-report"
@@ -56,7 +55,7 @@ const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
           <input type="hidden" name="form-name" value="bug-report" />
 
           <ModalOverlay />
-          <ModalContent mx={2}>
+          <ModalContent>
             <ModalHeader>{STRINGS.MODALS.BUG_REPORT.TITLE}</ModalHeader>
             <ModalCloseButton />
 
@@ -91,17 +90,13 @@ const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
                   />
                 </FormControl>
               </Stack>
-            </ModalBody>
-
-            <Input name="bot-field" visibility="collapse" maxH={0} maxW={0} />
-
-            <ModalFooter>
-              <Flex justify="center" w="100%">
+              <Input name="bot-field" visibility="collapse" maxH={0} maxW={0} />
+              <Center mb={2}>
                 <Button colorScheme="teal" type="submit">
                   {STRINGS.BUTTONS.SEND}
                 </Button>
-              </Flex>
-            </ModalFooter>
+              </Center>
+            </ModalBody>
           </ModalContent>
         </form>
       </Modal>

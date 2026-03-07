@@ -1,6 +1,6 @@
 import {
   Button,
-  Flex,
+  Center,
   FormControl,
   FormLabel,
   IconButton,
@@ -9,7 +9,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Stack,
@@ -44,7 +43,7 @@ const ContactModal = () => {
         initialFocusRef={initialRef}
         isOpen={isOpen}
         onClose={onClose}
-        size="xl"
+        size={{ base: 'full', md: 'xl' }}
       >
         <form
           name="contact-form"
@@ -57,7 +56,7 @@ const ContactModal = () => {
           <input type="hidden" name="form-name" value="contact-form" />
 
           <ModalOverlay />
-          <ModalContent mx={2}>
+          <ModalContent>
             <ModalHeader>{STRINGS.MODALS.CONTACT.TITLE} </ModalHeader>
             <ModalCloseButton />
 
@@ -78,17 +77,13 @@ const ContactModal = () => {
                   <Textarea name="message" rows={5} minH="5rem" />
                 </FormControl>
               </Stack>
-            </ModalBody>
-
-            <Input name="bot-field" visibility="collapse" maxH={0} maxW={0} />
-
-            <ModalFooter>
-              <Flex justify="center" w="100%">
+              <Input name="bot-field" visibility="collapse" maxH={0} maxW={0} />
+              <Center mb={2}>
                 <Button colorScheme="teal" type="submit">
                   {STRINGS.BUTTONS.SEND}
                 </Button>
-              </Flex>
-            </ModalFooter>
+              </Center>
+            </ModalBody>
           </ModalContent>
         </form>
       </Modal>

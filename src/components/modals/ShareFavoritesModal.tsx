@@ -6,7 +6,13 @@ import {
   AccordionPanel,
   Box,
   Button,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
+  Hide,
   IconButton,
   Input,
   Modal,
@@ -15,12 +21,15 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Show,
   Stack,
   Text,
   useClipboard,
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconShare } from '@tabler/icons-react';
+import { useDrag } from '@use-gesture/react';
+import { ReactNode, useRef } from 'react';
 import QRCode from 'react-qr-code';
 
 import STRINGS from '../../data/strings';
@@ -32,52 +41,90 @@ const ShareFavoritesModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { onCopy, value } = useClipboard(getImportFavoritesUrl());
   const showToast = useShowToast();
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerContentRef = useRef<HTMLDivElement>(null);
+
+  const bind = useDrag(
+    ({ down, movement: [, my], velocity: [, vy] }) => {
+      if (!down && my > 50 && vy > 0.05) {
+        onClose();
+      }
+    },
+    { axis: 'y', filterTaps: true },
+  );
 
   const handleClick = () => {
     onCopy();
     showToast(STRINGS.TOASTS.COPIED, 'success', true);
   };
 
+  const modalContent: ReactNode = (
+    <Stack spacing={3}>
+      <Text>{STRINGS.MODALS.SHARE_FAVORITES.DESCRIPTION}</Text>
+
+      <Flex mb={2} gap={2}>
+        <Input variant="filled" value={value} readOnly />
+        <Button colorScheme="teal" onClick={handleClick} ref={copyButtonRef}>
+          {STRINGS.BUTTONS.COPY}
+        </Button>
+      </Flex>
+
+      <Box
+        width="fit-content"
+        marginInline="auto"
+        p={4}
+        bg="white"
+        rounded="lg"
+      >
+        <QRCode value={value} size={200} style={{ marginInline: 'auto' }} />
+      </Box>
+
+      <ShareFavoritesHowItWorks />
+    </Stack>
+  );
+
   return (
     <>
       <ShareButton onClick={onOpen} />
 
-      <Modal isOpen={isOpen} onClose={onClose} size="xl">
-        <ModalOverlay />
-        <ModalContent mx={2}>
-          <ModalHeader>{STRINGS.MODALS.SHARE_FAVORITES.TITLE}</ModalHeader>
-          <ModalCloseButton />
+      <Hide above="sm">
+        <Drawer
+          placement={'bottom'}
+          onClose={onClose}
+          isOpen={isOpen}
+          initialFocusRef={copyButtonRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent
+            roundedTopLeft="3xl"
+            roundedTopRight="3xl"
+            ref={drawerContentRef}
+            {...bind()}
+          >
+            <DrawerHandler />
+            <DrawerHeader borderBottomWidth="1px">
+              {STRINGS.MODALS.SHARE_FAVORITES.TITLE}
+            </DrawerHeader>
+            <DrawerBody>{modalContent}</DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </Hide>
 
-          <ModalBody>
-            <Stack spacing={3}>
-              <Text>{STRINGS.MODALS.SHARE_FAVORITES.DESCRIPTION}</Text>
-
-              <Flex mb={2} gap={2}>
-                <Input variant="filled" value={value} readOnly />
-                <Button colorScheme="teal" onClick={handleClick}>
-                  {STRINGS.BUTTONS.COPY}
-                </Button>
-              </Flex>
-
-              <Box
-                width="fit-content"
-                marginInline="auto"
-                p={4}
-                bg="white"
-                rounded="lg"
-              >
-                <QRCode
-                  value={value}
-                  size={200}
-                  style={{ marginInline: 'auto' }}
-                />
-              </Box>
-
-              <ShareFavoritesHowItWorks />
-            </Stack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <Show above="sm">
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          size="xl"
+          initialFocusRef={copyButtonRef}
+        >
+          <ModalOverlay />
+          <ModalContent mx={2}>
+            <ModalHeader>{STRINGS.MODALS.SHARE_FAVORITES.TITLE}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>{modalContent}</ModalBody>
+          </ModalContent>
+        </Modal>
+      </Show>
     </>
   );
 };
@@ -115,6 +162,18 @@ const ShareFavoritesHowItWorks = () => (
       </AccordionPanel>
     </AccordionItem>
   </Accordion>
+);
+
+const DrawerHandler = () => (
+  <Box
+    marginInline="auto"
+    mt={2}
+    width="40px"
+    height="4px"
+    bg="gray.600"
+    borderRadius="100px"
+    _dark={{ bg: 'gray.300' }}
+  />
 );
 
 export default ShareFavoritesModal;

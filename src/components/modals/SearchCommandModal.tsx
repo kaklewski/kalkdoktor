@@ -160,11 +160,11 @@ const SearchCommandModal = () => {
           }
         }}
         initialFocusRef={searchBarRef}
-        size="xl"
+        size={{ base: 'full', md: 'xl' }}
         scrollBehavior="inside"
       >
         <ModalOverlay />
-        <ModalContent py={4} mx={2} onKeyDown={handleKeyDown}>
+        <ModalContent py={4} onKeyDown={handleKeyDown}>
           <ModalHeader>
             <Flex align="center" gap={2}>
               <SearchBar
