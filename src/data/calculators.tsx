@@ -5204,13 +5204,7 @@ const calculators: CalculatorType[] = [
     calculateResult(
       formValues: Record<string, string>,
     ): [number | null, string | null] {
-      if (
-        !formValues.age ||
-        !formValues.coronaryArteryDisease ||
-        !formValues.smoking ||
-        !formValues.hypertension ||
-        !formValues.diabetes
-      ) {
+      if (!formValues.age || !formValues.gender || !formValues.mainSymptom) {
         return [null, null];
       }
 
@@ -5243,15 +5237,14 @@ const calculators: CalculatorType[] = [
           return 1;
         }
       })();
-      const coronaryArteryDisease: number = parseFloat(
-        formValues['coronaryArteryDisease'],
+      const coronaryArteryDisease = Number(
+        formValues['coronaryArteryDisease'] ?? 0,
       );
-      const smoking: number = parseFloat(formValues['smoking']);
-      const dyslipidemia: number = parseFloat(
-        formValues['coronaryArteryDisease'],
-      );
-      const hypertension: number = parseFloat(formValues['hypertension']);
-      const diabetes: number = parseFloat(formValues['diabetes']);
+      const smoking = Number(formValues['smoking'] ?? 0);
+      const dyslipidemia = Number(formValues['dyslipidemia'] ?? 0);
+      const hypertension = Number(formValues['hypertension'] ?? 0);
+      const diabetes = Number(formValues['diabetes'] ?? 0);
+
       const riskFactors = [
         coronaryArteryDisease,
         smoking,
@@ -5259,7 +5252,6 @@ const calculators: CalculatorType[] = [
         hypertension,
         diabetes,
       ];
-
       const riskFactorsSum: number = riskFactors.reduce(
         (sum, value) => sum + (isNaN(value) ? 0 : value),
         0,
