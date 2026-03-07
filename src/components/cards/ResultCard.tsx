@@ -53,31 +53,7 @@ const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
         data-card-animation={isAnimation}
         scrollMarginTop={{ base: '100px', lg: '200px' }}
       >
-        {result != null ? (
-          <>
-            <CardBody>
-              <VStack spacing={4} align="stretch">
-                <Text
-                  fontSize="sm"
-                  textTransform="uppercase"
-                  letterSpacing="wide"
-                  color="gray.500"
-                >
-                  {STRINGS.PAGES.CALCULATOR.RESULT}
-                </Text>
-                <Heading size="xl">{result}</Heading>
-
-                {interpretation && (
-                  <Box w="100%" pt={4} borderTopWidth="1px">
-                    <Text fontSize="md" lineHeight="tall">
-                      {interpretation}
-                    </Text>
-                  </Box>
-                )}
-              </VStack>
-            </CardBody>
-          </>
-        ) : (
+        {result == null ? (
           <CardBody>
             <Center py={2}>
               <VStack spacing={4}>
@@ -87,6 +63,33 @@ const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
                 </Text>
               </VStack>
             </Center>
+          </CardBody>
+        ) : (
+          <CardBody>
+            <VStack spacing={4} align="stretch">
+              <Text
+                fontSize="sm"
+                textTransform="uppercase"
+                letterSpacing="wide"
+                color="gray.500"
+              >
+                {STRINGS.PAGES.CALCULATOR.RESULT}
+              </Text>
+              <Heading size="xl">{result}</Heading>
+
+              {interpretation && (
+                <Box
+                  w="100%"
+                  pt={4}
+                  borderTopWidth="1px"
+                  data-testid="interpretation-block"
+                >
+                  <Text fontSize="md" lineHeight="tall">
+                    {interpretation}
+                  </Text>
+                </Box>
+              )}
+            </VStack>
           </CardBody>
         )}
       </Card>
