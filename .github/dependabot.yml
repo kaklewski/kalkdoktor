@@ -3,6 +3,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'develop'
+
     schedule:
       interval: 'weekly'
 
@@ -13,3 +14,8 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'
