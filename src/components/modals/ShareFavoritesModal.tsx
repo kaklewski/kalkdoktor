@@ -28,7 +28,6 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { IconShare } from '@tabler/icons-react';
-import { useDrag } from '@use-gesture/react';
 import { ReactNode, useRef } from 'react';
 import QRCode from 'react-qr-code';
 
@@ -42,16 +41,6 @@ const ShareFavoritesModal = () => {
   const { onCopy, value } = useClipboard(getImportFavoritesUrl());
   const showToast = useShowToast();
   const copyButtonRef = useRef<HTMLButtonElement>(null);
-  const drawerContentRef = useRef<HTMLDivElement>(null);
-
-  const bind = useDrag(
-    ({ down, movement: [, my], velocity: [, vy] }) => {
-      if (!down && my > 50 && vy > 0.05) {
-        onClose();
-      }
-    },
-    { axis: 'y', filterTaps: true },
-  );
 
   const handleClick = () => {
     onCopy();
@@ -95,16 +84,11 @@ const ShareFavoritesModal = () => {
           initialFocusRef={copyButtonRef}
         >
           <DrawerOverlay />
-          <DrawerContent
-            roundedTopLeft="3xl"
-            roundedTopRight="3xl"
-            ref={drawerContentRef}
-            {...bind()}
-          >
-            <DrawerHandler />
+          <DrawerContent roundedTopLeft="3xl" roundedTopRight="3xl">
             <DrawerHeader borderBottomWidth="1px">
               {STRINGS.MODALS.SHARE_FAVORITES.TITLE}
             </DrawerHeader>
+            <ModalCloseButton />
             <DrawerBody>{modalContent}</DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -162,18 +146,6 @@ const ShareFavoritesHowItWorks = () => (
       </AccordionPanel>
     </AccordionItem>
   </Accordion>
-);
-
-const DrawerHandler = () => (
-  <Box
-    marginInline="auto"
-    mt={2}
-    width="40px"
-    height="4px"
-    bg="gray.600"
-    borderRadius="100px"
-    _dark={{ bg: 'gray.300' }}
-  />
 );
 
 export default ShareFavoritesModal;
