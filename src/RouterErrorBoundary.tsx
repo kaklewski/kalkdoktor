@@ -38,7 +38,7 @@ const RouterErrorBoundary = () => {
         </AlertDescription>
 
         <HStack mt={4} mb={4}>
-          <Button onClick={() => window.location.reload()} colorScheme="teal">
+          <Button onClick={() => window.location.reload()} colorScheme="red">
             {STRINGS.BUTTONS.REFRESH}
           </Button>
           <Button as="a" href={ROUTES.HOME}>
