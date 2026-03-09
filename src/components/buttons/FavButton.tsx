@@ -9,48 +9,48 @@ import { CalculatorType } from '../../types/calculatorTypes';
 import AppTooltip from '../other/AppTooltip';
 
 type FavButtonProps = {
-  calculatorId: CalculatorType['id'];
+    calculatorId: CalculatorType['id'];
 };
 
 const FavButton = ({ calculatorId }: FavButtonProps) => {
-  const showToast = useShowToast();
-  const { isFavorite, toggleFavorite } = useFavorites(calculatorId);
+    const showToast = useShowToast();
+    const { isFavorite, toggleFavorite } = useFavorites(calculatorId);
 
-  const label = isFavorite
-    ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
-    : STRINGS.BUTTONS.FAVORITES.ACTION.ADD;
+    const label = isFavorite
+        ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
+        : STRINGS.BUTTONS.FAVORITES.ACTION.ADD;
 
-  const icon = isFavorite ? (
-    <IconHeartFilled stroke={1.5} />
-  ) : (
-    <IconHeart stroke={1.5} />
-  );
-
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if ('vibrate' in navigator) navigator.vibrate(50);
-    toggleFavorite();
-    showToast(
-      isFavorite
-        ? STRINGS.TOASTS.FAVORITES.REMOVED
-        : STRINGS.TOASTS.FAVORITES.ADDED,
-      isFavorite ? 'warning' : 'success',
+    const icon = isFavorite ? (
+        <IconHeartFilled stroke={1.5} />
+    ) : (
+        <IconHeart stroke={1.5} />
     );
-  };
 
-  return (
-    <AppTooltip label={label}>
-      <IconButton
-        aria-label={label}
-        variant="outline"
-        colorScheme={isFavorite ? 'red' : 'teal'}
-        icon={icon}
-        onClick={handleClick}
-      />
-    </AppTooltip>
-  );
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ('vibrate' in navigator) navigator.vibrate(50);
+        toggleFavorite();
+        showToast(
+            isFavorite
+                ? STRINGS.TOASTS.FAVORITES.REMOVED
+                : STRINGS.TOASTS.FAVORITES.ADDED,
+            isFavorite ? 'warning' : 'success',
+        );
+    };
+
+    return (
+        <AppTooltip label={label}>
+            <IconButton
+                aria-label={label}
+                variant="outline"
+                colorScheme={isFavorite ? 'red' : 'teal'}
+                icon={icon}
+                onClick={handleClick}
+            />
+        </AppTooltip>
+    );
 };
 
 export default FavButton;

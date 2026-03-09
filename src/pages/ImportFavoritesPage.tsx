@@ -1,14 +1,14 @@
 import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Flex,
-  Heading,
-  ListItem,
-  Text,
-  UnorderedList,
-  VStack,
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    Flex,
+    Heading,
+    ListItem,
+    Text,
+    UnorderedList,
+    VStack,
 } from '@chakra-ui/react';
 import { IconHeartPlus } from '@tabler/icons-react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -20,77 +20,77 @@ import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const ImportFavoritesPage = () => {
-  useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE);
+    useDocumentTitle(STRINGS.PAGES.IMPORT_FAVORITES.TITLE);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const favCalcIdString = urlParams.get('id');
-  let favCalcIds: number[];
+    const urlParams = new URLSearchParams(window.location.search);
+    const favCalcIdString = urlParams.get('id');
+    let favCalcIds: number[];
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const isEachIdValid = (() => {
-    if (!favCalcIdString) return false;
-    try {
-      favCalcIds = JSON.parse(favCalcIdString);
-      return (
-        favCalcIds.length > 0 &&
-        favCalcIds.every((id: number) => typeof id === 'number')
-      );
-    } catch {
-      return false;
-    }
-  })();
+    const isEachIdValid = (() => {
+        if (!favCalcIdString) return false;
+        try {
+            favCalcIds = JSON.parse(favCalcIdString);
+            return (
+                favCalcIds.length > 0 &&
+                favCalcIds.every((id: number) => typeof id === 'number')
+            );
+        } catch {
+            return false;
+        }
+    })();
 
-  if (!isEachIdValid) navigate(ROUTES.HOME);
+    if (!isEachIdValid) navigate(ROUTES.HOME);
 
-  const favsToImport = favCalcIdString
-    ? sortedCalculators.filter((calculator) =>
-        favCalcIds.includes(calculator.id),
-      )
-    : [];
+    const favsToImport = favCalcIdString
+        ? sortedCalculators.filter((calculator) =>
+              favCalcIds.includes(calculator.id),
+          )
+        : [];
 
-  const importFavorites = (favorites: string) => {
-    localStorage.setItem(STORAGE_KEYS.FAVORITES, favorites);
-    navigate(ROUTES.FAVORITES);
-  };
+    const importFavorites = (favorites: string) => {
+        localStorage.setItem(STORAGE_KEYS.FAVORITES, favorites);
+        navigate(ROUTES.FAVORITES);
+    };
 
-  const handleClick = () => {
-    if (favCalcIdString) importFavorites(favCalcIdString);
-  };
+    const handleClick = () => {
+        if (favCalcIdString) importFavorites(favCalcIdString);
+    };
 
-  const favList = favsToImport.map((fav) => (
-    <ListItem key={fav.id}>{fav.name}</ListItem>
-  ));
+    const favList = favsToImport.map((fav) => (
+        <ListItem key={fav.id}>{fav.name}</ListItem>
+    ));
 
-  return (
-    isEachIdValid && (
-      <Card variant="outline">
-        <CardBody>
-          <VStack mx="auto" maxW="80%">
-            <IconHeartPlus stroke={1.5} size={100} />
-            <Heading as="h1" mx="auto" size="md">
-              {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
-            </Heading>
-            <Text align="center">
-              {STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}
-            </Text>
-            <UnorderedList>{favList}</UnorderedList>
-          </VStack>
-        </CardBody>
+    return (
+        isEachIdValid && (
+            <Card variant="outline">
+                <CardBody>
+                    <VStack mx="auto" maxW="80%">
+                        <IconHeartPlus stroke={1.5} size={100} />
+                        <Heading as="h1" mx="auto" size="md">
+                            {STRINGS.PAGES.IMPORT_FAVORITES.TITLE}
+                        </Heading>
+                        <Text align="center">
+                            {STRINGS.PAGES.IMPORT_FAVORITES.DESCRIPTION}
+                        </Text>
+                        <UnorderedList>{favList}</UnorderedList>
+                    </VStack>
+                </CardBody>
 
-        <CardFooter mb={2}>
-          <Flex justify="center" align="center" gap={2} w="100%">
-            <Button as={RouterLink} to={ROUTES.HOME}>
-              {STRINGS.BUTTONS.CANCEL}
-            </Button>
-            <Button colorScheme="red" onClick={handleClick}>
-              {STRINGS.BUTTONS.IMPORT}
-            </Button>
-          </Flex>
-        </CardFooter>
-      </Card>
-    )
-  );
+                <CardFooter mb={2}>
+                    <Flex justify="center" align="center" gap={2} w="100%">
+                        <Button as={RouterLink} to={ROUTES.HOME}>
+                            {STRINGS.BUTTONS.CANCEL}
+                        </Button>
+                        <Button colorScheme="red" onClick={handleClick}>
+                            {STRINGS.BUTTONS.IMPORT}
+                        </Button>
+                    </Flex>
+                </CardFooter>
+            </Card>
+        )
+    );
 };
 
 export default ImportFavoritesPage;

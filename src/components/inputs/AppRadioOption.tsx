@@ -6,16 +6,16 @@ import AppBadge from './AppBadge';
 type AppRadioInputProps = RadioType;
 
 const AppRadioOption = ({ value, label, hideBadge }: AppRadioInputProps) => {
-  const isBadgeVisible = !hideBadge && typeof value === 'number';
+    const isBadgeVisible = !hideBadge && typeof value === 'number';
 
-  return (
-    <Radio value={value.toString()} isRequired>
-      <Text as="span" mr={isBadgeVisible ? 2 : 0} whiteSpace="pre-line">
-        {label}
-      </Text>
-      {isBadgeVisible && <AppBadge value={value} />}
-    </Radio>
-  );
+    return (
+        <Radio value={value.toString()} isRequired>
+            <Text as="span" mr={isBadgeVisible ? 2 : 0} whiteSpace="pre-line">
+                {label}
+            </Text>
+            {isBadgeVisible && <AppBadge value={value} />}
+        </Radio>
+    );
 };
 
 export default AppRadioOption;

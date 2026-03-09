@@ -1,30 +1,30 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "files": [],
+    "references": [
+        { "path": "./tsconfig.app.json" },
+        { "path": "./tsconfig.node.json" }
+    ],
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
 
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitOverride": true,
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
 
-    "incremental": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
+        "incremental": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
 
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
+        "forceConsistentCasingInFileNames": true,
+        "useDefineForClassFields": true,
 
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
 
-    "noEmit": true
-  }
+        "noEmit": true
+    }
 }

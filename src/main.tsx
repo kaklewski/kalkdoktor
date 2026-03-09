@@ -7,18 +7,18 @@ import App from './App';
 import { theme } from './theme';
 
 const mathJaxConfig = {
-  loader: { load: ['input/asciimath'] },
-  options: {
-    enableMenu: false,
-  },
+    loader: { load: ['input/asciimath'] },
+    options: {
+        enableMenu: false,
+    },
 };
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ChakraProvider theme={theme}>
-      <MathJaxContext config={mathJaxConfig}>
-        <App />
-      </MathJaxContext>
-    </ChakraProvider>
-  </StrictMode>,
+    <StrictMode>
+        <ChakraProvider theme={theme}>
+            <MathJaxContext config={mathJaxConfig}>
+                <App />
+            </MathJaxContext>
+        </ChakraProvider>
+    </StrictMode>,
 );

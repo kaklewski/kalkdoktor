@@ -6,42 +6,44 @@ import { render } from '../../test/render';
 import ResultCard from './ResultCard';
 
 describe('ResultCard', () => {
-  it('shows no-result message when the result is null', () => {
-    const interpretation = 'test interpretation';
+    it('shows no-result message when the result is null', () => {
+        const interpretation = 'test interpretation';
 
-    render(<ResultCard result={null} interpretation={interpretation} />);
+        render(<ResultCard result={null} interpretation={interpretation} />);
 
-    const noResultMessage = screen.getByText(
-      STRINGS.PAGES.CALCULATOR.NO_RESULT_MESSAGE,
-    );
-    expect(noResultMessage).toBeInTheDocument();
-  });
+        const noResultMessage = screen.getByText(
+            STRINGS.PAGES.CALCULATOR.NO_RESULT_MESSAGE,
+        );
+        expect(noResultMessage).toBeInTheDocument();
+    });
 
-  it('shows the result when it is not null', () => {
-    const result = '142 cm';
+    it('shows the result when it is not null', () => {
+        const result = '142 cm';
 
-    render(<ResultCard result={result} interpretation={null} />);
+        render(<ResultCard result={result} interpretation={null} />);
 
-    const resultBlock = screen.getByText(result);
-    expect(resultBlock).toHaveTextContent(result);
-  });
+        const resultBlock = screen.getByText(result);
+        expect(resultBlock).toHaveTextContent(result);
+    });
 
-  it('does not show the interpretation block when interpretation is null', () => {
-    const result = '142 cm';
+    it('does not show the interpretation block when interpretation is null', () => {
+        const result = '142 cm';
 
-    render(<ResultCard result={result} interpretation={null} />);
+        render(<ResultCard result={result} interpretation={null} />);
 
-    const interpretationBlock = screen.queryByTestId('interpretation-block');
-    expect(interpretationBlock).not.toBeInTheDocument();
-  });
+        const interpretationBlock = screen.queryByTestId(
+            'interpretation-block',
+        );
+        expect(interpretationBlock).not.toBeInTheDocument();
+    });
 
-  it('shows the interpretation block when interpretation is not null', () => {
-    const result = '142 cm';
-    const interpretation = 'test interpretation';
+    it('shows the interpretation block when interpretation is not null', () => {
+        const result = '142 cm';
+        const interpretation = 'test interpretation';
 
-    render(<ResultCard result={result} interpretation={interpretation} />);
+        render(<ResultCard result={result} interpretation={interpretation} />);
 
-    const interpretationBlock = screen.getByTestId('interpretation-block');
-    expect(interpretationBlock).toHaveTextContent(interpretation);
-  });
+        const interpretationBlock = screen.getByTestId('interpretation-block');
+        expect(interpretationBlock).toHaveTextContent(interpretation);
+    });
 });

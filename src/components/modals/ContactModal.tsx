@@ -1,19 +1,19 @@
 import {
-  Button,
-  Center,
-  FormControl,
-  FormLabel,
-  IconButton,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-  Textarea,
-  useDisclosure,
+    Button,
+    Center,
+    FormControl,
+    FormLabel,
+    IconButton,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
+    ModalOverlay,
+    Stack,
+    Textarea,
+    useDisclosure,
 } from '@chakra-ui/react';
 import { IconMail } from '@tabler/icons-react';
 import { useRef } from 'react';
@@ -23,72 +23,89 @@ import { handleFormSubmit } from '../../utils/handleFormSubmit';
 import AppTooltip from '../other/AppTooltip';
 
 const ContactModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef(null);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const initialRef = useRef(null);
 
-  return (
-    <>
-      <AppTooltip label={STRINGS.MODALS.CONTACT.TITLE}>
-        <IconButton
-          aria-label={STRINGS.MODALS.CONTACT.TITLE}
-          variant="ghost"
-          size="sm"
-          onClick={onOpen}
-        >
-          <IconMail size={20} stroke={1.8} />
-        </IconButton>
-      </AppTooltip>
+    return (
+        <>
+            <AppTooltip label={STRINGS.MODALS.CONTACT.TITLE}>
+                <IconButton
+                    aria-label={STRINGS.MODALS.CONTACT.TITLE}
+                    variant="ghost"
+                    size="sm"
+                    onClick={onOpen}
+                >
+                    <IconMail size={20} stroke={1.8} />
+                </IconButton>
+            </AppTooltip>
 
-      <Modal
-        initialFocusRef={initialRef}
-        isOpen={isOpen}
-        onClose={onClose}
-        size={{ base: 'full', md: 'xl' }}
-      >
-        <form
-          name="contact-form"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleFormSubmit}
-        >
-          {/* Netlify requirement for JS rendered forms  */}
-          <input type="hidden" name="form-name" value="contact-form" />
+            <Modal
+                initialFocusRef={initialRef}
+                isOpen={isOpen}
+                onClose={onClose}
+                size={{ base: 'full', md: 'xl' }}
+            >
+                <form
+                    name="contact-form"
+                    method="POST"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                    onSubmit={handleFormSubmit}
+                >
+                    {/* Netlify requirement for JS rendered forms  */}
+                    <input
+                        type="hidden"
+                        name="form-name"
+                        value="contact-form"
+                    />
 
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>{STRINGS.MODALS.CONTACT.TITLE} </ModalHeader>
-            <ModalCloseButton />
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>
+                            {STRINGS.MODALS.CONTACT.TITLE}{' '}
+                        </ModalHeader>
+                        <ModalCloseButton />
 
-            <ModalBody>
-              <Stack gap={4}>
-                <FormControl isRequired>
-                  <FormLabel>{STRINGS.FORM.NAME}</FormLabel>
-                  <Input ref={initialRef} name="name" />
-                </FormControl>
+                        <ModalBody>
+                            <Stack gap={4}>
+                                <FormControl isRequired>
+                                    <FormLabel>{STRINGS.FORM.NAME}</FormLabel>
+                                    <Input ref={initialRef} name="name" />
+                                </FormControl>
 
-                <FormControl isRequired>
-                  <FormLabel>{STRINGS.FORM.EMAIL}</FormLabel>
-                  <Input type="email" name="email" />
-                </FormControl>
+                                <FormControl isRequired>
+                                    <FormLabel>{STRINGS.FORM.EMAIL}</FormLabel>
+                                    <Input type="email" name="email" />
+                                </FormControl>
 
-                <FormControl isRequired>
-                  <FormLabel>{STRINGS.MODALS.CONTACT.FORM.MESSAGE}</FormLabel>
-                  <Textarea name="message" rows={5} minH="5rem" />
-                </FormControl>
-              </Stack>
-              <Input name="bot-field" visibility="collapse" maxH={0} maxW={0} />
-              <Center mb={2}>
-                <Button colorScheme="teal" type="submit">
-                  {STRINGS.BUTTONS.SEND}
-                </Button>
-              </Center>
-            </ModalBody>
-          </ModalContent>
-        </form>
-      </Modal>
-    </>
-  );
+                                <FormControl isRequired>
+                                    <FormLabel>
+                                        {STRINGS.MODALS.CONTACT.FORM.MESSAGE}
+                                    </FormLabel>
+                                    <Textarea
+                                        name="message"
+                                        rows={5}
+                                        minH="5rem"
+                                    />
+                                </FormControl>
+                            </Stack>
+                            <Input
+                                name="bot-field"
+                                visibility="collapse"
+                                maxH={0}
+                                maxW={0}
+                            />
+                            <Center mb={2}>
+                                <Button colorScheme="teal" type="submit">
+                                    {STRINGS.BUTTONS.SEND}
+                                </Button>
+                            </Center>
+                        </ModalBody>
+                    </ModalContent>
+                </form>
+            </Modal>
+        </>
+    );
 };
 
 export default ContactModal;

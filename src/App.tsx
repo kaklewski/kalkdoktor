@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider,
 } from 'react-router-dom';
 
 import Loader from './components/other/Loader';
@@ -18,44 +18,50 @@ const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ImportFavoritesPage = lazy(() => import('./pages/ImportFavoritesPage'));
 const SubmissionSuccessPage = lazy(
-  () => import('./pages/SubmissionSuccessPage'),
+    () => import('./pages/SubmissionSuccessPage'),
 );
 
 export default function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route
-        path={ROUTES.HOME}
-        element={<RootLayout />}
-        errorElement={<RouterErrorBoundary />}
-      >
-        <Route index element={<HomePage />} />
-        <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
-        <Route
-          path={ROUTES.IMPORT_FAVORITES}
-          element={<ImportFavoritesPage />}
-        />
-        <Route path={ROUTES.SUCCESS} element={<SubmissionSuccessPage />} />
-        <Route path="*" element={<Error404Page />} />
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route
+                path={ROUTES.HOME}
+                element={<RootLayout />}
+                errorElement={<RouterErrorBoundary />}
+            >
+                <Route index element={<HomePage />} />
+                <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
+                <Route
+                    path={ROUTES.IMPORT_FAVORITES}
+                    element={<ImportFavoritesPage />}
+                />
+                <Route
+                    path={ROUTES.SUCCESS}
+                    element={<SubmissionSuccessPage />}
+                />
+                <Route path="*" element={<Error404Page />} />
 
-        {calculators.map((calculator) => (
-          <Route
-            key={calculator.id}
-            path={calculator.urlPath}
-            element={
-              <Suspense fallback={<Loader />}>
-                <CalculatorPage key={calculator.id} calculator={calculator} />
-              </Suspense>
-            }
-          />
-        ))}
-      </Route>,
-    ),
-  );
+                {calculators.map((calculator) => (
+                    <Route
+                        key={calculator.id}
+                        path={calculator.urlPath}
+                        element={
+                            <Suspense fallback={<Loader />}>
+                                <CalculatorPage
+                                    key={calculator.id}
+                                    calculator={calculator}
+                                />
+                            </Suspense>
+                        }
+                    />
+                ))}
+            </Route>,
+        ),
+    );
 
-  return (
-    <Suspense fallback={<Loader />}>
-      <RouterProvider router={router} />
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<Loader />}>
+            <RouterProvider router={router} />
+        </Suspense>
+    );
 }

@@ -1,74 +1,74 @@
 :root {
-  --spinner-bg-color: light-dark(#edf2f7, #2c313d);
-  --spinner-accent-color: light-dark(#319795, #81e6d9);
-  --body-bg-color: light-dark(#fff, #1a202c);
-  --result-card-border-color: light-dark(#2dd4bf, #f0fdfa);
+    --spinner-bg-color: light-dark(#edf2f7, #2c313d);
+    --spinner-accent-color: light-dark(#319795, #81e6d9);
+    --body-bg-color: light-dark(#fff, #1a202c);
+    --result-card-border-color: light-dark(#2dd4bf, #f0fdfa);
 }
 
 * {
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 @media (display-mode: standalone) {
-  html,
-  body {
-    overscroll-behavior: none;
-  }
+    html,
+    body {
+        overscroll-behavior: none;
+    }
 }
 
 html {
-  -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
 
 html:not([data-theme]) {
-  /* Chakra sets color scheme automatically when dark or light mode is selected */
-  color-scheme: light dark;
+    /* Chakra sets color scheme automatically when dark or light mode is selected */
+    color-scheme: light dark;
 }
 
 body {
-  background-color: var(--body-bg-color);
+    background-color: var(--body-bg-color);
 }
 
 #resultCard[data-card-animation='true'] {
-  animation: 0.5s borderFlash ease-out;
+    animation: 0.5s borderFlash ease-out;
 }
 
 .loader-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 3px solid var(--spinner-bg-color);
-  border-top-color: var(--spinner-accent-color);
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s ease-in-out infinite;
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--spinner-bg-color);
+    border-top-color: var(--spinner-accent-color);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s ease-in-out infinite;
 }
 
 @keyframes borderFlash {
-  0% {
-    outline: 3px solid transparent;
-  }
-  40% {
-    outline: 3px solid var(--result-card-border-color);
-  }
-  100% {
-    outline: 3px solid transparent;
-  }
+    0% {
+        outline: 3px solid transparent;
+    }
+    40% {
+        outline: 3px solid var(--result-card-border-color);
+    }
+    100% {
+        outline: 3px solid transparent;
+    }
 }
 
 @keyframes rotation {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }

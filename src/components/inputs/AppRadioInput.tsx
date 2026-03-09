@@ -4,30 +4,30 @@ import { forwardRef, ReactNode } from 'react';
 import { RadioGroupType } from '../../types/calculatorTypes';
 
 type AppRadioGroupProps = Omit<RadioGroupType, 'options'> & {
-  children: ReactNode;
-  value?: string;
-  onChange?: (value: string) => void;
-  onBlur?: () => void;
+    children: ReactNode;
+    value?: string;
+    onChange?: (value: string) => void;
+    onBlur?: () => void;
 };
 
 const AppRadioInput = forwardRef<HTMLDivElement, AppRadioGroupProps>(
-  ({ name, label, children, value, onChange, onBlur }, ref) => (
-    <RadioGroup
-      ref={ref}
-      colorScheme="teal"
-      name={name}
-      value={value ?? ''}
-      {...(onChange ? { onChange } : {})}
-      {...(onBlur ? { onBlur } : {})}
-    >
-      <Stack>
-        <FormLabel as="legend" mb={0}>
-          {label}
-        </FormLabel>
-        {children}
-      </Stack>
-    </RadioGroup>
-  ),
+    ({ name, label, children, value, onChange, onBlur }, ref) => (
+        <RadioGroup
+            ref={ref}
+            colorScheme="teal"
+            name={name}
+            value={value ?? ''}
+            {...(onChange ? { onChange } : {})}
+            {...(onBlur ? { onBlur } : {})}
+        >
+            <Stack>
+                <FormLabel as="legend" mb={0}>
+                    {label}
+                </FormLabel>
+                {children}
+            </Stack>
+        </RadioGroup>
+    ),
 );
 
 AppRadioInput.displayName = 'AppRadioGroup';

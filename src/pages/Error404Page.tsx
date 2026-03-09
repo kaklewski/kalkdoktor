@@ -7,27 +7,29 @@ import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Error404Page = () => {
-  useDocumentTitle(STRINGS.PAGES.ERROR404.TITLE);
+    useDocumentTitle(STRINGS.PAGES.ERROR404.TITLE);
 
-  return (
-    <Alert
-      status="error"
-      variant="subtle"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      textAlign="center"
-      borderRadius="base"
-    >
-      <IconError404 size={100} stroke={1.5} />
+    return (
+        <Alert
+            status="error"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            borderRadius="base"
+        >
+            <IconError404 size={100} stroke={1.5} />
 
-      <AlertTitle fontSize="lg">{STRINGS.PAGES.ERROR404.TITLE}</AlertTitle>
+            <AlertTitle fontSize="lg">
+                {STRINGS.PAGES.ERROR404.TITLE}
+            </AlertTitle>
 
-      <Button colorScheme="red" as={RouterLink} to={ROUTES.HOME} my={3}>
-        {STRINGS.BUTTONS.HOMEPAGE}
-      </Button>
-    </Alert>
-  );
+            <Button colorScheme="red" as={RouterLink} to={ROUTES.HOME} my={3}>
+                {STRINGS.BUTTONS.HOMEPAGE}
+            </Button>
+        </Alert>
+    );
 };
 
 export default Error404Page;

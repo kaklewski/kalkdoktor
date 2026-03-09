@@ -1,81 +1,83 @@
 <!doctype html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kalkdoktor - Skale i kalkulatory medyczne</title>
-    <meta
-      name="description"
-      content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi."
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kalkdoktor - Skale i kalkulatory medyczne</title>
+        <meta
+            name="description"
+            content="Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi."
+        />
 
-    <!-- PWA theme colors -->
-    <meta
-      name="theme-color"
-      content="#FFFFFF"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#1A202C"
-      media="(prefers-color-scheme: dark)"
-    />
+        <!-- PWA theme colors -->
+        <meta
+            name="theme-color"
+            content="#FFFFFF"
+            media="(prefers-color-scheme: light)"
+        />
+        <meta
+            name="theme-color"
+            content="#1A202C"
+            media="(prefers-color-scheme: dark)"
+        />
 
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <div id="root">
-      <div class="loader-container">
-        <span class="loader"></span>
-      </div>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <div id="root">
+            <div class="loader-container">
+                <span class="loader"></span>
+            </div>
 
-      <form
-        hidden
-        name="bug-report"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-        <input type="text" name="calculator-name" />
-        <input name="bot-field" />
-      </form>
+            <form
+                hidden
+                name="bug-report"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+            >
+                <input type="text" name="name" />
+                <input type="email" name="email" />
+                <textarea name="message"></textarea>
+                <input type="text" name="calculator-name" />
+                <input name="bot-field" />
+            </form>
 
-      <form
-        hidden
-        name="contact-form"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-        <input name="bot-field" />
-      </form>
-    </div>
+            <form
+                hidden
+                name="contact-form"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+            >
+                <input type="text" name="name" />
+                <input type="email" name="email" />
+                <textarea name="message"></textarea>
+                <input name="bot-field" />
+            </form>
+        </div>
 
-    <script type="module">
-      import STORAGE_KEYS from './src/data/storageKeys.ts';
+        <script type="module">
+            import STORAGE_KEYS from './src/data/storageKeys.ts';
 
-      const isFirstVisit = !localStorage.getItem(STORAGE_KEYS.COLOR_MODE.AUTO);
-      const isAutoColorMode =
-        localStorage.getItem(STORAGE_KEYS.COLOR_MODE.AUTO) === 'true';
+            const isFirstVisit = !localStorage.getItem(
+                STORAGE_KEYS.COLOR_MODE.AUTO,
+            );
+            const isAutoColorMode =
+                localStorage.getItem(STORAGE_KEYS.COLOR_MODE.AUTO) === 'true';
 
-      if (isFirstVisit) {
-        localStorage.setItem(STORAGE_KEYS.COLOR_MODE.AUTO, 'true');
-      }
+            if (isFirstVisit) {
+                localStorage.setItem(STORAGE_KEYS.COLOR_MODE.AUTO, 'true');
+            }
 
-      // When auto mode is on, set proper initial color mode (Chakra workaround).
-      if (isAutoColorMode) {
-        localStorage.removeItem(STORAGE_KEYS.COLOR_MODE.CHAKRA);
-      }
-    </script>
+            // When auto mode is on, set proper initial color mode (Chakra workaround).
+            if (isAutoColorMode) {
+                localStorage.removeItem(STORAGE_KEYS.COLOR_MODE.CHAKRA);
+            }
+        </script>
 
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
 </html>

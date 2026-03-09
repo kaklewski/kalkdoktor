@@ -1,25 +1,25 @@
 import { ReactNode } from 'react';
 
 type CalculatorType = {
-  id: number;
-  name: string;
-  urlPath: string;
-  category: string;
-  description: string;
-  methodology?: ReactNode;
-  sources: SourceType[] | 'ownWork';
-  form: FormFieldType[];
-  calculateResult: (
-    formValues: Record<string, string>,
-  ) => [Result, Interpretation];
+    id: number;
+    name: string;
+    urlPath: string;
+    category: string;
+    description: string;
+    methodology?: ReactNode;
+    sources: SourceType[] | 'ownWork';
+    form: FormFieldType[];
+    calculateResult: (
+        formValues: Record<string, string>,
+    ) => [Result, Interpretation];
 };
 
 type SourceType = {
-  id: number;
-  author: string;
-  title: string;
-  dateOfAccess: string;
-  link: string;
+    id: number;
+    author: string;
+    title: string;
+    dateOfAccess: string;
+    link: string;
 };
 
 type FormFieldType = NumberInputType | CheckboxType | RadioInputType;
@@ -27,41 +27,41 @@ type Result = number | string | null;
 type Interpretation = string | null;
 
 type NumberInputType = {
-  type: 'numberInput';
-  name: string;
-  label: string;
-  min: number;
-  max: number;
+    type: 'numberInput';
+    name: string;
+    label: string;
+    min: number;
+    max: number;
 };
 
 type CheckboxType = {
-  type: 'checkbox';
-  name: string;
-  value: number;
-  label: string;
-  hideBadge?: boolean;
+    type: 'checkbox';
+    name: string;
+    value: number;
+    label: string;
+    hideBadge?: boolean;
 };
 
 type RadioInputType = {
-  type: 'radioInput';
-  name: string;
-  label: string;
-  options: RadioOptionType[];
+    type: 'radioInput';
+    name: string;
+    label: string;
+    options: RadioOptionType[];
 };
 
 type RadioOptionType = {
-  value: number | string;
-  label: string;
-  hideBadge?: boolean;
+    value: number | string;
+    label: string;
+    hideBadge?: boolean;
 };
 
 export type {
-  CalculatorType,
-  CheckboxType,
-  Interpretation,
-  NumberInputType,
-  RadioInputType as RadioGroupType,
-  RadioOptionType as RadioType,
-  Result,
-  SourceType,
+    CalculatorType,
+    CheckboxType,
+    Interpretation,
+    NumberInputType,
+    RadioInputType as RadioGroupType,
+    RadioOptionType as RadioType,
+    Result,
+    SourceType,
 };
