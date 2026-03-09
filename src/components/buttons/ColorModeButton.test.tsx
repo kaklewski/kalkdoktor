@@ -14,7 +14,7 @@ describe('ColorModeButton', () => {
   });
 
   vi.mock('@chakra-ui/react', async () => {
-    const actualChakra = await vi.importActual<any>('@chakra-ui/react');
+    const actualChakra = await vi.importActual('@chakra-ui/react');
 
     return {
       ...actualChakra,

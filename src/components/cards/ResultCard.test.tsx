@@ -16,7 +16,6 @@ describe('ResultCard', () => {
     );
     expect(noResultMessage).toBeInTheDocument();
   });
-  ``;
 
   it('shows the result when it is not null', () => {
     const result = '142 cm';

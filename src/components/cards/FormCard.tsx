@@ -18,7 +18,7 @@ import AppRadioOption from '../inputs/AppRadioOption';
 type FormCardProps = {
   form: CalculatorType['form'];
   formMethods: UseFormReturn;
-  onSubmit: (values: any) => void;
+  onSubmit: (values: Record<string, string>) => void;
 };
 
 const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
@@ -29,7 +29,7 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardBody>
           <Stack spacing={4} divider={<StackDivider />}>
-            {form.map((input: any) => {
+            {form.map((input) => {
               switch (input.type) {
                 case 'numberInput':
                   return (
@@ -82,7 +82,7 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                           onChange={field.onChange}
                           onBlur={field.onBlur}
                         >
-                          {input.options.map((radio: any, index: number) => (
+                          {input.options.map((radio, index: number) => (
                             <AppRadioOption key={index} {...radio} />
                           ))}
                         </AppRadioInput>
