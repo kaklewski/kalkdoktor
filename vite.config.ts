@@ -20,38 +20,46 @@ export default defineConfig({
             },
         }),
         VitePWA({
+            injectRegister: 'auto',
             registerType: 'autoUpdate',
             manifest: {
                 name: 'Kalkdoktor',
                 short_name: 'Kalkdoktor',
                 lang: 'pl',
+
                 description:
-                    'Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy. Ułatwia diagnozowanie pacjenta poprzez szybki dostęp do niezbędnych narzędzi.',
-                start_url: ROUTES.HOME,
+                    'Darmowa, otwartoźródłowa aplikacja webowa zawierająca kalkulatory, skale i konwertery przeznaczone dla lekarzy.',
+                categories: ['medical', 'health', 'utilities'],
+
+                start_url: '/',
+                scope: '/',
+
                 display: 'standalone',
                 orientation: 'portrait',
+
+                theme_color: '#319795',
                 background_color: '#319795',
-                theme_color: '#000000',
+
                 icons: [
                     {
                         src: 'icon-192x192.png',
                         sizes: '192x192',
                         type: 'image/png',
-                        purpose: 'maskable',
+                        purpose: 'any maskable',
                     },
                     {
                         src: 'icon-512x512.png',
                         sizes: '512x512',
                         type: 'image/png',
-                        purpose: 'maskable',
+                        purpose: 'any maskable',
                     },
                     {
                         src: 'icon.svg',
                         sizes: 'any',
                         type: 'image/svg+xml',
-                        purpose: 'any',
                     },
                 ],
+
                 shortcuts: [
                     {
                         name: STRINGS.PWA.SHORTCUTS.FAVORITES.TITLE,
