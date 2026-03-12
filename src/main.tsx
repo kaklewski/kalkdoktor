@@ -4,14 +4,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from './App';
+import mathJaxConfig from './config/mathJaxConfig';
 import { theme } from './theme';
-
-const mathJaxConfig = {
-    loader: { load: ['input/asciimath'] },
-    options: {
-        enableMenu: false,
-    },
-};
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
