@@ -23,6 +23,9 @@ const getImportFavoritesUrl = () => {
     return finalUrl;
 };
 
+const checkIsStandaloneMode = () =>
+    window.matchMedia('(display-mode: standalone)').matches;
+
 const sumValues = (values: Record<string, string>) => {
     const initialSum: number = 0;
 
@@ -32,4 +35,9 @@ const sumValues = (values: Record<string, string>) => {
     }, initialSum);
 };
 
-export { getCategories, getImportFavoritesUrl, sumValues };
+export {
+    checkIsStandaloneMode,
+    getCategories,
+    getImportFavoritesUrl,
+    sumValues,
+};

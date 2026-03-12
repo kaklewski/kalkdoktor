@@ -6,6 +6,7 @@ import STRINGS from '../../data/strings';
 import useFavorites from '../../hooks/useFavorites';
 import useShowToast from '../../hooks/useShowToast';
 import { CalculatorType } from '../../types/calculatorTypes';
+import { checkIsStandaloneMode } from '../../utils/helpers';
 import AppTooltip from '../other/AppTooltip';
 
 type FavButtonProps = {
@@ -15,6 +16,8 @@ type FavButtonProps = {
 const FavButton = ({ calculatorId }: FavButtonProps) => {
     const showToast = useShowToast();
     const { isFavorite, toggleFavorite } = useFavorites(calculatorId);
+
+    const isStandaloneMode = checkIsStandaloneMode();
 
     const label = isFavorite
         ? STRINGS.BUTTONS.FAVORITES.ACTION.REMOVE
@@ -30,8 +33,10 @@ const FavButton = ({ calculatorId }: FavButtonProps) => {
         e.preventDefault();
         e.stopPropagation();
 
-        if ('vibrate' in navigator) navigator.vibrate(50);
+        if (isStandaloneMode && 'vibrate' in navigator) navigator.vibrate(50);
+
         toggleFavorite();
+
         showToast(
             isFavorite
                 ? STRINGS.TOASTS.FAVORITES.REMOVED
