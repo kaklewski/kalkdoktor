@@ -19,7 +19,7 @@ const STRINGS = {
         },
         HOMEPAGE: 'Strona główna',
         IMPORT: 'Importuj',
-        REFRESH: 'Odśwież',
+        REFRESH: 'Odśwież stronę',
         REPORT_BUG: 'Zgłoś błąd',
         RESET: 'Reset',
         SEARCH: 'Szukaj',

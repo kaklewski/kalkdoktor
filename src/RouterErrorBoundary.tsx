@@ -44,7 +44,12 @@ const RouterErrorBoundary = () => {
                     >
                         {STRINGS.BUTTONS.REFRESH}
                     </Button>
-                    <Button as="a" href={ROUTES.HOME}>
+                    <Button
+                        as="a"
+                        href={ROUTES.HOME}
+                        colorScheme="red"
+                        variant="outline"
+                    >
                         {STRINGS.BUTTONS.HOMEPAGE}
                     </Button>
                 </HStack>
