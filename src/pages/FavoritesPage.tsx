@@ -1,27 +1,26 @@
-import { Box, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react';
+import { Heading, Text, VStack } from '@chakra-ui/react';
 import { IconHeartOff } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 
 import SortButton from '../components/buttons/SortButton';
-import CalculatorCard from '../components/cards/CalculatorCard';
 import ShareFavoritesModal from '../components/modals/ShareFavoritesModal';
 import { sortedCalculators } from '../data/calculators';
 import STORAGE_KEYS from '../data/storageKeys';
 import STRINGS from '../data/strings';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import { getCategories } from '../utils/helpers';
+import CalculatorCollectionLayout from '../layouts/CalculatorCollectionLayout';
 
 const FavoritesPage = () => {
     useDocumentTitle(STRINGS.PAGES.FAVORITES.TITLE);
 
-    const [sortingOrder, setSortingOrder] = useState<string>(
+    const [sorting, setSorting] = useState<string>(
         localStorage.getItem(STORAGE_KEYS.SORT.FAVORITES) ||
             STORAGE_KEYS.SORT.ALPHABETICALLY,
     );
 
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sortingOrder);
-    }, [sortingOrder]);
+        localStorage.setItem(STORAGE_KEYS.SORT.FAVORITES, sorting);
+    }, [sorting]);
 
     const favIds = JSON.parse(
         localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]',
@@ -29,74 +28,24 @@ const FavoritesPage = () => {
     const favoriteCalculators = sortedCalculators.filter((calc) =>
         favIds.includes(calc.id),
     );
-    const categories: string[] = getCategories(favoriteCalculators);
+    const isNoCalculatorAdded = favoriteCalculators.length === 0;
 
-    return (
+    const buttons = (
         <>
-            <Flex justify="space-between" gap="2">
-                <Heading as="h1">{STRINGS.PAGES.FAVORITES.TITLE}</Heading>
-                {favoriteCalculators.length > 0 && (
-                    <Stack direction="row" gap={{ base: 3, md: 2 }}>
-                        <ShareFavoritesModal />
-                        <SortButton
-                            sortingOrder={sortingOrder}
-                            setSortingOrder={setSortingOrder}
-                        />
-                    </Stack>
-                )}
-            </Flex>
-
-            {sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY && (
-                <Stack spacing={4}>
-                    {favoriteCalculators.length === 0 ? (
-                        <NoFavoritesPlaceholder />
-                    ) : (
-                        favoriteCalculators.map((calculator) => (
-                            <CalculatorCard
-                                key={calculator.id}
-                                id={calculator.id}
-                                name={calculator.name}
-                                link={calculator.urlPath}
-                                description={calculator.description}
-                            />
-                        ))
-                    )}
-                </Stack>
-            )}
-
-            {sortingOrder === STORAGE_KEYS.SORT.BY_SPECIALIZATION && (
-                <Stack spacing={12}>
-                    {categories.map((category, categoryId) => (
-                        <Box key={categoryId}>
-                            <Box mb={4}>
-                                <Heading
-                                    as="h2"
-                                    fontSize="2xl"
-                                    borderBottomWidth="1px"
-                                >
-                                    {category.toUpperCase()}
-                                </Heading>
-                            </Box>
-                            <Stack spacing={4}>
-                                {favoriteCalculators
-                                    .filter(
-                                        (calc) => calc.category === category,
-                                    )
-                                    .map((calculator) => (
-                                        <CalculatorCard
-                                            key={calculator.id}
-                                            id={calculator.id}
-                                            name={calculator.name}
-                                            link={calculator.urlPath}
-                                            description={calculator.description}
-                                        />
-                                    ))}
-                            </Stack>
-                        </Box>
-                    ))}
-                </Stack>
-            )}
+            <ShareFavoritesModal />
+            <SortButton sorting={sorting} setSorting={setSorting} />
         </>
+    );
+
+    return isNoCalculatorAdded ? (
+        <NoFavoritesPlaceholder />
+    ) : (
+        <CalculatorCollectionLayout
+            title={STRINGS.PAGES.FAVORITES.TITLE}
+            actions={buttons}
+            sorting={sorting}
+            calculators={favoriteCalculators}
+        />
     );
 };
 

@@ -2,6 +2,12 @@ import ROUTES from '../data/routes';
 import STORAGE_KEYS from '../data/storageKeys';
 import { CalculatorType } from '../types/calculatorTypes';
 
+const titleCaseWords = (text: string) =>
+    text.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+
+const checkIsStandaloneMode = () =>
+    window.matchMedia('(display-mode: standalone)').matches;
+
 const getCategories = (calculators: CalculatorType[]) => {
     const categoriesArray: string[] = [];
 
@@ -23,9 +29,6 @@ const getImportFavoritesUrl = () => {
     return finalUrl;
 };
 
-const checkIsStandaloneMode = () =>
-    window.matchMedia('(display-mode: standalone)').matches;
-
 const sumValues = (values: Record<string, string>) => {
     const initialSum: number = 0;
 
@@ -40,4 +43,5 @@ export {
     getCategories,
     getImportFavoritesUrl,
     sumValues,
+    titleCaseWords,
 };

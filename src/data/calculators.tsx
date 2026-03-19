@@ -9,7 +9,7 @@ const calculators: CalculatorType[] = [
         id: 1,
         name: 'Kalkulator BMI',
         urlPath: '/kalkulator-bmi',
-        category: 'antropometria',
+        category: 'anthropometry',
         description:
             'Pomaga określić, czy masa ciała danej osoby jest w normie, zbyt niska lub zbyt wysoka w stosunku do wzrostu.',
         methodology: (
@@ -97,7 +97,7 @@ const calculators: CalculatorType[] = [
         id: 2,
         name: 'Skala CHA₂DS₂-VASc',
         urlPath: '/skala-cha2ds2-vasc',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Ocenia ryzyko wystąpienia powikłań zakrzepowo-zatorowych u pacjentów z migotaniem przedsionków.',
         sources: [
@@ -205,7 +205,7 @@ const calculators: CalculatorType[] = [
         id: 3,
         name: 'Skala Centora w modyfikacji McIsaaca',
         urlPath: '/skala-centora-mcisaaca',
-        category: 'choroby zakaźne',
+        category: 'infectious_diseases',
         description:
             'Szacuje ryzyko zapalenia paciorkowcowego (PBHA) i dobrać odpowiednie postępowanie.',
         sources: [
@@ -285,7 +285,7 @@ const calculators: CalculatorType[] = [
         id: 4,
         name: 'Ocena ryzyka ZŻG w skali Wellsa',
         urlPath: '/ocena-zakrzepicy-wellsa',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Oblicza ryzyko wystąpienia zakrzepicy żył głębokich na podstawie kryteriów klinicznych.',
         sources: [
@@ -382,7 +382,7 @@ const calculators: CalculatorType[] = [
         id: 5,
         name: 'Kalkulator liczby opakowań leków na dany okres',
         urlPath: '/kalkulator-liczby-opakowan-na-okres',
-        category: 'dawkowanie leków',
+        category: 'drug_dosage',
         description:
             'Oblicza liczbę opakowań leku, którą należy przepisać na podstawie dawkowania.',
         sources: 'ownWork',
@@ -485,7 +485,7 @@ const calculators: CalculatorType[] = [
         id: 6,
         name: 'Obliczanie dawki paracetamolu',
         urlPath: '/obliczanie-dawki-paracetamolu',
-        category: 'dawkowanie leków',
+        category: 'drug_dosage',
         description:
             'Oblicza maksymalną dobową dawkę paracetamolu biorąc pod uwagę wiek i masę ciała pacjenta.',
         methodology: (
@@ -561,7 +561,7 @@ const calculators: CalculatorType[] = [
         id: 7,
         name: 'Skala HAS-BLED',
         urlPath: '/skala-has-bled',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Szacuje ryzyko poważnego krwawienia u pacjentów z migotaniem przedsionków.',
         sources: [
@@ -654,7 +654,7 @@ const calculators: CalculatorType[] = [
         id: 8,
         name: 'Skala Glasgow',
         urlPath: '/skala-glasgow',
-        category: 'neurologia',
+        category: 'neurology',
         description: 'Ocenia poziom przytomności u dorosłych.',
         sources: [
             {
@@ -778,7 +778,7 @@ const calculators: CalculatorType[] = [
         id: 9,
         name: 'Kwestionariusz PHQ-9',
         urlPath: '/kwestionariusz-phq9',
-        category: 'psychiatria',
+        category: 'psychiatry',
         description: 'Pozwala ocenić stopień nasilenia epizodu depresyjnego.',
         sources: [
             {
@@ -1026,7 +1026,7 @@ const calculators: CalculatorType[] = [
         id: 10,
         name: 'Kalkulator odstępu QTc (wzór Bazetta)',
         urlPath: '/kalkulator-qtc-bazetta',
-        category: 'kardiologia',
+        category: 'cardiology',
         description: 'Oblicza skorygowany odstęp QT.',
         methodology: (
             <>
@@ -1095,7 +1095,7 @@ const calculators: CalculatorType[] = [
         id: 11,
         name: 'Wskaźnik Maddreya',
         urlPath: '/wskaznik-maddreya',
-        category: 'hepatologia',
+        category: 'hepatology',
         description:
             'Określa ryzyko zgonu u chorych z alkoholowym zapaleniem wątroby.',
         methodology: (
@@ -1211,7 +1211,7 @@ const calculators: CalculatorType[] = [
         id: 12,
         name: 'Obliczanie dawki ibuprofenu',
         urlPath: '/obliczanie-dawki-ibuprofenu',
-        category: 'dawkowanie leków',
+        category: 'drug_dosage',
         description:
             'Oblicza maksymalną dobową dawkę ibuprofenu biorąc pod uwagę wiek i masę ciała pacjenta.',
         methodology: (
@@ -1285,7 +1285,7 @@ const calculators: CalculatorType[] = [
         id: 13,
         name: 'Skala PESI',
         urlPath: '/skala-pesi',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Prognozuje wynik leczenia pacjentów z zatorowością płucną.',
         methodology: (
@@ -1425,7 +1425,7 @@ const calculators: CalculatorType[] = [
         id: 14,
         name: 'Zmodyfikowana skala genewska (oryginalna)',
         urlPath: '/skala-genewska-oryginalna',
-        category: 'kardiologia',
+        category: 'cardiology',
         description: 'Ocenia prawdopodobieństwo zatorowości płucnej.',
         sources: [
             {
@@ -1522,7 +1522,7 @@ const calculators: CalculatorType[] = [
         id: 15,
         name: 'Skala CURB-65',
         urlPath: '/skala-curb65',
-        category: 'pulmonologia',
+        category: 'pulmonology',
         description: 'Ocenia ciężkość pozaszpitalnego zapalenia płuc.',
 
         sources: [
@@ -1595,7 +1595,7 @@ const calculators: CalculatorType[] = [
         id: 16,
         name: 'Kalkulator WHR (Waist-Hip Ratio)',
         urlPath: '/kalkulator-whr',
-        category: 'antropometria',
+        category: 'anthropometry',
         description: 'Oblicza stosunek obwodu talii do bioder.',
         methodology: (
             <>
@@ -1704,7 +1704,7 @@ const calculators: CalculatorType[] = [
         id: 17,
         name: 'Uproszczona skala SOFA (qSOFA)',
         urlPath: '/skala-qsofa',
-        category: 'anestezjologia',
+        category: 'anesthesiology',
         description:
             'Identyfikuje pacjentów o wysokim ryzyku zgonu z powodu sepsy.',
         sources: [
@@ -1758,7 +1758,7 @@ const calculators: CalculatorType[] = [
         id: 18,
         name: 'Kwestionariusz Fagerströma',
         urlPath: '/kwestionariusz-fagerstroma',
-        category: 'używki',
+        category: 'substance_use',
         description: 'Ocenia stopień uzależnienia od nikotyny.',
 
         sources: [
@@ -1898,7 +1898,7 @@ const calculators: CalculatorType[] = [
         id: 19,
         name: 'Skala NYHA',
         urlPath: '/skala-nyha',
-        category: 'kardiologia',
+        category: 'cardiology',
         description: 'Ocenia stopień niewydolności serca na podstawie objawów.',
         sources: [
             {
@@ -1958,7 +1958,7 @@ const calculators: CalculatorType[] = [
         id: 20,
         name: 'Skala CCS',
         urlPath: '/skala-ccs',
-        category: 'kardiologia',
+        category: 'cardiology',
         description: 'Ocenia zaawansowanie choroby niedokrwiennej serca.',
         sources: [
             {
@@ -2018,7 +2018,7 @@ const calculators: CalculatorType[] = [
         id: 21,
         name: 'Wskaźnik eGFR (wzór Cockcrofta i Gaulta)',
         urlPath: '/wskaznik-gfr',
-        category: 'nefrologia',
+        category: 'nephrology',
         description: 'Ocenia czynność nerek i szacuje klirens kreatyniny.',
         methodology: (
             <>
@@ -2142,7 +2142,7 @@ const calculators: CalculatorType[] = [
         id: 22,
         name: 'Wskaźnik FIB-4',
         urlPath: '/wskaznik-fib-4',
-        category: 'hepatologia',
+        category: 'hepatology',
         description: 'Ocenia stopień włóknienia wątroby.',
         methodology: (
             <>
@@ -2277,7 +2277,7 @@ const calculators: CalculatorType[] = [
         id: 23,
         name: 'Skala Childa-Pugha',
         urlPath: '/skala-childa-pugha',
-        category: 'hepatologia',
+        category: 'hepatology',
         description:
             'Określa stopień niewydolności wątroby i klasyfikację pacjenta do przeszczepu wątroby.',
         sources: [
@@ -2411,7 +2411,7 @@ const calculators: CalculatorType[] = [
         id: 24,
         name: 'Kalkulator SCORE2 / SCORE2-OP',
         urlPath: '/kalkulator-score2',
-        category: 'kardiologia',
+        category: 'cardiology',
         description: 'Ocenia ryzyko sercowo-naczyniowe dla populacji Polski.',
         sources: [
             {
@@ -2858,7 +2858,7 @@ const calculators: CalculatorType[] = [
         id: 25,
         name: 'Prognozowany wzrost dziecka',
         urlPath: '/prognozowany-wzrost-dziecka',
-        category: 'antropometria',
+        category: 'anthropometry',
         description: 'Przewiduje wzrost dziecka na podstawie wzrostu rodziców.',
         methodology: (
             <>
@@ -2970,7 +2970,7 @@ const calculators: CalculatorType[] = [
         id: 26,
         name: 'Kwestionariusz MDQ',
         urlPath: '/kwestionariusz-mdq',
-        category: 'psychiatria',
+        category: 'psychiatry',
         description: 'Pozwala ocenić prawdopodobieństwo choroby dwubiegunowej.',
         sources: [
             {
@@ -3245,7 +3245,7 @@ const calculators: CalculatorType[] = [
         id: 27,
         name: 'Test AUDIT',
         urlPath: '/test-audit',
-        category: 'używki',
+        category: 'substance_use',
         description: 'Ocenia stopień uzależnienia od alkoholu.',
         sources: [
             {
@@ -3568,7 +3568,7 @@ const calculators: CalculatorType[] = [
         id: 28,
         name: 'Pediatryczna skala Glasgow',
         urlPath: '/pediatryczna-skala-glasgow',
-        category: 'pediatria',
+        category: 'pediatrics',
         description: 'Ocenia poziom przytomności u dzieci do 2 roku życia.',
         sources: [
             {
@@ -3684,7 +3684,7 @@ const calculators: CalculatorType[] = [
         id: 29,
         name: 'Skala Apgar',
         urlPath: '/skala-apgar',
-        category: 'pediatria',
+        category: 'pediatrics',
         description: 'Ocenia noworodka w pierwszej i w piątej minucie życia.',
         sources: [
             {
@@ -3819,7 +3819,7 @@ const calculators: CalculatorType[] = [
         id: 30,
         name: 'Skala Barthel',
         urlPath: '/skala-barthel',
-        category: 'geriatria',
+        category: 'geriatrics',
         description:
             'Ocenia poziom samodzielności i zdolność zaspokajania podstawowych potrzeb życiowych pacjentów.',
         sources: [
@@ -4056,7 +4056,7 @@ const calculators: CalculatorType[] = [
         id: 31,
         name: 'Obliczanie zawartości alkoholu we krwi (wzór Erika Widmarka)',
         urlPath: '/obliczanie-alkoholu-widmarka',
-        category: 'używki',
+        category: 'substance_use',
         description: 'Wylicza przybliżoną zawartość alkoholu we krwi.',
         methodology: (
             <>
@@ -4179,7 +4179,7 @@ const calculators: CalculatorType[] = [
         id: 32,
         name: 'Skala Oakland',
         urlPath: '/skala-oakland',
-        category: 'gastrologia',
+        category: 'gastroenterology',
         description:
             'Ocenia ciężkość krwawienia z dolnego odcinka przewodu pokarmowego.',
         sources: [
@@ -4353,7 +4353,7 @@ const calculators: CalculatorType[] = [
         id: 33,
         name: 'Kwestionariusz STOP-BANG',
         urlPath: '/stop-bang',
-        category: 'pulmonologia',
+        category: 'pulmonology',
         description: 'Ocenia ryzyko obturacyjnego bezdechu sennego.',
 
         sources: [
@@ -4542,7 +4542,7 @@ const calculators: CalculatorType[] = [
         id: 34,
         name: 'Skala NIHSS',
         urlPath: '/skala-nihss',
-        category: 'neurologia',
+        category: 'neurology',
         description: 'Określa ciężkość udaru mózgu.',
         sources: [
             {
@@ -4919,7 +4919,7 @@ const calculators: CalculatorType[] = [
         id: 35,
         name: 'Kalkulator beztłuszczowej masy ciała',
         urlPath: '/kalkulator-beztluszczowej-masy-ciala',
-        category: 'antropometria',
+        category: 'anthropometry',
         description:
             'Pomaga obliczyć beztłuszczową masę ciała (LBM) na podstawie wzrostu, wagi i płci.',
         methodology: (
@@ -5049,7 +5049,7 @@ const calculators: CalculatorType[] = [
         id: 36,
         name: 'Skala klinicznego prawdopodobieństwa choroby wieńcowej (CAD)',
         urlPath: '/skala-prawdopodobienstwa-cad',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Oszacowuje prawdopodobieństwo choroby wieńcowej u pacjentów z dusznością lub bólem w klatce piersiowej.',
         methodology: (
@@ -5335,7 +5335,7 @@ const calculators: CalculatorType[] = [
         id: 37,
         name: 'Skala CHA₂DS₂-VA',
         urlPath: '/skala-cha2ds2-va',
-        category: 'kardiologia',
+        category: 'cardiology',
         description:
             'Pozwala ocenić ryzyko udaru niedokrwiennego mózgu u chorych z migotaniem przedsionków.',
         sources: [

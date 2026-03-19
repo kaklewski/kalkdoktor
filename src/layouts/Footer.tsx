@@ -25,6 +25,7 @@ const FooterContainer = ({ children }: FooterContainerProps) => (
     <Flex
         as="footer"
         p={4}
+        mt={8}
         direction="column"
         justify="center"
         align="center"

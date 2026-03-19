@@ -51,7 +51,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
     };
 
     return (
-        <>
+        <Stack spacing={8}>
             <Flex justify="space-between" gap={2}>
                 <Heading as="h1">{name}</Heading>
                 <FavButton calculatorId={id} />
@@ -80,7 +80,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
             <Flex justify="right">
                 <BugReportModal calculatorName={name} />
             </Flex>
-        </>
+        </Stack>
     );
 };
 

@@ -16,13 +16,12 @@ import STRINGS from '../../data/strings';
 import AppTooltip from '../other/AppTooltip';
 
 type SortButtonProps = {
-    sortingOrder: string;
-    setSortingOrder: (value: string) => void;
+    sorting: string;
+    setSorting: (value: string) => void;
 };
 
-const SortButton = ({ sortingOrder, setSortingOrder }: SortButtonProps) => {
-    const isAlphabeticalSorting =
-        sortingOrder === STORAGE_KEYS.SORT.ALPHABETICALLY;
+const SortButton = ({ sorting, setSorting }: SortButtonProps) => {
+    const isAlphabeticalSorting = sorting === STORAGE_KEYS.SORT.ALPHABETICALLY;
     const icon = isAlphabeticalSorting ? (
         <IconSortAscendingLetters stroke={1.5} />
     ) : (
@@ -40,14 +39,14 @@ const SortButton = ({ sortingOrder, setSortingOrder }: SortButtonProps) => {
             </AppTooltip>
             <MenuList>
                 <MenuOptionGroup
-                    defaultValue={sortingOrder}
+                    defaultValue={sorting}
                     title={STRINGS.BUTTONS.SORT.TITLE}
                     type="radio"
                 >
                     <MenuItemOption
                         value={STORAGE_KEYS.SORT.ALPHABETICALLY}
                         onClick={() =>
-                            setSortingOrder(STORAGE_KEYS.SORT.ALPHABETICALLY)
+                            setSorting(STORAGE_KEYS.SORT.ALPHABETICALLY)
                         }
                     >
                         {STRINGS.BUTTONS.SORT.ORDER.ALPHABETICALLY}
@@ -55,7 +54,7 @@ const SortButton = ({ sortingOrder, setSortingOrder }: SortButtonProps) => {
                     <MenuItemOption
                         value={STORAGE_KEYS.SORT.BY_SPECIALIZATION}
                         onClick={() =>
-                            setSortingOrder(STORAGE_KEYS.SORT.BY_SPECIALIZATION)
+                            setSorting(STORAGE_KEYS.SORT.BY_SPECIALIZATION)
                         }
                     >
                         {STRINGS.BUTTONS.SORT.ORDER.BY_SPECIALIZATION}

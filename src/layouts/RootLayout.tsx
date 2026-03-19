@@ -1,4 +1,4 @@
-import { Container, Stack } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -15,11 +15,9 @@ const RootLayout = () => {
     return (
         <>
             <Navbar />
-            <Container as="main" my={8} maxW="container.sm">
-                <Stack spacing={8}>
-                    <Outlet />
-                    <Footer />
-                </Stack>
+            <Container as="main" my={12} maxW="container.sm">
+                <Outlet />
+                <Footer />
             </Container>
         </>
     );
