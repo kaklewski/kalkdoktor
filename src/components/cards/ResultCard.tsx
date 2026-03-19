@@ -8,7 +8,7 @@ import {
     VStack,
 } from '@chakra-ui/react';
 import { IconCalculatorOff } from '@tabler/icons-react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef } from 'react';
 
 import STRINGS from '../../data/strings';
 import { InterpretationModel, ResultModel } from '../../types/calculatorModels';
@@ -20,51 +20,21 @@ type ResultCardProps = {
 
 const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
     ({ result, interpretation }, ref) => {
-        const [isAnimation, setIsAnimation] = useState<boolean>(false);
-        const isFirstRender = useRef(true);
-
-        useEffect(() => {
-            if (isFirstRender.current === true) {
-                isFirstRender.current = false;
-                return;
-            }
-
-            const setAnimationTimeout = setTimeout(() => {
-                setIsAnimation(true);
-            }, 0);
-
-            const isAnimationTimeout = setTimeout(() => {
-                setIsAnimation(false);
-            }, 301);
-
-            return () => {
-                clearTimeout(setAnimationTimeout);
-                clearTimeout(isAnimationTimeout);
-            };
-        }, [result, interpretation]);
+        const isResult = result != null;
+        const isInterpretation = interpretation != null;
+        const resultInterpretationKey = `${result}-${interpretation}`; // This will force the card to re-render when result or interpretation changes
 
         return (
             <Card
+                key={resultInterpretationKey}
                 ref={ref}
                 variant="filled"
                 rounded="lg"
-                // ID is used for animation
-                id="resultCard"
-                data-card-animation={isAnimation}
+                id="resultCard" // ID is used for animation
+                data-card-animation={isResult}
                 scrollMarginTop={{ base: '100px', lg: '200px' }}
             >
-                {result == null ? (
-                    <CardBody>
-                        <Center py={2}>
-                            <VStack spacing={4}>
-                                <IconCalculatorOff stroke={1.5} size={50} />
-                                <Text color="gray.500">
-                                    {STRINGS.PAGES.CALCULATOR.NO_RESULT_MESSAGE}
-                                </Text>
-                            </VStack>
-                        </Center>
-                    </CardBody>
-                ) : (
+                {isResult ? (
                     <CardBody>
                         <VStack spacing={4} align="stretch">
                             <Text
@@ -77,7 +47,7 @@ const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
                             </Text>
                             <Heading size="xl">{result}</Heading>
 
-                            {interpretation && (
+                            {isInterpretation && (
                                 <Box
                                     w="100%"
                                     pt={4}
@@ -90,6 +60,17 @@ const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
                                 </Box>
                             )}
                         </VStack>
+                    </CardBody>
+                ) : (
+                    <CardBody>
+                        <Center py={2}>
+                            <VStack spacing={4}>
+                                <IconCalculatorOff stroke={1.5} size={50} />
+                                <Text color="gray.500">
+                                    {STRINGS.PAGES.CALCULATOR.NO_RESULT_MESSAGE}
+                                </Text>
+                            </VStack>
+                        </Center>
                     </CardBody>
                 )}
             </Card>
