@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Hide, IconButton, Show } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Flex,
+    Grid,
+    Hide,
+    IconButton,
+    Show,
+} from '@chakra-ui/react';
 import { IconHeart } from '@tabler/icons-react';
 import { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
@@ -12,40 +20,50 @@ import STRINGS from '../data/strings';
 
 const Navbar = () => (
     <NavbarContainer>
-        <Flex alignItems="center" justify="space-between" gap={4} wrap="wrap">
-            <Hide above="md">
-                <AppTooltip label={STRINGS.NAV.LINKS.HOMEPAGE}>
-                    <Box
-                        as={RouterLink}
-                        to={ROUTES.HOME}
-                        aria-label={STRINGS.NAV.LINKS.HOMEPAGE}
-                        h={{ base: 8, lg: 10 }}
-                    >
-                        <Logo />
-                    </Box>
-                </AppTooltip>
-            </Hide>
+        <Grid
+            templateColumns={{ base: '1fr 1fr', md: '1.75fr 2fr 1.75fr' }}
+            gap={4}
+        >
+            <Flex>
+                <Hide above="md">
+                    <AppTooltip label={STRINGS.NAV.LINKS.HOMEPAGE}>
+                        <Box
+                            as={RouterLink}
+                            to={ROUTES.HOME}
+                            aria-label={STRINGS.NAV.LINKS.HOMEPAGE}
+                            h={{ base: 8, lg: 10 }}
+                        >
+                            <Logo />
+                        </Box>
+                    </AppTooltip>
+                </Hide>
 
-            <Show above="md">
-                <AppTooltip label={STRINGS.NAV.LINKS.HOMEPAGE}>
-                    <Button
-                        as={RouterLink}
-                        to={ROUTES.HOME}
-                        aria-label={STRINGS.NAV.LINKS.HOMEPAGE}
-                        variant="ghost"
-                        p={1}
-                        size="lg"
-                    >
-                        <Logo />
-                    </Button>
-                </AppTooltip>
-            </Show>
+                <Show above="md">
+                    <AppTooltip label={STRINGS.NAV.LINKS.HOMEPAGE}>
+                        <Button
+                            as={RouterLink}
+                            to={ROUTES.HOME}
+                            aria-label={STRINGS.NAV.LINKS.HOMEPAGE}
+                            variant="ghost"
+                            p={1}
+                            size="lg"
+                        >
+                            <Logo />
+                        </Button>
+                    </AppTooltip>
+                </Show>
+            </Flex>
 
             <Show above="md">
                 <SearchCommandModal />
             </Show>
 
-            <Flex alignItems="center" gap={{ base: 3, md: 2 }} wrap="wrap">
+            <Flex
+                justifyContent="flex-end"
+                alignItems="center"
+                gap={{ base: 2, md: 3 }}
+                wrap="wrap"
+            >
                 <Hide above="md">
                     <SearchCommandModal />
                 </Hide>
@@ -74,7 +92,7 @@ const Navbar = () => (
 
                 <ColorModeButton />
             </Flex>
-        </Flex>
+        </Grid>
     </NavbarContainer>
 );
 

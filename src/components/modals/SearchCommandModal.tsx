@@ -236,8 +236,9 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
                 size="lg"
                 flex="1"
                 type="button"
-                maxW="500px"
-                mx={6}
+                w='100%'
+                // maxW="500px"
+                mx={0}
                 bg="gray.50"
                 whiteSpace="nowrap"
                 display="flex"
