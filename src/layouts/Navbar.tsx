@@ -1,6 +1,7 @@
 import {
     Box,
     Button,
+    Center,
     Flex,
     Grid,
     Hide,
@@ -55,7 +56,9 @@ const Navbar = () => (
             </Flex>
 
             <Show above="md">
-                <SearchCommandModal />
+                <Center>
+                    <SearchCommandModal />
+                </Center>
             </Show>
 
             <Flex
