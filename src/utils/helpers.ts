@@ -1,6 +1,6 @@
 import ROUTES from '../data/routes';
 import STORAGE_KEYS from '../data/storageKeys';
-import { CalculatorType } from '../types/calculatorTypes';
+import { CalculatorModel } from '../types/calculatorModels';
 
 const titleCaseWords = (text: string) =>
     text.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
@@ -8,7 +8,7 @@ const titleCaseWords = (text: string) =>
 const checkIsStandaloneMode = () =>
     window.matchMedia('(display-mode: standalone)').matches;
 
-const getCategories = (calculators: CalculatorType[]) => {
+const getCategories = (calculators: CalculatorModel[]) => {
     const categoriesArray: string[] = [];
 
     calculators.forEach((calculator) => {

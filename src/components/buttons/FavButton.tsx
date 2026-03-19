@@ -5,12 +5,12 @@ import { MouseEvent } from 'react';
 import STRINGS from '../../data/strings';
 import useFavorites from '../../hooks/useFavorites';
 import useShowToast from '../../hooks/useShowToast';
-import { CalculatorType } from '../../types/calculatorTypes';
+import { CalculatorModel } from '../../types/calculatorModels';
 import { checkIsStandaloneMode } from '../../utils/helpers';
 import AppTooltip from '../other/AppTooltip';
 
 type FavButtonProps = {
-    calculatorId: CalculatorType['id'];
+    calculatorId: CalculatorModel['id'];
 };
 
 const FavButton = ({ calculatorId }: FavButtonProps) => {

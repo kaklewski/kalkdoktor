@@ -4,14 +4,14 @@ import { ReactNode } from 'react';
 import CalculatorCard from '../components/cards/CalculatorCard';
 import CATEGORY_LABELS from '../data/categoryLabels';
 import STORAGE_KEYS from '../data/storageKeys';
-import { CalculatorType } from '../types/calculatorTypes';
+import { CalculatorModel } from '../types/calculatorModels';
 import { getCategories, titleCaseWords } from '../utils/helpers';
 
 type CalculatorCollectionLayoutProps = {
     title: string;
     actions: ReactNode;
     sorting: string;
-    calculators: CalculatorType[];
+    calculators: CalculatorModel[];
 };
 
 const CalculatorCollectionLayout = ({
@@ -23,7 +23,7 @@ const CalculatorCollectionLayout = ({
     const calculatorCategories: string[] = getCategories(calculators);
 
     return (
-        <Stack spacing={8} >
+        <Stack spacing={8}>
             <Flex justify="space-between" gap={2}>
                 <Heading as="h1">
                     <Text>{title}</Text>

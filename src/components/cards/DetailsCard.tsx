@@ -12,12 +12,12 @@ import {
 } from '@chakra-ui/react';
 
 import STRINGS from '../../data/strings';
-import { CalculatorType, SourceType } from '../../types/calculatorTypes';
+import { CalculatorModel, SourceModel } from '../../types/calculatorModels';
 
 type DetailsCardProps = {
-    description: CalculatorType['description'];
-    methodology: CalculatorType['methodology'];
-    sources: CalculatorType['sources'];
+    description: CalculatorModel['description'];
+    methodology: CalculatorModel['methodology'];
+    sources: CalculatorModel['sources'];
 };
 
 const DetailsCard = ({
@@ -67,7 +67,7 @@ const DetailsCard = ({
     );
 };
 
-type SourceLinkProps = Omit<SourceType, 'id'>;
+type SourceLinkProps = Omit<SourceModel, 'id'>;
 
 const SourceLink = ({ author, title, dateOfAccess, link }: SourceLinkProps) => (
     <Box mb={2}>

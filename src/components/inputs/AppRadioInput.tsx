@@ -1,9 +1,9 @@
 import { FormLabel, RadioGroup, Stack } from '@chakra-ui/react';
 import { forwardRef, ReactNode } from 'react';
 
-import { RadioGroupType } from '../../types/calculatorTypes';
+import { RadioInputModel } from '../../types/calculatorModels';
 
-type AppRadioGroupProps = Omit<RadioGroupType, 'options'> & {
+type AppRadioGroupProps = Omit<RadioInputModel, 'options'> & {
     children: ReactNode;
     value?: string;
     onChange?: (value: string) => void;

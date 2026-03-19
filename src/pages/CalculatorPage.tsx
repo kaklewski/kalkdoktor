@@ -8,10 +8,10 @@ import FormCard from '../components/cards/FormCard';
 import ResultCard from '../components/cards/ResultCard';
 import BugReportModal from '../components/modals/BugReportModal';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import { CalculatorType } from '../types/calculatorTypes';
+import { CalculatorModel } from '../types/calculatorModels';
 
 type CalculatorPageProps = {
-    calculator: CalculatorType;
+    calculator: CalculatorModel;
 };
 
 const CalculatorPage = ({ calculator }: CalculatorPageProps) => {

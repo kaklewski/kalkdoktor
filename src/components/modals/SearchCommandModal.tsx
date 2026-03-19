@@ -40,7 +40,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { sortedCalculators } from '../../data/calculators';
 import STRINGS from '../../data/strings';
-import { CalculatorType } from '../../types/calculatorTypes';
+import { CalculatorModel } from '../../types/calculatorModels';
 import AppTooltip from '../other/AppTooltip';
 
 const INITIAL_SELECTED_ITEM_INDEX = 0;
@@ -236,7 +236,7 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
                 size="lg"
                 flex="1"
                 type="button"
-                w='100%'
+                w="100%"
                 // maxW="500px"
                 mx={0}
                 bg="gray.50"
@@ -346,7 +346,7 @@ const NoResultsMessage = () => (
 );
 
 type SearchResultItemProps = {
-    name: CalculatorType['name'];
+    name: CalculatorModel['name'];
     index: number;
     isSelected: boolean;
     selectedItemRef?: RefObject<HTMLButtonElement | null>;

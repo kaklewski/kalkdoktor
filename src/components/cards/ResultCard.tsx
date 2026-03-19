@@ -11,11 +11,11 @@ import { IconCalculatorOff } from '@tabler/icons-react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import STRINGS from '../../data/strings';
-import { Interpretation, Result } from '../../types/calculatorTypes';
+import { InterpretationModel, ResultModel } from '../../types/calculatorModels';
 
 type ResultCardProps = {
-    result: Result;
-    interpretation: Interpretation;
+    result: ResultModel;
+    interpretation: InterpretationModel;
 };
 
 const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(

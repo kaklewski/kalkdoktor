@@ -12,9 +12,9 @@ import {
 import { forwardRef, KeyboardEvent } from 'react';
 
 import STRINGS from '../../data/strings';
-import { NumberInputType } from '../../types/calculatorTypes';
+import { NumberInputModel } from '../../types/calculatorModels';
 
-type AppNumberInputProps = NumberInputType & {
+type AppNumberInputProps = NumberInputModel & {
     value?: string;
     onChange?: (value: string) => void;
     onBlur?: () => void;

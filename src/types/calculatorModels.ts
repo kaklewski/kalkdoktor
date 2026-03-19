@@ -1,20 +1,20 @@
 import { ReactNode } from 'react';
 
-type CalculatorType = {
+type CalculatorModel = {
     id: number;
     name: string;
     urlPath: string;
     category: string;
     description: string;
     methodology?: ReactNode;
-    sources: SourceType[] | 'ownWork';
-    form: FormFieldType[];
+    sources: SourceModel[] | 'ownWork';
+    form: FormFieldModel[];
     calculateResult: (
         formValues: Record<string, string>,
-    ) => [Result, Interpretation];
+    ) => [ResultModel, InterpretationModel];
 };
 
-type SourceType = {
+type SourceModel = {
     id: number;
     author: string;
     title: string;
@@ -22,11 +22,11 @@ type SourceType = {
     link: string;
 };
 
-type FormFieldType = NumberInputType | CheckboxType | RadioInputType;
-type Result = number | string | null;
-type Interpretation = string | null;
+type FormFieldModel = NumberInputModel | CheckboxModel | RadioInputModel;
+type ResultModel = number | string | null;
+type InterpretationModel = string | null;
 
-type NumberInputType = {
+type NumberInputModel = {
     type: 'numberInput';
     name: string;
     label: string;
@@ -34,7 +34,7 @@ type NumberInputType = {
     max: number;
 };
 
-type CheckboxType = {
+type CheckboxModel = {
     type: 'checkbox';
     name: string;
     value: number;
@@ -42,26 +42,26 @@ type CheckboxType = {
     hideBadge?: boolean;
 };
 
-type RadioInputType = {
+type RadioInputModel = {
     type: 'radioInput';
     name: string;
     label: string;
-    options: RadioOptionType[];
+    options: RadioOptionModel[];
 };
 
-type RadioOptionType = {
+type RadioOptionModel = {
     value: number | string;
     label: string;
     hideBadge?: boolean;
 };
 
 export type {
-    CalculatorType,
-    CheckboxType,
-    Interpretation,
-    NumberInputType,
-    RadioInputType as RadioGroupType,
-    RadioOptionType as RadioType,
-    Result,
-    SourceType,
+    CalculatorModel,
+    CheckboxModel,
+    InterpretationModel,
+    NumberInputModel,
+    RadioInputModel,
+    RadioOptionModel,
+    ResultModel,
+    SourceModel,
 };

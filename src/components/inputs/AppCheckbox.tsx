@@ -1,10 +1,10 @@
 import { Checkbox, Text } from '@chakra-ui/react';
 import { forwardRef } from 'react';
 
-import { CheckboxType } from '../../types/calculatorTypes';
+import { CheckboxModel } from '../../types/calculatorModels';
 import AppBadge from './AppBadge';
 
-type AppCheckboxProps = CheckboxType & {
+type AppCheckboxProps = CheckboxModel & {
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onBlur?: () => void;

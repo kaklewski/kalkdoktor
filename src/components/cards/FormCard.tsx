@@ -9,14 +9,14 @@ import {
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 import STRINGS from '../../data/strings';
-import { CalculatorType } from '../../types/calculatorTypes';
+import { CalculatorModel } from '../../types/calculatorModels';
 import AppCheckbox from '../inputs/AppCheckbox';
 import AppNumberInput from '../inputs/AppNumberInput';
 import AppRadioInput from '../inputs/AppRadioInput';
 import AppRadioOption from '../inputs/AppRadioOption';
 
 type FormCardProps = {
-    form: CalculatorType['form'];
+    form: CalculatorModel['form'];
     formMethods: UseFormReturn;
     onSubmit: (values: Record<string, string>) => void;
 };
