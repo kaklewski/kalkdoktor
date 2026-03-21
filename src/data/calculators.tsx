@@ -71,7 +71,8 @@ const calculators: CalculatorModel[] = [
             },
         ],
         calculateResult(formValues) {
-            if (!formValues.bodyMass || !formValues.height) return [null, null];
+            if (!formValues.bodyMass || !formValues.height)
+                return [null, null, null];
 
             const bodyMass: number = parseFloat(formValues['bodyMass']);
             const height: number = parseFloat(formValues['height']) / 100;
@@ -93,7 +94,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Otyłość III stopnia';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -209,7 +210,7 @@ const calculators: CalculatorModel[] = [
                 }
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -289,7 +290,7 @@ const calculators: CalculatorModel[] = [
                     'Zalecane leczenie objawowe. Diagnostyka bakteriologiczna nie jest potrzebna.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -386,7 +387,7 @@ const calculators: CalculatorModel[] = [
                     'Małe prawdopodobieństwo zakrzepicy żył głębokich.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -471,7 +472,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.daysOfUse ||
                 !formValues.packageSize
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const amountPerIntake: number = parseFloat(
@@ -487,7 +488,26 @@ const calculators: CalculatorModel[] = [
                 (amountPerIntake * numberOfIntakes * daysOfUse) / packageSize,
             );
 
-            return [`${result} opak.`, null];
+            function formatUnit(result: number) {
+                result = Math.abs(Math.trunc(result));
+                const last = result % 10;
+                const penultimate = Math.floor((result % 100) / 10);
+
+                let word;
+                if (result === 1) {
+                    word = 'opakowanie';
+                } else if (penultimate === 1) {
+                    word = 'opakowań';
+                } else if (last >= 2 && last <= 4) {
+                    word = 'opakowania';
+                } else {
+                    word = 'opakowań';
+                }
+
+                return word;
+            }
+
+            return [result, formatUnit(result), null];
         },
     },
 
@@ -553,7 +573,9 @@ const calculators: CalculatorModel[] = [
             },
         ],
         calculateResult(formValues) {
-            if (!formValues.age || !formValues.weight) return [null, null];
+            if (!formValues.age || !formValues.weight) {
+                return [null, null, null];
+            }
 
             const age: number = parseFloat(formValues['age']);
             const weight: number = parseFloat(formValues['weight']);
@@ -563,7 +585,7 @@ const calculators: CalculatorModel[] = [
             if (age <= 12 && result > 2) result = 2;
             if (result > 4) result = 4;
 
-            return [`${result} g`, null];
+            return [result, 'g', null];
         },
     },
 
@@ -656,7 +678,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Nieduże ryzyko krwawienia.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -780,7 +802,7 @@ const calculators: CalculatorModel[] = [
             else if (result === 3) interpretation = 'Śmierć mózgu.';
             else interpretation = 'Uzupełnij wszystkie dane.';
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1028,7 +1050,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Łagodny epizod depresyjny.';
             else interpretation = 'Brak depresji.';
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1089,7 +1111,7 @@ const calculators: CalculatorModel[] = [
         ],
         calculateResult(formValues) {
             if (!formValues.qtInterval || !formValues.heartRate) {
-                return ['0 ms', null];
+                return [null, null, null];
             }
 
             const qtInterval: number = parseFloat(formValues['qtInterval']);
@@ -1099,7 +1121,7 @@ const calculators: CalculatorModel[] = [
             const result: number = qtInterval / Math.sqrt(rr);
             const formattedResult: number = parseFloat(result.toFixed(1));
 
-            return [`${formattedResult} ms`, null];
+            return [formattedResult, 'ms', null];
         },
     },
 
@@ -1192,7 +1214,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.controlTime ||
                 !formValues.bilirubin
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const prothrombinTime: number = parseFloat(
@@ -1216,7 +1238,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Podaj prawidłowe dane.';
             }
 
-            return [formattedResult, interpretation];
+            return [formattedResult, 'pkt', interpretation];
         },
     },
 
@@ -1281,7 +1303,7 @@ const calculators: CalculatorModel[] = [
         ],
         calculateResult(formValues) {
             if (!formValues.age || !formValues.weight) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const age: number = parseFloat(formValues['age']);
@@ -1290,7 +1312,7 @@ const calculators: CalculatorModel[] = [
             const result: number = age > 12 ? 3.2 : (30 * weight) / 1000;
             const formattedResult: number = parseFloat(result.toFixed(1));
 
-            return [`${formattedResult} g`, null];
+            return [formattedResult, 'g', null];
         },
     },
 
@@ -1431,7 +1453,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Uzupełnij wszystkie dane.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1528,7 +1550,7 @@ const calculators: CalculatorModel[] = [
                     'Małe prawdopodobieństwo kliniczne zatorowości płucnej.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1601,7 +1623,7 @@ const calculators: CalculatorModel[] = [
                 interpretation =
                     'PZP lekkie. Pacjent może być leczony w domu, jeśli nie ma innych wskazań do hospitalizacji.';
             }
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1689,7 +1711,7 @@ const calculators: CalculatorModel[] = [
         ],
         calculateResult(formValues) {
             if (!formValues.gender || !formValues.waist || !formValues.hips) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const gender: string = formValues['gender'];
@@ -1710,7 +1732,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Waga w normie.';
             }
 
-            return [formattedResult, interpretation];
+            return [formattedResult, 'pkt', interpretation];
         },
     },
 
@@ -1764,7 +1786,7 @@ const calculators: CalculatorModel[] = [
                     ? 'Wysokie ryzyko zgonu.'
                     : 'Niewysokie ryzyko zgonu.';
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1904,7 +1926,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Słabe uzależnienie od nikotyny.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -1964,7 +1986,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Uzupełnij wszystkie dane.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -2024,7 +2046,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Uzupełnij wszystkie dane.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -2135,7 +2157,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.creatinine ||
                 !formValues.gender
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const age: number = parseFloat(formValues['age']);
@@ -2147,9 +2169,9 @@ const calculators: CalculatorModel[] = [
             if (gender === 'female') {
                 result = result * 0.85;
             }
-            const formattedResult: string = `${result.toFixed(2)} ml/min`;
+            const formattedResult: number = parseFloat(result.toFixed(2));
 
-            return [formattedResult, null];
+            return [formattedResult, 'ml/min', null];
         },
     },
 
@@ -2261,7 +2283,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.ast ||
                 !formValues.platelet
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const age: number = parseFloat(formValues['age']);
@@ -2270,7 +2292,7 @@ const calculators: CalculatorModel[] = [
             const platelet: number = parseFloat(formValues['platelet']);
 
             const result: number = (age * ast) / (platelet * Math.sqrt(alt));
-            const formattedResult: string = result.toFixed(2);
+            const formattedResult: number = parseFloat(result.toFixed(2));
             let interpretation: string = '';
 
             if (result > 3.25) {
@@ -2284,7 +2306,7 @@ const calculators: CalculatorModel[] = [
                     'Małe prawdopodobieństwo zaawansowanego włóknienia.';
             }
 
-            return [formattedResult, interpretation];
+            return [formattedResult, 'pkt', interpretation];
         },
     },
 
@@ -2418,7 +2440,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Uzupełnij wszystkie dane.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -2510,7 +2532,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.gender ||
                 !formValues.smokingStatus
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             type Score2ValuesTable = {
@@ -2562,7 +2584,7 @@ const calculators: CalculatorModel[] = [
             const ageGroup = toValidAge(age);
 
             if (!ageGroup) {
-                return ['0%', 'Nieprawidłowy wiek.'];
+                return [0, '%', 'Nieprawidłowy wiek.'];
             }
             const cholesterolGroup: number = getCholesterolGroup(cholesterol);
             const bloodPressureGroup: number =
@@ -2824,14 +2846,14 @@ const calculators: CalculatorModel[] = [
             };
 
             const ageData = score2ValuesTable[gender][smokingStatus][ageGroup];
-            if (!ageData) return ['0%', 'Nieprawidłowy wiek.'];
+            if (!ageData) return [0, '%', 'Nieprawidłowy wiek.'];
 
             const bpRow = ageData[bloodPressureGroup];
-            if (!bpRow) return ['0%', 'Nieprawidłowe ciśnienie.'];
+            if (!bpRow) return [0, '%', 'Nieprawidłowe ciśnienie.'];
 
             const result = bpRow[cholesterolGroup];
             if (result === undefined)
-                return ['0%', 'Nieprawidłowy cholesterol.'];
+                return [0, '%', 'Nieprawidłowy cholesterol.'];
 
             let interpretation = '';
 
@@ -2866,7 +2888,7 @@ const calculators: CalculatorModel[] = [
                 }
             }
 
-            return [`${result}%`, interpretation];
+            return [result, '%', interpretation];
         },
     },
 
@@ -2966,7 +2988,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.fathersHeight ||
                 !formValues.gender
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const mothersHeight: number = parseInt(formValues['mothersHeight']);
@@ -2977,8 +2999,9 @@ const calculators: CalculatorModel[] = [
                 gender === 'male'
                     ? (mothersHeight + fathersHeight + 13) / 2
                     : (mothersHeight + fathersHeight - 13) / 2;
+            const formattedResult: number = parseFloat(result.toFixed(0));
 
-            return [`${result.toFixed(0)} cm`, null];
+            return [formattedResult, 'cm', null];
         },
     },
 
@@ -3233,7 +3256,7 @@ const calculators: CalculatorModel[] = [
             },
         ],
         calculateResult(formValues) {
-            if (!formValues.problem) return [null, null];
+            if (!formValues.problem) return [null, null, null];
 
             const result: number = sumValues(formValues);
             const happenedAtTheSameTime: boolean =
@@ -3251,7 +3274,7 @@ const calculators: CalculatorModel[] = [
                     'Diagnostyka w kierunku choroby dwubiegunowej nie jest konieczna.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -3574,7 +3597,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = lowRisk;
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -3690,7 +3713,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Uzupełnij wszystkie dane.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -3825,7 +3848,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Stan zły (ciężki).';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -4062,7 +4085,7 @@ const calculators: CalculatorModel[] = [
                     'Ciężki stan pacjenta, osoba niesamodzielna, potrzebująca stałej opieki.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -4171,7 +4194,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.consumedAlcohol ||
                 !formValues.bodyWeight
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const gender = formValues['gender'] as 'male' | 'female';
@@ -4184,7 +4207,7 @@ const calculators: CalculatorModel[] = [
             const result: number = consumedAlcohol / (genderIndex * bodyWeight);
             const formattedResult: number = parseFloat(result.toFixed(1));
 
-            return [`${formattedResult} ‰`, null];
+            return [formattedResult, '‰', null];
         },
     },
 
@@ -4358,7 +4381,7 @@ const calculators: CalculatorModel[] = [
                     ? 'Poważne krwawienie. Wskazana jest hospitalizacja.'
                     : 'Umiarkowane krwawienie. Z dużym prawdopodobieństwem można wypisać pacjenta z SOR.';
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -4517,7 +4540,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.n ||
                 !formValues.g
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const result: number = sumValues(formValues);
@@ -4545,7 +4568,7 @@ const calculators: CalculatorModel[] = [
                     'Niskie ryzyko obturacyjnego bezdechu sennego.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -4922,7 +4945,7 @@ const calculators: CalculatorModel[] = [
                 interpretation = 'Brak objawów udaru.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -5035,7 +5058,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.height ||
                 !formValues.weight
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const gender = formValues['gender'] as 'male' | 'female';
@@ -5050,9 +5073,9 @@ const calculators: CalculatorModel[] = [
                 result = 0.252 * weight + 0.473 * height - 48.3;
             }
 
-            const formattedResult = result.toFixed(1);
+            const formattedResult: number = parseFloat(result.toFixed(1));
 
-            return [`${formattedResult} kg`, null];
+            return [formattedResult, 'kg', null];
         },
     },
 
@@ -5203,7 +5226,7 @@ const calculators: CalculatorModel[] = [
                 !formValues.gender ||
                 !formValues.mainSymptom
             ) {
-                return [null, null];
+                return [null, null, null];
             }
 
             type Sex = 'male' | 'female';
@@ -5266,7 +5289,7 @@ const calculators: CalculatorModel[] = [
             })();
 
             if (!age || !gender || !mainSymptom) {
-                return [null, null];
+                return [null, null, null];
             }
 
             const cadProbabilityTable: CadProbabilityTable = {
@@ -5337,7 +5360,7 @@ const calculators: CalculatorModel[] = [
                     'Umiarkowane prawdopodobieństwo choroby wieńcowej.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 
@@ -5428,7 +5451,7 @@ const calculators: CalculatorModel[] = [
                     'Zaleca się włączenie leczenia przeciwkrzepliwego.';
             }
 
-            return [result, interpretation];
+            return [result, 'pkt', interpretation];
         },
     },
 ];

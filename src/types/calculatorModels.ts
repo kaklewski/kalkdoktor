@@ -11,7 +11,7 @@ type CalculatorModel = {
     form: FormFieldModel[];
     calculateResult: (
         formValues: Record<string, string>,
-    ) => [ResultModel, InterpretationModel];
+    ) => [ResultModel, ResultUnitModel, InterpretationModel];
 };
 
 type SourceModel = {
@@ -24,6 +24,7 @@ type SourceModel = {
 
 type FormFieldModel = NumberInputModel | CheckboxModel | RadioInputModel;
 type ResultModel = number | string | null;
+type ResultUnitModel = string | null;
 type InterpretationModel = string | null;
 
 type NumberInputModel = {
@@ -64,5 +65,6 @@ export type {
     RadioInputModel,
     RadioOptionModel,
     ResultModel,
+    ResultUnitModel,
     SourceModel,
 };

@@ -11,15 +11,21 @@ import { IconCalculatorOff } from '@tabler/icons-react';
 import { forwardRef } from 'react';
 
 import STRINGS from '../../data/strings';
-import { InterpretationModel, ResultModel } from '../../types/calculatorModels';
+import {
+    InterpretationModel,
+    ResultModel,
+    ResultUnitModel,
+} from '../../types/calculatorModels';
+import { formatResultUnit } from '../../utils/helpers';
 
 type ResultCardProps = {
     result: ResultModel;
+    resultUnit: ResultUnitModel;
     interpretation: InterpretationModel;
 };
 
 const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
-    ({ result, interpretation }, ref) => {
+    ({ result, resultUnit, interpretation }, ref) => {
         const isResult = result != null;
         const isInterpretation = interpretation != null;
         const resultInterpretationKey = `${result}-${interpretation}`; // This will force the card to re-render when result or interpretation changes
@@ -45,7 +51,12 @@ const ResultCard = forwardRef<HTMLDivElement, ResultCardProps>(
                             >
                                 {STRINGS.PAGES.CALCULATOR.RESULT}
                             </Text>
-                            <Heading size="xl">{result}</Heading>
+                            <Heading size="xl">
+                                {result}
+                                <Text as="span" fontSize="xl">
+                                    {formatResultUnit(resultUnit)}
+                                </Text>
+                            </Heading>
 
                             {isInterpretation && (
                                 <Box

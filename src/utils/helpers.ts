@@ -1,12 +1,17 @@
 import ROUTES from '../data/routes';
 import STORAGE_KEYS from '../data/storageKeys';
-import { CalculatorModel } from '../types/calculatorModels';
-
-const titleCaseWords = (text: string) =>
-    text.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+import { CalculatorModel, ResultUnitModel } from '../types/calculatorModels';
 
 const checkIsStandaloneMode = () =>
     window.matchMedia('(display-mode: standalone)').matches;
+
+const formatResultUnit = (resultUnit: ResultUnitModel) => {
+    if (!resultUnit) return '';
+
+    const noSpaceUnits = ['%', '‰'];
+
+    return noSpaceUnits.includes(resultUnit) ? resultUnit : ` ${resultUnit}`;
+};
 
 const getCategories = (calculators: CalculatorModel[]) => {
     const categoriesArray: string[] = [];
@@ -38,8 +43,12 @@ const sumValues = (values: Record<string, string>) => {
     }, initialSum);
 };
 
+const titleCaseWords = (text: string) =>
+    text.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+
 export {
     checkIsStandaloneMode,
+    formatResultUnit,
     getCategories,
     getImportFavoritesUrl,
     sumValues,

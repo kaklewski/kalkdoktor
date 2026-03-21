@@ -38,7 +38,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
         return calculateResult(obj);
     };
 
-    const [result, interpretation] =
+    const [result, resultUnit, interpretation] =
         getResultAndInterpretation(submittedValues);
 
     const handleCalculate = (values: Record<string, string>) => {
@@ -67,6 +67,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
                 <ResultCard
                     ref={ResultCardRef}
                     result={result}
+                    resultUnit={resultUnit}
                     interpretation={interpretation}
                 />
 
