@@ -79,15 +79,19 @@ const calculators: CalculatorModel[] = [
             const result: number = Math.round(bodyMass / (height * height));
             let interpretation: string = '';
 
-            if (result > 0 && result < 18.5) interpretation = 'Niedowaga';
-            if (result >= 18.5 && result < 25)
+            if (result > 0 && result < 18.5) {
+                interpretation = 'Niedowaga';
+            } else if (result >= 18.5 && result < 25) {
                 interpretation = 'Wartość prawidłowa';
-            if (result >= 25 && result < 30) interpretation = 'Nadwaga';
-            if (result >= 30 && result < 35)
+            } else if (result >= 25 && result < 30) {
+                interpretation = 'Nadwaga';
+            } else if (result >= 30 && result < 35) {
                 interpretation = 'Otyłość I stopnia';
-            if (result >= 35 && result < 40)
+            } else if (result >= 35 && result < 40) {
                 interpretation = 'Otyłość II stopnia';
-            if (result >= 40) interpretation = 'Otyłość III stopnia';
+            } else {
+                interpretation = 'Otyłość III stopnia';
+            }
 
             return [result, interpretation];
         },
@@ -188,13 +192,21 @@ const calculators: CalculatorModel[] = [
             let interpretation: string = '';
 
             if (isMale) {
-                if (result <= 0) interpretation = lowRisk;
-                if (result == 1) interpretation = mediumRisk;
-                if (result >= 2) interpretation = highRisk;
+                if (result <= 0) {
+                    interpretation = lowRisk;
+                } else if (result == 1) {
+                    interpretation = mediumRisk;
+                } else if (result >= 2) {
+                    interpretation = highRisk;
+                }
             } else {
-                if (result <= 1) interpretation = lowRisk;
-                if (result == 2) interpretation = mediumRisk;
-                if (result >= 3) interpretation = highRisk;
+                if (result <= 1) {
+                    interpretation = lowRisk;
+                } else if (result == 2) {
+                    interpretation = mediumRisk;
+                } else if (result >= 3) {
+                    interpretation = highRisk;
+                }
             }
 
             return [result, interpretation];
