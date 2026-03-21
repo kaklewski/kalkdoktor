@@ -5111,7 +5111,7 @@ const calculators: CalculatorModel[] = [
         sources: [
             {
                 id: 1,
-                author: 'Medcyna Praktyczna',
+                author: 'Medycyna Praktyczna',
                 title: 'Oszacowanie prawdopodobieństwa przed testem (PTL) choroby wieńcowej (ChW) z istotnymi zwężeniami tętnic nasierdziowych za pomocą modelu klinicznego opartego na sile poszczególnych czynników ryzyka sercowo-naczyniowego (RF-CL)',
                 dateOfAccess: '03.11.2025',
                 link: 'https://www.mp.pl/interna/table/B16.2.5-2.',
