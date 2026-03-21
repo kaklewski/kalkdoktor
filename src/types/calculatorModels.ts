@@ -30,6 +30,7 @@ type NumberInputModel = {
     type: 'numberInput';
     name: string;
     label: string;
+    unit?: string;
     min: number;
     max: number;
 };

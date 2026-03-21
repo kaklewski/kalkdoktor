@@ -3,6 +3,8 @@
 import {
     FormControl,
     FormLabel,
+    InputGroup,
+    InputRightAddon,
     NumberDecrementStepper,
     NumberIncrementStepper,
     NumberInput,
@@ -21,7 +23,7 @@ type AppNumberInputProps = NumberInputModel & {
 };
 
 const AppNumberInput = forwardRef<HTMLInputElement, AppNumberInputProps>(
-    ({ name, label, min, max, value, onChange, onBlur }, ref) => {
+    ({ name, label, unit, min, max, value, onChange, onBlur }, ref) => {
         const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
             // Chakra hack: replace a comma with a dot.
             if (event.key === ',') {
@@ -40,32 +42,46 @@ const AppNumberInput = forwardRef<HTMLInputElement, AppNumberInputProps>(
 
         return (
             <FormControl>
-                <FormLabel htmlFor={name}>{label}</FormLabel>
+                <FormLabel htmlFor={name} w="100%">
+                    {label}
 
-                <NumberInput
-                    min={min}
-                    max={max}
-                    value={value ?? ''}
-                    onChange={(valueString, _valueNumber) => {
-                        onChange?.(valueString);
-                    }}
-                    focusBorderColor="teal.400"
-                    _dark={{ focusBorderColor: 'teal.50' }}
-                    isRequired
-                >
-                    <NumberInputField
-                        ref={ref}
-                        id={name}
-                        name={name}
-                        onKeyDown={handleKeyDown}
-                        onBlur={onBlur}
-                        placeholder={STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER}
-                    />
-                    <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                    </NumberInputStepper>
-                </NumberInput>
+                    <InputGroup>
+                        <NumberInput
+                            w="100%"
+                            min={min}
+                            max={max}
+                            value={value ?? ''}
+                            onChange={(valueString, _valueNumber) => {
+                                onChange?.(valueString);
+                            }}
+                            focusBorderColor="teal.400"
+                            _dark={{ focusBorderColor: 'teal.50' }}
+                            isRequired
+                        >
+                            <NumberInputField
+                                ref={ref}
+                                id={name}
+                                name={name}
+                                onKeyDown={handleKeyDown}
+                                onBlur={onBlur}
+                                placeholder={
+                                    STRINGS.FIELDS.NUMBER_INPUT.PLACEHOLDER
+                                }
+                                roundedRight={unit ? '0' : 'md'}
+                            />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
+
+                        {unit && (
+                            <InputRightAddon _dark={{ bg: 'gray.700' }}>
+                                {unit}
+                            </InputRightAddon>
+                        )}
+                    </InputGroup>
+                </FormLabel>
             </FormControl>
         );
     },
