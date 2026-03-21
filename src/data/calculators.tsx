@@ -70,9 +70,7 @@ const calculators: CalculatorModel[] = [
                 max: 230,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (!formValues.bodyMass || !formValues.height) return [null, null];
 
             const bodyMass: number = parseFloat(formValues['bodyMass']);
@@ -177,7 +175,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const lowRisk: string =
                 'Niskie ryzyko powikłań. Nie zaleca się leczenia.';
             const mediumRisk: string =
@@ -264,7 +262,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Wysięk na migdałkach i ich obrzęk',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -361,7 +359,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Wcześniej przebyta ZŻG',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -454,9 +452,7 @@ const calculators: CalculatorModel[] = [
                 max: 200,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.amountPerIntake ||
                 !formValues.numberOfIntakes ||
@@ -544,9 +540,7 @@ const calculators: CalculatorModel[] = [
                 max: 200,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, null] {
+        calculateResult(formValues) {
             if (!formValues.age || !formValues.weight) return [null, null];
 
             const age: number = parseFloat(formValues['age']);
@@ -640,7 +634,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Nadmierne spożycie alkoholu',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -759,7 +753,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1009,7 +1003,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1081,7 +1075,7 @@ const calculators: CalculatorModel[] = [
                 max: 700,
             },
         ],
-        calculateResult(formValues: Record<string, string>): [string, null] {
+        calculateResult(formValues) {
             if (!formValues.qtInterval || !formValues.heartRate) {
                 return ['0 ms', null];
             }
@@ -1180,9 +1174,7 @@ const calculators: CalculatorModel[] = [
                 max: 1000,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.prothrombinTime ||
                 !formValues.controlTime ||
@@ -1275,9 +1267,7 @@ const calculators: CalculatorModel[] = [
                 max: 200,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (!formValues.age || !formValues.weight) {
                 return [null, null];
             }
@@ -1411,7 +1401,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Wysycenie hemoglobiny krwi tętniczej tlenem poniżej 90%',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1511,7 +1501,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Ból podczas ucisku żył głębokich kończyny dolnej i jednostronny obrzęk',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1585,7 +1575,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Wiek większy lub równy 65 lat',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1685,9 +1675,7 @@ const calculators: CalculatorModel[] = [
                 max: 250,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (!formValues.gender || !formValues.waist || !formValues.hips) {
                 return [null, null];
             }
@@ -1757,7 +1745,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Ciśnienie skurczowe krwi mniejsze lub równe 100 mm Hg',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             const interpretation: string =
                 result >= 2
@@ -1892,7 +1880,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -1948,7 +1936,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -2008,7 +1996,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -2128,9 +2116,7 @@ const calculators: CalculatorModel[] = [
                 max: 100,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.age ||
                 !formValues.weight ||
@@ -2256,9 +2242,7 @@ const calculators: CalculatorModel[] = [
                 max: 1000,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.age ||
                 !formValues.alt ||
@@ -2405,7 +2389,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -2506,9 +2490,7 @@ const calculators: CalculatorModel[] = [
                 max: 265,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.age ||
                 !formValues.bloodPressure ||
@@ -2966,9 +2948,7 @@ const calculators: CalculatorModel[] = [
                 max: 220,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.mothersHeight ||
                 !formValues.fathersHeight ||
@@ -3240,9 +3220,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (!formValues.problem) return [null, null];
 
             const result: number = sumValues(formValues);
@@ -3560,7 +3538,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             const gender = formValues['gender'] as 'male' | 'female';
             let interpretation: string = '';
@@ -3686,7 +3664,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -3823,7 +3801,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -4058,7 +4036,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -4175,9 +4153,7 @@ const calculators: CalculatorModel[] = [
                 max: 1000,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.gender ||
                 !formValues.consumedAlcohol ||
@@ -4363,7 +4339,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             const interpretation: string =
                 result > 8
@@ -4519,9 +4495,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.s ||
                 !formValues.t ||
@@ -4920,7 +4894,7 @@ const calculators: CalculatorModel[] = [
                 ],
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
@@ -5043,9 +5017,7 @@ const calculators: CalculatorModel[] = [
                 max: 250,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [string | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.gender ||
                 !formValues.height ||
@@ -5213,9 +5185,7 @@ const calculators: CalculatorModel[] = [
                 hideBadge: true,
             },
         ],
-        calculateResult(
-            formValues: Record<string, string>,
-        ): [number | null, string | null] {
+        calculateResult(formValues) {
             if (
                 !formValues.age ||
                 !formValues.gender ||
@@ -5433,7 +5403,7 @@ const calculators: CalculatorModel[] = [
                 label: 'Przebyty udar mózgu / TIA / incydent zakrzepowo-zatorowy',
             },
         ],
-        calculateResult(formValues: Record<string, string>): [number, string] {
+        calculateResult(formValues) {
             const result: number = sumValues(formValues);
             let interpretation: string = '';
 
