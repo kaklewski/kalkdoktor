@@ -22,7 +22,7 @@
         "better-react-mathjax": "^3.0.0",
         "react": "^19.2.3",
         "react-dom": "^19.2.3",
-        "react-hook-form": "^7.71.2",
+        "react-hook-form": "^7.72.0",
         "react-qr-code": "^2.0.18",
         "react-router-dom": "^7.13.1"
     },
@@ -43,7 +43,7 @@
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-unused-imports": "^4.1.4",
         "globals": "^17.4.0",
-        "jsdom": "^29.0.0",
+        "jsdom": "^29.0.1",
         "prettier": "^3.6.2",
         "typescript": "^5.5.3",
         "typescript-eslint": "^8.57.1",
