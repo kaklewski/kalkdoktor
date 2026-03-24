@@ -10,6 +10,7 @@ import {
     NumberInput,
     NumberInputField,
     NumberInputStepper,
+    Text,
 } from '@chakra-ui/react';
 import { forwardRef, KeyboardEvent } from 'react';
 
@@ -43,7 +44,7 @@ const AppNumberInput = forwardRef<HTMLInputElement, AppNumberInputProps>(
         return (
             <FormControl>
                 <FormLabel htmlFor={name} w="100%">
-                    {label}
+                    <Text mb={2}>{label}</Text>
 
                     <InputGroup>
                         <NumberInput
