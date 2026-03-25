@@ -23,6 +23,7 @@ const Navbar = () => (
     <NavbarContainer>
         <Grid
             templateColumns={{ base: '1fr 1fr', md: '1.75fr 2fr 1.75fr' }}
+            alignItems="center"
             gap={4}
         >
             <Flex>
