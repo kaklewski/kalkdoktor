@@ -224,6 +224,7 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
                     onClick={onClick}
                     variant="solid"
                     aria-label={STRINGS.MODALS.SEARCH.TITLE}
+                    borderWidth="1px"
                 >
                     <IconSearch stroke={1.5} />
                 </IconButton>

@@ -35,6 +35,7 @@ const SortButton = ({ sorting, setSorting }: SortButtonProps) => {
                     as={IconButton}
                     aria-label={STRINGS.BUTTONS.SORT.TITLE}
                     icon={icon}
+                    borderWidth="1px"
                 />
             </AppTooltip>
             <MenuList>

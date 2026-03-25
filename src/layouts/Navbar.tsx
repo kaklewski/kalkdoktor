@@ -79,6 +79,7 @@ const Navbar = () => (
                             to={ROUTES.FAVORITES}
                             aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}
                             icon={<IconHeart stroke={1.5} />}
+                            borderWidth="1px"
                         />
                     </AppTooltip>
                 </Hide>
@@ -89,6 +90,7 @@ const Navbar = () => (
                         to={ROUTES.FAVORITES}
                         aria-label={STRINGS.BUTTONS.FAVORITES.TITLE}
                         leftIcon={<IconHeart stroke={1.5} />}
+                        borderWidth="1px"
                     >
                         {STRINGS.BUTTONS.FAVORITES.TITLE}
                     </Button>

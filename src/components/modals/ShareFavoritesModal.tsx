@@ -133,6 +133,7 @@ const ShareButton = ({ onClick }: ShareButtonProps) => (
             icon={<IconShare stroke={1.5} />}
             aria-label={STRINGS.MODALS.SHARE_FAVORITES.TITLE}
             onClick={onClick}
+            borderWidth="1px"
         />
     </AppTooltip>
 );

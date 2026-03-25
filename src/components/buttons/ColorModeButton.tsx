@@ -67,6 +67,7 @@ const ColorModeButton = () => {
                     as={IconButton}
                     aria-label={STRINGS.BUTTONS.CHANGE_COLOR_MODE.TITLE}
                     icon={currentModeIcon[currentMode]}
+                    borderWidth="1px"
                 />
             </AppTooltip>
             <MenuList>

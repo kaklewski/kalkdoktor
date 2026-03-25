@@ -34,6 +34,7 @@ const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
                 leftIcon={<IconFlag stroke={1.5} size={16} />}
                 size="xs"
                 onClick={onOpen}
+                borderWidth="1px"
             >
                 {STRINGS.BUTTONS.REPORT_BUG}
             </Button>

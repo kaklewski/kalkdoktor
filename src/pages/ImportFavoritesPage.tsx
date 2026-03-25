@@ -80,7 +80,7 @@ const ImportFavoritesPage = () => {
 
                 <CardFooter mb={2}>
                     <ResponsiveButtonGroup w="100%">
-                        <Button as={RouterLink} to={ROUTES.HOME}>
+                        <Button as={RouterLink} to={ROUTES.HOME} borderWidth="1px">
                             {STRINGS.BUTTONS.CANCEL}
                         </Button>
                         <Button colorScheme="teal" onClick={handleClick}>
