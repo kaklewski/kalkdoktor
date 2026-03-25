@@ -1,6 +1,5 @@
 import {
     Button,
-    Center,
     FormControl,
     FormLabel,
     IconButton,
@@ -21,6 +20,7 @@ import { useRef } from 'react';
 import STRINGS from '../../data/strings';
 import { handleFormSubmit } from '../../utils/handleFormSubmit';
 import AppTooltip from '../other/AppTooltip';
+import ResponsiveButtonGroup from '../other/ResponsiveButtonGroup';
 
 const ContactModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -95,11 +95,11 @@ const ContactModal = () => {
                                 maxH={0}
                                 maxW={0}
                             />
-                            <Center mb={2}>
+                            <ResponsiveButtonGroup mb={2}>
                                 <Button colorScheme="teal" type="submit">
                                     {STRINGS.BUTTONS.SEND}
                                 </Button>
-                            </Center>
+                            </ResponsiveButtonGroup>
                         </ModalBody>
                     </ModalContent>
                 </form>

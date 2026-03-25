@@ -4,11 +4,11 @@ import {
     AlertTitle,
     Button,
     Flex,
-    HStack,
 } from '@chakra-ui/react';
 import { IconExclamationCircle } from '@tabler/icons-react';
 import { useRouteError } from 'react-router-dom';
 
+import ResponsiveButtonGroup from './components/other/ResponsiveButtonGroup';
 import ROUTES from './data/routes';
 import STRINGS from './data/strings';
 
@@ -37,13 +37,7 @@ const RouterErrorBoundary = () => {
                     {STRINGS.PAGES.ERROR_BOUNDARY.DESCRIPTION}
                 </AlertDescription>
 
-                <HStack mt={4} mb={4}>
-                    <Button
-                        onClick={() => window.location.reload()}
-                        colorScheme="red"
-                    >
-                        {STRINGS.BUTTONS.REFRESH}
-                    </Button>
+                <ResponsiveButtonGroup w="100%" my={4}>
                     <Button
                         as="a"
                         href={ROUTES.HOME}
@@ -52,7 +46,13 @@ const RouterErrorBoundary = () => {
                     >
                         {STRINGS.BUTTONS.HOMEPAGE}
                     </Button>
-                </HStack>
+                    <Button
+                        onClick={() => window.location.reload()}
+                        colorScheme="red"
+                    >
+                        {STRINGS.BUTTONS.REFRESH}
+                    </Button>
+                </ResponsiveButtonGroup>
             </Alert>
         </Flex>
     );

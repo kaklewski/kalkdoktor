@@ -1,6 +1,5 @@
 import {
     Button,
-    Center,
     FormControl,
     FormLabel,
     Input,
@@ -19,6 +18,7 @@ import { useRef } from 'react';
 
 import STRINGS from '../../data/strings';
 import { handleFormSubmit } from '../../utils/handleFormSubmit';
+import ResponsiveButtonGroup from '../other/ResponsiveButtonGroup';
 
 type BugReportModalProps = {
     calculatorName: string;
@@ -108,11 +108,11 @@ const BugReportModal = ({ calculatorName }: BugReportModalProps) => {
                                 maxH={0}
                                 maxW={0}
                             />
-                            <Center mb={2}>
+                            <ResponsiveButtonGroup mb={2}>
                                 <Button colorScheme="teal" type="submit">
                                     {STRINGS.BUTTONS.SEND}
                                 </Button>
-                            </Center>
+                            </ResponsiveButtonGroup>
                         </ModalBody>
                     </ModalContent>
                 </form>

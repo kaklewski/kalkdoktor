@@ -1,11 +1,4 @@
-import {
-    Button,
-    Card,
-    CardBody,
-    Flex,
-    Stack,
-    StackDivider,
-} from '@chakra-ui/react';
+import { Button, Card, CardBody, Stack, StackDivider } from '@chakra-ui/react';
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 import STRINGS from '../../data/strings';
@@ -14,6 +7,7 @@ import AppCheckbox from '../inputs/AppCheckbox';
 import AppNumberInput from '../inputs/AppNumberInput';
 import AppRadioInput from '../inputs/AppRadioInput';
 import AppRadioOption from '../inputs/AppRadioOption';
+import ResponsiveButtonGroup from '../other/ResponsiveButtonGroup';
 
 type FormCardProps = {
     form: CalculatorModel['form'];
@@ -111,11 +105,11 @@ const FormCard = ({ form, formMethods, onSubmit }: FormCardProps) => {
                         })}
                     </Stack>
 
-                    <Flex justify="center" gap={2} mt={5}>
+                    <ResponsiveButtonGroup mt={5}>
                         <Button type="submit" colorScheme="teal">
                             {STRINGS.BUTTONS.CALCULATE}
                         </Button>
-                    </Flex>
+                    </ResponsiveButtonGroup>
                 </CardBody>
             </form>
         </Card>

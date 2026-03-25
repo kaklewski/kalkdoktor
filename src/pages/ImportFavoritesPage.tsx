@@ -3,7 +3,6 @@ import {
     Card,
     CardBody,
     CardFooter,
-    Flex,
     Heading,
     ListItem,
     Text,
@@ -13,6 +12,7 @@ import {
 import { IconHeartPlus } from '@tabler/icons-react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
+import ResponsiveButtonGroup from '../components/other/ResponsiveButtonGroup';
 import { sortedCalculators } from '../data/calculators';
 import ROUTES from '../data/routes';
 import STORAGE_KEYS from '../data/storageKeys';
@@ -79,14 +79,14 @@ const ImportFavoritesPage = () => {
                 </CardBody>
 
                 <CardFooter mb={2}>
-                    <Flex justify="center" align="center" gap={2} w="100%">
+                    <ResponsiveButtonGroup w="100%">
                         <Button as={RouterLink} to={ROUTES.HOME}>
                             {STRINGS.BUTTONS.CANCEL}
                         </Button>
-                        <Button colorScheme="red" onClick={handleClick}>
+                        <Button colorScheme="teal" onClick={handleClick}>
                             {STRINGS.BUTTONS.IMPORT}
                         </Button>
-                    </Flex>
+                    </ResponsiveButtonGroup>
                 </CardFooter>
             </Card>
         )
