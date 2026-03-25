@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -13,13 +13,13 @@ const RootLayout = () => {
     }, [pathname]);
 
     return (
-        <>
+        <Box minH="100vh" display="flex" flexDirection="column">
             <Navbar />
-            <Container as="main" my={12} maxW="container.sm">
+            <Container as="main" my={12} maxW="container.sm" flex="1">
                 <Outlet />
                 <Footer />
             </Container>
-        </>
+        </Box>
     );
 };
 
