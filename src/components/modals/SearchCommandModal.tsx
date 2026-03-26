@@ -252,7 +252,6 @@ const SearchButton = ({ onClick }: SearchButtonProps) => (
                 _dark={{
                     bg: 'gray.700',
                     color: 'gray.400',
-                    borderWidth: 0,
                     _hover: {
                         bg: 'gray.600',
                     },
