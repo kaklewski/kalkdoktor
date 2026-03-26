@@ -22,6 +22,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
         description,
         methodology,
         form,
+        category,
         calculateResult,
     } = calculator;
 
@@ -75,6 +76,7 @@ const CalculatorPage = ({ calculator }: CalculatorPageProps) => {
                     description={description}
                     sources={sources}
                     methodology={methodology}
+                    category={category}
                 />
             </Stack>
 

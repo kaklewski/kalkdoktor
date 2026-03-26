@@ -3,6 +3,7 @@ import {
     Box,
     Card,
     Link,
+    Stack,
     Tab,
     TabList,
     TabPanel,
@@ -11,6 +12,7 @@ import {
     Text,
 } from '@chakra-ui/react';
 
+import CATEGORY_LABELS from '../../data/categoryLabels';
 import STRINGS from '../../data/strings';
 import { CalculatorModel, SourceModel } from '../../types/calculatorModels';
 import { formatDate } from '../../utils/helpers';
@@ -19,22 +21,26 @@ type DetailsCardProps = {
     description: CalculatorModel['description'];
     methodology: CalculatorModel['methodology'];
     sources: CalculatorModel['sources'];
+    category: CalculatorModel['category'];
 };
 
 const DetailsCard = ({
     description,
     methodology,
     sources,
+    category,
 }: DetailsCardProps) => {
     const isOwnWork = sources === 'ownWork';
     const isOneSource =
         isOwnWork || (Array.isArray(sources) && sources.length === 1);
 
+    const categoryName: string = CATEGORY_LABELS[category]?.label || category;
+
     return (
         <Card variant="outline" rounded="lg">
             <Tabs variant="enclosed" colorScheme="teal" isFitted isLazy>
                 <TabList px={4} pt={4}>
-                    <Tab>{STRINGS.PAGES.CALCULATOR.DESCRIPTION}</Tab>
+                    <Tab>{STRINGS.PAGES.CALCULATOR.DETAILS}</Tab>
                     <Tab>
                         {isOneSource
                             ? STRINGS.PAGES.CALCULATOR.SOURCE
@@ -46,7 +52,21 @@ const DetailsCard = ({
                 </TabList>
                 <TabPanels>
                     <TabPanel>
-                        <Text>{description}</Text>
+                        <Stack spacing={2}>
+                            <Text>
+                                <Text as="span" fontWeight="bold">
+                                    {STRINGS.PAGES.CALCULATOR.DESCRIPTION}:
+                                </Text>{' '}
+                                {description}
+                            </Text>
+
+                            <Text>
+                                <Text as="span" fontWeight="bold">
+                                    {STRINGS.PAGES.CALCULATOR.CATEGORY}:
+                                </Text>{' '}
+                                {categoryName}
+                            </Text>
+                        </Stack>
                     </TabPanel>
                     <TabPanel>
                         {isOwnWork

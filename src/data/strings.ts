@@ -97,8 +97,10 @@ const STRINGS = {
     },
     PAGES: {
         CALCULATOR: {
-            METHODOLOGY: 'Metodologia',
+            CATEGORY: 'Kategoria',
             DESCRIPTION: 'Opis',
+            DETAILS: 'Szczegóły',
+            METHODOLOGY: 'Metodologia',
             RESULT: 'Wynik',
             NO_RESULT_MESSAGE: 'Wypełnij formularz, aby obliczyć wynik.',
             SOURCE: 'Źródło',
