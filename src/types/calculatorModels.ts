@@ -18,7 +18,7 @@ type SourceModel = {
     id: number;
     author: string;
     title: string;
-    dateOfAccess: string;
+    dateOfAccess: Date;
     link: string;
 };
 

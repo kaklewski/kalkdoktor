@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
-import { sumValues } from './helpers';
+import { formatDate, sumValues } from './helpers';
+
+describe('formatDate', () => {
+    it('formats date to DD.MM.YYYY', () => {
+        const date = new Date('2024-01-01');
+        expect(formatDate(date)).toBe('01.01.2024');
+    });
+});
 
 describe('sumValues', () => {
     it('adds object values 1 + 2 to equal 3', () => {

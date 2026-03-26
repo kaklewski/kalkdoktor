@@ -13,6 +13,7 @@ import {
 
 import STRINGS from '../../data/strings';
 import { CalculatorModel, SourceModel } from '../../types/calculatorModels';
+import { formatDate } from '../../utils/helpers';
 
 type DetailsCardProps = {
     description: CalculatorModel['description'];
@@ -74,7 +75,7 @@ const SourceLink = ({ author, title, dateOfAccess, link }: SourceLinkProps) => (
         <Link href={link} isExternal>
             <Text as="span">
                 {author}, <Text as="i">{title}</Text>,{' '}
-                {STRINGS.PAGES.CALCULATOR.ACCESS}: {dateOfAccess}
+                {STRINGS.PAGES.CALCULATOR.ACCESS}: {formatDate(dateOfAccess)}
             </Text>
             <ExternalLinkIcon ml={1} mt={-1} />
         </Link>

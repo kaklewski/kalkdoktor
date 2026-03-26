@@ -5,6 +5,14 @@ import { CalculatorModel, ResultUnitModel } from '../types/calculatorModels';
 const checkIsStandaloneMode = () =>
     window.matchMedia('(display-mode: standalone)').matches;
 
+const formatDate = (date: Date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day}.${month}.${year}`;
+};
+
 const formatResultUnit = (resultUnit: ResultUnitModel) => {
     if (!resultUnit) return '';
 
@@ -48,6 +56,7 @@ const titleCaseWords = (text: string) =>
 
 export {
     checkIsStandaloneMode,
+    formatDate,
     formatResultUnit,
     getCategories,
     getImportFavoritesUrl,
