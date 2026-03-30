@@ -5686,4 +5686,8 @@ const sortedCalculators = calculators.sort(
     },
 );
 
-export { calculators, sortedCalculators };
+const calculatorMap = new Map(
+    calculators.map((calculator) => [calculator.id, calculator]),
+);
+
+export { calculatorMap, calculators, sortedCalculators };
