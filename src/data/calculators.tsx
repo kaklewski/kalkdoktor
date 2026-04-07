@@ -5457,7 +5457,7 @@ const calculators: CalculatorModel[] = [
 
     {
         id: 38,
-        name: 'Skala senności Epworth',
+        name: 'Skala senności Epworth (ESS)',
         urlPath: '/skala-sennosci-epworth',
         category: 'psychiatry',
         description:
@@ -5466,9 +5466,9 @@ const calculators: CalculatorModel[] = [
             {
                 id: 1,
                 author: 'Dr Murry W Johns',
-                title: 'Epworth Sleepiness Scale – The Official Website of the Epworth Sleepiness Scale (ESS & ESS-CHAD)',
+                title: 'About the ESS',
                 dateOfAccess: new Date('2026-03-30'),
-                link: 'https://epworthsleepinessscale.com',
+                link: 'https://epworthsleepinessscale.com/about-the-ess/',
             },
         ],
         form: [
@@ -5590,7 +5590,7 @@ const calculators: CalculatorModel[] = [
             {
                 type: 'radioInput',
                 name: 'sittingAndTalking',
-                label: 'Siedząc w czasie rozmowy z innymi osobami',
+                label: 'Siedzenie w czasie rozmowy z innymi osobami',
                 options: [
                     {
                         value: 0,
@@ -5637,6 +5637,226 @@ const calculators: CalculatorModel[] = [
                 type: 'radioInput',
                 name: 'inCarDuringShortStop',
                 label: 'W samochodzie, podczas kilkuminutowego postoju w korku lub na czerwonym świetle',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+        ],
+        calculateResult(formValues) {
+            const result: number = sumValues(formValues);
+            let interpretation: string = '';
+
+            if (result <= 10) {
+                interpretation = 'Normalna senność dzienna.';
+            } else if (result > 10 && result <= 12) {
+                interpretation = 'Łagodna nadmierna senność dzienna.';
+            } else if (result > 12 && result <= 15) {
+                interpretation = 'Umiarkowana nadmierna senność dzienna.';
+            } else {
+                interpretation = 'Ciężka nadmierna senność dzienna.';
+            }
+
+            return [result, 'pkt', interpretation];
+        },
+    },
+
+    {
+        id: 39,
+        name: 'Skala senności Epworth dla dzieci i młodzieży (ESS-CHAD)',
+        urlPath: '/skala-sennosci-epworth-dla-dzieci',
+        category: 'psychiatry',
+        description:
+            'Ocenia stopień senności dziennej u dzieci i młodzieży, szczególnie w kontekście zaburzeń snu, takich jak bezdech senny, oraz innych problemów wpływających na czujność w ciągu dnia.',
+        sources: [
+            {
+                id: 1,
+                author: 'Dr Murry W Johns',
+                title: 'About the ESS-CHAD',
+                dateOfAccess: new Date('2026-03-31'),
+                link: 'https://epworthsleepinessscale.com/about-the-ess-chad/',
+            },
+        ],
+        form: [
+            {
+                type: 'radioInput',
+                name: 'sittingAndReading',
+                label: 'Siedzenie i czytanie',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'watchingTv',
+                label: 'Siedzenie i oglądanie wideo lub telewizji',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'sittingInClass',
+                label: 'Siedzenie rano w klasie w szkole',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'sittingAndPassengerInCar',
+                label: 'Siedzenie w czasie jazdy samochodem lub autobusem przez około pół godziny',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'sittingAndLyingInAfternoon',
+                label: 'Położenie się w celu odpoczynku lub drzemki po południu',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'sittingAndTalking',
+                label: 'Siedzenie w czasie rozmowy z innymi osobami',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'calmSittingAfterLunch',
+                label: 'Spokojne siedzenie samemu po obiedzie',
+                options: [
+                    {
+                        value: 0,
+                        label: 'Zerowe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 1,
+                        label: 'Małe prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 2,
+                        label: 'Średnie prawdopodobieństwo zaśnięcia',
+                    },
+                    {
+                        value: 3,
+                        label: 'Duże prawdopodobieństwo zaśnięcia',
+                    },
+                ],
+            },
+            {
+                type: 'radioInput',
+                name: 'sittingAndEating',
+                label: 'Siedzenie i jedzenie posiłku',
                 options: [
                     {
                         value: 0,
