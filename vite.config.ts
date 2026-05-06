@@ -21,7 +21,7 @@ export default defineConfig({
         }),
         VitePWA({
             injectRegister: 'auto',
-            registerType: 'autoUpdate',
+            registerType: 'prompt',
             manifest: {
                 name: 'Kalkdoktor',
                 short_name: 'Kalkdoktor',
