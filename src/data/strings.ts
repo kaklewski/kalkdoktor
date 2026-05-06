@@ -148,6 +148,12 @@ const STRINGS = {
                 DESCRIPTION: 'Zobacz ulubione kalkulatory',
             },
         },
+        UPDATE_ALERT: {
+            TITLE: 'Nowa wersja aplikacji',
+            DESCRIPTION:
+                'Dostępne są nowe funkcje i poprawki. Odśwież, aby je zobaczyć.',
+            BUTTON: 'Odśwież',
+        },
     },
 };
 
