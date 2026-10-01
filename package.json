@@ -22,7 +22,7 @@
         "better-react-mathjax": "^3.0.2",
         "react": "^19.2.7",
         "react-dom": "^19.3.0",
-        "react-hook-form": "^7.86.0",
+        "react-hook-form": "^7.89.0",
         "react-qr-code": "^2.2.0",
         "react-router-dom": "^7.18.3"
     },
